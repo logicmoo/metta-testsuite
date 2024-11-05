@@ -37,7 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-05 03:29:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-05 03:30:51+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -349,13 +349,13 @@ Script started on 2024-11-05 03:29:35+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 1  "Expected: [(1 2 7 212)]")
 P;HTML|
-;                                         (= 1  "Got: [(findall! $X 1), (findall! $X 2), (findall! $X 212), (findall! $X 7)]")
+;                                         (= 1  "Got: [(findall! $X 7), (findall! $X 212), (findall! $X 1), (findall! $X 2)]")
 P;HTML|
 ;                                         (= 2  "Missed result: (1 2 7 212))]")
 P;HTML|
-;                                         (= 2  "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26224maxresident)k")
+;                                         (= 2  "0.02user 0.02system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26228maxresident)k")
 P;HTML|
-;                                         (= 2  "0inputs+0outputs (0major+3119minor)pagefaults 0swaps")
+;                                         (= 2  "0inputs+0outputs (0major+3120minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/find_all_tests.metta is 1.57K bytes (33 lines)
@@ -394,7 +394,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000619 secs. (619.15 microseconds) 
+; took 0.000594 secs. (594.24 microseconds) 
 
 !(assertEqualToResult (findall! $X (match &self (my-numbers $X) $X)) ((1 2 7 212)))
 
@@ -411,7 +411,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.40 milliseconds) 
+; took 0.002 secs. (2.33 milliseconds) 
 
 !(assertEqualToResult (findall! $X (match &self (my-numbers $X) (this-predicate-doesnt-matter $X))) ((1 2 7 212)))
 
@@ -428,7 +428,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.15 milliseconds) 
+; took 0.002 secs. (2.04 milliseconds) 
 
 !(assertEqualToResult (findall! (is-even $X) (match &self (my-numbers $X) $X)) ((False True False True)))
 
@@ -445,7 +445,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.01 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqualToResult (findall! ($X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((2 4) (4 8))))
 
@@ -461,7 +461,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.13 milliseconds) 
+; took 0.002 secs. (1.92 milliseconds) 
 
 !(assertEqualToResult (findall! ($Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((4 2) (8 4))))
 
@@ -478,7 +478,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.12 milliseconds) 
+; took 0.002 secs. (1.90 milliseconds) 
 
 !(assertEqualToResult (findall! (/ $X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((0.5 0.5)))
 
@@ -494,7 +494,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.07 milliseconds) 
+; took 0.002 secs. (1.93 milliseconds) 
 
 !(assertEqualToResult (findall! (/ $Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((2 2)))
 
@@ -503,7 +503,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 429,869 inferences, 0.107 CPU in 0.110 seconds (98% CPU, 4007679 Lips)
+% 429,887 inferences, 0.106 CPU in 0.108 seconds (98% CPU, 4055627 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/find_all_tests.metta  0)
 <span class="ansi1"
@@ -649,7 +649,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-05 03:29:41+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-05 03:30:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

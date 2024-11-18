@@ -722,7 +722,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-15 23:02:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-18 23:10:01+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@P;HTML|
 ;           (set_option_value  compat false)
 
@@ -1353,7 +1353,7 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; ANTI-REGRESSION.BC-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.94 milliseconds) 
+; took 0.002 secs. (1.78 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: axiom (nums 2 3))) (()))
 
@@ -1478,7 +1478,7 @@ Deterministic: False<span class="ansi38-255165009"
 >;; ANTI-REGRESSION.BC-COMP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.23 milliseconds) 
+; took 0.001 secs. (1.22 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: rule1 (-> (nums $x $y) (rule1output $x $y)))) (()))
 
@@ -1621,7 +1621,7 @@ Deterministic: False<span class="ansi38-255165009"
 >;; ANTI-REGRESSION.BC-COMP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.28 milliseconds) 
+; took 0.001 secs. (1.26 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: rule (-> (rule1output $x $y) (-> (⍃ $x $y) (less $x $y))))) (()))
 
@@ -1954,26 +1954,26 @@ Deterministic: ()
 </span>;<span class="ansi38-047047047"
 >    8:1   |   |-<--(: CPU (⍃ 2 3)) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(=(bc (: $_290394 $_290400) $_290406 $_290412) </span>
+>   10:0   |-(=(bc (: $_291010 $_291016) $_291022 $_291028) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(match $_290406 (: $_290394 $_290400) (: $_290394 $_290400))) </span>
+>   10:0   |-(match $_291022 (: $_291010 $_291016) (: $_291010 $_291016))) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(=(bc (: CPU (⍃ $_290196 $_290202)) $_290208 $_290214) </span>
+>   10:0   |-(=(bc (: CPU (⍃ $_290812 $_290818)) $_290824 $_290830) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(if (and (and (is-closed $_290196) (is-closed $_290202)) (< $_290196 $_290202)) (: CPU (⍃ $_290196 $_290202)) (empty))) </span>
+>   10:0   |-(if (and (and (is-closed $_290812) (is-closed $_290818)) (< $_290812 $_290818)) (: CPU (⍃ $_290812 $_290818)) (empty))) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(=(bc (: ($_289866 $_289872) $_289878) $_289884 (S $_289902)) </span>
+>   10:0   |-(=(bc (: ($_290482 $_290488) $_290494) $_290500 (S $_290518)) </span>
 ;<span class="ansi38-047047047"
->   10:0   |-(let* (((: $_289866 (-> $_289956 $_289878)) (bc (: $_289866 (-> $_289956 $_289878)) $_289884 $_289902)) ((: $_289872 $_289956) (bc (: $_289872 $_289956) $_289884 $_289902))) (: ($_289866 $_289872) $_289878))) </span>
+>   10:0   |-(let* (((: $_290482 (-> $_290572 $_290494)) (bc (: $_290482 (-> $_290572 $_290494)) $_290500 $_290518)) ((: $_290488 $_290572) (bc (: $_290488 $_290572) $_290500 $_290518))) (: ($_290482 $_290488) $_290494))) </span>
 <span class="ansi38-119055000"
->                                                                                                  ;;defs_used(([bc,[:,_307772,_307778],_307784,_307790]->[match,_307784,[:,_307772,_307778],[:,_307772,_307778]]))
+>                                                                                                  ;;defs_used(([bc,[:,_308388,_308394],_308400,_308406]->[match,_308400,[:,_308388,_308394],[:,_308388,_308394]]))
 
 </span>;<span class="ansi38-047047047"
 >   10:1   |   |--->(match &kb (: CPU (⍃ 2 3)) (: CPU (⍃ 2 3))) </span>
 ;<span class="ansi38-047047047"
 >   11:1   |   |-<--fail </span>
 <span class="ansi38-119055000"
->                                                                                                  ;;defs_used(([bc,[:,'CPU',[⍃,_316694,_316700]],_316706,_316712]->[if,[and,[and,['is-closed',_316694],['is-closed',_316700]],[<,_316694,_316700]],[:,'CPU',[⍃,_316694,_316700]],[empty]]))
+>                                                                                                  ;;defs_used(([bc,[:,'CPU',[⍃,_317310,_317316]],_317322,_317328]->[if,[and,[and,['is-closed',_317310],['is-closed',_317316]],[<,_317310,_317316]],[:,'CPU',[⍃,_317310,_317316]],[empty]]))
 
 </span>;<span class="ansi38-047047047"
 >   12:1   |   |--->(if (and (and (is-closed 2) (is-closed 3)) (< 2 3)) (: CPU (⍃ 2 3)) (empty)) </span>
@@ -1984,24 +1984,24 @@ Deterministic: ()
 ;<span class="ansi38-047047047"
 >   15:4   |   |   |   |   |--->(is-closed 2) </span>
 ;<span class="ansi38-047047047"
->   17:4   |   |   |   |   |-(=(is-closed $_336012) </span>
+>   17:4   |   |   |   |   |-(=(is-closed $_336628) </span>
 ;<span class="ansi38-047047047"
->          |   |   |   |     (if (is-variable $_336012) False (if (== () $_336012) True (if (is-expression $_336012) (and (let $_336144 (car-atom $_336012) (is-closed $_336144)) (let $_336198 (cdr-atom $_336012) (is-closed $_336198))) True)))) </span>
+>          |   |   |   |     (if (is-variable $_336628) False (if (== () $_336628) True (if (is-expression $_336628) (and (let $_336760 (car-atom $_336628) (is-closed $_336760)) (let $_336814 (cdr-atom $_336628) (is-closed $_336814))) True)))) </span>
 <span class="ansi38-119055000"
->                                                                                          ;;defs_used((['is-closed',_342056]->[if,['is-variable',_342056],'False',[if,[==,[],_342056],'True',[if,['is-expression',_342056],[and,[let,_342188,['car-atom',_342056],['is-closed',_342188]],[let,_342242,['cdr-atom',_342056],['is-closed',_342242]]],'True']]]))
+>                                                                                          ;;defs_used((['is-closed',_342672]->[if,['is-variable',_342672],'False',[if,[==,[],_342672],'True',[if,['is-expression',_342672],[and,[let,_342804,['car-atom',_342672],['is-closed',_342804]],[let,_342858,['cdr-atom',_342672],['is-closed',_342858]]],'True']]]))
 
 </span>;<span class="ansi38-047047047"
->          |   |   |   |     <--(if (is-variable 2) False (if (== () 2) True (if (is-expression 2) (and (let $_336144 (car-atom 2) (is-closed $_336144)) (let $_336198 (cdr-atom 2) (is-closed $_336198))) True))) </span>
+>          |   |   |   |     <--(if (is-variable 2) False (if (== () 2) True (if (is-expression 2) (and (let $_336760 (car-atom 2) (is-closed $_336760)) (let $_336814 (cdr-atom 2) (is-closed $_336814))) True))) </span>
 ;<span class="ansi38-047047047"
->   18:5   |   |   |   |   |   |--->(if (is-variable 2) False (if (== () 2) True (if (is-expression 2) (and (let $_336144 (car-atom 2) (is-closed $_336144)) (let $_336198 (cdr-atom 2) (is-closed $_336198))) True))) </span>
+>   18:5   |   |   |   |   |   |--->(if (is-variable 2) False (if (== () 2) True (if (is-expression 2) (and (let $_336760 (car-atom 2) (is-closed $_336760)) (let $_336814 (cdr-atom 2) (is-closed $_336814))) True))) </span>
 ;<span class="ansi38-047047047"
 >   19:6   |   |   |   |   |   |   |--->(is-variable 2) </span>
 ;<span class="ansi38-047047047"
->   21:6   |   |   |   |   |   |   |-(=(is-variable $_357138) </span>
+>   21:6   |   |   |   |   |   |   |-(=(is-variable $_357754) </span>
 ;<span class="ansi38-047047047"
->          |   |   |   |   |   |     (== (get-metatype $_357138) Variable)) </span>
+>          |   |   |   |   |   |     (== (get-metatype $_357754) Variable)) </span>
 <span class="ansi38-119055000"
->                                                                                      ;;defs_used((['is-variable',_362864]->[==,['get-metatype',_362864],'Variable']))
+>                                                                                      ;;defs_used((['is-variable',_363480]->[==,['get-metatype',_363480],'Variable']))
 
 </span>;<span class="ansi38-047047047"
 >          |   |   |   |   |   |     <--(== (get-metatype 2) Variable) </span>
@@ -2169,7 +2169,7 @@ Deterministic: ()
 >  100:0   |-<--(if (and (and (is-closed 2) (is-closed 3)) (< 2 3)) (: CPU (⍃ 2 3)) (empty)) </span>
 ; 
 ; EVAL TEST
-; took 0.155 secs. (154.80 milliseconds) 
+; took 0.239 secs. (239.12 milliseconds) 
 
 !(assertEqualToResult (bc (: CPU (⍃ 2 3)) &kb Z) ((: CPU (⍃ 2 3))))
 
@@ -2434,7 +2434,7 @@ Deterministic: True<span class="ansi38-255165009"
 >   86:0   |-<--(if (and (and (is-closed 4) (is-closed 3)) (< 4 3)) (: CPU (⍃ 4 3)) (empty)) </span>
 ; 
 ; EVAL TEST
-; took 0.148 secs. (147.99 milliseconds) 
+; took 0.233 secs. (232.80 milliseconds) 
 
 !(assertEqualToResult (bc (: CPU (⍃ 4 3)) &kb Z) ())
 
@@ -3439,7 +3439,7 @@ Deterministic: True
 >  363:1   |   |-<--(: ((rule (rule1 axiom)) CPU) (less 2 3)) </span>
 ; 
 ; EVAL TEST
-; took 1.155 secs. (1155.38 milliseconds) 
+; took 1.862 secs. (1862.47 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (less $x $y)) &kb (S (S (S Z)))) ((: ((rule (rule1 axiom)) CPU) (less 2 3))))
 
@@ -3448,7 +3448,7 @@ Deterministic: True
 </span>
 Deterministic: True<span class="ansi32"
 >
-% 8,297,185 inferences, 1.767 CPU in 1.769 seconds (100% CPU, 4696774 Lips)
+% 8,299,055 inferences, 2.640 CPU in 2.642 seconds (100% CPU, 3144087 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/anti-regression/bc_comp.metta  0)
 <span class="ansi1"
@@ -3597,7 +3597,7 @@ Deterministic: True<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-15 23:02:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-18 23:10:10+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

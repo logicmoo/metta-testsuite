@@ -26,7 +26,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-19 05:59:15+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-19 06:00:53+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -340,13 +340,13 @@ Script started on 2024-11-19 05:59:15+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 2  "Expected: [(quote (= (if True $then $else) $then)), (quote (= (if False $then $else) $else))]")
 P;HTML|
-;                                         (= 2  "Got: [(quote (= (if True $then $else) $then)), (quote (= (if False $then $else) $else))]")
+;                                         (= 2  "Got: [(quote (= (if False $then $result) $result)), (quote (= (if True $result $else) $result))]")
 P;HTML|
 ;                                         (= 3  "Missed result: (quote (= (if True $then $else) $then)))]")
 P;HTML|
-;                                         (= 3  "0.04user 0.00system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26128maxresident)k")
+;                                         (= 3  "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26140maxresident)k")
 P;HTML|
-;                                         (= 3  "0inputs+0outputs (0major+3124minor)pagefaults 0swaps")
+;                                         (= 3  "0inputs+0outputs (0major+3128minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language16.metta is 576 bytes (20 lines)
@@ -373,7 +373,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE16.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000393 secs. (392.84 microseconds) 
+; took 0.000504 secs. (504.16 microseconds) 
 
 !(assertEqualToResult (println "xx 131 ") ((println "xx 131 ")))
 
@@ -390,7 +390,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE16.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000177 secs. (176.95 microseconds) 
+; took 0.000183 secs. (183.15 microseconds) 
 
 !(assertEqualToResult (match &self (= (if $cond $then $else) $result) (quote (= (if $cond $then $else) $result))) ((quote (= (if True $then $else) $then)) (quote (= (if False $then $else) $else))))
 
@@ -400,7 +400,7 @@ Deterministic: ()
 Deterministic: ((Error  (got  ()) (expected  ((quote (= (if True $"then" $"else") $"then")) (quote (= (if False $"then" $"else") $"else"))))))
 ;;;  !(assertEqualToResult ( )  (  )  ) 
 <span class="ansi32"
->% 270,374 inferences, 0.080 CPU in 0.082 seconds (97% CPU, 3374371 Lips)
+>% 270,135 inferences, 0.083 CPU in 0.086 seconds (97% CPU, 3265942 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language16.metta  0)
 <span class="ansi1"
@@ -541,7 +541,7 @@ Deterministic: ((Error  (got  ()) (expected  ((quote (= (if True $"then" $"else"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-19 05:59:22+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-19 06:01:00+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

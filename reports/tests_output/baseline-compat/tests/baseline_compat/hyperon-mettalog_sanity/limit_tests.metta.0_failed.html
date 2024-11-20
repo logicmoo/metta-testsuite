@@ -51,7 +51,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-20 12:06:48+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-20 12:20:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -367,9 +367,9 @@ Script started on 2024-11-20 12:06:48+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 2  "Excessive result: (limit! 0 (sequential (1 2 3))))]")
 P;HTML|
-;                                         (= 2  "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 25840maxresident)k")
+;                                         (= 2  "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26060maxresident)k")
 P;HTML|
-;                                         (= 2  "0inputs+0outputs (0major+3110minor)pagefaults 0swaps")
+;                                         (= 2  "0inputs+0outputs (0major+3108minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/limit_tests.metta is 2.01K bytes (75 lines)
@@ -385,7 +385,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000194 secs. (194.12 microseconds) 
+; took 0.000165 secs. (165.29 microseconds) 
 
 !(assertEqualToResult (limit! 0 (sequential (1 2 3))) ())
 
@@ -401,7 +401,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000274 secs. (273.75 microseconds) 
+; took 0.000342 secs. (342.20 microseconds) 
 
 !(assertEqualToResult (limit! 2 (sequential (1 2 3))) (1 2))
 
@@ -424,7 +424,7 @@ Deterministic: ()<span class="ansi38-255165000"
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.14 milliseconds) 
+; took 0.002 secs. (2.26 milliseconds) 
 
 !(assertEqualToResult (limit! 2 (sequential ((increment) (increment) (increment)))) (1 2))
 
@@ -445,7 +445,7 @@ Deterministic: 2
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000210 secs. (210.00 microseconds) 
+; took 0.000216 secs. (215.54 microseconds) 
 
 !(assertEqualToResult (get-state &var) (2))
 
@@ -467,7 +467,7 @@ Deterministic: (State  0 $_3730)
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000214 secs. (213.70 microseconds) 
+; took 0.000228 secs. (228.04 microseconds) 
 
 !(assertEqualToResult (get-state &var) (0))
 
@@ -484,7 +484,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.60 milliseconds) 
+; took 0.006 secs. (5.86 milliseconds) 
 
 !(assertEqualToResult (limit! (sequential (1 2 3)) (sequential ((increment) (increment) (increment)))) (1 2 3 4 5 6))
 
@@ -500,7 +500,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000208 secs. (208.05 microseconds) 
+; took 0.000234 secs. (234.13 microseconds) 
 
 !(assertEqualToResult (get-state &var) (6))
 
@@ -521,7 +521,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.46 milliseconds) 
+; took 0.003 secs. (2.62 milliseconds) 
 
 !(assertEqualToResult (limit! 4 (infinite)) (1 2 3 4))
 
@@ -538,7 +538,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000176 secs. (176.18 microseconds) 
+; took 0.000163 secs. (162.86 microseconds) 
 
 !(assertEqualToResult (number-of (+ 1 2)) (1))
 
@@ -555,7 +555,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000248 secs. (248.44 microseconds) 
+; took 0.000280 secs. (280.04 microseconds) 
 
 !(assertEqualToResult (number-of (superpose (1 2 3))) (3))
 
@@ -577,7 +577,7 @@ Deterministic: (State  0 $_3724)
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.17 milliseconds) 
+; took 0.002 secs. (2.27 milliseconds) 
 
 !(assertEqualToResult (number-of (limit! 2 (sequential ((increment) (increment) (increment))))) (2))
 
@@ -593,7 +593,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000406 secs. (405.62 microseconds) 
+; took 0.000431 secs. (431.17 microseconds) 
 
 !(assertEqualToResult (get-state! &var) (2))
 
@@ -614,7 +614,7 @@ Deterministic: (State  0 $_3724)
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.53 milliseconds) 
+; took 0.003 secs. (2.55 milliseconds) 
 
 !(assertEqualToResult (number-of (limit! 4 (infinite))) (4))
 
@@ -635,7 +635,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000740 secs. (740.03 microseconds) 
+; took 0.000767 secs. (766.91 microseconds) 
 
 !(assertEqualToResult (number-of (test $x)) (2))
 
@@ -652,7 +652,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000299 secs. (298.86 microseconds) 
+; took 0.000312 secs. (312.13 microseconds) 
 
 !(assertEqualToResult (offset! 2 (sequential (1 2 3 4))) (3 4))
 
@@ -674,7 +674,7 @@ Deterministic: (State  0 $_3724)
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.78 milliseconds) 
+; took 0.004 secs. (3.80 milliseconds) 
 
 !(assertEqualToResult (offset! 2 (sequential ((increment) (increment) (increment) (increment)))) (3 4))
 
@@ -691,7 +691,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.55 milliseconds) 
+; took 0.003 secs. (2.52 milliseconds) 
 
 !(assertEqualToResult (offset! 2 (limit! 4 (infinite))) (3 4))
 
@@ -708,7 +708,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.LIMIT-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.39 milliseconds) 
+; took 0.005 secs. (4.55 milliseconds) 
 
 !(assertEqualToResult (limit! 4 (offset! 2 (infinite))) (3 4 5 6))
 
@@ -717,7 +717,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 837,806 inferences, 0.185 CPU in 0.187 seconds (99% CPU, 4540275 Lips)
+% 865,852 inferences, 0.194 CPU in 0.196 seconds (99% CPU, 4459337 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/limit_tests.metta  0)
 <span class="ansi1"
@@ -880,7 +880,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-20 12:06:54+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-20 12:20:42+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

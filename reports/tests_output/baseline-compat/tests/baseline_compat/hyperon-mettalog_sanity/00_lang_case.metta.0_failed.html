@@ -45,7 +45,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-21 07:10:59+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-21 07:21:47+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -399,7 +399,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000767 secs. (766.81 microseconds) 
+; took 0.000577 secs. (576.72 microseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 2 3))))
 
@@ -415,7 +415,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000810 secs. (810.09 microseconds) 
+; took 0.000711 secs. (711.25 microseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 (superpose (2 3))))))
 
@@ -431,7 +431,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000994 secs. (994.11 microseconds) 
+; took 0.000943 secs. (943.01 microseconds) 
 
 !(assertEqual ((superpose (1 2 3))) ((superpose (1 (superpose ((+ 1 1) 3))))))
 
@@ -448,7 +448,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000235 secs. (235.38 microseconds) 
+; took 0.000236 secs. (236.35 microseconds) 
 
 !(assertEqual (case (+ 1 5) ((5 Error) (6 OK) (6 Error))) OK)
 
@@ -465,7 +465,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000362 secs. (361.99 microseconds) 
+; took 0.000321 secs. (321.15 microseconds) 
 
 !(assertEqual (case (+ 1 5) (($x (+ 1 $x)))) 7)
 
@@ -483,7 +483,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000288 secs. (288.36 microseconds) 
+; took 0.000259 secs. (259.42 microseconds) 
 
 !(assertEqual (case 5 ((6 OK))) (superpose ()))
 
@@ -500,7 +500,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000770 secs. (769.74 microseconds) 
+; took 0.000719 secs. (719.41 microseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) ((3 OK-3) (4 OK-4))) (superpose (OK-3 OK-4)))
 
@@ -517,7 +517,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000846 secs. (845.91 microseconds) 
+; took 0.000801 secs. (801.19 microseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) (($x (+ 1 $x)))) (superpose (3 4 5)))
 
@@ -533,7 +533,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000112 secs. (112.28 microseconds) 
+; took 0.000128 secs. (128.23 microseconds) 
 
 !(assertEqualToResult (superpose ()) ())
 
@@ -549,7 +549,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000218 secs. (217.75 microseconds) 
+; took 0.000219 secs. (219.16 microseconds) 
 
 !(assertEqualToResult (collapse (superpose ())) (()))
 
@@ -565,7 +565,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000245 secs. (244.73 microseconds) 
+; took 0.000234 secs. (234.36 microseconds) 
 
 !(assertEqualToResult (superpose ((nop 1))) ())
 
@@ -581,7 +581,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000422 secs. (421.73 microseconds) 
+; took 0.000346 secs. (345.60 microseconds) 
 
 !(assertEqualToResult (collapse (superpose ((nop 1)))) (()))
 
@@ -628,7 +628,7 @@ NDet Result(5): (Rel-Q A C)
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.29 milliseconds) 
+; took 0.001 secs. (1.20 milliseconds) 
 
 !(assertEqual (match &self $1 $1) (get-atoms &self))
 
@@ -645,7 +645,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000609 secs. (608.99 microseconds) 
+; took 0.000621 secs. (621.40 microseconds) 
 
 !(assertEqualToResult (match &self ($Rel A $X) ($Rel A $X)) ((Rel-P A B) (Rel-Q A C)))
 
@@ -661,7 +661,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000929 secs. (928.97 microseconds) 
+; took 0.000944 secs. (944.33 microseconds) 
 
 !(assertEqualToResult (superpose ((Rel-P B) (Rel-Q C))) ((Rel-P B) (Rel-Q C)))
 
@@ -678,7 +678,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.16</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.39 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
 !(assertEqual (match &self ($rel A $x) ($rel $x)) (superpose ((Rel-P B) (Rel-Q C))))
 
@@ -695,7 +695,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.17</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.24 milliseconds) 
+; took 0.002 secs. (2.35 milliseconds) 
 
 !(assertEqual (superpose ((P B) (Q C))) (case (match &self ($rel A $x) ($rel $x)) (((Rel-P $y) (P $y)) ((Rel-Q $y) (Q $y)))))
 
@@ -712,7 +712,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000361 secs. (360.64 microseconds) 
+; took 0.000302 secs. (302.41 microseconds) 
 
 !(assertEqual (case (match &self ($rel B $x) ($rel $x)) (((Rel-P $y) (P $y)) ((Rel-Q $y) (Q $y)) (%void% no-match))) no-match)
 
@@ -721,7 +721,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 836,631 inferences, 0.194 CPU in 0.197 seconds (99% CPU, 4309084 Lips)
+% 836,195 inferences, 0.200 CPU in 0.202 seconds (99% CPU, 4188681 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/00_lang_case.metta  0)
 <span class="ansi1"
@@ -880,7 +880,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-21 07:11:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-21 07:21:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -10,11 +10,11 @@
 |  90|    0|  90|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
 | 100|    4| 104|   96% | tests output -compat I  quick  | tests_output/baseline-compat/tests/baseline_compat/quick |
 | 197|   24| 221|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
-| 301|4  74| 375|   79% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
-| 418|1  72| 490|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
-|1177|6 184|1361|   86% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-|1177|6 184|1361|   86% | tests output -compat           | tests_output/baseline-compat/ |
-|1177|6 184|1361|   86% | tests output -compat tests     | tests_output/baseline-compat/tests |
+| 303|4  79| 382|   78% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 422|1  72| 494|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
+|1183|6 189|1372|   85% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+|1183|6 189|1372|   85% | tests output -compat           | tests_output/baseline-compat/ |
+|1183|6 189|1372|   85% | tests output -compat tests     | tests_output/baseline-compat/tests |
 
 
 
@@ -97,7 +97,7 @@
 |       |       |          |                                                                                |
 |     3 |     0 |    100%  | [metta_the_function.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.html) |
 |    18 |     2 |     90%  | [or_test.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta.html) |
-|    14 |    30 |     31%  | [minimal_metta_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta.html) |
+|    14 |    35 |     28%  | [minimal_metta_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta.html) |
 |    13 |     7 |     65%  | [space_intersection_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta.html) |
 |     7 |     8 |     46%  | [eval_for_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests.metta.html) |
 |     6 |     4 |     60%  | [rust_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/rust_tests.metta.html) |
@@ -123,7 +123,7 @@
 |    -1 |    -1 |      0%  | [compile_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests.metta.html) |
 |     7 |     2 |     77%  | [call_cleanup_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/call_cleanup_tests.metta.html) |
 |    21 |     0 |    100%  | [string-tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta.html) |
-|     3 |     3 |     50%  | [inherit_or_not_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.html) |
+|     5 |     3 |     62%  | [inherit_or_not_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.html) |
 |    10 |     0 |    100%  | [subtraction_test.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.html) |
 |     3 |     0 |    100%  | [hyperpose_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta.html) |
 |     1 |     0 |    100%  | [output_load_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta.html) |
@@ -137,7 +137,7 @@
 |     7 |     2 |     77%  | [functional_programming_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta.html) |
 |     4 |     5 |     44%  | [what_evals_or_not.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/what_evals_or_not.metta.html) |
 |       |       |          |                                                                                |
-|   297 |    74 |     80%  | Total                                                                          |
+|   299 |    79 |     79%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -222,7 +222,7 @@
 |     2 |     3 |     40%  | [Recursive_and_parametric_types___MeTTa_Language1.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Recursive_and_parametric_types___MeTTa_Language1.metta.html) |
 |     8 |     0 |    100%  | [Working_with_spaces___MeTTa_Language3.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language3.metta.html) |
 |     1 |     0 |    100%  | [Controlling_pattern_matching___MeTTa_Language8.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Controlling_pattern_matching___MeTTa_Language8.metta.html) |
-|     8 |     0 |    100%  | [Handling_nondeterministic_results___MeTTa_Language8.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Handling_nondeterministic_results___MeTTa_Language8.metta.html) |
+|    12 |     0 |    100%  | [Handling_nondeterministic_results___MeTTa_Language8.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Handling_nondeterministic_results___MeTTa_Language8.metta.html) |
 |     3 |     1 |     75%  | [Working_with_spaces___MeTTa_Language4.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language4.metta.html) |
 |     3 |     1 |     75%  | [Basic_grounded_functions___MeTTa_Language4.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Basic_grounded_functions___MeTTa_Language4.metta.html) |
 |     2 |     0 |    100%  | [Operations_over_atoms___MeTTa_Language6.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Operations_over_atoms___MeTTa_Language6.metta.html) |
@@ -291,7 +291,7 @@
 |     1 |     3 |     25%  | [Concrete_types___MeTTa_Language13.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Concrete_types___MeTTa_Language13.metta.html) |
 |     1 |     2 |     33%  | [Controlling_pattern_matching___MeTTa_Language9.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta_lang/Controlling_pattern_matching___MeTTa_Language9.metta.html) |
 |       |       |          |                                                                                |
-|   418 |    73 |     85%  | Total                                                                          |
+|   422 |    73 |     85%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -417,11 +417,11 @@
 |  90|    0|  90|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
 | 100|    4| 104|   96% | tests output -compat I  quick  | tests_output/baseline-compat/tests/baseline_compat/quick |
 | 197|   24| 221|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
-| 301|4  74| 375|   79% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
-| 418|1  72| 490|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
-|1177|6 184|1361|   86% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-|1177|6 184|1361|   86% | tests output -compat           | tests_output/baseline-compat/ |
-|1177|6 184|1361|   86% | tests output -compat tests     | tests_output/baseline-compat/tests |
+| 303|4  79| 382|   78% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 422|1  72| 494|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
+|1183|6 189|1372|   85% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+|1183|6 189|1372|   85% | tests output -compat           | tests_output/baseline-compat/ |
+|1183|6 189|1372|   85% | tests output -compat tests     | tests_output/baseline-compat/tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
@@ -429,15 +429,15 @@
 | 100|    4| 104|   96% | tests output -compat I  quick  | tests_output/baseline-compat/tests/baseline_compat/quick |
 |  21|    1|  22|   95% | tests output -compat I  module-system | tests_output/baseline-compat/tests/baseline_compat/module-system |
 |  90|    0|  90|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
-| 418|1  72| 490|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
+| 422|1  72| 494|   85% | tests output -compat I  metta lang | tests_output/baseline-compat/tests/baseline_compat/metta_lang |
 |   4|1   3|   7|   50% | tests output -compat I  hyperon-mettalog sanity synth buffer | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer |
-| 301|4  74| 375|   79% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 303|4  79| 382|   78% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
 | 197|   24| 221|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
 |   4|    0|   4|  100% | tests output -compat I  anti-regression issues metta-wam-issue-145 | tests_output/baseline-compat/tests/baseline_compat/anti-regression/issues/metta-wam-issue-145 |
 |   4|    0|   4|  100% | tests output -compat I  anti-regression issues metta-wam-issue-116 | tests_output/baseline-compat/tests/baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |   8|    0|   8|  100% | tests output -compat I  anti-regression issues | tests_output/baseline-compat/tests/baseline_compat/anti-regression/issues |
 |  48|1   9|  57|   82% | tests output -compat I  anti-regression | tests_output/baseline-compat/tests/baseline_compat/anti-regression |
-|1177|6 184|1361|   86% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-|1177|6 184|1361|   86% | tests output -compat tests     | tests_output/baseline-compat/tests |
-|1177|6 184|1361|   86% | tests output -compat           | tests_output/baseline-compat/ |
+|1183|6 189|1372|   85% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+|1183|6 189|1372|   85% | tests output -compat tests     | tests_output/baseline-compat/tests |
+|1183|6 189|1372|   85% | tests output -compat           | tests_output/baseline-compat/ |
 [?7h

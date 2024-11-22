@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -31,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:13:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:43:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -190,7 +191,22 @@ Script started on 2024-11-22 19:13:50+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -343,7 +359,7 @@ Script started on 2024-11-22 19:13:50+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 2  "[()]")
 P;HTML|
-;                                         (= 3  "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x55edbc946858) ((John Jane))) ")
+;                                         (= 3  "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x562160747858) ((John Jane))) ")
 P;HTML|
 ;                                         (= 3  "Expected: [(John Jane)]")
 P;HTML|
@@ -351,9 +367,9 @@ Script started on 2024-11-22 19:13:50+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 4  "Missed result: (John Jane))]")
 P;HTML|
-;                                         (= 4  "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 25972maxresident)k")
+;                                         (= 4  "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26096maxresident)k")
 P;HTML|
-;                                         (= 4  "0inputs+0outputs (0major+3116minor)pagefaults 0swaps")
+;                                         (= 4  "0inputs+0outputs (0major+3117minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta is 501 bytes (12 lines)
@@ -382,7 +398,7 @@ Deterministic: ()
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.42 milliseconds) 
+; took 0.002 secs. (2.46 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -399,7 +415,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.17 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -424,7 +440,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000736 secs. (736.29 microseconds) 
+; took 0.000694 secs. (694.41 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -433,7 +449,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 254,680 inferences, 0.082 CPU in 0.085 seconds (97% CPU, 3101072 Lips)
+% 254,778 inferences, 0.082 CPU in 0.084 seconds (97% CPU, 3123296 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta  0)
 <span class="ansi1"
@@ -577,7 +593,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:13:57+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:43:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

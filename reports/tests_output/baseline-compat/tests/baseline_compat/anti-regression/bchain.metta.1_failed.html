@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -58,7 +59,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 18:56:53+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:26:14+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -217,7 +218,22 @@ Script started on 2024-11-22 18:56:53+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -436,7 +452,7 @@ Deterministic: ()<span class="ansi38-255165009"
 > (: axiom (nums 2 3))
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.74 milliseconds) 
+; took 0.003 secs. (2.59 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: axiom (nums 2 3))) (()))
 
@@ -458,7 +474,7 @@ Deterministic: ()<span class="ansi38-255165009"
 > (: rule1 (-> (nums $_128272 $_128294) (rule1output $_128272 $_128294)))
 </span>; 
 ; EVAL TEST
-; took 0.008 secs. (7.92 milliseconds) 
+; took 0.008 secs. (7.90 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: rule1 (-> (nums $x $y) (rule1output $x $y)))) (()))
 
@@ -480,7 +496,7 @@ Deterministic: ()<span class="ansi38-255165009"
 > (: rule (-> (rule1output $_159900 $_159922) (-> (⍃ $_159900 $_159922) (less $_159900 $_159922))))
 </span>; 
 ; EVAL TEST
-; took 0.011 secs. (10.95 milliseconds) 
+; took 0.011 secs. (10.84 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: rule (-> (rule1output $x $y) (-> (⍃ $x $y) (less $x $y))))) (()))
 
@@ -522,7 +538,7 @@ Deterministic: ()
 >;; ANTI-REGRESSION.BCHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.62 milliseconds) 
+; took 0.009 secs. (8.79 milliseconds) 
 
 !(assertEqualToResult (bc (: CPU (⍃ 2 3)) Z) ((: CPU (⍃ 2 3))))
 
@@ -542,7 +558,7 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; ANTI-REGRESSION.BCHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.63 milliseconds) 
+; took 0.007 secs. (6.78 milliseconds) 
 
 !(assertEqualToResult (bc (: CPU (⍃ 4 3)) Z) ())
 
@@ -565,7 +581,7 @@ Deterministic: ()
 >;; ANTI-REGRESSION.BCHAIN.06</h3>
 ; 
 ; EVAL TEST
-; took 0.752 secs. (751.96 milliseconds) 
+; took 0.734 secs. (733.54 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (less $x $y)) (S (S (S Z)))) ((: ((rule (rule1 axiom)) CPU) (less 2 3))))
 
@@ -574,7 +590,7 @@ Deterministic: ()
 </span>
 Deterministic: ((Error  (got  ((: ((rule (rule1 axiom)) CPU) (less 2 3)) (: ((rule (rule1 axiom)) (return CPU)) (less 2 3)) (: ((rule (rule1 axiom)) (return (return CPU))) (less 2 3)) (: ((rule (rule1 axiom)) ((return return) CPU)) (less 2 3)) (: ((rule (rule1 axiom)) ((return return) (return CPU))) (less 2 3)) (: (((return rule) (rule1 axiom)) CPU) (less 2 3)) (: (((return rule) (rule1 axiom)) (return CPU)) (less 2 3)) (: (((return rule) (rule1 axiom)) (return (return CPU))) (less 2 3)) (: (((return rule) (rule1 axiom)) ((return return) CPU)) (less 2 3)) (: (((return rule) (rule1 axiom)) ((return return) (return CPU))) (less 2 3)))) (expected  ((: ((rule (rule1 axiom)) CPU) (less 2 3))))))<span class="ansi32"
 >
-% 4,707,403 inferences, 0.933 CPU in 0.935 seconds (100% CPU, 5044587 Lips)
+% 4,706,629 inferences, 0.914 CPU in 0.916 seconds (100% CPU, 5149031 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/anti-regression/bchain.metta  0)
 <span class="ansi1"
@@ -721,7 +737,7 @@ Deterministic: ((Error  (got  ((: ((rule (rule1 axiom)) CPU) (less 2 3)) (: ((ru
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 18:57:01+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:26:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

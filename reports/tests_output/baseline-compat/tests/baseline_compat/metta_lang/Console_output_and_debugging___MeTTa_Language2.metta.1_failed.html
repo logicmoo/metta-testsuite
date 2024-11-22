@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -43,7 +44,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:26:07+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:56:17+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -202,7 +203,22 @@ Script started on 2024-11-22 19:26:07+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -369,9 +385,9 @@ Script started on 2024-11-22 19:26:07+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 7  "Excessive result: Number)]")
 P;HTML|
-;                                         (= 7  "0.02user 0.02system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26404maxresident)k")
+;                                         (= 7  "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26520maxresident)k")
 P;HTML|
-;                                         (= 7  "0inputs+0outputs (0major+3134minor)pagefaults 0swaps")
+;                                         (= 7  "0inputs+0outputs (0major+3133minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Console_output_and_debugging___MeTTa_Language2.metta is 2.32K bytes (94 lines)
@@ -402,7 +418,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000693 secs. (693.02 microseconds) 
+; took 0.000456 secs. (455.80 microseconds) 
 
 !(assertEqualToResult (println "xx 1 ") ((println "xx 1 ")))
 
@@ -419,7 +435,7 @@ Deterministic: ()
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000627 secs. (627.18 microseconds) 
+; took 0.000529 secs. (528.93 microseconds) 
 
 !(assertEqualToResult (match &self (Parent Bob Ann) (Ann is Bob`s child)) ((Ann is Bob`s child)))
 
@@ -442,7 +458,7 @@ Deterministic: ()
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000481 secs. (481.03 microseconds) 
+; took 0.000379 secs. (378.58 microseconds) 
 
 !(assertEqualToResult (println "xx 2 ") ((println "xx 2 ")))
 
@@ -459,7 +475,7 @@ Deterministic: ()
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000611 secs. (611.17 microseconds) 
+; took 0.000485 secs. (485.39 microseconds) 
 
 !(assertEqualToResult (match &self (Parent Bob Ann) (Bob is Ann`s parent)) ((Bob is Ann`s parent)))
 
@@ -483,7 +499,7 @@ Deterministic: ()
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000482 secs. (482.13 microseconds) 
+; took 0.000379 secs. (379.18 microseconds) 
 
 !(assertEqualToResult (println "xx 3 ") ((println "xx 3 ")))
 
@@ -500,7 +516,7 @@ Deterministic: ()
 >;; METTA-LANG.CONSOLE-OUTPUT-AND-DEBUGGING---METTA-LANGUAGE2.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.06 milliseconds) 
+; took 0.000908 secs. (908.22 microseconds) 
 
 !(assertEqualToResult (get-type (trace! (Expecting 3) (+ 1 2))) (Number))
 
@@ -530,7 +546,7 @@ Deterministic: (println "xx 5 ")
 (Expecting 3)
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.59 milliseconds) 
+; took 0.002 secs. (2.44 milliseconds) 
 
 !(assertEqualToResult (my-trace (Expecting 3) (+ 1 2)) ((3)))
 
@@ -557,7 +573,7 @@ Deterministic: (println "xx 6 ")
 "Who is Anna`s parent?"
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.35 milliseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
 !(assertEqualToResult (trace! "Who is Anna`s parent?" (match &self (Parent $x Ann) ($x is Ann`s parent))) ((Bob is Ann`s parent)))
 
@@ -584,7 +600,7 @@ Deterministic: (println "xx 7 ")
 "Who is Bob`s child?"
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.001 secs. (1.30 milliseconds) 
 
 !(assertEqualToResult (trace! "Who is Bob`s child?" (match &self (Parent Bob $x) ($x is Bob`s child))) ((Ann is Bob`s child)))
 
@@ -605,7 +621,7 @@ Deterministic: ()
 ;;; ready works notready 
 ;;;!(assertEqualToResult ( trace! ((Expected: (Bob is Ann`s parent)) (Got: (match &self (Parent $x Ann) ($x is Ann`s parent))) ) () ) ( (Expected: (Bob is Ann`s parent)) (Got: (Bob is Ann`s parent)) ) ) 
 <span class="ansi32"
->% 502,813 inferences, 0.137 CPU in 0.139 seconds (98% CPU, 3673194 Lips)
+>% 503,577 inferences, 0.133 CPU in 0.135 seconds (99% CPU, 3775252 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Console_output_and_debugging___MeTTa_Language2.metta  0)
 <span class="ansi1"
@@ -756,7 +772,7 @@ Deterministic: ()
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:26:15+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:56:25+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

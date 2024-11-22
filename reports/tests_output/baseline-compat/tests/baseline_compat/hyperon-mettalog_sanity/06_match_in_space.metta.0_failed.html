@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -37,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:08:04+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:37:41+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -196,7 +197,22 @@ Script started on 2024-11-22 19:08:04+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -387,7 +403,7 @@ Deterministic: ()<span class="ansi38-255165009"
 > (SS-P_AS A_AS B_AS)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.46 milliseconds) 
+; took 0.002 secs. (2.42 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (SS-P_AS A_AS B_AS)) (()))
 
@@ -409,7 +425,7 @@ Deterministic: ()<span class="ansi38-255165009"
 > (SS-Q_AS A_AS C_AS)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.42 milliseconds) 
+; took 0.003 secs. (2.51 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (SS-Q_AS A_AS C_AS)) (()))
 
@@ -428,7 +444,7 @@ Deterministic: ()<span class="ansi38-255165000"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000940 secs. (940.48 microseconds) 
+; took 0.000988 secs. (988.30 microseconds) 
 
 !(assertEqualToResult (match &kb ($SS A_AS $X) ($SS A_AS $X)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
@@ -445,7 +461,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.91 milliseconds) 
+; took 0.002 secs. (1.88 milliseconds) 
 
 !(assertEqual (match &kb ($rel A_AS $x) ($rel $x)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
@@ -462,7 +478,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (3.45 milliseconds) 
 
 !(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($rel A_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)))))
 
@@ -479,7 +495,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000311 secs. (311.45 microseconds) 
+; took 0.000418 secs. (418.23 microseconds) 
 
 !(assertEqual (case (match &kb ($rel B_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)) (%void% no-match))) no-match)
 
@@ -488,7 +504,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 375,616 inferences, 0.110 CPU in 0.112 seconds (98% CPU, 3416674 Lips)
+% 375,162 inferences, 0.109 CPU in 0.112 seconds (98% CPU, 3429575 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta  0)
 <span class="ansi1"
@@ -634,7 +650,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:08:11+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:37:48+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

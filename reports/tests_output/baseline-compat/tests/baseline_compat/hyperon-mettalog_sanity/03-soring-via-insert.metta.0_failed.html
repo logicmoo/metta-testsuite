@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -36,7 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:07:55+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:37:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -195,7 +196,22 @@ Script started on 2024-11-22 19:07:55+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -392,7 +408,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000294 secs. (294.33 microseconds) 
+; took 0.000228 secs. (228.29 microseconds) 
 
 !(assertEqualToResult (get-type insert) ((-> $a#2 (List $a#2) (List $a#2))))
 
@@ -411,7 +427,7 @@ Deterministic: ()<span class="ansi38-255165000"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.93 milliseconds) 
+; took 0.003 secs. (2.90 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -427,7 +443,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000414 secs. (413.85 microseconds) 
+; took 0.000388 secs. (388.36 microseconds) 
 
 !(assertEqual (Cons 1 Nil) (Cons 1 Nil))
 
@@ -443,7 +459,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000746 secs. (745.74 microseconds) 
+; took 0.000708 secs. (707.57 microseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -459,7 +475,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.22 milliseconds) 
+; took 0.002 secs. (2.19 milliseconds) 
 
 !(assertEqual (insert 1 (insert 2 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -475,7 +491,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.59 milliseconds) 
+; took 0.007 secs. (7.08 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -484,7 +500,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 472,570 inferences, 0.129 CPU in 0.132 seconds (98% CPU, 3652394 Lips)
+% 473,238 inferences, 0.125 CPU in 0.128 seconds (98% CPU, 3786841 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta  0)
 <span class="ansi1"
@@ -629,7 +645,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:08:02+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:37:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

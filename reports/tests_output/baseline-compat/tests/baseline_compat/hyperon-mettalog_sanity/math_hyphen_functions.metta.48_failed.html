@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -69,7 +70,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:13:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:43:16+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -228,7 +229,22 @@ Script started on 2024-11-22 19:13:31+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -385,9 +401,9 @@ Script started on 2024-11-22 19:13:31+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 2  "Missed result: 25)]")
 P;HTML|
-;                                         (= 2  "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26072maxresident)k")
+;                                         (= 2  "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26196maxresident)k")
 P;HTML|
-;                                         (= 2  "0inputs+0outputs (0major+3113minor)pagefaults 0swaps")
+;                                         (= 2  "0inputs+0outputs (0major+3112minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta is 6.59K bytes (143 lines)
@@ -403,7 +419,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqualToResult (pow-math 5 2) (25))
 
@@ -420,7 +436,7 @@ Deterministic: ((Error  (got  ((pow-math 5 2))) (expected  (25))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000888 secs. (888.12 microseconds) 
+; took 0.000914 secs. (914.44 microseconds) 
 
 !(assertEqualToResult (pow-math 5 200000000000000) ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value")))
 
@@ -437,7 +453,7 @@ Deterministic: ((Error  (got  ((pow-math 5 200000000000000))) (expected  ((Error
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000890 secs. (890.31 microseconds) 
+; took 0.000874 secs. (873.54 microseconds) 
 
 !(assertEqualToResult (pow-math 5.5 2.3) (38.2596979949377))
 
@@ -454,7 +470,7 @@ Deterministic: ((Error  (got  ((pow-math 5.5 2.3))) (expected  (38.2596979949377
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000485 secs. (484.83 microseconds) 
+; took 0.000463 secs. (462.59 microseconds) 
 
 !(assertEqualToResult (pow-math A 2) ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)")))
 
@@ -471,7 +487,7 @@ Deterministic: ((Error  (got  ((pow-math A 2))) (expected  ((Error (pow-math A 2
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000864 secs. (863.69 microseconds) 
+; took 0.000840 secs. (839.73 microseconds) 
 
 !(assertEqualToResult (sqrt-math 4) (2))
 
@@ -505,7 +521,7 @@ Deterministic: ((Error  (got  ((isnan-math (sqrt-math -4)))) (expected  (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000465 secs. (465.00 microseconds) 
+; took 0.000451 secs. (451.48 microseconds) 
 
 !(assertEqualToResult (sqrt-math A) ((Error (sqrt-math A) "sqrt-math expects one argument: number")))
 
@@ -522,7 +538,7 @@ Deterministic: ((Error  (got  ((sqrt-math A))) (expected  ((Error (sqrt-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000881 secs. (880.73 microseconds) 
+; took 0.000859 secs. (858.63 microseconds) 
 
 !(assertEqualToResult (abs-math 4) (4))
 
@@ -539,7 +555,7 @@ Deterministic: ((Error  (got  ((abs-math 4))) (expected  (4))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000873 secs. (872.54 microseconds) 
+; took 0.000833 secs. (832.66 microseconds) 
 
 !(assertEqualToResult (abs-math -5) (5))
 
@@ -556,7 +572,7 @@ Deterministic: ((Error  (got  ((abs-math -5))) (expected  (5))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000481 secs. (480.78 microseconds) 
+; took 0.000443 secs. (442.72 microseconds) 
 
 !(assertEqualToResult (abs-math A) ((Error (abs-math A) "abs-math expects one argument: number")))
 
@@ -573,7 +589,7 @@ Deterministic: ((Error  (got  ((abs-math A))) (expected  ((Error (abs-math A) "a
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000971 secs. (971.40 microseconds) 
+; took 0.000871 secs. (871.25 microseconds) 
 
 !(assertEqualToResult (log-math 2 4) (2))
 
@@ -590,7 +606,7 @@ Deterministic: ((Error  (got  ((log-math 2 4))) (expected  (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.27 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
@@ -607,7 +623,7 @@ Deterministic: ((Error  (got  ((isnan-math (log-math 0 0)))) (expected  (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.24 milliseconds) 
+; took 0.001 secs. (1.26 milliseconds) 
 
 !(assertEqualToResult (isinf-math (log-math 5 0)) (True))
 
@@ -624,7 +640,7 @@ Deterministic: ((Error  (got  ((isinf-math (log-math 5 0)))) (expected  (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000896 secs. (896.01 microseconds) 
+; took 0.000831 secs. (830.64 microseconds) 
 
 !(assertEqualToResult (trunc-math 2.4) (2))
 
@@ -641,7 +657,7 @@ Deterministic: ((Error  (got  ((trunc-math 2.4))) (expected  (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000491 secs. (491.00 microseconds) 
+; took 0.000440 secs. (440.05 microseconds) 
 
 !(assertEqualToResult (trunc-math A) ((Error (trunc-math A) "trunc-math expects one argument: input number")))
 
@@ -658,7 +674,7 @@ Deterministic: ((Error  (got  ((trunc-math A))) (expected  ((Error (trunc-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000983 secs. (982.83 microseconds) 
+; took 0.000851 secs. (851.06 microseconds) 
 
 !(assertEqualToResult (ceil-math 2.4) (3))
 
@@ -675,7 +691,7 @@ Deterministic: ((Error  (got  ((ceil-math 2.4))) (expected  (3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000818 secs. (818.27 microseconds) 
+; took 0.000840 secs. (839.76 microseconds) 
 
 !(assertEqualToResult (ceil-math -2.4) (-2))
 
@@ -692,7 +708,7 @@ Deterministic: ((Error  (got  ((ceil-math -2.4))) (expected  (-2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000413 secs. (412.98 microseconds) 
+; took 0.000469 secs. (469.20 microseconds) 
 
 !(assertEqualToResult (ceil-math A) ((Error (ceil-math A) "ceil-math expects one argument: input number")))
 
@@ -709,7 +725,7 @@ Deterministic: ((Error  (got  ((ceil-math A))) (expected  ((Error (ceil-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000819 secs. (819.26 microseconds) 
+; took 0.000884 secs. (884.42 microseconds) 
 
 !(assertEqualToResult (floor-math 2.4) (2))
 
@@ -726,7 +742,7 @@ Deterministic: ((Error  (got  ((floor-math 2.4))) (expected  (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000787 secs. (786.66 microseconds) 
+; took 0.000837 secs. (837.43 microseconds) 
 
 !(assertEqualToResult (floor-math -2.4) (-3))
 
@@ -743,7 +759,7 @@ Deterministic: ((Error  (got  ((floor-math -2.4))) (expected  (-3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000397 secs. (396.65 microseconds) 
+; took 0.000440 secs. (440.27 microseconds) 
 
 !(assertEqualToResult (floor-math A) ((Error (floor-math A) "floor-math expects one argument: input number")))
 
@@ -760,7 +776,7 @@ Deterministic: ((Error  (got  ((floor-math A))) (expected  ((Error (floor-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000800 secs. (800.50 microseconds) 
+; took 0.000841 secs. (840.60 microseconds) 
 
 !(assertEqualToResult (round-math 2.4) (2))
 
@@ -777,7 +793,7 @@ Deterministic: ((Error  (got  ((round-math 2.4))) (expected  (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000831 secs. (830.80 microseconds) 
+; took 0.000894 secs. (893.70 microseconds) 
 
 !(assertEqualToResult (round-math -2.7) (-3))
 
@@ -794,7 +810,7 @@ Deterministic: ((Error  (got  ((round-math -2.7))) (expected  (-3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000479 secs. (478.52 microseconds) 
+; took 0.000468 secs. (467.72 microseconds) 
 
 !(assertEqualToResult (round-math A) ((Error (round-math A) "round-math expects one argument: input number")))
 
@@ -811,7 +827,7 @@ Deterministic: ((Error  (got  ((round-math A))) (expected  ((Error (round-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000981 secs. (980.98 microseconds) 
+; took 0.000862 secs. (861.80 microseconds) 
 
 !(assertEqualToResult (sin-math 0) (0))
 
@@ -828,7 +844,7 @@ Deterministic: ((Error  (got  ((sin-math 0))) (expected  (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.35 milliseconds) 
+; took 0.009 secs. (9.45 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10) (True))
 
@@ -845,7 +861,7 @@ Deterministic: ((Error  (got  ((< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.000379 secs. (378.57 microseconds) 
+; took 0.000457 secs. (456.94 microseconds) 
 
 !(assertEqualToResult (sin-math A) ((Error (sin-math A) "sin-math expects one argument: input number")))
 
@@ -862,7 +878,7 @@ Deterministic: ((Error  (got  ((sin-math A))) (expected  ((Error (sin-math A) "s
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.000757 secs. (756.81 microseconds) 
+; took 0.000841 secs. (840.82 microseconds) 
 
 !(assertEqualToResult (asin-math 0) (0))
 
@@ -879,7 +895,7 @@ Deterministic: ((Error  (got  ((asin-math 0))) (expected  (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.30 milliseconds) 
+; took 0.016 secs. (16.28 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -896,7 +912,7 @@ Deterministic: ((Error  (got  ((< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.000378 secs. (377.68 microseconds) 
+; took 0.000486 secs. (486.48 microseconds) 
 
 !(assertEqualToResult (asin-math A) ((Error (asin-math A) "asin-math expects one argument: input number")))
 
@@ -913,7 +929,7 @@ Deterministic: ((Error  (got  ((asin-math A))) (expected  ((Error (asin-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.000791 secs. (791.19 microseconds) 
+; took 0.000916 secs. (915.73 microseconds) 
 
 !(assertEqualToResult (cos-math 0) (1))
 
@@ -930,7 +946,7 @@ Deterministic: ((Error  (got  ((cos-math 0))) (expected  (1))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.01 milliseconds) 
+; took 0.004 secs. (4.17 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (cos-math 1.570796327)) 1.0e-10) (True))
 
@@ -947,7 +963,7 @@ Deterministic: ((Error  (got  ((< (abs-math (cos-math 1.570796327)) 1.0e-10))) (
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (374.13 microseconds) 
+; took 0.000451 secs. (450.76 microseconds) 
 
 !(assertEqualToResult (cos-math A) ((Error (cos-math A) "cos-math expects one argument: input number")))
 
@@ -964,7 +980,7 @@ Deterministic: ((Error  (got  ((cos-math A))) (expected  ((Error (cos-math A) "c
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000766 secs. (766.45 microseconds) 
+; took 0.000834 secs. (834.36 microseconds) 
 
 !(assertEqualToResult (acos-math 1) (0))
 
@@ -981,7 +997,7 @@ Deterministic: ((Error  (got  ((acos-math 1))) (expected  (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.38 milliseconds) 
+; took 0.016 secs. (16.36 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -998,7 +1014,7 @@ Deterministic: ((Error  (got  ((< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000451 secs. (451.06 microseconds) 
+; took 0.000457 secs. (456.81 microseconds) 
 
 !(assertEqualToResult (acos-math A) ((Error (acos-math A) "acos-math expects one argument: input number")))
 
@@ -1015,7 +1031,7 @@ Deterministic: ((Error  (got  ((acos-math A))) (expected  ((Error (acos-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000844 secs. (843.93 microseconds) 
+; took 0.000835 secs. (835.50 microseconds) 
 
 !(assertEqualToResult (tan-math 0) (0))
 
@@ -1032,7 +1048,7 @@ Deterministic: ((Error  (got  ((tan-math 0))) (expected  (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.94 milliseconds) 
+; took 0.009 secs. (8.84 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10) (True))
 
@@ -1049,7 +1065,7 @@ Deterministic: ((Error  (got  ((< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000410 secs. (410.29 microseconds) 
+; took 0.000443 secs. (443.37 microseconds) 
 
 !(assertEqualToResult (tan-math A) ((Error (tan-math A) "tan-math expects one argument: input number")))
 
@@ -1066,7 +1082,7 @@ Deterministic: ((Error  (got  ((tan-math A))) (expected  ((Error (tan-math A) "t
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000791 secs. (790.97 microseconds) 
+; took 0.000869 secs. (869.46 microseconds) 
 
 !(assertEqualToResult (atan-math 0) (0))
 
@@ -1083,7 +1099,7 @@ Deterministic: ((Error  (got  ((atan-math 0))) (expected  (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (16.66 milliseconds) 
+; took 0.016 secs. (16.18 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -1100,7 +1116,7 @@ Deterministic: ((Error  (got  ((< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.42</h3>
 ; 
 ; EVAL TEST
-; took 0.000451 secs. (451.31 microseconds) 
+; took 0.000501 secs. (500.76 microseconds) 
 
 !(assertEqualToResult (atan-math A) ((Error (atan-math A) "atan-math expects one argument: input number")))
 
@@ -1117,7 +1133,7 @@ Deterministic: ((Error  (got  ((atan-math A))) (expected  ((Error (atan-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.43</h3>
 ; 
 ; EVAL TEST
-; took 0.000800 secs. (799.73 microseconds) 
+; took 0.000845 secs. (844.94 microseconds) 
 
 !(assertEqualToResult (isnan-math 0) (False))
 
@@ -1134,7 +1150,7 @@ Deterministic: ((Error  (got  ((isnan-math 0))) (expected  (False))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.44</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.07 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
@@ -1151,7 +1167,7 @@ Deterministic: ((Error  (got  ((isnan-math (log-math 0 0)))) (expected  (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.45</h3>
 ; 
 ; EVAL TEST
-; took 0.000399 secs. (398.98 microseconds) 
+; took 0.000458 secs. (457.88 microseconds) 
 
 !(assertEqualToResult (isnan-math A) ((Error (isnan-math A) "isnan-math expects one argument: input number")))
 
@@ -1168,7 +1184,7 @@ Deterministic: ((Error  (got  ((isnan-math A))) (expected  ((Error (isnan-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.46</h3>
 ; 
 ; EVAL TEST
-; took 0.000774 secs. (773.90 microseconds) 
+; took 0.000870 secs. (870.18 microseconds) 
 
 !(assertEqualToResult (isinf-math 0) (False))
 
@@ -1202,7 +1218,7 @@ Deterministic: ((Error  (got  ((isinf-math (log-math 5 0)))) (expected  (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.48</h3>
 ; 
 ; EVAL TEST
-; took 0.000440 secs. (440.30 microseconds) 
+; took 0.000381 secs. (380.73 microseconds) 
 
 !(assertEqualToResult (isinf-math A) ((Error (isinf-math A) "isinf-math expects one argument: input number")))
 
@@ -1211,7 +1227,7 @@ Deterministic: ((Error  (got  ((isinf-math (log-math 5 0)))) (expected  (True)))
 </span>
 Deterministic: ((Error  (got  ((isinf-math A))) (expected  ((Error (isinf-math A) "isinf-math expects one argument: input number")))))<span class="ansi32"
 >
-% 1,955,479 inferences, 0.443 CPU in 0.446 seconds (99% CPU, 4410608 Lips)
+% 1,957,791 inferences, 0.434 CPU in 0.436 seconds (99% CPU, 4510875 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta  0)
 <span class="ansi1"
@@ -1398,7 +1414,7 @@ Deterministic: ((Error  (got  ((isinf-math A))) (expected  ((Error (isinf-math A
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:13:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:43:24+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

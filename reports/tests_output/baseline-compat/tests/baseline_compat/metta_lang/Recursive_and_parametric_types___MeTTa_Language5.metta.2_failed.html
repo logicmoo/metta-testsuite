@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -40,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:39:36+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 21:10:21+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -199,7 +200,22 @@ Script started on 2024-11-22 19:39:36+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -370,9 +386,9 @@ Script started on 2024-11-22 19:39:36+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 9  "Missed result: BadType)]")
 P;HTML|
-;                                         (= 9  "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26196maxresident)k")
+;                                         (= 9  "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 26300maxresident)k")
 P;HTML|
-;                                         (= 9  "0inputs+0outputs (0major+3143minor)pagefaults 0swaps")
+;                                         (= 9  "0inputs+0outputs (0major+3136minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Recursive_and_parametric_types___MeTTa_Language5.metta is 905 bytes (41 lines)
@@ -400,7 +416,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000707 secs. (707.43 microseconds) 
+; took 0.000643 secs. (642.94 microseconds) 
 
 !(assertEqualToResult (println "xx 83 ") ((println "xx 83 ")))
 
@@ -417,7 +433,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000611 secs. (610.76 microseconds) 
+; took 0.000476 secs. (475.81 microseconds) 
 
 !(assertEqualToResult (apply not False) (True))
 
@@ -440,7 +456,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000497 secs. (497.44 microseconds) 
+; took 0.000377 secs. (377.47 microseconds) 
 
 !(assertEqualToResult (println "xx 84 ") ((println "xx 84 ")))
 
@@ -457,7 +473,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000345 secs. (344.68 microseconds) 
+; took 0.000366 secs. (365.68 microseconds) 
 
 !(assertEqualToResult (get-type (apply not False)) (Bool))
 
@@ -483,7 +499,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000439 secs. (438.97 microseconds) 
+; took 0.000450 secs. (449.71 microseconds) 
 
 !(assertEqualToResult (println "xx 85 ") ((println "xx 85 ")))
 
@@ -500,7 +516,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000237 secs. (237.30 microseconds) 
+; took 0.000235 secs. (235.41 microseconds) 
 
 !(assertEqualToResult (unify (-> (-> $tx $ty) $tx $ty) (-> (-> Bool Bool) Bool $result) $result BadType) (Bool))
 
@@ -523,7 +539,7 @@ Deterministic: ((Error  (got  (BadType)) (expected  (Bool))))
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000437 secs. (437.29 microseconds) 
+; took 0.000460 secs. (460.28 microseconds) 
 
 !(assertEqualToResult (println "xx 86 ") ((println "xx 86 ")))
 
@@ -540,7 +556,7 @@ Deterministic: ()
 >;; METTA-LANG.RECURSIVE-AND-PARAMETRIC-TYPES---METTA-LANGUAGE5.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000493 secs. (492.62 microseconds) 
+; took 0.000532 secs. (532.36 microseconds) 
 
 !(assertEqualToResult (apply not 1) (BadType))
 
@@ -550,7 +566,7 @@ Deterministic: ()
 Deterministic: ((Error  (got  (False)) (expected  (BadType))))
 ;;;  !(assertEqualToResult ( )  (  )  ) 
 <span class="ansi32"
->% 402,501 inferences, 0.119 CPU in 0.122 seconds (98% CPU, 3372381 Lips)
+>% 402,635 inferences, 0.116 CPU in 0.118 seconds (98% CPU, 3482367 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Recursive_and_parametric_types___MeTTa_Language5.metta  0)
 <span class="ansi1"
@@ -697,7 +713,7 @@ Deterministic: ((Error  (got  (False)) (expected  (BadType))))
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:39:43+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 21:10:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
@@ -38,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:42:51+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 21:13:45+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -197,7 +198,22 @@ Script started on 2024-11-22 19:42:51+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -360,11 +376,11 @@ Script started on 2024-11-22 19:42:51+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 6  "Expected: [GroundingSpace-addr]")
 P;HTML|
-;                                         (= 6  "Got: [GroundingSpace-0x55d6cf1c7598]")
+;                                         (= 6  "Got: [GroundingSpace-0x55d817009868]")
 P;HTML|
 ;                                         (= 7  "Missed result: GroundingSpace-addr)]")
 P;HTML|
-;                                         (= 7  "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 26248maxresident)k")
+;                                         (= 7  "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 25992maxresident)k")
 P;HTML|
 ;                                         (= 7  "0inputs+0outputs (0major+3123minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
@@ -390,7 +406,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000594 secs. (593.66 microseconds) 
+; took 0.000597 secs. (596.70 microseconds) 
 
 !(assertEqualToResult (println "xx 114 ") ((println "xx 114 ")))
 
@@ -409,7 +425,7 @@ Deterministic: ()
 > (= (get-space) (new-space))
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (2.91 milliseconds) 
 
 !(assertEqualToResult (add-reduct &self (= (get-space) (new-space))) (()))
 
@@ -432,7 +448,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000371 secs. (370.99 microseconds) 
+; took 0.000367 secs. (366.91 microseconds) 
 
 !(assertEqualToResult (println "xx 115 ") ((println "xx 115 ")))
 
@@ -451,7 +467,7 @@ Deterministic: ()
 > (Parent Bob Ann)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.82 milliseconds) 
+; took 0.003 secs. (2.86 milliseconds) 
 
 !(assertEqualToResult (add-atom (get-space) (Parent Bob Ann)) (()))
 
@@ -474,7 +490,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000350 secs. (349.91 microseconds) 
+; took 0.000372 secs. (371.77 microseconds) 
 
 !(assertEqualToResult (println "xx 116 ") ((println "xx 116 ")))
 
@@ -491,7 +507,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000422 secs. (421.72 microseconds) 
+; took 0.000414 secs. (413.99 microseconds) 
 
 !(assertEqualToResult (get-space) (GroundingSpace-addr))
 
@@ -515,7 +531,7 @@ Deterministic: (println "xx 117 ")
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000519 secs. (518.72 microseconds) 
+; took 0.000516 secs. (515.90 microseconds) 
 
 !(assertEqualToResult (match (get-space) (Parent $x $y) ($x $y)) ((Bob Ann)))
 
@@ -529,7 +545,7 @@ Deterministic: ((Error  (got  ()) (expected  ((Bob Ann)))))
 ;;;[(Bob Ann)]
 ;;;  !(assertEqualToResult ( )  (  )  ) 
 <span class="ansi32"
->% 372,631 inferences, 0.109 CPU in 0.112 seconds (98% CPU, 3413902 Lips)
+>% 371,855 inferences, 0.108 CPU in 0.111 seconds (98% CPU, 3432580 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language8.metta  0)
 <span class="ansi1"
@@ -676,7 +692,7 @@ Deterministic: ((Error  (got  ()) (expected  ((Bob Ann)))))
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:42:59+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 21:13:53+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

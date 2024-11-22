@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -59,7 +60,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:04:13+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 20:33:43+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -218,7 +219,22 @@ Script started on 2024-11-22 19:04:13+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -445,7 +461,7 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000889 secs. (889.13 microseconds) 
+; took 0.000881 secs. (880.81 microseconds) 
 
 !(assertEqualToResult (match &kb (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
 
@@ -462,7 +478,7 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000201 secs. (200.70 microseconds) 
+; took 0.000205 secs. (204.87 microseconds) 
 
 !(assertEqualToResult (match &self ($p is-a Color) $p) ())
 
@@ -482,7 +498,7 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000438 secs. (438.23 microseconds) 
+; took 0.000423 secs. (423.17 microseconds) 
 
 !(assertEqual (match &kb (, (Venus orbit $x au) (Mars orbit $y au)) (- $y $x)) 0.8)
 
@@ -506,7 +522,7 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000888 secs. (887.52 microseconds) 
+; took 0.000895 secs. (895.43 microseconds) 
 
 !(assertEqualToResult (match &kb ($prop is-a Color) (match &self ($obj is $prop) $obj)) (Ball))
 
@@ -567,7 +583,7 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000892 secs. (892.47 microseconds) 
+; took 0.000806 secs. (806.23 microseconds) 
 
 !(assertEqualToResult (match &self (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
 
@@ -576,7 +592,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 509,123 inferences, 0.170 CPU in 0.176 seconds (96% CPU, 3003097 Lips)
+% 508,837 inferences, 0.168 CPU in 0.174 seconds (96% CPU, 3032335 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta  0)
 <span class="ansi1"
@@ -722,7 +738,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:04:21+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 20:33:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

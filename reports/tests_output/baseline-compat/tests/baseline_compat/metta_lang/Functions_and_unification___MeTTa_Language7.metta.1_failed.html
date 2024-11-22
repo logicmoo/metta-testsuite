@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -38,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:32:23+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 21:02:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -197,7 +198,22 @@ Script started on 2024-11-22 19:32:23+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -358,7 +374,7 @@ Script started on 2024-11-22 19:32:23+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 6  "[()]")
 P;HTML|
-;                                         (= 7  "0.03user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 26264maxresident)k")
+;                                         (= 7  "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26392maxresident)k")
 P;HTML|
 ;                                         (= 7  "0inputs+0outputs (0major+3130minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
@@ -393,7 +409,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000644 secs. (643.98 microseconds) 
+; took 0.000567 secs. (567.28 microseconds) 
 
 !(assertEqualToResult (println "xx 36 ") ((println "xx 36 ")))
 
@@ -410,7 +426,7 @@ Deterministic: ()
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000877 secs. (877.39 microseconds) 
+; took 0.000873 secs. (873.12 microseconds) 
 
 !(assertEqualToResult (unify (Parent $x Bob) (Parent Tom $y) ($x $y) Fail) ((Tom Bob)))
 
@@ -433,7 +449,7 @@ Deterministic: ((Error  (got  ()) (expected  ((Tom Bob)))))
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000525 secs. (525.47 microseconds) 
+; took 0.000463 secs. (462.59 microseconds) 
 
 !(assertEqualToResult (println "xx 37 ") ((println "xx 37 ")))
 
@@ -450,7 +466,7 @@ Deterministic: ()
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000384 secs. (384.22 microseconds) 
+; took 0.000234 secs. (233.87 microseconds) 
 
 !(assertEqualToResult (unify &self (Parent $x Bob) $x Fail) (Tom))
 
@@ -477,7 +493,7 @@ Deterministic: ()<span class="ansi38-255165000"
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000445 secs. (444.80 microseconds) 
+; took 0.000434 secs. (434.19 microseconds) 
 
 !(assertEqualToResult (println "xx 38 ") ((println "xx 38 ")))
 
@@ -494,7 +510,7 @@ Deterministic: ()
 >;; METTA-LANG.FUNCTIONS-AND-UNIFICATION---METTA-LANGUAGE7.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000222 secs. (222.20 microseconds) 
+; took 0.000204 secs. (204.14 microseconds) 
 
 !(assertEqualToResult (match &self (Implies (Parent Bob $y) $B) (match &self (Parent Bob $y) $B)) ())
 
@@ -511,7 +527,7 @@ Deterministic: ()
 ;;;3. (match &self (Parent Bob $y) (Child $y Bob))
 ;;;4. (Child Ann Bob)
 <span class="ansi32"
->% 338,906 inferences, 0.106 CPU in 0.108 seconds (98% CPU, 3208204 Lips)
+>% 338,420 inferences, 0.099 CPU in 0.102 seconds (98% CPU, 3404118 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Functions_and_unification___MeTTa_Language7.metta  0)
 <span class="ansi1"
@@ -656,7 +672,7 @@ Deterministic: ()
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:32:31+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 21:02:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

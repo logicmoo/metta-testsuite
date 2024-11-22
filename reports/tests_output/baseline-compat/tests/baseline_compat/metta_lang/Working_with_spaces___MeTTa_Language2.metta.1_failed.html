@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
@@ -37,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 19:41:57+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 21:12:48+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -196,7 +197,22 @@ Script started on 2024-11-22 19:41:57+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-P;HTML|
+<span class="ansi1 ansi31"
+>
+ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
+</span><span class="ansi31"
+>Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
+Warning:    Clauses of </span><span class="ansi34"
+>load_flybase/1</span><span class="ansi31"
+> are not together in the source-file
+Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
+Warning:    Current predicate: </span><span class="ansi34"
+>'$pldoc'/4</span><span class="ansi31"
+>
+Warning:    Use </span><span class="ansi34"
+>:- discontiguous load_flybase/1.</span><span class="ansi31"
+> to suppress this message
+</span>P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -357,9 +373,9 @@ Script started on 2024-11-22 19:41:57+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 6  "[()]")
 P;HTML|
-;                                         (= 7  "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 26200maxresident)k")
+;                                         (= 7  "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26544maxresident)k")
 P;HTML|
-;                                         (= 7  "0inputs+0outputs (0major+3133minor)pagefaults 0swaps")
+;                                         (= 7  "0inputs+0outputs (0major+3139minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language2.metta is 619 bytes (30 lines)
@@ -383,7 +399,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 > (= (foo) (+ 3 4))
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.69 milliseconds) 
+; took 0.004 secs. (3.71 milliseconds) 
 
 !(assertEqualToResult (add-reduct &self (= (foo) (+ 3 4))) (()))
 
@@ -405,7 +421,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000484 secs. (484.41 microseconds) 
+; took 0.000476 secs. (476.27 microseconds) 
 
 !(assertEqualToResult (println "xx 101 ") ((println "xx 101 ")))
 
@@ -430,7 +446,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE2.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000448 secs. (447.57 microseconds) 
+; took 0.000465 secs. (465.20 microseconds) 
 
 !(assertEqualToResult (println "xx 102 ") ((println "xx 102 ")))
 
@@ -447,7 +463,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE2.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000537 secs. (536.80 microseconds) 
+; took 0.000551 secs. (550.86 microseconds) 
 
 !(assertEqualToResult (foo) (7))
 
@@ -470,7 +486,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE2.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000447 secs. (447.20 microseconds) 
+; took 0.000483 secs. (482.55 microseconds) 
 
 !(assertEqualToResult (println "xx 103 ") ((println "xx 103 ")))
 
@@ -487,7 +503,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE2.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000312 secs. (312.14 microseconds) 
+; took 0.000263 secs. (263.21 microseconds) 
 
 !(assertEqualToResult (match &self (= (foo) $x) (quote $x)) ((quote 7)))
 
@@ -497,7 +513,7 @@ Deterministic: ()
 Deterministic: ((Error  (got  ((quote (+ 3 4)))) (expected  ((quote 7)))))
 ;;;  !(assertEqualToResult ( )  (  )  ) 
 <span class="ansi32"
->% 308,869 inferences, 0.096 CPU in 0.098 seconds (98% CPU, 3220776 Lips)
+>% 308,371 inferences, 0.095 CPU in 0.097 seconds (98% CPU, 3247401 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language2.metta  0)
 <span class="ansi1"
@@ -642,7 +658,7 @@ Deterministic: ((Error  (got  ((quote (+ 3 4)))) (expected  ((quote 7)))))
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 19:42:05+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 21:12:56+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

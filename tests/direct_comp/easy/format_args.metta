@@ -52,12 +52,12 @@
             (charsToString $formatted))))
 
 ; Tests
+!(format-argsx "{}ab" ("XX" "ZZ"))
 !(append (1 2) (3 5))
 !(nth 3 (10 11 12 13 14 15))
 !(format-argsx "ab" ("XX" "ZZ"))
 !(format-argsx "{ab" ("XX" "ZZ"))
 !(format-argsx "a{b" ("XX" "ZZ"))
-!(format-argsx "{}ab" ("XX" "ZZ"))
 !(format-argsx "{}a{b" ("XX" "ZZ"))
 !(format-argsx "{}a{}b" ("XX" "ZZ"))
 !(format-argsx "a{}b{}" ("XX" "ZZ"))

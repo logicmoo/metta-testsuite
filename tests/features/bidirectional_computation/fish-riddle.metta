@@ -1,35 +1,5 @@
 ; Einstein Riddle Example
 
-(love John Mary)
-
-!(match &self (love $John $Mary) (love $John $Mary))
-
-!(hates John Mary)
-
-(= (progn $head ())  (match &self $head $head) 666)
-(= (progn $head ($hr $rr)) (match &self $head (progn $hr $rr)))
-
-(= (progn2 $l)
-   (let* (($head (car-atom $l)) 
-		  ($rest (cdr-atom $l)))
-    (if (== $rest ()) 
-        $head
-        (match &self $head (progn2 $rest)))))
-
-(= (progn3 $l)
-   (let* (($head (car-atom $l)) 
-		  ($rest (cdr-atom $l)))
-    (if (== $rest ()) 
-        (match &self $head $head)
-        (match &self $head (progn3 $rest)))))
-
-(= (child joe) mary)
-
-(child joe mary)
-
-!(progn3 ((love John $m)  
-		  (love $j Mary) 
-          (3424 $j $m )))
 
 (= (nth1 N (Cons $H $T))
   (if (== $N 1) $H
@@ -70,9 +40,9 @@
 
 ;
 ; Generates a neighborhood with a specified number of houses
-(= (new-neighborhood $N) 
- (let $Neighborhood 
-    (= $n (length $Neighborhood)) 
+(= (new-neighborhood $size) 
+ (let $_ 
+    (== $size (length $Neighborhood)) 
       $Neighborhood))
 ;
 ; Calculates the center position(s) in the neighborhood

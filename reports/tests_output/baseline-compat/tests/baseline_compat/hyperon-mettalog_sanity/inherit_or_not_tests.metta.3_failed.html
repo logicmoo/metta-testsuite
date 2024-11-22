@@ -31,10 +31,6 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -45,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-21 07:26:51+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 00:58:20+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -355,7 +351,7 @@ Script started on 2024-11-21 07:26:51+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 1  "[()]")
 P;HTML|
-;                                         (= 2  "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x55d42b0056a8) ()) ")
+;                                         (= 2  "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x55cbbe2c76d8) ()) ")
 P;HTML|
 ;                                         (= 2  "Expected: []")
 P;HTML|
@@ -363,12 +359,12 @@ Script started on 2024-11-21 07:26:51+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 3  "Excessive result: (John Jess))]")
 P;HTML|
-;                                         (= 3  "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26500maxresident)k")
+;                                         (= 3  "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26488maxresident)k")
 P;HTML|
-;                                         (= 3  "0inputs+0outputs (0major+3128minor)pagefaults 0swaps")
+;                                         (= 3  "0inputs+0outputs (0major+3124minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta is 1.83K bytes (42 lines)
+Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta is 1.66K bytes (38 lines)
 </span>P;HTML|
 ;                                        (load_answer_file  /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta)
 
@@ -393,7 +389,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000303 secs. (303.36 microseconds) 
+; took 0.000346 secs. (345.78 microseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ())
 
@@ -410,7 +406,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000883 secs. (883.06 microseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) ((foo 1)))
 
@@ -435,7 +431,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000809 secs. (808.66 microseconds) 
+; took 0.000983 secs. (983.41 microseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -448,7 +444,7 @@ Deterministic: ()
 >!(add-atom &new-space (= (foo $x) (+ $x 1)))
 
 </span><span class="ansi38-255165000"
-> (= (foo $_125124) (+ $_125124 1))
+> (= (foo $_125110) (+ $_125110 1))
 </span>
 Deterministic: ()
 ;;; Test that (foo 1) now evaluates to 2 in &new-space
@@ -460,7 +456,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000624 secs. (624.45 microseconds) 
+; took 0.000740 secs. (740.01 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -476,14 +472,6 @@ Deterministic: ()
 > &self
 </span>
 Deterministic: ()
-;;; Add (likes John Jane) again to &new-space
-<span class="ansi38-013099040"
->!(add-atom &new-space (likes John Jane))
-
-</span><span class="ansi38-255165000"
-> (likes John Jane)
-</span>
-Deterministic: ()
 ;;; Test that matching 'likes' returns both (John Jess) and (John Jane)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jess) (John Jane)))
@@ -493,7 +481,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000827 secs. (827.14 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jess) (John Jane)))
 
@@ -501,14 +489,6 @@ Deterministic: ()
 >(loonit_failureR  (equal_enough_for_test  ((John Jane)) ((John Jess) (John Jane))))
 </span>
 Deterministic: ((Error  (got  ((John Jane))) (expected  ((John Jess) (John Jane)))))
-;;; Add another definition of foo to &new-space
-<span class="ansi38-013099040"
->!(add-atom &new-space (= (foo $x) (+ $x 1)))
-
-</span><span class="ansi38-255165000"
-> (= (foo $_238148) (+ $_238148 1))
-</span>
-Deterministic: ()
 ;;; Test that (foo 1) now evaluates to both 2 and 3 in &new-space
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
@@ -518,7 +498,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000594 secs. (593.70 microseconds) 
+; took 0.000731 secs. (730.66 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -543,7 +523,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000627 secs. (627.33 microseconds) 
+; took 0.000716 secs. (716.18 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -560,7 +540,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000878 secs. (878.03 microseconds) 
+; took 0.001 secs. (1.03 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -569,7 +549,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 506,607 inferences, 0.129 CPU in 0.131 seconds (98% CPU, 3927766 Lips)
+% 468,868 inferences, 0.126 CPU in 0.128 seconds (98% CPU, 3727895 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta  0)
 <span class="ansi1"
@@ -711,9 +691,7 @@ Deterministic: ()<span class="ansi32"
 [()]
 [()]
 [()]
-[()]
 [((Error  (got  ((John Jane))) (expected  ((John Jess) (John Jane)))))]
-[()]
 [((Error  (got  (2)) (expected  (2 3))))]
 [()]
 [()]
@@ -723,7 +701,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-21 07:26:59+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 00:58:27+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -21,6 +21,7 @@
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -37,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-21 07:56:30+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 01:28:19+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -359,13 +360,13 @@ Script started on 2024-11-21 07:56:30+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         (= 6  "Expected: [GroundingSpace-addr]")
 P;HTML|
-;                                         (= 6  "Got: [GroundingSpace-0x5586f4baf208]")
+;                                         (= 6  "Got: [GroundingSpace-0x55b94938fae8]")
 P;HTML|
 ;                                         (= 7  "Missed result: GroundingSpace-addr)]")
 P;HTML|
-;                                         (= 7  "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 25996maxresident)k")
+;                                         (= 7  "0.03user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 25936maxresident)k")
 P;HTML|
-;                                         (= 7  "0inputs+0outputs (0major+3123minor)pagefaults 0swaps")
+;                                         (= 7  "0inputs+0outputs (0major+3121minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language8.metta is 853 bytes (44 lines)
@@ -389,7 +390,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lan
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000479 secs. (479.23 microseconds) 
+; took 0.000701 secs. (700.56 microseconds) 
 
 !(assertEqualToResult (println "xx 114 ") ((println "xx 114 ")))
 
@@ -404,16 +405,18 @@ Deterministic: ()
 </span>
 ;<h3 id="METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.02"
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.02</h3>
-; 
+<span class="ansi38-255165000"
+> (= (get-space) (new-space))
+</span>; 
 ; EVAL TEST
-; took 0.000446 secs. (445.65 microseconds) 
+; took 0.003 secs. (3.15 milliseconds) 
 
 !(assertEqualToResult (add-reduct &self (= (get-space) (new-space))) (()))
 
-<span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((add-reduct &self (= (get-space) (new-space)))) (())))
+<span class="ansi36"
+>(loonit_success  (equal_enough_for_test  (()) (())))
 </span>
-Deterministic: ((Error  (got  ((add-reduct &self (= (get-space) (new-space))))) (expected  (()))))
+Deterministic: ()
 ;;;! (add-atom (get-space) (Parent Bob Ann)) 
 ;;; ()
 <span class="ansi38-255165009"
@@ -429,7 +432,7 @@ Deterministic: ((Error  (got  ((add-reduct &self (= (get-space) (new-space))))) 
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000357 secs. (356.88 microseconds) 
+; took 0.000489 secs. (488.69 microseconds) 
 
 !(assertEqualToResult (println "xx 115 ") ((println "xx 115 ")))
 
@@ -448,7 +451,7 @@ Deterministic: ()
 > (Parent Bob Ann)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.64 milliseconds) 
+; took 0.003 secs. (2.95 milliseconds) 
 
 !(assertEqualToResult (add-atom (get-space) (Parent Bob Ann)) (()))
 
@@ -471,7 +474,7 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000313 secs. (312.63 microseconds) 
+; took 0.000467 secs. (467.13 microseconds) 
 
 !(assertEqualToResult (println "xx 116 ") ((println "xx 116 ")))
 
@@ -488,14 +491,14 @@ Deterministic: ()
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000311 secs. (311.43 microseconds) 
+; took 0.000421 secs. (421.26 microseconds) 
 
 !(assertEqualToResult (get-space) (GroundingSpace-addr))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((get-space)) (GroundingSpace-addr)))
+>(loonit_failureR  (equal_enough_for_test  ((Space  ())) (GroundingSpace-addr)))
 </span>
-Deterministic: ((Error  (got  ((get-space))) (expected  (GroundingSpace-addr))))
+Deterministic: ((Error  (got  ((Space  ()))) (expected  (GroundingSpace-addr))))
 ;;; ! (match (get-space) (Parent $x $y) ($x $y)) 
 ;;; (Bob Ann)
 <span class="ansi38-013099040"
@@ -512,21 +515,21 @@ Deterministic: (println "xx 117 ")
 >;; METTA-LANG.WORKING-WITH-SPACES---METTA-LANGUAGE8.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.03 milliseconds) 
+; took 0.000551 secs. (550.86 microseconds) 
 
 !(assertEqualToResult (match (get-space) (Parent $x $y) ($x $y)) ((Bob Ann)))
 
-<span class="ansi36"
->(loonit_success  (equal_enough_for_test  ((Bob Ann)) ((Bob Ann))))
+<span class="ansi31"
+>(loonit_failureR  (equal_enough_for_test  () ((Bob Ann))))
 </span>
-Deterministic: ()
+Deterministic: ((Error  (got  ()) (expected  ((Bob Ann)))))
 ;;;[()]
 ;;;[()]
 ;;;[GroundingSpace-0x5642ce134c88]
 ;;;[(Bob Ann)]
 ;;;  !(assertEqualToResult ( )  (  )  ) 
 <span class="ansi32"
->% 372,918 inferences, 0.107 CPU in 0.110 seconds (98% CPU, 3474544 Lips)
+>% 371,740 inferences, 0.112 CPU in 0.114 seconds (98% CPU, 3328272 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta_lang/Working_with_spaces___MeTTa_Language8.metta  0)
 <span class="ansi1"
@@ -661,19 +664,19 @@ Deterministic: ()
 P;HTML|
 ;         (set_option_value  test true)
 [()]
-[((Error  (got  ((add-reduct &self (= (get-space) (new-space))))) (expected  (()))))]
 [()]
 [()]
 [()]
-[((Error  (got  ((get-space))) (expected  (GroundingSpace-addr))))]
+[()]
+[((Error  (got  ((Space  ()))) (expected  (GroundingSpace-addr))))]
 [(println "xx 117 ")]
-[()]
+[((Error  (got  ()) (expected  ((Bob Ann)))))]
 P;HTML|
 ;         (maybe_halt  7)
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-21 07:56:37+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-22 01:28:26+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

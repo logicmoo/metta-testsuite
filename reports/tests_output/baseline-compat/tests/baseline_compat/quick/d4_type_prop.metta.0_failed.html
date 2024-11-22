@@ -57,7 +57,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 04:38:14+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-22 15:49:08+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -417,7 +417,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/quick/d4_
 >;; QUICK.D4-TYPE-PROP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000316 secs. (315.87 microseconds) 
+; took 0.000335 secs. (335.46 microseconds) 
 
 !(assertEqual (get-type (Mortal Plato)) Type)
 
@@ -452,7 +452,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.80 milliseconds) 
+; took 0.002 secs. (1.82 milliseconds) 
 
 !(assertEqual (get-type (HumansAreMortal SocratesIsHuman)) (Mortal Socrates))
 
@@ -469,7 +469,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000312 secs. (312.31 microseconds) 
+; took 0.000299 secs. (298.91 microseconds) 
 
 !(assertEqualToResult (get-type (HumansAreMortal (Human Socrates))) ())
 
@@ -507,7 +507,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.52 milliseconds) 
+; took 0.004 secs. (4.39 milliseconds) 
 
 !(assertEqualToResult ("sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal SocratesIsHuman))) (("sameTypes" (Mortal Socrates) (Mortal Socrates))))
 
@@ -523,7 +523,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000373 secs. (373.00 microseconds) 
+; took 0.000382 secs. (382.09 microseconds) 
 
 !(assertEqual (get-type (= SocratesIsMortal (HumansAreMortal SocratesIsHuman))) Type)
 
@@ -547,7 +547,7 @@ Deterministic: ("sameTypes" Type Type)
 >;; QUICK.D4-TYPE-PROP.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000441 secs. (440.81 microseconds) 
+; took 0.000436 secs. (435.71 microseconds) 
 
 !(assertEqual (get-type (= (Mortal Socrates) (Mortal Plato))) Type)
 
@@ -569,7 +569,7 @@ Deterministic: ("!sameTypes" (Mortal Socrates) (Mortal Plato))
 >;; QUICK.D4-TYPE-PROP.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (373.57 microseconds) 
+; took 0.000417 secs. (417.46 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsMortal (HumansAreMortal PlatoIsHuman))) ())
 
@@ -591,7 +591,7 @@ Deterministic: ("!sameTypes" (Human Socrates) ! (Human Plato))
 >;; QUICK.D4-TYPE-PROP.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000276 secs. (275.71 microseconds) 
+; took 0.000259 secs. (258.79 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman PlatoIsHuman)) ())
 
@@ -612,7 +612,7 @@ Deterministic: ("!sameTypes" (Human Socrates) (Mortal Socrates))
 >;; QUICK.D4-TYPE-PROP.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000288 secs. (287.70 microseconds) 
+; took 0.000256 secs. (255.71 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman SocratesIsMortal)) ())
 
@@ -648,7 +648,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000634 secs. (634.01 microseconds) 
+; took 0.000691 secs. (690.76 microseconds) 
 
 !(assertEqual (= SocratesIsMortal (HumansAreMortal SocratesIsHuman)) T)
 
@@ -664,7 +664,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000561 secs. (561.21 microseconds) 
+; took 0.000643 secs. (642.96 microseconds) 
 
 !(assertEqual (= (+ 1 1) (- 3 1)) T)
 
@@ -700,7 +700,7 @@ Deterministic: ()
 >;; QUICK.D4-TYPE-PROP.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.19 milliseconds) 
+; took 0.001 secs. (1.16 milliseconds) 
 
 !(assertEqualToResult (= (Mortal Plato) T) ())
 
@@ -721,10 +721,52 @@ Deterministic: ()
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/quick/d4_type_prop.metta progress.
 </span>
-Script done on 2024-11-22 04:38:54+00:00 [COMMAND_EXIT_CODE="143"]
+ERROR: Received fatal signal 11 (segv)
+Time: Fri Nov 22 15:49:48 2024
+Inferences: 36
+Thread: 3 (telnet_server)
+C-stack trace labeled "crash":
+  [0] PL_raise() at ??:? [0x7fc74aa1c350]
+  [1] PL_scan_options() at ??:? [0x7fc74a9c0d0f]
+  [2] __sigaction() at ??:? [0x7fc74a642520]
+  [3] _PyTuple_MaybeUntrack() at ??:? [0x7fc743b3de37]
+  [4] PyCode_NewEmpty() at ??:? [0x7fc743ae7195]
+  [5] PyFunction_SetClosure() at ??:? [0x7fc743b006e5]
+  [6] PyFunction_GetAnnotations() at ??:? [0x7fc743b02536]
+  [7] PyODict_New() at ??:? [0x7fc743b16c2d]
+  [8] PyDict_Clear() at ??:? [0x7fc743b1704d]
+  [9] Py_BytesMain() at ??:? [0x7fc743c2a74e]
+  [10] _Py_InitializeMain() at ??:? [0x7fc743c01f4c]
+  [11] Py_FinalizeEx() at ??:? [0x7fc743c03b7c]
+  [12] PyInit__swipl() at ??:? [0x7fc748cb3506]
+  [13] ??() at ??:0 [0x7fc74a96af25]
+  [14] PL_check_data() at ??:? [0x7fc74a983ea7]
+  [15] PL_is_atomic() at ??:? [0x7fc74aa247ae]
+  [16] __sigaction() at ??:? [0x7fc74a642520]
+  [17] accept() at ??:? [0x7fc74a72745f]
+  [18] ??() at ??:0 [0x7fc74a0cdea8]
+  [19] ??() at ??:0 [0x7fc74a0ce062]
+  [20] ??() at ??:0 [0x7fc74a92769c]
+  [21] PL_open_foreign_frame() at ??:? [0x7fc74a9d58ad]
+  [22] PL_thread_raise() at ??:? [0x7fc74a995635]
+  [23] pthread_condattr_setpshared() at ??:? [0x7fc74a694ac3]
+  [24] __xmknodat() at ??:? [0x7fc74a726850]
+
+
+PROLOG STACK (without arguments):
+  [5] socket:tcp_accept/3 <foreign>
+  [4] accept_dbg_connections/1 [PC=7 in clause 1]
+  [2] system:catch/3 [PC=2 in clause 1]
+  [0] system:$c_call_prolog/0 [PC=0 in top query clause]
+
+
+PROLOG STACK (with arguments; may crash if data is corrupted):
+timeout: the monitored command dumped core
+
+Script done on 2024-11-22 15:49:50+00:00 [COMMAND_EXIT_CODE="139"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/quick/d4_type_prop.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=139) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/quick/d4_type_prop.metta" --halt=true\033[0m

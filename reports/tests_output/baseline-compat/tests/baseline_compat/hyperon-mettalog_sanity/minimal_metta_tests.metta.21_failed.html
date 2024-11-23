@@ -81,7 +81,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 20:43:45+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-23 13:27:45+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -460,7 +460,7 @@ Warning:    Use </span><span class="ansi34"
 P;HTML|
 ;                                         (= 21  "Expected: [(quote (((input B) { $x <- B }) ((input A) { $x <- A })))]")
 P;HTML|
-;                                         (= 21  "Got: [(quote (((input B) { $x <- B }) ((input A) { $x <- A })))]")
+;                                         (= 21  "Got: [(quote (((input A) { $x <- A }) ((input B) { $x <- B })))]")
 P;HTML|
 ;                                         (= 22  "Missed result: (quote (((input B) { $x <- B }) ((input A) { $x <- A })))))]")
 P;HTML|
@@ -478,7 +478,7 @@ Warning:    Use </span><span class="ansi34"
 P;HTML|
 ;                                         (= 27  "Expected: [(1 { $type <- Number }), (\"a\" { $type <- String })]")
 P;HTML|
-;                                         (= 27  "Got: [((\"a\" { $type <- String }) (1 { $type <- Number }))]")
+;                                         (= 27  "Got: [((1 { $type <- Number }) (\"a\" { $type <- String }))]")
 P;HTML|
 ;                                         (= 28  "Missed result: (1 { $type <- Number })))]")
 P;HTML|
@@ -490,7 +490,7 @@ Warning:    Use </span><span class="ansi34"
 P;HTML|
 ;                                         (= 30  "Expected: [(1 { $type <- Number }), (\"a\" { $type <- String })]")
 P;HTML|
-;                                         (= 30  "Got: [((1 { $type <- Number }) (\"a\" { $type <- String }))]")
+;                                         (= 30  "Got: [((\"a\" { $type <- String }) (1 { $type <- Number }))]")
 P;HTML|
 ;                                         (= 31  "Missed result: (1 { $type <- Number })))]")
 P;HTML|
@@ -510,9 +510,9 @@ Warning:    Use </span><span class="ansi34"
 P;HTML|
 ;                                         (= 38  "[()]")
 P;HTML|
-;                                         (= 39  "0.06user 0.01system 0:00.08elapsed 98%CPU (0avgtext+0avgdata 26264maxresident)k")
+;                                         (= 39  "0.06user 0.01system 0:00.08elapsed 98%CPU (0avgtext+0avgdata 26272maxresident)k")
 P;HTML|
-;                                         (= 39  "0inputs+0outputs (0major+3160minor)pagefaults 0swaps")
+;                                         (= 39  "0inputs+0outputs (0major+3161minor)pagefaults 0swaps")
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta is 4.85K bytes (113 lines)
@@ -534,7 +534,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000641 secs. (641.10 microseconds) 
+; took 0.000632 secs. (631.88 microseconds) 
 
 !(assertEqualToResult (returns-empty) (1))
 
@@ -550,7 +550,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (14.70 microseconds) 
+; took 0.000023 secs. (22.73 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty)) (1))
 
@@ -563,7 +563,7 @@ NDet Result(1): Empty
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.64 microseconds) 
+; took 0.000014 secs. (13.60 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty)) (1))
 
@@ -579,7 +579,7 @@ Last Result(2): ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000687 secs. (687.49 microseconds) 
+; took 0.000611 secs. (610.92 microseconds) 
 
 !(assertEqualToResult (chain-to-empty) (1))
 
@@ -608,7 +608,7 @@ NDet Result(1): Empty
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000014 secs. (13.65 microseconds) 
+; took 0.000020 secs. (19.78 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty)) (1))
 
@@ -624,7 +624,7 @@ Last Result(2): ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000775 secs. (775.03 microseconds) 
+; took 0.000680 secs. (680.33 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-empty)) $x (quote $x)) ((quote 1) (quote )))
 
@@ -640,7 +640,7 @@ Deterministic: Empty
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.000899 secs. (899.38 microseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-empty)) $x (quote $x)) ((quote (returns-empty))))
 
@@ -663,7 +663,7 @@ Deterministic: ((Error  (got  ((quote 1))) (expected  ((quote (returns-empty))))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000387 secs. (386.77 microseconds) 
+; took 0.000388 secs. (388.07 microseconds) 
 
 !(assertEqualToResult (returns-empty-expression) (1 ()))
 
@@ -679,7 +679,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000021 secs. (20.98 microseconds) 
+; took 0.000021 secs. (21.17 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty-expression)) (1 ()))
 
@@ -692,7 +692,7 @@ NDet Result(1): ((Error  (got  (())) (expected  (1 ()))))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (22.58 microseconds) 
+; took 0.000021 secs. (20.51 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty-expression)) (1 ()))
 
@@ -708,7 +708,7 @@ Last Result(2): ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000695 secs. (694.60 microseconds) 
+; took 0.000703 secs. (702.80 microseconds) 
 
 !(assertEqualToResult (chain-to-empty-expression) (1 ()))
 
@@ -724,7 +724,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (22.12 microseconds) 
+; took 0.000013 secs. (12.99 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty-expression)) (1 ()))
 
@@ -737,7 +737,7 @@ NDet Result(1): ((Error  (got  (())) (expected  (1 ()))))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000021 secs. (21.35 microseconds) 
+; took 0.000023 secs. (23.27 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty-expression)) (1 ()))
 
@@ -753,7 +753,7 @@ Last Result(2): ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000699 secs. (699.35 microseconds) 
+; took 0.000679 secs. (679.32 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-empty-expression)) $x (quote $x)) ((quote 1) (quote ())))
 
@@ -769,7 +769,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000906 secs. (905.62 microseconds) 
+; took 0.000993 secs. (992.61 microseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-empty-expression)) $x (quote $x)) ((quote (returns-empty-expression))))
 
@@ -792,7 +792,7 @@ Deterministic: ((Error  (got  ((quote ()) (quote 1))) (expected  ((quote (return
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000391 secs. (390.62 microseconds) 
+; took 0.000437 secs. (437.49 microseconds) 
 
 !(assertEqualToResult (returns-not-reducible) (1 (returns-not-reducible)))
 
@@ -808,7 +808,7 @@ Deterministic: ((Error  (got  (NotReducible 1)) (expected  (1 (returns-not-reduc
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000627 secs. (627.50 microseconds) 
+; took 0.000691 secs. (691.32 microseconds) 
 
 !(assertEqualToResult (chain-to-not-reducible) (1 (returns-not-reducible)))
 
@@ -824,7 +824,7 @@ Deterministic: ((Error  (got  (NotReducible 1)) (expected  (1 (returns-not-reduc
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (23.08 microseconds) 
+; took 0.000026 secs. (25.69 microseconds) 
 
 !(assertEqualToResult (eval (returns-not-reducible)) (1 (eval (returns-not-reducible))))
 
@@ -837,7 +837,7 @@ NDet Result(1): ((Error  (got  (NotReducible)) (expected  (1 (eval (returns-not-
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000020 secs. (20.39 microseconds) 
+; took 0.000023 secs. (22.74 microseconds) 
 
 !(assertEqualToResult (eval (returns-not-reducible)) (1 (eval (returns-not-reducible))))
 
@@ -853,7 +853,7 @@ Last Result(2): ((Error  (got  (1)) (expected  (1 (eval (returns-not-reducible))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000025 secs. (24.53 microseconds) 
+; took 0.000027 secs. (26.78 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-not-reducible)) (1 (returns-not-reducible)))
 
@@ -866,7 +866,7 @@ NDet Result(1): ((Error  (got  (NotReducible)) (expected  (1 (returns-not-reduci
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000021 secs. (20.68 microseconds) 
+; took 0.000013 secs. (13.44 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-not-reducible)) (1 (returns-not-reducible)))
 
@@ -882,7 +882,7 @@ Last Result(2): ((Error  (got  (1)) (expected  (1 (returns-not-reducible)))))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000792 secs. (791.86 microseconds) 
+; took 0.000669 secs. (668.60 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-not-reducible)) $x (quote $x)) ((quote 1) (quote NotReducible)))
 
@@ -898,7 +898,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000892 secs. (892.38 microseconds) 
+; took 0.000902 secs. (902.42 microseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-not-reducible)) $x (quote $x)) ((quote (returns-not-reducible))))
 
@@ -921,28 +921,28 @@ Deterministic: ((Error  (got  ((quote NotReducible) (quote 1))) (expected  ((quo
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.38 milliseconds) 
+; took 0.001 secs. (1.40 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]]))
+>Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]]))
+>Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(259) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -950,9 +950,9 @@ Deterministic: ((Error  (got  ((quote NotReducible) (quote 1))) (expected  ((quo
    <span class="ansi1 ansi31"
 >Fail: </span>(261) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(263) [system] setup_call_cleanup('$notrace'(_873034, _873036), once(rtrace:retract(t_l:tracer_reset(_873024))), '$restore_trace'(_873034, _873036))
+>Call: </span>(263) [system] setup_call_cleanup('$notrace'(_873048, _873050), once(rtrace:retract(t_l:tracer_reset(_873038))), '$restore_trace'(_873048, _873050))
 ^  <span class="ansi1 ansi32"
->Call: </span>(264) [system] sig_atomic(system:'$notrace'(_873034, _873036))
+>Call: </span>(264) [system] sig_atomic(system:'$notrace'(_873048, _873050))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(263) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -962,28 +962,28 @@ Deterministic: ((Error  (got  ((quote NotReducible) (quote 1))) (expected  ((quo
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.54 milliseconds) 
+; took 0.001 secs. (1.45 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836942) {() }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((foo $_836956) {() }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]]))
+>Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]]))
+>Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836942], ['{...}', []]]]]])))
+>Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [foo, '$VAR'("x")]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[foo, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[foo, _836956], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(265) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -991,9 +991,9 @@ Deterministic: ((Error  (got  ((quote NotReducible) (quote 1))) (expected  ((quo
    <span class="ansi1 ansi31"
 >Fail: </span>(267) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(269) [system] setup_call_cleanup('$notrace'(_909368, _909370), once(rtrace:retract(t_l:tracer_reset(_909358))), '$restore_trace'(_909368, _909370))
+>Call: </span>(269) [system] setup_call_cleanup('$notrace'(_909382, _909384), once(rtrace:retract(t_l:tracer_reset(_909372))), '$restore_trace'(_909382, _909384))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [system] sig_atomic(system:'$notrace'(_909368, _909370))
+>Call: </span>(270) [system] sig_atomic(system:'$notrace'(_909382, _909384))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1008,28 +1008,28 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $"x"))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.67 milliseconds) 
+; took 0.003 secs. (2.52 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]]))
+>Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]]))
+>Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(259) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1037,9 +1037,9 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $"x"))
    <span class="ansi1 ansi31"
 >Fail: </span>(261) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(263) [system] setup_call_cleanup('$notrace'(_971422, _971424), once(rtrace:retract(t_l:tracer_reset(_971412))), '$restore_trace'(_971422, _971424))
+>Call: </span>(263) [system] setup_call_cleanup('$notrace'(_971436, _971438), once(rtrace:retract(t_l:tracer_reset(_971426))), '$restore_trace'(_971436, _971438))
 ^  <span class="ansi1 ansi32"
->Call: </span>(264) [system] sig_atomic(system:'$notrace'(_971422, _971424))
+>Call: </span>(264) [system] sig_atomic(system:'$notrace'(_971436, _971438))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(263) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1049,28 +1049,28 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $"x"))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.58 milliseconds) 
+; took 0.003 secs. (2.53 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924750) {() }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() })))))) FAIL (equal_enough_for_test  ((quote (input A)) (quote (input B))) ((quote (((bar $_924764) {() }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]]))
+>Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]]))
+>Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924750], ['{...}', []]]]]])))
+>Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [eval, [foo, '$VAR'("x")]]], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[bar, '$VAR'("x")], ['{...}', []]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']], [quote, [input, 'B']]], [[quote, [[[bar, _924764], ['{...}', []]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(265) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1078,9 +1078,9 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $"x"))
    <span class="ansi1 ansi31"
 >Fail: </span>(267) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1018324, _1018326), once(rtrace:retract(t_l:tracer_reset(_1018314))), '$restore_trace'(_1018324, _1018326))
+>Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1018338, _1018340), once(rtrace:retract(t_l:tracer_reset(_1018328))), '$restore_trace'(_1018338, _1018340))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1018324, _1018326))
+>Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1018338, _1018340))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1095,28 +1095,28 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo 
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.93 milliseconds) 
+; took 0.002 secs. (1.83 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]]))
+>Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]]))
+>Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(259) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1124,9 +1124,9 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo 
    <span class="ansi1 ansi31"
 >Fail: </span>(261) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1073694, _1073696), once(rtrace:retract(t_l:tracer_reset(_1073684))), '$restore_trace'(_1073694, _1073696))
+>Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1073708, _1073710), once(rtrace:retract(t_l:tracer_reset(_1073698))), '$restore_trace'(_1073708, _1073710))
 ^  <span class="ansi1 ansi32"
->Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1073694, _1073696))
+>Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1073708, _1073710))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(263) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1136,28 +1136,28 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo 
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.85 milliseconds) 
+; took 0.002 secs. (1.80 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) }))))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) }))))))
+>(loonit_failureR  (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) }))))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) })))))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) })))))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) }))))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) })))))) FAIL (equal_enough_for_test  ((quote (input A))) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) }))))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]]))
+>Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]]))
+>Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034078, <-, 'B']]], [[input, 'A'], ['{...}', [_1034078, <-, 'A']]]]]])))
+>Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, [chain, ['collapse-bind', [metta, [foo, '$VAR'("x")], '%Undefined%', '&self']], '$VAR'("a"), [quote, '$VAR'("a")]], [[quote, [[[input, 'B'], ['{...}', ['$VAR'("x"), <-, 'B']]], [[input, 'A'], ['{...}', ['$VAR'("x"), <-, 'A']]]]]]]], 'FAIL', equal_enough_for_test([[quote, [input, 'A']]], [[quote, [[[input, 'B'], ['{...}', [_1034092, <-, 'B']]], [[input, 'A'], ['{...}', [_1034092, <-, 'A']]]]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(265) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1165,9 +1165,9 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo 
    <span class="ansi1 ansi31"
 >Fail: </span>(267) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1113362, _1113364), once(rtrace:retract(t_l:tracer_reset(_1113352))), '$restore_trace'(_1113362, _1113364))
+>Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1113376, _1113378), once(rtrace:retract(t_l:tracer_reset(_1113366))), '$restore_trace'(_1113376, _1113378))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1113362, _1113364))
+>Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1113376, _1113378))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1183,12 +1183,12 @@ Deterministic: (H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.01 milliseconds) 
+; took 0.002 secs. (1.94 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (foo $x)) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (foo $x))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote input) (quote A) (quote input) (quote B)) ((quote (foo $_1129312)))))
+>(loonit_failureR  (equal_enough_for_test  ((quote input) (quote A) (quote input) (quote B)) ((quote (foo $_1129326)))))
 </span>
 Deterministic: ((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (foo $"x"))))))
 <span class="ansi38-013099040"
@@ -1199,12 +1199,12 @@ Deterministic: ((Error  (got  ((quote input) (quote A) (quote input) (quote B)))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.07 milliseconds) 
+; took 0.003 secs. (2.98 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (bar $x))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  ((quote input) (quote A) (quote input) (quote B)) ((quote (bar $_1191008)))))
+>(loonit_failureR  (equal_enough_for_test  ((quote input) (quote A) (quote input) (quote B)) ((quote (bar $_1191022)))))
 </span>
 Deterministic: ((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (bar $"x"))))))
 <span class="ansi38-013099040"
@@ -1215,7 +1215,7 @@ Deterministic: ((Error  (got  ((quote input) (quote A) (quote input) (quote B)))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.14 milliseconds) 
+; took 0.002 secs. (2.03 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (input B)) (quote (input A))))
 
@@ -1238,7 +1238,7 @@ Deterministic: ((Error  (got  ((quote input) (quote A))) (expected  ((quote (inp
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000850 secs. (850.40 microseconds) 
+; took 0.000697 secs. (697.46 microseconds) 
 
 !(assertEqualToResult (metta (foobar) Number &self) (1))
 
@@ -1254,7 +1254,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000681 secs. (681.00 microseconds) 
+; took 0.000760 secs. (759.91 microseconds) 
 
 !(assertEqualToResult (metta (foobar) String &self) ("a"))
 
@@ -1270,28 +1270,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000646 secs. (646.19 microseconds) 
+; took 0.000620 secs. (619.81 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) }))))
+>(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) }))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) })))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) })))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) }))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) }))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]]))
+>Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]]))
+>Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(259) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1299,9 +1299,9 @@ Deterministic: ()
    <span class="ansi1 ansi31"
 >Fail: </span>(261) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1422914, _1422916), once(rtrace:retract(t_l:tracer_reset(_1422904))), '$restore_trace'(_1422914, _1422916))
+>Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1422928, _1422930), once(rtrace:retract(t_l:tracer_reset(_1422918))), '$restore_trace'(_1422928, _1422930))
 ^  <span class="ansi1 ansi32"
->Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1422914, _1422916))
+>Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1422928, _1422930))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(263) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1311,28 +1311,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000719 secs. (719.43 microseconds) 
+; took 0.000659 secs. (658.53 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) }))))
+>(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) }))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) })))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) })))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) }))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) }))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]]))
+>Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]]))
+>Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396674, <-, 'Number']]], ["a", ['{...}', [_1396674, <-, 'String']]]])))
+>Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, [foobar], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1396688, <-, 'Number']]], ["a", ['{...}', [_1396688, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(265) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1340,9 +1340,9 @@ Deterministic: ()
    <span class="ansi1 ansi31"
 >Fail: </span>(267) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1449398, _1449400), once(rtrace:retract(t_l:tracer_reset(_1449388))), '$restore_trace'(_1449398, _1449400))
+>Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1449412, _1449414), once(rtrace:retract(t_l:tracer_reset(_1449402))), '$restore_trace'(_1449412, _1449414))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1449398, _1449400))
+>Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1449412, _1449414))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1357,7 +1357,7 @@ Deterministic: (H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.000999 secs. (999.06 microseconds) 
 
 !(assertEqualToResult (metta (chain-to-foobar) Number &self) (1))
 
@@ -1373,7 +1373,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000920 secs. (920.19 microseconds) 
+; took 0.000931 secs. (931.33 microseconds) 
 
 !(assertEqualToResult (metta (chain-to-foobar) String &self) ("a"))
 
@@ -1389,28 +1389,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000842 secs. (841.95 microseconds) 
+; took 0.000843 secs. (843.33 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) }))))
+>(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) }))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) })))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) })))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) }))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) }))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Call: </span>(259) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Call: </span>(260) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]]))
+>Call: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]]))
+>Fail: </span>(261) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Fail: </span>(259) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(259) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1418,9 +1418,9 @@ Deterministic: ()
    <span class="ansi1 ansi31"
 >Fail: </span>(261) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1559812, _1559814), once(rtrace:retract(t_l:tracer_reset(_1559802))), '$restore_trace'(_1559812, _1559814))
+>Call: </span>(263) [system] setup_call_cleanup('$notrace'(_1559840, _1559842), once(rtrace:retract(t_l:tracer_reset(_1559830))), '$restore_trace'(_1559840, _1559842))
 ^  <span class="ansi1 ansi32"
->Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1559812, _1559814))
+>Call: </span>(264) [system] sig_atomic(system:'$notrace'(_1559840, _1559842))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(263) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1430,28 +1430,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.000944 secs. (943.83 microseconds) 
+; took 0.000852 secs. (852.29 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
 <span class="ansi31"
->(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) }))))
+>(loonit_failureR  (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) }))))
 </span>
-(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) })))))
+(failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) })))))
 
 
-(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) }))))))
+(on_mettalog_error  (failed  once (write_pass_fail  (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) })))) FAIL (equal_enough_for_test  (1) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) }))))))
 
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Call: </span>(265) [user] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Call: </span>(266) [user] once(user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]]))
+>Call: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]]))
+>Fail: </span>(267) [user] write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]]))
 ^  <span class="ansi1 ansi31"
->Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530022, <-, 'Number']]], ["a", ['{...}', [_1530022, <-, 'String']]]])))
+>Fail: </span>(265) [system] call(user:once, user:write_pass_fail(['H-E-Fails', [assertEqualToResult, ['collapse-bind', [metta, ['chain-to-foobar'], '$VAR'("type"), '&self']], [[1, ['{...}', ['$VAR'("type"), <-, 'Number']]], ["a", ['{...}', ['$VAR'("type"), <-, 'String']]]]]], 'FAIL', equal_enough_for_test([1], [[1, ['{...}', [_1530050, <-, 'Number']]], ["a", ['{...}', [_1530050, <-, 'String']]]])))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(265) [bugger] bugger:mquietly_if(true, rtrace:pop_tracer)
    <span class="ansi1 ansi32"
@@ -1459,9 +1459,9 @@ Deterministic: ()
    <span class="ansi1 ansi31"
 >Fail: </span>(267) [system] var(rtrace:pop_tracer)
 ^  <span class="ansi1 ansi32"
->Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1589846, _1589848), once(rtrace:retract(t_l:tracer_reset(_1589836))), '$restore_trace'(_1589846, _1589848))
+>Call: </span>(269) [system] setup_call_cleanup('$notrace'(_1589874, _1589876), once(rtrace:retract(t_l:tracer_reset(_1589864))), '$restore_trace'(_1589874, _1589876))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1589846, _1589848))
+>Call: </span>(270) [system] sig_atomic(system:'$notrace'(_1589874, _1589876))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(rtrace:retract(t_l:tracer_reset(tAt_normal))), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
@@ -1483,7 +1483,7 @@ Deterministic: (H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-f
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.42</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.30 milliseconds) 
 
 !(assertEqual (chain (n/0/0) $x (quote $x)) (quote (n/0/0)))
 
@@ -1499,7 +1499,7 @@ Deterministic: ((Error  (got  ((quote (n/2/0)) (quote (n/1/1)))) (expected  ((qu
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.43</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.89 milliseconds) 
+; took 0.002 secs. (1.90 milliseconds) 
 
 !(assertEqualToResult (chain (eval (n/0/0)) $x (quote $x)) ((quote (n/1/0)) (quote (n/1/1))))
 
@@ -1515,7 +1515,7 @@ Deterministic: ((Error  (got  ((quote (n/2/0)) (quote (n/1/1)))) (expected  ((qu
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.44</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.97 milliseconds) 
+; took 0.002 secs. (2.02 milliseconds) 
 
 !(assertEqualToResult (chain (metta (n/0/0) %Undefined% &self) $x (quote $x)) ((quote (n/1/1)) (quote (n/2/0))))
 
@@ -1531,7 +1531,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.45</h3>
 ; 
 ; EVAL TEST
-; took 0.000783 secs. (782.56 microseconds) 
+; took 0.000778 secs. (777.89 microseconds) 
 
 !(assertEqual (chain (unify ($x b) (a $y) ($x $y) Failed) $v $v) (a b))
 
@@ -1547,7 +1547,7 @@ Deterministic: ((Error  (got  ()) (expected  ((a b)))))
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.46</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqual (chain (chain A $x (p $x)) $y (quote $y)) (quote (p A)))
 
@@ -1563,7 +1563,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.47</h3>
 ; 
 ; EVAL TEST
-; took 0.000568 secs. (568.40 microseconds) 
+; took 0.000637 secs. (636.84 microseconds) 
 
 !(assertEqual (chain (cons-atom p (q)) $v (quote $v)) (quote (p q)))
 
@@ -1579,7 +1579,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.48</h3>
 ; 
 ; EVAL TEST
-; took 0.000782 secs. (781.63 microseconds) 
+; took 0.000905 secs. (904.97 microseconds) 
 
 !(assertEqual (chain (decons-atom (p q)) $x (quote $x)) (quote (p (q))))
 
@@ -1600,7 +1600,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.49</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.07 milliseconds) 
+; took 0.003 secs. (3.11 milliseconds) 
 
 !(assertEqual (chain (eval (f0 $a)) $ $a) value)
 
@@ -1609,7 +1609,7 @@ Deterministic: ()
 </span>
 Deterministic: ((Error  (got  ()) (expected  (value))))<span class="ansi32"
 >
-% 2,864,013 inferences, 0.644 CPU in 0.646 seconds (100% CPU, 4449895 Lips)
+% 2,858,978 inferences, 0.707 CPU in 0.710 seconds (100% CPU, 4041912 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta  0)
 <span class="ansi1"
@@ -1761,18 +1761,18 @@ Deterministic: ((Error  (got  ()) (expected  (value))))<span class="ansi32"
 [((Error  (got  (NotReducible)) (expected  (1 (returns-not-reducible))))), ((Error  (got  (1)) (expected  (1 (returns-not-reducible)))))]
 [()]
 [((Error  (got  ((quote NotReducible) (quote 1))) (expected  ((quote (returns-not-reducible))))))]
-[(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $_836942)) $_836964 (quote $_836964)) ((quote (((foo $_836942) {() }))))))]
-[(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $_924750))) $_924772 (quote $_924772)) ((quote (((bar $_924750) {() }))))))]
-[(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $_1034078) %Undefined% &self)) $_1034116 (quote $_1034116)) ((quote (((input B) {($_1034078 <- B) }) ((input A) {($_1034078 <- A) }))))))]
-[((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (foo $_1129312))))))]
-[((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (bar $_1191008))))))]
+[(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $_836956)) $_836978 (quote $_836978)) ((quote (((foo $_836956) {() }))))))]
+[(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $_924764))) $_924786 (quote $_924786)) ((quote (((bar $_924764) {() }))))))]
+[(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $_1034092) %Undefined% &self)) $_1034130 (quote $_1034130)) ((quote (((input B) {($_1034092 <- B) }) ((input A) {($_1034092 <- A) }))))))]
+[((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (foo $_1129326))))))]
+[((Error  (got  ((quote input) (quote A) (quote input) (quote B))) (expected  ((quote (bar $_1191022))))))]
 [((Error  (got  ((quote input) (quote A))) (expected  ((quote (input B)) (quote (input A))))))]
 [()]
 [()]
-[(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $_1396674 &self)) ((1 {($_1396674 <- Number) }) ("a" {($_1396674 <- String) }))))]
+[(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $_1396688 &self)) ((1 {($_1396688 <- Number) }) ("a" {($_1396688 <- String) }))))]
 [()]
 [()]
-[(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $_1530022 &self)) ((1 {($_1530022 <- Number) }) ("a" {($_1530022 <- String) }))))]
+[(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $_1530050 &self)) ((1 {($_1530050 <- Number) }) ("a" {($_1530050 <- String) }))))]
 [((Error  (got  ((quote (n/2/0)) (quote (n/1/1)))) (expected  ((quote (n/0/0))))))]
 [((Error  (got  ((quote (n/2/0)) (quote (n/1/1)))) (expected  ((quote (n/1/0)) (quote (n/1/1))))))]
 [()]
@@ -1786,7 +1786,7 @@ Deterministic: ((Error  (got  ()) (expected  (value))))<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-22 20:43:53+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-23 13:27:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

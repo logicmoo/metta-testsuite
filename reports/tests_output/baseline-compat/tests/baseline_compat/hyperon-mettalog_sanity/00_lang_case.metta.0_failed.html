@@ -41,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-22 20:36:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-23 13:20:10+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -410,7 +410,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000676 secs. (675.59 microseconds) 
+; took 0.000822 secs. (822.22 microseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 2 3))))
 
@@ -426,7 +426,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000779 secs. (779.33 microseconds) 
+; took 0.000781 secs. (780.53 microseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 (superpose (2 3))))))
 
@@ -442,7 +442,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000987 secs. (987.45 microseconds) 
+; took 0.001 secs. (1.00 milliseconds) 
 
 !(assertEqual ((superpose (1 2 3))) ((superpose (1 (superpose ((+ 1 1) 3))))))
 
@@ -459,7 +459,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000362 secs. (361.54 microseconds) 
+; took 0.000382 secs. (381.61 microseconds) 
 
 !(assertEqual (case (+ 1 5) ((5 Error) (6 OK) (6 Error))) OK)
 
@@ -476,7 +476,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000448 secs. (447.70 microseconds) 
+; took 0.000354 secs. (354.27 microseconds) 
 
 !(assertEqual (case (+ 1 5) (($x (+ 1 $x)))) 7)
 
@@ -494,7 +494,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000269 secs. (269.43 microseconds) 
+; took 0.000281 secs. (280.61 microseconds) 
 
 !(assertEqual (case 5 ((6 OK))) (superpose ()))
 
@@ -511,7 +511,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000775 secs. (775.11 microseconds) 
+; took 0.000720 secs. (720.12 microseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) ((3 OK-3) (4 OK-4))) (superpose (OK-3 OK-4)))
 
@@ -528,7 +528,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000859 secs. (859.46 microseconds) 
+; took 0.000763 secs. (763.10 microseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) (($x (+ 1 $x)))) (superpose (3 4 5)))
 
@@ -544,7 +544,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000118 secs. (117.59 microseconds) 
+; took 0.000125 secs. (125.10 microseconds) 
 
 !(assertEqualToResult (superpose ()) ())
 
@@ -560,7 +560,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000225 secs. (225.36 microseconds) 
+; took 0.000238 secs. (238.17 microseconds) 
 
 !(assertEqualToResult (collapse (superpose ())) (()))
 
@@ -576,7 +576,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000228 secs. (227.61 microseconds) 
+; took 0.000257 secs. (257.32 microseconds) 
 
 !(assertEqualToResult (superpose ((nop 1))) ())
 
@@ -592,7 +592,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.00-LANG-CASE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000445 secs. (444.68 microseconds) 
+; took 0.000340 secs. (339.87 microseconds) 
 
 !(assertEqualToResult (collapse (superpose ((nop 1)))) (()))
 
@@ -5027,7 +5027,7 @@ NDet Result(781): (: rust! (-> Atom Atom))
 >Call: </span>(287) [rtrace] tAt(false, 271, 271, false)
 ; 
 ; EVAL TEST
-; took 1.113 secs. (1113.02 milliseconds) 
+; took 1.089 secs. (1088.85 milliseconds) 
 
 !(assertEqual (match &self $1 $1) (get-atoms &self))
 
@@ -5035,7 +5035,7 @@ NDet Result(781): (: rust! (-> Atom Atom))
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/00_lang_case.metta progress.
 </span>
-Script done on 2024-11-22 20:37:11+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-11-23 13:20:50+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

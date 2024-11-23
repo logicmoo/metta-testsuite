@@ -15,7 +15,6 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
-.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -43,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-23 14:05:28+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-23 14:15:51+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -202,22 +201,7 @@ Script started on 2024-11-23 14:05:28+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-<span class="ansi1 ansi31"
->
-ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
-</span><span class="ansi31"
->Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
-Warning:    Clauses of </span><span class="ansi34"
->load_flybase/1</span><span class="ansi31"
-> are not together in the source-file
-Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
-Warning:    Current predicate: </span><span class="ansi34"
->'$pldoc'/4</span><span class="ansi31"
->
-Warning:    Use </span><span class="ansi34"
->:- discontiguous load_flybase/1.</span><span class="ansi31"
-> to suppress this message
-</span>P;HTML|
+P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -483,7 +467,7 @@ Last Result(2): ()
 >;; METTA-MORPH-TESTS.TESTS0.01</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.43 milliseconds) 
+; took 0.006 secs. (6.36 milliseconds) 
 
 !(assertEqualToResult (|- ((Garfield --> cat) (1.0 0.9)) ((cat --> animal) (1.0 0.9))) (((animal --> Garfield) (1.0 0.44751381215469616)) ((Garfield --> animal) (1.0 0.81))))
 
@@ -499,7 +483,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.38 milliseconds) 
+; took 0.004 secs. (4.25 milliseconds) 
 
 !(assertEqualToResult (|- ((Garfield --> carnivore) (1.0 0.9)) (((Garfield --> cat) ==> (Garfield --> carnivore)) (1.0 0.9))) (((Garfield --> cat) (1.0 0.44751381215469616))))
 
@@ -515,7 +499,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.03</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.20 milliseconds) 
+; took 0.006 secs. (6.00 milliseconds) 
 
 !(assertEqualToResult (|- ((({(a b) }) --> mwawa) (1.0 0.9))) (((({(a) }) --> mwawa) (1.0 0.81)) ((({(b) }) --> mwawa) (1.0 0.81))))
 
@@ -531,7 +515,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.25 milliseconds) 
+; took 0.006 secs. (5.83 milliseconds) 
 
 !(assertEqualToResult (|- (((a * b) --> R) (1.0 0.9))) (((a --> (R /1 b)) (1.0 0.81)) ((b --> (R /2 a)) (1.0 0.81))))
 
@@ -547,7 +531,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.05</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.28 milliseconds) 
+; took 0.006 secs. (5.84 milliseconds) 
 
 !(assertEqualToResult (|- ((R --> (a * b)) (1.0 0.9))) ((((R \1 b) --> a) (1.0 0.81)) (((R \2 a) --> b) (1.0 0.81))))
 
@@ -563,7 +547,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.06</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.09 milliseconds) 
+; took 0.014 secs. (14.15 milliseconds) 
 
 !(assertEqualToResult (|- ((A --> cat) (1.0 0.9)) ((B --> cat) (1.0 0.9))) (((B --> A) (1.0 0.44751381215469616)) (((A ~ B) --> cat) (0.0 0.81)) (((A | B) --> cat) (1.0 0.81)) ((B <-> A) (1.0 0.44751381215469616)) (((A & B) --> cat) (1.0 0.81))))
 
@@ -579,7 +563,7 @@ Deterministic: ()
 >;; METTA-MORPH-TESTS.TESTS0.07</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (27.73 milliseconds) 
+; took 0.025 secs. (25.27 milliseconds) 
 
 !(assertEqualToResult (|- (|- ((Garfield --> cat) (1.0 0.9)) ((cat --> animal) (1.0 0.9))) ((animal --> being) (1.0 0.9))) (((animal --> (Garfield | being)) (1.0 0.40276243093922653)) ((animal --> (Garfield & being)) (1.0 0.40276243093922653)) ((animal --> (Garfield - being)) (0.0 0.40276243093922653)) ((being <-> Garfield) (1.0 0.28712091374556914)) ((being --> Garfield) (1.0 0.28712091374556914)) ((being --> Garfield) (1.0 0.42163100057836905)) ((Garfield --> being) (1.0 0.7290000000000001))))
 
@@ -588,7 +572,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 2,593,205 inferences, 1.090 CPU in 1.095 seconds (100% CPU, 2378025 Lips)
+% 2,593,657 inferences, 1.074 CPU in 1.079 seconds (100% CPU, 2414469 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/tests0.metta  0)
 <span class="ansi1"
@@ -735,7 +719,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-23 14:05:37+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-23 14:16:00+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

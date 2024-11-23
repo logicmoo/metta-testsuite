@@ -15,7 +15,6 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
-.ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -33,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-23 13:32:12+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-11-23 13:44:19+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           (set_option_value  compat false)
 
@@ -192,22 +191,7 @@ Script started on 2024-11-23 13:32:12+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         (set_option_value  test false)
-<span class="ansi1 ansi31"
->
-ERROR: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:1897:11: Syntax error: Operator expected
-</span><span class="ansi31"
->Warning: /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2522:
-Warning:    Clauses of </span><span class="ansi34"
->load_flybase/1</span><span class="ansi31"
-> are not together in the source-file
-Warning:    Earlier definition at /home/runner/work/metta-wam/metta-wam/library/genome/flybase_loader.pl:2497
-Warning:    Current predicate: </span><span class="ansi34"
->'$pldoc'/4</span><span class="ansi31"
->
-Warning:    Use </span><span class="ansi34"
->:- discontiguous load_flybase/1.</span><span class="ansi31"
-> to suppress this message
-</span>P;HTML|
+P;HTML|
 ;          (is_cmd_option  prescan halt --halt=true true)
 P;HTML|
 ;          (set_option_value  halt true)
@@ -375,7 +359,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.050 secs. (49.63 milliseconds) 
+; took 0.049 secs. (49.32 milliseconds) 
 
 !(assertEqual (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (a d)))
 
@@ -393,7 +377,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.29 milliseconds) 
+; took 0.001 secs. (1.33 milliseconds) 
 
 !(assertEqual (subtraction (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose (a)))
 
@@ -411,7 +395,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.27 milliseconds) 
+; took 0.004 secs. (4.40 milliseconds) 
 
 !(assertEqual (subtraction (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((foo bar))))
 
@@ -429,7 +413,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.12 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqual (subtraction (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (1 3 bar)))
 
@@ -447,7 +431,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
 !(assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d)))
 
@@ -465,7 +449,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000890 secs. (890.15 microseconds) 
+; took 0.000928 secs. (927.60 microseconds) 
 
 !(assertEqual (unique (subtraction (superpose (a b b c)) (superpose (b c c d)))) (superpose (a)))
 
@@ -483,7 +467,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000852 secs. (851.94 microseconds) 
+; took 0.000882 secs. (882.30 microseconds) 
 
 !(assertEqual (subtraction (unique (superpose (a b b c))) (unique (superpose (b c c d)))) (superpose (a)))
 
@@ -501,7 +485,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000662 secs. (662.31 microseconds) 
+; took 0.000673 secs. (673.47 microseconds) 
 
 !(assertEqual (subtraction (superpose ($x $y)) (superpose (b))) (superpose ($x $y)))
 
@@ -519,7 +503,7 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000806 secs. (806.20 microseconds) 
+; took 0.000808 secs. (807.65 microseconds) 
 
 !(assertEqual (subtraction (superpose (a b c)) (superpose ())) (superpose (a b c)))
 
@@ -546,7 +530,7 @@ Deterministic: ()
 </span>
 Deterministic: ()<span class="ansi32"
 >
-% 572,871 inferences, 0.174 CPU in 0.176 seconds (99% CPU, 3296230 Lips)
+% 572,877 inferences, 0.174 CPU in 0.176 seconds (99% CPU, 3300046 Lips)
 </span>P;HTML|
 ;                       (= /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta  0)
 <span class="ansi1"
@@ -695,7 +679,7 @@ Deterministic: ()<span class="ansi32"
 <span class="ansi31"
 >(in  (maybe_halt  7) (unwind  (halt  7)))
 </span>
-Script done on 2024-11-23 13:32:20+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-11-23 13:44:27+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -1109,6 +1109,7 @@ interactively_do_metta_exec01(file(_), Self, _TermV, Term, X, _NamedVarsList, _W
 
 % Reset evaluation counter
 interactively_do_metta_exec01(From,Self,_TermV,Term,X,NamedVarsList,Was,VOutput,FOut):-
+    %format("%%%%%%%%%%%%%%%%%%%%%%%%%2 ~w\n",[Term]),
     notrace((
 
     % Reset evaluation counters for a fresh start
@@ -1179,6 +1180,7 @@ interactively_do_metta_exec01(From,Self,_TermV,Term,X,NamedVarsList,Was,VOutput,
       % Debug output in interactive mode, showing evaluated terms and results
       prolog_only((color_g_mesg('#da70d6', (write('% DEBUG:   '), writeq(PL),writeln('.'))))),
       true))))),
+
    % Print formatted answer output
    in_answer_io(format('~N[')),!,
 
@@ -1347,12 +1349,14 @@ get_single_char_key(C, A):- name(A, [C]).
 forall_interactive(file(_), false, Complete, Goal, After) :-
     !,
     % Execute the goal.
+    %format("%%%%%%%%%%%%%%%%%%%%%%%%%0 ~w\n",[Goal]),
     Goal,
     % If the goal is complete, execute 'After', otherwise skip it.
     (Complete == true -> (After, !) ; (\+ After)).
 forall_interactive(prolog, false, Complete, Goal, After) :-
     !,
     % Execute the goal.
+    %format("%%%%%%%%%%%%%%%%%%%%%%%%%1 ~w\n",[Goal]),
     Goal,
     % If the goal is complete, succeed, otherwise continue.
     (Complete == true -> ! ; true),

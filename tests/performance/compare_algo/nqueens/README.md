@@ -1,9 +1,3 @@
-Here’s the complete and comprehensive **Markdown file** for the updated analysis, including all tables, observations, and insights. It is structured for clarity and ease of use.
-
----
-
-# **N-Queens Performance Analysis**
-
 This document presents a detailed comparison of various implementations of the N-Queens problem, focusing on **MeTTaLog**, **MeTTaRust**, **Transpiled MeTTaLog**, and **Prolog (Plain and CLP(FD))**, as well as comparisons with other programming languages like Python and C/C++.
 
 ---

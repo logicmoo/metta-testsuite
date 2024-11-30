@@ -17,7 +17,7 @@ The following table compares the execution times for **MeTTaLog** and **MeTTaRus
 
 ## **Proportionality of MeTTaLog and Plain Prolog**
 
-MeTTaLog and Plain Prolog exhibit proportional scaling. Both implementations handle recursion and symbolic reasoning efficiently due to their declarative natures. However, Plain Prolog is significantly faster because of its optimized runtime environment and more mature backtracking mechanisms.
+MeTTaLog and Plain Prolog exhibit proportional scaling. Both implementations handle recursion and symbolic reasoning efficiently due to their declarative natures.
 
 ### **Longer Timing Table**
 
@@ -44,8 +44,6 @@ MeTTaLog and Plain Prolog exhibit proportional scaling. Both implementations han
 ---
 
 MeTTa, with its declarative and symbolic reasoning capabilities, presents unique challenges when translating to other languages. This document explores why **Prolog** emerges as the most practical target for MeTTa logic, compared to procedural languages like **C**, functional languages like **Scheme** or **Common Lisp**, and modern object-oriented languages like **Python** or **Java**.
-
-Additionally, while **C/C++** is a fine ultimate target for performance-critical applications, this document argues that **Prolog** should serve as an intermediary stopgap. Translating MeTTa to Prolog first ensures that we preserve the **"superpowers"** of Prolog—such as native backtracking, symbolic logic, and constraints—before generating highly optimized C/C++ implementations.
 
 ---
 
@@ -87,22 +85,6 @@ Additionally, while **C/C++** is a fine ultimate target for performance-critical
 | **Ease of Translation**  | N/A                      | High                     | Moderate                     | Moderate                  | Low                         |
 
 ---
-
-## **Conclusion**
-
-While **C/C++** is an excellent ultimate target for performance-critical applications, translating MeTTa directly to C/C++ risks losing key capabilities such as:
-- **Native backtracking.**
-- **Symbolic reasoning.**
-- **Constraint-solving mechanisms.**
-
-By translating MeTTa to **Prolog** first, we can:
-1. Preserve its declarative logic and symbolic reasoning capabilities.
-2. Leverage Prolog’s native backtracking and constraint-handling as a reference for generating C/C++ implementations.
-3. Ensure correctness and maintain logical abstractions before focusing on performance optimizations.
-
-This two-step process provides a balance between leveraging **Prolog’s logical power** and achieving
-
- **C/C++’s execution speed**, ensuring no logical capabilities are lost while optimizing for scalability and efficiency.
 
 
 ## **Enhancing MeTTa: Integrating Prolog and CLP(FD) Features**

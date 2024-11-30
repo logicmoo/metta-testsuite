@@ -43,9 +43,9 @@ nqueens(N, Solution) :-
 % Start the benchmark
 benchmark(N) :-
     statistics(walltime, [_ | [_]]),
-    nqueens(N, Solution),
+    findall(S, nqueens(N, S), Solutions),
+    length(Solutions, Length),
     statistics(walltime, [_ | [Elapsed]]),
-    length(Solution, Length),
     format("N=~w: ~w solutions found in ~w ms~n", [N, Length, Elapsed]).
 EOF
 

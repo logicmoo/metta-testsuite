@@ -38,12 +38,5 @@
 
 ### **Takeaways**
 
-1. **Performance Tiers:**
    - **C/C++ and Transpiled MeTTaLog** are the fastest implementations, with C/C++ leading for all N and Transpiled MeTTaLog excelling among symbolic reasoning tools.
-   - **Prolog CLP(FD)** is optimal for smaller N, while **Plain Prolog** becomes more effective for larger N.
-
-2. **Scaling Challenges for MeTTaLog and MeTTaRust:**
-   - Both **MeTTaLog** and **MeTTaRust** require significant optimization for scalability, particularly for larger N.
-
-3. **MeTTa Enhancements:**
-   - Leveraging Prolog-inspired optimizations and improving transpilation techniques can make MeTTa competitive for real-world applications.
+   - **Prolog CLP(FD)** is not a magic bullet for some problems.

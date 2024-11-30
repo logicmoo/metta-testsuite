@@ -40,14 +40,11 @@ The table below provides a detailed comparison of execution times for all implem
 
 ### **2.2 Observations**
 
-#### **1. Transpiled MeTTaLog Performance**
+#### **Interpreted vs. Transpiled MeTTaLog**
 - Transpiled MeTTaLog achieves **sub-second execution** for N ≤ 8, solving N=10 in **0.11 minutes (~6.6 seconds)** and N=12 in **0.415 minutes (~24.9 seconds)**.
-- These times demonstrate its ability to narrow the performance gap with low-level implementations like C/C++.
-
-#### **2. Interpreted vs. Transpiled MeTTaLog**
 - Transpiled MeTTaLog is **2000x faster** than Interpreted MeTTaLog for larger N like N=10, transforming MeTTa into a practical option for real-world performance requirements.
 
-#### **3. Plain Prolog vs. CLP(FD)**
+#### **Plain Prolog vs. CLP(FD)**
 - **Plain Prolog Advantages:**
   - **Better Scalability for Large N:** Plain Prolog avoids the resource-intensive domain propagation machinery of CLP(FD), enabling it to scale better for very large problem sizes (e.g., N > 12).
   - **Simplicity:** The backtracking mechanism of Plain Prolog is lightweight and effective for problems where constraints are straightforward and don't require advanced pruning.
@@ -61,7 +58,7 @@ The table below provides a detailed comparison of execution times for all implem
   - **Plain Prolog** is preferable for larger N or when stack constraints are a concern.
   - **CLP(FD)** is ideal for constraint-heavy problems with smaller solution spaces or when domain-specific pruning can significantly reduce search time.
 
-#### **4. Comparison with C/C++**
+#### **Comparison with C/C++**
 - Transpiled MeTTaLog narrows the gap but is still outperformed by C/C++ for all N, where execution remains in the sub-second range.
 
 ---

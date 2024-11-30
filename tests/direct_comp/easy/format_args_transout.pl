@@ -1,4 +1,8 @@
-% Info: File /home/deb12user/metta-wam/tests/direct_comp/easy/format_args.metta is 2.29K bytes (66 lines)
+
+:- ensure_loaded('/home/deb12user/metta-wam-royward-dev/src/canary/metta_runtime').
+
+% Begin transpiler output
+
 % [[prolog_if,[[assign,_21680,[]],[assign,_21382,[call(==),$VAR(x),_21680]],[native(is_True),_21382]],[[assign,_21120,$VAR(y)]],[[assign,$VAR(h),[call(car-atom),$VAR(x)                                                                                                                             ]],[assign,$VAR(t),[call(cdr-atom),$VAR(x)]],[assign,$VAR(rest),[call(append),$VAR(t),$VAR(y)]],[assign,_21928,[call(cons-atom),$VAR(h),$VAR(rest)]],[assign,_21120,_2                                                                                                                             1928]]]]:- dynamic mc__append/3.
 :- multifile mc__append/3.
 
@@ -94,6 +98,7 @@ metta_compiled_predicate('&self', mc__append, 3).
 metta_compiled_predicate('&self', 'mc__format-args-aux', 4).
 metta_compiled_predicate('&self', mc__nth, 3).
 metta_compiled_predicate('&self', mc__append, 3).
+
 */
 
 % [[assign,$VAR(format-chars),[call(stringToChars),$VAR(format)]],[assign,$VAR(formatted),[call(format-args-aux),$VAR(format-chars),$VAR(args),0]],[assign,_105818,[call                                                                                                                             (charsToString),$VAR(formatted)]]]:- dynamic'mc__format-argsx'/3.
@@ -113,3 +118,35 @@ metta_compiled_predicate('&self', 'mc__format-args-aux', 4).
 metta_compiled_predicate('&self', mc__nth, 3).
 metta_compiled_predicate('&self', mc__append, 3).
 
+% ;;; Tests
+
+:- begin_metta_runtime.
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("{}ab", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    mc__append([1, 2], [3, 5], A)).
+
+:- do_metta_runtime(A,
+    mc__nth(3, [10, 11, 12, 13, 14, 15], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("ab", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("{ab", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("a{b", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("{}a{b", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("{}a{}b", ["XX", "ZZ"], A)).
+
+:- do_metta_runtime(A,
+    'mc__format-argsx'("a{}b{}", ["XX", "ZZ"], A)).
+
+:- end_metta_runtime.

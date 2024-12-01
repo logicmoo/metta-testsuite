@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
@@ -173,7 +174,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:15:17+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:06:01+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -332,9 +335,12 @@ Script started on 2024-11-30 14:15:17+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.177 CPU in 0.177 seconds (100% CPU, 264418 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4565294 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -504,9 +510,9 @@ Script started on 2024-11-30 14:15:17+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 8 "Missed result: (True))]" )
 P;HTML|
-;                                         #( = 8 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26220maxresident)k" )
+;                                         #( = 8 "0.03user 0.00system 0:00.04elapsed 95%CPU (0avgtext+0avgdata 26224maxresident)k" )
 P;HTML|
-;                                         #( = 8 "0inputs+0outputs (0major+3119minor)pagefaults 0swaps" )
+;                                         #( = 8 "0inputs+0outputs (0major+3120minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_2.metta is 9.27K bytes (260 lines)
@@ -520,6 +526,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (is Fritz croaks)  True))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (is Fritz croaks)  True)) (()))
 
@@ -528,20 +538,32 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.01</h3>
 <span class="ansi38-255165000"
 > (= (is Fritz croaks)  True)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.46 milliseconds) 
+; took 0.001 secs. (1.11 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (= (is Fritz croaks)  True)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (is Fritz eats-flies)  True))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (is Fritz eats-flies)  True)) (()))
 
@@ -550,22 +572,33 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.02</h3>
 <span class="ansi38-255165000"
 > (= (is Fritz eats-flies)  True)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.001 secs. (1.47 milliseconds) 
+; took 0.000847 secs. (846.77 microseconds) 
 
 !(assertEqualToResult (add-atom &self (= (is Fritz eats-flies)  True)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Define that Tweety chirps, is yellow, and eats-flies
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define that Tweety chirps, is yellow, and eats-flies
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (is Tweety chirps)  True))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (is Tweety chirps)  True)) (()))
 
@@ -574,20 +607,32 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.03</h3>
 <span class="ansi38-255165000"
 > (= (is Tweety chirps)  True)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (1.53 milliseconds) 
+; took 0.000871 secs. (871.17 microseconds) 
 
 !(assertEqualToResult (add-atom &self (= (is Tweety chirps)  True)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (is Tweety yellow)  True))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (is Tweety yellow)  True)) (()))
 
@@ -596,20 +641,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.04</h3>
 <span class="ansi38-255165000"
 > (= (is Tweety yellow)  True)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.000877 secs. (876.76 microseconds) 
 
 !(assertEqualToResult (add-atom &self (= (is Tweety yellow)  True)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (is Tweety eats-flies)  True))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (is Tweety eats-flies)  True)) (()))
 
@@ -618,22 +675,33 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.05</h3>
 <span class="ansi38-255165000"
 > (= (is Tweety eats-flies)  True)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.000853 secs. (852.93 microseconds) 
 
 !(assertEqualToResult (add-atom &self (= (is Tweety eats-flies)  True)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Define a rule: if someone croaks and eats-flies, they are a frog
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define a rule: if someone croaks and eats-flies, they are a frog
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (= (if (and (is $x croaks) (is $x eats-flies)) (= (is $x frog)  True) )))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (= (if (and (is $x croaks) (is $x eats-flies)) (= (is $x frog)  True) ))) (()))
 
@@ -642,17 +710,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.06</h3>
 <span class="ansi38-255165000"
 > (= (if (and (is $10000 croaks) (is $10000 eats-flies)) (= (is $10000 frog)  True) ))
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.023 secs. (22.60 milliseconds) 
+; took 0.022 secs. (21.90 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (= (if (and (is $x croaks) (is $x eats-flies)) (= (is $x frog)  True) ))) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test that Fritz is deduced to be a frog
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that Fritz is deduced to be a frog
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (is Fritz frog) %Undefined% &self) ((True)))
 
@@ -661,15 +740,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
+; took 0.001 secs. (1.14 milliseconds) 
 
 !(assertEqualToResult (metta (is Fritz frog) %Undefined% &self) ((True)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((is Fritz frog)) ((True))))
 </span>
-Deterministic: (#(Error #(got ((is Fritz frog))) #(expected ((True)))))
-;;; Test that Tweety is not deduced to be a frog
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((is Fritz frog))) #(expected ((True)))))
+</span>;;; Test that Tweety is not deduced to be a frog
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (is Tweety frog) %Undefined% &self) (()))
 
@@ -678,30 +766,61 @@ Deterministic: (#(Error #(got ((is Fritz frog))) #(expected ((True)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.08</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000964 secs. (964.06 microseconds) 
 
 !(assertEqualToResult (metta (is Tweety frog) %Undefined% &self) (()))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((is Tweety frog)) (())))
 </span>
-Deterministic: (#(Error #(got ((is Tweety frog))) #(expected (()))))
-;;; Test that variable keeps value in different sub-expressions
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((is Tweety frog))) #(expected (()))))
+</span>;;; Test that variable keeps value in different sub-expressions
 ;;; Define equality and addition functions
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (eq $x $x)  True))
 
 </span><span class="ansi38-255165000"
 > (= (eq $10000 $10000)  True)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (plus Z $y)  $y))
 
 </span><span class="ansi38-255165000"
 > (= (plus Z $10000)  $10000)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (plus (S $k) $y)  
   (S (plus $k $y))))
@@ -710,8 +829,19 @@ Deterministic: ()
 > (= (plus (S $10000) $10001)  
   (S (plus $10000 $10001)))
 </span>
-Deterministic: ()
-;;; Test that (eq (plus Z $n) $n) evaluates to True
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that (eq (plus Z $n) $n) evaluates to True
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) ((True)))
 
@@ -720,15 +850,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000770 secs. (770.13 microseconds) 
+; took 0.000779 secs. (779.40 microseconds) 
 
 !(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) ((True)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (True) ((True))))
 </span>
-Deterministic: (#(Error #(got (True)) #(expected ((True)))))
-;;; Test that (eq (plus (S Z) $n) $n) evaluates to False (empty result)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (True)) #(expected ((True)))))
+</span>;;; Test that (eq (plus (S Z) $n) $n) evaluates to False (empty result)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))
 
@@ -737,45 +876,98 @@ Deterministic: (#(Error #(got (True)) #(expected ((True)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.76 milliseconds) 
+; took 0.002 secs. (2.22 milliseconds) 
 
 !(assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((eq (S $10000) $10000)) (())))
 </span>
-Deterministic: (#(Error #(got ((eq (S $10000) $10000))) #(expected (()))))
-;;; Test that operation is an expression
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((eq (S $10000) $10000))) #(expected (()))))
+</span>;;; Test that operation is an expression
 ;;; Define types and functions
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: foo (-> (-> A A))))
 
 </span><span class="ansi38-255165000"
 > (: foo (-> (-> A A)))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: a A))
 
 </span><span class="ansi38-255165000"
 > (: a A)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo)  bar))
 
 </span><span class="ansi38-255165000"
 > (= (foo)  bar)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (bar $x)  $x))
 
 </span><span class="ansi38-255165000"
 > (= (bar $10000)  $10000)
 </span>
-Deterministic: ()
-;;; Test that ((foo) a) evaluates to 'a'
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that ((foo) a) evaluates to 'a'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
@@ -784,38 +976,80 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000900 secs. (899.63 microseconds) 
+; took 0.000843 secs. (843.32 microseconds) 
 
 !(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (a) ((a))))
 </span>
-Deterministic: (#(Error #(got (a)) #(expected ((a)))))
-;;; Test handling of bad type error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (a)) #(expected ((a)))))
+</span>;;; Test handling of bad type error
 ;;; Define atom with type 'myType' and function 'id_a' of type (-> A A)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: myAtom myType))
 
 </span><span class="ansi38-255165000"
 > (: myAtom myType)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: id_a (-> A A)))
 
 </span><span class="ansi38-255165000"
 > (: id_a (-> A A))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (id_a $a)  $a))
 
 </span><span class="ansi38-255165000"
 > (= (id_a $10000)  $10000)
 </span>
-Deterministic: ()
-;;; Test that (id_a myAtom) results in a bad type error
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that (id_a myAtom) results in a bad type error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (id_a myAtom) %Undefined% &self) ((Error myAtom "BadType")))
 
@@ -824,52 +1058,116 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000554 secs. (554.47 microseconds) 
+; took 0.000476 secs. (475.59 microseconds) 
 
 !(assertEqualToResult (metta (id_a myAtom) %Undefined% &self) ((Error myAtom "BadType")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (myAtom) ((Error myAtom "BadType"))))
 </span>
-Deterministic: (#(Error #(got (myAtom)) #(expected ((Error myAtom "BadType")))))
-;;; Test error when incorrect number of arguments are provided
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (myAtom)) #(expected ((Error myAtom "BadType")))))
+</span>;;; Test error when incorrect number of arguments are provided
 ;;; Define function 'foo' of type (-> A B C)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: a A))
 
 </span><span class="ansi38-255165000"
 > (: a A)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: b B))
 
 </span><span class="ansi38-255165000"
 > (: b B)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: c C))
 
 </span><span class="ansi38-255165000"
 > (: c C)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: foo (-> A B C)))
 
 </span><span class="ansi38-255165000"
 > (: foo (-> A B C))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo $a $b)  c))
 
 </span><span class="ansi38-255165000"
 > (= (foo $10000 $10001)  c)
 </span>
-Deterministic: ()
-;;; Test that (foo a b) evaluates to 'c' (correct number of arguments)
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that (foo a b) evaluates to 'c' (correct number of arguments)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))
 
@@ -878,15 +1176,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000580 secs. (579.99 microseconds) 
+; took 0.000505 secs. (505.49 microseconds) 
 
 !(assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (c) ((c))))
 </span>
-Deterministic: (#(Error #(got (c)) #(expected ((c)))))
-;;; Test that (foo a) results in an incorrect number of arguments error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (c)) #(expected ((c)))))
+</span>;;; Test that (foo a) results in an incorrect number of arguments error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
 
@@ -895,16 +1202,25 @@ Deterministic: (#(Error #(got (c)) #(expected ((c)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000895 secs. (895.18 microseconds) 
+; took 0.000689 secs. (688.99 microseconds) 
 
 !(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((foo a)) ((Error (foo a) "IncorrectNumberOfArguments"))))
 </span>
-Deterministic: (#(Error #(got ((foo a))) #(expected ((Error (foo a) "IncorrectNumberOfArguments")))))
-;;; Test that 'Error' can be used as an argument and has appropriate types
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((foo a))) #(expected ((Error (foo a) "IncorrectNumberOfArguments")))))
+</span>;;; Test that 'Error' can be used as an argument and has appropriate types
 ;;; Test get-type of 'Error', expecting (-> Atom Atom ErrorType)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
@@ -913,15 +1229,24 @@ Deterministic: (#(Error #(got ((foo a))) #(expected ((Error (foo a) "IncorrectNu
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000180 secs. (179.98 microseconds) 
+; took 0.000165 secs. (165.38 microseconds) 
 
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((-> Atom Atom ErrorType)) (((-> Atom Atom ErrorType)))))
 </span>
-Deterministic: (#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom Atom ErrorType))))))
-;;; Test get-metatype of 'Error', expecting 'Symbol'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom Atom ErrorType))))))
+</span>;;; Test get-metatype of 'Error', expecting 'Symbol'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-metatype Error) ((Symbol)))
 
@@ -930,15 +1255,24 @@ Deterministic: (#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom 
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000303 secs. (303.22 microseconds) 
+; took 0.000277 secs. (277.23 microseconds) 
 
 !(assertEqualToResult (get-metatype Error) ((Symbol)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (Grounded) ((Symbol))))
 </span>
-Deterministic: (#(Error #(got (Grounded)) #(expected ((Symbol)))))
-;;; Test get-type of an 'Error' expression, expecting 'ErrorType'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (Grounded)) #(expected ((Symbol)))))
+</span>;;; Test get-type of an 'Error' expression, expecting 'ErrorType'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
@@ -947,15 +1281,24 @@ Deterministic: (#(Error #(got (Grounded)) #(expected ((Symbol)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000338 secs. (338.43 microseconds) 
+; took 0.000251 secs. (250.93 microseconds) 
 
 !(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) ((ErrorType))))
 </span>
-Deterministic: (#(Error #(got (())) #(expected ((ErrorType)))))
-;;; Test constructing an 'Error' expression with invalid arguments
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (())) #(expected ((ErrorType)))))
+</span>;;; Test constructing an 'Error' expression with invalid arguments
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
@@ -964,16 +1307,25 @@ Deterministic: (#(Error #(got (())) #(expected ((ErrorType)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000025 secs. (25.08 microseconds) 
+; took 0.000016 secs. (15.84 microseconds) 
 
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Error (+ 1 2) (+ 1 +))) ((Error (+ 1 2) (+ 1 +)))))
 </span>
-Deterministic: ()
-;;; Test parsing of strings with special characters
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test parsing of strings with special characters
 ;;; Test that '!(id "test")' returns "test"
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (id "test") (("test")))
 
@@ -982,15 +1334,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000397 secs. (397.09 microseconds) 
+; took 0.000311 secs. (310.57 microseconds) 
 
 !(assertEqualToResult (id "test") (("test")))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test ("test") (("test"))))
+>#(loonit_failureR #(equal_enough_for_test ((id "test")) (("test"))))
 </span>
-Deterministic: (#(Error #(got ("test")) #(expected (("test")))))
-;;; Test that '!(id "te st")' returns "te st"
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((id "test"))) #(expected (("test")))))
+</span>;;; Test that '!(id "te st")' returns "te st"
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (id "te st") (("te st")))
 
@@ -999,15 +1360,24 @@ Deterministic: (#(Error #(got ("test")) #(expected (("test")))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000407 secs. (406.82 microseconds) 
+; took 0.000282 secs. (282.06 microseconds) 
 
 !(assertEqualToResult (id "te st") (("te st")))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test ("te st") (("te st"))))
+>#(loonit_failureR #(equal_enough_for_test ((id "te st")) (("te st"))))
 </span>
-Deterministic: (#(Error #(got ("te st")) #(expected (("te st")))))
-;;; Test that '!(id "te\"st")' returns 'te"st'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((id "te st"))) #(expected (("te st")))))
+</span>;;; Test that '!(id "te\"st")' returns 'te"st'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (id "te\"st") (("te\"st")))
 
@@ -1016,15 +1386,24 @@ Deterministic: (#(Error #(got ("te st")) #(expected (("te st")))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000383 secs. (382.81 microseconds) 
+; took 0.000289 secs. (288.68 microseconds) 
 
 !(assertEqualToResult (id "te\"st") (("te\"st")))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test ("te\"st") (("te\"st"))))
+>#(loonit_failureR #(equal_enough_for_test ((id "te\"st")) (("te\"st"))))
 </span>
-Deterministic: (#(Error #(got ("te\"st")) #(expected (("te\"st")))))
-;;; Test that '!(id "")' returns empty string
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((id "te\"st"))) #(expected (("te\"st")))))
+</span>;;; Test that '!(id "")' returns empty string
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (id "") (("")))
 
@@ -1033,15 +1412,24 @@ Deterministic: (#(Error #(got ("te\"st")) #(expected (("te\"st")))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000396 secs. (395.68 microseconds) 
+; took 0.000374 secs. (373.83 microseconds) 
 
 !(assertEqualToResult (id "") (("")))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test ("") ((""))))
+>#(loonit_failureR #(equal_enough_for_test ((id "")) ((""))))
 </span>
-Deterministic: (#(Error #(got ("")) #(expected (("")))))
-;;; Test that '!(id "te\nst")' returns 'te\nst'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((id ""))) #(expected (("")))))
+</span>;;; Test that '!(id "te\nst")' returns 'te\nst'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (id "te\nst") (("te\nst")))
 
@@ -1050,15 +1438,24 @@ Deterministic: (#(Error #(got ("")) #(expected (("")))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000383 secs. (382.93 microseconds) 
+; took 0.000349 secs. (349.28 microseconds) 
 
 !(assertEqualToResult (id "te\nst") (("te\nst")))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test ("te\nst") (("te\nst"))))
+>#(loonit_failureR #(equal_enough_for_test ((id "te\nst")) (("te\nst"))))
 </span>
-Deterministic: (#(Error #(got ("te\nst")) #(expected (("te\nst")))))
-;;; Test that '!("te\nst"test)' returns a tuple with 'te\nst' and 'test'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((id "te\nst"))) #(expected (("te\nst")))))
+</span>;;; Test that '!("te\nst"test)' returns a tuple with 'te\nst' and 'test'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("te\nst" test) ((("te\nst") test)))
 
@@ -1067,31 +1464,62 @@ Deterministic: (#(Error #(got ("te\nst")) #(expected (("te\nst")))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000260 secs. (259.73 microseconds) 
+; took 0.000253 secs. (253.40 microseconds) 
 
 !(assertEqualToResult ("te\nst" test) ((("te\nst") test)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (("te\nst" test)) ((("te\nst") test))))
 </span>
-Deterministic: (#(Error #(got (("te\nst" test))) #(expected ((("te\nst") test)))))
-;;; Test metta_superpose with function calls
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (("te\nst" test))) #(expected ((("te\nst") test)))))
+</span>;;; Test metta_superpose with function calls
 ;;; Define functions 'foo' and 'bar'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo)  FOO))
 
 </span><span class="ansi38-255165000"
 > (= (foo)  FOO)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (bar)  BAR))
 
 </span><span class="ansi38-255165000"
 > (= (bar)  BAR)
 </span>
-Deterministic: ()
-;;; Test superpose with expressions ((foo) (bar) BAZ)
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test superpose with expressions ((foo) (bar) BAZ)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (superpose ((foo) (bar) BAZ)) ((FOO BAR BAZ)))
 
@@ -1100,45 +1528,96 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000733 secs. (733.33 microseconds) 
+; took 0.000591 secs. (591.33 microseconds) 
 
 !(assertEqualToResult (superpose ((foo) (bar) BAZ)) ((FOO BAR BAZ)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (bar FOO BAR BAZ) ((FOO BAR BAZ))))
 </span>
-Deterministic: (#(Error #(got (bar FOO BAR BAZ)) #(expected ((FOO BAR BAZ)))))
-;;; Test metta_collapse to select one of multiple possible values
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (bar FOO BAR BAZ)) #(expected ((FOO BAR BAZ)))))
+</span>;;; Test metta_collapse to select one of multiple possible values
 ;;; Define multiple possible values for 'color'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (color)  red))
 
 </span><span class="ansi38-255165000"
 > (= (color)  red)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (color)  green))
 
 </span><span class="ansi38-255165000"
 > (= (color)  green)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (color)  blue))
 
 </span><span class="ansi38-255165000"
 > (= (color)  blue)
 </span>
-Deterministic: ()
-;;; Test collapse of 'color', expecting one of red, green, or blue
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test collapse of 'color', expecting one of red, green, or blue
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (collapse (color)) ((red)) ((green)) ((blue)))
 
 </span>
-Deterministic: (assertEqualToResult (red green blue) ((red)) ((green)) ((blue)))
-;;; Test metta_let_novar with no variable bindings
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(assertEqualToResult (red green blue) ((red)) ((green)) ((blue)))
+</span>;;; Test metta_let_novar with no variable bindings
 ;;; Expecting 'result'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let () result) ((result)))
 
@@ -1147,16 +1626,25 @@ Deterministic: (assertEqualToResult (red green blue) ((red)) ((green)) ((blue)))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.26</h3>
 ; 
 ; EVAL TEST
-; took 0.000430 secs. (430.02 microseconds) 
+; took 0.000315 secs. (314.90 microseconds) 
 
 !(assertEqualToResult (let () result) ((result)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((let () result)) ((result))))
 </span>
-Deterministic: (#(Error #(got ((let () result))) #(expected ((result)))))
-;;; Test metta_let_novar with variable substitution
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((let () result))) #(expected ((result)))))
+</span>;;; Test metta_let_novar with variable substitution
 ;;; Substitute in (P $b $a)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (P A $b) (P $a B) (P $b $a)) ((P B A)))
 
@@ -1165,16 +1653,25 @@ Deterministic: (#(Error #(got ((let () result))) #(expected ((result)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.27</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000919 secs. (919.35 microseconds) 
 
 !(assertEqualToResult (let (P A $b) (P $a B) (P $b $a)) ((P B A)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((P B A)) ((P B A))))
 </span>
-Deterministic: ()
-;;; Test metta_let_var with multiple variable bindings
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test metta_let_var with multiple variable bindings
 ;;; Binding ((P A $b) (P $a B))
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let* (((P A $b) (P $a B))) (P $b $a)) ((P B A)))
 
@@ -1183,31 +1680,62 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.28</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.55 milliseconds) 
+; took 0.000859 secs. (858.83 microseconds) 
 
 !(assertEqualToResult (let* (((P A $b) (P $a B))) (P $b $a)) ((P B A)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((P B A)) ((P B A))))
 </span>
-Deterministic: ()
-;;; Test metta_quote and metta_unquote operations
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test metta_quote and metta_unquote operations
 ;;; Define functions 'foo' and 'bar'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo)  A))
 
 </span><span class="ansi38-255165000"
 > (= (foo)  A)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (bar $x)  $x))
 
 </span><span class="ansi38-255165000"
 > (= (bar $10000)  $10000)
 </span>
-Deterministic: ()
-;;; Use quote to prevent evaluation
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Use quote to prevent evaluation
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (bar (quote (foo))) ((quote (foo))))
 
@@ -1216,15 +1744,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.29</h3>
 ; 
 ; EVAL TEST
-; took 0.000387 secs. (386.68 microseconds) 
+; took 0.000332 secs. (332.19 microseconds) 
 
 !(assertEqualToResult (bar (quote (foo))) ((quote (foo))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((quote (foo))) ((quote (foo)))))
 </span>
-Deterministic: ()
-;;; Use unquote to force evaluation before 'bar' is called
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Use unquote to force evaluation before 'bar' is called
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (bar (unquote (quote (foo)))) ((A)))
 
@@ -1233,15 +1770,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.30</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.000647 secs. (647.03 microseconds) 
 
 !(assertEqualToResult (bar (unquote (quote (foo)))) ((A)))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test (bar FOO A) ((A))))
+>#(loonit_failureR #(equal_enough_for_test ((unquote (quote (foo)))) ((A))))
 </span>
-Deterministic: (#(Error #(got (bar FOO A)) #(expected ((A)))))
-;;; Use unquote after 'bar' is called
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((unquote (quote (foo))))) #(expected ((A)))))
+</span>;;; Use unquote after 'bar' is called
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (unquote (bar (quote (foo)))) ((A)))
 
@@ -1250,52 +1796,116 @@ Deterministic: (#(Error #(got (bar FOO A)) #(expected ((A)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.31</h3>
 ; 
 ; EVAL TEST
-; took 0.000897 secs. (897.18 microseconds) 
+; took 0.000636 secs. (636.26 microseconds) 
 
 !(assertEqualToResult (unquote (bar (quote (foo)))) ((A)))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test (bar FOO A) ((A))))
+>#(loonit_failureR #(equal_enough_for_test ((unquote (quote (foo)))) ((A))))
 </span>
-Deterministic: (#(Error #(got (bar FOO A)) #(expected ((A)))))
-;;; Test get-doc for a function call
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((unquote (quote (foo))))) #(expected ((A)))))
+</span>;;; Test get-doc for a function call
 ;;; Define function 'some-func' with types and documentation
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: Arg1Type Type))
 
 </span><span class="ansi38-255165000"
 > (: Arg1Type Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: Arg2Type Type))
 
 </span><span class="ansi38-255165000"
 > (: Arg2Type Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: RetType Type))
 
 </span><span class="ansi38-255165000"
 > (: RetType Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: some-func (-> Arg1Type Arg2Type RetType)))
 
 </span><span class="ansi38-255165000"
 > (: some-func (-> Arg1Type Arg2Type RetType))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))
 
 </span><span class="ansi38-255165000"
 > (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
 </span>
-Deterministic: ()
-;;; Test get-doc for function call (some-func a b)
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-doc for function call (some-func a b)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-doc (some-func a b)) ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))
 
@@ -1304,23 +1914,43 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.32</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.28 milliseconds) 
+; took 0.000941 secs. (940.84 microseconds) 
 
 !(assertEqualToResult (get-doc (some-func a b)) ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test () ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))))
+>#(loonit_failureR #(equal_enough_for_test ((metta-get-doc (some-func a b))) ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))))
 </span>
-Deterministic: (#(Error #(got ()) #(expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))
-;;; Test get-doc for a function without type information
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((metta-get-doc (some-func a b)))) #(expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))
+</span>;;; Test get-doc for a function without type information
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (@doc some-func-no-type (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))
 
 </span><span class="ansi38-255165000"
 > (@doc some-func-no-type (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
 </span>
-Deterministic: ()
-;;; Test get-doc for 'some-func-no-type', expecting Undefined type
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-doc for 'some-func-no-type', expecting Undefined type
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-doc some-func-no-type) ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))
 
@@ -1329,16 +1959,25 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.33</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.21 milliseconds) 
+; took 0.000527 secs. (526.65 microseconds) 
 
 !(assertEqualToResult (get-doc some-func-no-type) ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))
 
 <span class="ansi31"
->#(loonit_failureR #(equal_enough_for_test () ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))))
+>#(loonit_failureR #(equal_enough_for_test ((metta-get-doc some-func-no-type)) ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))))
 </span>
-Deterministic: (#(Error #(got ()) #(expected ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))
-;;; Test handling of Error when used as an argument
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((metta-get-doc some-func-no-type))) #(expected ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))
+</span>;;; Test handling of Error when used as an argument
 ;;; Test get-type of 'Error', expecting (-> Atom Atom ErrorType)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
@@ -1347,15 +1986,24 @@ Deterministic: (#(Error #(got ()) #(expected ((@doc-formal (@item some-func-no-t
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000196 secs. (195.86 microseconds) 
+; took 0.000158 secs. (158.10 microseconds) 
 
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((-> Atom Atom ErrorType)) (((-> Atom Atom ErrorType)))))
 </span>
-Deterministic: (#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom Atom ErrorType))))))
-;;; Test get-metatype of 'Error', expecting 'Symbol'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom Atom ErrorType))))))
+</span>;;; Test get-metatype of 'Error', expecting 'Symbol'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-metatype Error) ((Symbol)))
 
@@ -1364,15 +2012,24 @@ Deterministic: (#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom 
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000284 secs. (283.57 microseconds) 
+; took 0.000237 secs. (237.18 microseconds) 
 
 !(assertEqualToResult (get-metatype Error) ((Symbol)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (Grounded) ((Symbol))))
 </span>
-Deterministic: (#(Error #(got (Grounded)) #(expected ((Symbol)))))
-;;; Test get-type of an 'Error' expression, expecting 'ErrorType'
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (Grounded)) #(expected ((Symbol)))))
+</span>;;; Test get-type of an 'Error' expression, expecting 'ErrorType'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
@@ -1381,15 +2038,24 @@ Deterministic: (#(Error #(got (Grounded)) #(expected ((Symbol)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000347 secs. (346.84 microseconds) 
+; took 0.000228 secs. (228.34 microseconds) 
 
 !(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) ((ErrorType))))
 </span>
-Deterministic: (#(Error #(got (())) #(expected ((ErrorType)))))
-;;; Test constructing an 'Error' expression with invalid arguments
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (())) #(expected ((ErrorType)))))
+</span>;;; Test constructing an 'Error' expression with invalid arguments
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
@@ -1398,73 +2064,170 @@ Deterministic: (#(Error #(got (())) #(expected ((ErrorType)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000044 secs. (44.05 microseconds) 
+; took 0.000018 secs. (18.05 microseconds) 
 
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Error (+ 1 2) (+ 1 +))) ((Error (+ 1 2) (+ 1 +)))))
 </span>
-Deterministic: ()
-;;; Test get-type operation for expression (a b) with multiple types
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-type operation for expression (a b) with multiple types
 ;;; Define types and atom types
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: A Type))
 
 </span><span class="ansi38-255165000"
 > (: A Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: AA Type))
 
 </span><span class="ansi38-255165000"
 > (: AA Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: B Type))
 
 </span><span class="ansi38-255165000"
 > (: B Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: BB Type))
 
 </span><span class="ansi38-255165000"
 > (: BB Type)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: a A))
 
 </span><span class="ansi38-255165000"
 > (: a A)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: a AA))
 
 </span><span class="ansi38-255165000"
 > (: a AA)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: b B))
 
 </span><span class="ansi38-255165000"
 > (: b B)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: b BB))
 
 </span><span class="ansi38-255165000"
 > (: b BB)
 </span>
-Deterministic: ()
-;;; Test get-type of (a b), expecting multiple possible types
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-type of (a b), expecting multiple possible types
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (a b) &self) (((A B) (AA B) (A BB) (AA BB) %Undefined%)))
 
@@ -1473,45 +2236,98 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.38</h3>
 ; 
 ; EVAL TEST
-; took 0.000296 secs. (295.98 microseconds) 
+; took 0.000217 secs. (216.76 microseconds) 
 
 !(assertEqualToResult (get-type (a b) &self) (((A B) (AA B) (A BB) (AA BB) %Undefined%)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) (((A B) (AA B) (A BB) (AA BB) %Undefined%))))
 </span>
-Deterministic: (#(Error #(got (())) #(expected (((A B) (AA B) (A BB) (AA BB) %Undefined%)))))
-;;; Test that an operation can be an expression
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (())) #(expected (((A B) (AA B) (A BB) (AA BB) %Undefined%)))))
+</span>;;; Test that an operation can be an expression
 ;;; Define higher-order function 'foo' and 'bar'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: foo (-> (-> A A))))
 
 </span><span class="ansi38-255165000"
 > (: foo (-> (-> A A)))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (: a A))
 
 </span><span class="ansi38-255165000"
 > (: a A)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo)  bar))
 
 </span><span class="ansi38-255165000"
 > (= (foo)  bar)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (bar $x)  $x))
 
 </span><span class="ansi38-255165000"
 > (= (bar $10000)  $10000)
 </span>
-Deterministic: ()
-;;; Test that applying 'foo' to 'a' evaluates to 'a'
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that applying 'foo' to 'a' evaluates to 'a'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
@@ -1520,16 +2336,25 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.39</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.76 milliseconds) 
+; took 0.002 secs. (2.00 milliseconds) 
 
 !(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (a (FOO a) (A a)) ((a))))
 </span>
-Deterministic: (#(Error #(got (a (FOO a) (A a))) #(expected ((a)))))
-;;; Test handling of conflicting variable names
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (a (FOO a) (A a))) #(expected ((a)))))
+</span>;;; Test handling of conflicting variable names
 ;;; Define function with conflicting variable names
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (b ($x $y))  
   (c $x $y)))
@@ -1538,8 +2363,19 @@ Deterministic: (#(Error #(got (a (FOO a) (A a))) #(expected ((a)))))
 > (= (b ($10000 $10001))  
   (c $10000 $10001))
 </span>
-Deterministic: ()
-;;; Test that variable names are correctly handled
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that variable names are correctly handled
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a) $x $y)))
 
@@ -1548,16 +2384,25 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.40</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.22 milliseconds) 
+; took 0.002 secs. (1.64 milliseconds) 
 
 !(assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a) $x $y)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((a (c $10000 $10001) $10002 $10003)) ((a (c $10004) $10005 $10006))))
 </span>
-Deterministic: (#(Error #(got ((a (c $10000 $10001) $10002 $10003))) #(expected ((a (c $"a") $"x" $"y")))))
-;;; Test sealed operation to create scoped variables
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((a (c $10000 $10001) $10002 $10003))) #(expected ((a (c $a) $x $y)))))
+</span>;;; Test sealed operation to create scoped variables
 ;;; Using 'sealed' to prevent variable capture
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -1568,7 +2413,7 @@ Deterministic: (#(Error #(got ((a (c $10000 $10001) $10002 $10003))) #(expected 
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.41</h3>
 ; 
 ; EVAL TEST
-; took 0.000290 secs. (289.82 microseconds) 
+; took 0.000263 secs. (263.34 microseconds) 
 
 !(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -1579,8 +2424,17 @@ Deterministic: (#(Error #(got ((a (c $10000 $10001) $10002 $10003))) #(expected 
   ($10003)))) ((quote (= ($10004 $10005 $10006)  
   ($10007))))))
 </span>
-Deterministic: ()
-;;; Test that 'sealed' prevents variable capture during execution
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that 'sealed' prevents variable capture during execution
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
@@ -1589,16 +2443,25 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.42</h3>
 ; 
 ; EVAL TEST
-; took 0.000158 secs. (157.59 microseconds) 
+; took 0.000176 secs. (175.63 microseconds) 
 
 !(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((quote (= ($10000 $10001)))) ((quote (= ($10002 $10003))))))
 </span>
-Deterministic: ()
-;;; Test using 'sealed' to make scoped variables
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test using 'sealed' to make scoped variables
 ;;; Using 'sealed' in a 'let' expression
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) ((output (input $x))))
 
@@ -1607,23 +2470,43 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.43</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.28 milliseconds) 
+; took 0.002 secs. (1.72 milliseconds) 
 
 !(assertEqualToResult (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) ((output (input $x))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((output (input $10000))) ((output (input $10001)))))
 </span>
-Deterministic: ()
-;;; Test pragma interpreter with bare-minimal mode
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test pragma interpreter with bare-minimal mode
 ;;; Define function 'foo' that depends on 'bar'
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (bar)  baz))
 
 </span><span class="ansi38-255165000"
 > (= (bar)  baz)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &self (= (foo)  
   (bar)))
@@ -1632,8 +2515,19 @@ Deterministic: ()
 > (= (foo)  
   (bar))
 </span>
-Deterministic: ()
-;;; we probably wont support this in MeTTaLog
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; we probably wont support this in MeTTaLog
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(pragma! interpreter bare-minimal)
 
@@ -1641,8 +2535,17 @@ Deterministic: ()
 ;                                         #(set_option_value interpreter bare-minimal)
 
 
-Deterministic: ()
-;;; Test that '!(foo)' does not evaluate in bare-minimal interpreter
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that '!(foo)' does not evaluate in bare-minimal interpreter
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo) ((foo)))
 
@@ -1651,15 +2554,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.44</h3>
 ; 
 ; EVAL TEST
-; took 0.000674 secs. (673.82 microseconds) 
+; took 0.001 secs. (1.14 milliseconds) 
 
 !(assertEqualToResult (foo) ((foo)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (bar FOO A BAR baz) ((foo))))
 </span>
-Deterministic: (#(Error #(got (bar FOO A BAR baz)) #(expected ((foo)))))
-;;; Use 'eval' to force evaluation
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (bar FOO A BAR baz)) #(expected ((foo)))))
+</span>;;; Use 'eval' to force evaluation
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -1668,68 +2580,77 @@ Deterministic: (#(Error #(got (bar FOO A BAR baz)) #(expected ((foo)))))
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.45</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (14.81 microseconds) 
+; took 0.000024 secs. (23.91 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (bar) ((baz))))
 </span>
-NDet Result(1): (#(Error #(got (bar)) #(expected ((baz)))))
+/*
+```
+```answers
 
+NDet Result(1): <span class="ansi33"
+>(#(Error #(got (bar)) #(expected ((baz)))))
+</span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.46"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.46</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (14.95 microseconds) 
+; took 0.000024 secs. (23.58 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (FOO) ((baz))))
 </span>
-NDet Result(2): (#(Error #(got (FOO)) #(expected ((baz)))))
-
+NDet Result(2): <span class="ansi33"
+>(#(Error #(got (FOO)) #(expected ((baz)))))
+</span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.47"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.47</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (15.09 microseconds) 
+; took 0.000023 secs. (22.77 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (A) ((baz))))
 </span>
-NDet Result(3): (#(Error #(got (A)) #(expected ((baz)))))
-
+NDet Result(3): <span class="ansi33"
+>(#(Error #(got (A)) #(expected ((baz)))))
+</span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.48"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.48</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (22.66 microseconds) 
+; took 0.000014 secs. (14.31 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (BAR) ((baz))))
 </span>
-NDet Result(4): (#(Error #(got (BAR)) #(expected ((baz)))))
-
+NDet Result(4): <span class="ansi33"
+>(#(Error #(got (BAR)) #(expected ((baz)))))
+</span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.49"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-2.49</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (24.02 microseconds) 
+; took 0.000023 secs. (23.09 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (baz) ((baz))))
 </span>
-Last Result(5): (#(Error #(got (baz)) #(expected ((baz)))))<span class="ansi32"
->
-% 7,031,121 inferences, 1.143 CPU in 1.145 seconds (100% CPU, 6152311 Lips)
+Last Result(5): <span class="ansi33"
+>(#(Error #(got (baz)) #(expected ((baz)))))
+</span><span class="ansi32"
+>% 7,051,366 inferences, 1.081 CPU in 1.084 seconds (100% CPU, 6520768 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_2.metta 0 )
 <span class="ansi1"
@@ -1896,11 +2817,11 @@ Last Result(5): (#(Error #(got (baz)) #(expected ((baz)))))<span class="ansi32"
 [(#(Error #(got (Grounded)) #(expected ((Symbol)))))]
 [(#(Error #(got (())) #(expected ((ErrorType)))))]
 [()]
-[(#(Error #(got ("test")) #(expected (("test")))))]
-[(#(Error #(got ("te st")) #(expected (("te st")))))]
-[(#(Error #(got ("te\"st")) #(expected (("te\"st")))))]
-[(#(Error #(got ("")) #(expected (("")))))]
-[(#(Error #(got ("te\nst")) #(expected (("te\nst")))))]
+[(#(Error #(got ((id "test"))) #(expected (("test")))))]
+[(#(Error #(got ((id "te st"))) #(expected (("te st")))))]
+[(#(Error #(got ((id "te\"st"))) #(expected (("te\"st")))))]
+[(#(Error #(got ((id ""))) #(expected (("")))))]
+[(#(Error #(got ((id "te\nst"))) #(expected (("te\nst")))))]
 [(#(Error #(got (("te\nst" test))) #(expected ((("te\nst") test)))))]
 [()]
 [()]
@@ -1915,16 +2836,16 @@ Last Result(5): (#(Error #(got (baz)) #(expected ((baz)))))<span class="ansi32"
 [()]
 [()]
 [()]
-[(#(Error #(got (bar FOO A)) #(expected ((A)))))]
-[(#(Error #(got (bar FOO A)) #(expected ((A)))))]
+[(#(Error #(got ((unquote (quote (foo))))) #(expected ((A)))))]
+[(#(Error #(got ((unquote (quote (foo))))) #(expected ((A)))))]
 [()]
 [()]
 [()]
 [()]
 [()]
-[(#(Error #(got ()) #(expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))]
+[(#(Error #(got ((metta-get-doc (some-func a b)))) #(expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type RetType)) (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))]
 [()]
-[(#(Error #(got ()) #(expected ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))]
+[(#(Error #(got ((metta-get-doc some-func-no-type))) #(expected ((@doc-formal (@item some-func-no-type) (@kind function) (@type %Undefined%) (@desc "Test function without type") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))))))]
 [(#(Error #(got ((-> Atom Atom ErrorType))) #(expected (((-> Atom Atom ErrorType))))))]
 [(#(Error #(got (Grounded)) #(expected ((Symbol)))))]
 [(#(Error #(got (())) #(expected ((ErrorType)))))]
@@ -1957,8 +2878,11 @@ Last Result(5): (#(Error #(got (baz)) #(expected ((baz)))))<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:15:26+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:06:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

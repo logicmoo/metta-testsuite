@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -26,7 +27,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:11:34+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:02:25+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -185,9 +188,12 @@ Script started on 2024-11-30 14:11:34+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.197 CPU in 0.197 seconds (100% CPU, 237550 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4599922 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -345,7 +351,7 @@ Script started on 2024-11-30 14:11:34+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 4 "[()]" )
 P;HTML|
-;                                         #( = 5 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26160maxresident)k" )
+;                                         #( = 5 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26276maxresident)k" )
 P;HTML|
 ;                                         #( = 5 "0inputs+0outputs (0major+3133minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
@@ -362,6 +368,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; Example 1: Using `car-atom` Directly
 ;;; ------------------------------------
 ;;; Test: `car-atom` on a manually created non-empty list
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (car-atom ('a' 'b')) ('a'))
 
@@ -370,19 +380,28 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.CAR-ATOM-BUG-HE-621.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000395 secs. (395.48 microseconds) 
+; took 0.000445 secs. (445.18 microseconds) 
 
 !(assertEqualToResult (car-atom ('a' 'b')) ('a'))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ('a') ('a')))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; The input `('a' 'b')` is a valid non-empty list. The result should be the first element, `['a']`.
 ;;; Example 2: Using `stringToChars` with `car-atom`
 ;;; -----------------------------------------------
 ;;; Test: Converting a string to a list of characters and applying `car-atom`
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let $s (stringToChars "ab") (car-atom $s)) ('a'))
 
@@ -391,15 +410,20 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CAR-ATOM-BUG-HE-621.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.97 milliseconds) 
+; took 0.002 secs. (1.61 milliseconds) 
 
 !(assertEqualToResult (let $s (stringToChars "ab") (car-atom $s)) ('a'))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ('a') ('a')))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; The function `stringToChars` correctly converts `"ab"` into `('a' 'b')`. Applying `car-atom` to this
 ;;; list should return the first element, `['a']`.
 ;;; Expected Behavior:
@@ -407,6 +431,10 @@ Deterministic: ()
 ;;; Example 3: Direct `stringToChars` Output
 ;;; ----------------------------------------
 ;;; Test: Ensure `stringToChars` outputs the expected list of characters
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (stringToChars "ab") (('a' 'b')))
 
@@ -415,19 +443,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CAR-ATOM-BUG-HE-621.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.48 milliseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (stringToChars "ab") (('a' 'b')))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (('a' 'b')) (('a' 'b'))))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; The function `stringToChars` converts `"ab"` into `('a' 'b')`.
 ;;; Example 4: Combining Manually Created and Generated Lists
 ;;; ---------------------------------------------------------
 ;;; Test: Manually creating a list and applying `car-atom`
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let $s ('a' 'b') (car-atom $s)) ('a'))
 
@@ -436,21 +473,26 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CAR-ATOM-BUG-HE-621.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.001 secs. (1.19 milliseconds) 
 
 !(assertEqualToResult (let $s ('a' 'b') (car-atom $s)) ('a'))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ('a') ('a')))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; The manually created list `('a' 'b')` works correctly with `car-atom`.
 ;;; Summary:
 ;;; - The bug occurs specifically when the list is generated by `stringToChars` and passed to `car-atom`.
 ;;; - Expected behavior is that `car-atom` treats generated lists and manually created lists identically.
 <span class="ansi32"
->% 188,709 inferences, 0.069 CPU in 0.071 seconds (97% CPU, 2750462 Lips)
+>% 190,236 inferences, 0.061 CPU in 0.063 seconds (96% CPU, 3113821 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/car_atom_bug_he_621.metta 0 )
 <span class="ansi1"
@@ -592,8 +634,11 @@ Deterministic: ()
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:11:42+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:02:31+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

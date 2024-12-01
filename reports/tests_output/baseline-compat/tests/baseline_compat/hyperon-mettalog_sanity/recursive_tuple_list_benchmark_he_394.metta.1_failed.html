@@ -16,6 +16,7 @@
 .ansi4 { text-decoration: underline; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
@@ -28,7 +29,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:20:38+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:10:42+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -187,9 +190,12 @@ Script started on 2024-11-30 14:20:38+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.174 CPU in 0.174 seconds (100% CPU, 268870 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4554109 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -369,9 +375,9 @@ Script started on 2024-11-30 14:20:38+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 3 "Missed result: True)]" )
 P;HTML|
-;                                         #( = 3 "0.98user 0.00system 0:00.98elapsed 99%CPU (0avgtext+0avgdata 34436maxresident)k" )
+;                                         #( = 3 "0.95user 0.03system 0:00.98elapsed 99%CPU (0avgtext+0avgdata 34404maxresident)k" )
 P;HTML|
-;                                         #( = 3 "0inputs+0outputs (0major+5142minor)pagefaults 0swaps" )
+;                                         #( = 3 "0inputs+0outputs (0major+5149minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_benchmark_he_394.metta is 2.61K bytes (91 lines)
@@ -389,6 +395,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 </span><span class="ansi1 ansi38-255238088"
 >!(py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n") ((extend-py! benchmark)))
 
@@ -397,20 +407,29 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-BENCHMARK-HE-394.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000553 secs. (552.90 microseconds) 
+; took 0.000382 secs. (382.41 microseconds) 
 
 !(assertEqualToResult (py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n") ((extend-py! benchmark)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n")) ((extend-py! benchmark))))
 </span>
-Deterministic: (#(Error #(got ((py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n"))) #(expected ((extend-py! benchmark)))))
-;;; Extend with Timing Module
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n"))) #(expected ((extend-py! benchmark)))))
+</span>;;; Extend with Timing Module
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(extend-py! benchmark)
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (extend-py! benchmark) ((< (- (current_time) (current_time)) 1)))
 
@@ -423,7 +442,7 @@ Deterministic: (#(Error #(got ((py-module benchmark "import time\nfrom hyperon.a
 ; <span class="ansi4"
 >Version-Space Init: /home/runner/work/metta-wam/metta-wam/src/mettalog/__init__.py
 </span>
-;;  init took 7.13546 milliseconds
+;;  init took 7.09444 milliseconds
 ; Load Ext functions
 ; Assuming mettalog is a module name.
 ; Assuming benchmark is a module name.
@@ -448,7 +467,8 @@ ModuleNotFoundError: No module named 'benchmark'
 >Call: </span>(282) [system] benchmark==mettalog ? <span class="ansi1 ansi90"
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_benchmark_he_394.metta progress.
-</span><span class="ansi1"
+</span>```
+<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -460,7 +480,7 @@ ModuleNotFoundError: No module named 'benchmark'
 ERROR: Received fatal signal 11 (segv)
 timeout: the monitored command dumped core
 
-Script done on 2024-11-30 14:21:18+00:00 [COMMAND_EXIT_CODE="139"]
+Script done on 2024-12-01 11:11:22+00:00 [COMMAND_EXIT_CODE="139"]
 
 </pre>
 </body>

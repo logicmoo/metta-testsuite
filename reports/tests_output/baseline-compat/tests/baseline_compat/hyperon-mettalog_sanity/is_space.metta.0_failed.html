@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -27,7 +28,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:16:29+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:07:16+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -186,9 +189,12 @@ Script started on 2024-11-30 14:16:29+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.173 CPU in 0.173 seconds (100% CPU, 270849 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4700834 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -358,14 +364,34 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta)
 
 ;;; Check whether atom is space comparing its type with type of the &self atom
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: is-space (-> Atom Bool))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (is-space $atom)  
   (let* 
     ( ($type (get-type $atom)) ($space (get-type &self))) 
     (== $type $space)))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqual (is-space &self) True)
 
 </span>
@@ -373,14 +399,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000923 secs. (922.54 microseconds) 
+; took 0.000840 secs. (840.30 microseconds) 
 
 !(assertEqual (is-space &self) True)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (is-space &corelib) True)
 
@@ -389,14 +424,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000817 secs. (816.51 microseconds) 
+; took 0.000706 secs. (706.05 microseconds) 
 
 !(assertEqual (is-space &corelib) True)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (is-space 666) False)
 
@@ -405,16 +449,21 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.000989 secs. (989.19 microseconds) 
 
 !(assertEqual (is-space 666) False)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 156,692 inferences, 0.063 CPU in 0.065 seconds (97% CPU, 2482330 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 158,598 inferences, 0.056 CPU in 0.058 seconds (96% CPU, 2818083 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta 0 )
 <span class="ansi1"
@@ -555,8 +604,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:16:37+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:07:22+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

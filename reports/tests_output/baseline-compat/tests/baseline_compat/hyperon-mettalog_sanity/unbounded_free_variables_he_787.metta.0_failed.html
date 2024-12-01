@@ -13,7 +13,9 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
@@ -42,7 +44,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:27:59+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:17:46+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -201,9 +205,12 @@ Script started on 2024-11-30 14:27:59+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.173 CPU in 0.173 seconds (100% CPU, 271183 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4555523 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -369,9 +376,9 @@ Script started on 2024-11-30 14:27:59+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 8 "[()]" )
 P;HTML|
-;                                         #( = 9 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 25856maxresident)k" )
+;                                         #( = 9 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26204maxresident)k" )
 P;HTML|
-;                                         #( = 9 "0inputs+0outputs (0major+3145minor)pagefaults 0swaps" )
+;                                         #( = 9 "0inputs+0outputs (0major+3142minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta is 1.46K bytes (45 lines)
@@ -388,6 +395,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (subsumption Dog Corgi))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (subsumption Dog Corgi)) (()))
 
@@ -396,20 +407,32 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01</h3>
 <span class="ansi38-255165000"
 > (subsumption Dog Corgi)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.43 milliseconds) 
+; took 0.001 secs. (1.21 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (subsumption Dog Corgi)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (subsumption Animal Dog))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (subsumption Animal Dog)) (()))
 
@@ -418,20 +441,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.02</h3>
 <span class="ansi38-255165000"
 > (subsumption Animal Dog)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.25 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (subsumption Animal Dog)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (subsumption Being Animal))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (subsumption Being Animal)) (()))
 
@@ -440,20 +475,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.03</h3>
 <span class="ansi38-255165000"
 > (subsumption Being Animal)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.28 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (subsumption Being Animal)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (subsumption Mortal Being))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (subsumption Mortal Being)) (()))
 
@@ -462,32 +509,75 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.04</h3>
 <span class="ansi38-255165000"
 > (subsumption Mortal Being)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.33 milliseconds) 
+; took 0.001 secs. (1.06 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (subsumption Mortal Being)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Define functions to query the hierarchy
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define functions to query the hierarchy
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (type-of $x $y)  
   (match &self 
     (subsumption $x $y) $x))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (type-of $x $z))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (get-entity-subsumptions $x 
     (type-of $y $z)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x)  
   (get-entity-subsumptions $a $x))
-</span>;;; Test: Querying subsumptions for Corgi
+</span>
+/*
+```
+```load
+;;; Test: Querying subsumptions for Corgi
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
 
@@ -498,7 +588,7 @@ Deterministic: ()
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta progress.
 </span>
-Script done on 2024-11-30 14:28:39+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-01 11:18:26+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

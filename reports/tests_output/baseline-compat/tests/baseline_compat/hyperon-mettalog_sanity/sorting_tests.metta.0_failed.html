@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -75,7 +76,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:23:03+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:13:03+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -234,9 +237,12 @@ Script started on 2024-11-30 14:23:03+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.178 CPU in 0.178 seconds (100% CPU, 263819 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4469206 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -424,9 +430,9 @@ Script started on 2024-11-30 14:23:03+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 19 "[()]" )
 P;HTML|
-;                                         #( = 20 "0.28user 0.01system 0:00.29elapsed 99%CPU (0avgtext+0avgdata 26936maxresident)k" )
+;                                         #( = 20 "0.28user 0.01system 0:00.30elapsed 99%CPU (0avgtext+0avgdata 27064maxresident)k" )
 P;HTML|
-;                                         #( = 20 "0inputs+0outputs (0major+3297minor)pagefaults 0swaps" )
+;                                         #( = 20 "0inputs+0outputs (0major+3299minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta is 3.07K bytes (82 lines)
@@ -437,19 +443,63 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;;; Definition of a List data structure with various methods for it. ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Declaration of List data type and constructors
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: List (-> $a Type))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Nil (List $a))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Cons (-> $a (List $a) (List $a)))
-</span>;;;; Insert an element to a presumably sorted list, remains sorted.
+</span>
+/*
+```
+```load
+;;;; Insert an element to a presumably sorted list, remains sorted.
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: insert (-> $a (List $a) (List $a)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (insert $x Nil)  
   (Cons $x Nil))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (insert $x (Cons $head $tail))  
   (if 
     (lessThan $x $head) 
@@ -457,31 +507,103 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       (Cons $head $tail)) 
     (Cons $head 
       (insert $x $tail))))
-</span>;;;; Sort a list
+</span>
+/*
+```
+```load
+;;;; Sort a list
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: sort (-> (List $a) (List $a)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (sort Nil)  Nil)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (sort (Cons $head $tail))  
   (insert $head 
     (sort $tail)))
-</span>;;;; Check if an element is in a list (sorted or not)
+</span>
+/*
+```
+```load
+;;;; Check if an element is in a list (sorted or not)
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: elem (-> $a (List $a) Bool))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (elem $x Nil)  False)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (elem $x (Cons $head $tail))  
   (if 
     (== $x $head) True 
     (elem $x $tail)))
-</span>;;;; Remove duplicates from a list
+</span>
+/*
+```
+```load
+;;;; Remove duplicates from a list
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: uniq_ (-> (List $a) (List $a) (List $a)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (uniq_ $acc Nil)  Nil)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (uniq_ $acc (Cons $head $tail))  
   (if 
     (elem $head $acc) 
@@ -489,20 +611,60 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
     (Cons $head 
       (uniq_ 
         (Cons $head $acc) $tail))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: uniq (-> (List $a) (List $a)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (uniq $l)  
   (uniq_ Nil $l))
-</span>;;;; Insert an element in a presumably sorted list without duplicate.
+</span>
+/*
+```
+```load
+;;;; Insert an element in a presumably sorted list without duplicate.
 ;;;; Only insert if the element is not already in the list as to produce
 ;;;; a sorted list without duplicate.
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: insert_uniq (-> $a (List $a) (List $a)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (insert_uniq $x Nil)  
   (Cons $x Nil))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (insert_uniq $x (Cons $head $tail))  
   (if 
     (== $x $head) 
@@ -513,17 +675,41 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
         (Cons $head $tail)) 
       (Cons $head 
         (insert_uniq $x $tail)))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: lessThan (-> Number Number Bool))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (lessThan $x $y)  
   (< $x $y))
-</span>;;;; Test insert
+</span>
+/*
+```
+```load
+;;;; Test insert
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test insert ============")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("============ Test insert ============") (("============ Test insert ============")))
 
@@ -532,14 +718,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000164 secs. (164.43 microseconds) 
+; took 0.000165 secs. (164.61 microseconds) 
 
 !(assertEqualToResult ("============ Test insert ============") (("============ Test insert ============")))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (("============ Test insert ============")) (("============ Test insert ============"))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -548,14 +743,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000878 secs. (878.22 microseconds) 
+; took 0.000805 secs. (804.74 microseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 Nil)) ((Cons 1 Nil))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -564,14 +768,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.08 milliseconds) 
+; took 0.003 secs. (2.88 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 Nil))) ((Cons 1 (Cons 2 Nil)))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -580,18 +793,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.08 milliseconds) 
+; took 0.007 secs. (7.44 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 (Cons 3 Nil)))) ((Cons 1 (Cons 2 (Cons 3 Nil))))))
 </span>
-Deterministic: ()<span class="ansi38-255165009"
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(== (Cons 1 Nil) (Cons 1 Nil))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (== (Cons 1 Nil) (Cons 1 Nil)) (True))
 
@@ -600,20 +823,29 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000193 secs. (193.08 microseconds) 
+; took 0.000203 secs. (203.18 microseconds) 
 
 !(assertEqualToResult (== (Cons 1 Nil) (Cons 1 Nil)) (True))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
-;;;; Test sort
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Test sort
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test sort ============")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("============ Test sort ============") (("============ Test sort ============")))
 
@@ -622,14 +854,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000137 secs. (137.25 microseconds) 
+; took 0.000129 secs. (128.88 microseconds) 
 
 !(assertEqualToResult ("============ Test sort ============") (("============ Test sort ============")))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (("============ Test sort ============")) (("============ Test sort ============"))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))
 
@@ -638,14 +879,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.43 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
 !(assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 Nil)) ((Cons 1 Nil))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
 
@@ -654,14 +904,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.42 milliseconds) 
+; took 0.004 secs. (4.02 milliseconds) 
 
 !(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 Nil))) ((Cons 1 (Cons 2 Nil)))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -670,20 +929,29 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.13 milliseconds) 
+; took 0.009 secs. (9.40 milliseconds) 
 
 !(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 (Cons 3 Nil)))) ((Cons 1 (Cons 2 (Cons 3 Nil))))))
 </span>
-Deterministic: ()
-;;;; Test elem
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Test elem
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test elem ============")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("============ Test elem ============") (("============ Test elem ============")))
 
@@ -692,14 +960,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000146 secs. (145.86 microseconds) 
+; took 0.000158 secs. (157.62 microseconds) 
 
 !(assertEqualToResult ("============ Test elem ============") (("============ Test elem ============")))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (("============ Test elem ============")) (("============ Test elem ============"))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)
 
@@ -708,14 +985,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.00 milliseconds) 
+; took 0.002 secs. (1.90 milliseconds) 
 
 !(assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
 
@@ -724,20 +1010,29 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.83 milliseconds) 
+; took 0.003 secs. (2.60 milliseconds) 
 
 !(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()
-;;;; Test uniq
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Test uniq
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test uniq ============")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("============ Test uniq ============") (("============ Test uniq ============")))
 
@@ -746,14 +1041,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000142 secs. (141.87 microseconds) 
+; took 0.000156 secs. (155.57 microseconds) 
 
 !(assertEqualToResult ("============ Test uniq ============") (("============ Test uniq ============")))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (("============ Test uniq ============")) (("============ Test uniq ============"))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))
 
@@ -762,14 +1066,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.17 milliseconds) 
+; took 0.015 secs. (15.22 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 2 (Cons 3 (Cons 1 Nil)))) ((Cons 2 (Cons 3 (Cons 1 Nil))))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
 
@@ -778,20 +1091,29 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.75 milliseconds) 
+; took 0.010 secs. (10.01 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 2 (Cons 3 Nil))) ((Cons 2 (Cons 3 Nil)))))
 </span>
-Deterministic: ()
-;;;; Test insert_uniq
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Test insert_uniq
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test insert_uniq ============")
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult ("============ Test insert_uniq ============") (("============ Test insert_uniq ============")))
 
@@ -800,14 +1122,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000149 secs. (149.14 microseconds) 
+; took 0.000145 secs. (145.43 microseconds) 
 
 !(assertEqualToResult ("============ Test insert_uniq ============") (("============ Test insert_uniq ============")))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (("============ Test insert_uniq ============")) (("============ Test insert_uniq ============"))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -816,14 +1147,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.86 milliseconds) 
+; took 0.003 secs. (3.46 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 Nil))) ((Cons 1 (Cons 2 Nil)))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -832,14 +1172,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.08 milliseconds) 
+; took 0.009 secs. (9.35 milliseconds) 
 
 !(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 (Cons 3 Nil)))) ((Cons 1 (Cons 2 (Cons 3 Nil))))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -848,16 +1197,21 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.48 milliseconds) 
+; took 0.015 secs. (14.79 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 2 (Cons 3 Nil)))) ((Cons 1 (Cons 2 (Cons 3 Nil))))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 1,130,491 inferences, 0.279 CPU in 0.281 seconds (99% CPU, 4051376 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 1,150,084 inferences, 0.229 CPU in 0.231 seconds (99% CPU, 5021150 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta 0 )
 <span class="ansi1"
@@ -1014,8 +1368,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:23:11+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:13:09+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

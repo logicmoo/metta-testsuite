@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -37,7 +38,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:09:52+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:01:21+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -196,9 +199,12 @@ Script started on 2024-11-30 14:09:52+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.183 CPU in 0.183 seconds (100% CPU, 255555 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.006 CPU in 0.006 seconds (100% CPU, 4321353 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -371,15 +377,29 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 </span>P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta)
 
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
-Deterministic: ()<span class="ansi38-255165009"
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &kb (SS-P_AS A_AS B_AS))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &kb (SS-P_AS A_AS B_AS)) (()))
 
@@ -388,20 +408,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.01</h3>
 <span class="ansi38-255165000"
 > (SS-P_AS A_AS B_AS)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.003 secs. (2.59 milliseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (SS-P_AS A_AS B_AS)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &kb (SS-Q_AS A_AS C_AS))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &kb (SS-Q_AS A_AS C_AS)) (()))
 
@@ -410,20 +442,48 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.02</h3>
 <span class="ansi38-255165000"
 > (SS-Q_AS A_AS C_AS)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.003 secs. (2.53 milliseconds) 
+; took 0.001 secs. (1.07 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (SS-Q_AS A_AS C_AS)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165000"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (PQ SS-P_BAD B_BAD)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (PQ SS-Q_BAD C_BAD)
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (match &kb ($SS A_AS $X) ($SS A_AS $X)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 </span>
@@ -431,15 +491,24 @@ Deterministic: ()<span class="ansi38-255165000"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000928 secs. (927.54 microseconds) 
+; took 0.000722 secs. (721.67 microseconds) 
 
 !(assertEqualToResult (match &kb ($SS A_AS $X) ($SS A_AS $X)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS))))
 </span>
-Deterministic: ()
-;;; Basic Match
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Basic Match
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (match &kb ($rel A_AS $x) ($rel $x)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
@@ -448,15 +517,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.91 milliseconds) 
+; took 0.001 secs. (1.50 milliseconds) 
 
 !(assertEqual (match &kb ($rel A_AS $x) ($rel $x)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((SS-P_AS B_AS) (SS-Q_AS C_AS)) ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 </span>
-Deterministic: ()
-;;; cases can be used for deconstruction
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; cases can be used for deconstruction
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($rel A_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)))))
 
@@ -465,15 +543,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.26 milliseconds) 
+; took 0.002 secs. (2.36 milliseconds) 
 
 !(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($rel A_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((P_AS B_AS) (Q_AS C_AS)) ((P_AS B_AS) (Q_AS C_AS))))
 </span>
-Deterministic: ()
-;;; %void% can be used to capture empty results
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; %void% can be used to capture empty results
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (case (match &kb ($rel B_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)) (%void% no-match))) no-match)
 
@@ -482,16 +569,21 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000382 secs. (381.60 microseconds) 
+; took 0.000295 secs. (295.30 microseconds) 
 
 !(assertEqual (case (match &kb ($rel B_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)) (%void% no-match))) no-match)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (no-match) (no-match)))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 259,803 inferences, 0.095 CPU in 0.097 seconds (98% CPU, 2737520 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 264,938 inferences, 0.076 CPU in 0.078 seconds (97% CPU, 3471010 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta 0 )
 <span class="ansi1"
@@ -636,8 +728,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:10:00+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:01:28+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -28,8 +29,10 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:29:20+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-^@P;HTML|
+Script started on 2024-12-01 11:19:06+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+^@
+/*
+P;HTML|
 ;           #(set_option_value compat false)
 
 P;HTML|
@@ -187,9 +190,12 @@ Script started on 2024-11-30 14:29:20+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.178 CPU in 0.178 seconds (100% CPU, 262581 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4626407 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -349,12 +355,29 @@ Script started on 2024-11-30 14:29:20+00:00 [TERM="xterm-256color" TTY="/dev/pts
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/add_atom_match.metta is 325 bytes (17 lines)
 </span>P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/add_atom_match.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/add_atom_match.metta)
-<span class="ansi38-255165000"
+
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: sequential (-> Expression %Undefined%))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (sequential $1)  
   (superpose $1))
-</span>;;; Used to work
+</span>
+/*
+```
+```load
+;;; Used to work
 ;;;!(assertEqualToResult
 ;;;  (sequential
 ;;;	( (add-atom &self (man mortal))
@@ -365,6 +388,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
 </span><span class="ansi1 ansi38-255238088"
 >!(sequential ((add-atom &self (man mortal)) (match &self ($A mortal) (mortal $A))))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($A mortal) (mortal $A)))) (() (mortal man)))
 
@@ -373,18 +400,25 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
 >;; METTA-MORPH-TESTS.ADD-ATOM-MATCH.01</h3>
 <span class="ansi38-255165000"
 > (man mortal)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.003 secs. (3.33 milliseconds) 
+; took 0.002 secs. (1.70 milliseconds) 
 
 !(assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($A mortal) (mortal $A)))) (() (mortal man)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (() (mortal man)) (() (mortal man))))
-</span>
-Deterministic: ()<span class="ansi32"
->
-% 129,686 inferences, 0.055 CPU in 0.058 seconds (96% CPU, 2337156 Lips)
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 131,097 inferences, 0.050 CPU in 0.052 seconds (95% CPU, 2645816 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/add_atom_match.metta 0 )
 <span class="ansi1"
@@ -523,8 +557,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:29:28+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:19:13+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165009 { color: #FFA509; }
@@ -75,7 +76,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:12:57+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:03:46+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -234,9 +237,12 @@ Script started on 2024-11-30 14:12:57+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.175 CPU in 0.175 seconds (100% CPU, 267950 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4543618 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -420,9 +426,9 @@ Script started on 2024-11-30 14:12:57+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 17 "[()]" )
 P;HTML|
-;                                         #( = 18 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26056maxresident)k" )
+;                                         #( = 18 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26056maxresident)k" )
 P;HTML|
-;                                         #( = 18 "0inputs+0outputs (0major+3106minor)pagefaults 0swaps" )
+;                                         #( = 18 "0inputs+0outputs (0major+3104minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/duplication_semantics_he_798.metta is 1.54K bytes (55 lines)
@@ -438,6 +444,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -446,20 +456,32 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.01</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.47 milliseconds) 
+; took 0.001 secs. (1.29 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -468,20 +490,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.02</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000583 secs. (582.98 microseconds) 
+; took 0.000641 secs. (641.42 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -490,20 +524,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.03</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000635 secs. (634.73 microseconds) 
+; took 0.000689 secs. (688.99 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -512,20 +558,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.04</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000682 secs. (682.28 microseconds) 
+; took 0.000709 secs. (709.13 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -534,17 +592,28 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.05</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000672 secs. (671.95 microseconds) 
+; took 0.000600 secs. (599.72 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Match returns all duplicates
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Match returns all duplicates
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (is ball $color) $color) (red red red red red))
 
@@ -553,21 +622,30 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000229 secs. (229.47 microseconds) 
+; took 0.000195 secs. (194.82 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) (red red red red red))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (red) (red red red red red)))
 </span>
-Deterministic: ()
-;;; Example 2: Removing a Duplicated Atom
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Example 2: Removing a Duplicated Atom
 ;;; -------------------------------------
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(remove-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (remove-atom &self (is ball red)) (()))
 
@@ -576,17 +654,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.07</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```unload_all
+; 
 ; EVAL TEST
-; took 0.001 secs. (1.49 milliseconds) 
+; took 0.000764 secs. (763.75 microseconds) 
 
 !(assertEqualToResult (remove-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: All duplicates are removed
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: All duplicates are removed
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (is ball $color) $color) ())
 
@@ -595,15 +684,20 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000203 secs. (203.43 microseconds) 
+; took 0.000153 secs. (152.73 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) ())
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test () ()))
 </span>
-Deterministic: ()
-;;; Example 3: Space-Specific Behavior
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Example 3: Space-Specific Behavior
 ;;; ----------------------------------
 ;;; Assert the same atom in a space again
 <span class="ansi38-255165009"
@@ -611,6 +705,10 @@ Deterministic: ()
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -619,20 +717,32 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.09</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.001 secs. (1.45 milliseconds) 
+; took 0.000862 secs. (862.05 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (is ball red)) (()))
 
@@ -641,17 +751,28 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.10</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000593 secs. (593.43 microseconds) 
+; took 0.000649 secs. (649.16 microseconds) 
 
 !(assertEqualToResult (add-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Verify duplicates exist
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify duplicates exist
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (is ball $color) $color) (red red))
 
@@ -660,20 +781,29 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000233 secs. (232.59 microseconds) 
+; took 0.000165 secs. (165.32 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) (red red))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (red) (red red)))
 </span>
-Deterministic: ()
-;;; Remove one instance
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Remove one instance
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(remove-atom &self (is ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (remove-atom &self (is ball red)) (()))
 
@@ -682,17 +812,28 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.12</h3>
 <span class="ansi38-255165000"
 > (is ball red)
-</span>; 
+</span>
+/*
+```
+```unload_all
+; 
 ; EVAL TEST
-; took 0.000550 secs. (550.33 microseconds) 
+; took 0.000582 secs. (582.14 microseconds) 
 
 !(assertEqualToResult (remove-atom &self (is ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Current implementation removes all duplicates
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Current implementation removes all duplicates
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (is ball $color) $color) ())
 
@@ -701,21 +842,30 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000196 secs. (196.14 microseconds) 
+; took 0.000158 secs. (158.47 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) ())
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test () ()))
 </span>
-Deterministic: ()
-;;; Example 4: Probabilistic Use Case
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Example 4: Probabilistic Use Case
 ;;; ---------------------------------
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (observation ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
@@ -724,20 +874,32 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.14</h3>
 <span class="ansi38-255165000"
 > (observation ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.002 secs. (2.36 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
 !(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (observation ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
@@ -746,20 +908,32 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.15</h3>
 <span class="ansi38-255165000"
 > (observation ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000623 secs. (623.41 microseconds) 
+; took 0.000706 secs. (706.26 microseconds) 
 
 !(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &self (observation ball red))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
@@ -768,17 +942,28 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.16</h3>
 <span class="ansi38-255165000"
 > (observation ball red)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.000711 secs. (711.14 microseconds) 
+; took 0.000716 secs. (715.75 microseconds) 
 
 !(assertEqualToResult (add-atom &self (observation ball red)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Count duplicates for probabilistic reasoning
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Count duplicates for probabilistic reasoning
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (observation ball $color) $color) (red red red))
 
@@ -787,16 +972,21 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000240 secs. (240.27 microseconds) 
+; took 0.000172 secs. (172.30 microseconds) 
 
 !(assertEqualToResult (match &self (observation ball $color) $color) (red red red))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (red) (red red red)))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 379,403 inferences, 0.125 CPU in 0.127 seconds (98% CPU, 3031495 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 385,812 inferences, 0.109 CPU in 0.111 seconds (98% CPU, 3539486 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/duplication_semantics_he_798.metta 0 )
 <span class="ansi1"
@@ -951,8 +1141,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:13:05+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:03:52+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

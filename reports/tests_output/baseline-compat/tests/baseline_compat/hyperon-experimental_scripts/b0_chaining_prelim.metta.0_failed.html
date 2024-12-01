@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -33,7 +34,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:04:25+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 10:56:14+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -192,9 +195,12 @@ Script started on 2024-11-30 14:04:25+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.180 CPU in 0.180 seconds (100% CPU, 260497 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4564892 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -371,15 +377,51 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;; Some knowledge base entries
 ;;; `:=` is a custom symbol
 ;;; Combinatory logic rules
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (:= (I $x) $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (:= ((K $x) $y) $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (:= (K $x $y) $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (:= (S $x $y $z) ($x $z ($y $z)))
-</span>;;; A single matching step
+</span>
+/*
+```
+```load
+;;; A single matching step
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (:= (S K K x) $r) $r) ((K x (K x))))
 
@@ -388,16 +430,25 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000914 secs. (913.62 microseconds) 
+; took 0.000699 secs. (699.20 microseconds) 
 
 !(assertEqualToResult (match &self (:= (S K K x) $r) $r) ((K x (K x))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((K x (K x))) ((K x (K x)))))
 </span>
-Deterministic: ()
-;;; A second matching step; the result of the previous
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; A second matching step; the result of the previous
 ;;; step is manually used as input for the next query
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (:= (K x (K x)) $r) $r) (x))
 
@@ -406,15 +457,24 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000212 secs. (211.95 microseconds) 
+; took 0.000173 secs. (172.65 microseconds) 
 
 !(assertEqualToResult (match &self (:= (K x (K x)) $r) $r) (x))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (x) (x)))
 </span>
-Deterministic: ()
-;;; Combined reduction via matching in two steps
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Combined reduction via matching in two steps
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (:= (S K K x) $r) (match &self (:= $r $r2) $r2)) (x))
 
@@ -423,23 +483,48 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000341 secs. (341.19 microseconds) 
+; took 0.000302 secs. (302.39 microseconds) 
 
 !(assertEqualToResult (match &self (:= (S K K x) $r) (match &self (:= $r $r2) $r2)) (x))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (x) (x)))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Another example (Peano summation)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (:= (Add $x Z) $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (:= (Add $x (S $y)) (Add (S $x) $y))
-</span>;;; First step
+</span>
+/*
+```
+```load
+;;; First step
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) $r) ((Add (S (S Z)) Z)))
 
@@ -448,15 +533,24 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.000731 secs. (730.80 microseconds) 
 
 !(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) $r) ((Add (S (S Z)) Z)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Add (S (S Z)) Z)) ((Add (S (S Z)) Z))))
 </span>
-Deterministic: ()
-;;; Two steps together
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Two steps together
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) (match &self (:= $r $r2) $r2)) ((S (S Z))))
 
@@ -465,16 +559,21 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000842 secs. (841.56 microseconds) 
+; took 0.000654 secs. (654.00 microseconds) 
 
 !(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) (match &self (:= $r $r2) $r2)) ((S (S Z))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((S (S Z))) ((S (S Z)))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 235,296 inferences, 0.083 CPU in 0.085 seconds (97% CPU, 2825532 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 242,917 inferences, 0.072 CPU in 0.074 seconds (97% CPU, 3370030 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta 0 )
 <span class="ansi1"
@@ -617,8 +716,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:04:33+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 10:56:20+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

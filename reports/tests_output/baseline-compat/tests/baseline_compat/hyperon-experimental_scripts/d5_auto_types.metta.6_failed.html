@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -43,7 +44,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:06:56+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 10:58:33+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -202,9 +205,12 @@ Script started on 2024-11-30 14:06:56+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.180 CPU in 0.180 seconds (100% CPU, 261016 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4634640 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -381,6 +387,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto type-checking can be enabled
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(pragma! type-check auto)
 
@@ -388,8 +398,17 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;                                         #(set_option_value type-check auto)
 
 
-Deterministic: ()
-;;; checking grounded types
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; checking grounded types
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
@@ -398,14 +417,23 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000218 secs. (218.11 microseconds) 
+; took 0.000205 secs. (205.13 microseconds) 
 
 !(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (88) ((Error "S" BadType))))
 </span>
-Deterministic: (#(Error #(got (88)) #(expected ((Error "S" BadType)))))
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (88)) #(expected ((Error "S" BadType)))))
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
@@ -414,35 +442,116 @@ Deterministic: (#(Error #(got (88)) #(expected ((Error "S" BadType)))))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000392 secs. (392.01 microseconds) 
+; took 0.000383 secs. (382.77 microseconds) 
 
 !(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (False) ((Error "S" BadType))))
 </span>
-Deterministic: (#(Error #(got (False)) #(expected ((Error "S" BadType)))))
-;;; declaring some custom types
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (False)) #(expected ((Error "S" BadType)))))
+</span>;;; declaring some custom types
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: Entity Type)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Socrates Entity)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Human (-> Entity Type))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Mortal (-> Entity Type))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: HumansAreMortal (-> (Human $t) (Mortal $t)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: SocratesIsHuman (Human Socrates))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: SamIsMortal (Mortal Sam))
-</span>;;; well typed
+</span>
+/*
+```
+```load
+;;; well typed
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (HumansAreMortal SocratesIsHuman)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (== Mortal Human)
-</span>;;; badly typed examples produce `Error` grounded values describing the issue:
+</span>
+/*
+```
+```load
+;;; badly typed examples produce `Error` grounded values describing the issue:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
@@ -451,14 +560,23 @@ Deterministic: (#(Error #(got (False)) #(expected ((Error "S" BadType)))))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000385 secs. (384.60 microseconds) 
+; took 0.000399 secs. (398.81 microseconds) 
 
 !(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (False) ((Error SamIsMortal BadType))))
 </span>
-Deterministic: (#(Error #(got (False)) #(expected ((Error SamIsMortal BadType)))))
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (False)) #(expected ((Error SamIsMortal BadType)))))
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
@@ -467,18 +585,27 @@ Deterministic: (#(Error #(got (False)) #(expected ((Error SamIsMortal BadType)))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000675 secs. (675.18 microseconds) 
+; took 0.000501 secs. (500.51 microseconds) 
 
 !(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((HumansAreMortal (Human Socrates))) ((Error (Human Socrates) BadType))))
 </span>
-Deterministic: (#(Error #(got ((HumansAreMortal (Human Socrates)))) #(expected ((Error (Human Socrates) BadType)))))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((HumansAreMortal (Human Socrates)))) #(expected ((Error (Human Socrates) BadType)))))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `collapse` evaluates its argument, so it shows a type error
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -487,15 +614,20 @@ Deterministic: (#(Error #(got ((HumansAreMortal (Human Socrates)))) #(expected (
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000359 secs. (359.37 microseconds) 
+; took 0.000324 secs. (323.54 microseconds) 
 
 !(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((88)) (((Error "S" BadType)))))
 </span>
-Deterministic: (#(Error #(got ((88))) #(expected (((Error "S" BadType))))))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((88))) #(expected (((Error "S" BadType))))))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `match` does not perform type checking on its pattern,
 ;;; so it accepts a badly typed expression, which is expected.
@@ -509,6 +641,10 @@ Deterministic: (#(Error #(got ((88))) #(expected (((Error "S" BadType))))))
 </span><span class="ansi1 ansi38-255238088"
 >!(match &self (== SocratesIsHuman SamIsMortal) Really?)
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) (()))
 
@@ -517,28 +653,55 @@ Deterministic: (#(Error #(got ((88))) #(expected (((Error "S" BadType))))))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000199 secs. (198.75 microseconds) 
+; took 0.000146 secs. (146.24 microseconds) 
 
 !(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test () (())))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; internal call doesn't pass type check even if wrapped
 ;;; by a function with type parameter:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; let binds without type checking, but errors when used
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(let $x (+ 5 "S") $x)
 
 </span>
-Deterministic: 88$x = 88
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>88
+</span>$x = 88
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: f (-> $t Number))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
 </span>
@@ -546,16 +709,21 @@ Deterministic: 88$x = 88
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.56 milliseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((f 88)) ((Error "S" BadType))))
 </span>
-Deterministic: (#(Error #(got ((f 88))) #(expected ((Error "S" BadType)))))<span class="ansi32"
->
-% 306,042 inferences, 0.117 CPU in 0.119 seconds (98% CPU, 2616809 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((f 88))) #(expected ((Error "S" BadType)))))
+</span><span class="ansi32"
+>% 309,986 inferences, 0.091 CPU in 0.093 seconds (98% CPU, 3413614 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta 0 )
 <span class="ansi1"
@@ -702,8 +870,11 @@ Deterministic: (#(Error #(got ((f 88))) #(expected ((Error "S" BadType)))))<span
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:07:04+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 10:58:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

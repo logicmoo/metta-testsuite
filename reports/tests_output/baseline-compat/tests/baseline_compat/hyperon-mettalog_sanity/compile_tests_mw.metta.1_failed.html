@@ -30,7 +30,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:11:53+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:02:42+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -189,9 +191,12 @@ Script started on 2024-11-30 14:11:53+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.177 CPU in 0.177 seconds (100% CPU, 264667 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4582797 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -353,9 +358,9 @@ Script started on 2024-11-30 14:11:53+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 4 "Missed result: ->)]" )
 P;HTML|
-;                                         #( = 4 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26192maxresident)k" )
+;                                         #( = 4 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26212maxresident)k" )
 P;HTML|
-;                                         #( = 4 "0inputs+0outputs (0major+3112minor)pagefaults 0swaps" )
+;                                         #( = 4 "0inputs+0outputs (0major+3116minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta is 2.16K bytes (64 lines)
@@ -363,12 +368,32 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta)
 
 ;;;; define foo
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: foo (-> Number Number))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (foo $x)  
   (+ $x 1))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (foo 1) (2))
 
 </span>
@@ -376,14 +401,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000562 secs. (562.08 microseconds) 
+; took 0.000582 secs. (582.35 microseconds) 
 
 !(assertEqualToResult (foo 1) (2))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (2) (2)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo 2) (3))
 
@@ -392,14 +426,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000464 secs. (463.72 microseconds) 
+; took 0.000442 secs. (441.71 microseconds) 
 
 !(assertEqualToResult (foo 2) (3))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (3) (3)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type foo) (-> Number Number))
 
@@ -408,15 +451,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000209 secs. (208.76 microseconds) 
+; took 0.000211 secs. (210.62 microseconds) 
 
 !(assertEqualToResult (get-type foo) (-> Number Number))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((-> Number Number)) (-> Number Number)))
 </span>
-Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number))))
-;;;; foo compiles successfully
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((-> Number Number))) #(expected (-> Number Number))))
+</span>;;;; foo compiles successfully
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (compile! foo) (()))
 
@@ -471,25 +523,25 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(267) [user] option_value0(compile, 'False')
 ^  <span class="ansi1 ansi32"
->Call: </span>(268) [user] was_option_value(compile, _29624)
+>Call: </span>(268) [user] was_option_value(compile, _29626)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(268) [user] was_option_value(compile, _29624)
+>Unify: </span>(268) [user] was_option_value(compile, _29626)
    <span class="ansi1 ansi32"
->Call: </span>(269) [system] current_prolog_flag(compile, _31658)
+>Call: </span>(269) [system] current_prolog_flag(compile, _31660)
    <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] current_prolog_flag(compile, false)
    <span class="ansi1 ansi32"
->Call: </span>(269) [system] _29624=false
+>Call: </span>(269) [system] _29626=false
    <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] false=false
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(268) [user] was_option_value(compile, false)
 ^  <span class="ansi1 ansi32"
->Call: </span>(268) [user] once((p2mE(false, _36750), p2mE('False', _36756)))
+>Call: </span>(268) [user] once((p2mE(false, _36752), p2mE('False', _36758)))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(268) [system] once(user:(p2mE(false, _36750), p2mE('False', _36756)))
+>Unify: </span>(268) [system] once(user:(p2mE(false, _36752), p2mE('False', _36758)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [user] p2mE(false, _36750)
+>Call: </span>(270) [user] p2mE(false, _36752)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(270) [user] p2mE(false, false)
    <span class="ansi1 ansi32"
@@ -501,7 +553,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(270) [user] p2mE(false, 'False')
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [user] p2mE('False', _36756)
+>Call: </span>(270) [user] p2mE('False', _36758)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(270) [user] p2mE('False', 'False')
    <span class="ansi1 ansi32"
@@ -525,11 +577,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
    <span class="ansi1 ansi32"
 >Exit: </span>(265) [user] load_ontology
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] current_self(_57050)
+>Call: </span>(265) [user] current_self(_57052)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(265) [user] current_self(_57050)
+>Unify: </span>(265) [user] current_self(_57052)
    <span class="ansi1 ansi32"
->Call: </span>(266) [system] nb_current(self_space, _57050)
+>Call: </span>(266) [system] nb_current(self_space, _57052)
    <span class="ansi1 ansi32"
 >Exit: </span>(266) [system] nb_current(self_space, '&self')
    <span class="ansi1 ansi32"
@@ -539,98 +591,98 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(265) [user] current_self('&self')
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _64158))
+>Call: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _64158))
+>Unify: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(266) [user] current_predicate(pfcAdd/1)
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(266) [user] current_predicate(pfcAdd/1)
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64158)))
+>Call: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64160)))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64158)))
+>Unify: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64160)))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(267) [user] clause(pfcTraceExecution, true)
 ^  <span class="ansi1 ansi31"
 >Fail: </span>(267) [user] clause(pfcTraceExecution, true)
 ^  <span class="ansi1 ansi33"
->Redo: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64158)))
+>Redo: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64160)))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64158)))
+>Exit: </span>(266) [user] once_writeq_nl(pfcAdd(do_compile('&self', foo, _64160)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] pfcAdd(do_compile('&self', foo, _64158))
+>Call: </span>(266) [user] pfcAdd(do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(266) [user] pfcAdd(do_compile('&self', foo, _64158))
+>Unify: </span>(266) [user] pfcAdd(do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] must_ex(current_why_UU(_76348))
+>Call: </span>(267) [user] must_ex(current_why_UU(_76350))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(267) [user] must_ex(current_why_UU(_76348))
+>Unify: </span>(267) [user] must_ex(current_why_UU(_76350))
    <span class="ansi1 ansi32"
->Call: </span>(269) [user] current_why_UU(_76348)
+>Call: </span>(269) [user] current_why_UU(_76350)
    <span class="ansi1 ansi34"
->Unify: </span>(269) [user] current_why_UU(_76348)
+>Unify: </span>(269) [user] current_why_UU(_76350)
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [user] get_why_uu(_76348)
+>Call: </span>(270) [user] get_why_uu(_76350)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(270) [user] get_why_uu(_76348)
+>Unify: </span>(270) [user] get_why_uu(_76350)
 ^  <span class="ansi1 ansi32"
->Call: </span>(271) [user] findall(_82416, current_why(_82416), _82422)
+>Call: </span>(271) [user] findall(_82418, current_why(_82418), _82424)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(271) [$bags] findall(_82416, user:current_why(_82416), _82422)
+>Unify: </span>(271) [$bags] findall(_82418, user:current_why(_82418), _82424)
 ^  <span class="ansi1 ansi32"
->Call: </span>(272) [$bags] findall(_82416, user:current_why(_82416), _82422, [])
+>Call: </span>(272) [$bags] findall(_82418, user:current_why(_82418), _82424, [])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(272) [$bags] findall(_82416, user:current_why(_82416), _82422, [])
+>Unify: </span>(272) [$bags] findall(_82418, user:current_why(_82418), _82424, [])
 ^  <span class="ansi1 ansi32"
->Call: </span>(273) [$bags] cleanup_bag(findall_loop(_82416, user:current_why(_82416), _82422, []), '$destroy_findall_bag')
+>Call: </span>(273) [$bags] cleanup_bag(findall_loop(_82418, user:current_why(_82418), _82424, []), '$destroy_findall_bag')
 ^  <span class="ansi1 ansi34"
->Unify: </span>(273) [$bags] cleanup_bag('$bags':findall_loop(_82416, user:current_why(_82416), _82422, []), '$bags':'$destroy_findall_bag')
+>Unify: </span>(273) [$bags] cleanup_bag('$bags':findall_loop(_82418, user:current_why(_82418), _82424, []), '$bags':'$destroy_findall_bag')
    <span class="ansi1 ansi32"
->Call: </span>(274) [$bags] findall_loop(_82416, user:current_why(_82416), _82422, [])
+>Call: </span>(274) [$bags] findall_loop(_82418, user:current_why(_82418), _82424, [])
    <span class="ansi1 ansi34"
->Unify: </span>(274) [$bags] findall_loop(_82416, user:current_why(_82416), _82422, [])
+>Unify: </span>(274) [$bags] findall_loop(_82418, user:current_why(_82418), _82424, [])
 ^  <span class="ansi1 ansi32"
->Call: </span>(275) [user] bugger:current_why(_82416)
+>Call: </span>(275) [user] bugger:current_why(_82418)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(275) [user] bugger:current_why(_82416)
+>Unify: </span>(275) [user] bugger:current_why(_82418)
 ^  <span class="ansi1 ansi32"
->Call: </span>(276) [user] bugger:current_why_data(_82416)
+>Call: </span>(276) [user] bugger:current_why_data(_82418)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(276) [user] bugger:current_why_data(_82416)
+>Unify: </span>(276) [user] bugger:current_why_data(_82418)
    <span class="ansi1 ansi32"
->Call: </span>(277) [system] nb_current('$current_why', wp(_82416, _94732))
+>Call: </span>(277) [system] nb_current('$current_why', wp(_82418, _94734))
    <span class="ansi1 ansi31"
->Fail: </span>(277) [system] nb_current('$current_why', wp(_82416, _94732))
+>Fail: </span>(277) [system] nb_current('$current_why', wp(_82418, _94734))
 ^  <span class="ansi1 ansi33"
->Redo: </span>(276) [user] bugger:current_why_data(_82416)
+>Redo: </span>(276) [user] bugger:current_why_data(_82418)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(276) [user] bugger:current_why_data(_82416)
+>Unify: </span>(276) [user] bugger:current_why_data(_82418)
    <span class="ansi1 ansi32"
->Call: </span>(277) [t_l] t_l:current_why_source(_82416)
+>Call: </span>(277) [t_l] t_l:current_why_source(_82418)
    <span class="ansi1 ansi31"
->Fail: </span>(277) [t_l] t_l:current_why_source(_82416)
+>Fail: </span>(277) [t_l] t_l:current_why_source(_82418)
 ^  <span class="ansi1 ansi31"
->Fail: </span>(276) [user] bugger:current_why_data(_82416)
+>Fail: </span>(276) [user] bugger:current_why_data(_82418)
 ^  <span class="ansi1 ansi33"
->Redo: </span>(275) [user] bugger:current_why(_82416)
+>Redo: </span>(275) [user] bugger:current_why(_82418)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(275) [user] bugger:current_why(mfl4(_102864, _102866, _102868, _102870))
+>Unify: </span>(275) [user] bugger:current_why(mfl4(_102866, _102868, _102870, _102872))
 ^  <span class="ansi1 ansi32"
->Call: </span>(277) [system] setup_call_cleanup('$notrace'(_103908, _103910), once(user:current_mfl4(_102864, _102866, _102868, _102870)), '$restore_trace'(_103908, _103910))
+>Call: </span>(277) [system] setup_call_cleanup('$notrace'(_103910, _103912), once(user:current_mfl4(_102866, _102868, _102870, _102872)), '$restore_trace'(_103910, _103912))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(277) [system] setup_call_cleanup(system:'$notrace'(_103908, _103910), system:once(user:current_mfl4(_102864, _102866, _102868, _102870)), system:'$restore_trace'(_103908, _103910))
+>Unify: </span>(277) [system] setup_call_cleanup(system:'$notrace'(_103910, _103912), system:once(user:current_mfl4(_102866, _102868, _102870, _102872)), system:'$restore_trace'(_103910, _103912))
 ^  <span class="ansi1 ansi32"
->Call: </span>(278) [system] sig_atomic(system:'$notrace'(_103908, _103910))
+>Call: </span>(278) [system] sig_atomic(system:'$notrace'(_103910, _103912))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(277) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(user:current_mfl4(_102864, user, P;HTML|<span class="pl-atom"
+>Exit: </span>(277) [system] setup_call_cleanup(system:'$notrace'(3, -1), system:once(user:current_mfl4(_102866, user, P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>, 65)), system:'$restore_trace'(3, -1))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(275) [user] bugger:current_why(P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_102864</span>, <span class="pl-atom"
+>_102866</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -638,13 +690,13 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>)
    <span class="ansi1 ansi33"
->Redo: </span>(274) [$bags] findall_loop(_82416, user:current_why(_82416), _82422, [])
+>Redo: </span>(274) [$bags] findall_loop(_82418, user:current_why(_82418), _82424, [])
    <span class="ansi1 ansi32"
->Exit: </span>(274) [$bags] findall_loop(_82416, user:current_why(_82416), [P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(274) [$bags] findall_loop(_82418, user:current_why(_82418), [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -652,11 +704,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>], [])
 ^  <span class="ansi1 ansi32"
->Exit: </span>(273) [$bags] cleanup_bag('$bags':findall_loop(_82416, user:current_why(_82416), [P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(273) [$bags] cleanup_bag('$bags':findall_loop(_82418, user:current_why(_82418), [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -664,11 +716,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>], []), '$bags':'$destroy_findall_bag')
 ^  <span class="ansi1 ansi32"
->Exit: </span>(272) [$bags] findall(_82416, user:current_why(_82416), [P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(272) [$bags] findall(_82418, user:current_why(_82418), [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -676,11 +728,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>], [])
 ^  <span class="ansi1 ansi32"
->Exit: </span>(271) [$bags] findall(_82416, user:current_why(_82416), [P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(271) [$bags] findall(_82418, user:current_why(_82418), [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -692,7 +744,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -704,7 +756,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -716,19 +768,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _76348)
+>65</span></span>)</span>], _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(271) [user] u_to_uu([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -738,7 +790,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -750,7 +802,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -762,7 +814,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -774,19 +826,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _76348)
+>65</span></span>)</span>], _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(271) [user] u_to_uu([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -796,7 +848,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -808,7 +860,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -820,7 +872,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -832,91 +884,91 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>]=(_259804, _259806)
+>65</span></span>)</span>]=(_259806, _259808)
    <span class="ansi1 ansi31"
 >Fail: </span>(272) [system] [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>]=(_259804, _259806)
+>65</span></span>)</span>]=(_259806, _259808)
 ^  <span class="ansi1 ansi33"
 >Redo: </span>(271) [user] u_to_uu([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _76348)
+>65</span></span>)</span>], _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(271) [user] u_to_uu([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _76348)
+>65</span></span>)</span>], _76350)
 ^  <span class="ansi1 ansi32"
 >Call: </span>(272) [user] logicmoo_util_terms:list_to_conjuncts([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(272) [user] logicmoo_util_terms:list_to_conjuncts([P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi32"
 >Call: </span>(273) [user] logicmoo_util_terms:list_to_conjuncts(',', [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(273) [user] logicmoo_util_terms:list_to_conjuncts(',', [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -926,7 +978,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -938,7 +990,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -950,7 +1002,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -962,19 +1014,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(273) [user] logicmoo_util_terms:list_to_conjuncts(',', [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -984,7 +1036,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -996,7 +1048,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1008,7 +1060,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1020,7 +1072,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1032,7 +1084,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1044,7 +1096,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1056,43 +1108,43 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(273) [user] logicmoo_util_terms:list_to_conjuncts(',', [P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>], _290662)
+>65</span></span>)</span>], _290664)
 ^  <span class="ansi1 ansi32"
 >Call: </span>(274) [user] logicmoo_util_terms:list_to_conjuncts(',', P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _290662)
+>65</span></span>)</span>, _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(274) [user] logicmoo_util_terms:list_to_conjuncts(',', P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1102,7 +1154,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1114,7 +1166,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1126,7 +1178,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1138,19 +1190,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _290662)
+>65</span></span>)</span>, _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(274) [user] logicmoo_util_terms:list_to_conjuncts(',', P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1160,7 +1212,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1172,7 +1224,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1184,7 +1236,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1196,7 +1248,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1208,7 +1260,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1220,7 +1272,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1232,19 +1284,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _290662)
+>65</span></span>)</span>, _290664)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(274) [user] logicmoo_util_terms:list_to_conjuncts(',', P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1254,7 +1306,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1266,7 +1318,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1276,7 +1328,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1288,7 +1340,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1298,7 +1350,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1310,7 +1362,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1320,7 +1372,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1332,19 +1384,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _76348)
+>65</span></span>)</span>, _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(272) [user] u_to_uu(P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1354,7 +1406,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1366,7 +1418,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1378,7 +1430,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1390,19 +1442,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _76348)
+>65</span></span>)</span>, _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(272) [user] u_to_uu(P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1412,7 +1464,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1424,7 +1476,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1436,7 +1488,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1448,43 +1500,43 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>=(_658542, _658544)
+>65</span></span>)</span>=(_658544, _658546)
    <span class="ansi1 ansi31"
 >Fail: </span>(273) [system] P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>=(_658542, _658544)
+>65</span></span>)</span>=(_658544, _658546)
 ^  <span class="ansi1 ansi33"
 >Redo: </span>(272) [user] u_to_uu(P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, _76348)
+>65</span></span>)</span>, _76350)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(272) [user] u_to_uu(P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1494,7 +1546,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1506,7 +1558,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1516,7 +1568,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1528,7 +1580,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1538,7 +1590,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1550,7 +1602,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1562,7 +1614,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1574,7 +1626,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1582,11 +1634,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] pfcAdd(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(267) [user] pfcAdd(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1594,11 +1646,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(267) [user] pfcAdd(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(267) [user] pfcAdd(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1606,11 +1658,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Call: </span>(268) [user] pfcPost(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(268) [user] pfcPost(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1618,11 +1670,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(268) [user] pfcPost(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(268) [user] pfcPost(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1634,47 +1686,47 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax), do_compile('&self', foo, _64158))
+>65</span></span>)</span>, ax), do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(269) [user] pfcPost_rev((P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax), do_compile('&self', foo, _64158))
+>65</span></span>)</span>, ax), do_compile('&self', foo, _64160))
    <span class="ansi1 ansi32"
->Call: </span>(270) [system] is_list(do_compile('&self', foo, _64158))
+>Call: </span>(270) [system] is_list(do_compile('&self', foo, _64160))
    <span class="ansi1 ansi31"
->Fail: </span>(270) [system] is_list(do_compile('&self', foo, _64158))
+>Fail: </span>(270) [system] is_list(do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi33"
 >Redo: </span>(269) [user] pfcPost_rev((P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax), do_compile('&self', foo, _64158))
+>65</span></span>)</span>, ax), do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1682,11 +1734,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1694,21 +1746,21 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Call: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64158), _819456)
+>Call: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64160), _819458)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64158), _819456)
+>Unify: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64160), _819458)
    <span class="ansi1 ansi32"
 >Call: </span>(272) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(272) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64158), _819456)
+>Fail: </span>(271) [user] control_arg_types(do_compile('&self', foo, _64160), _819458)
 ^  <span class="ansi1 ansi33"
->Redo: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Redo: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1716,11 +1768,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1728,91 +1780,91 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Call: </span>(271) [user] locally_each:locally(set_prolog_flag(occurs_check, true), catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(271) [user] locally_each:locally(set_prolog_flag(occurs_check, true), catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(271) [locally_each] locally_each:locally(user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(271) [locally_each] locally_each:locally(user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:each_call_cleanup)
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:each_call_cleanup)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:each_call_cleanup)
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:each_call_cleanup)
    <span class="ansi1 ansi32"
->Call: </span>(273) [system] current_prolog_flag(occurs_check, _870902)
+>Call: </span>(273) [system] current_prolog_flag(occurs_check, _870904)
    <span class="ansi1 ansi32"
 >Exit: </span>(273) [system] current_prolog_flag(occurs_check, true)
 ^  <span class="ansi1 ansi32"
->Call: </span>(273) [locally_each] locally_each:wtl_how(trusted_redo_call_cleanup, true==true, user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(273) [locally_each] locally_each:wtl_how(trusted_redo_call_cleanup, true==true, user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:set_prolog_flag(occurs_check, true))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:set_prolog_flag(occurs_check, true))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(273) [locally_each] locally_each:wtl_how(locally_each:trusted_redo_call_cleanup, locally_each:(true==true), user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(273) [locally_each] locally_each:wtl_how(locally_each:trusted_redo_call_cleanup, locally_each:(true==true), user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:set_prolog_flag(occurs_check, true))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:set_prolog_flag(occurs_check, true))
    <span class="ansi1 ansi32"
 >Call: </span>(274) [system] true==true
    <span class="ansi1 ansi32"
 >Exit: </span>(274) [system] true==true
 ^  <span class="ansi1 ansi32"
->Call: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1820,11 +1872,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1832,11 +1884,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Call: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1844,11 +1896,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax)))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1856,11 +1908,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1868,11 +1920,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Unify: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1880,11 +1932,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Call: </span>(279) [user] assert('$spft$'(do_compile('&self', foo, _64158), P;HTML|<span class="pl-compound pl-level-0"
+>Call: </span>(279) [user] assert('$spft$'(do_compile('&self', foo, _64160), P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1892,11 +1944,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(279) [user] assert('$spft$'(do_compile('&self', foo, _64158), P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(279) [user] assert('$spft$'(do_compile('&self', foo, _64160), P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1904,11 +1956,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(278) [user] pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1916,11 +1968,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(276) [user] must_ex(pfcAddSupport(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -1928,83 +1980,83 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64158))
+>Call: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64158))
+>Unify: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi32"
->Call: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64158), true)
+>Call: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64158), true)
+>Unify: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi32"
->Call: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64158), true)
+>Call: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64158), true)
+>Unify: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi32"
->Call: </span>(279) [user] strip_module(do_compile('&self', foo, _64158), _973730, _973732)
+>Call: </span>(279) [user] strip_module(do_compile('&self', foo, _64160), _973732, _973734)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(279) [user] strip_module(do_compile('&self', foo, _64158), user, do_compile('&self', foo, _64158))
+>Exit: </span>(279) [user] strip_module(do_compile('&self', foo, _64160), user, do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi32"
->Call: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true)
+>Call: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true)
+>Unify: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true)
    <span class="ansi1 ansi32"
->Call: </span>(280) [system] _977826=user
+>Call: </span>(280) [system] _977828=user
    <span class="ansi1 ansi32"
 >Exit: </span>(280) [system] user=user
 ^  <span class="ansi1 ansi32"
->Call: </span>(280) [user] clause(user:do_compile('&self', foo, _64158), true, _979872)
+>Call: </span>(280) [user] clause(user:do_compile('&self', foo, _64160), true, _979874)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(280) [user] clause(do_compile('&self', foo, _64158), true, <clause>(0x55aa89bf7ea0))
+>Exit: </span>(280) [user] clause(do_compile('&self', foo, _64160), true, <clause>(0x55dfc49f86a0))
    <span class="ansi1 ansi32"
->Call: </span>(280) [$syspreds] clause_property(<clause>(0x55aa89bf7ea0), module(user))
+>Call: </span>(280) [$syspreds] clause_property(<clause>(0x55dfc49f86a0), module(user))
    <span class="ansi1 ansi34"
->Unify: </span>(280) [$syspreds] clause_property(<clause>(0x55aa89bf7ea0), module(user))
+>Unify: </span>(280) [$syspreds] clause_property(<clause>(0x55dfc49f86a0), module(user))
    <span class="ansi1 ansi32"
->Exit: </span>(280) [$syspreds] clause_property(<clause>(0x55aa89bf7ea0), module(user))
+>Exit: </span>(280) [$syspreds] clause_property(<clause>(0x55dfc49f86a0), module(user))
 ^  <span class="ansi1 ansi32"
->Call: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true, <clause>(0x55aa89bf7ea0))
+>Call: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true, <clause>(0x55dfc49f86a0))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true, <clause>(0x55aa89bf7ea0))
+>Unify: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true, <clause>(0x55dfc49f86a0))
 ^  <span class="ansi1 ansi32"
->Call: </span>(281) [user] clause(_987040, _987042, <clause>(0x55aa89bf7ea0))
+>Call: </span>(281) [user] clause(_987042, _987044, <clause>(0x55dfc49f86a0))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(281) [user] clause(do_compile('&self', foo, _988076), true, <clause>(0x55aa89bf7ea0))
+>Exit: </span>(281) [user] clause(do_compile('&self', foo, _988078), true, <clause>(0x55dfc49f86a0))
 ^  <span class="ansi1 ansi32"
->Call: </span>(281) [user] strip_m(do_compile('&self', foo, _988076), _989112)
+>Call: </span>(281) [user] strip_m(do_compile('&self', foo, _988078), _989114)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(281) [user] strip_m(do_compile('&self', foo, _988076), do_compile('&self', foo, _988076))
+>Unify: </span>(281) [user] strip_m(do_compile('&self', foo, _988078), do_compile('&self', foo, _988078))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(281) [user] strip_m(do_compile('&self', foo, _988076), do_compile('&self', foo, _988076))
+>Exit: </span>(281) [user] strip_m(do_compile('&self', foo, _988078), do_compile('&self', foo, _988078))
    <span class="ansi1 ansi32"
->Call: </span>(281) [system] do_compile('&self', foo, _988076)=@=do_compile('&self', foo, _64158)
+>Call: </span>(281) [system] do_compile('&self', foo, _988078)=@=do_compile('&self', foo, _64160)
    <span class="ansi1 ansi32"
->Exit: </span>(281) [system] do_compile('&self', foo, _988076)=@=do_compile('&self', foo, _64158)
+>Exit: </span>(281) [system] do_compile('&self', foo, _988078)=@=do_compile('&self', foo, _64160)
 ^  <span class="ansi1 ansi32"
->Call: </span>(281) [user] strip_m(true, _994194)
+>Call: </span>(281) [user] strip_m(true, _994196)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(281) [user] strip_m(true, true)
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(281) [user] strip_m(true, true)
    <span class="ansi1 ansi32"
->Call: </span>(281) [system] cl(do_compile('&self', foo, _988076), true)=@=cl(do_compile('&self', foo, _64158), true)
+>Call: </span>(281) [system] cl(do_compile('&self', foo, _988078), true)=@=cl(do_compile('&self', foo, _64160), true)
    <span class="ansi1 ansi32"
->Exit: </span>(281) [system] cl(do_compile('&self', foo, _988076), true)=@=cl(do_compile('&self', foo, _64158), true)
+>Exit: </span>(281) [system] cl(do_compile('&self', foo, _988078), true)=@=cl(do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true, <clause>(0x55aa89bf7ea0))
+>Exit: </span>(280) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true, <clause>(0x55dfc49f86a0))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64158), true)
+>Exit: </span>(279) [user] is_asserted_exact(user, do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64158), true)
+>Exit: </span>(278) [user] is_asserted_exact(do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi31"
->Fail: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64158), true)
+>Fail: </span>(277) [user] pfcUnique(post, do_compile('&self', foo, _64160), true)
 ^  <span class="ansi1 ansi31"
->Fail: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64158))
+>Fail: </span>(276) [user] pfcUnique(post, do_compile('&self', foo, _64160))
 ^  <span class="ansi1 ansi33"
->Redo: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Redo: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -2012,17 +2064,17 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
    <span class="ansi1 ansi32"
->Call: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64158))))
+>Call: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64160))))
    <span class="ansi1 ansi34"
->Unify: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64158))))
+>Unify: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64160))))
    <span class="ansi1 ansi32"
->Exit: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64158))))
+>Exit: </span>(276) [user] nop(pfcWarn(not_pfcUnique(post, do_compile('&self', foo, _64160))))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(275) [user] pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -2030,47 +2082,47 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(273) [locally_each] locally_each:wtl_how(locally_each:trusted_redo_call_cleanup, locally_each:(true==true), user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(273) [locally_each] locally_each:wtl_how(locally_each:trusted_redo_call_cleanup, locally_each:(true==true), user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:set_prolog_flag(occurs_check, true))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:set_prolog_flag(occurs_check, true))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(272) [locally_each] locally_each:wtl(user, set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)), user:each_call_cleanup)
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)), user:each_call_cleanup)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(271) [locally_each] locally_each:locally(user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(271) [locally_each] locally_each:locally(user:set_prolog_flag(occurs_check, true), user:catch(pfcPost11(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_138400</span>, <span class="pl-atom"
+>_138402</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax)), _839948, (notrace, write_src_uo((do_compile('&self', foo, _64158)=>_839948)), trace)))
+>65</span></span>)</span>, ax)), _839950, (notrace, write_src_uo((do_compile('&self', foo, _64160)=>_839950)), trace)))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64158), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(270) [user] pfcPost1(do_compile('&self', foo, _64160), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_6720</span>, <span class="pl-atom"
+>_6722</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -2082,19 +2134,19 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_6720</span>, <span class="pl-atom"
+>_6722</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
 >:</span> <span class="pl-int"
 >65</span></span>, <span class="pl-int"
->65</span></span>)</span>, ax), do_compile('&self', foo, _6714))
+>65</span></span>)</span>, ax), do_compile('&self', foo, _6716))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(268) [user] pfcPost(do_compile('&self', foo, _6714), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(268) [user] pfcPost(do_compile('&self', foo, _6716), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_6720</span>, <span class="pl-atom"
+>_6722</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -2110,13 +2162,13 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(269) [user] pfcGetSearch(direct)
    <span class="ansi1 ansi32"
->Call: </span>(270) [t_l] t_l:pfcSearchTL(_32216)
+>Call: </span>(270) [t_l] t_l:pfcSearchTL(_32218)
    <span class="ansi1 ansi31"
->Fail: </span>(270) [t_l] t_l:pfcSearchTL(_32216)
+>Fail: </span>(270) [t_l] t_l:pfcSearchTL(_32218)
 ^  <span class="ansi1 ansi33"
 >Redo: </span>(269) [user] pfcGetSearch(direct)
 ^  <span class="ansi1 ansi32"
->Call: </span>(270) [user] pfcSearch(_35254)
+>Call: </span>(270) [user] pfcSearch(_35256)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(270) [user] pfcSearch(direct)
 ^  <span class="ansi1 ansi32"
@@ -2132,11 +2184,11 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(268) [user] pfcRun
 ^  <span class="ansi1 ansi32"
->Exit: </span>(267) [user] pfcAdd(do_compile('&self', foo, _6714), (P;HTML|<span class="pl-compound pl-level-0"
+>Exit: </span>(267) [user] pfcAdd(do_compile('&self', foo, _6716), (P;HTML|<span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mfl4</span>(<span class="pl-args"
 ><span class="pl-avar"
->_6720</span>, <span class="pl-atom"
+>_6722</span>, <span class="pl-atom"
 >user</span>, <span class="pl-compound"
 ><span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span> <span class="pl-infix"
@@ -2144,29 +2196,29 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >65</span></span>, <span class="pl-int"
 >65</span></span>)</span>, ax))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(266) [user] pfcAdd(do_compile('&self', foo, _6714))
+>Exit: </span>(266) [user] pfcAdd(do_compile('&self', foo, _6716))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _6714))
+>Exit: </span>(265) [user] pfcAdd_Now(do_compile('&self', foo, _6716))
 ^  <span class="ansi1 ansi32"
->Call: </span>(265) [user] if_t(\+current_predicate(foo/_53090), forall(metta_defn('&self', [foo|_53110], _53104), compile_metta_defn('&self', foo, _53118, _53110, _53104, _53124)))
+>Call: </span>(265) [user] if_t(\+current_predicate(foo/_53092), forall(metta_defn('&self', [foo|_53112], _53106), compile_metta_defn('&self', foo, _53120, _53112, _53106, _53126)))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(265) [user] if_t(\+current_predicate(foo/_53090), forall(metta_defn('&self', [foo|_53110], _53104), compile_metta_defn('&self', foo, _53118, _53110, _53104, _53124)))
+>Unify: </span>(265) [user] if_t(\+current_predicate(foo/_53092), forall(metta_defn('&self', [foo|_53112], _53106), compile_metta_defn('&self', foo, _53120, _53112, _53106, _53126)))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] current_predicate(foo/_53090)
+>Call: </span>(267) [user] current_predicate(foo/_53092)
 ^  <span class="ansi1 ansi31"
->Fail: </span>(267) [user] current_predicate(foo/_53090)
+>Fail: </span>(267) [user] current_predicate(foo/_53092)
 ^  <span class="ansi1 ansi32"
->Call: </span>(266) [user] forall(metta_defn('&self', [foo|_53110], _53104), compile_metta_defn('&self', foo, _53118, _53110, _53104, _53124))
+>Call: </span>(266) [user] forall(metta_defn('&self', [foo|_53112], _53106), compile_metta_defn('&self', foo, _53120, _53112, _53106, _53126))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(266) [$apply] forall(user:metta_defn('&self', [foo|_53110], _53104), user:compile_metta_defn('&self', foo, _53118, _53110, _53104, _53124))
+>Unify: </span>(266) [$apply] forall(user:metta_defn('&self', [foo|_53112], _53106), user:compile_metta_defn('&self', foo, _53120, _53112, _53106, _53126))
 ^  <span class="ansi1 ansi32"
->Call: </span>(267) [user] metta_defn('&self', [foo|_53110], _53104)
+>Call: </span>(267) [user] metta_defn('&self', [foo|_53112], _53106)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(267) [user] metta_defn('&self', [foo|_53110], _53104)
+>Unify: </span>(267) [user] metta_defn('&self', [foo|_53112], _53106)
    <span class="ansi1 ansi32"
->Call: </span>(268) [user] metta_eq_def(=, '&self', [foo|_53110], _53104)
+>Call: </span>(268) [user] metta_eq_def(=, '&self', [foo|_53112], _53106)
    <span class="ansi1 ansi34"
->Unify: </span>(268) [user] metta_eq_def(=, '&self', [foo|_53110], _53104)
+>Unify: </span>(268) [user] metta_eq_def(=, '&self', [foo|_53112], _53106)
 ^  <span class="ansi1 ansi32"
 >Call: </span>(269) [user] ignore((=)=(=))
 ^  <span class="ansi1 ansi34"
@@ -2178,43 +2230,43 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(269) [system] ignore(user:((=)=(=)))
    <span class="ansi1 ansi32"
->Call: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo|_53110], _53104]), not_metta_atom_corelib('&self', [=, [foo|_53110], _53104]))
+>Call: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo|_53112], _53106]), not_metta_atom_corelib('&self', [=, [foo|_53112], _53106]))
    <span class="ansi1 ansi34"
->Unify: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo|_53110], _53104]), not_metta_atom_corelib('&self', [=, [foo|_53110], _53104]))
+>Unify: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo|_53112], _53106]), not_metta_atom_corelib('&self', [=, [foo|_53112], _53106]))
    <span class="ansi1 ansi32"
->Call: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Call: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
 ^  <span class="ansi1 ansi32"
->Call: </span>(271) [user] typed_list('&self', _72602, _72476)
+>Call: </span>(271) [user] typed_list('&self', _72604, _72478)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(271) [user] typed_list('&self', _73622, _72476)
+>Unify: </span>(271) [user] typed_list('&self', _73624, _72478)
    <span class="ansi1 ansi32"
 >Call: </span>(272) [system] compound('&self')
    <span class="ansi1 ansi31"
 >Fail: </span>(272) [system] compound('&self')
 ^  <span class="ansi1 ansi31"
->Fail: </span>(271) [user] typed_list('&self', _76666, _72476)
+>Fail: </span>(271) [user] typed_list('&self', _76668, _72478)
    <span class="ansi1 ansi33"
->Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi32"
 >Call: </span>(271) [system] '&self'=='&flybase'
    <span class="ansi1 ansi33"
->Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
 ^  <span class="ansi1 ansi32"
->Call: </span>(271) [user] metta_atom_in_file('&self', [=, [foo|_53110], _53104])
+>Call: </span>(271) [user] metta_atom_in_file('&self', [=, [foo|_53112], _53106])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(271) [user] metta_atom_in_file('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(271) [user] metta_atom_in_file('&self', [=, [foo|_53112], _53106])
 ^  <span class="ansi1 ansi32"
->Call: </span>(272) [user] metta_atom_in_file('&self', [=, [foo|_53110], _53104], _84752, _84754)
+>Call: </span>(272) [user] metta_atom_in_file('&self', [=, [foo|_53112], _53106], _84754, _84756)
 ^  <span class="ansi1 ansi34"
->Unify: </span>(272) [user] metta_atom_in_file('&self', [=, [foo|_53110], _53104], _85776, _85778)
+>Unify: </span>(272) [user] metta_atom_in_file('&self', [=, [foo|_53112], _53106], _85778, _85780)
 ^  <span class="ansi1 ansi32"
->Call: </span>(273) [user] loaded_into_kb('&self', _86674)
+>Call: </span>(273) [user] loaded_into_kb('&self', _86676)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(273) [user] loaded_into_kb('&self', P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>)
@@ -2222,43 +2274,43 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >Exit: </span>(273) [user] loaded_into_kb('&self', P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>)
 ^  <span class="ansi1 ansi32"
->Call: </span>(273) [user] once(user:asserted_metta_pred(_97572, P;HTML|<span class="pl-atom"
+>Call: </span>(273) [user] once(user:asserted_metta_pred(_97574, P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(273) [system] once(user:asserted_metta_pred(_97572, P;HTML|<span class="pl-atom"
+>Unify: </span>(273) [system] once(user:asserted_metta_pred(_97574, P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>))
 ^  <span class="ansi1 ansi32"
->Call: </span>(274) [user] asserted_metta_pred(_97572, P;HTML|<span class="pl-atom"
+>Call: </span>(274) [user] asserted_metta_pred(_97574, P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>)
 ^  <span class="ansi1 ansi31"
->Fail: </span>(274) [user] asserted_metta_pred(_97572, P;HTML|<span class="pl-atom"
+>Fail: </span>(274) [user] asserted_metta_pred(_97574, P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta'</span>)
    <span class="ansi1 ansi33"
->Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Redo: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(270) [user] metta_atom('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi32"
->Call: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53110], _53104])
+>Call: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53110], _53104])
+>Unify: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53112], _53106])
 ^  <span class="ansi1 ansi32"
->Call: </span>(272) [user] metta_atom_asserted_deduced('&self', [=, [foo|_53110], _53104])
+>Call: </span>(272) [user] metta_atom_asserted_deduced('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi33"
->Redo: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53110], _53104])
+>Redo: </span>(271) [user] metta_atom_asserted('&self', [=, [foo|_53112], _53106])
    <span class="ansi1 ansi34"
->Unify: </span>(271) [user] metta_atom_asserted('&self', [=, [foo, _123362], [+, _123362, 1]])
+>Unify: </span>(271) [user] metta_atom_asserted('&self', [=, [foo, _123364], [+, _123364, 1]])
    <span class="ansi1 ansi32"
->Exit: </span>(271) [user] metta_atom_asserted('&self', [=, [foo, _123362], [+, _123362, 1]])
+>Exit: </span>(271) [user] metta_atom_asserted('&self', [=, [foo, _123364], [+, _123364, 1]])
    <span class="ansi1 ansi32"
->Exit: </span>(270) [user] metta_atom('&self', [=, [foo, _123362], [+, _123362, 1]])
+>Exit: </span>(270) [user] metta_atom('&self', [=, [foo, _123364], [+, _123364, 1]])
    <span class="ansi1 ansi32"
->Exit: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo, _123362], [+, _123362, 1]]), not_metta_atom_corelib('&self', [=, [foo, _123362], [+, _123362, 1]]))
+>Exit: </span>(269) [user] if_or_else(metta_atom('&self', [=, [foo, _123364], [+, _123364, 1]]), not_metta_atom_corelib('&self', [=, [foo, _123364], [+, _123364, 1]]))
    <span class="ansi1 ansi32"
->Exit: </span>(268) [user] metta_eq_def(=, '&self', [foo, _123362], [+, _123362, 1])
+>Exit: </span>(268) [user] metta_eq_def(=, '&self', [foo, _123364], [+, _123364, 1])
 ^  <span class="ansi1 ansi32"
->Exit: </span>(267) [user] metta_defn('&self', [foo, _123362], [+, _123362, 1])
+>Exit: </span>(267) [user] metta_defn('&self', [foo, _123364], [+, _123364, 1])
    <span class="ansi1 ansi32"
->Call: </span>(267) [user] compile_metta_defn('&self', foo, _53118, [_123362], [+, _123362, 1], _53124)
+>Call: </span>(267) [user] compile_metta_defn('&self', foo, _53120, [_123364], [+, _123364, 1], _53126)
 <span class="ansi34"
 >% Got exception existence_error(procedure,compile_metta_defn/6) (Ctx0='$apply':forall/2, Catcher=system:'<meta-call>'/1)
 </span><span class="ansi34"
@@ -2288,7 +2340,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-avar"
->_808040</span></span>]</span>, <span class="pl-list"
+>_811994</span></span>]</span>, <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
@@ -2334,7 +2386,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-avar"
->_975088</span></span>]</span>, <span class="pl-list"
+>_979042</span></span>]</span>, <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
@@ -2388,7 +2440,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-avar"
->_54488</span></span>]</span>, <span class="pl-list"
+>_60258</span></span>]</span>, <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
@@ -2745,7 +2797,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
                                                                (<span class="pl-compound pl-level-0"
 ><span class="pl-compound"
 ><span class="pl-avar"
->_520540</span><span class="pl-infix"
+>_526310</span><span class="pl-infix"
 >==</span><span class="pl-int"
 >1</span></span><span class="pl-infix"
 >-&gt;</span><span class="pl-compound"
@@ -2800,7 +2852,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_01</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_33082</span>, <span class="pl-int"
+>_33096</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-atom"
 >'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
@@ -2822,7 +2874,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_args</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_631490</span>, <span class="pl-int"
+>_637260</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -2866,7 +2918,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_args</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_745810</span>, <span class="pl-int"
+>_751580</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -2902,7 +2954,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_args</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_898542</span>, <span class="pl-int"
+>_904312</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -2922,7 +2974,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_args</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_982728</span>, <span class="pl-int"
+>_988498</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3011,7 +3063,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_args</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_273654</span>, <span class="pl-int"
+>_273668</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3067,7 +3119,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >findall_eval</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_377424</span>, <span class="pl-int"
+>_377438</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3108,7 +3160,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >findall_eval</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_495406</span>, <span class="pl-int"
+>_495420</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3132,7 +3184,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >findall_eval</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_539172</span>, <span class="pl-int"
+>_539186</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3288,7 +3340,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >findall_eval</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_814444</span>, <span class="pl-int"
+>_814458</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3324,7 +3376,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >if_t</span>(<span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-avar"
->_826018</span><span class="pl-infix"
+>_826032</span><span class="pl-infix"
 >==</span><span class="pl-int"
 >3</span></span>, <span class="pl-compound"
 ><span class="pl-functor"
@@ -3372,7 +3424,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >findall_eval</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_997712</span>, <span class="pl-int"
+>_997726</span>, <span class="pl-int"
 >499</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-list"
 ><span class="pl-functor"
@@ -3576,7 +3628,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
                                                                (<span class="pl-compound pl-level-0"
 ><span class="pl-compound"
 ><span class="pl-avar"
->_533158</span><span class="pl-infix"
+>_533172</span><span class="pl-infix"
 >==</span><span class="pl-int"
 >1</span></span><span class="pl-infix"
 >-&gt;</span><span class="pl-compound"
@@ -3631,7 +3683,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >eval_01</span>(<span class="pl-args"
 ><span class="pl-atom"
 >=</span>, <span class="pl-avar"
->_33804</span>, <span class="pl-int"
+>_33818</span>, <span class="pl-int"
 >500</span>, <span class="pl-atom"
 >'&amp;self'</span>, <span class="pl-atom"
 >'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
@@ -3651,7 +3703,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >user</span>: <span class="pl-atom"
 >eval_args</span>( <span class="pl-atom"
 >=</span>, 
-                                                      _679040, <span class="pl-int"
+                                                      _679054, <span class="pl-int"
 >500</span>, <span class="pl-atom"
 >'&amp;self'</span>, 
                                                       [ <span class="pl-atom"
@@ -3932,9 +3984,12 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
                              
                           ( <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
+>old_not_compatio</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
 >write</span>(<span class="pl-args"
 ><span class="pl-string"
->"~npress ';' for more solutions "</span></span>)</span>  ,
+>"~npress ';' for more solutions "</span></span>)</span></span>)</span>  ,
                             <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >get_single_char_key</span>(<span class="pl-args"
@@ -3942,7 +3997,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >Key</span></span>)</span> , 
                             <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
->not_compatio</span>(<span class="pl-args"
+>old_not_compatio</span>(<span class="pl-args"
 >(<span class="pl-compound"
 ><span class="pl-atom"
 >...</span><span class="pl-infix"
@@ -4000,7 +4055,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >clause</span>(<span class="pl-args"
 ><span class="pl-blob"
 >&lt;clause&gt;</span>, <span class="pl-int"
->1148</span></span>)</span>, 
+>1152</span></span>)</span>, 
               <span class="pl-atom"
 >interactively_do_metta_exec01</span>( <span class="pl-atom"
 >'&lt;garbage_collected&gt;'</span>, 
@@ -4182,18 +4237,18 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
               <span class="pl-atom"
 >catch</span>( 
                  <span class="pl-atom"
->user</span>: ( <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->not_compatio</span>(<span class="pl-args"
-><span class="pl-compound"
+>user</span>: ( <span class="pl-atom"
+>output_language</span>( <span class="pl-atom"
+>metta</span>, 
+                                                        <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >write_exec</span>(<span class="pl-args"
 ><span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
-><span class="pl-ellipsis"
->...</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span></span>)</span>  ,
+><span class="pl-atom"
+>assertEqualToResult</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>)  ,
                                                       notrace( <span class="pl-atom"
 >into_metta_callable</span>( <span class="pl-atom"
 >'&amp;self'</span>, 
@@ -4210,7 +4265,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 >[]</span>]</span>],  <span class="pl-avar"
->_259714</span>, <span class="pl-var"
+>_294646</span>, <span class="pl-var"
 >Into_metta_callableSelf74</span>, <span class="pl-var"
 >Into_metta_callableSelf</span>, <span class="pl-var"
 >Callable</span>)) , 
@@ -4234,7 +4289,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 ><span class="pl-atom"
 >...</span></span></span>]</span>, <span class="pl-atom"
 >...</span>], <span class="pl-avar"
->_405938</span>, <span class="pl-var"
+>_440870</span>, <span class="pl-var"
 >Interactively_do_metta_execFileSelf78</span>, 
                                                                                               <span class="pl-var"
 >Interactively_do_metta_execFileSelf77</span>, <span class="pl-var"
@@ -8269,7 +8324,7 @@ Deterministic: (#(Error #(got ((-> Number Number))) #(expected (-> Number Number
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta progress.
 </span>
-Script done on 2024-11-30 14:12:35+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-01 11:03:23+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

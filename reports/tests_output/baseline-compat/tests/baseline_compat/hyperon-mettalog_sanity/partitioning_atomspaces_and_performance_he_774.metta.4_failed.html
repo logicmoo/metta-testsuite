@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -59,7 +60,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:18:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:09:30+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -218,9 +221,12 @@ Script started on 2024-11-30 14:18:50+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.178 CPU in 0.178 seconds (100% CPU, 262640 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4588497 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -390,9 +396,9 @@ Script started on 2024-11-30 14:18:50+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 8 "Missed result: Age)]" )
 P;HTML|
-;                                         #( = 8 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26448maxresident)k" )
+;                                         #( = 8 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26196maxresident)k" )
 P;HTML|
-;                                         #( = 8 "0inputs+0outputs (0major+3145minor)pagefaults 0swaps" )
+;                                         #( = 8 "0inputs+0outputs (0major+3140minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta is 2.58K bytes (83 lines)
@@ -404,36 +410,73 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; Example: Partitioning Atomspaces by User and Managing Knowledge Bases
 ;;; ---------------------------------------------------------------------
 ;;; Create a new space for testing
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(bind! &test-space (new-space))
 
 </span>
-Deterministic: ()
-;;; Define functions for managing user-specific knowledge bases
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define functions for managing user-specific knowledge bases
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (add-user $name)  
   (let $space 
     (new-space) 
     (add-atom &test-space 
       (User $name $space))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (write-user $name $data)  
   (let $space 
     (match &test-space 
       (User $name $s) $s) 
     (add-atom $space $data)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (read-user $name $query $template)  
   (let $space 
     (match &test-space 
       (User $name $s) $s) 
     (match $space $query $template)))
-</span>;;; Test 1: Add user-specific knowledge bases
+</span>
+/*
+```
+```load
+;;; Test 1: Add user-specific knowledge bases
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-user Alice)
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-user Alice) (()))
 
@@ -442,20 +485,32 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.01</h3>
 <span class="ansi38-255165000"
 > (User Alice #(Space ()))
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.003 secs. (2.91 milliseconds) 
+; took 0.002 secs. (1.63 milliseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(add-user Bob)
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-user Bob) (()))
 
@@ -464,17 +519,28 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.02</h3>
 <span class="ansi38-255165000"
 > (User Bob #(Space ()))
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.003 secs. (2.77 milliseconds) 
+; took 0.001 secs. (1.46 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Verify user knowledge bases exist
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify user knowledge bases exist
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
 
@@ -483,20 +549,29 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000259 secs. (259.46 microseconds) 
+; took 0.000235 secs. (234.67 microseconds) 
 
 !(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (Alice Bob) (Alice Bob)))
 </span>
-Deterministic: ()
-;;; Test 2: Write data to user-specific knowledge bases
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test 2: Write data to user-specific knowledge bases
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(write-user Alice (Age 20))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -505,20 +580,32 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.04</h3>
 <span class="ansi38-255165000"
 > (Age 20)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.004 secs. (3.55 milliseconds) 
+; took 0.002 secs. (1.95 milliseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()<span class="ansi38-255165009"
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(write-user Bob (Age 22))
 </span>;; To unit test case:
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -527,17 +614,28 @@ Deterministic: ()<span class="ansi38-255165009"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.05</h3>
 <span class="ansi38-255165000"
 > (Age 22)
-</span>; 
+</span>
+/*
+```
+```load
+; 
 ; EVAL TEST
-; took 0.004 secs. (3.54 milliseconds) 
+; took 0.002 secs. (2.01 milliseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>
-Deterministic: ()
-;;; Test: Verify data written to Alice's knowledge base
+</span>```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify data written to Alice's knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
 
@@ -546,15 +644,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (Age Alice 20)))
 </span>
-Deterministic: (#(Error #(got ()) #(expected (Age Alice 20))))
-;;; Test: Verify data written to Bob's knowledge base
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected (Age Alice 20))))
+</span>;;; Test: Verify data written to Bob's knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
 
@@ -563,51 +670,106 @@ Deterministic: (#(Error #(got ()) #(expected (Age Alice 20))))
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (Age Bob 22)))
 </span>
-Deterministic: (#(Error #(got ()) #(expected (Age Bob 22))))
-;;; Example: Manage Atomspaces for Thematic Partitioning
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected (Age Bob 22))))
+</span>;;; Example: Manage Atomspaces for Thematic Partitioning
 ;;; ----------------------------------------------------
 ;;; Define functions to add, retrieve, and manage partitioned knowledge
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (add-partition $name)  
   (let $space 
     (new-space) 
     (add-atom &test-space 
       (Partition $name $space))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (write-partition $name $data)  
   (let $space 
     (match &test-space 
       (Partition $name $s) $s) 
     (add-atom $space $data)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (read-partition $name $query $template)  
   (let $space 
     (match &test-space 
       (Partition $name $s) $s) 
     (match $space $query $template)))
-</span>;;; Test 3: Add partitioned knowledge bases
+</span>
+/*
+```
+```load
+;;; Test 3: Add partitioned knowledge bases
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-partition People)
 
 </span><span class="ansi38-255165000"
 > (Partition People #(Space ()))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-partition Games)
 
 </span><span class="ansi38-255165000"
 > (Partition Games #(Space ()))
 </span>
-Deterministic: ()
-;;; Test: Verify partitions exist
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify partitions exist
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
 
@@ -616,30 +778,61 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000243 secs. (242.73 microseconds) 
+; took 0.000204 secs. (204.31 microseconds) 
 
 !(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (People Games) (People Games)))
 </span>
-Deterministic: ()
-;;; Test 4: Write and read data from a partitioned knowledge base
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test 4: Write and read data from a partitioned knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(write-partition People (Friend Bob Alice))
 
 </span><span class="ansi38-255165000"
 > (Friend Bob Alice)
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(write-partition Games (GameRole Predator))
 
 </span><span class="ansi38-255165000"
 > (GameRole Predator)
 </span>
-Deterministic: ()
-;;; Test: Verify data in People partition
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify data in People partition
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
 
@@ -648,15 +841,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.26 milliseconds) 
+; took 0.000950 secs. (949.56 microseconds) 
 
 !(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (Friend Bob Alice)))
 </span>
-Deterministic: (#(Error #(got ()) #(expected (Friend Bob Alice))))
-;;; Test: Verify data in Games partition
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected (Friend Bob Alice))))
+</span>;;; Test: Verify data in Games partition
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
 
@@ -665,16 +867,21 @@ Deterministic: (#(Error #(got ()) #(expected (Friend Bob Alice))))
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.000939 secs. (939.24 microseconds) 
 
 !(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (GameRole Predator)))
 </span>
-Deterministic: (#(Error #(got ()) #(expected (GameRole Predator))))<span class="ansi32"
->
-% 409,392 inferences, 0.146 CPU in 0.148 seconds (99% CPU, 2806590 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected (GameRole Predator))))
+</span><span class="ansi32"
+>% 424,567 inferences, 0.116 CPU in 0.118 seconds (98% CPU, 3672696 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta 0 )
 <span class="ansi1"
@@ -827,8 +1034,11 @@ Deterministic: (#(Error #(got ()) #(expected (GameRole Predator))))<span class="
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:18:58+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:09:37+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

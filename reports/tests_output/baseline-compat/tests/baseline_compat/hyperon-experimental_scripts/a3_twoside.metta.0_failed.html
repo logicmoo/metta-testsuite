@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -30,7 +31,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:04:16+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 10:56:05+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -189,9 +192,12 @@ Script started on 2024-11-30 14:04:16+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.177 CPU in 0.177 seconds (100% CPU, 265340 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4619674 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -362,14 +368,34 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Variables can appear in knowledge base entries
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (implies (Frog $x) (Green $x))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (implies (Frog $x) (Eats-flies $x))
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>
+/*
+```
+```load
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Bound variables on both sides will be substituted
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (implies (Frog Sam) $what) $what) ((Green Sam) (Eats-flies Sam)))
 
@@ -378,14 +404,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A3-TWOSIDE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000888 secs. (887.85 microseconds) 
+; took 0.000712 secs. (712.47 microseconds) 
 
 !(assertEqualToResult (match &self (implies (Frog Sam) $what) $what) ((Green Sam) (Eats-flies Sam)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Green Sam) (Eats-flies Sam)) ((Green Sam) (Eats-flies Sam))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (implies ($P $x) (Green Sam)) ($x might be $P)) ((Sam might be Frog)))
 
@@ -394,26 +429,51 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A3-TWOSIDE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000512 secs. (512.34 microseconds) 
+; took 0.000393 secs. (393.48 microseconds) 
 
 !(assertEqualToResult (match &self (implies ($P $x) (Green Sam)) ($x might be $P)) ((Sam might be Frog)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Sam might be Frog)) ((Sam might be Frog))))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Composite queries
 ;;; The comma is used to form a conjunction of queries with shared
 ;;; variables, which should be satisfied simultaneously.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Some facts
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (Frog Sam)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (Robot Sophia)
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (, (Frog $x) (implies (Frog $x) $y)) $y) ((Green Sam) (Eats-flies Sam)))
 
 </span>
@@ -421,18 +481,27 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A3-TWOSIDE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000820 secs. (819.90 microseconds) 
+; took 0.000599 secs. (599.48 microseconds) 
 
 !(assertEqualToResult (match &self (, (Frog $x) (implies (Frog $x) $y)) $y) ((Green Sam) (Eats-flies Sam)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Green Sam) (Eats-flies Sam)) ((Green Sam) (Eats-flies Sam))))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Variables in queries can remain unbound
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (, (implies ($P $x) (Green $x)) (implies ($P $x) (Eats-flies $x))) (Then it is definitely $P)) ((Then it is definitely Frog)))
 
@@ -441,16 +510,21 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A3-TWOSIDE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000569 secs. (569.44 microseconds) 
+; took 0.000424 secs. (424.35 microseconds) 
 
 !(assertEqualToResult (match &self (, (implies ($P $x) (Green $x)) (implies ($P $x) (Eats-flies $x))) (Then it is definitely $P)) ((Then it is definitely Frog)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Then it is definitely Frog)) ((Then it is definitely Frog))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 211,285 inferences, 0.074 CPU in 0.076 seconds (97% CPU, 2847189 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 215,314 inferences, 0.065 CPU in 0.067 seconds (97% CPU, 3306554 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/a3_twoside.metta 0 )
 <span class="ansi1"
@@ -592,8 +666,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:04:24+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 10:56:12+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

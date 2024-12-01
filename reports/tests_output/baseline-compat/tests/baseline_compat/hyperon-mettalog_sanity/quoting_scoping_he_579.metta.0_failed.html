@@ -13,7 +13,9 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -23,15 +25,14 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:19:55+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:10:32+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -190,9 +191,12 @@ Script started on 2024-11-30 14:19:55+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.182 CPU in 0.182 seconds (100% CPU, 257321 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4430459 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -352,9 +356,9 @@ Script started on 2024-11-30 14:19:55+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 3 "Missed result: 2)]" )
 P;HTML|
-;                                         #( = 3 "0.04user 0.00system 0:00.04elapsed 95%CPU (0avgtext+0avgdata 26096maxresident)k" )
+;                                         #( = 3 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26116maxresident)k" )
 P;HTML|
-;                                         #( = 3 "0inputs+0outputs (0major+3119minor)pagefaults 0swaps" )
+;                                         #( = 3 "0inputs+0outputs (0major+3126minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta is 2.38K bytes (63 lines)
@@ -369,6 +373,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; prevent unification/substitution in specific contexts.
 ;;; Example 1: Basic Quoting Issue
 ;;; --------------------------------
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
@@ -377,16 +385,25 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000158 secs. (158.49 microseconds) 
+; took 0.000157 secs. (157.42 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (A) (A)))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; Without a scoping mechanism, `quote` does not isolate `$x`, and substitution occurs.
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
@@ -395,69 +412,229 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000289 secs. (288.54 microseconds) 
+; took 0.000287 secs. (287.22 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (2) (2)))
 </span>
-Deterministic: ()
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; `quote` fails to preserve the quoted structure, and evaluation proceeds, producing `2`.
 ;;; Example 2: Real-World Example with Combinatory Logic
 ;;; ---------------------------------------------------
 ;;; Knowledge Base Setup
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
-Deterministic: ()
-;;; Add K and S combinators to the knowledge base
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Add K and S combinators to the knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &kb (: AK (-> $a (-> $b $a))))
 
 </span><span class="ansi38-255165000"
 > (: AK (-> $10000 (-> $10001 $10000)))
 </span>
-Deterministic: ()
+/*
+```
+```load
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(add-atom &kb (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c)))))
 
 </span><span class="ansi38-255165000"
 > (: AS (-> (-> $10000 (-> $10001 $10002)) (-> (-> $10000 $10001) (-> $10000 $10002))))
 </span>
-Deterministic: ()
-;;; Define Backward Chainer
-;;; Base case
-<span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $)  
-  (match &kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
-</span>;;; Recursive step
-<span class="ansi38-255165000"
-> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
-  (let* 
-    ( ( (: $prfabs 
-          (-> $prms $ccln)) (bc (: $prfabs (-> $prms $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
-    (: 
-      ($prfabs $prfarg) $ccln)))
-</span>;;; Synthesize function composition (.)
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
+/*
+```
+```load
+```
+```answers
 
-</span>
-;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03"
->;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03</h3>
-<span class="ansi1 ansi90"
->Info: Processing progress: 100% </span><span class="ansi1 ansi90"
-> - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta progress.
-</span>
-Script done on 2024-11-30 14:20:35+00:00 [COMMAND_EXIT_CODE="143"]
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define Backward Chainer
+;;; Base case
+<span class="ansi32"
+>% 625,718 inferences, 0.118 CPU in 0.120 seconds (98% CPU, 5310323 Lips)
+</span>P;HTML|
+;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta 0 )
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 2
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+P;HTML|
+;         #(is_cmd_option execute halt --halt=true true)
+P;HTML|
+;          #(set_option_value halt true)
+P;HTML|
+;          #(is_cmd_option execute stdin --stdin=tty tty)
+P;HTML|
+;          #(set_option_value stdin tty)
+P;HTML|
+;          #(is_cmd_option execute stdout --stdout=tty tty)
+P;HTML|
+;           #(set_option_value stdout tty)
+P;HTML|
+;          #(is_cmd_option execute stderr --stderr=tty tty)
+P;HTML|
+;           #(set_option_value stderr tty)
+P;HTML|
+;         #(set_option_value compat false)
+P;HTML|
+;         #(set_option_value compatio false)
+P;HTML|
+;         #(set_option_value src_indents false)
+P;HTML|
+;         #(set_option_value devel false)
+P;HTML|
+;         #(set_option_value stack-max 500)
+P;HTML|
+;         #(set_option_value limit inf)
+P;HTML|
+;         #(set_option_value initial-result-count 10)
+P;HTML|
+;         #(set_option_value answer-format show)
+P;HTML|
+;         #(set_option_value repeats true)
+P;HTML|
+;         #(set_option_value time true)
+P;HTML|
+;         #(set_option_value synth-unit-tests false)
+P;HTML|
+;         #(set_option_value optimize true)
+P;HTML|
+;         #(set_option_value transpiler silent)
+P;HTML|
+;          #(set_debug transpiler false)
+P;HTML|
+;         #(set_option_value compile false)
+P;HTML|
+;         #(set_option_value tabling auto)
+P;HTML|
+;         #(set_option_value log false)
+P;HTML|
+;         #(set_option_value output ./)
+P;HTML|
+;         #(set_option_value exeout ./Sav.gitlab.MeTTaLog)
+P;HTML|
+;         #(set_option_value halt false)
+P;HTML|
+;         #(set_option_value trace-length 500)
+P;HTML|
+;         #(set_option_value trace-on-overtime 4.0)
+P;HTML|
+;          #(set_debug overtime 4.0)
+P;HTML|
+;         #(set_option_value trace-on-overflow 1000)
+P;HTML|
+;          #(set_debug overflow 1000)
+P;HTML|
+;         #(set_option_value trace-on-eval false)
+P;HTML|
+;          #(set_debug eval false)
+P;HTML|
+;         #(set_option_value trace-on-load silent)
+P;HTML|
+;          #(set_debug load silent)
+P;HTML|
+;          #(set_debug trace-on-load false)
+P;HTML|
+;         #(set_option_value trace-on-exec false)
+P;HTML|
+;          #(set_debug exec false)
+P;HTML|
+;         #(set_option_value trace-on-error non-type)
+P;HTML|
+;          #(set_debug error non-type)
+P;HTML|
+;         #(set_option_value trace-on-fail false)
+P;HTML|
+;          #(set_debug fail false)
+P;HTML|
+;         #(set_option_value trace-on-test true)
+P;HTML|
+;          #(set_debug test true)
+P;HTML|
+;         #(set_option_value repl-on-error true)
+P;HTML|
+;         #(set_option_value repl-on-fail false)
+P;HTML|
+;         #(set_option_value exit-on-fail false)
+P;HTML|
+;         #(set_option_value repl auto)
+P;HTML|
+;         #(set_option_value prolog false)
+P;HTML|
+;         #(set_option_value exec noskip)
+P;HTML|
+;         #(set_option_value maximum-result-count inf)
+P;HTML|
+;         #(set_option_value html false)
+P;HTML|
+;         #(set_option_value python true)
+P;HTML|
+;         #(set_option_value trace-on-test false)
+P;HTML|
+;          #(set_debug test false)
+P;HTML|
+;         #(set_option_value trace-on-fail false)
+P;HTML|
+;          #(set_debug fail false)
+P;HTML|
+;         #(set_option_value load show)
+P;HTML|
+;         #(set_option_value test true)
+[()]
+[()]
+[()]
+[()]
+[()]
+P;HTML|
+;         #(maybe_halt 7)
+<span class="ansi31"
+>#(in #(maybe_halt 7) #(unwind #(halt 7)))
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:10:38+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta" --halt=true\033[0m

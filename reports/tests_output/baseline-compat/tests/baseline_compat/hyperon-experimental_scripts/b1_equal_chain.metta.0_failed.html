@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -35,7 +36,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:04:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 10:56:22+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -194,9 +197,12 @@ Script started on 2024-11-30 14:04:35+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.181 CPU in 0.181 seconds (100% CPU, 258410 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4392732 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -377,23 +383,59 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;; until the match is empty (when the equality match is
 ;;; empty, the expression is evaluated to itself).
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (I $x)  $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= ((K $x) $y)  $x)
-</span>;;; Note that `(K $x)` is allowed here
+</span>
+/*
+```
+```load
+;;; Note that `(K $x)` is allowed here
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (K $x $y)  $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (S $x $y $z)  
   ($x $z 
     ($y $z)))
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>
+/*
+```
+```load
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `assertEqual` compares (sets of) results of evaluation
 ;;; of two expressions (both expressions can have empty
 ;;; sets of results, so `assertEqualToResult` is safer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (S K K x) x)
 
@@ -402,19 +444,28 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.14 milliseconds) 
+; took 0.000840 secs. (840.22 microseconds) 
 
 !(assertEqual (S K K x) x)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (x) (x)))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Here, we use `assertEqualToResult` to make sure
 ;;; that the expression is evaluated to itself
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (expression without known equalities) ((expression without known equalities)))
 
@@ -423,25 +474,50 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000378 secs. (378.25 microseconds) 
+; took 0.000383 secs. (383.15 microseconds) 
 
 !(assertEqualToResult (expression without known equalities) ((expression without known equalities)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((expression without known equalities)) ((expression without known equalities))))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Another example
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (Add $x Z)  $x)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (Add $x (S $y))  
   (Add 
     (S $x) $y))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqual (Add (S Z) (S Z)) (S (S Z)))
 
 </span>
@@ -449,19 +525,28 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.56 milliseconds) 
+; took 0.002 secs. (1.99 milliseconds) 
 
 !(assertEqual (Add (S Z) (S Z)) (S (S Z)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((S (S Z))) ((S (S Z)))))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; In the current implementation, child expressions
 ;;; are reduced
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (Something? (Add (S Z) (S Z))) (Something? (S (S Z))))
 
@@ -470,23 +555,40 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.36 milliseconds) 
+; took 0.003 secs. (2.92 milliseconds) 
 
 !(assertEqual (Something? (Add (S Z) (S Z))) (Something? (S (S Z))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Something? (S (S Z)))) ((Something? (S (S Z))))))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Note that the same variable can be used multiple times on the left
 ;;; side of expressions, and that the "function" doesn't need to
 ;;; cover all possible inputs (i.e. it can be "non-total")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (eq $x $x)  T)
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqual (eq (S K K x) x) T)
 
 </span>
@@ -494,14 +596,23 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.23 milliseconds) 
 
 !(assertEqual (eq (S K K x) x) T)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (T) (T)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (eq Green Blue) ((eq Green Blue)))
 
@@ -510,16 +621,21 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (373.66 microseconds) 
+; took 0.000368 secs. (368.20 microseconds) 
 
 !(assertEqualToResult (eq Green Blue) ((eq Green Blue)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((eq Green Blue)) ((eq Green Blue))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 276,538 inferences, 0.107 CPU in 0.109 seconds (98% CPU, 2593106 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 282,892 inferences, 0.083 CPU in 0.085 seconds (97% CPU, 3411132 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta 0 )
 <span class="ansi1"
@@ -663,8 +779,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:04:43+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 10:56:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

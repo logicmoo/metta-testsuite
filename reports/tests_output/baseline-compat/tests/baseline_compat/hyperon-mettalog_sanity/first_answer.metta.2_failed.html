@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -51,7 +52,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:14:17+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:05:06+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -210,9 +213,12 @@ Script started on 2024-11-30 14:14:17+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.173 CPU in 0.173 seconds (100% CPU, 270145 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4610541 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -377,13 +383,37 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 
 ;;;; Import modules
 ;;;; Define Nat
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: Nat Type)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: Z Nat)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: S (-> Nat Nat))
-</span>;;;; Enumerate all programs up to a given depth that are consistent with
+</span>
+/*
+```
+```load
+;;;; Enumerate all programs up to a given depth that are consistent with
 ;;;; the query
 ;;;;		 using the given axiom non-deterministic functions and rules.
 ;;;;
@@ -414,14 +444,34 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;;;
 ;;;; TODO: recurse over curried rules instead of duplicating code over
 ;;;; tuples.
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: synthesize (-> $a (-> $kt) (-> $rt) Nat $a))
-</span>;;;; Nullary rule (axiom)
+</span>
+/*
+```
+```load
+;;;; Nullary rule (axiom)
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb $depth)  
   (let $query 
     ($kb) $query))
-</span>;;;; Unary rule
+</span>
+/*
+```
+```load
+;;;; Unary rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb (S $k))  
   (let* 
@@ -430,7 +480,15 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       ( (: 
           ($ructor $proof) $conclusion) $query) 
       ( (: $proof $premise) (synthesize (: $proof $premise) $kb $rb $k))) $query))
-</span>;;;; Binary rule
+</span>
+/*
+```
+```load
+;;;; Binary rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb (S $k))  
   (let* 
@@ -440,7 +498,15 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
           ($ructor $proof1 $proof2) $conclusion) $query) 
       ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
       ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k))) $query))
-</span>;;;; Trinary rule
+</span>
+/*
+```
+```load
+;;;; Trinary rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb (S $k))  
   (let* 
@@ -451,7 +517,15 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
       ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
       ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k))) $query))
-</span>;;;; Quaternary rule
+</span>
+/*
+```
+```load
+;;;; Quaternary rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb (S $k))  
   (let* 
@@ -463,7 +537,15 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
       ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
       ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k))) $query))
-</span>;;;; Quintenary rule
+</span>
+/*
+```
+```load
+;;;; Quintenary rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (synthesize $query $kb $rb (S $k))  
   (let* 
@@ -476,77 +558,205 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
       ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k)) 
       ( (: $proof5 $premise5) (synthesize (: $proof5 $premise5) $kb $rb $k))) $query))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: kb (-> Atom))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (kb)  
   (: a A))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (kb)  
   (: a B))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (kb)  
   (: abc 
     (Implication 
       (AndLink A B) C)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (kb)  
   (: cde 
     (Implication 
       (OrLink C D) E)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: rb (-> Atom))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: ModusPonens 
     (-> 
       (ImplicationLink $p $q) $p $q)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: Deduction 
     (-> 
       (ImplicationLink $p $q) 
       (ImplicationLink $q $r) 
       (ImplicationLink $p $r))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
       (OrLink $p $q) 
       (NotLink $p) $q)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
       (OrLink $p $q) 
       (NotLink $q) $p)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionIntroduction 
     (-> $p $q 
       (AndLink $p $q))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationLeft 
     (-> 
       (AndLink $p $q) $p)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationRight 
     (-> 
       (AndLink $p $q) $q)))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctionIntroduction 
     (-> $p $q 
       (OrLink $p $q))))
-</span>;;;!(assertEqual
+</span>
+/*
+```
+```load
+;;;!(assertEqual
 ;;;  (synthesize (: $term $type) kb rb (S (S Z)))
 ;;;  ...)
 ;;; !(let n o p)
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: first-few (-> Number Atom Atom))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (first-few $n $a)  
   (if 
     (== $n 0) 
@@ -557,14 +767,38 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
       (let $t 
         (cdr-atom $a) 
         (superpose ((car-atom $a) (first-few (- $n 1) $t)))))))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (: limit (-> Number Atom Atom))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (limit $n $x)  
   (let $a 
     (collapse $x) 
     (first-few $n $a)))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (limit 1 (synthesize (: $term $type) kb rb (S Z))) ((: a A)))
 
 </span>
@@ -572,14 +806,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.FIRST-ANSWER.01</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (19.74 milliseconds) 
+; took 0.015 secs. (14.69 milliseconds) 
 
 !(assertEqualToResult (limit 1 (synthesize (: $term $type) kb rb (S Z))) ((: a A)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () ((: a A))))
 </span>
-Deterministic: (#(Error #(got ()) #(expected ((: a A)))))
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected ((: a A)))))
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (limit 6 (synthesize (: $term $type) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
 
@@ -588,16 +831,21 @@ Deterministic: (#(Error #(got ()) #(expected ((: a A)))))
 >;; HYPERON-METTALOG-SANITY.FIRST-ANSWER.02</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (19.82 milliseconds) 
+; took 0.015 secs. (14.76 milliseconds) 
 
 !(assertEqualToResult (limit 6 (synthesize (: $term $type) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)))))
 </span>
-Deterministic: (#(Error #(got ()) #(expected ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))))<span class="ansi32"
->
-% 648,698 inferences, 0.180 CPU in 0.182 seconds (99% CPU, 3610309 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ()) #(expected ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))))
+</span><span class="ansi32"
+>% 694,852 inferences, 0.143 CPU in 0.145 seconds (98% CPU, 4875686 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/first_answer.metta 0 )
 <span class="ansi1"
@@ -737,8 +985,11 @@ Deterministic: (#(Error #(got ()) #(expected ((: a A) (: a B) (: abc (Implicatio
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:14:25+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:05:12+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

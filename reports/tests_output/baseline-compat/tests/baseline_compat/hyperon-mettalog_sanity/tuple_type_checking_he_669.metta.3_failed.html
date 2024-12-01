@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -29,7 +30,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:26:56+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:16:46+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -188,9 +191,12 @@ Script started on 2024-11-30 14:26:56+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.178 CPU in 0.178 seconds (100% CPU, 262685 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4652428 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -348,9 +354,9 @@ Script started on 2024-11-30 14:26:56+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 2 "Missed result: (Error (wrong type) BadType))]" )
 P;HTML|
-;                                         #( = 2 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26008maxresident)k" )
+;                                         #( = 2 "0.04user 0.00system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26136maxresident)k" )
 P;HTML|
-;                                         #( = 2 "0inputs+0outputs (0major+3095minor)pagefaults 0swaps" )
+;                                         #( = 2 "0inputs+0outputs (0major+3097minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta is 1.28K bytes (35 lines)
@@ -358,6 +364,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta)
 
 ;;; Test: Passing an incorrectly typed tuple to `foo_fixed`
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -366,23 +376,48 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000750 secs. (749.69 microseconds) 
+; took 0.000675 secs. (675.34 microseconds) 
 
 !(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((foo_fixed (wrong type))) ((Error (wrong type) BadType))))
 </span>
-Deterministic: (#(Error #(got ((foo_fixed (wrong type)))) #(expected ((Error (wrong type) BadType)))))
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((foo_fixed (wrong type)))) #(expected ((Error (wrong type) BadType)))))
+</span>;;; Explanation:
 ;;; The tuple `(wrong type)` does not match the expected tuple type `(A B)`, so the type check fails,
 ;;; and an error wrapped in a list is returned.
 ;;; Test: Checking a tuple with mixed undefined and defined types
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: foo_mixed (-> (%Undefined% T) %Undefined%))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (foo_mixed $x)  $x)
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
 </span>
@@ -390,27 +425,52 @@ Deterministic: (#(Error #(got ((foo_fixed (wrong type)))) #(expected ((Error (wr
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000897 secs. (896.73 microseconds) 
+; took 0.000722 secs. (721.60 microseconds) 
 
 !(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType))))
 </span>
-Deterministic: (#(Error #(got ((partially_defined %Undefined%))) #(expected ((Error (partially_defined %Undefined%) BadType)))))
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((partially_defined %Undefined%))) #(expected ((Error (partially_defined %Undefined%) BadType)))))
+</span>;;; Explanation:
 ;;; The tuple `(partially_defined %Undefined%)` fails to meet the type requirements and returns
 ;;; an error in a list.
 ;;; Test: Recursive factorial definition with stricter type checking
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: fact_strict (-> Integer Integer))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (fact_strict $n)  
   (if 
     (== $n 0) 1 
     (* 
       (fact_strict (- $n 1)) $n)))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict 5) ((120)))
 
 </span>
@@ -418,17 +478,26 @@ Deterministic: (#(Error #(got ((partially_defined %Undefined%))) #(expected ((Er
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.62 milliseconds) 
+; took 0.004 secs. (4.47 milliseconds) 
 
 !(assertEqualToResult (fact_strict 5) ((120)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (120) ((120))))
 </span>
-Deterministic: (#(Error #(got (120)) #(expected ((120)))))
-;;; Explanation:
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (120)) #(expected ((120)))))
+</span>;;; Explanation:
 ;;; Stricter type checking for the recursive factorial function ensures that input is properly typed.
 ;;; Test: Attempting to call `fact_strict` with a tuple
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict (5 6)) ((Error (5 6) BadType)))
 
@@ -439,7 +508,7 @@ Deterministic: (#(Error #(got (120)) #(expected ((120)))))
 >Info: Processing progress: 100% </span><span class="ansi1 ansi90"
 > - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta progress.
 </span>
-Script done on 2024-11-30 14:27:36+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-01 11:17:26+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -69,7 +70,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:16:59+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:07:42+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -228,9 +231,12 @@ Script started on 2024-11-30 14:16:59+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.181 CPU in 0.181 seconds (100% CPU, 259011 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4645773 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -388,9 +394,9 @@ Script started on 2024-11-30 14:16:59+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 2 "Missed result: 25)]" )
 P;HTML|
-;                                         #( = 2 "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26304maxresident)k" )
+;                                         #( = 2 "0.03user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26044maxresident)k" )
 P;HTML|
-;                                         #( = 2 "0inputs+0outputs (0major+3109minor)pagefaults 0swaps" )
+;                                         #( = 2 "0inputs+0outputs (0major+3103minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta is 6.59K bytes (143 lines)
@@ -398,6 +404,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta)
 
 ;;; Test pow-math with integer base and exponent, expecting 5^2 = 25
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (pow-math 5 2) (25))
 
@@ -406,15 +416,24 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.03 milliseconds) 
+; took 0.000958 secs. (957.56 microseconds) 
 
 !(assertEqualToResult (pow-math 5 2) (25))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((pow-math 5 2)) (25)))
 </span>
-Deterministic: (#(Error #(got ((pow-math 5 2))) #(expected (25))))
-;;; Test pow-math with a large exponent, expecting an error about power being too big
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((pow-math 5 2))) #(expected (25))))
+</span>;;; Test pow-math with a large exponent, expecting an error about power being too big
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (pow-math 5 200000000000000) ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value")))
 
@@ -423,15 +442,24 @@ Deterministic: (#(Error #(got ((pow-math 5 2))) #(expected (25))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000889 secs. (889.18 microseconds) 
+; took 0.000630 secs. (630.35 microseconds) 
 
 !(assertEqualToResult (pow-math 5 200000000000000) ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((pow-math 5 200000000000000)) ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value"))))
 </span>
-Deterministic: (#(Error #(got ((pow-math 5 200000000000000))) #(expected ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value")))))
-;;; Test pow-math with floating-point base and exponent, expecting 5.5^2.3 ≈ 38.2597
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((pow-math 5 200000000000000))) #(expected ((Error (pow-math 5 200000000000000) "power argument is too big, try using float value")))))
+</span>;;; Test pow-math with floating-point base and exponent, expecting 5.5^2.3 ≈ 38.2597
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (pow-math 5.5 2.3) (38.2596979949377))
 
@@ -440,15 +468,24 @@ Deterministic: (#(Error #(got ((pow-math 5 200000000000000))) #(expected ((Error
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000879 secs. (879.28 microseconds) 
+; took 0.000594 secs. (594.28 microseconds) 
 
 !(assertEqualToResult (pow-math 5.5 2.3) (38.2596979949377))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((pow-math 5.5 2.3)) (38.2596979949377)))
 </span>
-Deterministic: (#(Error #(got ((pow-math 5.5 2.3))) #(expected (38.2596979949377))))
-;;; Test pow-math with invalid base 'A', expecting an error about invalid arguments
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((pow-math 5.5 2.3))) #(expected (38.2596979949377))))
+</span>;;; Test pow-math with invalid base 'A', expecting an error about invalid arguments
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (pow-math A 2) ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)")))
 
@@ -457,15 +494,24 @@ Deterministic: (#(Error #(got ((pow-math 5.5 2.3))) #(expected (38.2596979949377
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000466 secs. (466.46 microseconds) 
+; took 0.000362 secs. (361.92 microseconds) 
 
 !(assertEqualToResult (pow-math A 2) ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((pow-math A 2)) ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)"))))
 </span>
-Deterministic: (#(Error #(got ((pow-math A 2))) #(expected ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)")))))
-;;; Test sqrt-math with positive integer input, expecting sqrt(4) = 2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((pow-math A 2))) #(expected ((Error (pow-math A 2) "pow-math expects two arguments: number (base) and number (power)")))))
+</span>;;; Test sqrt-math with positive integer input, expecting sqrt(4) = 2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sqrt-math 4) (2))
 
@@ -474,15 +520,24 @@ Deterministic: (#(Error #(got ((pow-math A 2))) #(expected ((Error (pow-math A 2
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000864 secs. (863.83 microseconds) 
+; took 0.000573 secs. (572.79 microseconds) 
 
 !(assertEqualToResult (sqrt-math 4) (2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((sqrt-math 4)) (2)))
 </span>
-Deterministic: (#(Error #(got ((sqrt-math 4))) #(expected (2))))
-;;; Test sqrt-math with negative input, expecting result to be NaN
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((sqrt-math 4))) #(expected (2))))
+</span>;;; Test sqrt-math with negative input, expecting result to be NaN
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isnan-math (sqrt-math -4)) (True))
 
@@ -491,15 +546,24 @@ Deterministic: (#(Error #(got ((sqrt-math 4))) #(expected (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000747 secs. (747.16 microseconds) 
 
 !(assertEqualToResult (isnan-math (sqrt-math -4)) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isnan-math (sqrt-math -4))) (True)))
 </span>
-Deterministic: (#(Error #(got ((isnan-math (sqrt-math -4)))) #(expected (True))))
-;;; Test sqrt-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isnan-math (sqrt-math -4)))) #(expected (True))))
+</span>;;; Test sqrt-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sqrt-math A) ((Error (sqrt-math A) "sqrt-math expects one argument: number")))
 
@@ -508,15 +572,24 @@ Deterministic: (#(Error #(got ((isnan-math (sqrt-math -4)))) #(expected (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000465 secs. (465.21 microseconds) 
+; took 0.000364 secs. (364.45 microseconds) 
 
 !(assertEqualToResult (sqrt-math A) ((Error (sqrt-math A) "sqrt-math expects one argument: number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((sqrt-math A)) ((Error (sqrt-math A) "sqrt-math expects one argument: number"))))
 </span>
-Deterministic: (#(Error #(got ((sqrt-math A))) #(expected ((Error (sqrt-math A) "sqrt-math expects one argument: number")))))
-;;; Test abs-math with positive input, expecting abs(4) = 4
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((sqrt-math A))) #(expected ((Error (sqrt-math A) "sqrt-math expects one argument: number")))))
+</span>;;; Test abs-math with positive input, expecting abs(4) = 4
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (abs-math 4) (4))
 
@@ -525,15 +598,24 @@ Deterministic: (#(Error #(got ((sqrt-math A))) #(expected ((Error (sqrt-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000845 secs. (844.97 microseconds) 
+; took 0.000603 secs. (603.28 microseconds) 
 
 !(assertEqualToResult (abs-math 4) (4))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((abs-math 4)) (4)))
 </span>
-Deterministic: (#(Error #(got ((abs-math 4))) #(expected (4))))
-;;; Test abs-math with negative input, expecting abs(-5) = 5
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((abs-math 4))) #(expected (4))))
+</span>;;; Test abs-math with negative input, expecting abs(-5) = 5
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (abs-math -5) (5))
 
@@ -542,15 +624,24 @@ Deterministic: (#(Error #(got ((abs-math 4))) #(expected (4))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000850 secs. (850.26 microseconds) 
+; took 0.000610 secs. (610.00 microseconds) 
 
 !(assertEqualToResult (abs-math -5) (5))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((abs-math -5)) (5)))
 </span>
-Deterministic: (#(Error #(got ((abs-math -5))) #(expected (5))))
-;;; Test abs-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((abs-math -5))) #(expected (5))))
+</span>;;; Test abs-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (abs-math A) ((Error (abs-math A) "abs-math expects one argument: number")))
 
@@ -559,15 +650,24 @@ Deterministic: (#(Error #(got ((abs-math -5))) #(expected (5))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000446 secs. (445.87 microseconds) 
+; took 0.000347 secs. (347.08 microseconds) 
 
 !(assertEqualToResult (abs-math A) ((Error (abs-math A) "abs-math expects one argument: number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((abs-math A)) ((Error (abs-math A) "abs-math expects one argument: number"))))
 </span>
-Deterministic: (#(Error #(got ((abs-math A))) #(expected ((Error (abs-math A) "abs-math expects one argument: number")))))
-;;; Test log-math with valid inputs, expecting log base 2 of 4 equals 2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((abs-math A))) #(expected ((Error (abs-math A) "abs-math expects one argument: number")))))
+</span>;;; Test log-math with valid inputs, expecting log base 2 of 4 equals 2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (log-math 2 4) (2))
 
@@ -576,15 +676,24 @@ Deterministic: (#(Error #(got ((abs-math A))) #(expected ((Error (abs-math A) "a
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000884 secs. (884.28 microseconds) 
+; took 0.000624 secs. (624.45 microseconds) 
 
 !(assertEqualToResult (log-math 2 4) (2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((log-math 2 4)) (2)))
 </span>
-Deterministic: (#(Error #(got ((log-math 2 4))) #(expected (2))))
-;;; Test log-math with zero inputs, expecting result to be NaN
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((log-math 2 4))) #(expected (2))))
+</span>;;; Test log-math with zero inputs, expecting result to be NaN
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
@@ -593,15 +702,24 @@ Deterministic: (#(Error #(got ((log-math 2 4))) #(expected (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.15 milliseconds) 
+; took 0.000805 secs. (804.97 microseconds) 
 
 !(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isnan-math (log-math 0 0))) (True)))
 </span>
-Deterministic: (#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True))))
-;;; Test log-math resulting in infinity, expecting isinf-math to return true
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True))))
+</span>;;; Test log-math resulting in infinity, expecting isinf-math to return true
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isinf-math (log-math 5 0)) (True))
 
@@ -610,15 +728,24 @@ Deterministic: (#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.14 milliseconds) 
+; took 0.000816 secs. (816.09 microseconds) 
 
 !(assertEqualToResult (isinf-math (log-math 5 0)) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isinf-math (log-math 5 0))) (True)))
 </span>
-Deterministic: (#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True))))
-;;; Test trunc-math with positive float input, expecting trunc(2.4) = 2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True))))
+</span>;;; Test trunc-math with positive float input, expecting trunc(2.4) = 2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (trunc-math 2.4) (2))
 
@@ -627,15 +754,24 @@ Deterministic: (#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000836 secs. (835.67 microseconds) 
+; took 0.000599 secs. (598.62 microseconds) 
 
 !(assertEqualToResult (trunc-math 2.4) (2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((trunc-math 2.4)) (2)))
 </span>
-Deterministic: (#(Error #(got ((trunc-math 2.4))) #(expected (2))))
-;;; Test trunc-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((trunc-math 2.4))) #(expected (2))))
+</span>;;; Test trunc-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (trunc-math A) ((Error (trunc-math A) "trunc-math expects one argument: input number")))
 
@@ -644,15 +780,24 @@ Deterministic: (#(Error #(got ((trunc-math 2.4))) #(expected (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000444 secs. (443.78 microseconds) 
+; took 0.000345 secs. (344.89 microseconds) 
 
 !(assertEqualToResult (trunc-math A) ((Error (trunc-math A) "trunc-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((trunc-math A)) ((Error (trunc-math A) "trunc-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((trunc-math A))) #(expected ((Error (trunc-math A) "trunc-math expects one argument: input number")))))
-;;; Test ceil-math with positive float input, expecting ceil(2.4) = 3
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((trunc-math A))) #(expected ((Error (trunc-math A) "trunc-math expects one argument: input number")))))
+</span>;;; Test ceil-math with positive float input, expecting ceil(2.4) = 3
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (ceil-math 2.4) (3))
 
@@ -661,15 +806,24 @@ Deterministic: (#(Error #(got ((trunc-math A))) #(expected ((Error (trunc-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000834 secs. (833.64 microseconds) 
+; took 0.000596 secs. (596.34 microseconds) 
 
 !(assertEqualToResult (ceil-math 2.4) (3))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((ceil-math 2.4)) (3)))
 </span>
-Deterministic: (#(Error #(got ((ceil-math 2.4))) #(expected (3))))
-;;; Test ceil-math with negative float input, expecting ceil(-2.4) = -2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((ceil-math 2.4))) #(expected (3))))
+</span>;;; Test ceil-math with negative float input, expecting ceil(-2.4) = -2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (ceil-math -2.4) (-2))
 
@@ -678,15 +832,24 @@ Deterministic: (#(Error #(got ((ceil-math 2.4))) #(expected (3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000832 secs. (831.63 microseconds) 
+; took 0.000601 secs. (600.56 microseconds) 
 
 !(assertEqualToResult (ceil-math -2.4) (-2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((ceil-math -2.4)) (-2)))
 </span>
-Deterministic: (#(Error #(got ((ceil-math -2.4))) #(expected (-2))))
-;;; Test ceil-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((ceil-math -2.4))) #(expected (-2))))
+</span>;;; Test ceil-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (ceil-math A) ((Error (ceil-math A) "ceil-math expects one argument: input number")))
 
@@ -695,15 +858,24 @@ Deterministic: (#(Error #(got ((ceil-math -2.4))) #(expected (-2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000443 secs. (443.30 microseconds) 
+; took 0.000388 secs. (388.00 microseconds) 
 
 !(assertEqualToResult (ceil-math A) ((Error (ceil-math A) "ceil-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((ceil-math A)) ((Error (ceil-math A) "ceil-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((ceil-math A))) #(expected ((Error (ceil-math A) "ceil-math expects one argument: input number")))))
-;;; Test floor-math with positive float input, expecting floor(2.4) = 2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((ceil-math A))) #(expected ((Error (ceil-math A) "ceil-math expects one argument: input number")))))
+</span>;;; Test floor-math with positive float input, expecting floor(2.4) = 2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (floor-math 2.4) (2))
 
@@ -712,15 +884,24 @@ Deterministic: (#(Error #(got ((ceil-math A))) #(expected ((Error (ceil-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000834 secs. (833.66 microseconds) 
+; took 0.000591 secs. (591.28 microseconds) 
 
 !(assertEqualToResult (floor-math 2.4) (2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((floor-math 2.4)) (2)))
 </span>
-Deterministic: (#(Error #(got ((floor-math 2.4))) #(expected (2))))
-;;; Test floor-math with negative float input, expecting floor(-2.4) = -3
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((floor-math 2.4))) #(expected (2))))
+</span>;;; Test floor-math with negative float input, expecting floor(-2.4) = -3
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (floor-math -2.4) (-3))
 
@@ -729,15 +910,24 @@ Deterministic: (#(Error #(got ((floor-math 2.4))) #(expected (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000827 secs. (826.55 microseconds) 
+; took 0.000599 secs. (599.35 microseconds) 
 
 !(assertEqualToResult (floor-math -2.4) (-3))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((floor-math -2.4)) (-3)))
 </span>
-Deterministic: (#(Error #(got ((floor-math -2.4))) #(expected (-3))))
-;;; Test floor-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((floor-math -2.4))) #(expected (-3))))
+</span>;;; Test floor-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (floor-math A) ((Error (floor-math A) "floor-math expects one argument: input number")))
 
@@ -746,15 +936,24 @@ Deterministic: (#(Error #(got ((floor-math -2.4))) #(expected (-3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000447 secs. (446.95 microseconds) 
+; took 0.000366 secs. (365.88 microseconds) 
 
 !(assertEqualToResult (floor-math A) ((Error (floor-math A) "floor-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((floor-math A)) ((Error (floor-math A) "floor-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((floor-math A))) #(expected ((Error (floor-math A) "floor-math expects one argument: input number")))))
-;;; Test round-math with positive float input, expecting round(2.4) = 2
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((floor-math A))) #(expected ((Error (floor-math A) "floor-math expects one argument: input number")))))
+</span>;;; Test round-math with positive float input, expecting round(2.4) = 2
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (round-math 2.4) (2))
 
@@ -763,15 +962,24 @@ Deterministic: (#(Error #(got ((floor-math A))) #(expected ((Error (floor-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000838 secs. (838.20 microseconds) 
+; took 0.000591 secs. (590.74 microseconds) 
 
 !(assertEqualToResult (round-math 2.4) (2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((round-math 2.4)) (2)))
 </span>
-Deterministic: (#(Error #(got ((round-math 2.4))) #(expected (2))))
-;;; Test round-math with negative float input, expecting round(-2.7) = -3
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((round-math 2.4))) #(expected (2))))
+</span>;;; Test round-math with negative float input, expecting round(-2.7) = -3
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (round-math -2.7) (-3))
 
@@ -780,15 +988,24 @@ Deterministic: (#(Error #(got ((round-math 2.4))) #(expected (2))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000821 secs. (821.09 microseconds) 
+; took 0.000602 secs. (602.29 microseconds) 
 
 !(assertEqualToResult (round-math -2.7) (-3))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((round-math -2.7)) (-3)))
 </span>
-Deterministic: (#(Error #(got ((round-math -2.7))) #(expected (-3))))
-;;; Test round-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((round-math -2.7))) #(expected (-3))))
+</span>;;; Test round-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (round-math A) ((Error (round-math A) "round-math expects one argument: input number")))
 
@@ -797,15 +1014,24 @@ Deterministic: (#(Error #(got ((round-math -2.7))) #(expected (-3))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000426 secs. (426.10 microseconds) 
+; took 0.000365 secs. (365.33 microseconds) 
 
 !(assertEqualToResult (round-math A) ((Error (round-math A) "round-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((round-math A)) ((Error (round-math A) "round-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((round-math A))) #(expected ((Error (round-math A) "round-math expects one argument: input number")))))
-;;; Test sin-math with input 0, expecting sin(0) = 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((round-math A))) #(expected ((Error (round-math A) "round-math expects one argument: input number")))))
+</span>;;; Test sin-math with input 0, expecting sin(0) = 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sin-math 0) (0))
 
@@ -814,15 +1040,24 @@ Deterministic: (#(Error #(got ((round-math A))) #(expected ((Error (round-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000764 secs. (764.00 microseconds) 
+; took 0.000603 secs. (602.88 microseconds) 
 
 !(assertEqualToResult (sin-math 0) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((sin-math 0)) (0)))
 </span>
-Deterministic: (#(Error #(got ((sin-math 0))) #(expected (0))))
-;;; Test sin-math with input approximately π/2, expecting result close to 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((sin-math 0))) #(expected (0))))
+</span>;;; Test sin-math with input approximately π/2, expecting result close to 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10) (True))
 
@@ -831,15 +1066,24 @@ Deterministic: (#(Error #(got ((sin-math 0))) #(expected (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.03 milliseconds) 
+; took 0.006 secs. (5.80 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10))) #(expected (True))))
-;;; Test sin-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e-10))) #(expected (True))))
+</span>;;; Test sin-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sin-math A) ((Error (sin-math A) "sin-math expects one argument: input number")))
 
@@ -848,15 +1092,24 @@ Deterministic: (#(Error #(got ((< (abs-math (- (sin-math 1.570796327) 1.0)) 1.0e
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.000364 secs. (364.09 microseconds) 
+; took 0.000352 secs. (351.71 microseconds) 
 
 !(assertEqualToResult (sin-math A) ((Error (sin-math A) "sin-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((sin-math A)) ((Error (sin-math A) "sin-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((sin-math A))) #(expected ((Error (sin-math A) "sin-math expects one argument: input number")))))
-;;; Test asin-math with input 0, expecting asin(0) = 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((sin-math A))) #(expected ((Error (sin-math A) "sin-math expects one argument: input number")))))
+</span>;;; Test asin-math with input 0, expecting asin(0) = 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (asin-math 0) (0))
 
@@ -865,15 +1118,24 @@ Deterministic: (#(Error #(got ((sin-math A))) #(expected ((Error (sin-math A) "s
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.000738 secs. (738.24 microseconds) 
+; took 0.000589 secs. (589.41 microseconds) 
 
 !(assertEqualToResult (asin-math 0) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((asin-math 0)) (0)))
 </span>
-Deterministic: (#(Error #(got ((asin-math 0))) #(expected (0))))
-;;; Test asin-math with sin(1), expecting asin(sin(1)) ≈ 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((asin-math 0))) #(expected (0))))
+</span>;;; Test asin-math with sin(1), expecting asin(sin(1)) ≈ 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -882,15 +1144,24 @@ Deterministic: (#(Error #(got ((asin-math 0))) #(expected (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.26 milliseconds) 
+; took 0.010 secs. (9.70 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
-;;; Test asin-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
+</span>;;; Test asin-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (asin-math A) ((Error (asin-math A) "asin-math expects one argument: input number")))
 
@@ -899,15 +1170,24 @@ Deterministic: (#(Error #(got ((< (abs-math (- (asin-math (sin-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.000382 secs. (381.84 microseconds) 
+; took 0.000326 secs. (326.37 microseconds) 
 
 !(assertEqualToResult (asin-math A) ((Error (asin-math A) "asin-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((asin-math A)) ((Error (asin-math A) "asin-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((asin-math A))) #(expected ((Error (asin-math A) "asin-math expects one argument: input number")))))
-;;; Test cos-math with input 0, expecting cos(0) = 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((asin-math A))) #(expected ((Error (asin-math A) "asin-math expects one argument: input number")))))
+</span>;;; Test cos-math with input 0, expecting cos(0) = 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (cos-math 0) (1))
 
@@ -916,15 +1196,24 @@ Deterministic: (#(Error #(got ((asin-math A))) #(expected ((Error (asin-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.000739 secs. (739.39 microseconds) 
+; took 0.000580 secs. (579.83 microseconds) 
 
 !(assertEqualToResult (cos-math 0) (1))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((cos-math 0)) (1)))
 </span>
-Deterministic: (#(Error #(got ((cos-math 0))) #(expected (1))))
-;;; Test cos-math with input approximately π/2, expecting result close to 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((cos-math 0))) #(expected (1))))
+</span>;;; Test cos-math with input approximately π/2, expecting result close to 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (cos-math 1.570796327)) 1.0e-10) (True))
 
@@ -933,15 +1222,24 @@ Deterministic: (#(Error #(got ((cos-math 0))) #(expected (1))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.98 milliseconds) 
+; took 0.003 secs. (2.59 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (cos-math 1.570796327)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (cos-math 1.570796327)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (cos-math 1.570796327)) 1.0e-10))) #(expected (True))))
-;;; Test cos-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (cos-math 1.570796327)) 1.0e-10))) #(expected (True))))
+</span>;;; Test cos-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (cos-math A) ((Error (cos-math A) "cos-math expects one argument: input number")))
 
@@ -950,15 +1248,24 @@ Deterministic: (#(Error #(got ((< (abs-math (cos-math 1.570796327)) 1.0e-10))) #
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.000354 secs. (354.20 microseconds) 
+; took 0.000345 secs. (344.91 microseconds) 
 
 !(assertEqualToResult (cos-math A) ((Error (cos-math A) "cos-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((cos-math A)) ((Error (cos-math A) "cos-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((cos-math A))) #(expected ((Error (cos-math A) "cos-math expects one argument: input number")))))
-;;; Test acos-math with input 1, expecting acos(1) = 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((cos-math A))) #(expected ((Error (cos-math A) "cos-math expects one argument: input number")))))
+</span>;;; Test acos-math with input 1, expecting acos(1) = 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (acos-math 1) (0))
 
@@ -967,15 +1274,24 @@ Deterministic: (#(Error #(got ((cos-math A))) #(expected ((Error (cos-math A) "c
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000728 secs. (728.07 microseconds) 
+; took 0.000591 secs. (591.25 microseconds) 
 
 !(assertEqualToResult (acos-math 1) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((acos-math 1)) (0)))
 </span>
-Deterministic: (#(Error #(got ((acos-math 1))) #(expected (0))))
-;;; Test acos-math with cos(1), expecting acos(cos(1)) ≈ 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((acos-math 1))) #(expected (0))))
+</span>;;; Test acos-math with cos(1), expecting acos(cos(1)) ≈ 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -984,15 +1300,24 @@ Deterministic: (#(Error #(got ((acos-math 1))) #(expected (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.23 milliseconds) 
+; took 0.010 secs. (9.65 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
-;;; Test acos-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
+</span>;;; Test acos-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (acos-math A) ((Error (acos-math A) "acos-math expects one argument: input number")))
 
@@ -1001,15 +1326,24 @@ Deterministic: (#(Error #(got ((< (abs-math (- (acos-math (cos-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000359 secs. (359.38 microseconds) 
+; took 0.000354 secs. (354.03 microseconds) 
 
 !(assertEqualToResult (acos-math A) ((Error (acos-math A) "acos-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((acos-math A)) ((Error (acos-math A) "acos-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((acos-math A))) #(expected ((Error (acos-math A) "acos-math expects one argument: input number")))))
-;;; Test tan-math with input 0, expecting tan(0) = 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((acos-math A))) #(expected ((Error (acos-math A) "acos-math expects one argument: input number")))))
+</span>;;; Test tan-math with input 0, expecting tan(0) = 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (tan-math 0) (0))
 
@@ -1018,15 +1352,24 @@ Deterministic: (#(Error #(got ((acos-math A))) #(expected ((Error (acos-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000801 secs. (800.50 microseconds) 
+; took 0.000579 secs. (578.94 microseconds) 
 
 !(assertEqualToResult (tan-math 0) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((tan-math 0)) (0)))
 </span>
-Deterministic: (#(Error #(got ((tan-math 0))) #(expected (0))))
-;;; Test tan-math with input approximately π/4, expecting result close to 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((tan-math 0))) #(expected (0))))
+</span>;;; Test tan-math with input approximately π/4, expecting result close to 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10) (True))
 
@@ -1035,15 +1378,24 @@ Deterministic: (#(Error #(got ((tan-math 0))) #(expected (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.78 milliseconds) 
+; took 0.006 secs. (5.53 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10))) #(expected (True))))
-;;; Test tan-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.0e-10))) #(expected (True))))
+</span>;;; Test tan-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (tan-math A) ((Error (tan-math A) "tan-math expects one argument: input number")))
 
@@ -1052,15 +1404,24 @@ Deterministic: (#(Error #(got ((< (abs-math (- (tan-math 0.78539816339) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000362 secs. (361.63 microseconds) 
+; took 0.000362 secs. (362.27 microseconds) 
 
 !(assertEqualToResult (tan-math A) ((Error (tan-math A) "tan-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((tan-math A)) ((Error (tan-math A) "tan-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((tan-math A))) #(expected ((Error (tan-math A) "tan-math expects one argument: input number")))))
-;;; Test atan-math with input 0, expecting atan(0) = 0
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((tan-math A))) #(expected ((Error (tan-math A) "tan-math expects one argument: input number")))))
+</span>;;; Test atan-math with input 0, expecting atan(0) = 0
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (atan-math 0) (0))
 
@@ -1069,15 +1430,24 @@ Deterministic: (#(Error #(got ((tan-math A))) #(expected ((Error (tan-math A) "t
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000740 secs. (739.56 microseconds) 
+; took 0.000565 secs. (565.31 microseconds) 
 
 !(assertEqualToResult (atan-math 0) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((atan-math 0)) (0)))
 </span>
-Deterministic: (#(Error #(got ((atan-math 0))) #(expected (0))))
-;;; Test atan-math with tan(1), expecting atan(tan(1)) ≈ 1
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((atan-math 0))) #(expected (0))))
+</span>;;; Test atan-math with tan(1), expecting atan(tan(1)) ≈ 1
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10) (True))
 
@@ -1086,15 +1456,24 @@ Deterministic: (#(Error #(got ((atan-math 0))) #(expected (0))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.18 milliseconds) 
+; took 0.010 secs. (9.69 milliseconds) 
 
 !(assertEqualToResult (< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10)) (True)))
 </span>
-Deterministic: (#(Error #(got ((< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
-;;; Test atan-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.0e-10))) #(expected (True))))
+</span>;;; Test atan-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (atan-math A) ((Error (atan-math A) "atan-math expects one argument: input number")))
 
@@ -1103,15 +1482,24 @@ Deterministic: (#(Error #(got ((< (abs-math (- (atan-math (tan-math 1)) 1.0)) 1.
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.42</h3>
 ; 
 ; EVAL TEST
-; took 0.000366 secs. (366.31 microseconds) 
+; took 0.000338 secs. (338.44 microseconds) 
 
 !(assertEqualToResult (atan-math A) ((Error (atan-math A) "atan-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((atan-math A)) ((Error (atan-math A) "atan-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((atan-math A))) #(expected ((Error (atan-math A) "atan-math expects one argument: input number")))))
-;;; Test isnan-math with a valid number, expecting false
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((atan-math A))) #(expected ((Error (atan-math A) "atan-math expects one argument: input number")))))
+</span>;;; Test isnan-math with a valid number, expecting false
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isnan-math 0) (False))
 
@@ -1120,15 +1508,24 @@ Deterministic: (#(Error #(got ((atan-math A))) #(expected ((Error (atan-math A) 
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.43</h3>
 ; 
 ; EVAL TEST
-; took 0.000725 secs. (724.96 microseconds) 
+; took 0.000593 secs. (592.66 microseconds) 
 
 !(assertEqualToResult (isnan-math 0) (False))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isnan-math 0)) (False)))
 </span>
-Deterministic: (#(Error #(got ((isnan-math 0))) #(expected (False))))
-;;; Test isnan-math with NaN input from log-math(0,0), expecting true
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isnan-math 0))) #(expected (False))))
+</span>;;; Test isnan-math with NaN input from log-math(0,0), expecting true
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
@@ -1137,15 +1534,24 @@ Deterministic: (#(Error #(got ((isnan-math 0))) #(expected (False))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.44</h3>
 ; 
 ; EVAL TEST
-; took 0.000998 secs. (998.22 microseconds) 
+; took 0.000784 secs. (784.22 microseconds) 
 
 !(assertEqualToResult (isnan-math (log-math 0 0)) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isnan-math (log-math 0 0))) (True)))
 </span>
-Deterministic: (#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True))))
-;;; Test isnan-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True))))
+</span>;;; Test isnan-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isnan-math A) ((Error (isnan-math A) "isnan-math expects one argument: input number")))
 
@@ -1154,15 +1560,24 @@ Deterministic: (#(Error #(got ((isnan-math (log-math 0 0)))) #(expected (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.45</h3>
 ; 
 ; EVAL TEST
-; took 0.000432 secs. (432.23 microseconds) 
+; took 0.000349 secs. (349.29 microseconds) 
 
 !(assertEqualToResult (isnan-math A) ((Error (isnan-math A) "isnan-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isnan-math A)) ((Error (isnan-math A) "isnan-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((isnan-math A))) #(expected ((Error (isnan-math A) "isnan-math expects one argument: input number")))))
-;;; Test isinf-math with a valid number, expecting false
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isnan-math A))) #(expected ((Error (isnan-math A) "isnan-math expects one argument: input number")))))
+</span>;;; Test isinf-math with a valid number, expecting false
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isinf-math 0) (False))
 
@@ -1171,15 +1586,24 @@ Deterministic: (#(Error #(got ((isnan-math A))) #(expected ((Error (isnan-math A
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.46</h3>
 ; 
 ; EVAL TEST
-; took 0.000731 secs. (730.59 microseconds) 
+; took 0.000590 secs. (589.81 microseconds) 
 
 !(assertEqualToResult (isinf-math 0) (False))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isinf-math 0)) (False)))
 </span>
-Deterministic: (#(Error #(got ((isinf-math 0))) #(expected (False))))
-;;; Test isinf-math with infinity input from log-math(5,0), expecting true
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isinf-math 0))) #(expected (False))))
+</span>;;; Test isinf-math with infinity input from log-math(5,0), expecting true
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isinf-math (log-math 5 0)) (True))
 
@@ -1188,15 +1612,24 @@ Deterministic: (#(Error #(got ((isinf-math 0))) #(expected (False))))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.47</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000789 secs. (788.59 microseconds) 
 
 !(assertEqualToResult (isinf-math (log-math 5 0)) (True))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isinf-math (log-math 5 0))) (True)))
 </span>
-Deterministic: (#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True))))
-;;; Test isinf-math with invalid input 'A', expecting an error
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True))))
+</span>;;; Test isinf-math with invalid input 'A', expecting an error
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (isinf-math A) ((Error (isinf-math A) "isinf-math expects one argument: input number")))
 
@@ -1205,16 +1638,21 @@ Deterministic: (#(Error #(got ((isinf-math (log-math 5 0)))) #(expected (True)))
 >;; HYPERON-METTALOG-SANITY.MATH-HYPHEN-FUNCTIONS.48</h3>
 ; 
 ; EVAL TEST
-; took 0.000429 secs. (428.54 microseconds) 
+; took 0.000349 secs. (349.22 microseconds) 
 
 !(assertEqualToResult (isinf-math A) ((Error (isinf-math A) "isinf-math expects one argument: input number")))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((isinf-math A)) ((Error (isinf-math A) "isinf-math expects one argument: input number"))))
 </span>
-Deterministic: (#(Error #(got ((isinf-math A))) #(expected ((Error (isinf-math A) "isinf-math expects one argument: input number")))))<span class="ansi32"
->
-% 1,256,924 inferences, 0.315 CPU in 0.318 seconds (99% CPU, 3988105 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got ((isinf-math A))) #(expected ((Error (isinf-math A) "isinf-math expects one argument: input number")))))
+</span><span class="ansi32"
+>% 1,268,017 inferences, 0.269 CPU in 0.271 seconds (99% CPU, 4718577 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/math_hyphen_functions.metta 0 )
 <span class="ansi1"
@@ -1400,8 +1838,11 @@ Deterministic: (#(Error #(got ((isinf-math A))) #(expected ((Error (isinf-math A
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:17:07+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:07:49+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

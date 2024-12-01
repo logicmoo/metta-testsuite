@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
@@ -35,7 +36,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:11:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:02:16+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -194,9 +197,12 @@ Script started on 2024-11-30 14:11:24+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.184 CPU in 0.184 seconds (100% CPU, 255306 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4562427 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -354,9 +360,9 @@ Script started on 2024-11-30 14:11:24+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 2 "Missed result: ())]" )
 P;HTML|
-;                                         #( = 2 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26012maxresident)k" )
+;                                         #( = 2 "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26268maxresident)k" )
 P;HTML|
-;                                         #( = 2 "0inputs+0outputs (0major+3097minor)pagefaults 0swaps" )
+;                                         #( = 2 "0inputs+0outputs (0major+3099minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/call_tests_mw.metta is 1.30K bytes (21 lines)
@@ -364,6 +370,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/call_tests_mw.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/call_tests_mw.metta)
 
 ;;;; call-string!
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-string! "member(1,[1,2,3])") (()))
 
@@ -372,14 +382,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.CALL-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000238 secs. (237.64 microseconds) 
+; took 0.000259 secs. (259.37 microseconds) 
 
 !(assertEqualToResult (call-string! "member(1,[1,2,3])") (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-string! "member(1,[1,2,3])") ())
 
@@ -388,14 +407,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CALL-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000161 secs. (161.47 microseconds) 
+; took 0.000179 secs. (179.06 microseconds) 
 
 !(assertEqualToResult (call-string! "member(1,[1,2,3])") ())
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) ()))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-string! "member(X,[1,2,3])") ((1) (2) (3)))
 
@@ -404,14 +432,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CALL-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000466 secs. (465.96 microseconds) 
+; took 0.000386 secs. (386.03 microseconds) 
 
 !(assertEqualToResult (call-string! "member(X,[1,2,3])") ((1) (2) (3)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((1) (2) (3)) ((1) (2) (3))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-string! "member(X,[[1,2],[3,4]])") (((1 2)) ((3 4))))
 
@@ -420,14 +457,23 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CALL-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqualToResult (call-string! "member(X,[[1,2],[3,4]])") (((1 2)) ((3 4))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (((1 2)) ((3 4))) (((1 2)) ((3 4)))))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-string! "member([X,Y],[[1,2],[3,4]])") ((1 2) (3 4)))
 
@@ -436,15 +482,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.CALL-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000567 secs. (566.86 microseconds) 
+; took 0.000554 secs. (553.75 microseconds) 
 
 !(assertEqualToResult (call-string! "member([X,Y],[[1,2],[3,4]])") ((1 2) (3 4)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((1 2) (3 4)) ((1 2) (3 4))))
 </span>
-Deterministic: ()
-;;;; call!
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; call!
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591784.0) (True))
 
@@ -456,14 +511,23 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591784.0) (True))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 $x) (True))
 
@@ -475,15 +539,24 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.38 milliseconds) 
+; took 0.005 secs. (4.57 milliseconds) 
 
 !(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 $x) (True))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
-;;;; handles metta variable (but doesn't return binding)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; handles metta variable (but doesn't return binding)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 X) (False))
 
@@ -495,15 +568,24 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.000955 secs. (955.45 microseconds) 
 
 !(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 X) (False))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()
-;;;; doesn't handle Prolog variable
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; doesn't handle Prolog variable
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591700.0) (False))
 
@@ -515,15 +597,24 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.02 milliseconds) 
+; took 0.000972 secs. (971.78 microseconds) 
 
 !(assertEqualToResult (call! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591700.0) (False))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()
-;;;; call-p!
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; call-p!
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591784.0) (True))
 
@@ -535,14 +626,23 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.000968 secs. (967.94 microseconds) 
+; took 0.000993 secs. (993.22 microseconds) 
 
 !(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591784.0) (True))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 $x) (True))
 
@@ -554,15 +654,24 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.14 milliseconds) 
+; took 0.004 secs. (4.36 milliseconds) 
 
 !(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 $x) (True))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (True) (True)))
 </span>
-Deterministic: ()
-;;;; handles metta variable (but doesn't return binding)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; handles metta variable (but doesn't return binding)
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 X) (False))
 
@@ -574,15 +683,24 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.000872 secs. (871.81 microseconds) 
+; took 0.001 secs. (1.01 milliseconds) 
 
 !(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 X) (False))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()
-;;;; doesn't handle Prolog variable
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; doesn't handle Prolog variable
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591700.0) (False))
 
@@ -594,16 +712,21 @@ Deterministic: ()
 
 ; 
 ; EVAL TEST
-; took 0.000935 secs. (935.38 microseconds) 
+; took 0.000916 secs. (915.85 microseconds) 
 
 !(assertEqualToResult (call-p! parse_time "2006-12-08T15:29:44Z" iso_8601 1165591700.0) (False))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False) (False)))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 353,145 inferences, 0.093 CPU in 0.095 seconds (98% CPU, 3812696 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 355,336 inferences, 0.092 CPU in 0.095 seconds (97% CPU, 3860572 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/call_tests_mw.metta 0 )
 <span class="ansi1"
@@ -754,8 +877,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:11:32+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:02:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

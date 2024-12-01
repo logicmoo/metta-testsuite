@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -42,7 +43,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:04:45+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 10:56:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -201,9 +204,12 @@ Script started on 2024-11-30 14:04:45+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.175 CPU in 0.175 seconds (100% CPU, 268249 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4515160 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -378,13 +384,33 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;; used for querying and reasoning over declarative knowledge
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Fact
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (Frog Sam)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (frog $x)  
   (match &self 
     (Frog $x) T))
-</span>;;; `(Frog Sam)` is not reduced; it is just a declaration
+</span>
+/*
+```
+```load
+;;; `(Frog Sam)` is not reduced; it is just a declaration
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Frog Sam) ((Frog Sam)))
 
@@ -393,15 +419,24 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000482 secs. (481.84 microseconds) 
+; took 0.000439 secs. (439.33 microseconds) 
 
 !(assertEqualToResult (Frog Sam) ((Frog Sam)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Frog Sam)) ((Frog Sam))))
 </span>
-Deterministic: ()
-;;; `frog` uses this declaration
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; `frog` uses this declaration
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (frog Sam) T)
 
@@ -410,14 +445,23 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000509 secs. (508.79 microseconds) 
+; took 0.000475 secs. (474.74 microseconds) 
 
 !(assertEqual (frog Sam) T)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (T) (T)))
 </span>
-Deterministic: ()
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (frog Fritz) ())
 
@@ -426,15 +470,20 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000450 secs. (449.95 microseconds) 
+; took 0.000446 secs. (446.41 microseconds) 
 
 !(assertEqualToResult (frog Fritz) ())
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test () ()))
 </span>
-Deterministic: ()
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; The result of matching is also chained
 ;;; Example from OpenCog Classic wiki on PLN Backward Chaining
@@ -442,41 +491,109 @@ Deterministic: ()
 ;;; to avoid mixing them up with symbols from common lib)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Some facts in the knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (Evaluation (philosopher Plato))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (Evaluation (likes-to-wrestle Plato))
-</span>;;; An implication rule
+</span>
+/*
+```
+```load
+;;; An implication rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (Implication (And (Evaluation (philosopher $x)) (Evaluation (likes-to-wrestle $x))) (Evaluation (human $x)))
-</span>;;; Another implication rule
+</span>
+/*
+```
+```load
+;;; Another implication rule
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (Implication (Evaluation (human $x)) (Evaluation (mortal $x)))
-</span>;;; Deduction case when the desired evaluation is present in
+</span>
+/*
+```
+```load
+;;; Deduction case when the desired evaluation is present in
 ;;; the knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (deduce (Evaluation ($P $x)))  
   (match &self 
     (Evaluation ($P $x)) T))
-</span>;;; Deduction case when the desired evaluation is the result
+</span>
+/*
+```
+```load
+;;; Deduction case when the desired evaluation is the result
 ;;; of an implication, which implies a recursion
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (deduce (Evaluation ($P $x)))  
   (match &self 
     (Implication $a 
       (Evaluation ($P $x))) 
     (deduce $a)))
-</span>;;; Deduction case for generic "And" expressions;
+</span>
+/*
+```
+```load
+;;; Deduction case for generic "And" expressions;
 ;;; also recursive
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (deduce (And $a $b))  
   (And 
     (deduce $a) 
     (deduce $b)))
-</span>;;; True & True = True
+</span>
+/*
+```
+```load
+;;; True & True = True
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (And T T)  T)
-</span>;;; Test deduction that Plato is mortal
+</span>
+/*
+```
+```load
+;;; Test deduction that Plato is mortal
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (deduce (Evaluation (mortal Plato))) T)
 
@@ -485,32 +602,65 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.63 milliseconds) 
+; took 0.004 secs. (4.46 milliseconds) 
 
 !(assertEqual (deduce (Evaluation (mortal Plato))) T)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (T) (T)))
 </span>
-Deterministic: ()
-;;; TODO : Some variables are not substituted
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; TODO : Some variables are not substituted
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (ift T $then)  $then)
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (ift (deduce (Evaluation (mortal $x))) $x)
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>
+/*
+```
+```load
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Another example of backchaining
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Definition of explain when the desired Evaluation is
 ;;; in the knowledge base
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (explain (Evaluation ($P $x)))  
   (match &self 
     (Evaluation ($P $x)) 
     ($P $x)))
-</span>;;; Definition of explain when the desired Evaluation is
+</span>
+/*
+```
+```load
+;;; Definition of explain when the desired Evaluation is
 ;;; the result of an implication
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (explain (Evaluation ($P $x)))  
   (match &self 
@@ -518,13 +668,29 @@ Deterministic: ()
       (Evaluation ($P $x))) 
     ( ($P $x) proven by 
       (explain $a))))
-</span>;;; Definition of explain for And
+</span>
+/*
+```
+```load
+;;; Definition of explain for And
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (= (explain (And $a $b))  
   (And 
     (explain $a) 
     (explain $b)))
-</span>;;; Example of explain why Plato is mortal
+</span>
+/*
+```
+```load
+;;; Example of explain why Plato is mortal
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
 
@@ -533,16 +699,21 @@ Deterministic: ()
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.024 secs. (23.75 milliseconds) 
+; took 0.016 secs. (16.38 milliseconds) 
 
 !(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato))))) (((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 411,498 inferences, 0.138 CPU in 0.140 seconds (98% CPU, 2981366 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 421,574 inferences, 0.105 CPU in 0.107 seconds (98% CPU, 4021148 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta 0 )
 <span class="ansi1"
@@ -685,8 +856,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:04:52+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 10:56:37+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

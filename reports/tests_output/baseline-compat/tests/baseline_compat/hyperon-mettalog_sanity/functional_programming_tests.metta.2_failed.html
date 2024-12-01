@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
@@ -39,7 +40,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-11-30 14:14:36+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-01 11:05:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+/*
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -198,9 +201,12 @@ Script started on 2024-11-30 14:14:36+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi32"
+<span class="ansi31"
 >
-% 46,854 inferences, 0.176 CPU in 0.176 seconds (100% CPU, 266847 Lips)
+Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
+Warning:    Singleton variables: [StackMax,Self,Term,X]
+</span><span class="ansi32"
+>% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4557851 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -358,9 +364,9 @@ Script started on 2024-11-30 14:14:36+00:00 [TERM="xterm-256color" TTY="/dev/pts
 P;HTML|
 ;                                         #( = 2 "Missed result: (False True False))]" )
 P;HTML|
-;                                         #( = 2 "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 25760maxresident)k" )
+;                                         #( = 2 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26336maxresident)k" )
 P;HTML|
-;                                         #( = 2 "0inputs+0outputs (0major+3112minor)pagefaults 0swaps" )
+;                                         #( = 2 "0inputs+0outputs (0major+3116minor)pagefaults 0swaps" )
 <span class="ansi1 ansi90"
 >
 Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta is 3.32K bytes (84 lines)
@@ -373,37 +379,89 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; Usage: General utility function for checking evenness of numbers.
 ;;; =============================================================
 ;;; Define 'is-even' predicate
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: is-even (-> Number Bool))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (is-even $X)  
   (== 
     (% $X 2) 0))
-</span>;;; =============================================================
+</span>
+/*
+```
+```load
+;;; =============================================================
 ;;; Purpose: Define predicate 'is-odd' to check if a number is odd.
 ;;; Operation: Uses modulo operator to determine if a number is divisible by 2 without remainder.
 ;;; Usage: General utility function for checking oddness of numbers.
 ;;; =============================================================
 ;;; Define 'is-odd' predicate
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: is-odd (-> Number Bool))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (is-odd $X)  
   (== 
     (% $X 2) 1))
-</span>;;; =============================================================
+</span>
+/*
+```
+```load
+;;; =============================================================
 ;;; Purpose: Define function 'plus-ternary' to add three numbers
 ;;; =============================================================
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: plus-ternary (-> Number Number Number Number))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (plus-ternary $N1 $N2 $N3)  
   (+ $N1 
     (+ $N2 $N3)))
-</span>;;; =============================================================
+</span>
+/*
+```
+```load
+;;; =============================================================
 ;;; maplist! tests
 ;;; =============================================================
 ;;;; test maplist! with unary function
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! is-even (1 2 3)) ((False True False)))
 
@@ -412,15 +470,24 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.85 milliseconds) 
+; took 0.002 secs. (1.61 milliseconds) 
 
 !(assertEqualToResult (maplist! is-even (1 2 3)) ((False True False)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((False True False)) ((False True False))))
 </span>
-Deterministic: ()
-;;;; test maplist! with binary function
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; test maplist! with binary function
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! < (1 2 3) (2 2 2)) ((True False False)))
 
@@ -429,15 +496,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000773 secs. (772.97 microseconds) 
+; took 0.000696 secs. (696.24 microseconds) 
 
 !(assertEqualToResult (maplist! < (1 2 3) (2 2 2)) ((True False False)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((True False False)) ((True False False))))
 </span>
-Deterministic: ()
-;;;; test maplist! with ternary function
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; test maplist! with ternary function
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! plus-ternary (1 2 3) (4 5 6) (7 8 9)) ((12 15 18)))
 
@@ -446,15 +522,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.47 milliseconds) 
+; took 0.001 secs. (1.33 milliseconds) 
 
 !(assertEqualToResult (maplist! plus-ternary (1 2 3) (4 5 6) (7 8 9)) ((12 15 18)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((12 15 18)) ((12 15 18))))
 </span>
-Deterministic: ()
-;;;; test recursive maplist!
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; test recursive maplist!
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! maplist! (< >) ((1 2 3) (1 2 3)) ((2 2 2) (2 2 2))) (((True False False) (False False True))))
 
@@ -463,21 +548,46 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.11 milliseconds) 
+; took 0.002 secs. (2.38 milliseconds) 
 
 !(assertEqualToResult (maplist! maplist! (< >) ((1 2 3) (1 2 3)) ((2 2 2) (2 2 2))) (((True False False) (False False True))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (((True False False) (False False True))) (((True False False) (False False True)))))
 </span>
-Deterministic: ()
-;;;; the arguments are not evaluated
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; the arguments are not evaluated
+```
+```metta
+*/
+
 <span class="ansi38-255165000"
 > (: my-list (-> Expression))
-</span><span class="ansi38-255165000"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-255165000"
 > (= (my-list)  
   (1 2 3))
-</span><span class="ansi38-013099040"
+</span>
+/*
+```
+```load
+```
+```metta
+*/
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! get-type (my-list)) (((-> Expression))))
 
 </span>
@@ -485,18 +595,27 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000569 secs. (568.97 microseconds) 
+; took 0.000448 secs. (447.60 microseconds) 
 
 !(assertEqualToResult (maplist! get-type (my-list)) (((-> Expression))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (((-> Expression))) (((-> Expression)))))
 </span>
-Deterministic: ()
-;;; =============================================================
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; =============================================================
 ;;; concurrent-maplist! tests
 ;;; =============================================================
 ;;;; test concurrent-maplist! with unary function
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! is-even (1 2 3))) time_limit_exceeded time_limit_exceeded) ((False True False)))
 
@@ -505,15 +624,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.49 milliseconds) 
+; took 0.006 secs. (6.33 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! is-even (1 2 3))) time_limit_exceeded time_limit_exceeded) ((False True False)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (time_limit_exceeded) ((False True False))))
 </span>
-Deterministic: (#(Error #(got (time_limit_exceeded)) #(expected ((False True False)))))
-;;;; test concurrent-maplist! with binary function
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (time_limit_exceeded)) #(expected ((False True False)))))
+</span>;;;; test concurrent-maplist! with binary function
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! < (1 2 3) (2 2 2))) time_limit_exceeded time_limit_exceeded) ((True False False)))
 
@@ -522,19 +650,28 @@ Deterministic: (#(Error #(got (time_limit_exceeded)) #(expected ((False True Fal
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.54 milliseconds) 
+; took 0.004 secs. (4.49 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! < (1 2 3) (2 2 2))) time_limit_exceeded time_limit_exceeded) ((True False False)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((True False False)) ((True False False))))
 </span>
-Deterministic: ()
-;;;; test concurrent-maplist! with ternary function
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; test concurrent-maplist! with ternary function
 ;;;!(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! plus-ternary (1 2 3) (4 5 6) (7 8 9))) 
 ;;;                        time_limit_exceeded time_limit_exceeded)
 ;;;    ((12 15 18)))
 ;;;; test recursive concurrent-maplist!
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! concurrent-maplist! (is-even is-odd) ((1 2 3) (1 2 3)))) time_limit_exceeded time_limit_exceeded) (((False True False) (True False True))))
 
@@ -543,15 +680,24 @@ Deterministic: ()
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.96 milliseconds) 
+; took 0.003 secs. (3.22 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! concurrent-maplist! (is-even is-odd) ((1 2 3) (1 2 3)))) time_limit_exceeded time_limit_exceeded) (((False True False) (True False True))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (time_limit_exceeded) (((False True False) (True False True)))))
 </span>
-Deterministic: (#(Error #(got (time_limit_exceeded)) #(expected (((False True False) (True False True))))))
-;;;; the arguments are not evaluated
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>(#(Error #(got (time_limit_exceeded)) #(expected (((False True False) (True False True))))))
+</span>;;;; the arguments are not evaluated
+```
+```metta
+*/
+
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (maplist! get-type (my-list))) time_limit_exceeded time_limit_exceeded) (((-> Expression))))
 
@@ -560,16 +706,21 @@ Deterministic: (#(Error #(got (time_limit_exceeded)) #(expected (((False True Fa
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000953 secs. (952.55 microseconds) 
+; took 0.000970 secs. (969.68 microseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (maplist! get-type (my-list))) time_limit_exceeded time_limit_exceeded) (((-> Expression))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (((-> Expression))) (((-> Expression)))))
 </span>
-Deterministic: ()<span class="ansi32"
->
-% 389,516 inferences, 0.120 CPU in 2.113 seconds (6% CPU, 3251516 Lips)
+/*
+```
+```answers
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi32"
+>% 393,227 inferences, 0.106 CPU in 2.100 seconds (5% CPU, 3706669 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta 0 )
 <span class="ansi1"
@@ -716,8 +867,11 @@ Deterministic: ()<span class="ansi32"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-11-30 14:14:46+00:00 [COMMAND_EXIT_CODE="7"]
+</span>```
+*/
+
+
+Script done on 2024-12-01 11:05:32+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

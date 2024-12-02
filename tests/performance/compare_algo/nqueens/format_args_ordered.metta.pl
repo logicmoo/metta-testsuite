@@ -441,9 +441,11 @@ mc__nqueens(_n, A) :-
 ```prolog
 */
 
-    :- do_metta_runtime(A, mc__nqueens(12, A)).
-    :- do_metta_runtime(A, mc__nqueens(13, A)).
-    :- do_metta_runtime(A, mc__nqueens(14, A)).
+%:- do_metta_runtime(A, mc__nqueens(12, A)).
+%:- do_metta_runtime(A, mc__nqueens(13, A)).
+%:- do_metta_runtime(A, mc__nqueens(14, A)). 500 secs
+:- do_metta_runtime(A, mc__nqueens(15, A)).
+%:- do_metta_runtime(A, mc__nqueens(16, A)).
 
 
 /*

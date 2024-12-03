@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -28,9 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:05:34+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:20:15+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -189,12 +186,9 @@ Script started on 2024-12-01 11:05:34+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4491788 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4702418 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -352,43 +346,20 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 2 "Missed result: False)]" )
 P;HTML|
-;                                         #( = 2 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26216maxresident)k" )
+;                                         #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 26328maxresident)k" )
 P;HTML|
 ;                                         #( = 2 "0inputs+0outputs (0major+3144minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta is 691 bytes (19 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta)
 
 ;;; Define 'is-even' predicate
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: is-even (-> Number Bool))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (is-even $X)  
   (== 
     (% $X 2) 0))
-</span>
-/*
-```
-```load
-;;;; basic hyperpose evaluation
-```
-```metta
-*/
-
+</span>;;;; basic hyperpose evaluation
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
@@ -397,24 +368,16 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.79 milliseconds) 
+; took 0.002 secs. (1.68 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False True False) (False True False)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
 </span>
@@ -422,24 +385,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.18 milliseconds) 
+; took 0.001 secs. (1.11 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (False True 3 4) (False True 3 4)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; test recursive hyperpose
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
@@ -448,21 +403,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000568 secs. (567.92 microseconds) 
+; took 0.000492 secs. (491.97 microseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 2 3 4) (1 2 3 4)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 191,363 inferences, 0.060 CPU in 0.062 seconds (97% CPU, 3207440 Lips)
+>% 190,856 inferences, 0.058 CPU in 0.060 seconds (96% CPU, 3278591 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta 0 )
 <span class="ansi1"
@@ -603,11 +554,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:05:41+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:20:21+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

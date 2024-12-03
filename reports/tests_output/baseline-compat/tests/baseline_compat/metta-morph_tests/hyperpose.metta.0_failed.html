@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -38,9 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:19:40+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:33:37+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -199,12 +196,9 @@ Script started on 2024-12-01 11:19:40+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4360632 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4697872 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -365,70 +359,22 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 2 "0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 30988maxresident)k" )
 P;HTML|
 ;                                         #( = 2 "0inputs+0outputs (0major+3669minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/hyperpose.metta is 971 bytes (37 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/hyperpose.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/hyperpose.metta)
-
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+<span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If True $then)  $then)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If False $then)  
   (let $x 0 
     (let $x 1 $x)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 2)) (superpose (1 2)))
 
 </span>
@@ -436,24 +382,16 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
 >;; METTA-MORPH-TESTS.HYPERPOSE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000324 secs. (323.77 microseconds) 
+; took 0.000329 secs. (329.06 microseconds) 
 
 !(assertEqual (hyperpose (1 2)) (superpose (1 2)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 2) (1 2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1))))
 
 </span>
@@ -461,24 +399,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000667 secs. (667.44 microseconds) 
+; took 0.000667 secs. (667.41 microseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1) (1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose ((If (== 1 2) 1) 1)) (superpose ((If (== 1 2) 1) 1)))
 
 </span>
@@ -486,24 +416,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000589 secs. (589.27 microseconds) 
+; took 0.000584 secs. (584.10 microseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 1)) (superpose ((If (== 1 2) 1) 1)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1) (1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 2 3)) (superpose (1 2 3)))
 
 </span>
@@ -511,24 +433,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000326 secs. (326.37 microseconds) 
+; took 0.000327 secs. (326.77 microseconds) 
 
 !(assertEqual (hyperpose (1 2 3)) (superpose (1 2 3)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 2 3) (1 2 3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose ((If (== 1 2) 1) 2 3)) (superpose ((If (== 1 2) 1) 2 3)))
 
 </span>
@@ -536,24 +450,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000611 secs. (611.09 microseconds) 
+; took 0.000599 secs. (599.47 microseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 2 3)) (superpose ((If (== 1 2) 1) 2 3)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (2 3) (2 3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 (If (== 1 2) 1) 3)) (superpose (1 (If (== 1 2) 1) 3)))
 
 </span>
@@ -561,24 +467,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000603 secs. (603.21 microseconds) 
+; took 0.000531 secs. (531.19 microseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) 3)) (superpose (1 (If (== 1 2) 1) 3)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 3) (1 3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 2 (If (== 1 2) 1))) (superpose (1 2 (If (== 1 2) 1))))
 
 </span>
@@ -586,24 +484,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000567 secs. (567.41 microseconds) 
+; took 0.000561 secs. (561.02 microseconds) 
 
 !(assertEqual (hyperpose (1 2 (If (== 1 2) 1))) (superpose (1 2 (If (== 1 2) 1))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 2) (1 2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 (If (== 1 2) 1) (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1) (If (== 1 2) 1))))
 
 </span>
@@ -611,24 +501,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000878 secs. (878.20 microseconds) 
+; took 0.000859 secs. (858.58 microseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1) (If (== 1 2) 1))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1) (1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 2 3 4)) (superpose (1 2 3 4)))
 
 </span>
@@ -636,24 +518,16 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000379 secs. (378.96 microseconds) 
+; took 0.000352 secs. (351.52 microseconds) 
 
 !(assertEqual (hyperpose (1 2 3 4)) (superpose (1 2 3 4)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (1 2 3 4) (1 2 3 4)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose ((1 2) (3 4))) (superpose ((1 2) (3 4))))
 
 </span>
@@ -661,21 +535,17 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.40 milliseconds) 
+; took 0.001 secs. (1.48 milliseconds) 
 
 !(assertEqual (hyperpose ((1 2) (3 4))) (superpose ((1 2) (3 4))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((1 2) (3 4)) ((1 2) (3 4))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 302,425 inferences, 0.082 CPU in 0.085 seconds (97% CPU, 3670625 Lips)
+>% 301,653 inferences, 0.078 CPU in 0.080 seconds (97% CPU, 3861857 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/hyperpose.metta 0 )
 <span class="ansi1"
@@ -823,11 +693,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:19:47+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:33:44+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

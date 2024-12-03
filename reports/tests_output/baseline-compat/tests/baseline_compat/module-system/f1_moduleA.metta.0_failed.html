@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -32,9 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 10:55:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:10:52+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -193,12 +190,9 @@ Script started on 2024-12-01 10:55:35+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4530383 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4655874 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -355,29 +349,19 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 3 "0.05user 0.00system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 32252maxresident)k" )
 P;HTML|
 ;                                         #( = 3 "0inputs+0outputs (0major+3916minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleA.metta is 621 bytes (17 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleA.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleA.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Example file used by f1_imports.metta
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(import! &self f1_moduleC)
 
 </span>P;HTML|
 ;                                         #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleC.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleC.metta)
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleC.metta is 292 bytes (9 lines)
-</span>P;HTML|
+P;HTML|
 ;                                         #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleC.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleC.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -386,55 +370,21 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-sy
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
 > (: __g (-> Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (__g)  100)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: g (-> Number Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (g $x)  
   (+ $x 
     (__g)))
 </span>
-/*
-```
-```load
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; FIXME? stdlib space is not available at importing time -
 ;;; only tokens / grounded operations work, while symbolic functions
 ;;; (like `if`) don't work.
 ;;; FIXME? Exceptions are not caught by `importOp`
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqual (+ 1 2) 3)
 
@@ -443,60 +393,32 @@ Deterministic: <span class="ansi33"
 >;; MODULE-SYSTEM.F1-MODULEA.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000235 secs. (235.04 microseconds) 
+; took 0.000226 secs. (226.35 microseconds) 
 
 !(assertEqual (+ 1 2) 3)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (3) (3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; !(assertEqual (if True "S" "F") "S")
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (dup $x)  
   (if 
     (== $x 0) 
     (+ $x 10) 
     (g $x)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: f (-> Number Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (f $x)  
   (if 
     (< $x 0) 
     (- 0 $x) 
     (g (+ 1 $x))))
-</span>
-/*
-```
-```load
-<span class="ansi32"
->% 166,151 inferences, 0.062 CPU in 0.066 seconds (93% CPU, 2696185 Lips)
+</span><span class="ansi32"
+>% 165,637 inferences, 0.061 CPU in 0.065 seconds (94% CPU, 2733862 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/module-system/f1_moduleA.metta 0 )
 <span class="ansi1"
@@ -636,11 +558,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 10:55:42+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:10:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

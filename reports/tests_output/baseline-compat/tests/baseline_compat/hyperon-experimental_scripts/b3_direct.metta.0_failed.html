@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -72,9 +71,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 10:56:39+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:11:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -233,12 +230,9 @@ Script started on 2024-12-01 10:56:39+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4644655 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4631788 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -399,10 +393,7 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 5 "0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 30908maxresident)k" )
 P;HTML|
 ;                                         #( = 5 "0inputs+0outputs (0major+3661minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta is 1.38K bytes (48 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -411,66 +402,22 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;; No explicit backward chaining is needed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; facts
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (croaks Fritz)  T)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (eat_flies Fritz)  T)
-</span>
-/*
-```
-```load
-;;; Rules
-```
-```metta
-*/
-
+</span>;;; Rules
 <span class="ansi38-255165000"
 > (= (And T T)  T)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (frog $x)  
   (And 
     (croaks $x) 
     (eat_flies $x)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (green $x)  
   (frog $x))
-</span>
-/*
-```
-```load
-;;; Conclusion from facts and rules
-```
-```metta
-*/
-
+</span>;;; Conclusion from facts and rules
 <span class="ansi38-013099040"
 >!(assertEqual (green Fritz) T)
 
@@ -479,17 +426,13 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.21 milliseconds) 
 
 !(assertEqual (green Fritz) T)
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (T) (T)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -497,39 +440,19 @@ Deterministic: <span class="ansi33"
 ;;; This is not just functional programming,
 ;;; because we can do inference
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (ift T $then)  $then)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(set-debug! e)
 
 </span>;<span class="ansi38-047047047"
 >    1:0   |-<--true </span>
-
-/*
-```
-```answers
 
 Deterministic: <span class="ansi33"
 >true
 </span>;;;!(rtrace! (ift (green $x) $x))
 ;;;!(break!)
 ;;; !(rtrace! (, (green $x) (println! $x)))
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqual (ift (green $x) $x) Fritz)
 
@@ -547,7 +470,7 @@ Deterministic: <span class="ansi33"
 ;<span class="ansi38-047047047"
 >          |   |     (frog $10000)) </span>
 <span class="ansi38-119055000"
->                                                                                              ;;defs_used(([green,_75658]->[frog,_75658]))
+>                                                                                              ;;defs_used(([green,_75556]->[frog,_75556]))
 
 </span>;<span class="ansi38-047047047"
 >          |   |     <--(frog $10000) </span>
@@ -558,7 +481,7 @@ Deterministic: <span class="ansi33"
 ;<span class="ansi38-047047047"
 >          |   |   |     (And (croaks $10000) (eat_flies $10000))) </span>
 <span class="ansi38-119055000"
->                                                                                            ;;defs_used(([frog,_91580]->['And',[croaks,_91580],[eat_flies,_91580]]))
+>                                                                                            ;;defs_used(([frog,_91478]->['And',[croaks,_91478],[eat_flies,_91478]]))
 
 </span>;<span class="ansi38-047047047"
 >          |   |   |     <--(And (croaks $10000) (eat_flies $10000)) </span>
@@ -606,13 +529,13 @@ Deterministic: <span class="ansi33"
 ;<span class="ansi38-047047047"
 >          |     $10000) </span>
 <span class="ansi38-119055000"
->                                                                                                ;;defs_used(([ift,'T',_155712]->_155712))
+>                                                                                                ;;defs_used(([ift,'T',_155610]->_155610))
 
 </span>;<span class="ansi38-047047047"
 >          |     <--Fritz </span>
 ; 
 ; EVAL TEST
-; took 0.115 secs. (115.35 milliseconds) 
+; took 0.117 secs. (116.90 milliseconds) 
 
 !(assertEqual (ift (green $x) $x) Fritz)
 
@@ -620,10 +543,6 @@ Deterministic: <span class="ansi33"
 >#(loonit_success #(equal_enough_for_test (Fritz) (Fritz)))
 </span>;<span class="ansi38-047047047"
 >   18:0   |-<--() </span>
-
-/*
-```
-```answers
 
 Deterministic: <span class="ansi33"
 >()
@@ -633,10 +552,6 @@ Deterministic: <span class="ansi33"
 ;;; NOTE: `=` is not an ordinary symbol, and declarative reasoning over expressions
 ;;; with it may work differently from that over purely symbolic expressions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies))
 
@@ -651,7 +566,7 @@ Deterministic: <span class="ansi33"
 >    1:1   |   |-<--eat_flies </span>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.96 milliseconds) 
+; took 0.012 secs. (11.99 milliseconds) 
 
 !(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies))
 
@@ -660,14 +575,10 @@ Deterministic: <span class="ansi33"
 </span>;<span class="ansi38-047047047"
 >    2:0   |-<--() </span>
 
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 1,155,311 inferences, 0.217 CPU in 0.220 seconds (99% CPU, 5312765 Lips)
+>% 1,154,665 inferences, 0.217 CPU in 0.219 seconds (99% CPU, 5319849 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 )
 <span class="ansi1"
@@ -809,11 +720,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 10:56:46+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:11:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -49,9 +48,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:17:28+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:31:33+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -210,12 +207,9 @@ Script started on 2024-12-01 11:17:28+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4597649 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4699701 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -375,13 +369,10 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 3 "Missed result: Error)]" )
 P;HTML|
-;                                         #( = 3 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26052maxresident)k" )
+;                                         #( = 3 "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 25796maxresident)k" )
 P;HTML|
-;                                         #( = 3 "0inputs+0outputs (0major+3106minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta is 3.79K bytes (113 lines)
-</span>P;HTML|
+;                                         #( = 3 "0inputs+0outputs (0major+3102minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta)
 
 ;;; Test File: Type Checking for the Symbol Meta-Type in MeTTa
@@ -393,31 +384,11 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; Example 1: Type Checking for Symbols
 ;;; ------------------------------------
 ;;; Define a function `foo` that accepts only Symbols
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: foo (-> Symbol Type))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (foo $x)  $x)
-</span>
-/*
-```
-```load
-;;; Test: Passing a valid Symbol
-```
-```metta
-*/
-
+</span>;;; Test: Passing a valid Symbol
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo S) (S))
 
@@ -426,26 +397,18 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000388 secs. (388.07 microseconds) 
+; took 0.000367 secs. (367.04 microseconds) 
 
 !(assertEqualToResult (foo S) (S))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (S) (S)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Explanation:
 ;;; The input `S` is a valid Symbol, so the type check passes and returns `S`.
 ;;; Test: Passing an invalid expression
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo (This is an expression)) (Error (This is an expression) BadType))
 
@@ -454,17 +417,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000696 secs. (695.55 microseconds) 
+; took 0.000694 secs. (694.16 microseconds) 
 
 !(assertEqualToResult (foo (This is an expression)) (Error (This is an expression) BadType))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((This is an expression)) (Error (This is an expression) BadType)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((This is an expression))) #(expected (Error (This is an expression) BadType))))
 </span>;;; Explanation:
@@ -472,32 +431,12 @@ Deterministic: <span class="ansi33"
 ;;; Example 2: Type Checking for Variables
 ;;; --------------------------------------
 ;;; Define a function `foo_var` to test Variable meta-type
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: foo_var (-> Variable Type))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (foo_var $x)  
   (get-type $x))
-</span>
-/*
-```
-```load
-;;; Test: Passing a number to `foo_var`
-```
-```metta
-*/
-
+</span>;;; Test: Passing a number to `foo_var`
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
@@ -506,26 +445,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000409 secs. (409.15 microseconds) 
+; took 0.000401 secs. (400.86 microseconds) 
 
 !(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (Number) (Error 100 BadType)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (Number)) #(expected (Error 100 BadType))))
 </span>;;; Explanation:
 ;;; The input `100` is not a Variable, so the type check should fail.
 ;;; Test: Passing a valid Variable
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var $x) (%Undefined%))
 
@@ -534,26 +465,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000370 secs. (370.32 microseconds) 
+; took 0.000350 secs. (349.61 microseconds) 
 
 !(assertEqualToResult (foo_var $x) (%Undefined%))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (%Undefined%) (%Undefined%)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Explanation:
 ;;; The input `$x` is a Variable, and since it is unbound, `get-type` returns `%Undefined%`.
 ;;; Test: Passing a Symbol to `foo_var`
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var S) (Error S BadType))
 
@@ -562,26 +485,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000418 secs. (417.76 microseconds) 
+; took 0.000397 secs. (396.78 microseconds) 
 
 !(assertEqualToResult (foo_var S) (Error S BadType))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (%Undefined%) (Error S BadType)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (%Undefined%)) #(expected (Error S BadType))))
 </span>;;; Explanation:
 ;;; The input `S` is not a Variable, so the type check should fail.
 ;;; Test: Passing a complex expression to `foo_var`
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var (an expression)) (Error (an expression) BadType))
 
@@ -590,17 +505,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000640 secs. (639.55 microseconds) 
+; took 0.000615 secs. (614.60 microseconds) 
 
 !(assertEqualToResult (foo_var (an expression)) (Error (an expression) BadType))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) (Error (an expression) BadType)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (())) #(expected (Error (an expression) BadType))))
 </span>;;; Explanation:
@@ -608,10 +519,6 @@ Deterministic: <span class="ansi33"
 ;;; Example 3: Testing with Undefined Types
 ;;; ---------------------------------------
 ;;; Test: Check type of an expression directly
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (This is an expression)) (%Undefined%))
 
@@ -620,17 +527,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000183 secs. (183.21 microseconds) 
+; took 0.000198 secs. (197.79 microseconds) 
 
 !(assertEqualToResult (get-type (This is an expression)) (%Undefined%))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) (%Undefined%)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (())) #(expected (%Undefined%))))
 </span>;;; Explanation:
@@ -638,31 +541,11 @@ Deterministic: <span class="ansi33"
 ;;; Example 4: Suggested Fix Behavior
 ;;; ---------------------------------
 ;;; Test: After fix, ensure proper type checking for Symbols
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: foo_fixed (-> Symbol Type))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (foo_fixed $x)  $x)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
 </span>
@@ -670,17 +553,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000713 secs. (713.20 microseconds) 
+; took 0.000748 secs. (747.58 microseconds) 
 
 !(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((This is an expression)) (Error (This is an expression) BadType)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((This is an expression))) #(expected (Error (This is an expression) BadType))))
 </span>;;; Explanation:
@@ -688,91 +567,23 @@ Deterministic: <span class="ansi33"
 ;;; Summary:
 ;;; - Current behavior allows complex expressions to pass type checks incorrectly.
 ;;; - Expected behavior restricts inputs to valid Symbols or Variables based on meta-type.
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > ﻿;
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > Test:
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > Passing
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > an
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > undefined
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > type
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > to
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > foo
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (foo (%Undefined%)) ((Error (%Undefined%) BadType)))
 
 </span>
@@ -780,26 +591,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000636 secs. (636.22 microseconds) 
+; took 0.000697 secs. (696.75 microseconds) 
 
 !(assertEqualToResult (foo (%Undefined%)) ((Error (%Undefined%) BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((%Undefined%)) ((Error (%Undefined%) BadType))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((%Undefined%))) #(expected ((Error (%Undefined%) BadType)))))
 </span>;;; Explanation:
 ;;; `%Undefined%` is not a valid Symbol, so the type check fails and returns an error wrapped in a list.
 ;;; Test: Using `foo_var` with a valid variable
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var $valid_variable) ((%Undefined%)))
 
@@ -808,26 +611,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000370 secs. (369.87 microseconds) 
+; took 0.000449 secs. (449.34 microseconds) 
 
 !(assertEqualToResult (foo_var $valid_variable) ((%Undefined%)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (%Undefined%) ((%Undefined%))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (%Undefined%)) #(expected ((%Undefined%)))))
 </span>;;; Explanation:
 ;;; `$valid_variable` is a valid Variable, but since it is unbound, its type is `%Undefined%`.
 ;;; Test: Using `foo_var` with a partially typed tuple
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var (typed $x)) ((Error (typed $x) BadType)))
 
@@ -836,26 +631,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000557 secs. (556.98 microseconds) 
+; took 0.000654 secs. (653.95 microseconds) 
 
 !(assertEqualToResult (foo_var (typed $x)) ((Error (typed $x) BadType)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) ((Error (typed $10000) BadType))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (())) #(expected ((Error (typed $x) BadType)))))
 </span>;;; Explanation:
 ;;; The tuple `(typed $x)` is not a valid Variable and should return an error wrapped in a list.
 ;;; Test: Confirming type for direct input
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type $x) ((%Undefined%)))
 
@@ -864,23 +651,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000136 secs. (136.16 microseconds) 
+; took 0.000143 secs. (142.57 microseconds) 
 
 !(assertEqualToResult (get-type $x) ((%Undefined%)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (%Undefined%) ((%Undefined%))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (%Undefined%)) #(expected ((%Undefined%)))))
 </span>;;; Explanation:
 ;;; Since `$x` is an unbound Variable, its type is `%Undefined%` and should be returned in a list.
 <span class="ansi32"
->% 766,127 inferences, 0.147 CPU in 0.149 seconds (98% CPU, 5221392 Lips)
+>% 765,603 inferences, 0.144 CPU in 0.147 seconds (98% CPU, 5305259 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta 0 )
 <span class="ansi1"
@@ -1030,11 +813,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:17:34+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:31:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

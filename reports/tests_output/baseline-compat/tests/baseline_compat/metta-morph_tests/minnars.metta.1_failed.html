@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -73,9 +72,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:22:04+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:35:56+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -234,12 +231,9 @@ Script started on 2024-12-01 11:22:04+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4473487 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4624879 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -394,185 +388,57 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 2 "8.17user 0.01system 0:08.19elapsed 99%CPU (0avgtext+0avgdata 49876maxresident)k" )
 P;HTML|
 ;                                         #( = 2 "0inputs+0outputs (0major+8968minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta is 5.43K bytes (105 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta)
-
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+<span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If True $then)  $then)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If False $then)  
   (let $x 0 
     (let $x 1 $x)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: sequential (-> Expression %Undefined%))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (sequential $1)  
   (superpose $1))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: do (-> Expression %Undefined%))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (do $1)  
   (case $1 ()))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (max $1 $2)  
   (if 
     (> $1 $2) $1 $2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (min $1 $2)  
   (if 
     (< $1 $2) $1 $2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (abs $x)  
   (If 
     (< $x 0) 
     (- 0 $x) $x))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (TupleConcat $Ev1 $Ev2)  
   (collapse (superpose ((superpose $Ev1) (superpose $Ev2)))))
-</span>
-/*
-```
-```load
-;;;; Truth functions
-```
-```metta
-*/
-
+</span>;;;; Truth functions
 <span class="ansi38-255165000"
 > (= (Truth_c2w $c)  
   (/ $c 
     (- 1 $c)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Truth_w2c $w)  
   (/ $w 
     (+ $w 1)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Truth_Deduction ($f1 $c1) ($f2 $c2))  
     
   (* $f1 $f2)
@@ -580,37 +446,13 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
   (* 
     (* $f1 $f2) 
     (* $c1 $c2)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Truth_Abduction ($f1 $c1) ($f2 $c2))  
   ($f2 (Truth_w2c (* (* $f1 $c1) $c2))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Truth_Induction $T1 $T2)  
   (Truth_Abduction $T2 $T1))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Truth_Revision ($f1 $c1) ($f2 $c2))  
   (let* 
     ( ($w1 (Truth_c2w $c1)) 
@@ -619,334 +461,142 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
       ($f (/ (+ (* $w1 $f1) (* $w2 $f2)) $w)) 
       ($c (Truth_w2c $w))) 
     ( (min 1.0 $f) (min 0.99 (max (max $c $c1) $c2)))))
-</span>
-/*
-```
-```load
-;;;; Inference rules
+</span>;;;; Inference rules
 ;;; NAL-1/5 (selected subset)
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (|- ($T $T1) ($T $T2))  
   ($T (Truth_Revision $T1 $T2)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a --> $b) $T1) (($b --> $c) $T2))  
     
   ($a --> $c)
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a --> $b) $T1) (($a --> $c) $T2))  
     
   ($c --> $b)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a --> $c) $T1) (($b --> $c) $T2))  
     
   ($b --> $a)
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a ==> $b) $T1) (($b ==> $c) $T2))  
     
   ($a ==> $c)
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a ==> $b) $T1) (($a ==> $c) $T2))  
     
   ($c ==> $b)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($a ==> $c) $T1) (($b ==> $c) $T2))  
     
   ($b ==> $a)
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ($A $T1) (($A ==> $B) $T2))  
   ($B (Truth_Deduction $T1 $T2)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ($A $T1) ((($A && $B) ==> $C) $T2))  
     
   ($B ==> $C)
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ($B $T1) (($A ==> $B) $T2))  
   ($A (Truth_Abduction $T1 $T2)))
-</span>
-/*
-```
-```load
-;;; NAL-4 (selected subset)
-```
-```metta
-*/
-
+</span>;;; NAL-4 (selected subset)
 <span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) ((($C x $B) --> $R) $T2))  
     
   ($C --> $A)
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) ((($A x $C) --> $R) $T2))  
     
   ($C --> $B)
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($R --> ($C x $B)) $T2))  
     
   ($C --> $A)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($R --> ($A x $C)) $T2))  
     
   ($C --> $B)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) (($C --> $A) $T2))  
     
   ( ($C x $B) --> $R)
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) (($A --> $C) $T2))  
     
   ( ($C x $B) --> $R)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) (($C --> $B) $T2))  
     
   ( ($A x $C) --> $R)
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- ((($A x $B) --> $R) $T1) (($B --> $C) $T2))  
     
   ( ($A x $C) --> $R)
     
   (Truth_Induction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($A --> $C) $T2))  
     
   ($R --> 
     ($C x $B))
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($C --> $A) $T2))  
     
   ($R --> 
     ($C x $B))
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($B --> $C) $T2))  
     
   ($R --> 
     ($A x $C))
     
   (Truth_Deduction $T1 $T2))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (|- (($R --> ($A x $B)) $T1) (($C --> $B) $T2))  
     
   ($R --> 
     ($A x $C))
     
   (Truth_Abduction $T1 $T2))
-</span>
-/*
-```
-```load
-;;;Whether evidence was just counted once
-```
-```metta
-*/
-
+</span>;;;Whether evidence was just counted once
 <span class="ansi38-255165000"
 > (= (StampDisjoint $Ev1 $Ev2)  
   (== () 
     (collapse (let* (($x (superpose $Ev1)) ($y (superpose $Ev2))) (case (== $x $y) ((True overlap)))))))
-</span>
-/*
-```
-```load
-;;;; Exhaustive-until-depth deriver
-```
-```metta
-*/
-
+</span>;;;; Exhaustive-until-depth deriver
 <span class="ansi38-255165000"
 > (= (Derive $beliefs $depth $maxdepth)  
   (If 
@@ -956,15 +606,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
       (Derive 
         (TupleConcat $beliefs $derivations) 
         (+ $depth 1) $maxdepth))))
-</span>
-/*
-```
-```load
-;;;retrieve the best candidate
-```
-```metta
-*/
-
+</span>;;;retrieve the best candidate
 <span class="ansi38-255165000"
 > (= (BestCandidate $EvaluateCandidateFunction $BestCandidate $tuple)  
   (If 
@@ -977,63 +619,23 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
           ($EvaluateCandidateFunction $BestCandidate)) 
         (BestCandidate $EvaluateCandidateFunction $head $tail) 
         (BestCandidate $EvaluateCandidateFunction $BestCandidate $tail)))))
-</span>
-/*
-```
-```load
-;;;candidate evaluation based on confidence
-```
-```metta
-*/
-
+</span>;;;candidate evaluation based on confidence
 <span class="ansi38-255165000"
 > (= (ConfidenceRank (($f $c) $Ev))  $c)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (ConfidenceRank ())  0)
-</span>
-/*
-```
-```load
-;;;pose a question of a certain term to the system on some knowledge base
-```
-```metta
-*/
-
+</span>;;;pose a question of a certain term to the system on some knowledge base
 <span class="ansi38-255165000"
 > (= (Question $kb $term $steps)  
   (BestCandidate ConfidenceRank () 
     (collapse (let $x (Derive $kb 1 $steps) (case (superpose $x) (((Sentence ($T $TV) $Ev) (case (== $T $term) ((True ($TV $Ev)))))))))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (flonum-print-precision 17)
-</span>
-/*
-```
-```load
-<span class="ansi38-255165009"
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1)) (Sentence (((cat x sky) --> like) (1.0 0.9)) (2)) (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3)) (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))) ((ExtSet garfield) --> artist) 3)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1)) (Sentence (((cat x sky) --> like) (1.0 0.9)) (2)) (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3)) (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))) ((ExtSet garfield) --> artist) 3) (((1.0 0.37946790052053214) (2 1 3 4))))
 
@@ -1042,21 +644,17 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-mor
 >;; METTA-MORPH-TESTS.MINNARS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.276 secs. (276.47 milliseconds) 
+; took 0.265 secs. (264.68 milliseconds) 
 
 !(assertEqualToResult (Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1)) (Sentence (((cat x sky) --> like) (1.0 0.9)) (2)) (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3)) (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))) ((ExtSet garfield) --> artist) 3) (((1.0 0.37946790052053214) (2 1 3 4))))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (()) (((1.0 0.37946790052053214) (2 1 3 4)))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (())) #(expected (((1.0 0.37946790052053214) (2 1 3 4))))))
 </span><span class="ansi32"
->% 2,396,268 inferences, 0.415 CPU in 0.417 seconds (99% CPU, 5775855 Lips)
+>% 2,393,868 inferences, 0.398 CPU in 0.400 seconds (99% CPU, 6016360 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta 0 )
 <span class="ansi1"
@@ -1195,11 +793,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:22:11+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:36:02+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

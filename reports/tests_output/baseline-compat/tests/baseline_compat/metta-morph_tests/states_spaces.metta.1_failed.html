@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -45,9 +44,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:22:58+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:36:45+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -206,12 +203,9 @@ Script started on 2024-12-01 11:22:58+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4583307 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4529382 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -382,52 +376,25 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 10 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 31132maxresident)k" )
 P;HTML|
 ;                                         #( = 10 "0inputs+0outputs (0major+3668minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/states_spaces.metta is 230 bytes (12 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/states_spaces.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/states_spaces.metta)
 
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(bind! &FIFO (new-state 42))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(bind! &WU (new-space))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(change-state! &FIFO 45)
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >#(State 45 $10000)
 </span><span class="ansi38-255165009"
@@ -435,10 +402,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(get-state &FIFO)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-state &FIFO) (45))
 
@@ -447,17 +410,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.STATES-SPACES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000230 secs. (230.40 microseconds) 
+; took 0.000241 secs. (241.44 microseconds) 
 
 !(assertEqualToResult (get-state &FIFO) (45))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (45) (45)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165009"
@@ -465,10 +424,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &WU a)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &WU a) (()))
 
@@ -477,21 +432,15 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.STATES-SPACES.02</h3>
 <span class="ansi38-255165000"
 > a
-</span>
-/*
-```
-```load
-; 
+</span>; 
 ; EVAL TEST
-; took 0.000798 secs. (798.16 microseconds) 
+; took 0.000718 secs. (718.10 microseconds) 
 
 !(assertEqualToResult (add-atom &WU a) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165009"
@@ -499,10 +448,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(match &WU $1 $1)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &WU $1 $1) (a))
 
@@ -511,14 +456,11 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.STATES-SPACES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.071 secs. (71.31 milliseconds) 
+; took 0.071 secs. (71.04 milliseconds) 
 
 !(assertEqualToResult (match &WU $1 $1) (a))
 
-<span class="ansi1 ansi90"
->Info: Processing progress: 100% </span><span class="ansi1 ansi90"
-> - Stopping reporting on /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/states_spaces.metta progress.
-</span><span class="ansi31"
+<span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test (a (@doc Any (@desc "The universal type; any value belongs to this type.")) (: Any Type) (@doc Atom (@desc "Type representing any atom.")) (: Atom Type) (@doc LazyEvaluatable (@desc "A type of Atom/Value that hyperon does not implicitly evaluate")) (: LazyEvaluatable Type) (:> Atom LazyEvaluatable) (@doc Bool (@desc "Boolean type of True or False.")) (: Bool Type) (@doc LazyBool (@desc "A LazyEvaluatable that when evaluated returns True or False.")) (: LazyBool Type) (:> LazyBool LazyEvaluatable) (@doc Expression (@desc "Type representing an S-Expression, which is a combination of atoms.")) (: Expression Type) (:> Expression LazyEvaluatable) (@doc Number (@desc "Numeric type, including integers and floating-point numbers.")) (: Number Type) (@doc hyperon::space::DynSpace (@desc "Dynamic space type, representing an Atomspace.")) (: hyperon::space::DynSpace Type) (@doc ReturnType (@desc "Type representing a function's return value.")) (: ReturnType Type) (@doc Symbol (@desc "Type representing a symbol or identifier.")) (: Symbol Type) (@doc StateMonad (@desc "Type representing a state monad, used for encapsulating stateful computations.")) (: StateMonad Type) (@doc Type (@desc "Type representing a type.")) (: Type Type) (@doc True (@desc "Boolean value representing truth.")) (: True Bool) (@doc False (@desc "Boolean value representing falsehood.")) (: False Bool) (@doc %Undefined% (@desc "Special type representing an undefined value or type.")) (: %Undefined% Type) (@doc Variable (@desc "Type representing a variable in the language.")) (: Variable Type) (@doc : (@desc "Type declarion operator")) (@doc <: (@desc "Super Type declarion operator")) (: : %Undefined%) (: if-empty (-> Atom Atom Atom Atom)) (: if-non-empty-expression (-> Atom Atom Atom Atom)) (: if-not-reducible (-> Atom Atom Atom Atom)) (: return (-> Atom ReturnType)) (: switch (-> %Undefined% Expression Atom)) (: unify (-> Atom Atom Atom Atom %Undefined%)) (: get-type (-> Atom Type)) (: get-type0 (-> Atom Atom)) (: get-ftype (-> Atom Atom)) (: pragma! (-> Atom Atom (->))) (: = (-> Atom Atom %Undefined%)) (: match (-> hyperon::space::DynSpace Atom Atom %Undefined%)) (: case (-> Expression Atom Atom)) (: combine (-> $10000 $10000 $10000)) (: import! (-> hyperon::space::DynSpace Atom (->))) (: If (-> Bool Atom Atom Atom)) (: If (-> Bool Atom Atom)) (= (If True $10001)  $10001) (= (If False $10002)  
   (let $10003 0 
     (let $10003 1 $10003))) (= (If $10004 $10005 $10006)  
@@ -528,10 +470,6 @@ Deterministic: <span class="ansi33"
   (call-fn! min_list $10014)) (iz max-atom MeTTa) (@doc max-atom (@desc "Returns atom with maximum value in the expression (first argument). Only numbers are allowed.") (@params ((@param "Expression containing atoms of Number type"))) (@return "Maximum value in the expression. Error if expression contains non-numeric value or is empty.")) (: max-atom (-> Expression Number)) (is-fn-1 max-atom max_list) (iz size-atom MeTTa) (@doc size-atom (@desc "Returns the size of an expression (first argument).") (@params ((@param "Expression to measure the size of"))) (@return "Size of the expression")) (: size-atom (-> Expression Integer)) (is-fn-1 size-atom length) (iz index-atom MeTTa) (@doc index-atom (@desc "Returns atom from an expression (first argument) using index (second argument) or error if index is out of bounds.") (@params ((@param "Expression") (@param "Index"))) (@return "Atom at the specified index in the expression. Error if index is out of bounds.")) (: index-atom (-> Expression Number Atom)) (is-fn-21 index-atom nth0) (iz powi MeTTa) (@doc powi (@desc "Takes base (first argument) and power (second argument) and returns the result of raising the base to the power.") (@params ((@param "Base. Could be a float.") (@param "Power. Must be an integer."))) (@return "Result of base raised to the power")) (= (powi $10015 $10016)  
   (call-fn! pow $10015 $10016)) (==> (is-op-1 $10017 $10018) (is-fn-1 $10017 $10018))) (a)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got (a (@doc Any (@desc "The universal type; any value belongs to this type.")) (: Any Type) (@doc Atom (@desc "Type representing any atom.")) (: Atom Type) (@doc LazyEvaluatable (@desc "A type of Atom/Value that hyperon does not implicitly evaluate")) (: LazyEvaluatable Type) (:> Atom LazyEvaluatable) (@doc Bool (@desc "Boolean type of True or False.")) (: Bool Type) (@doc LazyBool (@desc "A LazyEvaluatable that when evaluated returns True or False.")) (: LazyBool Type) (:> LazyBool LazyEvaluatable) (@doc Expression (@desc "Type representing an S-Expression, which is a combination of atoms.")) (: Expression Type) (:> Expression LazyEvaluatable) (@doc Number (@desc "Numeric type, including integers and floating-point numbers.")) (: Number Type) (@doc hyperon::space::DynSpace (@desc "Dynamic space type, representing an Atomspace.")) (: hyperon::space::DynSpace Type) (@doc ReturnType (@desc "Type representing a function's return value.")) (: ReturnType Type) (@doc Symbol (@desc "Type representing a symbol or identifier.")) (: Symbol Type) (@doc StateMonad (@desc "Type representing a state monad, used for encapsulating stateful computations.")) (: StateMonad Type) (@doc Type (@desc "Type representing a type.")) (: Type Type) (@doc True (@desc "Boolean value representing truth.")) (: True Bool) (@doc False (@desc "Boolean value representing falsehood.")) (: False Bool) (@doc %Undefined% (@desc "Special type representing an undefined value or type.")) (: %Undefined% Type) (@doc Variable (@desc "Type representing a variable in the language.")) (: Variable Type) (@doc : (@desc "Type declarion operator")) (@doc <: (@desc "Super Type declarion operator")) (: : %Undefined%) (: if-empty (-> Atom Atom Atom Atom)) (: if-non-empty-expression (-> Atom Atom Atom Atom)) (: if-not-reducible (-> Atom Atom Atom Atom)) (: return (-> Atom ReturnType)) (: switch (-> %Undefined% Expression Atom)) (: unify (-> Atom Atom Atom Atom %Undefined%)) (: get-type (-> Atom Type)) (: get-type0 (-> Atom Atom)) (: get-ftype (-> Atom Atom)) (: pragma! (-> Atom Atom (->))) (: = (-> Atom Atom %Undefined%)) (: match (-> hyperon::space::DynSpace Atom Atom %Undefined%)) (: case (-> Expression Atom Atom)) (: combine (-> $10000 $10000 $10000)) (: import! (-> hyperon::space::DynSpace Atom (->))) (: If (-> Bool Atom Atom Atom)) (: If (-> Bool Atom Atom)) (= (If True $10001)  $10001) (= (If False $10002)  
   (let $10003 0 
@@ -546,10 +484,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &WU b)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &WU b) (()))
 
@@ -558,21 +492,15 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.STATES-SPACES.04</h3>
 <span class="ansi38-255165000"
 > b
-</span>
-/*
-```
-```load
-; 
+</span>; 
 ; EVAL TEST
-; took 0.000865 secs. (864.65 microseconds) 
+; took 0.000808 secs. (807.60 microseconds) 
 
 !(assertEqualToResult (add-atom &WU b) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165009"
@@ -580,10 +508,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(remove-atom &WU a)
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (remove-atom &WU a) (()))
 
@@ -592,28 +516,18 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.STATES-SPACES.05</h3>
 <span class="ansi38-255165000"
 > a
-</span>
-/*
-```
-```unload_all
-; 
+</span>; 
 ; EVAL TEST
-; took 0.000497 secs. (496.56 microseconds) 
+; took 0.000433 secs. (432.58 microseconds) 
 
 !(assertEqualToResult (remove-atom &WU a) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (match &WU $1 $1) (get-atoms &WU))
 
 </span>
@@ -4639,12 +4553,12 @@ Deterministic: <span class="ansi33"
 >Call: </span>(287) [rtrace] tAt(false, 271, 271, false)
 ; 
 ; EVAL TEST
-; took 0.667 secs. (666.52 milliseconds) 
+; took 0.667 secs. (666.62 milliseconds) 
 
 !(assertEqual (match &WU $1 $1) (get-atoms &WU))
 
 
-Script done on 2024-12-01 11:23:38+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-03 11:37:25+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

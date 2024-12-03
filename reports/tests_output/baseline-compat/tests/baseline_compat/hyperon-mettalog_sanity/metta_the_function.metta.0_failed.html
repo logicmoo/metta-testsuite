@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
@@ -32,9 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:08:08+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:22:35+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -193,12 +190,9 @@ Script started on 2024-12-01 11:08:08+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4638274 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4519654 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -352,7 +346,7 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 2 "[()]" )
 P;HTML|
-;                                         #( = 3 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x55b3f5e28d38) ((John Jane))) " )
+;                                         #( = 3 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x5577e4446d38) ((John Jane))) " )
 P;HTML|
 ;                                         #( = 3 "Expected: [(John Jane)]" )
 P;HTML|
@@ -360,28 +354,17 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 4 "Missed result: (John Jane))]" )
 P;HTML|
-;                                         #( = 4 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26044maxresident)k" )
+;                                         #( = 4 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26200maxresident)k" )
 P;HTML|
-;                                         #( = 4 "0inputs+0outputs (0major+3111minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta is 501 bytes (12 lines)
-</span>P;HTML|
+;                                         #( = 4 "0inputs+0outputs (0major+3115minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta)
 
 ;;; Create a new space and bind it to &new-space
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(bind! &new-space (new-space))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add (likes John Jane) to &new-space
@@ -390,10 +373,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &new-space (likes John Jane))
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -402,28 +381,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.01</h3>
 <span class="ansi38-255165000"
 > (likes John Jane)
-</span>
-/*
-```
-```load
-; 
+</span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.07 milliseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' returns (John Jane)
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -432,24 +401,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000947 secs. (946.96 microseconds) 
+; took 0.000883 secs. (883.16 microseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((John Jane)) ((John Jane))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a definition of foo to &new-space
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(add-atom &new-space (= (foo $x)  
   (+ $x 1)))
@@ -458,19 +419,9 @@ Deterministic: <span class="ansi33"
 > (= (foo $10000)  
   (+ $10000 1))
 </span>
-/*
-```
-```load
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that (foo 1) evaluates to 2 in &new-space
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -479,21 +430,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000612 secs. (611.52 microseconds) 
+; took 0.000594 secs. (593.91 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (2) (2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 268,891 inferences, 0.071 CPU in 0.074 seconds (97% CPU, 3776126 Lips)
+>% 268,691 inferences, 0.071 CPU in 0.074 seconds (97% CPU, 3765844 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta 0 )
 <span class="ansi1"
@@ -636,11 +583,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:08:15+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:22:42+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -36,9 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:11:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:25:42+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -197,12 +194,9 @@ Script started on 2024-12-01 11:11:24+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4593709 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4572807 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -356,13 +350,10 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 2 "[(Error (assertEqualToResult (ListCount (Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 (Cons 7 (Cons 8 (Cons 9 (Cons 10 (Cons 11 (Cons 12 (Cons 13 (Cons 14 (Cons 15 (Cons 16 (Cons 17 (Cons 18 (Cons 19 (Cons 20 (Cons 21 (Cons 22 (Cons 23 (Cons 24 (Cons 25 (Cons 26 (Cons 27 (Cons 28 (Cons 29 (Cons 30 Nil)))))))))))))))))))))))))))))))) IncorrectNumberOfArguments)]" )
 P;HTML|
-;                                         #( = 2 "0.44user 0.00system 0:00.44elapsed 100%CPU (0avgtext+0avgdata 30020maxresident)k" )
+;                                         #( = 2 "0.42user 0.01system 0:00.44elapsed 99%CPU (0avgtext+0avgdata 30288maxresident)k" )
 P;HTML|
-;                                         #( = 2 "0inputs+0outputs (0major+4102minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta is 2.46K bytes (67 lines)
-</span>P;HTML|
+;                                         #( = 2 "0inputs+0outputs (0major+4106minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta)
 
 ;;; Test File: Recursive Tuple/List Deconstruction Performance in MeTTa
@@ -373,25 +364,13 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; ListCount, BuildTuple, and BuildList functions.
 ;;; Example 1: TupleCount Performance
 ;;; ---------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (TupleCount $tuple)  
   (if 
     (== $tuple ()) 0 
     (+ 1 
       (TupleCount (cdr-atom $tuple)))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (TupleCount (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)) (30))
 
 </span>
@@ -399,97 +378,41 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.01</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (22.90 milliseconds) 
+; took 0.023 secs. (22.69 milliseconds) 
 
 !(assertEqualToResult (TupleCount (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)) (30))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (30) (30)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Explanation:
 ;;; Counts the elements in a tuple. Tests for 30 elements.
 ;;; Example 2: ListCount Performance
 ;;; ---------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (ListCount Nil)  0)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (ListCount (Cons $head $tail))  
   (+ 1 
     (ListCount $tail)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (ListCount (Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 (Cons 7 (Cons 8 (Cons 9 (Cons 10 (Cons 11 (Cons 12 (Cons 13 (Cons 14 (Cons 15 (Cons 16 (Cons 17 (Cons 18 (Cons 19 (Cons 20 (Cons 21 (Cons 22 (Cons 23 (Cons 24 (Cons 25 (Cons 26 (Cons 27 (Cons 28 (Cons 29 (Cons 30 Nil))))))))))))))))))))))))))))))))
 
 </span>
-/*
-```
-```answers
-
 NDet Result(1): <span class="ansi33"
 >(assertEqualToResult 30)
-</span>```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > )
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (30)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > )
-</span>
-/*
-```
-```load
-;;; Explanation:
+</span>;;; Explanation:
 ;;; Counts the elements in a list represented as Cons cells. Tests for 30 elements.
 ;;; Example 3: BuildList Performance
 ;;; --------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (BuildList $w $c)  
   (if 
@@ -497,15 +420,7 @@ NDet Result(1): <span class="ansi33"
     (BuildList 
       (Cons 1 $w) 
       (- $c 1)) $w))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (BuildList Nil 30) ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil))))))))))))))))))))))))))))))))
 
 </span>
@@ -513,37 +428,21 @@ NDet Result(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.02</h3>
 ; 
 ; EVAL TEST
-; took 1.221 secs. (1221.19 milliseconds) 
+; took 1.246 secs. (1245.58 milliseconds) 
 
 !(assertEqualToResult (BuildList Nil 30) ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil))))))))))))))))))))))))))))))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil))))))))))))))))))))))))))))))) ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil)))))))))))))))))))))))))))))))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > )
-</span>
-/*
-```
-```load
-;;; Explanation:
+</span>;;; Explanation:
 ;;; Constructs a list of 30 elements using Cons.
 ;;; Example 4: BuildTuple Performance
 ;;; ---------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (BuildTuple $w $c)  
   (if 
@@ -551,15 +450,7 @@ Deterministic: <span class="ansi33"
     (BuildTuple 
       (1 $w) 
       (- $c 1)) $w))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (BuildTuple () 30) (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
 
 </span>
@@ -567,17 +458,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.03</h3>
 ; 
 ; EVAL TEST
-; took 0.302 secs. (302.35 milliseconds) 
+; took 0.305 secs. (304.60 milliseconds) 
 
 !(assertEqualToResult (BuildTuple () 30) (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test ((1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 ()))))))))))))))))))))))))))))))) (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 ())))))))))))))))))))))))))))))))) #(expected (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))))
 </span>;;; Explanation:
@@ -586,7 +473,7 @@ Deterministic: <span class="ansi33"
 ;;; - These tests validate the correctness of TupleCount, ListCount, BuildList, and BuildTuple functions.
 ;;; - They also serve as a baseline for measuring performance, particularly for recursion depth.
 <span class="ansi32"
->% 13,236,107 inferences, 1.935 CPU in 1.940 seconds (100% CPU, 6840759 Lips)
+>% 13,235,237 inferences, 1.964 CPU in 1.966 seconds (100% CPU, 6739755 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta 0 )
 <span class="ansi1"
@@ -728,11 +615,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:11:32+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:25:50+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

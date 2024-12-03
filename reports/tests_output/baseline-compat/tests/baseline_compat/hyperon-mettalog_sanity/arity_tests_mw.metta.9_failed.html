@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -40,9 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:01:39+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:16:33+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -201,12 +198,9 @@ Script started on 2024-12-01 11:01:39+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4595139 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4677813 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -366,47 +360,24 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 3 "Missed result: 1)]" )
 P;HTML|
-;                                         #( = 3 "0.03user 0.01system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26160maxresident)k" )
+;                                         #( = 3 "0.02user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 26288maxresident)k" )
 P;HTML|
-;                                         #( = 3 "0inputs+0outputs (0major+3101minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta is 2.48K bytes (85 lines)
-</span>P;HTML|
+;                                         #( = 3 "0inputs+0outputs (0major+3103minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta)
 
 ;;; Testing `predicate-arity` and `function-arity`
 ;;; Create a new space for testing
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(bind! &test-space (new-space))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Test nullary function
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: foo (-> Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (predicate-arity foo) (1))
 
 </span>
@@ -414,24 +385,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000152 secs. (151.74 microseconds) 
+; took 0.000161 secs. (160.58 microseconds) 
 
 !(assertEqualToResult (predicate-arity foo) (1))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (1))))
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (function-arity foo) (0))
 
 </span>
@@ -439,45 +402,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000147 secs. (146.57 microseconds) 
+; took 0.000153 secs. (153.22 microseconds) 
 
 !(assertEqualToResult (function-arity foo) (0))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (0)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (0))))
 </span>;;; Test multi-arity function (unary and binary)
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: bar (-> Number Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: bar (-> Number Number Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (predicate-arity bar) (2 3))
 
 </span>
@@ -485,24 +424,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000139 secs. (139.44 microseconds) 
+; took 0.000143 secs. (142.62 microseconds) 
 
 !(assertEqualToResult (predicate-arity bar) (2 3))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (2 3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (2 3))))
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (function-arity bar) (1 2))
 
 </span>
@@ -510,35 +441,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000146 secs. (146.05 microseconds) 
+; took 0.000156 secs. (156.36 microseconds) 
 
 !(assertEqualToResult (function-arity bar) (1 2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (1 2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (1 2))))
 </span>;;; Test changed arity for `foo`
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: foo (-> Number Number))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (predicate-arity foo) (1 2))
 
 </span>
@@ -546,24 +461,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000130 secs. (130.27 microseconds) 
+; took 0.000141 secs. (141.26 microseconds) 
 
 !(assertEqualToResult (predicate-arity foo) (1 2))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (1 2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (1 2))))
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (function-arity foo) (0 1))
 
 </span>
@@ -571,37 +478,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000140 secs. (139.97 microseconds) 
+; took 0.000160 secs. (160.49 microseconds) 
 
 !(assertEqualToResult (function-arity foo) (0 1))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (0 1)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (0 1))))
 </span>;;; Example 1: Testing `predicate-arity`
 ;;; -----------------------------------
 ;;; Enable the built-in function `size-atom` as a predicate with arity 2
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (add-atom &test-space (predicate-arity size-atom 2))
-</span>
-/*
-```
-```load
-;;; Test: Match using `size-atom` as a predicate
-```
-```metta
-*/
-
+</span>;;; Test: Match using `size-atom` as a predicate
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &test-space (size-atom (a b c) $size) $size) (3))
 
@@ -610,25 +501,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000169 secs. (168.77 microseconds) 
+; took 0.000221 secs. (220.75 microseconds) 
 
 !(assertEqualToResult (match &test-space (size-atom (a b c) $size) $size) (3))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (3)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (3))))
 </span>;;; Test: Reverse execution using `size-atom`
 ;;; This functionality is just part of how size-atom was designed to run bi-directionaly
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &test-space (size-atom $new_atom 4) $new_atom) (($1 $2 $3 $4)))
 
@@ -637,58 +520,26 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000163 secs. (162.94 microseconds) 
+; took 0.000168 secs. (168.29 microseconds) 
 
 !(assertEqualToResult (match &test-space (size-atom $new_atom 4) $new_atom) (($1 $2 $3 $4)))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (($10000 $10001 $10002 $10003))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (($1 $2 $3 $4)))))
 </span>;;; Example 2: Testing `predicate-arity`
 ;;; -----------------------------------
 ;;; Define rules for `max`
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (add-atom &test-space (max $X $Y $X) (<= $X $Y))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (add-atom &test-space (max $X $Y $Y) (> $X $Y))
-</span>
-/*
-```
-```load
-;;; Declare `max` predicate with arity 3
-```
-```metta
-*/
-
+</span>;;; Declare `max` predicate with arity 3
 <span class="ansi38-255165000"
 > (add-atom &test-space (predicate-arity max 3))
-</span>
-/*
-```
-```load
-;;; Test: Use `max` declaratively as a predicate
-```
-```metta
-*/
-
+</span>;;; Test: Use `max` declaratively as a predicate
 <span class="ansi38-013099040"
 >!(assertEqualToResult (match &test-space (max 5 10 $max) $max) (10))
 
@@ -697,23 +548,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000163 secs. (162.64 microseconds) 
+; took 0.000173 secs. (172.73 microseconds) 
 
 !(assertEqualToResult (match &test-space (max 5 10 $max) $max) (10))
 
 <span class="ansi31"
 >#(loonit_failureR #(equal_enough_for_test () (10)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (10))))
 </span>;;; Test: Reverse execution using `max`
 ;;; This functionality uses mettalog's builtin finite domain equational solver
 <span class="ansi32"
->% 761,196 inferences, 0.147 CPU in 0.149 seconds (99% CPU, 5188140 Lips)
+>% 759,702 inferences, 0.146 CPU in 0.148 seconds (98% CPU, 5199994 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta 0 )
 <span class="ansi1"
@@ -861,11 +708,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:01:46+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:16:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

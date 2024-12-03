@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
@@ -36,9 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:07:25+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:21:55+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -197,12 +194,9 @@ Script started on 2024-12-01 11:07:25+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4570889 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4541066 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -368,13 +362,10 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 6 "Excessive result: (: S (-> (: $k Nat) Nat)))]" )
 P;HTML|
-;                                         #( = 6 "0.08user 0.00system 0:00.08elapsed 100%CPU (0avgtext+0avgdata 27160maxresident)k" )
+;                                         #( = 6 "0.07user 0.01system 0:00.08elapsed 98%CPU (0avgtext+0avgdata 27464maxresident)k" )
 P;HTML|
-;                                         #( = 6 "0inputs+0outputs (0major+3382minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta is 2.04K bytes (55 lines)
-</span>P;HTML|
+;                                         #( = 6 "0inputs+0outputs (0major+3398minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta)
 
 ;;; Test File: Backward Chaining on Lambda Abstraction in MeTTa
@@ -384,18 +375,10 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; This test reproduces the original conditions to validate that the issue is resolved.
 ;;; Example 1: Knowledge Base Setup
 ;;; --------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add successor function
@@ -404,10 +387,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &kb (: S (-> (: $x Nat) Nat)))
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &kb (: S (-> (: $x Nat) Nat))) (()))
 
@@ -416,21 +395,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
 <span class="ansi38-255165000"
 > (: S (-> (: $10000 Nat) Nat))
-</span>
-/*
-```
-```load
-; 
+</span>; 
 ; EVAL TEST
-; took 0.009 secs. (9.47 milliseconds) 
+; took 0.009 secs. (9.41 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: S (-> (: $x Nat) Nat))) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a generic variable
@@ -439,10 +412,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &kb (: $x Var))
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &kb (: $x Var)) (()))
 
@@ -450,22 +419,16 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
 <span class="ansi38-255165000"
-> (: assertEqual Var)
-</span>
-/*
-```
-```load
-; 
+> (: $10000 Var)
+</span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.004 secs. (3.83 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: $x Var)) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add lambda abstraction
@@ -474,10 +437,6 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi1 ansi38-255238088"
 >!(add-atom &kb (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b)))))
 </span>;; To unit test case:
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &kb (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b))))) (()))
 
@@ -486,28 +445,22 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.03</h3>
 <span class="ansi38-255165000"
 > (: λ (-> (: $10000 Var) (-> (: $10001 $10002) (-> (: $10000 $10003) $10002))))
-</span>
-/*
-```
-```load
-; 
+</span>; 
 ; EVAL TEST
-; took 0.042 secs. (42.18 milliseconds) 
+; took 0.042 secs. (41.82 milliseconds) 
 
 !(assertEqualToResult (add-atom &kb (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b))))) (()))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) (())))
-</span>```
-```answers
-
+</span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Example 2: Backward Chainer Definitions
 ;;; ---------------------------------------
 ;;; Base case: Query the knowledge base for a rule or fact
 <span class="ansi32"
->% 577,949 inferences, 0.116 CPU in 0.118 seconds (98% CPU, 4983932 Lips)
+>% 600,537 inferences, 0.117 CPU in 0.119 seconds (98% CPU, 5119173 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta 0 )
 <span class="ansi1"
@@ -649,11 +602,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:07:31+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:22:01+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

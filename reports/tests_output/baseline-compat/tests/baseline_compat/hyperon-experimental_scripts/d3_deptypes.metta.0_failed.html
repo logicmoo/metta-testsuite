@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -44,9 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 10:57:42+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:12:47+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -205,12 +202,9 @@ Script started on 2024-12-01 10:57:42+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4580873 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4679186 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -377,10 +371,7 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 8 "0.06user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 31160maxresident)k" )
 P;HTML|
 ;                                         #( = 8 "0inputs+0outputs (0major+3680minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta is 2.32K bytes (75 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -389,73 +380,21 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Simple type definitions:
 ;;; Defines the natural numbers `Nat` for counting
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: Nat Type)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: Z Nat)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: S (-> Nat Nat))
-</span>
-/*
-```
-```load
-;;; `Vec` takes a `$t` type and a `Nat` length.
-```
-```metta
-*/
-
+</span>;;; `Vec` takes a `$t` type and a `Nat` length.
 <span class="ansi38-255165000"
 > (: Vec (-> $t Nat Type))
-</span>
-/*
-```
-```load
-;;; `Cons` and `Nil` construct `Vec` values, with `Cons` incrementing the length by 1.
-```
-```metta
-*/
-
+</span>;;; `Cons` and `Nil` construct `Vec` values, with `Cons` incrementing the length by 1.
 <span class="ansi38-255165000"
 > (: Cons (-> $t (Vec $t $x) (Vec $t (S $x))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: Nil (Vec $t Z))
-</span>
-/*
-```
-```load
-;;; We can query the derived type
-```
-```metta
-*/
-
+</span>;;; We can query the derived type
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
 
@@ -464,45 +403,21 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.79 milliseconds) 
+; took 0.002 secs. (1.63 milliseconds) 
 
 !(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Vec Number (S (S Z)))) ((Vec Number (S (S Z))))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; `drop` removes the head from a `Vec`, returning a `Vec` with length decrease by 1
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: drop (-> (Vec $t (S $x)) (Vec $t $x)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (drop (Cons $x $xs))  $xs)
-</span>
-/*
-```
-```load
-;;; Query type
-```
-```metta
-*/
-
+</span>;;; Query type
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
 
@@ -511,24 +426,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000859 secs. (858.52 microseconds) 
+; took 0.000865 secs. (864.58 microseconds) 
 
 !(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Vec Number Z)) ((Vec Number Z))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Check length after dropping
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
 
@@ -537,24 +444,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.07 milliseconds) 
+; took 0.000980 secs. (980.34 microseconds) 
 
 !(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((Cons 1 Nil)) ((Cons 1 Nil))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Types can protect against misuse, like dropping from empty Vec
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (drop Nil)) ())
 
@@ -563,17 +462,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000260 secs. (259.90 microseconds) 
+; took 0.000210 secs. (210.24 microseconds) 
 
 !(assertEqualToResult (get-type (drop Nil)) ())
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (()) ()))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -583,41 +478,13 @@ Deterministic: <span class="ansi33"
 ;;; NOTE: tests below is the current behavior, which may be changed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `VecN` and `ConsN` use grounded `+` to increment the length.
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: VecN (-> $t Number Type))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: ConsN (-> $t (VecN $t $x) (VecN $t (+ $x 1))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: NilN (VecN $t 0))
-</span>
-/*
-```
-```load
-;;; When querying types, grounded ops are reduced
-```
-```metta
-*/
-
+</span>;;; When querying types, grounded ops are reduced
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
 
@@ -626,45 +493,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.11 milliseconds) 
 
 !(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((VecN String 2)) ((VecN String 2))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Similarly, `-` reduces the length in `dropN` type.
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (: dropN (-> (VecN $t $x) (VecN $t (- $x 1))))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (dropN (ConsN $x $xs))  $xs)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
 
 </span>
@@ -672,37 +515,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.11 milliseconds) 
+; took 0.001 secs. (1.07 milliseconds) 
 
 !(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((VecN String 0)) ((VecN String 0))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; TODO: doesn't work after type checking fixes
 ;;; However, without any validation, invalid lengths like -1 can be derived.
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (assertEqual ((get-type (dropN (dropN (ConsN "1" NilN))))) (VecN String -1))
-</span>
-/*
-```
-```load
-;;; Applying `dropN` to `NilN` is not badly typed, but it
+</span>;;; Applying `dropN` to `NilN` is not badly typed, but it
 ;;; doesn't reduce, since there are no definitions for this case.
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (dropN NilN) ((dropN NilN)))
 
@@ -711,21 +538,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000359 secs. (358.82 microseconds) 
+; took 0.000314 secs. (314.13 microseconds) 
 
 !(assertEqualToResult (dropN NilN) ((dropN NilN)))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((dropN NilN)) ((dropN NilN))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 322,325 inferences, 0.093 CPU in 0.095 seconds (98% CPU, 3470427 Lips)
+>% 321,425 inferences, 0.089 CPU in 0.091 seconds (98% CPU, 3621202 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta 0 )
 <span class="ansi1"
@@ -870,11 +693,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 10:57:48+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:12:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

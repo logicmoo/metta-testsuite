@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -44,9 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 10:57:15+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:12:23+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -205,12 +202,9 @@ Script started on 2024-12-01 10:57:15+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4610080 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4573682 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -373,10 +367,7 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;                                         #( = 6 "0.09user 0.01system 0:00.10elapsed 100%CPU (0avgtext+0avgdata 31696maxresident)k" )
 P;HTML|
 ;                                         #( = 6 "0inputs+0outputs (0major+3793minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta is 2.86K bytes (104 lines)
-</span>P;HTML|
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -386,63 +377,27 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 ;;; examples/pln/conjunction, extended with implication
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Some helpful definitions
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (min $a $b)  
   (if 
     (< $a $b) $a $b))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (s-tv (stv $s $c))  $s)
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (c-tv (stv $s $c))  $c)
-</span>
-/*
-```
-```load
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `TV` "metarule" based on `match` to run
 ;;; `.tv` is a custom symbol, which is used to connect
 ;;; PLN-like expressions with their truth values.
 ;;; Some `.tv` facts will be defined below
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (TV $x)  
   (match &self 
     (.tv $x $stv) $stv))
-</span>
-/*
-```
-```load
-;;; Definition of TV for a conjunction
+</span>;;; Definition of TV for a conjunction
 ;;; we could use `(.tv (And $a $b) (stv ...))` instead of this
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (TV (And $a $b))  
   (stv 
@@ -452,15 +407,7 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
     (min 
       (c-tv (TV $a)) 
       (c-tv (TV $b)))))
-</span>
-/*
-```
-```load
-;;; Definition of TV for $x when it's the consequent of an implication
-```
-```metta
-*/
-
+</span>;;; Definition of TV for $x when it's the consequent of an implication
 <span class="ansi38-255165000"
 > (= (TV $x)  
   (match &self 
@@ -472,93 +419,37 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
         (s-tv (TV $y))) 
       (* $c 
         (c-tv (TV $y))))))
-</span>
-/*
-```
-```load
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; First example
 ;;; .tv serves as a special type of equality when
 ;;; matched by the TV "metarules" above
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Some facts
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (.tv (Evaluation (Predicate P) (Concept A)) (stv 0.5 0.8))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (.tv (Evaluation (Predicate P) (Concept B)) (stv 0.3 0.9))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (.tv (Implication (Evaluation (Predicate P) (Concept A)) (Evaluation (Predicate F) (Concept A))) (stv 0.8 1.0))
-</span>
-/*
-```
-```load
-;;; FIXME? `(PA)` and `(PB)` are used because otherwise
+</span>;;; FIXME? `(PA)` and `(PB)` are used because otherwise
 ;;; substitution is not invoked (atm of test creation)
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (= (PA)  
   (Evaluation 
     (Predicate P) 
     (Concept A)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (PB)  
   (Evaluation 
     (Predicate P) 
     (Concept B)))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (FA)  
   (Evaluation 
     (Predicate F) 
     (Concept A)))
-</span>
-/*
-```
-```load
-;;; Tests
-```
-```metta
-*/
-
+</span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
 
@@ -567,24 +458,16 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-e
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.01</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.27 milliseconds) 
+; took 0.012 secs. (12.48 milliseconds) 
 
 !(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((stv 0.3 0.8)) ((stv 0.3 0.8))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (TV (FA)) (stv 0.4 0.8))
 
 </span>
@@ -592,17 +475,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.02</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.51 milliseconds) 
+; took 0.007 secs. (6.54 milliseconds) 
 
 !(assertEqual (TV (FA)) (stv 0.4 0.8))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((stv 0.4 0.8)) ((stv 0.4 0.8))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -610,52 +489,16 @@ Deterministic: <span class="ansi33"
 ;;; Second example
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implication rule
-```
-```metta
-*/
-
 <span class="ansi38-255165000"
 > (.tv (Implication (And (croaks $x) (eat_flies $x)) (frog $x)) (stv 0.9 0.8))
-</span>
-/*
-```
-```load
-;;; Some facts
-```
-```metta
-*/
-
+</span>;;; Some facts
 <span class="ansi38-255165000"
 > (.tv (croaks Fritz) (stv 0.95 0.85))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (.tv (eat_flies Fritz) (stv 0.87 0.95))
-</span>
-/*
-```
-```load
-```
-```metta
-*/
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (.tv (Implication (frog $x) (green $x)) (stv 0.9 1.0))
-</span>
-/*
-```
-```load
-;;; Tests
-```
-```metta
-*/
-
+</span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
@@ -664,24 +507,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.73 milliseconds) 
+; took 0.002 secs. (1.74 milliseconds) 
 
 !(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((stv 0.95 0.85)) ((stv 0.95 0.85))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
 </span>
@@ -689,24 +524,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.04</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.68 milliseconds) 
+; took 0.019 secs. (18.51 milliseconds) 
 
 !(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((stv 0.783 0.68)) ((stv 0.783 0.68))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
 </span>
@@ -714,21 +541,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.05</h3>
 ; 
 ; EVAL TEST
-; took 0.042 secs. (42.06 milliseconds) 
+; took 0.040 secs. (39.92 milliseconds) 
 
 !(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test ((stv 0.7047 0.68)) ((stv 0.7047 0.68))))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 797,967 inferences, 0.164 CPU in 0.166 seconds (99% CPU, 4859973 Lips)
+>% 796,903 inferences, 0.161 CPU in 0.164 seconds (99% CPU, 4945357 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta 0 )
 <span class="ansi1"
@@ -871,11 +694,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 10:57:22+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:12:30+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

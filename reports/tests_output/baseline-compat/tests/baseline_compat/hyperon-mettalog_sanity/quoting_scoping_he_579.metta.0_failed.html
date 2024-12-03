@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi90 { color: #7f7f7f; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -30,9 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-01 11:10:32+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
-/*
+Script started on 2024-12-03 11:24:51+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;           #(set_option_value compat false)
 
@@ -191,12 +188,9 @@ Script started on 2024-12-01 11:10:32+00:00 [TERM="xterm-256color" TTY="/dev/pts
 
 P;HTML|
 ;         #(set_option_value test false)
-<span class="ansi31"
+<span class="ansi32"
 >
-Warning: /home/runner/work/metta-wam/metta-wam/src/canary/metta_interp.pl:1856:
-Warning:    Singleton variables: [StackMax,Self,Term,X]
-</span><span class="ansi32"
->% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4430459 Lips)
+% 23,950 inferences, 0.005 CPU in 0.005 seconds (100% CPU, 4642267 Lips)
 </span>P;HTML|
 ;          #(is_cmd_option prescan halt --halt=true true)
 P;HTML|
@@ -356,13 +350,10 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 P;HTML|
 ;                                         #( = 3 "Missed result: 2)]" )
 P;HTML|
-;                                         #( = 3 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26116maxresident)k" )
+;                                         #( = 3 "0.02user 0.02system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 26328maxresident)k" )
 P;HTML|
-;                                         #( = 3 "0inputs+0outputs (0major+3126minor)pagefaults 0swaps" )
-<span class="ansi1 ansi90"
->
-Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta is 2.38K bytes (63 lines)
-</span>P;HTML|
+;                                         #( = 3 "0inputs+0outputs (0major+3124minor)pagefaults 0swaps" )
+P;HTML|
 ;                                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta)
 
 ;;; Test File: Quoting/Scoping Mechanism in MeTTa
@@ -373,10 +364,6 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 ;;; prevent unification/substitution in specific contexts.
 ;;; Example 1: Basic Quoting Issue
 ;;; --------------------------------
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
@@ -385,25 +372,17 @@ Info: File /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-m
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000157 secs. (157.42 microseconds) 
+; took 0.000175 secs. (175.03 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (A) (A)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Explanation:
 ;;; Without a scoping mechanism, `quote` does not isolate `$x`, and substitution occurs.
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
@@ -412,17 +391,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000287 secs. (287.22 microseconds) 
+; took 0.000346 secs. (346.08 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
 <span class="ansi36"
 >#(loonit_success #(equal_enough_for_test (2) (2)))
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Explanation:
@@ -430,61 +405,33 @@ Deterministic: <span class="ansi33"
 ;;; Example 2: Real-World Example with Combinatory Logic
 ;;; ---------------------------------------------------
 ;;; Knowledge Base Setup
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
-/*
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add K and S combinators to the knowledge base
-```
-```metta
-*/
-
 <span class="ansi38-013099040"
 >!(add-atom &kb (: AK (-> $a (-> $b $a))))
 
 </span><span class="ansi38-255165000"
 > (: AK (-> $10000 (-> $10001 $10000)))
 </span>
-/*
-```
-```load
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
-</span>```
-```metta
-*/
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(add-atom &kb (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c)))))
 
 </span><span class="ansi38-255165000"
 > (: AS (-> (-> $10000 (-> $10001 $10002)) (-> (-> $10000 $10001) (-> $10000 $10002))))
 </span>
-/*
-```
-```load
-```
-```answers
-
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Define Backward Chainer
 ;;; Base case
 <span class="ansi32"
->% 625,718 inferences, 0.118 CPU in 0.120 seconds (98% CPU, 5310323 Lips)
+>% 625,209 inferences, 0.115 CPU in 0.117 seconds (98% CPU, 5453816 Lips)
 </span>P;HTML|
 ;                       #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta 0 )
 <span class="ansi1"
@@ -627,11 +574,8 @@ Deterministic: <span class="ansi33"
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>```
-*/
-
-
-Script done on 2024-12-01 11:10:38+00:00 [COMMAND_EXIT_CODE="7"]
+</span>
+Script done on 2024-12-03 11:24:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

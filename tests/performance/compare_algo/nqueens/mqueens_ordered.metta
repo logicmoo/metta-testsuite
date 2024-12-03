@@ -29,7 +29,5 @@
 (= (nqueens $n)
     (let $r (range 1 $n) (nqueens_aux $r ())))
 
-; !(call-string ":- time(findall(X,mc__nqueens(12,X),_)).")
-
-!(nqueens 7)
+!(nqueens 12)
 

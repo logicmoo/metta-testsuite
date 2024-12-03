@@ -1,7 +1,5 @@
-
-:- ensure_loaded('/home/deb12user/metta-wam-royward-dev/src/canary/metta_runtime').
-
 /*
+```metta
 ;           #(set_option_value compat false)
 ;           #(set_option_value compatio false)
 ;           #(set_option_value src_indents false)
@@ -30,16 +28,16 @@ Warning:    Singleton variables: [StackMax,Self,Term,X]
 ;         #(set_option_value html true)
 ;         #(is_cmd_option execute compile --compile=save save)
 ;          #(set_option_value compile save)
-
+```
+```info
 ; #( : user #(load_metta_file &self tests/direct_comp/easy/format_args_ordered.metta) )
 ;                       #(track_load_into_file /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta)
 ;                                        #(load_answer_file /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta.answers /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta)
 Info: File /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta is 1.14K bytes (35 lines)
 ;                                        #(load_answer_file /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta.answers /home/deb12user/metta-wam/tests/direct_comp/easy/format_args_ordered.metta)
+```metta
 ;;; (= (select $x) ((car-atom $x) (cdr-atom $x)))
 ;;; (= (select $x) (let* (($y (car-atom $x)) ($z (cdr-atom $x)) (($u $v) (select $z))) ($u (cons-atom $y $v))))
-```
-```metta
  (= (select $x)
   (if
     (== $x ())
@@ -408,6 +406,15 @@ mc__nqueens_aux(_unplaced, _safe, A) :-
   (let $r
     (range 1 $n)
     (nqueens_aux $r ())))
+
+
+
+    (add-atom (lessThan Nat Nat))
+body1  (add-atom    (= (lessThan $x $y) ..)
+    (add-atom (lessThan Int Int))
+body2  (add-atom (= (lessThan $x $y) ..)
+    (add-atom (lessThan Number Number))
+
 ```
 ```load
 ; Action: load=metta_atom_asserted('&self',[=,[nqueens,_n],[let,_r,[range,1,_n],[nqueens_aux,_r,[]]]])
@@ -426,8 +433,15 @@ mc__nqueens_aux(_unplaced, _safe, A) :-
 ```
 ```prolog
 */
+src(
+ my_src([=,[nqueens,_n],[let,_r,[range,1,_n],[nqueens_aux,_r,[]]),
+    mc__nqueens(_n, A) :-
+        mc__range(1, _n, _r),
+        B=[],
+        mc__nqueens_aux(_r, B, A)).
 
-mc__nqueens(_n, A) :-
+mc__nqueens(_n01, _n11, A) :-
+    argcksOut(mc__nqueens,[_n01, _n11],[_n010, _n11O]),
     mc__range(1, _n, _r),
     B=[],
     mc__nqueens_aux(_r, B, A).
@@ -441,10 +455,10 @@ mc__nqueens(_n, A) :-
 ```prolog
 */
 
-%:- do_metta_runtime(A, mc__nqueens(12, A)).
+:- do_metta_runtime(A, mc__nqueens(7, A)).
 %:- do_metta_runtime(A, mc__nqueens(13, A)).
 %:- do_metta_runtime(A, mc__nqueens(14, A)). 500 secs
-:- do_metta_runtime(A, mc__nqueens(15, A)).
+%:- do_metta_runtime(A, mc__nqueens(15, A)).
 %:- do_metta_runtime(A, mc__nqueens(16, A)).
 
 

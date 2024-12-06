@@ -7,10 +7,10 @@ on:
     - cron: 17 0 * * * # nightly run; 17th minute to decrease odds of delayed or dropped job
   push:
     branches:
-      - main
+      - master
   pull_request_target:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
@@ -23,7 +23,7 @@ jobs:
   generate-reports:
     runs-on: ubuntu-latest
 
-    if: (github.repository == 'trueagi-io/metta-wam') || (github.event_name != 'schedule')
+    if: (github.repository == 'logicmoo/metta-testsuite') || (github.event_name != 'schedule')
 
     env:
       JOB_TYPE: ${{ github.event_name == 'schedule' && 'nightly' || 'ci' }}

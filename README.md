@@ -18,7 +18,7 @@ _Before you get started make sure `pip` and `venv` are working good._
 Clone and set up MeTTaLog with the following commands:
 ```
 git clone https://github.com/logicmoo/metta-testsuite
-cd metta-wam
+cd metta-testsuite
 source ./INSTALL.sh # Follow the default prompts 
 ```
 #### The INSTALL.sh script handles the installation of essential components and updates:

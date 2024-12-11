@@ -6,17 +6,16 @@ For descriptions of individual test directories, please see [tests/README.md](./
 
 ## Interpreter Projects
 
-- **Hyperon Experimental (H-E)**  
-  [https://github.com/trueagi-io/hyperon-experimental/](https://github.com/trueagi-io/hyperon-experimental/)  
-  The Hyperon Experimental repository provides an interpreter and environment for executing MeTTa code with various experimental features.
-
-- **MORK**  
-  [https://github.com/trueagi-io/MORK/](https://github.com/trueagi-io/MORK/)  
-  MORK is another interpreter implementation related to MeTTa’s logic and semantics, aiming to provide efficient execution and additional tooling.
-
 - **MeTTaLog**  
   [https://github.com/trueagi-io/metta-wam/](https://github.com/trueagi-io/metta-wam/)  
   The MeTTaLog repository contains a MeTTa-to-WAM (Warren Abstract Machine) compilation approach, enabling logic execution of MeTTa code within a Prolog-like environment.
+
+- **Hyperon Experimental (H-E)**  
+  [https://github.com/trueagi-io/hyperon-experimental/](https://github.com/trueagi-io/hyperon-experimental/)  
+
+- **MORK**  
+  [https://github.com/trueagi-io/MORK/](https://github.com/trueagi-io/MORK/)  
+
 
 ## How This Test Suite Is Organized
 

@@ -1,0 +1,6 @@
+!(import! &self motto)
+!(bind! &chat (dialog-agent chat_history.msa))
+!(&chat (user "Hi"))
+;!(&chat (user "Yes"))
+!(&chat (user "No"))
+!(&chat (user "Tell me about Agix"))

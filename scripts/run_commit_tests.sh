@@ -131,7 +131,7 @@ run_mettalog_tests() {
     # Execute command based on output mode
     if [ "$SHOW_ALL_OUTPUT" = true ]; then
         # Execute the command and show all output
-        "${cmd[@]}"
+        "${cmd[*]}"
         status=$?
     else
         # Execute the command silently and filter output

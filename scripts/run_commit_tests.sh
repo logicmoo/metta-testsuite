@@ -5,7 +5,7 @@ rest_of_args=()
 test_filter=""
 timestamp=""
 clean=false
-SHOW_ALL_OUTPUT=false # Set to false normally, true for debugging
+SHOW_ALL_OUTPUT=true # Set to false normally, true for debugging
 SKIP_LONG=0
 
 # parse arguments

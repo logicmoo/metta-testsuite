@@ -150,4 +150,3 @@ metta_compiled_predicate('&self', mc__append, 3).
     'mc__format-argsx'("a{}b{}", ["XX", "ZZ"], A)).
 
 :- end_metta_runtime.
-

@@ -1,1 +1,0 @@
-(system "Greet the user")

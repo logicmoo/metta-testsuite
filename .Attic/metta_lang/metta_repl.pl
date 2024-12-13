@@ -1182,7 +1182,7 @@ interactively_do_metta_exec01(From,Self,_TermV,Term,X,NamedVarsList,Was,VOutput,
       true))))),
 
    % Print formatted answer output
-   in_answer_io(format('~N[')),!,
+   in_answer_io(format('~n[')),!,
 
    % Interactive looping with possible timing and stepping control
    (forall_interactive(
@@ -2301,4 +2301,5 @@ print_help :-
     writeln('(r)  retry            - Retry the previous command.'),
     writeln('(I)  info             - Show information about the current state.'),
     !.
+
 

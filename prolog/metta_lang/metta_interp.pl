@@ -411,6 +411,7 @@ option_value_name_default_type_help('initial-result-count', 10, [inf,10], "For M
 option_value_name_default_type_help('answer-format', 'show', ['rust', 'silent', 'detailed'], "Control how results are displayed", 'Output and Logging').
 option_value_name_default_type_help('repeats', true, [true, false], "false to avoid repeated results", 'Miscellaneous').
 option_value_name_default_type_help('time', true, [false, true], "Enable or disable timing for operations (in Rust compatibility mode, this is false)", 'Miscellaneous').
+option_value_name_default_type_help('vn', auto, [auto, true, false], "Enable or disable, (auto = enable but not if it breaks stuff) EXPERIMENTAL BUG-FIX where variable names are preserved (see https://github.com/trueagi-io/metta-wam/issues/221)", 'Miscellaneous').
 
 % Testing and Validation
 option_value_name_default_type_help('synth-unit-tests', false, [false, true], "Synthesize unit tests", 'Testing and Validation').
@@ -856,6 +857,7 @@ show_options_values:-
 
 :- ensure_loaded(metta_utils).
 %:- ensure_loaded(mettalog('metta_ontology.pfc.pl')).
+:- ensure_loaded(metta_pfc_debug).
 :- ensure_loaded(metta_pfc_base).
 :- ensure_loaded(metta_pfc_support).
 :- ensure_loaded(metta_compiler).
@@ -2364,6 +2366,7 @@ complex_relationship3_ex(Likelihood1, Likelihood2, Likelihood3) :-
 
 % Example query to find the likelihoods that satisfy the constraints
 %?- complex_relationship(L1, L2, L3).
+
 
 
 

@@ -94,7 +94,7 @@ coerce('Bool',Value,Result):- var(Value), !, Value=Result, freeze(Value,coerce('
 coerce('Bool',Value,Result):- Value=0, !, Result='False'.
 coerce('Bool',Value,Result):- Value='False', !, Result='False'.
 coerce('Bool',Value,Result):- is_list(Value), length(Value, 0), !, Result='False'.
-coerce('Bool',Value,Result):- !, Result='True'.
+coerce('Bool',_Valu,Result):- !, Result='True'.
 
 coerce('Number',Value,Result):- number(Value), !, Value=Result.
 coerce('Number',Value,Result):- string(Value), !, number_string(Result, Value).
@@ -104,6 +104,12 @@ coerce('Number',Value,Result):- atom(Value), !, atom_number(Value, Result).
 
 coerce('String', Value, Result):- string(Value), !, Value=Result.
 coerce('String', Value, Result):- term_string(Value,Result).
+
+coerce(Type, Value, Result):-
+  (get_type(Value,ValuesType);ValuesType='Any'),
+   freeze(Nonvar,Nonvar='def-coerce'),
+   current_self(KB),metta_atom(KB,[Nonvar,ValuesType,Type,Function]),nonvar(Nonvar),
+   eval([Function,Value],Result),!.
 
 set_list_value(Value,Result):- nb_setarg(1,Value,echo),nb_setarg(1,Value,[Result]).
 
@@ -260,7 +266,7 @@ eval_02(Eq,RetType,Depth2,Self,Y,YO):-  Y\==[empty], % speed up n-queens x60
 % %  uncommented causes 7% failure but a 10x speedup
 % subst_args_here(Eq,RetType,Depth2,Self,Y,YO):- Y=YO.
 % %  this next one at least causes no failures and 5x speedup
-subst_args_here(Eq,RetType,Depth2,Self,Y,YO):- wont_need_subst(Y),!, Y=YO.
+subst_args_here(_Eq,_RetType,_Depth2,_Self,Y,YO):- wont_need_subst(Y),!, Y=YO.
 subst_args_here(Eq,RetType,Depth2,Self,Y,YO):-
   subst_args(Eq,RetType,Depth2,Self,Y,YO),
   notrace(if_t_else((wont_need_subst(Y),Y\=@=YO),
@@ -855,8 +861,6 @@ eval_20(Eq,RetType,_Dpth,_Slf,['new-space'],Space):- !, 'new-space'(Space),check
 
 eval_20(Eq,RetType,Depth,Self,[Op,Space|Args],Res):- is_space_op(Op),!,
   eval_space_start(Eq,RetType,Depth,Self,[Op,Space|Args],Res).
-eval_20(Eq,RetType,Depth,Self,['unify',Space|Args],Res):- !,
-  eval_space_start(Eq,RetType,Depth,Self,['match',Space|Args],Res).
 
 eval_space_start(Eq,RetType,_Depth,_Self,[_Op,_Other,Atom],Res):-
   (Atom == [] ;  Atom =='Empty';  Atom =='Nil'),!,make_nop(RetType,'False',Res),check_returnval(Eq,RetType,Res).
@@ -1122,11 +1126,12 @@ eval_20(Eq,RetType,Depth,Self,['do',Expr], NoResult):- !,
 eval_20(_Eq,_RetType1,_Depth,_Self,['call!'|S], TF):- !, eval_call(S,TF).
 eval_20(_Eq,_RetType1,_Depth,_Self,['call-p!'|S], TF):- !, eval_call(S,TF).
 eval_20(_Eq,_RetType1,_Depth,_Self,['call-fn!'|S], R):- !, eval_call_fn(S,R).
-eval_20(_Eq,_RetType1,_Depth,_Self,['call-fn-nth!',Nth,S], R):-
+eval_20(_Eq,_RetType1,_Depth,_Self,['call-fn-nth!',Nth|S], R):-
     length(Left,Nth),
     append(Left,Right,S),
     append(Left,[R|Right],NewS),!,
     eval_call(NewS,_).
+
 
 max_counting(F,Max):- flag(F,X,X+1),  X<Max ->  true; (flag(F,_,10),!,fail).
 
@@ -1165,12 +1170,31 @@ using_all_spaces:- nb_current(with_all_spaces,t).
 % =================================================================
 % =================================================================
 % =================================================================
+metta_container_sub_part(Container,Item):- is_space(Container),!,metta_atom(Container,Item).
+metta_container_sub_part(Container,Item):-  is_list(Container),!,member(Item,Container).
 
-eval_20(Eq,RetType,Depth,Self,['if-unify',X,Y,Then,Else],Res):- !,
-   eval_args(Eq,'Bool',Depth,Self,['==',X,Y],TF),
-   (is_True(TF)
-     -> eval_args(Eq,RetType,Depth,Self,Then,Res)
-     ;  eval_args(Eq,RetType,Depth,Self,Else,Res)).
+% GUESS `¯\\_ :( _/¯` what version of unify they are trying to use? ¯(°_o)/¯
+
+% 1) If Arg1 is a space, then we redirect to a `match` operation.
+eval_20(Eq,RetType,Depth,Self,['unify',Arg1,Arg2|Args],Res):- is_metta_space(Arg1), !,
+  eval_args(Eq,RetType,Depth,Self,['match',Arg1,Arg2|Args],Res).
+% 2) If Arg1 and Arg2 are nonvars and Arg1 is declared a `Container`, then use `container-unify`
+eval_20(Eq,RetType,Depth,Self,['unify',Arg1,Arg2|Args],Res):- nonvar(Arg1), nonvar(Arg2), get_type(Depth,Self,Arg1,'Container'),
+  eval_args(Eq,RetType,Depth,Self,['container-unify',Arg1,Arg2|Args],Res).
+% 3) Otherwise, default to using `if-unify` for the unify operation.
+eval_20(Eq,RetType,Depth,Self,['unify',Arg1,Arg2|Args],Res):- !,
+  eval_args(Eq,RetType,Depth,Self,['if-unify',Arg1,Arg2|Args],Res).
+
+eval_20(Eq,RetType,Depth,Self,['container-unify',Arg1,Arg2,Then|ElseL],Res):-
+   ((metta_container_sub_part(Arg1,Part),eval_args_true(Eq,'Bool',Depth,Self,['==',Part,Arg2]))
+    *-> eval_args(Eq,RetType,Depth,Self,Then,Res)
+    ; (ElseL=[Else],eval_args(Eq,RetType,Depth,Self,Else,Res))).
+
+eval_20(Eq,RetType,Depth,Self,['if-unify',X,Y,Then|ElseL],Res):- !,
+   (eval_args_true(Eq,'Bool',Depth,Self,['==',X,Y])
+     *-> eval_args(Eq,RetType,Depth,Self,Then,Res)
+    ; (ElseL=[Else],eval_args(Eq,RetType,Depth,Self,Else,Res))).
+
 
 
 eval_20(Eq,RetType,Depth,Self,['if-decons-expr',HT,H,T,Then,Else],Res):- !,
@@ -2211,19 +2235,27 @@ eval_41(Eq,RetType,Depth,Self,AEMore,ResOut):- \+ naive_eval_args,!,
   eval_70(Eq,RetType,Depth,Self,AEAdjusted,ResIn),
   check_returnval(Eq,RetType,ResOut).
 
+eval_20(Eq,RetType,Depth,Self,PredDecl,Res):-
+  if_or_else(eval_30(Eq,RetType,Depth,Self,PredDecl,Res),
+             eval_31(Eq,RetType,Depth,Self,PredDecl,Res)).
 
-eval_20(Eq,RetType,Depth,Self,X,Y):-
+eval_31(Eq,RetType,Depth,Self,X,Y):-
   (eval_40(Eq,RetType,Depth,Self,X,M)*-> M=Y ;
      % finish_eval(Depth,Self,M,Y);
     (eval_failed(Depth,Self,X,Y)*->true;X=Y)).
 eval_40(Eq,RetType,Depth,Self,AEMore,ResOut):- eval_41(Eq,RetType,Depth,Self,AEMore,ResOut).
 eval_70(Eq,RetType,Depth,Self,PredDecl,Res):-
+   % if_or_else(eval_maybe_python(Eq,RetType,Depth,Self,PredDecl,Res),
+   % if_or_else(eval_maybe_host_predicate(Eq,RetType,Depth,Self,PredDecl,Res),
+   % if_or_else(eval_maybe_host_function(Eq,RetType,Depth,Self,PredDecl,Res),
+    if_or_else(eval_maybe_defn(Eq,RetType,Depth,Self,PredDecl,Res),
+               eval_maybe_subst(Eq,RetType,Depth,Self,PredDecl,Res)).
+
+
+eval_30(Eq,RetType,Depth,Self,PredDecl,Res):-
     if_or_else(eval_maybe_python(Eq,RetType,Depth,Self,PredDecl,Res),
     if_or_else(eval_maybe_host_predicate(Eq,RetType,Depth,Self,PredDecl,Res),
-    if_or_else(eval_maybe_host_function(Eq,RetType,Depth,Self,PredDecl,Res),
-    if_or_else(eval_maybe_defn(Eq,RetType,Depth,Self,PredDecl,Res),
-               eval_maybe_subst(Eq,RetType,Depth,Self,PredDecl,Res))))).
-
+    if_or_else(eval_maybe_host_function(Eq,RetType,Depth,Self,PredDecl,Res), fail))).
 
 eval_all_args:- true_flag.
 fail_missed_defn:- true_flag.
@@ -2330,12 +2362,15 @@ eval_maybe_python(Eq, RetType, _Depth, Self, [MyFun|More], RetVal) :-
 
 %eval_80(_Eq,_RetType,_Dpth,_Slf,LESS,Res):- fake_notrace((once((eval_selfless(LESS,Res),fake_notrace(LESS\==Res))))),!.
 
+is_host_predicate([AE|More],Pred,Len):-
+    is_system_pred(AE),
+    length(More,Len),
+    is_syspred(AE,Len,Pred),
+    \+ (atom(AE),   atom_concat(_,'-fn',AE)).
+
 % predicate inherited by system
 eval_maybe_host_predicate(Eq,RetType,_Depth,_Self,[AE|More],TF):- allow_host_functions,
-  once((is_system_pred(AE),
-  length(More,Len),
-  is_syspred(AE,Len,Pred))),
-  \+ (atom(AE),   atom_concat(_,'-fn',AE)),
+  is_host_predicate([AE|More],Pred,_Len),
   %current_predicate(Pred/Len),
   %fake_notrace( \+ is_user_defined_goal(Self,[AE|More])),!,
   %adjust_args(Depth,Self,AE,More,Adjusted),
@@ -2379,26 +2414,36 @@ allow_host_functions.
 
 s2ps(S,P):- S=='Nil',!,P=[].
 s2ps(S,P):- \+ is_list(S),!,P=S.
-s2ps([F|S],P):- atom(F),maplist(s2ps,S,SS),join_s2ps(F,SS,P),!.
-s2ps([F|S],P):- is_list(F),maplist(s2ps,[F|S],SS),join_s2ps(call,SS,P),!.
+s2ps([F|S],P):- atom(F),maplist(s2p1,S,SS),join_s2ps(F,SS,P),!.
+s2ps([F|S],P):- is_list(F),maplist(s2p1,[F|S],SS),join_s2ps(call,SS,P),!.
+%s2ps(S,P):- is_list(F),maplist(s2ps,[F|S],SS),join_s2ps(call,SS,P),!.
 s2ps(S,S):-!.
+
+s2p1(S,P):- S=='Nil',!,P=[].
+s2p1(S,P):- \+ is_list(S),!,P=S.
+s2p1(['Cons',H,T],[HH|TT]):-!,s2p1(H,HH),s2p1(T,TT),!.
+s2p1(S,S).
+
 join_s2ps('Cons',[H,T],[H|T]):-!.
 join_s2ps(F,Args,P):-atom(F),P=..[F|Args].
 
 eval_call(S,TF):-
-  s2ps(S,P), !,
-  fbug(eval_call(P,'$VAR'('TF'))),as_tf(P,TF).
+  s2ps(S,P), !, fbug(eval_call(P,'$VAR'('TF'))),
+  as_tf_tracabe(P,TF).
 
 eval_call_fn(S,R):-
-  s2ps(S,P), !,
-  fbug(eval_call_fn(P,'$VAR'('R'))),as_tf(call(P,R),TF),TF\=='False'.
+  s2ps(S,P), !, fbug(eval_call_fn(P,'$VAR'('R'))),
+  as_tf_tracabe(call(P,R),TF),TF\=='False'.
 
-% function inherited from system
-eval_maybe_host_function(Eq,RetType,_Depth,_Self,[AE|More],Res):- allow_host_functions,
+is_host_function([AE|More],Pred,Len):-
   is_system_pred(AE),
   length([AE|More],Len),
   is_syspred(AE,Len,Pred),
-  \+ (symbol(AE), symbol_concat(_,'-p',AE)), % thus maybe -fn or !
+  \+ (symbol(AE), symbol_concat(_,'-p',AE)). % thus maybe -fn or !
+
+% function inherited from system
+eval_maybe_host_function(Eq,RetType,_Depth,_Self,[AE|More],Res):- allow_host_functions,
+  is_host_function([AE|More],Pred,_Len), % thus maybe -fn or !
   %fake_notrace( \+ is_user_defined_goal(Self,[AE|More])),!,
   %adjust_args(Depth,Self,AE,More,Adjusted),!,
   %Len1 is Len+1,
@@ -2903,4 +2948,5 @@ end_of_file.
            maplist(eval_evals(Eq,Depth,Self),ParamTypes,Args,NewArgs),
            XX = [H|NewArgs],Y=XX.
         eval_evals(_Eq,_Depth,_Self,_RetType,X,X):-!.
+
 

@@ -1,4 +1,4 @@
-﻿
+
 !(extend-py! mettalog)
 
 %!(mettalog::vspace-main)
@@ -10,5 +10,6 @@
 ; !(swi-exec repl)
 
 ;!(mettalog::vspace-main (1 2 3))
+
 
 

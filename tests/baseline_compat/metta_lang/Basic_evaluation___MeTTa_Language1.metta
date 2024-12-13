@@ -1,4 +1,3 @@
-﻿
 ; 20241014 r.v.v converted metta-lang.dev to metta 
 ;  !(assertEqualToResult ( )  (  )  ) 
 ; This line will be ignored.

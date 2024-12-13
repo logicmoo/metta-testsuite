@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿;; Define Nat
+=======
+;; Define Nat
+>>>>>>> upstream/master
 (: Nat Type)
 (: Z Nat)
 (: S (-> Nat Nat))

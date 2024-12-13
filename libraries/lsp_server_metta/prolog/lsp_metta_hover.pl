@@ -1,4 +1,4 @@
-﻿/** <module> LSP Utils
+/** <module> LSP Utils
 
 Module with a bunch of helper predicates for looking through prolog
 source and stuff.
@@ -524,4 +524,5 @@ prefix_pred(MC,Term, MCT) :- Term =.. [F | Args], atom_concat(MC, F, MF), MCT =.
 ?- f2r(Res, [max, [min, X, Y], Z], Terms), prefix_pred('mc__',Terms,TermsMC).
 
 ?- f2r(Res, [length, [1, 2, 3]], Terms), prefix_pred('mc__',Terms,TermsMC).
+
 

@@ -228,7 +228,8 @@ repl1 :-
 %
 repl2 :-
     % Load the REPL history and clean it up if necessary.
-    load_and_trim_history,
+    ignore(catch(load_and_trim_history,_,true)),
+
     % Begin an infinite loop using repeat to keep REPL active.
     repeat,
     % Reset internal caches for better performance.
@@ -274,6 +275,7 @@ repl3 :-
     % Create the prompt by writing it to an atom `P`.
     with_output_to(atom(P), write_metta_prompt),
     % Set up cleanup for the terminal prompt and execute repl4.
+    %% TODO: Set to ' ' (not '')
     notrace(prompt(Was, P)),
     setup_call_cleanup(
         % Set the terminal prompt without tracing.
@@ -316,6 +318,7 @@ repl4 :-
     nop((write_src(O), nl)),
     % Throw `restart_reading` to restart the REPL input process after execution.
     nop(notrace(throw(restart_reading))))),!.
+
 
 %!  check_has_directive(+V) is nondet.
 %
@@ -458,24 +461,44 @@ balanced_parentheses(Str) :-
 % If input is already a list of characters, check the balance starting at count 0.
 balanced_parentheses(Chars) :- balanced_parentheses(Chars, 0).
 
-%! balanced_parentheses(+Chars, +N) is semidet.
-%   Recursive helper predicate to check if parentheses are balanced in a list of characters `Chars`.
-%   The second argument `N` keeps track of the net balance of opening and closing parentheses.
+
+%!  balanced_parentheses(+Chars, +N) is semidet.
+%
+%   True when Chars contains a set of balanced parentheses.
+%
+%   Recursive helper predicate to check if parentheses are balanced in a
+%   list of characters `Chars`. The second argument `N` keeps track of
+%   the net balance of opening and closing parentheses.
 %
 %   @arg Chars A list of characters to process for balanced parentheses.
-%   @arg N     A count tracking the net balance of open and close parentheses.
+%   @arg N     An integer count tracking the net balance of open and close
+%   parentheses.
 %
 %   @example
 %   ?- balanced_parentheses(['(', ')', '(', ')'], 0).
 %   true.
+%
+%   Raises unbalanced_parens warning when there are more '(' closing
+%   parentheses than open parentheses. The repl is then restart4ed.
+%
+%   Example:
+%   metta+>())
+%   Warning: Found unbalanced parentheses!
+%   metta+>
 %
 balanced_parentheses([], 0).
 % Increment count when encountering an opening parenthesis.
 balanced_parentheses(['('|T], N) :- N1 is N + 1, !, balanced_parentheses(T, N1).
 % Decrement count when encountering a closing parenthesis, ensuring the count remains positive.
 balanced_parentheses([')'|T], N) :- N > 0, N1 is N - 1, !, balanced_parentheses(T, N1).
+% If we have a ')' and the count is 0 or less, then we have a stray ')'.
+balanced_parentheses([')'|_T], N) :- N =< 0, print_message(warning,unbalanced_parens), throw(restart_reading).
 % Skip any characters that are not parentheses.
 balanced_parentheses([H|T], N) :- H \= '(', H \= ')', !, balanced_parentheses(T, N).
+
+prolog:message(unbalanced_parens) -->
+    ['Found unbalanced parentheses!'-[]].
+
 
 %!  next_expr(+ExprI, -Expr) is det.
 %
@@ -587,8 +610,6 @@ repl_read_next(Str, Atom) :- atom_string(Atom, Str), metta_interp_mode(Atom, _),
 
 % Handle input starting with '@'.
 repl_read_next(Str, Expr) :- symbol_concat('@', _, Str), !, atom_string(Expr, Str).
-% Handle incorrect input with unbalanced parentheses.
-repl_read_next(Str, _Expr) :- symbol_concat(')', _, Str), !, fbug(repl_read_syntax(Str)), throw(restart_reading).
 
 % Normalize spaces in the accumulated input and re-read if the normalized result is different.
 repl_read_next(NewAccumulated, Expr) :- fail,
@@ -617,6 +638,9 @@ repl_read_next(NewAccumulated, Expr) :-
 repl_read_next(Accumulated, Expr) :-
     % Read a line from the current input stream.
     read_line_to_string(current_input, Line),
+    % switch prompts after the first line is read
+    format(atom(T),'| ~t',[]),
+    prompt(_,T),
     % Call repl_read_next with the new line concatenated to the accumulated input.
     repl_read_next(Accumulated, Line, Expr).
 
@@ -684,7 +708,7 @@ add_history_string(Str) :-
     current_input(Input),
     % If the input is from a terminal, add Str to the history using el_add_history/2.
     (((stream_property(Input, tty(true)))) ->
-        ((notrace(ignore(el_add_history(Input,Str)))))
+        ((notrace(ignore(catch(el_add_history(Input,Str),_,true)))))
     ;
         % Otherwise, do nothing.
         true), !.
@@ -1182,7 +1206,7 @@ interactively_do_metta_exec01(From,Self,_TermV,Term,X,NamedVarsList,Was,VOutput,
       true))))),
 
    % Print formatted answer output
-   in_answer_io(format('~N[')),!,
+   in_answer_io(format('~n[')),!,
 
    % Interactive looping with possible timing and stepping control
    (forall_interactive(
@@ -1449,7 +1473,11 @@ write_asrc(Var):- write_bsrc(Var),!.  % Otherwise, write the variable.
 %
 write_bsrc(Var):- Var=='Empty',!,write(Var).  % Special case: write 'Empty' directly.
 write_bsrc(Var):- ground(Var),!,write_bsrc1(Var).  % If the variable is ground, write it directly.
-write_bsrc(Var):- copy_term(Var,Copy,Goals),Var=Copy,write_bsrc_goal(Var,Goals).  % For non-ground terms, handle goals.
+write_bsrc(Var):- copy_term(Var,Copy,Goals),Var=Copy,
+  exclude(excluded_hidden_goal,Goals,UnhiddenGoals),
+  write_bsrc_goal(Var,UnhiddenGoals).  % For non-ground terms, handle goals.
+
+excluded_hidden_goal(name_variable(_,_)).
 
 %!  write_bsrc_goal(+Var, +Goals) is det.
 %
@@ -2301,4 +2329,5 @@ print_help :-
     writeln('(r)  retry            - Retry the previous command.'),
     writeln('(I)  info             - Show information about the current state.'),
     !.
+
 

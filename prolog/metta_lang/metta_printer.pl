@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Project: MeTTaLog - A MeTTa to Prolog Transpiler/Interpreter
  * Description: This file is part of the source code for a transpiler designed to convert
  *              MeTTa language programs into Prolog, utilizing the SWI-Prolog compiler for
@@ -554,13 +554,13 @@ is_final_write([]) :-
 %
 write_dvar(S) :-
     % If S is an underscore, output the name directly.
-    S == '_', !, write_dname(S).
+    S == '_', !, write('$_').
 write_dvar(S) :-
     % If S is a double underscore, write `$` to represent it.
     S == '__', !, write('$').
 write_dvar(S) :-
     % For an unbound variable, get its name and write it.
-    var(S), get_var_name(S, N), write_dname(N), !.
+    var(S), get_var_name(S, N), write_dvar(N), !.
 write_dvar(S) :-
     % For an unbound variable without a name, format it as `$<variable>`.
     var(S), !, format('$~p', [S]).
@@ -1747,4 +1747,5 @@ print_indent_now(_).
 :- abolish(xlisting_console:portray_hbr/3).
 xlisting_console:portray_hbr(H, B, _R):- B==true, !, write_src(H).
 xlisting_console:portray_hbr(H, B, _R):- print_tree(H:-B).
+
 

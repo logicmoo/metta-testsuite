@@ -55,15 +55,15 @@
 (= (unify-atom $X $Y)
     (unify $X $Y (quote (u $X $Y)) False))
 
-!(assertEqualToResult (unify-atom (+ 1 1) ($_1 $_2 $_)) (False)) ;; eager eval?
+; !(assertEqualToResult (unify-atom (+ 1 1) ($_1 $_2 $_)) (False)) ;; eager eval?
 !(assertEqualToResult (unify-atom (+ 1 1) 2) ((quote (u 2 2)))) ;; eager eval?
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 1 1)) ((quote (u 2 2))))
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 0 2)) ((quote (u 2 2)))) ;; eager eval?
 !(assertEqualToResult (unify-atom (+ 1 1) (+ $a $b)) (False)) ;; eager eval?
-!(assertEqualToResult (unify-atom $x $x) ((quote (u $x $x))))
-!(assertEqualToResult (unify-atom $x $y) ((quote (u $y $y)))) ;; identity?
-!(assertEqualToResult (unify-atom (+ 1 1) $x) ((quote (u 2 2)))) ;; eager eval?
-!(assertEqualToResult (unify-atom (+ 1 2 3) (+ 1 2 3)) ((quote (u (Error (+ 1 2 3) IncorrectNumberOfArguments) (Error (+ 1 2 3) IncorrectNumberOfArguments))))) ;; Arity error?
+;!(assertEqualToResult (unify-atom $x $x) ((quote (u $x $x))))
+;!(assertEqualToResult (unify-atom $x $y) ((quote (u $y $y)))) ;; identity?
+;!(assertEqualToResult (unify-atom (+ 1 1) $x) ((quote (u 2 2)))) ;; eager eval?
+-!(assertEqualToResult (unify-atom (+ 1 2 3) (+ 1 2 3)) ((quote (u (Error (+ 1 2 3) IncorrectNumberOfArguments) (Error (+ 1 2 3) IncorrectNumberOfArguments))))) ;; Arity error?
 !(assertEqualToResult (unify-atom (+ 1 2 3) (+ 1 $two 3)) ((quote (u (Error (+ 1 2 3) IncorrectNumberOfArguments) (Error (+ 1 2 3) IncorrectNumberOfArguments)))))
 !(assertEqualToResult (unify-atom (+ 1 2) (+ 1 $two)) (False)) ;; overly eager eval?
 

@@ -1,6 +1,3 @@
-Below are the updated comments, with more context and detail about what's happening in each part of the code. Adjust them as needed based on your specific domain or the semantics of your system.
-
-```lisp
 ; Define a function `is-even` that takes a Number and returns a Bool.
 ; This predicate checks if the given number is even by verifying that its remainder
 ; when divided by 2 is zero.

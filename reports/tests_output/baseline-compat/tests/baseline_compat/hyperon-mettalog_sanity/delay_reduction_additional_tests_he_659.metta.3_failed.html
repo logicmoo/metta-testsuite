@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-19 07:20:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-20 05:20:33+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -105,9 +105,9 @@ Script started on 2024-12-19 07:20:25+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 1 "[(Error (add-atom &kb (: Rule (-> (: $x Prime) (-> (: $_ (0⍃ $x)) (0⍃' $x))))) add-atom expects a space as the first argument)]" )
 P;HTML|
-;                         #( = 2 "0.04user 0.00system 0:00.04elapsed 95%CPU (0avgtext+0avgdata 27372maxresident)k" )
+;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27480maxresident)k" )
 P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3312minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3310minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta)
 
@@ -118,7 +118,7 @@ Script started on 2024-12-19 07:20:25+00:00 [COMMAND="timeout --preserve-status 
 >!(add-atom &kb (: Rule (-> (: $x Prime) (-> (: $10000 (0⍃ $x)) (0⍃' $x)))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (: $10000 Prime) (-> (: $10001 (0⍃ $10000)) (0⍃' $10000))))
+> (: Rule (-> (: $x Prime) (-> (: $10000 (0⍃ $x)) (0⍃' $x))))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -130,7 +130,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.45 milliseconds) 
+; took 0.002 secs. (1.57 milliseconds) 
 
 !(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
@@ -138,15 +138,15 @@ Deterministic: <span class="ansi33"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
       ( (bc &kb 
-          (: $10000 
-            (0⍃' $10001)) 
+          (: $prf 
+            (0⍃' $x)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
+>(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
 </span>;;; Expected proof with reordered premises
 ;;; Test Case 2: Using is-closed to Delay Reduction
 <span class="ansi38-255165000"
@@ -175,7 +175,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.002 secs. (1.53 milliseconds) 
 
 !(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
@@ -183,15 +183,15 @@ Deterministic: <span class="ansi33"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
       ( (bc &kb 
-          (: $10000 
-            (0⍃' $10001)) 
+          (: $prf 
+            (0⍃' $x)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
+>(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
 </span>;;; Valid proof with is-closed applied
 ;;; Test Case 3: Recursive Parameter List Handling
 <span class="ansi38-255165000"
@@ -220,7 +220,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (Cons (: CPU (is-closed $10000) (0⍃ $10000)) (Cons (: $10000 Prime) Nil)) (0⍃' $10000)))
+> (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -232,7 +232,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.001 secs. (1.40 milliseconds) 
 
 !(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
@@ -240,18 +240,18 @@ Deterministic: <span class="ansi33"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
       ( (bc &kb 
-          (: $10000 
-            (0⍃' $10001)) 
+          (: $prf 
+            (0⍃' $x)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
+>(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))
 </span>;;; Valid proof with parameter list handling
 <span class="ansi32"
->% 3,137,838 inferences, 0.404 CPU in 0.406 seconds (100% CPU, 7761755 Lips)
+>% 2,594,258 inferences, 0.323 CPU in 0.326 seconds (99% CPU, 8028962 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta 0 )
 <span class="ansi1"
@@ -290,19 +290,19 @@ Deterministic: <span class="ansi33"
 
 [()]
 
-[(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
+[(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
 
-[(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
+[(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
 
 [()]
 
-[(#(Error #(got ((bc &kb (: $10000 (0⍃' $10001)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
+[(#(Error #(got ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) #(expected ((: ((Rule CPU) 2) (0⍃' 2))))))]
 P;HTML|
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-19 07:20:33+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-20 05:20:41+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

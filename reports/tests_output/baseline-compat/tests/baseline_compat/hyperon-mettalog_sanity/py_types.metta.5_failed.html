@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-19 07:25:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-20 05:26:09+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -117,7 +117,7 @@ Script started on 2024-12-19 07:25:58+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 2 "Missed result: (py-eval \"[]\"))]" )
 P;HTML|
-;                          #( = 2 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 27604maxresident)k" )
+;                          #( = 2 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27604maxresident)k" )
 P;HTML|
 ;                           #( = 2 "0inputs+0outputs (0major+3309minor)pagefaults 0swaps" )
 P;HTML|
@@ -134,7 +134,7 @@ Script started on 2024-12-19 07:25:58+00:00 [COMMAND="timeout --preserve-status 
 
 ; 
 ; EVAL TEST
-; took 0.014 secs. (13.66 milliseconds) 
+; took 0.014 secs. (14.29 milliseconds) 
 
 !(assertEqual (py-list ()) (py-eval "[]"))
 
@@ -154,7 +154,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000411 secs. (410.77 microseconds) 
+; took 0.000425 secs. (425.42 microseconds) 
 
 !(assertEqual (py-tuple ()) (py-eval "()"))
 
@@ -174,7 +174,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000382 secs. (381.64 microseconds) 
+; took 0.000414 secs. (413.50 microseconds) 
 
 !(assertEqual (py-dict ()) (py-eval "{}"))
 
@@ -207,7 +207,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.002 secs. (1.83 milliseconds) 
 
 !(assertEqual (py-list (1 2 (4.5 3))) (py-eval "[1,2,[4.5,3]]"))
 
@@ -230,7 +230,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.70 milliseconds) 
+; took 0.002 secs. (1.76 milliseconds) 
 
 !(assertEqual (py-list (1 2 (py-tuple (3 4)))) (py-eval "[1,2, (3,4)]"))
 
@@ -250,7 +250,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000467 secs. (467.26 microseconds) 
+; took 0.000465 secs. (465.22 microseconds) 
 
 !(assertEqual (py-dict ((a "b") ("b" "c"))) (py-eval '{"a":"b", "b":"c"}'))
 
@@ -275,7 +275,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.78 milliseconds) 
+; took 0.003 secs. (2.94 milliseconds) 
 
 !(assertNotEqual (py-list (a "b" c)) (py-list (a b c)))
 
@@ -297,7 +297,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.023 secs. (23.31 milliseconds) 
+; took 0.024 secs. (24.31 milliseconds) 
 
 !(assertNotEqual (py-nth! (py-list (a "b" c)) 1) (py-nth! (py-list (a 'b' c)) 1))
 
@@ -318,7 +318,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000543 secs. (542.92 microseconds) 
+; took 0.000638 secs. (638.35 microseconds) 
 
 !(assertEqual (py-chain (1 2 3 4)) (py-eval "7"))
 
@@ -337,7 +337,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000207 secs. (207.02 microseconds) 
+; took 0.000346 secs. (346.18 microseconds) 
 
 !(assertEqualToResult (py-chain (True False)) (True))
 
@@ -356,7 +356,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000294 secs. (293.93 microseconds) 
+; took 0.000338 secs. (337.79 microseconds) 
 
 !(assertEqualToResult (py-chain (False False)) (False))
 
@@ -399,7 +399,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000284 secs. (284.26 microseconds) 
+; took 0.000308 secs. (307.83 microseconds) 
 
 !(assertEqual (py-type! (py-nth! (py-list (a "b" c)) 1)) str)
 
@@ -419,7 +419,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000258 secs. (258.13 microseconds) 
+; took 0.000268 secs. (268.33 microseconds) 
 
 !(assertEqual (py-type! (py-nth! (py-list (a b c)) 1)) SymbolAtom)
 
@@ -432,7 +432,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(#(Error #(got (list)) #(expected (SymbolAtom))))
 </span><span class="ansi32"
->% 421,412 inferences, 0.148 CPU in 0.183 seconds (81% CPU, 2854684 Lips)
+>% 433,221 inferences, 0.156 CPU in 0.159 seconds (98% CPU, 2782705 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta 0 )
 <span class="ansi1"
@@ -506,7 +506,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-19 07:26:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-20 05:26:18+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

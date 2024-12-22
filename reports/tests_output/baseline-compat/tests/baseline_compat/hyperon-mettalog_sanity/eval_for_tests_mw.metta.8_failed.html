@@ -46,7 +46,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 00:29:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 03:04:41+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -117,11 +117,11 @@ Script started on 2024-12-22 00:29:25+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 1 "Expected: [1]" )
 P;HTML|
-;                         #( = 1 "Got: [(eval-for Number \"a\"), (eval-for Number 1)]" )
+;                         #( = 1 "Got: [(eval-for Number 1), (eval-for Number \"a\")]" )
 P;HTML|
 ;                          #( = 2 "Missed result: 1)]" )
 P;HTML|
-;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27744maxresident)k" )
+;                          #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27740maxresident)k" )
 P;HTML|
 ;                           #( = 2 "0inputs+0outputs (0major+3317minor)pagefaults 0swaps" )
 P;HTML|
@@ -141,7 +141,7 @@ Script started on 2024-12-22 00:29:25+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000521 secs. (521.05 microseconds) 
+; took 0.000563 secs. (563.27 microseconds) 
 
 !(assertEqualToResult (eval-for Number (foo)) (1))
 
@@ -161,7 +161,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000392 secs. (392.04 microseconds) 
+; took 0.000394 secs. (393.97 microseconds) 
 
 !(assertEqualToResult (eval-for String (foo)) ("a"))
 
@@ -182,7 +182,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000410 secs. (409.92 microseconds) 
+; took 0.000391 secs. (391.46 microseconds) 
 
 !(assertEqualToResult (eval-for $type (foo)) (1 "a"))
 
@@ -202,18 +202,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (let $result (eval-for $type (foo)) ($result $type)) ((1 Number) ("a" String)))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( (1 $10000) ("a" $10001)) 
+      ( (1 $_92440) ("a" $_92422)) 
       ( (1 Number) ("a" String))))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((1 $10000) ("a" $10001))) #(expected ((1 Number) ("a" String)))))
+>(#(Error #(got ((1 $_92440) ("a" $_92422))) #(expected ((1 Number) ("a" String)))))
 </span>;;;; eval-for works when type arg must be evaluated
 <span class="ansi38-255165000"
 > (= (type)  Number)
@@ -225,7 +225,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000462 secs. (461.67 microseconds) 
+; took 0.000454 secs. (453.89 microseconds) 
 
 !(assertEqualToResult (eval-for (type) (foo)) (1))
 
@@ -247,7 +247,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000409 secs. (409.14 microseconds) 
+; took 0.000451 secs. (450.72 microseconds) 
 
 !(assertEqualToResult (eval-for (type) (foo)) (1 "a"))
 
@@ -283,7 +283,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000250 secs. (250.39 microseconds) 
+; took 0.000236 secs. (235.97 microseconds) 
 
 !(assertEqualToResult (get-state &var) (0))
 
@@ -304,7 +304,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.90 milliseconds) 
+; took 0.003 secs. (2.86 milliseconds) 
 
 !(assertEqualToResult (eval-for $type (bar)) (1 "a"))
 
@@ -324,7 +324,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000205 secs. (205.43 microseconds) 
+; took 0.000248 secs. (248.32 microseconds) 
 
 !(assertEqualToResult (get-state &var) (2))
 
@@ -344,7 +344,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.75 milliseconds) 
+; took 0.003 secs. (2.72 milliseconds) 
 
 !(assertEqualToResult (eval-for (type) (bar)) (1 "a"))
 
@@ -364,7 +364,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000227 secs. (227.30 microseconds) 
+; took 0.000206 secs. (206.48 microseconds) 
 
 !(assertEqualToResult (get-state &var) (4))
 
@@ -388,7 +388,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000766 secs. (766.13 microseconds) 
+; took 0.000823 secs. (822.72 microseconds) 
 
 !(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $x (quote $x)) ((quote (foo))))
 
@@ -408,7 +408,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000779 secs. (779.45 microseconds) 
+; took 0.000884 secs. (883.53 microseconds) 
 
 !(assertEqualToResult (chain (eval-for $type (chain-to-foo)) $x (quote $x)) ((quote (foo))))
 
@@ -428,7 +428,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000767 secs. (766.53 microseconds) 
+; took 0.000862 secs. (861.96 microseconds) 
 
 !(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $x (quote $x)) ())
 
@@ -447,7 +447,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000788 secs. (788.23 microseconds) 
+; took 0.000874 secs. (874.46 microseconds) 
 
 !(assertEqualToResult (chain (eval-for String (chain-to-foo)) $x (quote $x)) ())
 
@@ -459,7 +459,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((quote 1) (quote "a"))) #(expected ())))
 </span><span class="ansi32"
->% 962,628 inferences, 0.182 CPU in 0.184 seconds (99% CPU, 5295735 Lips)
+>% 1,768,584 inferences, 0.770 CPU in 0.774 seconds (100% CPU, 2295493 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta 0 )
 <span class="ansi1"
@@ -502,7 +502,7 @@ Deterministic: <span class="ansi33"
 
 [()]
 
-[(#(Error #(got ((1 $10000) ("a" $10001))) #(expected ((1 Number) ("a" String)))))]
+[(#(Error #(got ((1 $_92440) ("a" $_92422))) #(expected ((1 Number) ("a" String)))))]
 
 [(#(Error #(got (1 "a")) #(expected (1))))]
 
@@ -532,7 +532,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-22 00:29:34+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 03:04:50+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

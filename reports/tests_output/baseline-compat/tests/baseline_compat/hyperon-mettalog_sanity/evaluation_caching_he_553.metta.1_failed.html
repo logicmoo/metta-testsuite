@@ -25,7 +25,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 00:29:34+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 03:04:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -122,9 +122,9 @@ Script started on 2024-12-22 00:29:34+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                              #( = 3 "Missed result: False)]" )
 P;HTML|
-;                               #( = 3 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27736maxresident)k" )
+;                               #( = 3 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27560maxresident)k" )
 P;HTML|
-;                               #( = 3 "0inputs+0outputs (0major+3345minor)pagefaults 0swaps" )
+;                               #( = 3 "0inputs+0outputs (0major+3341minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta)
 
@@ -148,7 +148,7 @@ Script started on 2024-12-22 00:29:34+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.EVALUATION-CACHING-HE-553.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000483 secs. (483.00 microseconds) 
+; took 0.000723 secs. (722.86 microseconds) 
 
 !(assertEqualToResult (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n") ((extend-py! random_binding)))
 
@@ -168,12 +168,12 @@ Deterministic: <span class="ansi33"
 </span>P;HTML|
 ;                                #(extend-py! random_binding)
 P;HTML|
-;                                 #( = #(error #(existence_error source_sink random_binding) $10000) #(py_catch #( ; #( -> #( == random_binding mettalog ) true ) #(py_load_modfile random_binding) )) )
+;                                 #( = #(error #(existence_error source_sink random_binding) $Existence_error) #(py_catch #( ; #( -> #( == random_binding mettalog ) true ) #(py_load_modfile random_binding) )) )
 NoneType: None
 
    <span class="ansi1 ansi32"
 >Call: </span>(151) [system] random_binding==mettalog ? 
-Script done on 2024-12-22 00:30:14+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-22 03:05:30+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

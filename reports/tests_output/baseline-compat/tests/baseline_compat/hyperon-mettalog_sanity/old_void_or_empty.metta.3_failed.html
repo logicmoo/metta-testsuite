@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 03:08:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 07:19:20+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -129,9 +129,9 @@ Script started on 2024-12-22 03:08:58+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                            #( = 6 "[(2 (quote ((+ 1 1) $bar))), (a (quote (a $bar)))]" )
 P;HTML|
-;                             #( = 7 "0.05user 0.00system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
+;                             #( = 7 "0.05user 0.01system 0:00.06elapsed 97%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                             #( = 7 "0inputs+0outputs (0major+3360minor)pagefaults 0swaps" )
+;                             #( = 7 "0inputs+0outputs (0major+3355minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta)
 <span class="ansi38-255165009"
@@ -147,15 +147,15 @@ Script started on 2024-12-22 03:08:58+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000376 secs. (375.77 microseconds) 
+; took 0.000472 secs. (472.34 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ($n (quote ($n $bar))) ( "Found Empty") (%void% "Found %void%"))) ((quote ( $bar))))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ("Found %void%") 
-      ( (quote ( $_1916)))))
+      ("Found Empty") 
+      ( (quote ( $bar)))))
 </span>
 Deterministic: <span class="ansi33"
 >Empty
@@ -172,17 +172,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000294 secs. (293.82 microseconds) 
+; took 0.000422 secs. (422.36 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ( "Found Empty"))) ("Found Empty"))
 
-<span class="ansi31"
->  #(loonit_failureR 
-    #(equal_enough_for_test () 
+<span class="ansi36"
+>  #(loonit_success 
+    #(equal_enough_for_test 
+      ("Found Empty") 
       ("Found Empty")))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ()) #(expected ("Found Empty"))))
+>()
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -196,17 +197,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000257 secs. (256.70 microseconds) 
+; took 0.000432 secs. (431.92 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) ( "Found Empty"))) ((quote ( $bar))))
 
-<span class="ansi36"
->  #(loonit_success 
-    #(equal_enough_for_test () 
-      ( (quote ( $_54856)))))
+<span class="ansi31"
+>  #(loonit_failureR 
+    #(equal_enough_for_test 
+      ("Found Empty") 
+      ( (quote ( $bar)))))
 </span>
 Deterministic: <span class="ansi33"
->()
+>Empty
 </span><span class="ansi38-255165000"
 > (foo-found a)
 </span><span class="ansi38-255165000"
@@ -226,7 +228,7 @@ Deterministic: <span class="ansi33"
 (quote (found (+ 1 1)))
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.00 milliseconds) 
+; took 0.007 secs. (7.12 milliseconds) 
 
 !(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ($n (quote ($n $bar))) ( "Found Empty") (%void% "Found %void%"))) (() ()))
 
@@ -253,7 +255,7 @@ Deterministic: <span class="ansi33"
 (quote (found (+ 1 1)))
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.97 milliseconds) 
+; took 0.007 secs. (7.13 milliseconds) 
 
 !(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ( "Found Empty"))) (() ()))
 
@@ -278,7 +280,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.47 milliseconds) 
+; took 0.002 secs. (1.75 milliseconds) 
 
 !(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) ( "Found Empty"))) ((2 (quote ((+ 1 1) $bar))) (a (quote (a $bar)))))
 
@@ -286,12 +288,12 @@ Deterministic: <span class="ansi33"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
       ( (a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1))))) 
-      ( (2 (quote ((+ 1 1) $_125472))) (a (quote (a $_125472))))))
+      ( (2 (quote ((+ 1 1) $bar))) (a (quote (a $bar))))))
 </span>
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) #(expected ((2 (quote ((+ 1 1) $bar))) (a (quote (a $bar)))))))
 </span><span class="ansi32"
->% 2,811,090 inferences, 0.997 CPU in 0.999 seconds (100% CPU, 2820862 Lips)
+>% 2,431,705 inferences, 0.955 CPU in 0.958 seconds (100% CPU, 2545486 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta 0 )
 <span class="ansi1"
@@ -330,21 +332,21 @@ Deterministic: <span class="ansi33"
 
 [Empty]
 
-[(#(Error #(got ()) #(expected ("Found Empty"))))]
+[()]
+
+[Empty]
 
 [()]
 
 [()]
 
-[()]
-
-[(#(Error #(got ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) #(expected ((2 (quote ((+ 1 1) $_125472))) (a (quote (a $_125472)))))))]
+[(#(Error #(got ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) #(expected ((2 (quote ((+ 1 1) $bar))) (a (quote (a $bar)))))))]
 P;HTML|
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-22 03:09:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 07:19:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

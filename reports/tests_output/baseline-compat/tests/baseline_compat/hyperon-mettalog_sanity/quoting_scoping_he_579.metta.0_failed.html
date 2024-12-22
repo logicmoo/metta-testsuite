@@ -29,7 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 03:09:52+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 07:20:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -106,9 +106,9 @@ Script started on 2024-12-22 03:09:52+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: 2)]" )
 P;HTML|
-;                           #( = 3 "0.03user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27864maxresident)k" )
+;                           #( = 3 "0.04user 0.00system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                           #( = 3 "0inputs+0outputs (0major+3330minor)pagefaults 0swaps" )
+;                           #( = 3 "0inputs+0outputs (0major+3327minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta)
 
@@ -128,7 +128,7 @@ Script started on 2024-12-22 03:09:52+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000191 secs. (191.27 microseconds) 
+; took 0.000224 secs. (224.37 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
@@ -150,7 +150,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000405 secs. (405.43 microseconds) 
+; took 0.000405 secs. (405.40 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
@@ -178,7 +178,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &kb (: AK (-> $a (-> $b $a))))
 
 </span><span class="ansi38-255165000"
-> (: AK (-> $_42690 (-> $_42728 $_42690)))
+> (: AK (-> $a (-> $b $a)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -186,14 +186,14 @@ Deterministic: <span class="ansi33"
 >!(add-atom &kb (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c)))))
 
 </span><span class="ansi38-255165000"
-> (: AS (-> (-> $_58194 (-> $_58232 $_58254)) (-> (-> $_58194 $_58232) (-> $_58194 $_58254))))
+> (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c))))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Define Backward Chainer
 ;;; Base case
 <span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $_70330)  
+> (= (bc (: $prf $ccln) $_70738)  
   (match &kb 
     (: $prf $ccln) 
     (: $prf $ccln)))
@@ -214,12 +214,12 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03</h3>
 ; 
 ; EVAL TEST
-; took 0.630 secs. (630.26 milliseconds) 
+; took 0.757 secs. (756.52 milliseconds) 
 
 !(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 
-Script done on 2024-12-22 03:10:32+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-22 07:20:55+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

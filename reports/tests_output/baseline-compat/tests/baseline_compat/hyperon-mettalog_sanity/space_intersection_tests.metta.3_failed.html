@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 22:44:35+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-21 23:43:17+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -125,7 +125,7 @@ Script started on 2024-12-21 22:44:35+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 4 "[()]" )
 P;HTML|
-;                          #( = 5 "[(Error (assertEqual (intersection (get-atoms GroundingSpace-0x1211158) (get-atoms GroundingSpace-0x1236fc8)) (superpose ((= (foo $x $y) (+ $x $y)) (foo 1 2) (foo (foo 1 2) 3)))) " )
+;                          #( = 5 "[(Error (assertEqual (intersection (get-atoms GroundingSpace-0x2f7e158) (get-atoms GroundingSpace-0x2fa34d8)) (superpose ((= (foo $x $y) (+ $x $y)) (foo 1 2) (foo (foo 1 2) 3)))) " )
 P;HTML|
 ;                           #( = 5 "Expected: [(= (foo $x $y) (+ $x $y)), (foo 1 2), (foo (foo 1 2) 3)]" )
 P;HTML|
@@ -133,9 +133,9 @@ Script started on 2024-12-21 22:44:35+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 6 "Missed result: (= (foo $x $y) (+ $x $y)))]" )
 P;HTML|
-;                            #( = 6 "0.09user 0.01system 0:00.10elapsed 100%CPU (0avgtext+0avgdata 28776maxresident)k" )
+;                            #( = 6 "0.08user 0.01system 0:00.10elapsed 99%CPU (0avgtext+0avgdata 28508maxresident)k" )
 P;HTML|
-;                            #( = 6 "0inputs+0outputs (0major+3491minor)pagefaults 0swaps" )
+;                            #( = 6 "0inputs+0outputs (0major+3483minor)pagefaults 0swaps" )
 
 
 #(stream_error #( : 86 #( : 1 4077 ) ) #(syntax_error #(unexpected_char )) "Unexpected start character: ')'"))
@@ -186,8 +186,8 @@ Deterministic: <span class="ansi33"
   (+ $x $y)) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo (foo 1 2) 3))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((= (foo $x $y)  
-  (+ $x $y)) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo (foo 1 2) 3)))
+> (superpose ((= (foo $10000 $10001)  
+  (+ $10000 $10001)) (foo 1 2) (foo 3 4) (foo $10000 10) (foo $10000 $10000) (foo (foo 1 2) 3)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -196,8 +196,8 @@ Deterministic: <span class="ansi33"
   (+ $a $b)) (foo 1 2) (foo 5 6) (foo 5 10) (foo 9 9) (foo (foo 1 2) 3))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((= (foo $a $b)  
-  (+ $a $b)) (foo 1 2) (foo 5 6) (foo 5 10) (foo 9 9) (foo (foo 1 2) 3)))
+> (superpose ((= (foo $10000 $10001)  
+  (+ $10000 $10001)) (foo 1 2) (foo 5 6) (foo 5 10) (foo 9 9) (foo (foo 1 2) 3)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -210,7 +210,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.115 secs. (114.59 milliseconds) 
+; took 0.110 secs. (109.85 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space2)) (superpose ((= (foo $x $y)  
   (+ $x $y)) (foo 1 2) (foo (foo 1 2) 3))))
@@ -218,13 +218,13 @@ Deterministic: <span class="ansi33"
 <span class="ansi36"
 >  #(loonit_success 
     #(equal_enough_for_test 
-      ( (= (foo $x $y)  
-          (+ $x $y)) 
+      ( (= (foo $10000 $10001)  
+          (+ $10000 $10001)) 
         (foo 1 2) 
         (foo 
           (foo 1 2) 3)) 
-      ( (= (foo $x $y)  
-          (+ $x $y)) 
+      ( (= (foo $10002 $10003)  
+          (+ $10002 $10003)) 
         (foo 1 2) 
         (foo 
           (foo 1 2) 3))))
@@ -255,7 +255,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (17.77 milliseconds) 
+; took 0.018 secs. (17.55 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space3)) (superpose ()))
 
@@ -277,7 +277,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &space4 (superpose ((foo 1 2) (foo 3 4) (foo $m $n))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((foo 1 2) (foo 3 4) (foo $m $n)))
+> (superpose ((foo 1 2) (foo 3 4) (foo $10000 $10001)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -289,7 +289,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.038 secs. (37.96 milliseconds) 
+; took 0.035 secs. (35.47 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space4)) (superpose ((foo 1 2) (foo 3 4))))
 
@@ -313,7 +313,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &space5 (superpose ((foo (foo 1 2) 3) (foo (foo 3 4) 7) (foo $p $q))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((foo (foo 1 2) 3) (foo (foo 3 4) 7) (foo $p $q)))
+> (superpose ((foo (foo 1 2) 3) (foo (foo 3 4) 7) (foo $10000 $10001)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -325,15 +325,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.62 milliseconds) 
+; took 0.018 secs. (17.79 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space4) (get-atoms &space5)) (superpose ((foo $m $n))))
 
 <span class="ansi36"
 >  #(loonit_success 
     #(equal_enough_for_test 
-      ( (foo $10000 $n)) 
-      ( (foo $m $n))))
+      ( (foo $10000 $10001)) 
+      ( (foo $10002 $10003))))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -349,7 +349,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &space6 (superpose ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $r 2) 3))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $r 2) 3)))
+> (superpose ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $10000 2) 3)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -361,7 +361,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.033 secs. (32.67 milliseconds) 
+; took 0.030 secs. (29.55 milliseconds) 
 
 !(assertEqual (pred-intersection unified (get-atoms &space4) (get-atoms &space6)) (superpose ((foo 7 7))))
 
@@ -389,7 +389,7 @@ Deterministic: <span class="ansi33"
 >!(add-atom &space7 (superpose ((foo $x $x) (foo 7 7) (foo (foo 1 2) 3))))
 
 </span><span class="ansi38-255165000"
-> (superpose ((foo $x $x) (foo 7 7) (foo (foo 1 2) 3)))
+> (superpose ((foo $10000 $10000) (foo 7 7) (foo (foo 1 2) 3)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -401,7 +401,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (22.99 milliseconds) 
+; took 0.020 secs. (20.46 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space6) (get-atoms &space7)) (superpose ((foo (foo 1 2) 3))))
 
@@ -425,7 +425,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.024 secs. (24.12 milliseconds) 
+; took 0.022 secs. (21.61 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space7) (get-atoms &space6)) (superpose ((foo (foo 1 2) 3))))
 
@@ -439,7 +439,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(#(Error #(got ((foo 7 7) (foo (foo 1 2) 3))) #(expected ((foo (foo 1 2) 3)))))
 </span><span class="ansi32"
->% 2,910,905 inferences, 0.587 CPU in 0.589 seconds (100% CPU, 4961876 Lips)
+>% 3,605,522 inferences, 0.686 CPU in 0.689 seconds (100% CPU, 5252907 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta 0 )
 <span class="ansi1"
@@ -522,7 +522,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-21 22:44:44+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-21 23:43:25+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

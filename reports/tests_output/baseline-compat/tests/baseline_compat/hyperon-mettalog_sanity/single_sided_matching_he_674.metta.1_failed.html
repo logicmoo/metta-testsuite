@@ -12,9 +12,7 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
@@ -27,16 +25,12 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 23:42:49+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 00:36:30+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -107,9 +101,9 @@ Script started on 2024-12-21 23:42:49+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
 P;HTML|
-;                         #( = 2 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27736maxresident)k" )
+;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                          #( = 2 "0inputs+0outputs (0major+3356minor)pagefaults 0swaps" )
+;                          #( = 2 "0inputs+0outputs (0major+3360minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 
@@ -154,7 +148,7 @@ Script started on 2024-12-21 23:42:49+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000834 secs. (833.71 microseconds) 
+; took 0.000736 secs. (735.86 microseconds) 
 
 !(assertEqualToResult ((S K) $x) (I))
 
@@ -175,7 +169,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-013099040"
 >!(assertSingleSideEqualToResult ((S K) $x) ((S K) $x))
 
-</span>;; no-results ;; 
+</span>
+Deterministic: <span class="ansi33"
+>(Error (assertSingleSideEqualToResult I I (grounded-single-side-match I)))
+</span>$x = K
 ;;; Explanation:
 ;;; Single-sided matching would leave the expression unreduced, as `$x` does not unify with
 ;;; any specific term in the pattern `(S K) K`.
@@ -194,7 +191,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.10 milliseconds) 
+; took 0.002 secs. (2.03 milliseconds) 
 
 !(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
 
@@ -212,111 +209,11 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-013099040"
 >!(assertSingleSideEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (: $x $a))
 
-</span>;; no-results ;; 
-;;; Explanation:
-;;; With single-sided matching, the reduction applies only once, avoiding infinite recursion.
-;;; Example 4: Differentiating Entry Points
-;;; ---------------------------------------
-;;; Define a function with two entry points: one double-sided, one single-sided
-<span class="ansi38-255165000"
-> (= (foo (A $x))  
-  (B $x))
-</span>;;; Double-sided
-<span class="ansi38-255165000"
-> (=^ (foo (C $x)) (D $x))
-</span>;;; Hypothetical single-sided operator
-;;; Test: Double-sided entry point
-<span class="ansi38-013099040"
->!(assertEqualToResult (foo $x) ((B $x)))
-
 </span>
-;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.03"
->;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.03</h3>
-; 
-; EVAL TEST
-; took 0.000546 secs. (545.83 microseconds) 
-
-!(assertEqualToResult (foo $x) ((B $x)))
-
-<span class="ansi36"
->  #(loonit_success 
-    #(equal_enough_for_test 
-      ( (B $10000)) 
-      ( (B $10001))))
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; Test: Single-sided entry point triggers only when explicitly matched
-<span class="ansi38-013099040"
->!(assertSingleSideEqualToResult (foo (C $x)) ((D $x)))
-
-</span>;; no-results ;; 
-;;; Explanation:
-;;; The single-sided entry point should only trigger when `(C $x)` matches explicitly.
-;;; Summary:
-;;; - Current double-sided matching reduces terms aggressively, even when substitutions are undesired.
-;;; - Single-sided matching, as demonstrated in the hypothetical `assertSingleSideEqualToResult`,
-;;;   would give developers control over when reductions occur.
-;;; - This feature would prevent infinite recursion, align MeTTa with combinatory logic semantics,
-;;;   and allow finer control over pattern matching.
-<span class="ansi32"
->% 1,400,809 inferences, 0.237 CPU in 0.239 seconds (99% CPU, 5908955 Lips)
-</span>P;HTML|
-;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta 0 )
-<span class="ansi1"
->LoonIt Report
-</span>------------
-<span class="ansi32"
->Successes: 2
-</span><span class="ansi31"
->Failures: 1
-</span><br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-P;HTML|
-;          #(set_debug transpiler false)
-P;HTML|
-;          #(set_debug overtime 4.0)
-P;HTML|
-;          #(set_debug overflow 1000)
-P;HTML|
-;          #(set_debug eval false)
-P;HTML|
-;          #(set_debug load silent)
-P;HTML|
-;          #(set_debug trace-on-load false)
-P;HTML|
-;          #(set_debug exec false)
-P;HTML|
-;          #(set_debug error non-type)
-P;HTML|
-;          #(set_debug fail false)
-P;HTML|
-;          #(set_debug test true)
-P;HTML|
-;          #(set_debug test false)
-P;HTML|
-;          #(set_debug fail false)
-
-[()]
-
-[]
-
-[(#(Error #(got ((: $10000 $10001))) #(expected (InfiniteRecursion))))]
-
-[]
-
-[()]
-
-[]
-P;HTML|
-;         #(maybe_halt 7)
-<span class="ansi31"
->#(in #(maybe_halt 7) #(unwind #(halt 7)))
-</span>
-Script done on 2024-12-21 23:42:57+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 00:37:10+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m

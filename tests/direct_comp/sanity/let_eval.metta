@@ -16,6 +16,10 @@
 (= (any-print-quoted-2) (qeval-any (+ 1 1)))
 
 !(atom-print-quoted-2)
+; (quote (+ 1 1) -> 2)
 !(undef-print-quoted-2)
+; (quote 2 -> 2)
 !(any-print-quoted-2)
+; (quote 2 -> 2)
+
 

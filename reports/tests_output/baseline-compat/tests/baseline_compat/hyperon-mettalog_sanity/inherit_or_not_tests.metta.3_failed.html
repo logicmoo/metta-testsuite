@@ -16,10 +16,12 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -27,6 +29,7 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -41,7 +44,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 07:17:34+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-24 11:30:59+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -106,21 +109,21 @@ Script started on 2024-12-22 07:17:34+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta)
 P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta)
+;                       #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta)
 P;HTML|
-;                         #( = 1 "[()]" )
+;                        #( = 1 "[()]" )
 P;HTML|
-;                         #( = 2 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x264fe78) ()) " )
+;                        #( = 2 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x1ba9e78) ()) " )
 P;HTML|
 ;                         #( = 2 "Expected: []" )
 P;HTML|
-;                          #( = 2 "Got: [(John Jess)]" )
+;                         #( = 2 "Got: [(John Jess)]" )
 P;HTML|
 ;                          #( = 3 "Excessive result: (John Jess))]" )
 P;HTML|
-;                           #( = 3 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27740maxresident)k" )
+;                          #( = 3 "0.03user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27740maxresident)k" )
 P;HTML|
-;                           #( = 3 "0inputs+0outputs (0major+3326minor)pagefaults 0swaps" )
+;                          #( = 3 "0inputs+0outputs (0major+3326minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta)
 
@@ -138,7 +141,111 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (= (foo $x)  
   (+ $x 2))
-</span>;;; Test that matching 'likes' in &new-space yields no results
+</span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store(foo, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 2]).
+
+</span><span class="ansi36"
+>transpiler_stub_created(foo/2).
+
+</span>; % ######### warning: creating stub for:foo
+<span class="ansi35"
+>'_x'=['Number', arg(+, 1), arg(foo, 1)].
+A=['Number', arg(+, 0)].
+B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
+
+</span><span class="ansi32"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>foo</span>, <span class="pl-var"
+>_x</span></span>]</span>, 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>+</span></span>)</span>, <span class="pl-var"
+>_x</span>, <span class="pl-int"
+>2</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>B</span>, 
+      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>]]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-var"
+>A</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>foo</span></span>)</span>, 
+      <span class="pl-var"
+>_x</span>]], 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>+</span></span>)</span>, <span class="pl-var"
+>_x</span>, <span class="pl-int"
+>2</span>]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(foo, 2, +, 3).
+
+</span>Asserting: transpiler_depends_on(foo,2,+,3)
+<span class="ansi36"
+>'_x'=['Number', arg(+, 1), arg(foo, 1)].
+A=['Number', arg(+, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
+
+mc_1__foo(_x, A) :-
+    'mc_2__+'(_x, 2, A).
+
+</span><span class="ansi36"
+>
+mc_1__foo(_x, A) :-
+    'mc_2__+'(_x, 2, A).
+
+</span>
+;;; Test that matching 'likes' in &new-space yields no results
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ())
 
@@ -147,7 +254,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000349 secs. (349.24 microseconds) 
+; took 0.000337 secs. (337.12 microseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ())
 
@@ -166,7 +273,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.14 milliseconds) 
+; took 0.001 secs. (1.22 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) ((foo 1)))
 
@@ -195,7 +302,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000925 secs. (925.39 microseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -215,7 +322,104 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (foo $x)  
   (+ $x 1))
+</span><span class="ansi38-255165005"
+>Retracting stub: mc_1__foo(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 1]).
+
+</span><span class="ansi35"
+>'_x'=['Number', arg(+, 1), arg(foo, 1)].
+A=['Number', arg(+, 0)].
+B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
+
+</span><span class="ansi32"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>foo</span>, <span class="pl-var"
+>_x</span></span>]</span>, 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>+</span></span>)</span>, <span class="pl-var"
+>_x</span>, <span class="pl-int"
+>1</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>B</span>, 
+      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>]]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-var"
+>A</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>foo</span></span>)</span>, 
+      <span class="pl-var"
+>_x</span>]], 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>+</span></span>)</span>, <span class="pl-var"
+>_x</span>, <span class="pl-int"
+>1</span>]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>'_x'=['Number', arg(+, 1), arg(foo, 1)].
+A=['Number', arg(+, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
+
+mc_1__foo(_x, A) :-
+    'mc_2__+'(_x, 1, A).
+
+</span><span class="ansi36"
+>
+mc_1__foo(_x, A) :-
+    'mc_2__+'(_x, 1, A).
+
 </span>
+
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that (foo 1) now evaluates to 2 in &new-space
@@ -227,7 +431,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000667 secs. (667.20 microseconds) 
+; took 0.000732 secs. (732.02 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -257,7 +461,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000921 secs. (921.21 microseconds) 
+; took 0.001 secs. (1.06 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jess) (John Jane)))
 
@@ -278,7 +482,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000679 secs. (678.80 microseconds) 
+; took 0.000865 secs. (864.92 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -308,7 +512,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000679 secs. (678.91 microseconds) 
+; took 0.000746 secs. (745.65 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -329,7 +533,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000970 secs. (969.91 microseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
 
@@ -341,8 +545,6 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi32"
->% 786,584 inferences, 0.415 CPU in 0.417 seconds (99% CPU, 1896537 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta 0 )
 <span class="ansi1"
@@ -378,38 +580,25 @@ Deterministic: <span class="ansi33"
 ;          #(set_debug test false)
 P;HTML|
 ;          #(set_debug fail false)
-
+[()]
 [()]
-
-[()]
-
 [(#(Error #(got ()) #(expected ((foo 1)))))]
-
 [()]
-
 [()]
-
 [()]
-
 [()]
-
 [()]
-
 [(#(Error #(got ((John Jane))) #(expected ((John Jess) (John Jane)))))]
-
 [(#(Error #(got (2)) #(expected (2 3))))]
-
 [()]
-
 [()]
-
 [()]
 P;HTML|
-;         #(maybe_halt 7)
+;           #(maybe_halt 7)
 <span class="ansi31"
->#(in #(maybe_halt 7) #(unwind #(halt 7)))
+>#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-22 07:17:43+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-24 11:31:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

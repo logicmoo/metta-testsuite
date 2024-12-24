@@ -16,11 +16,15 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -32,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 07:31:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-24 11:46:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -97,15 +101,15 @@ Script started on 2024-12-22 07:31:57+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta)
 P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta)
+;                       #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta)
 P;HTML|
-;                         #( = 1 "[3628800]" )
+;                        #( = 1 "[3628800]" )
 P;HTML|
-;                         #( = 2 "[3628800]" )
+;                        #( = 2 "[3628800]" )
 P;HTML|
-;                         #( = 3 "0.10user 0.01system 0:00.11elapsed 100%CPU (0avgtext+0avgdata 28876maxresident)k" )
+;                         #( = 3 "0.10user 0.00system 0:00.11elapsed 99%CPU (0avgtext+0avgdata 28620maxresident)k" )
 P;HTML|
-;                          #( = 3 "0inputs+0outputs (0major+3570minor)pagefaults 0swaps" )
+;                         #( = 3 "0inputs+0outputs (0major+3567minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta)
 
@@ -114,19 +118,673 @@ Script started on 2024-12-22 07:31:57+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span><span class="ansi38-255165000"
+</span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store('If', 4, 0, ['Bool', 'Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy), x(doeval, lazy)], x(doeval, lazy), ['If', _cond, _then, _else], [if, _cond, _then, _else]).
+
+</span><span class="ansi36"
+>transpiler_stub_created('If'/4).
+
+</span>; % ######### warning: creating stub for:'If'
+<span class="ansi35"
+>'_cond'=['Bool', arg('If', 1)].
+'_then'=['Atom', arg('If', 2)].
+'_else'=['Atom', arg('If', 3)].
+A=['Atom', arg('If', 0), val(is_p1(true, _then)), val([is_p1, [], _then])].
+B=[val([is_p1, [], _else]), val(is_p1(true, _else)), val([is_p1, [], _then]), val(is_p1(true, _then)), 'Atom', arg('If', 0), val(A), val(C)].
+C=[val(A), 'Atom', arg('If', 0), val(is_p1(true, _then)), val([is_p1, [], _then]), val(is_p1(true, _else)), val([is_p1, [], _else])].
+
+</span><span class="ansi32"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'If'</span>, <span class="pl-var"
+>_cond</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+  [ [ <span class="pl-atom"
+>prolog_if</span>, 
+      [ [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>is_True</span></span>)</span>, 
+          <span class="pl-var"
+>_cond</span>]], 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>A</span>, 
+          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>C</span>, 
+          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, lazy).
+finalLazyRet:x(doeval, lazy).
+finalLazyOnlyRet:lazy.
+args_list:[_cond, _then, _else].
+lazyArgsList:[_cond-eager, _then-lazy, _else-lazy].
+eagerLazyList:[eager, lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
+finalLazyArgs:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
+
+</span><span class="ansi33"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-var"
+>A</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'If'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_cond'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_then'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_else'</span></span>)</span>]], 
+  [ [ <span class="pl-atom"
+>prolog_if</span>, 
+      [ [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>is_True</span></span>)</span>, 
+          <span class="pl-var"
+>_cond</span>]], 
+      [ [ assign,  A   ,_then ]], 
+      [ [ assign,  A   ,_else ]]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>'_cond'=['Bool', arg('If', 1)].
+'_then'=[val(A), val(B), val(is_p1(true, _then)), val([is_p1, [], _then]), val(is_p1(true, _else)), val([is_p1, [], _else]), 'Atom', arg('If', 0), arg('If', 2)].
+'_else'=[val(_then), val(A), val(B), val(is_p1(true, _then)), val([is_p1, [], _then]), val(is_p1(true, _else)), val([is_p1, [], _else]), 'Atom', arg('If', 0), arg('If', 2), arg('If', 3)].
+C=['Atom', arg('If', 3), arg('If', 2), arg('If', 0), val([is_p1, [], _else]), val(is_p1(true, _else)), val([is_p1, [], _then]), val(is_p1(true, _then)), val(B), val(A), val(_then), val(_else)].
+
+mc_3__If(_cond, _then, _else, C) :-
+    (   is_True(_cond)
+    *-> C=_then
+    ;   C=_else
+    ).
+
+</span><span class="ansi36"
+>
+mc_3__If(_cond, _then, _else, A) :-
+    (   is_True(_cond)
+    *-> A=_then
+    ;   A=_else
+    ).
+
+</span>
+<span class="ansi38-255165000"
 > (= (facF $n)  
   (If 
     (== $n 0) 1 
     (* $n 
       (facF (- $n 1)))))
-</span><span class="ansi38-255165000"
+</span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store(facF, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [facF, _n], ['If', [==, _n, 0], 1, [*, _n, [facF, [-, _n, 1]]]]).
+
+</span><span class="ansi36"
+>transpiler_stub_created(facF/2).
+
+</span>; % ######### warning: creating stub for:facF
+<span class="ansi35"
+>'_n'=['Number', arg(*, 1), arg(-, 1), '%Var', arg(==, 1), arg(facF, 1)].
+A=['Bool', arg('If', 1)].
+B=['Atom', arg('If', 0), arg(facF, 0)].
+C=[arg(facF, 1), 'Number', arg(-, 0)].
+D=['Number', arg(*, 2), arg(facF, 0)].
+E=['Number', arg(*, 0)].
+
+</span><span class="ansi32"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>facF</span>, <span class="pl-var"
+>_n</span></span>]</span>, 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>==</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>0</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>B</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'If'</span></span>)</span>, 
+        <span class="pl-var"
+>A</span>, 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+        [ <span class="pl-atom"
+>is_p1</span>, 
+          [ [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>C</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>-</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>1</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>D</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facF</span></span>)</span>, 
+                <span class="pl-var"
+>C</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>E</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_n'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>3</span></span>)</span>]]], 
+          <span class="pl-var"
+>E</span>]]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_n].
+lazyArgsList:[_n-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-var"
+>A</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facF</span></span>)</span>, 
+      <span class="pl-var"
+>_n</span>]], 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>B</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>==</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>0</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'If'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>, 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+        [ <span class="pl-atom"
+>is_p1</span>, 
+          [ [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>D</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>-</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>1</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>E</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facF</span></span>)</span>, 
+                <span class="pl-var"
+>D</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>F</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_n'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]]], 
+          <span class="pl-var"
+>F</span>]]], 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>as_p1</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>0</span></span>)</span>]]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(facF, 2, ==, 3).
+
+</span>Asserting: transpiler_depends_on(facF,2,==,3)
+<span class="ansi36"
+>transpiler_depends_on(facF, 2, -, 3).
+
+</span>Asserting: transpiler_depends_on(facF,2,-,3)
+<span class="ansi36"
+>transpiler_depends_on(facF, 2, *, 3).
+
+</span>Asserting: transpiler_depends_on(facF,2,*,3)
+<span class="ansi36"
+>transpiler_depends_on(facF, 2, 'If', 4).
+
+</span>Asserting: transpiler_depends_on(facF,2,'If',4)
+<span class="ansi36"
+>'_n'=['Number', arg(*, 1), arg(-, 1), '%Var', arg(==, 1), arg(facF, 1)].
+A=[arg(as_p1, 2), arg(facF, 0), 'Atom', arg('If', 0)].
+B=['Bool', arg('If', 1)].
+C=[arg(facF, 1), 'Number', arg(-, 0)].
+D=['Number', arg(*, 2), arg(facF, 0)].
+E=['Number', arg(*, 0)].
+F=[arg(as_p1, 1), 'Atom', arg('If', 0)].
+
+mc_1__facF(_n, A) :-
+    'mc_2__=='(_n, 0, B),
+    mc_3__If(B,
+             is_p1(true, 1),
+             is_p1(('mc_2__-'(_n, 1, C), mc_1__facF(C, D), 'mc_2__*'(_n, D, E)),
+                   E),
+             F),
+    as_p1(F, A).
+
+</span><span class="ansi36"
+>
+mc_1__facF(_n, A) :-
+    'mc_2__=='(_n, 0, B),
+    mc_3__If(B,
+             is_p1(true, 1),
+             is_p1(('mc_2__-'(_n, 1, C), mc_1__facF(C, D), 'mc_2__*'(_n, D, E)),
+                   E),
+             F),
+    as_p1(F, A).
+
+</span>
+<span class="ansi38-255165000"
 > (= (facf $n)  
   (if 
     (== $n 0) 1 
     (* $n 
       (facf (- $n 1)))))
-</span><span class="ansi38-255165009"
+</span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store(facf, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [facf, _n], [if, [==, _n, 0], 1, [*, _n, [facf, [-, _n, 1]]]]).
+
+</span><span class="ansi36"
+>transpiler_stub_created(facf/2).
+
+</span>; % ######### warning: creating stub for:facf
+<span class="ansi35"
+>'_n'=['Number', arg(*, 1), arg(-, 1), '%Var', arg(==, 1), arg(facf, 1)].
+A=['Bool'].
+B=[arg(facf, 0), val(is_p1(true, 1)), val([is_p1, [], 1])].
+C=[val([is_p1, [], D]), val(is_p1(true, D)), val([is_p1, [], 1]), val(is_p1(true, 1)), arg(facf, 0), val(B), val(E)].
+F=[arg(facf, 1), 'Number', arg(-, 0)].
+G=['Number', arg(*, 2), arg(facf, 0)].
+D=['Number', arg(*, 0)].
+E=[val(B), arg(facf, 0), val(is_p1(true, 1)), val([is_p1, [], 1]), val(is_p1(true, D)), val([is_p1, [], D])].
+
+</span><span class="ansi32"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>facf</span>, <span class="pl-var"
+>_n</span></span>]</span>, 
+  [ [ <span class="pl-atom"
+>prolog_if</span>, 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>A</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>==</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>0</span>]], 
+        [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>is_True</span></span>)</span>, 
+          <span class="pl-var"
+>A</span>]], 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>B</span>, 
+          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>C</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>D</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>-</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>1</span>]], 
+        [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>E</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facf</span></span>)</span>, 
+            <span class="pl-var"
+>D</span>]], 
+        [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>F</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-var"
+>E</span>]], 
+        [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>G</span>, 
+          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>C</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_n].
+lazyArgsList:[_n-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>Ast:=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-var"
+>A</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facf</span></span>)</span>, 
+      <span class="pl-var"
+>_n</span>]], 
+  [ [ <span class="pl-atom"
+>prolog_if</span>, 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>B</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>==</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>0</span>]], 
+        [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>is_True</span></span>)</span>, 
+          <span class="pl-var"
+>B</span>]], 
+      [ [ assign,  A   ,  1   ]], 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>C</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>-</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-int"
+>1</span>]], 
+        [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>D</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>facf</span></span>)</span>, 
+            <span class="pl-var"
+>C</span>]], 
+        [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>E</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-var"
+>_n</span>, <span class="pl-var"
+>D</span>]], 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>A</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(facf, 2, ==, 3).
+
+</span>Asserting: transpiler_depends_on(facf,2,==,3)
+<span class="ansi36"
+>transpiler_depends_on(facf, 2, -, 3).
+
+</span>Asserting: transpiler_depends_on(facf,2,-,3)
+<span class="ansi36"
+>transpiler_depends_on(facf, 2, *, 3).
+
+</span>Asserting: transpiler_depends_on(facf,2,*,3)
+<span class="ansi36"
+>'_n'=['Number', arg(*, 1), arg(-, 1), '%Var', arg(==, 1), arg(facf, 1)].
+A=['Number', arg(*, 0), val(1), arg(facf, 0), val([is_p1, [], B]), val(is_p1(true, B)), val([is_p1, [], 1]), val(is_p1(true, 1)), val(C), val(D), val(E)].
+F=['Bool'].
+G=[arg(facf, 1), 'Number', arg(-, 0)].
+H=['Number', arg(*, 2), arg(facf, 0)].
+E=[val(D), val(C), val(is_p1(true, 1)), val([is_p1, [], 1]), val(is_p1(true, B)), val([is_p1, [], B]), arg(facf, 0), 'Number', val(1), arg(*, 0)].
+
+mc_1__facf(_n, A) :-
+    (   'mc_2__=='(_n, 0, F),
+        is_True(F)
+    *-> A=1
+    ;   'mc_2__-'(_n, 1, G),
+        mc_1__facf(G, H),
+        'mc_2__*'(_n, H, E),
+        A=E
+    ).
+
+</span><span class="ansi36"
+>
+mc_1__facf(_n, A) :-
+    (   'mc_2__=='(_n, 0, B),
+        is_True(B)
+    *-> A=1
+    ;   'mc_2__-'(_n, 1, C),
+        mc_1__facf(C, D),
+        'mc_2__*'(_n, D, E),
+        A=E
+    ).
+
+</span>
+<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(facF 10)
@@ -139,7 +797,7 @@ Script started on 2024-12-22 07:31:57+00:00 [COMMAND="timeout --preserve-status 
 >;; METTA-MORPH-TESTS.FACTORIAL.01</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.11 milliseconds) 
+; took 0.011 secs. (10.83 milliseconds) 
 
 !(assertEqualToResult (facF 10) (3628800))
 
@@ -164,7 +822,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.FACTORIAL.02</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.62 milliseconds) 
+; took 0.011 secs. (10.90 milliseconds) 
 
 !(assertEqualToResult (facf 10) (3628800))
 
@@ -176,8 +834,6 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi32"
->% 340,711 inferences, 0.148 CPU in 0.150 seconds (98% CPU, 2307911 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta 0 )
 <span class="ansi1"
@@ -213,16 +869,14 @@ Deterministic: <span class="ansi33"
 ;          #(set_debug test false)
 P;HTML|
 ;          #(set_debug fail false)
-
-[()]
-
+[()]
 [()]
 P;HTML|
-;         #(maybe_halt 7)
+;           #(maybe_halt 7)
 <span class="ansi31"
->#(in #(maybe_halt 7) #(unwind #(halt 7)))
+>#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-22 07:32:05+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-24 11:46:41+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

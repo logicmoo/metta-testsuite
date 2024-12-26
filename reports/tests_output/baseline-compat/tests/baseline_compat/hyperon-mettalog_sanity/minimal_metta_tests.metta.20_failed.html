@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
@@ -101,7 +100,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:32:56+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 10:41:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -274,9 +273,9 @@ Script started on 2024-12-24 11:32:56+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                                         #( = 38 "[()]" )
 P;HTML|
-;                                         #( = 39 "0.07user 0.01system 0:00.08elapsed 100%CPU (0avgtext+0avgdata 27872maxresident)k" )
+;                                         #( = 39 "0.07user 0.01system 0:00.08elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                                         #( = 39 "0inputs+0outputs (0major+3367minor)pagefaults 0swaps" )
+;                                         #( = 39 "0inputs+0outputs (0major+3366minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/minimal_metta_tests.metta)
 
@@ -287,73 +286,19 @@ Script started on 2024-12-24 11:32:56+00:00 [COMMAND="timeout --preserve-status 
 ></span><span class="ansi36"
 >transpiler_clause_store('returns-empty', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['returns-empty'], 'Empty').
 
-</span><span class="ansi36"
->transpiler_stub_created('returns-empty'/1).
-
-</span>; % ######### warning: creating stub for:'returns-empty'
-<span class="ansi35"
->A=[val(is_p1(true, 'Empty')), val([is_p1, [], 'Empty']), arg('returns-empty', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-empty'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-empty'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ assign ,   A   ,'Empty']]].&#13;&#10;
-
-</span><span class="ansi36"
->A=['MeTTaResult', 'Empty', arg('returns-empty', 0), val(is_p1(true, 'Empty')), val([is_p1, [], 'Empty'])].
-
 'mc_0__returns-empty'(A) :-
     A='Empty'.
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-empty'(A) :-
     A='Empty'.
@@ -362,71 +307,21 @@ finalLazyArgs:[].
 <span class="ansi38-255165000"
 > (= (returns-empty)  1)
 </span><span class="ansi38-255165005"
->Retracting stub: 'mc_0__returns-empty'(B)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store('returns-empty', 1, 1, [], 'AnyRet', [], x(doeval, eager), ['returns-empty'], 1).
 
-</span><span class="ansi35"
->A=[val(is_p1(true, 1)), val([is_p1, [], 1]), arg('returns-empty', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-empty'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-int"
->1</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-empty'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, 
   []].&#13;&#10;
-
-</span><span class="ansi36"
->
 'mc_0__returns-empty'(1).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-empty'(1).
 
@@ -438,77 +333,15 @@ finalLazyArgs:[].
 ></span><span class="ansi36"
 >transpiler_clause_store('chain-to-empty', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['chain-to-empty'], ['returns-empty']).
 
-</span><span class="ansi36"
->transpiler_stub_created('chain-to-empty'/1).
-
-</span>; % ######### warning: creating stub for:'chain-to-empty'
-<span class="ansi35"
->A=[arg('returns-empty', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('chain-to-empty', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'chain-to-empty'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'chain-to-empty'</span></span>)</span></span>]</span>], 
+>'mc_0__chain-to-empty'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -521,18 +354,10 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'returns-empty'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('chain-to-empty', 1, 'returns-empty', 1).
-
-</span>Asserting: transpiler_depends_on('chain-to-empty',1,'returns-empty',1)
-<span class="ansi36"
->A=[arg('returns-empty', 0), arg('chain-to-empty', 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
+Asserting: transpiler_depends_on('chain-to-empty',1,'returns-empty',1)
 'mc_0__chain-to-empty'(A) :-
     'mc_0__returns-empty'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__chain-to-empty'(A) :-
     'mc_0__returns-empty'(A).
@@ -546,7 +371,7 @@ finalLazyArgs:[].
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000418 secs. (418.48 microseconds) 
+; took 0.000552 secs. (551.69 microseconds) 
 
 !(assertEqualToResult (returns-empty) (1))
 
@@ -566,7 +391,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (23.78 microseconds) 
+; took 0.000016 secs. (15.64 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty)) (1))
 
@@ -583,7 +408,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (19.42 microseconds) 
+; took 0.000015 secs. (14.79 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty)) (1))
 
@@ -603,7 +428,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000555 secs. (554.60 microseconds) 
+; took 0.000654 secs. (654.46 microseconds) 
 
 !(assertEqualToResult (chain-to-empty) (1))
 
@@ -623,7 +448,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (23.90 microseconds) 
+; took 0.000017 secs. (17.23 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty)) (1))
 
@@ -640,7 +465,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000020 secs. (20.20 microseconds) 
+; took 0.000022 secs. (22.15 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty)) (1))
 
@@ -660,7 +485,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000669 secs. (668.95 microseconds) 
+; took 0.000783 secs. (782.97 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-empty)) $x (quote $x)) ((quote 1) (quote )))
 
@@ -680,7 +505,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000845 secs. (845.18 microseconds) 
+; took 0.000924 secs. (923.51 microseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-empty)) $x (quote $x)) ((quote (returns-empty))))
 
@@ -699,64 +524,15 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store('returns-empty-expression', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['returns-empty-expression'], []).
 
-</span><span class="ansi36"
->transpiler_stub_created('returns-empty-expression'/1).
-
-</span>; % ######### warning: creating stub for:'returns-empty-expression'
-<span class="ansi35"
->A=[val(is_p1(true, [])), val([is_p1, [], []]), arg('returns-empty-expression', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-empty-expression'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty-expression'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-empty-expression'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -766,14 +542,9 @@ finalLazyArgs:[].
 ><span class="pl-atom"
 >assign</span>|<span class="pl-ellipsis"
 >...</span></span>]</span></span>]</span>].&#13;&#10;
-
-</span><span class="ansi36"
->A=[val([]), arg('returns-empty-expression', 0), val(is_p1(true, [])), val([is_p1, [], []])].
-
 'mc_0__returns-empty-expression'(A) :-
     A=[].
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-empty-expression'(A) :-
     A=[].
@@ -782,71 +553,21 @@ finalLazyArgs:[].
 <span class="ansi38-255165000"
 > (= (returns-empty-expression)  1)
 </span><span class="ansi38-255165005"
->Retracting stub: 'mc_0__returns-empty-expression'(B)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store('returns-empty-expression', 1, 1, [], 'AnyRet', [], x(doeval, eager), ['returns-empty-expression'], 1).
 
-</span><span class="ansi35"
->A=[val(is_p1(true, 1)), val([is_p1, [], 1]), arg('returns-empty-expression', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-empty-expression'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-int"
->1</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty-expression'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-empty-expression'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, 
   []].&#13;&#10;
-
-</span><span class="ansi36"
->
 'mc_0__returns-empty-expression'(1).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-empty-expression'(1).
 
@@ -858,77 +579,15 @@ finalLazyArgs:[].
 ></span><span class="ansi36"
 >transpiler_clause_store('chain-to-empty-expression', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['chain-to-empty-expression'], ['returns-empty-expression']).
 
-</span><span class="ansi36"
->transpiler_stub_created('chain-to-empty-expression'/1).
-
-</span>; % ######### warning: creating stub for:'chain-to-empty-expression'
-<span class="ansi35"
->A=[arg('returns-empty-expression', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('chain-to-empty-expression', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'chain-to-empty-expression'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-empty-expression'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'chain-to-empty-expression'</span></span>)</span></span>]</span>], 
+>'mc_0__chain-to-empty-expression'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -941,18 +600,10 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'returns-empty-expression'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('chain-to-empty-expression', 1, 'returns-empty-expression', 1).
-
-</span>Asserting: transpiler_depends_on('chain-to-empty-expression',1,'returns-empty-expression',1)
-<span class="ansi36"
->A=[arg('returns-empty-expression', 0), arg('chain-to-empty-expression', 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
+Asserting: transpiler_depends_on('chain-to-empty-expression',1,'returns-empty-expression',1)
 'mc_0__chain-to-empty-expression'(A) :-
     'mc_0__returns-empty-expression'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__chain-to-empty-expression'(A) :-
     'mc_0__returns-empty-expression'(A).
@@ -966,7 +617,7 @@ finalLazyArgs:[].
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000375 secs. (375.09 microseconds) 
+; took 0.000451 secs. (450.97 microseconds) 
 
 !(assertEqualToResult (returns-empty-expression) (1 ()))
 
@@ -986,7 +637,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (18.87 microseconds) 
+; took 0.000015 secs. (14.99 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty-expression)) (1 ()))
 
@@ -1003,7 +654,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.85 microseconds) 
+; took 0.000024 secs. (23.91 microseconds) 
 
 !(assertEqualToResult (eval (returns-empty-expression)) (1 ()))
 
@@ -1023,7 +674,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000616 secs. (615.72 microseconds) 
+; took 0.000667 secs. (667.11 microseconds) 
 
 !(assertEqualToResult (chain-to-empty-expression) (1 ()))
 
@@ -1043,7 +694,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000013 secs. (13.03 microseconds) 
+; took 0.000014 secs. (13.61 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty-expression)) (1 ()))
 
@@ -1060,7 +711,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.94 microseconds) 
+; took 0.000017 secs. (16.86 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-empty-expression)) (1 ()))
 
@@ -1080,7 +731,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000796 secs. (796.09 microseconds) 
+; took 0.000839 secs. (838.62 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-empty-expression)) $x (quote $x)) ((quote 1) (quote ())))
 
@@ -1100,7 +751,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000994 secs. (993.73 microseconds) 
+; took 0.001 secs. (1.06 milliseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-empty-expression)) $x (quote $x)) ((quote (returns-empty-expression))))
 
@@ -1119,73 +770,19 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store('returns-not-reducible', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['returns-not-reducible'], 'NotReducible').
 
-</span><span class="ansi36"
->transpiler_stub_created('returns-not-reducible'/1).
-
-</span>; % ######### warning: creating stub for:'returns-not-reducible'
-<span class="ansi35"
->A=[val(is_p1(true, 'NotReducible')), val([is_p1, [], 'NotReducible']), arg('returns-not-reducible', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-not-reducible'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-not-reducible'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-not-reducible'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [     assign    ,      A       ,'NotReducible']]].&#13;&#10;
-
-</span><span class="ansi36"
->A=['MeTTaResult', val('NotReducible'), arg('returns-not-reducible', 0), val(is_p1(true, 'NotReducible')), val([is_p1, [], 'NotReducible'])].
-
 'mc_0__returns-not-reducible'(A) :-
     A='NotReducible'.
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-not-reducible'(A) :-
     A='NotReducible'.
@@ -1194,71 +791,21 @@ finalLazyArgs:[].
 <span class="ansi38-255165000"
 > (= (returns-not-reducible)  1)
 </span><span class="ansi38-255165005"
->Retracting stub: 'mc_0__returns-not-reducible'(B)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store('returns-not-reducible', 1, 1, [], 'AnyRet', [], x(doeval, eager), ['returns-not-reducible'], 1).
 
-</span><span class="ansi35"
->A=[val(is_p1(true, 1)), val([is_p1, [], 1]), arg('returns-not-reducible', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'returns-not-reducible'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-int"
->1</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-not-reducible'</span></span>)</span></span>]</span>], 
+>'mc_0__returns-not-reducible'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, 
   []].&#13;&#10;
-
-</span><span class="ansi36"
->
 'mc_0__returns-not-reducible'(1).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__returns-not-reducible'(1).
 
@@ -1270,77 +817,15 @@ finalLazyArgs:[].
 ></span><span class="ansi36"
 >transpiler_clause_store('chain-to-not-reducible', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['chain-to-not-reducible'], ['returns-not-reducible']).
 
-</span><span class="ansi36"
->transpiler_stub_created('chain-to-not-reducible'/1).
-
-</span>; % ######### warning: creating stub for:'chain-to-not-reducible'
-<span class="ansi35"
->A=[arg('returns-not-reducible', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('chain-to-not-reducible', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'chain-to-not-reducible'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'returns-not-reducible'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'chain-to-not-reducible'</span></span>)</span></span>]</span>], 
+>'mc_0__chain-to-not-reducible'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -1353,18 +838,10 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'returns-not-reducible'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('chain-to-not-reducible', 1, 'returns-not-reducible', 1).
-
-</span>Asserting: transpiler_depends_on('chain-to-not-reducible',1,'returns-not-reducible',1)
-<span class="ansi36"
->A=[arg('returns-not-reducible', 0), arg('chain-to-not-reducible', 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
+Asserting: transpiler_depends_on('chain-to-not-reducible',1,'returns-not-reducible',1)
 'mc_0__chain-to-not-reducible'(A) :-
     'mc_0__returns-not-reducible'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__chain-to-not-reducible'(A) :-
     'mc_0__returns-not-reducible'(A).
@@ -1378,7 +855,7 @@ finalLazyArgs:[].
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000400 secs. (399.68 microseconds) 
+; took 0.000402 secs. (401.54 microseconds) 
 
 !(assertEqualToResult (returns-not-reducible) (1 (returns-not-reducible)))
 
@@ -1398,7 +875,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000559 secs. (559.15 microseconds) 
+; took 0.000597 secs. (597.23 microseconds) 
 
 !(assertEqualToResult (chain-to-not-reducible) (1 (returns-not-reducible)))
 
@@ -1418,7 +895,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000025 secs. (24.78 microseconds) 
+; took 0.000023 secs. (22.91 microseconds) 
 
 !(assertEqualToResult (eval (returns-not-reducible)) (1 (eval (returns-not-reducible))))
 
@@ -1435,7 +912,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000021 secs. (20.52 microseconds) 
+; took 0.000017 secs. (16.56 microseconds) 
 
 !(assertEqualToResult (eval (returns-not-reducible)) (1 (eval (returns-not-reducible))))
 
@@ -1455,7 +932,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (24.10 microseconds) 
+; took 0.000025 secs. (24.82 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-not-reducible)) (1 (returns-not-reducible)))
 
@@ -1472,7 +949,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000014 secs. (13.85 microseconds) 
+; took 0.000016 secs. (15.73 microseconds) 
 
 !(assertEqualToResult (eval (chain-to-not-reducible)) (1 (returns-not-reducible)))
 
@@ -1492,7 +969,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000700 secs. (700.46 microseconds) 
+; took 0.000799 secs. (799.02 microseconds) 
 
 !(assertEqualToResult (chain (eval (returns-not-reducible)) $x (quote $x)) ((quote 1) (quote NotReducible)))
 
@@ -1512,7 +989,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.001 secs. (1.03 milliseconds) 
 
 !(assertEqualToResult (chain (eval (chain-to-not-reducible)) $x (quote $x)) ((quote (returns-not-reducible))))
 
@@ -1532,88 +1009,16 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(bar, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [bar, 'A'], [input, 'A']).
 
-</span><span class="ansi36"
->transpiler_stub_created(bar/2).
-
-</span>; % ######### warning: creating stub for:bar
-<span class="ansi36"
->transpiler_stub_created(input/2).
-
-</span>; % ######### warning: creating stub for:input
-<span class="ansi35"
->A=[arg(input, 1), '%Undefined%', val('A')].
-B=[arg(input, 0)].
-C=[val(is_p1(true, B)), val([is_p1, [], B]), arg(bar, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
+>mc_1__bar</span>(<span class="pl-args"
 ><span class="pl-atom"
->bar</span>, <span class="pl-atom"
->'A'</span></span>]</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->input</span></span>)</span>, 
-        <span class="pl-var"
->A</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:['A'].
-lazyArgsList:['A'-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->bar</span></span>)</span>, 
-      <span class="pl-atom"
->'A'</span>]], 
+>'A'</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -1632,20 +1037,20 @@ finalLazyArgs:[x(doeval, eager)].
 >input</span></span>)</span>, 
         <span class="pl-var"
 >B</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(bar, 2, input, 2).
-
-</span>Asserting: transpiler_depends_on(bar,2,input,2)
+Asserting: transpiler_depends_on(bar,2,input,2)
 <span class="ansi36"
->A=[arg(input, 0), arg(bar, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=[arg(input, 1), '%Undefined%', val('A')].
+>transpiler_stub_created(input/2).
 
-mc_1__bar('A', A) :-
-    C='A',
-    mc_1__input(C, A).
+</span>; % ######### warning: creating stub for:input
+<span class="ansi36"
+>
+mc_1__input(B, C) :-
+    C=[input, B].
 
-</span><span class="ansi36"
+</span>mc_1__bar('A', A) :-
+    B='A',
+    mc_1__input(B, A).
+<span class="ansi36"
 >
 mc_1__bar('A', A) :-
     B='A',
@@ -1656,84 +1061,19 @@ mc_1__bar('A', A) :-
 > (= (bar B)  
   (input B))
 </span><span class="ansi38-255165005"
->Retracting stub: mc_1__bar(B,C)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store(bar, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [bar, 'B'], [input, 'B']).
 
-</span><span class="ansi35"
->A=[arg(input, 1), '%Undefined%', val('B')].
-B=[arg(input, 0)].
-C=[val(is_p1(true, B)), val([is_p1, [], B]), arg(bar, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
+>mc_1__bar</span>(<span class="pl-args"
 ><span class="pl-atom"
->bar</span>, <span class="pl-atom"
->'B'</span></span>]</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->input</span></span>)</span>, 
-        <span class="pl-var"
->A</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:['B'].
-lazyArgsList:['B'-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->bar</span></span>)</span>, 
-      <span class="pl-atom"
->'B'</span>]], 
+>'B'</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -1752,16 +1092,10 @@ finalLazyArgs:[x(doeval, eager)].
 >input</span></span>)</span>, 
         <span class="pl-var"
 >B</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->A=[arg(input, 0), arg(bar, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=[arg(input, 1), '%Undefined%', val('B')].
-
 mc_1__bar('B', A) :-
-    C='B',
-    mc_1__input(C, A).
-
-</span><span class="ansi36"
+    B='B',
+    mc_1__input(B, A).
+<span class="ansi36"
 >
 mc_1__bar('B', A) :-
     B='B',
@@ -1775,77 +1109,16 @@ mc_1__bar('B', A) :-
 ></span><span class="ansi36"
 >transpiler_clause_store(foo, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [bar, _x]).
 
-</span><span class="ansi36"
->transpiler_stub_created(foo/2).
-
-</span>; % ######### warning: creating stub for:foo
-<span class="ansi35"
->'_x'=[arg(bar, 1), arg(foo, 1)].
-A=[arg(bar, 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foo</span>, <span class="pl-var"
->_x</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->bar</span></span>)</span>, 
-        <span class="pl-var"
->_x</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foo</span></span>)</span>, 
-      <span class="pl-var"
->_x</span>]], 
+>mc_1__foo</span>(<span class="pl-args"
+><span class="pl-var"
+>_x</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -1857,19 +1130,10 @@ finalLazyArgs:[x(doeval, eager)].
 >bar</span></span>)</span>, 
         <span class="pl-var"
 >_x</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(foo, 2, bar, 2).
-
-</span>Asserting: transpiler_depends_on(foo,2,bar,2)
-<span class="ansi36"
->'_x'=[arg(bar, 1), arg(foo, 1)].
-A=[arg(bar, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
+Asserting: transpiler_depends_on(foo,2,bar,2)
 mc_1__foo(_x, A) :-
     mc_1__bar(_x, A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_1__foo(_x, A) :-
     mc_1__bar(_x, A).
@@ -1883,7 +1147,7 @@ mc_1__foo(_x, A) :-
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.29 milliseconds) 
+; took 0.002 secs. (1.50 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() }))))))
 
@@ -1897,7 +1161,7 @@ mc_1__foo(_x, A) :-
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (foo $x)) $a (quote $a)) ((quote (((foo $x) {() }))))))
 
@@ -1917,7 +1181,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.44 milliseconds) 
+; took 0.003 secs. (2.84 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() }))))))
 
@@ -1931,7 +1195,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.34 milliseconds) 
+; took 0.002 secs. (2.42 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (quote $a)) ((quote (((bar $x) {() }))))))
 
@@ -1951,7 +1215,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.78 milliseconds) 
+; took 0.002 secs. (1.87 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) }))))))
 
@@ -1965,7 +1229,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.74 milliseconds) 
+; took 0.002 secs. (1.82 milliseconds) 
 
 !(H-E-Fails (assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (quote $a)) ((quote (((input B) {($x <- B) }) ((input A) {($x <- A) }))))))
 
@@ -1986,7 +1250,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.07 milliseconds) 
+; took 0.002 secs. (2.06 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (foo $x)) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (foo $x))))
 
@@ -2009,7 +1273,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.12 milliseconds) 
+; took 0.003 secs. (3.02 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (eval (foo $x))) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (bar $x))))
 
@@ -2032,7 +1296,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.12 milliseconds) 
+; took 0.002 secs. (2.11 milliseconds) 
 
 !(assertEqualToResult (chain (collapse-bind (metta (foo $x) %Undefined% &self)) $a (chain (superpose-bind $a) $b (quote $b))) ((quote (input B)) (quote (input A))))
 
@@ -2051,71 +1315,18 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(foobar, 1, 0, [], 'AnyRet', [], x(doeval, eager), [foobar], 1).
 
-</span><span class="ansi36"
->transpiler_stub_created(foobar/1).
-
-</span>; % ######### warning: creating stub for:foobar
-<span class="ansi35"
->A=[val(is_p1(true, 1)), val([is_p1, [], 1]), arg(foobar, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foobar</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-int"
->1</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foobar</span></span>)</span></span>]</span>], 
+>mc_0__foobar</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, 
   []].&#13;&#10;
-
-</span><span class="ansi36"
->
 mc_0__foobar(1).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_0__foobar(1).
 
@@ -2123,70 +1334,22 @@ mc_0__foobar(1).
 <span class="ansi38-255165000"
 > (= (foobar)  "a")
 </span><span class="ansi38-255165005"
->Retracting stub: mc_0__foobar(B)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store(foobar, 1, 1, [], 'AnyRet', [], x(doeval, eager), [foobar], "a").
 
-</span><span class="ansi35"
->A=[val(is_p1(true, "a")), val([is_p1, [], "a"]), arg(foobar, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foobar</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-atom"
->is_p1</span>,    [], <span class="pl-string"
->"a"</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foobar</span></span>)</span></span>]</span>], 
+>mc_0__foobar</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ assign,  A   , "a"  ]]].&#13;&#10;
-
-</span><span class="ansi36"
->A=['String', val("a"), arg(foobar, 0), val(is_p1(true, "a")), val([is_p1, [], "a"])].
-
 mc_0__foobar(A) :-
     A="a".
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_0__foobar(A) :-
     A="a".
@@ -2199,77 +1362,15 @@ mc_0__foobar(A) :-
 ></span><span class="ansi36"
 >transpiler_clause_store('chain-to-foobar', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['chain-to-foobar'], [foobar]).
 
-</span><span class="ansi36"
->transpiler_stub_created('chain-to-foobar'/1).
-
-</span>; % ######### warning: creating stub for:'chain-to-foobar'
-<span class="ansi35"
->A=[arg(foobar, 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('chain-to-foobar', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'chain-to-foobar'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foobar</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'chain-to-foobar'</span></span>)</span></span>]</span>], 
+>'mc_0__chain-to-foobar'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -2282,18 +1383,10 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >foobar</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('chain-to-foobar', 1, foobar, 1).
-
-</span>Asserting: transpiler_depends_on('chain-to-foobar',1,foobar,1)
-<span class="ansi36"
->A=[arg(foobar, 0), arg('chain-to-foobar', 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
+Asserting: transpiler_depends_on('chain-to-foobar',1,foobar,1)
 'mc_0__chain-to-foobar'(A) :-
     mc_0__foobar(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__chain-to-foobar'(A) :-
     mc_0__foobar(A).
@@ -2307,7 +1400,7 @@ finalLazyArgs:[].
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000734 secs. (733.72 microseconds) 
+; took 0.000859 secs. (858.91 microseconds) 
 
 !(assertEqualToResult (metta (foobar) Number &self) (1))
 
@@ -2327,7 +1420,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000721 secs. (720.85 microseconds) 
+; took 0.000822 secs. (821.73 microseconds) 
 
 !(assertEqualToResult (metta (foobar) String &self) ("a"))
 
@@ -2347,7 +1440,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000656 secs. (656.05 microseconds) 
+; took 0.000768 secs. (768.34 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
@@ -2361,7 +1454,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000679 secs. (679.33 microseconds) 
+; took 0.000731 secs. (730.54 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
@@ -2381,7 +1474,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.15 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqualToResult (metta (chain-to-foobar) Number &self) (1))
 
@@ -2401,7 +1494,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000986 secs. (986.47 microseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (metta (chain-to-foobar) String &self) ("a"))
 
@@ -2421,7 +1514,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000827 secs. (826.56 microseconds) 
+; took 0.000965 secs. (964.51 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
@@ -2435,7 +1528,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.000889 secs. (889.22 microseconds) 
+; took 0.000895 secs. (895.42 microseconds) 
 
 !(H-E-Fails (assertEqualToResult (collapse-bind (metta (chain-to-foobar) $type &self)) ((1 {($type <- Number) }) ("a" {($type <- String) }))))
 
@@ -2455,81 +1548,15 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store('n/0/0', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['n/0/0'], ['n/1/0']).
 
-</span><span class="ansi36"
->transpiler_stub_created('n/0/0'/1).
-
-</span>; % ######### warning: creating stub for:'n/0/0'
-<span class="ansi36"
->transpiler_stub_created('n/1/0'/1).
-
-</span>; % ######### warning: creating stub for:'n/1/0'
-<span class="ansi35"
->A=[arg('n/1/0', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('n/0/0', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'n/0/0'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/1/0'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/0/0'</span></span>)</span></span>]</span>], 
+>'mc_0__n/0/0'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -2542,18 +1569,19 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'n/1/0'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('n/0/0', 1, 'n/1/0', 1).
-
-</span>Asserting: transpiler_depends_on('n/0/0',1,'n/1/0',1)
+Asserting: transpiler_depends_on('n/0/0',1,'n/1/0',1)
 <span class="ansi36"
->A=[arg('n/1/0', 0), arg('n/0/0', 0), val(is_p1(true, B)), val([is_p1, [], B])].
+>transpiler_stub_created('n/1/0'/1).
 
-'mc_0__n/0/0'(A) :-
+</span>; % ######### warning: creating stub for:'n/1/0'
+<span class="ansi36"
+>
+'mc_0__n/1/0'(B) :-
+    B=['n/1/0'].
+
+</span>'mc_0__n/0/0'(A) :-
     'mc_0__n/1/0'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__n/0/0'(A) :-
     'mc_0__n/1/0'(A).
@@ -2563,81 +1591,18 @@ finalLazyArgs:[].
 > (= (n/0/0)  
   (n/1/1))
 </span><span class="ansi38-255165005"
->Retracting stub: 'mc_0__n/0/0'(B)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store('n/0/0', 1, 1, [], 'AnyRet', [], x(doeval, eager), ['n/0/0'], ['n/1/1']).
 
-</span><span class="ansi36"
->transpiler_stub_created('n/1/1'/1).
-
-</span>; % ######### warning: creating stub for:'n/1/1'
-<span class="ansi35"
->A=[arg('n/1/1', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('n/0/0', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'n/0/0'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/1/1'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/0/0'</span></span>)</span></span>]</span>], 
+>'mc_0__n/0/0'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -2650,18 +1615,19 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'n/1/1'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('n/0/0', 1, 'n/1/1', 1).
-
-</span>Asserting: transpiler_depends_on('n/0/0',1,'n/1/1',1)
+Asserting: transpiler_depends_on('n/0/0',1,'n/1/1',1)
 <span class="ansi36"
->A=[arg('n/1/1', 0), arg('n/0/0', 0), val(is_p1(true, B)), val([is_p1, [], B])].
+>transpiler_stub_created('n/1/1'/1).
 
-'mc_0__n/0/0'(A) :-
+</span>; % ######### warning: creating stub for:'n/1/1'
+<span class="ansi36"
+>
+'mc_0__n/1/1'(B) :-
+    B=['n/1/1'].
+
+</span>'mc_0__n/0/0'(A) :-
     'mc_0__n/1/1'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__n/0/0'(A) :-
     'mc_0__n/1/1'(A).
@@ -2675,77 +1641,15 @@ finalLazyArgs:[].
 </span><span class="ansi36"
 >transpiler_clause_store('n/1/0', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['n/1/0'], ['n/2/0']).
 
-</span><span class="ansi36"
->transpiler_stub_created('n/2/0'/1).
-
-</span>; % ######### warning: creating stub for:'n/2/0'
-<span class="ansi35"
->A=[arg('n/2/0', 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg('n/1/0', 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'n/1/0'</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/2/0'</span></span>)</span></span>]</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'n/1/0'</span></span>)</span></span>]</span>], 
+>'mc_0__n/1/0'</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -2758,18 +1662,19 @@ finalLazyArgs:[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'n/2/0'</span></span>)</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('n/1/0', 1, 'n/2/0', 1).
-
-</span>Asserting: transpiler_depends_on('n/1/0',1,'n/2/0',1)
+Asserting: transpiler_depends_on('n/1/0',1,'n/2/0',1)
 <span class="ansi36"
->A=[arg('n/2/0', 0), arg('n/1/0', 0), val(is_p1(true, B)), val([is_p1, [], B])].
+>transpiler_stub_created('n/2/0'/1).
 
-'mc_0__n/1/0'(A) :-
+</span>; % ######### warning: creating stub for:'n/2/0'
+<span class="ansi36"
+>
+'mc_0__n/2/0'(B) :-
+    B=['n/2/0'].
+
+</span>'mc_0__n/1/0'(A) :-
     'mc_0__n/2/0'(A).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_0__n/1/0'(A) :-
     'mc_0__n/2/0'(A).
@@ -2783,7 +1688,7 @@ finalLazyArgs:[].
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.42</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.001 secs. (1.31 milliseconds) 
 
 !(assertEqual (chain (n/0/0) $x (quote $x)) (quote (n/0/0)))
 
@@ -2803,7 +1708,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.43</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.82 milliseconds) 
+; took 0.002 secs. (1.84 milliseconds) 
 
 !(assertEqualToResult (chain (eval (n/0/0)) $x (quote $x)) ((quote (n/1/0)) (quote (n/1/1))))
 
@@ -2823,7 +1728,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.44</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.88 milliseconds) 
+; took 0.002 secs. (2.13 milliseconds) 
 
 !(assertEqualToResult (chain (metta (n/0/0) %Undefined% &self) $x (quote $x)) ((quote (n/1/1)) (quote (n/2/0))))
 
@@ -2843,7 +1748,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.45</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.47 milliseconds) 
+; took 0.004 secs. (3.56 milliseconds) 
 
 !(assertEqual (chain (unify ($x b) (a $y) ($x $y) Failed) $v $v) (a b))
 
@@ -2863,7 +1768,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.46</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.32 milliseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqual (chain (chain A $x (p $x)) $y (quote $y)) (quote (p A)))
 
@@ -2883,7 +1788,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.47</h3>
 ; 
 ; EVAL TEST
-; took 0.000695 secs. (695.05 microseconds) 
+; took 0.000704 secs. (703.64 microseconds) 
 
 !(assertEqual (chain (cons-atom p (q)) $v (quote $v)) (quote (p q)))
 
@@ -2903,7 +1808,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.48</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqual (chain (decons-atom (p q)) $x (quote $x)) (quote (p (q))))
 
@@ -2923,47 +1828,26 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(f1, 1, 0, [], 'AnyRet', [], x(doeval, eager), [f1], [function, [return, []]]).
 
-</span><span class="ansi36"
->transpiler_stub_created(f1/1).
-
-</span>; % ######### warning: creating stub for:f1
-<span class="ansi35"
->A=[val(is_p1(true, [])), val([is_p1, [], []]), arg(f1, 0)].
-B=[].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->f1</span></span>]</span>, 
+>mc_0__f1</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_catch</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->A</span>, 
-          <span class="pl-list"
+      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-        [ <span class="pl-atom"
->prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->throw</span>(<span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->A</span></span>)</span></span>)</span>]], <span class="pl-compound pl-level-0"
+>assign</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >metta_return</span>(<span class="pl-args"
 ><span class="pl-var"
@@ -2972,135 +1856,37 @@ B=[].
 >B</span><span class="pl-infix"
 >=</span><span class="pl-var"
 >A</span></span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->f1</span></span>)</span></span>]</span>], 
-  [ [ <span class="pl-atom"
->prolog_catch</span>, 
-      [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->throw</span>(<span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->A</span></span>)</span></span>)</span>]], <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->B</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-var"
->B</span><span class="pl-infix"
->=</span><span class="pl-var"
->A</span></span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->A=[val([]), arg(f1, 0), val(is_p1(true, [])), val([is_p1, [], []])].
-B=[].
-
 mc_0__f1(A) :-
-    catch(( A=[],
-            throw(metta_return(A))
-          ),
-          metta_return(B),
-          B=A).
-
-</span><span class="ansi36"
+    catch(A=[], metta_return(B), B=A).
+<span class="ansi36"
 >
 mc_0__f1(A) :-
-    catch(( A=[],
-            throw(metta_return(A))
-          ),
-          metta_return(B),
-          B=A).
+    catch(A=[], metta_return(B), B=A).
 
 </span>
 <span class="ansi38-255165000"
 > (= (f0 $b)  
-  (function (chain (eval (f1)) $_318930 (unify $b value (return ()) (return (Error () "Unexpected error"))))))
+  (function (chain (eval (f1)) $_173546 (unify $b value (return ()) (return (Error () "Unexpected error"))))))
 </span><span class="ansi38-255165005"
 ></span><span class="ansi36"
 >transpiler_clause_store(f0, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [f0, _b], [function, [chain, [eval, [f1]], A, [unify, _b, value, [return, []], [return, ['Error', [], "Unexpected error"]]]]]).
 
-</span><span class="ansi36"
->transpiler_stub_created(f0/2).
-
-</span>; % ######### warning: creating stub for:f0
-<span class="ansi36"
->transpiler_stub_created(unify/5).
-
-</span>; % ######### warning: creating stub for:unify
-<span class="ansi36"
->transpiler_stub_created(chain/4).
-
-</span>; % ######### warning: creating stub for:chain
-<span class="ansi35"
->'_b'=['Atom', arg(unify, 1), arg(f0, 1)].
-A=['Atom', arg(eval, 1), arg(f1, 0)].
-B=['Atom', arg(chain, 1), arg(eval, 0)].
-C=['Atom', arg(unify, 2), '%Undefined%', val(value)].
-D=['Atom', arg(unify, 3), val([])].
-E=['Atom', arg(unify, 4), 'ErrorType', val(['Error', [], "Unexpected error"])].
-F=['Atom', arg(chain, 3), '%Undefined%', arg(unify, 0)].
-G=['Atom', arg(chain, 0)].
-H=['Variable', arg(chain, 2)].
-I=[val(is_p1(true, G)), val([is_p1, [], G]), arg(f0, 0)].
-J=[].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->f0</span>, <span class="pl-var"
->_b</span></span>]</span>, 
+>mc_1__f0</span>(<span class="pl-args"
+><span class="pl-var"
+>_b</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_catch</span>, 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->A</span>, 
+>B</span>, 
           <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -3109,17 +1895,6 @@ J=[].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >f1</span></span>)</span></span>]</span>], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->eval</span></span>)</span>, 
-            <span class="pl-var"
->A</span>]], 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -3127,193 +1902,59 @@ J=[].
 >assign</span>, <span class="pl-var"
 >C</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->D</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->throw</span>(<span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->D</span></span>)</span></span>)</span>], 
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->E</span>, 
-          [ <span class="pl-atom"
->'Error'</span>,        [], <span class="pl-string"
->"Unexpected error"</span>]], 
-        [ <span class="pl-atom"
->prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->throw</span>(<span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->E</span></span>)</span></span>)</span>], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->F</span>, 
+>D</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >unify</span></span>)</span>, <span class="pl-var"
 >_b</span>, <span class="pl-var"
->C</span>, <span class="pl-var"
->D</span>, 
-            <span class="pl-var"
->E</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->G</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->chain</span></span>)</span>, <span class="pl-var"
->B</span>, <span class="pl-var"
->H</span>, <span class="pl-var"
->F</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->I</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]], <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->metta_return</span>(<span class="pl-args"
-><span class="pl-var"
->J</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-var"
->J</span><span class="pl-infix"
->=</span><span class="pl-var"
->I</span></span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_b].
-lazyArgsList:[_b-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->f0</span></span>)</span>, 
-      <span class="pl-var"
->_b</span>]], 
-  [ [ <span class="pl-atom"
->prolog_catch</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->f1</span></span>)</span></span>]</span>], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
 >C</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->eval</span></span>)</span>, 
-            <span class="pl-var"
->B</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->D</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        <span class="pl-list"
+            [ <span class="pl-atom"
+>is_p1</span>, 
+              [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
 >E</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
-        [ <span class="pl-atom"
+                [ <span class="pl-atom"
 >prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
+                  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >throw</span>(<span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >metta_return</span>(<span class="pl-args"
 ><span class="pl-var"
->E</span></span>)</span></span>)</span>], 
-        [ <span class="pl-atom"
+>E</span></span>)</span></span>)</span>]], 
+              <span class="pl-var"
+>E</span>], 
+            [ <span class="pl-atom"
+>is_p1</span>, 
+              [ [ <span class="pl-atom"
 >assign</span>, 
-          <span class="pl-var"
+                  <span class="pl-var"
 >F</span>, 
-          [ <span class="pl-atom"
->'Error'</span>,        [], <span class="pl-string"
+                  [ <span class="pl-atom"
+>'Error'</span>,    [], <span class="pl-string"
 >"Unexpected error"</span>]], 
-        [ <span class="pl-atom"
+                [ <span class="pl-atom"
 >prolog_inline</span>, 
-          <span class="pl-compound pl-level-0"
+                  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >throw</span>(<span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >metta_return</span>(<span class="pl-args"
 ><span class="pl-var"
->F</span></span>)</span></span>)</span>], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->G</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->unify</span></span>)</span>, <span class="pl-var"
->_b</span>, <span class="pl-var"
->D</span>, <span class="pl-var"
->E</span>, 
-            <span class="pl-var"
->F</span>]], 
+>F</span></span>)</span></span>)</span>]], 
+              <span class="pl-var"
+>F</span>]]], 
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
@@ -3323,88 +1964,72 @@ finalLazyArgs:[x(doeval, eager)].
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >chain</span></span>)</span>, <span class="pl-var"
->C</span>, <span class="pl-var"
->H</span>, <span class="pl-var"
->G</span>]]], <span class="pl-compound pl-level-0"
+>B</span>, <span class="pl-anon"
+>_</span>, <span class="pl-var"
+>D</span>]]], <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >metta_return</span>(<span class="pl-args"
 ><span class="pl-var"
->I</span></span>)</span>, <span class="pl-compound pl-level-0"
+>G</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-var"
->I</span><span class="pl-infix"
+>G</span><span class="pl-infix"
 >=</span><span class="pl-var"
 >A</span></span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(f0, 2, f1, 1).
-
-</span>Asserting: transpiler_depends_on(f0,2,f1,1)
+Asserting: transpiler_depends_on(f0,2,f1,1)
+Asserting: transpiler_depends_on(f0,2,unify,5)
+Asserting: transpiler_depends_on(f0,2,chain,4)
 <span class="ansi36"
->transpiler_depends_on(f0, 2, eval, 2).
+>transpiler_stub_created(chain/4).
 
-</span>Asserting: transpiler_depends_on(f0,2,eval,2)
+</span>; % ######### warning: creating stub for:chain
 <span class="ansi36"
->transpiler_depends_on(f0, 2, unify, 5).
+>
+mc_3__chain(B, C, D, E) :-
+    E=[chain, B, C, D].
 
-</span>Asserting: transpiler_depends_on(f0,2,unify,5)
-<span class="ansi36"
->transpiler_depends_on(f0, 2, chain, 4).
-
-</span>Asserting: transpiler_depends_on(f0,2,chain,4)
-<span class="ansi36"
->'_b'=['Atom', arg(unify, 1), arg(f0, 1)].
-A=['Atom', arg(chain, 0), arg(f0, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=['Atom', arg(eval, 1), arg(f1, 0)].
-D=['Atom', arg(chain, 1), arg(eval, 0)].
-E=['Atom', arg(unify, 2), '%Undefined%', val(value)].
-F=['Atom', arg(unify, 3), val([])].
-G=['Atom', arg(unify, 4), 'ErrorType', val(['Error', [], "Unexpected error"])].
-H=['Atom', arg(chain, 3), '%Undefined%', arg(unify, 0)].
-I=['Variable', arg(chain, 2)].
-J=[].
-
-mc_1__f0(_b, A) :-
-    catch(( mc_0__f1(C),
-            mc_1__eval(C, D),
-            E=value,
-            F=[],
-            throw(metta_return(F)),
-            G=['Error', [], "Unexpected error"],
-            throw(metta_return(G)),
-            mc_4__unify(_b, E, F, G, H),
-            mc_3__chain(D, I, H, A)
+</span>mc_1__f0(_b, A) :-
+    catch(( mc_0__f1(B),
+            C=value,
+            mc_4__unify(_b,
+                        C,
+                        is_p1((D=[], throw(metta_return(D))),
+                              D),
+                        is_p1((E=['Error', [], "Unexpected error"], throw(metta_return(E))),
+                              E),
+                        F),
+            mc_3__chain(B, _, F, A)
           ),
-          metta_return(J),
-          J=A).
-
-</span><span class="ansi36"
+          metta_return(G),
+          G=A).
+<span class="ansi36"
 >
 mc_1__f0(_b, A) :-
     catch(( mc_0__f1(B),
-            mc_1__eval(B, C),
-            D=value,
-            E=[],
-            throw(metta_return(E)),
-            F=['Error', [], "Unexpected error"],
-            throw(metta_return(F)),
-            mc_4__unify(_b, D, E, F, G),
-            mc_3__chain(C, H, G, A)
+            C=value,
+            mc_4__unify(_b,
+                        C,
+                        is_p1((D=[], throw(metta_return(D))),
+                              D),
+                        is_p1((E=['Error', [], "Unexpected error"], throw(metta_return(E))),
+                              E),
+                        F),
+            mc_3__chain(B, G, F, A)
           ),
-          metta_return(I),
-          I=A).
+          metta_return(H),
+          H=A).
 
 </span>
 <span class="ansi38-013099040"
->!(assertEqual (chain (eval (f0 $a)) $_972864 $a) value)
+>!(assertEqual (chain (eval (f0 $a)) $_420820 $a) value)
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.49"
 >;; HYPERON-METTALOG-SANITY.MINIMAL-METTA-TESTS.49</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.86 milliseconds) 
+; took 0.003 secs. (2.68 milliseconds) 
 
-!(assertEqual (chain (eval (f0 $a)) $_1738 $a) value)
+!(assertEqual (chain (eval (f0 $a)) $_1830 $a) value)
 
 <span class="ansi31"
 >  #(loonit_failureR 
@@ -3491,7 +2116,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:33:08+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 10:41:37+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

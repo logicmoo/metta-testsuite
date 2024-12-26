@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -46,7 +45,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:37:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 10:47:27+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -131,7 +130,7 @@ Script started on 2024-12-24 11:37:57+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 9 "[()]" )
 P;HTML|
-;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x18bcd78) (2)) " )
+;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x215e2c8) (2)) " )
 P;HTML|
 ;                            #( = 10 "Expected: [2]" )
 P;HTML|
@@ -139,9 +138,9 @@ Script started on 2024-12-24 11:37:57+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 11 "Missed result: 2)]" )
 P;HTML|
-;                             #( = 11 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27740maxresident)k" )
+;                             #( = 11 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                              #( = 11 "0inputs+0outputs (0major+3327minor)pagefaults 0swaps" )
+;                              #( = 11 "0inputs+0outputs (0major+3330minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta)
 
@@ -154,7 +153,7 @@ Script started on 2024-12-24 11:37:57+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000174 secs. (173.82 microseconds) 
+; took 0.000183 secs. (182.85 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
@@ -176,7 +175,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.55 milliseconds) 
+; took 0.002 secs. (2.49 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -196,7 +195,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000623 secs. (622.56 microseconds) 
+; took 0.000702 secs. (702.30 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -216,7 +215,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000187 secs. (187.46 microseconds) 
+; took 0.000159 secs. (158.53 microseconds) 
 
 !(assertEqualToResult (match &self (likes $x $y) ($x $y)) ())
 
@@ -237,7 +236,7 @@ Deterministic: <span class="ansi33"
 > (likes Kate Karl)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.57 milliseconds) 
+; took 0.002 secs. (2.48 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes Kate Karl)) (()))
 
@@ -257,7 +256,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000938 secs. (937.60 microseconds) 
+; took 0.000836 secs. (836.26 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane) (Kate Karl)))
 
@@ -279,7 +278,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.12 milliseconds) 
+; took 0.002 secs. (2.13 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
@@ -299,7 +298,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000762 secs. (761.54 microseconds) 
+; took 0.000488 secs. (487.80 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((Kate Karl)))
 
@@ -326,77 +325,16 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(foo, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 1]).
 
-</span><span class="ansi36"
->transpiler_stub_created(foo/2).
-
-</span>; % ######### warning: creating stub for:foo
-<span class="ansi35"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foo</span>, <span class="pl-var"
->_x</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->1</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foo</span></span>)</span>, 
-      <span class="pl-var"
->_x</span>]], 
+>mc_1__foo</span>(<span class="pl-args"
+><span class="pl-avar"
+>_157166{vn = ...}</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -408,19 +346,10 @@ finalLazyArgs:[x(doeval, eager)].
 >+</span></span>)</span>, <span class="pl-var"
 >_x</span>, <span class="pl-int"
 >1</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(foo, 2, +, 3).
-
-</span>Asserting: transpiler_depends_on(foo,2,+,3)
+Asserting: transpiler_depends_on(foo,2,+,3)
+mc_1__foo(A, B) :-
+    'mc_2__+'(A, 1, B).
 <span class="ansi36"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 1, A).
-
-</span><span class="ansi36"
 >
 mc_1__foo(_x, A) :-
     'mc_2__+'(_x, 1, A).
@@ -428,7 +357,7 @@ mc_1__foo(_x, A) :-
 </span>
 ; 
 ; EVAL TEST
-; took 0.037 secs. (36.91 milliseconds) 
+; took 0.022 secs. (22.47 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -449,7 +378,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000792 secs. (791.55 microseconds) 
+; took 0.000801 secs. (800.66 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -473,77 +402,19 @@ Deterministic: <span class="ansi33"
 > (= (foo $x)  
   (+ $x 2))
 </span><span class="ansi38-255165005"
->Retracting stub: mc_1__foo(B,C)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store(foo, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 2]).
 
-</span><span class="ansi35"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foo</span>, <span class="pl-var"
->_x</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->2</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foo</span></span>)</span>, 
-      <span class="pl-var"
->_x</span>]], 
+>mc_1__foo</span>(<span class="pl-args"
+><span class="pl-avar"
+>_290714{vn = ...}</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -555,15 +426,9 @@ finalLazyArgs:[x(doeval, eager)].
 >+</span></span>)</span>, <span class="pl-var"
 >_x</span>, <span class="pl-int"
 >2</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 2, A).
-
-</span><span class="ansi36"
+mc_1__foo(A, B) :-
+    'mc_2__+'(A, 2, B).
+<span class="ansi36"
 >
 mc_1__foo(_x, A) :-
     'mc_2__+'(_x, 2, A).
@@ -571,7 +436,7 @@ mc_1__foo(_x, A) :-
 </span>
 ; 
 ; EVAL TEST
-; took 0.029 secs. (28.53 milliseconds) 
+; took 0.016 secs. (16.45 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
@@ -592,7 +457,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.07 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -618,73 +483,16 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(foo, 2, 2, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 1]).
 
-</span><span class="ansi35"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0)].
-B=[val(is_p1(true, A)), val([is_p1, [], A]), arg(foo, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->foo</span>, <span class="pl-var"
->_x</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->1</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->foo</span></span>)</span>, 
-      <span class="pl-var"
->_x</span>]], 
+>mc_1__foo</span>(<span class="pl-args"
+><span class="pl-avar"
+>_391260{vn = ...}</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -696,26 +504,20 @@ finalLazyArgs:[x(doeval, eager)].
 >+</span></span>)</span>, <span class="pl-var"
 >_x</span>, <span class="pl-int"
 >1</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->'_x'=['Number', arg(+, 1), arg(foo, 1)].
-A=['Number', arg(+, 0), arg(foo, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 1, A).
-
-</span><span class="ansi36"
+mc_1__foo(A, B) :-
+    'mc_2__+'(A, 1, B).
+<span class="ansi36"
 >
 mc_1__foo(_x, A) :-
     'mc_2__+'(_x, 1, A).
 
 </span>#(unload_all_diff #(metta_atom_asserted &new-space (= (foo $x)  
   (+ $x 1))) #( \=@= #( + #(metta_atom_asserted &new-space (= (foo $x)  
-  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_823570)  
-  (+ $_823570 1))) true ) ))
+  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_454628)  
+  (+ $_454628 1))) true ) ))
 ; 
 ; EVAL TEST
-; took 0.105 secs. (104.55 milliseconds) 
+; took 0.094 secs. (94.02 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -736,7 +538,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.001 secs. (1.18 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (3))
 
@@ -802,7 +604,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:38:06+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 10:47:36+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

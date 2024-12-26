@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -45,7 +44,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 12:15:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 11:23:02+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -122,7 +121,7 @@ Script started on 2024-12-24 12:15:58+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 5 "[(-> Lion Lion Lion)]" )
 P;HTML|
-;                          #( = 6 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27728maxresident)k" )
+;                          #( = 6 "0.04user 0.00system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27728maxresident)k" )
 P;HTML|
 ;                          #( = 6 "0inputs+0outputs (0major+3312minor)pagefaults 0swaps" )
 P;HTML|
@@ -140,84 +139,21 @@ Script started on 2024-12-24 12:15:58+00:00 [COMMAND="timeout --preserve-status 
 ></span><span class="ansi36"
 >transpiler_clause_store(reproduce, 3, 0, ['Lion', 'Lion'], 'Lion', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [reproduce, _x, _y], childlion).
 
-</span><span class="ansi36"
->transpiler_stub_created(reproduce/3).
-
-</span>; % ######### warning: creating stub for:reproduce
-<span class="ansi35"
->'_x'=['Lion', arg(reproduce, 1)].
-'_y'=['Lion', arg(reproduce, 2)].
-A=[val(is_p1(true, childlion)), val([is_p1, [], childlion]), 'Lion', arg(reproduce, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->reproduce</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x, _y].
-lazyArgsList:[_x-eager, _y-eager].
-eagerLazyList:[lazy, lazy].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->reproduce</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_x'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_y'</span></span>)</span>]], 
+>mc_2__reproduce</span>(<span class="pl-args"
+><span class="pl-var"
+>_x</span>, <span class="pl-var"
+>_y</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [  assign  ,    A    ,childlion]]].&#13;&#10;
-
-</span><span class="ansi36"
->'_x'=['Lion', arg(reproduce, 1)].
-'_y'=['Lion', arg(reproduce, 2)].
-A=['%Undefined%', val(childlion), 'Lion', arg(reproduce, 0), val(is_p1(true, childlion)), val([is_p1, [], childlion])].
-
 mc_2__reproduce(_x, _y, A) :-
     A=childlion.
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_2__reproduce(_x, _y, A) :-
     A=childlion.
@@ -240,7 +176,7 @@ mc_2__reproduce(_x, _y, A) :-
 >;; METTA-MORPH-TESTS.TYPES2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000467 secs. (466.79 microseconds) 
+; took 0.000450 secs. (449.79 microseconds) 
 
 !(assertEqualToResult (get-type lion1) (Lion))
 
@@ -265,7 +201,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000429 secs. (428.80 microseconds) 
+; took 0.000465 secs. (464.90 microseconds) 
 
 !(assertEqualToResult (reproduce lion1 lion2) (childlion))
 
@@ -290,7 +226,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000351 secs. (350.86 microseconds) 
+; took 0.000294 secs. (293.99 microseconds) 
 
 !(assertEqualToResult (get-type Lion) (Cat))
 
@@ -315,7 +251,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000345 secs. (344.61 microseconds) 
+; took 0.000381 secs. (380.92 microseconds) 
 
 !(assertEqualToResult (match &self (: Lion $1) $1) (Cat))
 
@@ -340,7 +276,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000417 secs. (416.88 microseconds) 
+; took 0.000412 secs. (411.58 microseconds) 
 
 !(assertEqualToResult (match &self (: reproduce $1) $1) ((-> Lion Lion Lion)))
 
@@ -397,7 +333,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 12:16:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 11:23:11+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -42,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:36:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 10:45:42+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -117,9 +116,9 @@ Script started on 2024-12-24 11:36:11+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "Missed result: (quote (= ($a $x $c) ($b))))]" )
 P;HTML|
-;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27608maxresident)k" )
+;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27608maxresident)k" )
 P;HTML|
-;                          #( = 2 "0inputs+0outputs (0major+3323minor)pagefaults 0swaps" )
+;                          #( = 2 "0inputs+0outputs (0major+3325minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta)
 
@@ -133,7 +132,7 @@ Script started on 2024-12-24 11:36:11+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000326 secs. (326.49 microseconds) 
+; took 0.000336 secs. (335.55 microseconds) 
 
 !(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -157,7 +156,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000153 secs. (153.08 microseconds) 
+; took 0.000167 secs. (166.87 microseconds) 
 
 !(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
@@ -177,7 +176,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.65 milliseconds) 
+; took 0.002 secs. (1.72 milliseconds) 
 
 !(assertEqualToResult (let $x (input $y) (output $x)) ((output (input $y))))
 
@@ -197,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.70 milliseconds) 
+; took 0.003 secs. (3.02 milliseconds) 
 
 !(assertEqual (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) (output (input $x)))
 
@@ -219,126 +218,17 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(callsealer, 3, 0, ['Number', 'Number'], 'Expression', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [callsealer, _a, _b], [sealed, [], [quote, [[*, [+, 40, _a], [/, 100, _b]]]]]).
 
-</span><span class="ansi36"
->transpiler_stub_created(callsealer/3).
-
-</span>; % ######### warning: creating stub for:callsealer
-<span class="ansi36"
->transpiler_stub_created(sealed/3).
-
-</span>; % ######### warning: creating stub for:sealed
-<span class="ansi35"
->'_a'=['Number', arg(callsealer, 1)].
-'_b'=['Number', arg(callsealer, 2)].
-A=['Expression', arg(sealed, 1), val([])].
-B=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
-C=['Atom', arg(sealed, 0)].
-D=[val(is_p1(true, C)), val([is_p1, [], C]), 'Expression', arg(callsealer, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->callsealer</span>, <span class="pl-var"
->_a</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-atom"
->quote</span>, 
-        [ [ <span class="pl-atom"
->*</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->+</span>, <span class="pl-int"
->40</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->/</span>, <span class="pl-int"
->100</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->sealed</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->D</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_a, _b].
-lazyArgsList:[_a-eager, _b-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->callsealer</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_a'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_b'</span></span>)</span>]], 
+>mc_2__callsealer</span>(<span class="pl-args"
+><span class="pl-var"
+>_a</span>, <span class="pl-var"
+>_b</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -385,24 +275,21 @@ finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
 >2</span></span>)</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(callsealer, 3, sealed, 3).
-
-</span>Asserting: transpiler_depends_on(callsealer,3,sealed,3)
+Asserting: transpiler_depends_on(callsealer,3,sealed,3)
 <span class="ansi36"
->'_a'=['Number', arg(callsealer, 1)].
-'_b'=['Number', arg(callsealer, 2)].
-A=['Atom', arg(sealed, 0), 'Expression', arg(callsealer, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=['Expression', arg(sealed, 1), val([])].
-D=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
+>transpiler_stub_created(sealed/3).
 
-mc_2__callsealer(_a, _b, A) :-
-    C=[],
-    D=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
-    mc_2__sealed(C, D, A).
+</span>; % ######### warning: creating stub for:sealed
+<span class="ansi36"
+>
+mc_2__sealed(B, C, D) :-
+    D=[sealed, B, C].
 
-</span><span class="ansi36"
+</span>mc_2__callsealer(_a, _b, A) :-
+    B=[],
+    C=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
+    mc_2__sealed(B, C, A).
+<span class="ansi36"
 >
 mc_2__callsealer(_a, _b, A) :-
     B=[],
@@ -418,7 +305,7 @@ mc_2__callsealer(_a, _b, A) :-
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000602 secs. (601.85 microseconds) 
+; took 0.000581 secs. (581.20 microseconds) 
 
 !(assertEqualToResult (callsealer $x $y) ((quote ((* (+ 40 $x) (/ 100 $y))))))
 
@@ -439,7 +326,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000582 secs. (581.66 microseconds) 
+; took 0.000556 secs. (555.57 microseconds) 
 
 !(assertEqualToResult (callsealer 10 25) ((quote ((* (+ 40 10) (/ 100 25))))))
 
@@ -462,125 +349,17 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(callsealer1, 3, 0, ['Number', 'Number'], 'Expression', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [callsealer1, _a, _b], [sealed, [_a], [quote, [[*, [+, 40, _a], [/, 100, _b]]]]]).
 
-</span><span class="ansi36"
->transpiler_stub_created(callsealer1/3).
-
-</span>; % ######### warning: creating stub for:callsealer1
-<span class="ansi35"
->'_a'=['Number', arg(callsealer1, 1)].
-'_b'=['Number', arg(callsealer1, 2)].
-A=['Expression', arg(sealed, 1), val([_a]), val(list([_a]))].
-B=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
-C=['Atom', arg(sealed, 0)].
-D=[val(is_p1(true, C)), val([is_p1, [], C]), 'Expression', arg(callsealer1, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->callsealer1</span>, <span class="pl-var"
->_a</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->list</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
+>mc_2__callsealer1</span>(<span class="pl-args"
 ><span class="pl-var"
->_a</span></span>]</span></span>)</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-atom"
->quote</span>, 
-        [ [ <span class="pl-atom"
->*</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->+</span>, <span class="pl-int"
->40</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->/</span>, <span class="pl-int"
->100</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->sealed</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->D</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_a, _b].
-lazyArgsList:[_a-eager, _b-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->callsealer1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_a'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_b'</span></span>)</span>]], 
+>_a</span>, <span class="pl-var"
+>_b</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, <span class="pl-var"
 >B</span>, <span class="pl-compound pl-level-0"
@@ -630,24 +409,12 @@ finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
 >2</span></span>)</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(callsealer1, 3, sealed, 3).
-
-</span>Asserting: transpiler_depends_on(callsealer1,3,sealed,3)
-<span class="ansi36"
->'_a'=['Number', arg(callsealer1, 1)].
-'_b'=['Number', arg(callsealer1, 2)].
-A=['Atom', arg(sealed, 0), 'Expression', arg(callsealer1, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=['Expression', arg(sealed, 1), val([_a]), val(list([_a]))].
-D=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
-
+Asserting: transpiler_depends_on(callsealer1,3,sealed,3)
 mc_2__callsealer1(_a, _b, A) :-
-    C=[_a],
-    D=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
-    mc_2__sealed(C, D, A).
-
-</span><span class="ansi36"
+    B=[_a],
+    C=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
+    mc_2__sealed(B, C, A).
+<span class="ansi36"
 >
 mc_2__callsealer1(_a, _b, A) :-
     B=[_a],
@@ -663,7 +430,7 @@ mc_2__callsealer1(_a, _b, A) :-
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000493 secs. (493.27 microseconds) 
+; took 0.000519 secs. (519.45 microseconds) 
 
 !(assertEqualToResult (callsealer1 5 $y) ((quote ((* (+ 40 5) (/ 100 $y))))))
 
@@ -683,7 +450,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000573 secs. (573.36 microseconds) 
+; took 0.000591 secs. (591.06 microseconds) 
 
 !(assertEqualToResult (callsealer1 $x $y) ((quote ((* (+ 40 $a) (/ 100 $y))))))
 
@@ -707,126 +474,17 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(callsealer2, 3, 0, ['Number', 'Number'], 'Expression', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [callsealer2, _a, _b], [sealed, [_a, _b], [quote, [[*, [+, 40, _a], [/, 100, _b]]]]]).
 
-</span><span class="ansi36"
->transpiler_stub_created(callsealer2/3).
-
-</span>; % ######### warning: creating stub for:callsealer2
-<span class="ansi35"
->'_a'=['Number', arg(callsealer2, 1)].
-'_b'=['Number', arg(callsealer2, 2)].
-A=['Expression', arg(sealed, 1), val([_a, _b]), val(list([_a, _b]))].
-B=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
-C=['Atom', arg(sealed, 0)].
-D=[val(is_p1(true, C)), val([is_p1, [], C]), 'Expression', arg(callsealer2, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->callsealer2</span>, <span class="pl-var"
->_a</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->list</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
+>mc_2__callsealer2</span>(<span class="pl-args"
 ><span class="pl-var"
->_a</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-atom"
->quote</span>, 
-        [ [ <span class="pl-atom"
->*</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->+</span>, <span class="pl-int"
->40</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->/</span>, <span class="pl-int"
->100</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->sealed</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->D</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_a, _b].
-lazyArgsList:[_a-eager, _b-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->callsealer2</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_a'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_b'</span></span>)</span>]], 
+>_a</span>, <span class="pl-var"
+>_b</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, <span class="pl-var"
 >B</span>, <span class="pl-compound pl-level-0"
@@ -877,24 +535,12 @@ finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
 >2</span></span>)</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on(callsealer2, 3, sealed, 3).
-
-</span>Asserting: transpiler_depends_on(callsealer2,3,sealed,3)
-<span class="ansi36"
->'_a'=['Number', arg(callsealer2, 1)].
-'_b'=['Number', arg(callsealer2, 2)].
-A=['Atom', arg(sealed, 0), 'Expression', arg(callsealer2, 0), val(is_p1(true, B)), val([is_p1, [], B])].
-C=['Expression', arg(sealed, 1), val([_a, _b]), val(list([_a, _b]))].
-D=['Atom', arg(sealed, 2), val([quote, [[*, [+, 40, _a], [/, 100, _b]]]])].
-
+Asserting: transpiler_depends_on(callsealer2,3,sealed,3)
 mc_2__callsealer2(_a, _b, A) :-
-    C=[_a, _b],
-    D=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
-    mc_2__sealed(C, D, A).
-
-</span><span class="ansi36"
+    B=[_a, _b],
+    C=[quote, [[*, [+, 40, _a], [/, 100, _b]]]],
+    mc_2__sealed(B, C, A).
+<span class="ansi36"
 >
 mc_2__callsealer2(_a, _b, A) :-
     B=[_a, _b],
@@ -910,7 +556,7 @@ mc_2__callsealer2(_a, _b, A) :-
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000476 secs. (475.93 microseconds) 
+; took 0.000497 secs. (497.12 microseconds) 
 
 !(assertEqualToResult (callsealer2 $x 4) ((quote ((* (+ 40 $a) (/ 100 4))))))
 
@@ -931,7 +577,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000571 secs. (570.71 microseconds) 
+; took 0.000560 secs. (559.81 microseconds) 
 
 !(assertEqualToResult (callsealer2 $x $y) ((quote ((* (+ 40 $a) (/ 100 $b))))))
 
@@ -994,7 +640,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:36:21+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 10:45:52+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

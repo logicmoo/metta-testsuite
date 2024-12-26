@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
@@ -27,7 +26,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:23:00+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/01_lang_inc.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 10:31:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/01_lang_inc.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -98,7 +97,7 @@ Script started on 2024-12-24 11:23:00+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[()]" )
 P;HTML|
-;                         #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27728maxresident)k" )
+;                         #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27860maxresident)k" )
 P;HTML|
 ;                         #( = 3 "0inputs+0outputs (0major+3341minor)pagefaults 0swaps" )
 P;HTML|
@@ -113,157 +112,16 @@ Script started on 2024-12-24 11:23:00+00:00 [COMMAND="timeout --preserve-status 
 ></span><span class="ansi36"
 >transpiler_clause_store('maybe-inc', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), ['maybe-inc', _x], [case, _x, [[['Just', _v], ['Just', [+, 1, _v]]], ['Nothing', 'Nothing']]]).
 
-</span><span class="ansi36"
->transpiler_stub_created('maybe-inc'/2).
-
-</span>; % ######### warning: creating stub for:'maybe-inc'
-<span class="ansi36"
->transpiler_stub_created('Just'/2).
-
-</span>; % ######### warning: creating stub for:'Just'
-<span class="ansi35"
->'_x'=[arg('maybe-inc', 1)].
-A=[arg('Just', 0)].
-'_v'=['Number', arg(+, 2), arg('Just', 1)].
-B=[arg('Just', 1), 'Number', arg(+, 0)].
-C=[arg('Just', 0)].
-D=[arg('maybe-inc', 0), val(is_p1(true, C)), val([is_p1, [], C])].
-E=[val(F), val(G), val(is_p1(true, 'Nothing')), val([is_p1, [], 'Nothing']), 'MeTTaResult', 'Empty', val([is_p1, [], C]), val(is_p1(true, C)), arg('maybe-inc', 0), val(D), val(H)].
-I=['Nothing', val('Nothing')].
-G=[val(is_p1(true, 'Nothing')), val([is_p1, [], 'Nothing'])].
-H=[val(D), arg('maybe-inc', 0), val(is_p1(true, C)), val([is_p1, [], C]), 'Empty', 'MeTTaResult', val([is_p1, [], 'Nothing']), val(is_p1(true, 'Nothing')), val(G), val(F)].
-F=[val(G), val(is_p1(true, 'Nothing')), val([is_p1, [], 'Nothing']), 'MeTTaResult', 'Empty'].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  <span class="pl-list"
+  <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'maybe-inc'</span>, <span class="pl-var"
->_x</span></span>]</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Just'</span></span>)</span>, 
-        <span class="pl-var"
->_v</span>]], 
-    [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ prolog_match,     _x     ,     A      ]], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-int"
->1</span>, <span class="pl-var"
->_v</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->C</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Just'</span></span>)</span>, 
-            <span class="pl-var"
->B</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->D</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->E</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-      [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->F</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->prolog_if</span>, 
-          [ [ prolog_match,     _x     ,     F      ]], 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->G</span>, 
-              <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->H</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-          [ [ assign ,   I   ,'Empty'],
-            [ assign ,   H   ,   I   ]]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->E</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:lazy.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'maybe-inc'</span></span>)</span>, 
-      <span class="pl-var"
->_x</span>]], 
+>'mc_1__maybe-inc'</span>(<span class="pl-args"
+><span class="pl-var"
+>_x</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -328,44 +186,33 @@ finalLazyArgs:[x(doeval, eager)].
 >assign</span>, <span class="pl-var"
 >A</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
-
-</span><span class="ansi36"
->transpiler_depends_on('maybe-inc', 2, 'Just', 2).
-
-</span>Asserting: transpiler_depends_on('maybe-inc',2,'Just',2)
+Asserting: transpiler_depends_on('maybe-inc',2,'Just',2)
 <span class="ansi36"
->transpiler_depends_on('maybe-inc', 2, +, 3).
+>transpiler_stub_created('Just'/2).
+
+</span>; % ######### warning: creating stub for:'Just'
+<span class="ansi36"
+>
+mc_1__Just(B, C) :-
+    C=['Just', B].
 
 </span>Asserting: transpiler_depends_on('maybe-inc',2,+,3)
-<span class="ansi36"
->'_x'=[arg('maybe-inc', 1)].
-A=[val(B), val(C), 'Nothing', val('Nothing'), arg('Just', 0), arg('maybe-inc', 0), val(D), val(E), val(is_p1(true, 'Nothing')), val([is_p1, [], 'Nothing']), 'MeTTaResult', 'Empty', val([is_p1, [], F]), val(is_p1(true, F)), val(G), val(H), val(I), val(J)].
-'_v'=['Number', arg(+, 2), arg('Just', 1)].
-K=[arg('Just', 0)].
-L=[arg('Just', 1), 'Number', arg(+, 0)].
-I=[val(H), val(G), val(is_p1(true, F)), val([is_p1, [], F]), 'Empty', 'MeTTaResult', val([is_p1, [], 'Nothing']), val(is_p1(true, 'Nothing')), val(E), val(D), arg('maybe-inc', 0), arg('Just', 0)].
-M=['Nothing', val('Nothing')].
-C=['Nothing', val('Nothing')].
-J=[val(I), val(H), val(G), val(is_p1(true, F)), val([is_p1, [], F]), val([is_p1, [], 'Nothing']), val(is_p1(true, 'Nothing')), val(E), val(D), arg('maybe-inc', 0), arg('Just', 0), 'Empty', 'MeTTaResult', 'Nothing', val('Nothing'), val(C), val(B)].
-B=[val(C), 'Nothing', val('Nothing'), 'MeTTaResult', 'Empty'].
-
 'mc_1__maybe-inc'(_x, A) :-
-    mc_1__Just(_v, K),
-    (   _x=K
-    *-> 'mc_2__+'(1, _v, L),
-        mc_1__Just(L, I),
-        A=I
-    ;   M='Nothing',
-        (   _x=M
-        *-> C='Nothing',
-            J=C
-        ;   B='Empty',
-            J=B
+    mc_1__Just(_v, B),
+    (   _x=B
+    *-> 'mc_2__+'(1, _v, C),
+        mc_1__Just(C, D),
+        A=D
+    ;   E='Nothing',
+        (   _x=E
+        *-> F='Nothing',
+            G=F
+        ;   H='Empty',
+            G=H
         ),
-        A=J
+        A=G
     ).
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 'mc_1__maybe-inc'(_x, A) :-
     mc_1__Just(_v, B),
@@ -392,7 +239,7 @@ B=[val(C), 'Nothing', val('Nothing'), 'MeTTaResult', 'Empty'].
 >;; HYPERON-METTALOG-SANITY.01-LANG-INC.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000152 secs. (152.15 microseconds) 
+; took 0.000148 secs. (147.66 microseconds) 
 
 !(assertEqual (maybe-inc Nothing) Nothing)
 
@@ -412,7 +259,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.01-LANG-INC.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.37 milliseconds) 
+; took 0.004 secs. (4.35 milliseconds) 
 
 !(assertEqual (maybe-inc (Just 2)) (Just 3))
 
@@ -466,7 +313,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:23:08+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 10:31:40+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

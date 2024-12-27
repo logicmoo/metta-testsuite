@@ -19,18 +19,16 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:42:16+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:16:10+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -66,6 +64,9 @@ Script started on 2024-12-26 18:42:16+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -109,9 +110,9 @@ Script started on 2024-12-26 18:42:16+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 4 "Excessive result: d)]" )
 P;HTML|
-;                          #( = 4 "0.13user 0.01system 0:00.14elapsed 98%CPU (0avgtext+0avgdata 28120maxresident)k" )
+;                          #( = 4 "0.13user 0.00system 0:00.14elapsed 100%CPU (0avgtext+0avgdata 28124maxresident)k" )
 P;HTML|
-;                           #( = 4 "0inputs+0outputs (0major+3414minor)pagefaults 0swaps" )
+;                           #( = 4 "0inputs+0outputs (0major+3410minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta)
 
@@ -134,7 +135,7 @@ Script started on 2024-12-26 18:42:16+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.050 secs. (49.87 milliseconds) 
+; took 0.049 secs. (48.58 milliseconds) 
 
 !(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
@@ -154,81 +155,7 @@ Deterministic: <span class="ansi33"
 > (= (test6 $set $subset)  
   (subtraction $subset 
     (intersection $set $subset)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(test6, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [test6, _set, _subset], [subtraction, _subset, [intersection, _set, _subset]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__test6</span>(<span class="pl-args"
-><span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->subtraction</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->B</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->intersection</span></span>)</span>, <span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>]]], 
-          <span class="pl-var"
->B</span>]]]]].&#13;&#10;
-Asserting: transpiler_depends_on(test6,3,intersection,3)
-<span class="ansi36"
->transpiler_stub_created(intersection/3).
-
-</span>; % ######### warning: creating stub for:intersection
-<span class="ansi36"
->
-mc_2__intersection(B, C, D) :-
-    D=[intersection, B, C].
-
-</span>Asserting: transpiler_depends_on(test6,3,subtraction,3)
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-<span class="ansi36"
->
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-
-</span>
-;;; Test: Call the untyped function with the same inputs
+</span>;;; Test: Call the untyped function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -237,7 +164,7 @@ mc_2__test6(_set, _subset, A) :-
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.18 milliseconds) 
+; took 0.004 secs. (4.20 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -262,70 +189,7 @@ Deterministic: <span class="ansi33"
 > (= (test6 $set $subset)  
   (subtraction $subset 
     (intersection $set $subset)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(test6, 3, 1, ['Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [test6, _set, _subset], [subtraction, _subset, [intersection, _set, _subset]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__test6</span>(<span class="pl-args"
-><span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->subtraction</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->B</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->intersection</span></span>)</span>, <span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>]]], 
-          <span class="pl-var"
->B</span>]]]]].&#13;&#10;
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-<span class="ansi36"
->
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-
-</span>
-;;; Test: Call the typed function with the same inputs
+</span>;;; Test: Call the typed function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -334,7 +198,7 @@ mc_2__test6(_set, _subset, A) :-
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.79 milliseconds) 
+; took 0.007 secs. (6.61 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -396,7 +260,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 18:42:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:16:18+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -19,15 +19,11 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -36,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 19:23:46+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:56:13+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -72,6 +68,9 @@ Script started on 2024-12-26 19:23:46+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -105,9 +104,9 @@ Script started on 2024-12-26 19:23:46+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 1 "[yay]" )
 P;HTML|
-;                        #( = 2 "0.05user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27892maxresident)k" )
+;                        #( = 2 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27860maxresident)k" )
 P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3360minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3355minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta)
 
@@ -115,212 +114,23 @@ Script started on 2024-12-26 19:23:46+00:00 [COMMAND="timeout --preserve-status 
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (If True $then)  $then)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('If', 3, 0, ['Bool', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy)], x(doeval, lazy), ['If', 'True', _then], _then).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__If</span>(<span class="pl-args"
-><span class="pl-atom"
->'True'</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->_then</span></span>)</span>, 
-  []].&#13;&#10;
-mc_2__If('True', _then, _then).
-<span class="ansi36"
->
-mc_2__If('True', _then, _then).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If False $then)  
   (let $x 0 
     (let $x 1 $x)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('If', 3, 1, ['Bool', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy)], x(doeval, lazy), ['If', 'False', _then], [let, _x, 0, [let, _x, 1, _x]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__If</span>(<span class="pl-args"
-><span class="pl-atom"
->'False'</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-mc_2__If('False', _then, A) :-
-    _x=0,
-    _x=1,
-    A=is_p1(true, _x).
-<span class="ansi36"
->
-mc_2__If('False', _then, A) :-
-    _x=0,
-    _x=1,
-    A=is_p1(true, _x).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('If', 4, 0, ['Bool', 'Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy), x(doeval, lazy)], x(doeval, lazy), ['If', _cond, _then, _else], [if, _cond, _then, _else]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_3__If</span>(<span class="pl-args"
-><span class="pl-var"
->_cond</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->_else</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->_cond</span>]], 
-      [ [ assign,  A   ,_then ]], 
-      [ [ assign,  A   ,_else ]]]]].&#13;&#10;
-mc_3__If(_cond, _then, _else, A) :-
-    (   is_True(_cond)
-    *-> A=_then
-    ;   A=_else
-    ).
-<span class="ansi36"
->
-mc_3__If(_cond, _then, _else, A) :-
-    (   is_True(_cond)
-    *-> A=_then
-    ;   A=_else
-    ).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (GreaterThan 42 21)
 </span><span class="ansi38-255165000"
 > (= (EqualOrGreater $x $y)  
   (or 
     (> $x $y) 
     (== $x $y)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('EqualOrGreater', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['EqualOrGreater', _x, _y], [or, [>, _x, _y], [==, _x, _y]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__EqualOrGreater</span>(<span class="pl-args"
-><span class="pl-var"
->_x</span>, <span class="pl-var"
->_y</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->&gt;</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-var"
->_y</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_x'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_y'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->or</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->2</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('EqualOrGreater',3,>,3)
-Asserting: transpiler_depends_on('EqualOrGreater',3,==,3)
-Asserting: transpiler_depends_on('EqualOrGreater',3,or,3)
-mc_2__EqualOrGreater(_x, _y, A) :-
-    'mc_2__>'(_x, _y, B),
-    'mc_2__=='(_x, _y, C),
-    mc_2__or(B, C, A).
-<span class="ansi36"
->
-mc_2__EqualOrGreater(_x, _y, A) :-
-    'mc_2__>'(_x, _y, B),
-    'mc_2__=='(_x, _y, C),
-    mc_2__or(B, C, A).
-
-</span>
-<span class="ansi38-255165009"
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(match &self (GreaterThan $x $y) (If (and (== (get-type $x) Number) (== (get-type $y) Number)) (If (EqualOrGreater $x $y) yay)))
@@ -333,7 +143,7 @@ mc_2__EqualOrGreater(_x, _y, A) :-
 >;; METTA-MORPH-TESTS.TYPES3.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.02 milliseconds) 
+; took 0.003 secs. (3.03 milliseconds) 
 
 !(assertEqualToResult (match &self (GreaterThan $x $y) (If (and (== (get-type $x) Number) (== (get-type $y) Number)) (If (EqualOrGreater $x $y) yay))) (yay))
 
@@ -386,7 +196,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 19:23:54+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:56:21+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

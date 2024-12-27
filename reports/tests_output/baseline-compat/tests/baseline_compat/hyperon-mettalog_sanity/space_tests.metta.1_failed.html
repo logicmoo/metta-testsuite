@@ -30,11 +30,9 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -45,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:48:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:20:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -81,6 +79,9 @@ Script started on 2024-12-26 18:48:06+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -130,7 +131,7 @@ Script started on 2024-12-26 18:48:06+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 9 "[()]" )
 P;HTML|
-;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x21802d8) (2)) " )
+;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x2f57d78) (2)) " )
 P;HTML|
 ;                            #( = 10 "Expected: [2]" )
 P;HTML|
@@ -138,9 +139,9 @@ Script started on 2024-12-26 18:48:06+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 11 "Missed result: 2)]" )
 P;HTML|
-;                             #( = 11 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27740maxresident)k" )
+;                             #( = 11 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27872maxresident)k" )
 P;HTML|
-;                              #( = 11 "0inputs+0outputs (0major+3329minor)pagefaults 0swaps" )
+;                              #( = 11 "0inputs+0outputs (0major+3331minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta)
 
@@ -153,7 +154,7 @@ Script started on 2024-12-26 18:48:06+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000168 secs. (167.69 microseconds) 
+; took 0.000198 secs. (198.48 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
@@ -175,7 +176,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.46 milliseconds) 
+; took 0.002 secs. (2.43 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -195,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000651 secs. (650.51 microseconds) 
+; took 0.000636 secs. (636.23 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -215,7 +216,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000177 secs. (177.37 microseconds) 
+; took 0.000185 secs. (184.65 microseconds) 
 
 !(assertEqualToResult (match &self (likes $x $y) ($x $y)) ())
 
@@ -236,7 +237,7 @@ Deterministic: <span class="ansi33"
 > (likes Kate Karl)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.40 milliseconds) 
+; took 0.002 secs. (2.41 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes Kate Karl)) (()))
 
@@ -256,7 +257,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000863 secs. (862.78 microseconds) 
+; took 0.000793 secs. (792.71 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane) (Kate Karl)))
 
@@ -278,7 +279,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.11 milliseconds) 
+; took 0.002 secs. (2.06 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
@@ -298,7 +299,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000701 secs. (700.83 microseconds) 
+; took 0.000506 secs. (506.03 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((Kate Karl)))
 
@@ -321,43 +322,9 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (= (foo $x)  
   (+ $x 1))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(foo, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 1]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__foo</span>(<span class="pl-args"
-><span class="pl-avar"
->_157166{vn = ...}</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->1</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(foo,2,+,3)
-mc_1__foo(A, B) :-
-    'mc_2__+'(A, 1, B).
-<span class="ansi36"
->
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 1, A).
-
-</span>
-; 
+</span>; 
 ; EVAL TEST
-; took 0.022 secs. (22.30 milliseconds) 
+; took 0.011 secs. (11.22 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -378,7 +345,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000797 secs. (796.56 microseconds) 
+; took 0.000709 secs. (709.49 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -401,42 +368,9 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (= (foo $x)  
   (+ $x 2))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(foo, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 2]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__foo</span>(<span class="pl-args"
-><span class="pl-avar"
->_290714{vn = ...}</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->2</span>]]]].&#13;&#10;
-mc_1__foo(A, B) :-
-    'mc_2__+'(A, 2, B).
-<span class="ansi36"
->
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 2, A).
-
-</span>
-; 
+</span>; 
 ; EVAL TEST
-; took 0.015 secs. (15.50 milliseconds) 
+; took 0.011 secs. (10.73 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
@@ -457,7 +391,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.12 milliseconds) 
+; took 0.000944 secs. (944.05 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -480,44 +414,13 @@ Deterministic: <span class="ansi33"
 > (= (foo $x)  
   (+ $x 1))
 </span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(foo, 2, 2, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, _x], [+, _x, 1]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__foo</span>(<span class="pl-args"
-><span class="pl-avar"
->_391260{vn = ...}</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-int"
->1</span>]]]].&#13;&#10;
-mc_1__foo(A, B) :-
-    'mc_2__+'(A, 1, B).
-<span class="ansi36"
->
-mc_1__foo(_x, A) :-
-    'mc_2__+'(_x, 1, A).
-
-</span>#(unload_all_diff #(metta_atom_asserted &new-space (= (foo $x)  
+>#(unload_all_diff #(metta_atom_asserted &new-space (= (foo $x)  
   (+ $x 1))) #( \=@= #( + #(metta_atom_asserted &new-space (= (foo $x)  
-  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_454628)  
-  (+ $_454628 1))) true ) ))
-; 
+  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_255460)  
+  (+ $_255460 1))) true ) ))
+</span>; 
 ; EVAL TEST
-; took 0.093 secs. (93.12 milliseconds) 
+; took 0.087 secs. (86.64 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -538,7 +441,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.18 milliseconds) 
+; took 0.001 secs. (1.01 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (3))
 
@@ -604,7 +507,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 18:48:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:21:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

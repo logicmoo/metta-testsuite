@@ -30,7 +30,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 07:22:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:19:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -66,6 +66,9 @@ Script started on 2024-12-22 07:22:31+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -95,15 +98,15 @@ Script started on 2024-12-22 07:22:31+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
+;                       #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 P;HTML|
-;                         #( = 1 "[()]" )
+;                        #( = 1 "[()]" )
 P;HTML|
-;                         #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
+;                        #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
 P;HTML|
-;                         #( = 2 "0.04user 0.00system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27728maxresident)k" )
+;                         #( = 2 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                          #( = 2 "0inputs+0outputs (0major+3355minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3356minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 
@@ -148,7 +151,7 @@ Script started on 2024-12-22 07:22:31+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000736 secs. (736.12 microseconds) 
+; took 0.000862 secs. (862.14 microseconds) 
 
 !(assertEqualToResult ((S K) $x) (I))
 
@@ -191,18 +194,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.69 milliseconds) 
+; took 0.003 secs. (2.70 milliseconds) 
 
 !(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( (: $_58970 $_58976)) 
+      ( (: $_59326 $_59332)) 
       (InfiniteRecursion)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((: $_58970 $_58976))) #(expected (InfiniteRecursion))))
+>(#(Error #(got ((: $_59326 $_59332))) #(expected (InfiniteRecursion))))
 </span>;;; Explanation:
 ;;; Double-sided matching causes the pattern to reapply itself infinitely.
 ;;; Test: Single-sided matching avoids infinite recursion (using single-side-match)
@@ -210,7 +213,7 @@ Deterministic: <span class="ansi33"
 >!(assertSingleSideEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (: $x $a))
 
 </span>
-Script done on 2024-12-22 07:23:11+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 23:20:09+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

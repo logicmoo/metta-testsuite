@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -25,9 +24,7 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -35,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:40:35+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:15:01+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -71,6 +68,9 @@ Script started on 2024-12-26 18:40:35+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -118,9 +118,9 @@ Script started on 2024-12-26 18:40:35+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 6 "Excessive result: (: S (-> (: $k Nat) Nat)))]" )
 P;HTML|
-;                           #( = 6 "0.07user 0.01system 0:00.09elapsed 100%CPU (0avgtext+0avgdata 28884maxresident)k" )
+;                           #( = 6 "0.07user 0.01system 0:00.09elapsed 98%CPU (0avgtext+0avgdata 28500maxresident)k" )
 P;HTML|
-;                            #( = 6 "0inputs+0outputs (0major+3605minor)pagefaults 0swaps" )
+;                            #( = 6 "0inputs+0outputs (0major+3575minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta)
 
@@ -168,115 +168,11 @@ Deterministic: <span class="ansi33"
 ;;; ---------------------------------------
 ;;; Base case: Query the knowledge base for a rule or fact
 <span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $_58120)  
+> (= (bc (: $prf $ccln) $_58042)  
   (match &kb 
     (: $prf $ccln) 
     (: $prf $ccln)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(bc, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [bc, [:, _prf, _ccln], A], [match, '&kb', [:, _prf, _ccln], [:, _prf, _ccln]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__bc</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->:</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-anon"
->_</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->B</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_prf'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_ccln'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->2</span></span>)</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->D</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-var"
->_prf</span>, <span class="pl-var"
->_ccln</span>]]], 
-          <span class="pl-var"
->D</span>]]]]].&#13;&#10;
-Asserting: transpiler_depends_on(bc,3,:,3)
-<span class="ansi36"
->transpiler_stub_created((:)/3).
-
-</span>; % ######### warning: creating stub for::
-<span class="ansi36"
->
-'mc_2__:'(B, C, D) :-
-    D=[:, B, C].
-
-</span>Asserting: transpiler_depends_on(bc,3,match,4)
-mc_2__bc([:, _prf, _ccln], _, A) :-
-    B='&kb',
-    'mc_2__:'(_prf, _ccln, C),
-    mc_3__match(B,
-                C,
-                is_p1('mc_2__:'(_prf, _ccln, D), D),
-                A).
-<span class="ansi36"
->
-mc_2__bc([:, _prf, _ccln], A, B) :-
-    C='&kb',
-    'mc_2__:'(_prf, _ccln, D),
-    mc_3__match(C,
-                D,
-                is_p1('mc_2__:'(_prf, _ccln, E), E),
-                B).
-
-</span>
-;;; Recursive step: Recurse on proof abstraction and argument
+</span>;;; Recursive step: Recurse on proof abstraction and argument
 <span class="ansi38-255165000"
 > (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
   (let* 
@@ -285,202 +181,7 @@ mc_2__bc([:, _prf, _ccln], A, B) :-
             (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
     (: 
       ($prfabs $prfarg) $ccln)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(bc, 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [bc, [:, [_prfabs, _prfarg], _ccln], ['S', _k]], ['let*', [[[:, _prfabs, [->, [:, _prfarg, _prms], _ccln]], [bc, [:, _prfabs, [->, [:, _prfarg, _prms], _ccln]], _k]], [[:, _prfarg, _prms], [bc, [:, _prfarg, _prms], _k]]], [:, [_prfabs, _prfarg], _ccln]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-atom"
->mc_2__bc</span>( 
-     [ <span class="pl-atom"
->:</span>, 
-       <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-var"
->_prfabs</span>, <span class="pl-var"
->_prfarg</span></span>]</span>, 
-       <span class="pl-var"
->_ccln</span>], 
-     <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'S'</span>, <span class="pl-var"
->_k</span></span>]</span>, 
-     <span class="pl-var"
->A</span>), 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-atom"
->-&gt;</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->:</span>, <span class="pl-var"
->_prfarg</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        <span class="pl-var"
->_ccln</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_prfabs'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->D</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->bc</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->2</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_k'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      [ <span class="pl-atom"
->:</span>, 
-        <span class="pl-var"
->_prfabs</span>, 
-        [ <span class="pl-atom"
->-&gt;</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->:</span>, <span class="pl-var"
->_prfarg</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-          <span class="pl-var"
->_ccln</span>]], 
-      <span class="pl-var"
->D</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->E</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_prfarg'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_prms'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->F</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->bc</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->4</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_k'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->:</span>, <span class="pl-var"
->_prfarg</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-      <span class="pl-var"
->F</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->G</span>, 
-      <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->list</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-var"
->_prfabs</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->6</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_ccln'</span></span>)</span>]]]].&#13;&#10;
-mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
-    B=[->, [:, _prfarg, _prms], _ccln],
-    'mc_2__:'(_prfabs, B, C),
-    mc_2__bc(C, _k, D),
-    [:, _prfabs, [->, [:, _prfarg, _prms], _ccln]]=D,
-    'mc_2__:'(_prfarg, _prms, E),
-    mc_2__bc(E, _k, F),
-    [:, _prfarg, _prms]=F,
-    G=[_prfabs, _prfarg],
-    'mc_2__:'(G, _ccln, A).
-<span class="ansi36"
->
-mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
-    B=[->, [:, _prfarg, _prms], _ccln],
-    'mc_2__:'(_prfabs, B, C),
-    mc_2__bc(C, _k, D),
-    [:, _prfabs, [->, [:, _prfarg, _prms], _ccln]]=D,
-    'mc_2__:'(_prfarg, _prms, E),
-    mc_2__bc(E, _k, F),
-    [:, _prfarg, _prms]=F,
-    G=[_prfabs, _prfarg],
-    'mc_2__:'(G, _ccln, A).
-
-</span>
-;;; Example 3: Tests
+</span>;;; Example 3: Tests
 ;;; ----------------
 ;;; Test: Prove unary functions over natural numbers with depth 2
 <span class="ansi38-013099040"
@@ -491,7 +192,7 @@ mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.44 milliseconds) 
+; took 0.008 secs. (8.04 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
 
@@ -515,7 +216,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
 ; 
 ; EVAL TEST
-; took 0.139 secs. (138.79 milliseconds) 
+; took 0.140 secs. (139.51 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S (S (S (S Z)))))) ())
 
@@ -579,7 +280,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 18:40:44+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:15:10+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

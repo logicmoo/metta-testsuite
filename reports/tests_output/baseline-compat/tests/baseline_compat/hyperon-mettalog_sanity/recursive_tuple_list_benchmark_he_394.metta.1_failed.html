@@ -25,7 +25,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:45:04+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_benchmark_he_394.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:17:54+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_benchmark_he_394.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -61,6 +61,9 @@ Script started on 2024-12-26 18:45:04+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -122,7 +125,7 @@ Script started on 2024-12-26 18:45:04+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                              #( = 3 "Missed result: True)]" )
 P;HTML|
-;                              #( = 3 "0.65user 0.01system 0:00.66elapsed 100%CPU (0avgtext+0avgdata 36184maxresident)k" )
+;                              #( = 3 "0.64user 0.01system 0:00.66elapsed 99%CPU (0avgtext+0avgdata 36188maxresident)k" )
 P;HTML|
 ;                              #( = 3 "0inputs+0outputs (0major+5360minor)pagefaults 0swaps" )
 
@@ -153,7 +156,7 @@ Script started on 2024-12-26 18:45:04+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-BENCHMARK-HE-394.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000696 secs. (695.95 microseconds) 
+; took 0.000531 secs. (531.05 microseconds) 
 
 !(assertEqualToResult (py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n") ((extend-py! benchmark)))
 
@@ -172,12 +175,12 @@ Deterministic: <span class="ansi33"
 </span>P;HTML|
 ;                                #(extend-py! benchmark)
 P;HTML|
-;                                #( = #(error #(existence_error source_sink benchmark) $Existence_error) #(py_catch #( ; #( -> #( == benchmark mettalog ) true ) #(py_load_modfile benchmark) )) )
+;                                 #( = #(error #(existence_error source_sink benchmark) $Existence_error) #(py_catch #( ; #( -> #( == benchmark mettalog ) true ) #(py_load_modfile benchmark) )) )
 NoneType: None
 
    <span class="ansi1 ansi32"
->Call: </span>(149) [system] benchmark==mettalog ? 
-Script done on 2024-12-26 18:45:44+00:00 [COMMAND_EXIT_CODE="143"]
+>Call: </span>(150) [system] benchmark==mettalog ? 
+Script done on 2024-12-27 23:18:34+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

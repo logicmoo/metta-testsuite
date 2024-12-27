@@ -19,11 +19,8 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -35,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:56:09+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:28:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -71,6 +68,9 @@ Script started on 2024-12-26 18:56:09+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -106,9 +106,9 @@ Script started on 2024-12-26 18:56:09+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[3628800]" )
 P;HTML|
-;                         #( = 3 "0.10user 0.00system 0:00.11elapsed 99%CPU (0avgtext+0avgdata 28752maxresident)k" )
+;                         #( = 3 "0.09user 0.01system 0:00.11elapsed 98%CPU (0avgtext+0avgdata 28876maxresident)k" )
 P;HTML|
-;                         #( = 3 "0inputs+0outputs (0major+3569minor)pagefaults 0swaps" )
+;                         #( = 3 "0inputs+0outputs (0major+3568minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta)
 
@@ -117,282 +117,19 @@ Script started on 2024-12-26 18:56:09+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('If', 4, 0, ['Bool', 'Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy), x(doeval, lazy)], x(doeval, lazy), ['If', _cond, _then, _else], [if, _cond, _then, _else]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_3__If</span>(<span class="pl-args"
-><span class="pl-var"
->_cond</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->_else</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->_cond</span>]], 
-      [ [ assign,  A   ,_then ]], 
-      [ [ assign,  A   ,_else ]]]]].&#13;&#10;
-mc_3__If(_cond, _then, _else, A) :-
-    (   is_True(_cond)
-    *-> A=_then
-    ;   A=_else
-    ).
-<span class="ansi36"
->
-mc_3__If(_cond, _then, _else, A) :-
-    (   is_True(_cond)
-    *-> A=_then
-    ;   A=_else
-    ).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (facF $n)  
   (If 
     (== $n 0) 1 
     (* $n 
       (facF (- $n 1)))))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(facF, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [facF, _n], ['If', [==, _n, 0], 1, [*, _n, [facF, [-, _n, 1]]]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__facF</span>(<span class="pl-args"
-><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->0</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->C</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'If'</span></span>)</span>, 
-        <span class="pl-var"
->B</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->D</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->-</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->1</span>]], 
-            [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->E</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->facF</span></span>)</span>, 
-                <span class="pl-var"
->D</span>]], 
-            [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->F</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->*</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_n'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->4</span></span>)</span>]]], 
-          <span class="pl-var"
->F</span>]]], 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->as_p1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->2</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>]]].&#13;&#10;
-Asserting: transpiler_depends_on(facF,2,==,3)
-Asserting: transpiler_depends_on(facF,2,-,3)
-Asserting: transpiler_depends_on(facF,2,*,3)
-Asserting: transpiler_depends_on(facF,2,'If',4)
-mc_1__facF(_n, A) :-
-    'mc_2__=='(_n, 0, B),
-    mc_3__If(B,
-             is_p1(true, 1),
-             is_p1(('mc_2__-'(_n, 1, C), mc_1__facF(C, D), 'mc_2__*'(_n, D, E)),
-                   E),
-             F),
-    as_p1(F, A).
-<span class="ansi36"
->
-mc_1__facF(_n, A) :-
-    'mc_2__=='(_n, 0, B),
-    mc_3__If(B,
-             is_p1(true, 1),
-             is_p1(('mc_2__-'(_n, 1, C), mc_1__facF(C, D), 'mc_2__*'(_n, D, E)),
-                   E),
-             F),
-    as_p1(F, A).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (facf $n)  
   (if 
     (== $n 0) 1 
     (* $n 
       (facf (- $n 1)))))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(facf, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [facf, _n], [if, [==, _n, 0], 1, [*, _n, [facf, [-, _n, 1]]]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__facf</span>(<span class="pl-args"
-><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->0</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ assign,  A   ,  1   ]], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->C</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->-</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->1</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->D</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->facf</span></span>)</span>, 
-            <span class="pl-var"
->C</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->E</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->*</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-var"
->D</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(facf,2,==,3)
-Asserting: transpiler_depends_on(facf,2,-,3)
-Asserting: transpiler_depends_on(facf,2,*,3)
-mc_1__facf(_n, A) :-
-    (   'mc_2__=='(_n, 0, B),
-        is_True(B)
-    *-> A=1
-    ;   'mc_2__-'(_n, 1, C),
-        mc_1__facf(C, D),
-        'mc_2__*'(_n, D, E),
-        A=E
-    ).
-<span class="ansi36"
->
-mc_1__facf(_n, A) :-
-    (   'mc_2__=='(_n, 0, B),
-        is_True(B)
-    *-> A=1
-    ;   'mc_2__-'(_n, 1, C),
-        mc_1__facf(C, D),
-        'mc_2__*'(_n, D, E),
-        A=E
-    ).
-
-</span>
-<span class="ansi38-255165009"
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(facF 10)
@@ -405,7 +142,7 @@ mc_1__facf(_n, A) :-
 >;; METTA-MORPH-TESTS.FACTORIAL.01</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.08 milliseconds) 
+; took 0.011 secs. (10.81 milliseconds) 
 
 !(assertEqualToResult (facF 10) (3628800))
 
@@ -430,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.FACTORIAL.02</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.78 milliseconds) 
+; took 0.010 secs. (10.42 milliseconds) 
 
 !(assertEqualToResult (facf 10) (3628800))
 
@@ -484,7 +221,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 18:56:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:29:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

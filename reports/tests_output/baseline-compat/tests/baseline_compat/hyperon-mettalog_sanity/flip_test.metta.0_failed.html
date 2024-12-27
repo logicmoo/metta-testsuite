@@ -19,10 +19,8 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -30,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:37:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/flip_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:13:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/flip_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -66,6 +64,9 @@ Script started on 2024-12-26 18:37:57+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -101,9 +102,9 @@ Script started on 2024-12-26 18:37:57+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[()]" )
 P;HTML|
-;                         #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 28000maxresident)k" )
+;                         #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27996maxresident)k" )
 P;HTML|
-;                         #( = 3 "0inputs+0outputs (0major+3358minor)pagefaults 0swaps" )
+;                         #( = 3 "0inputs+0outputs (0major+3370minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/flip_test.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/flip_test.metta)
 
@@ -116,148 +117,7 @@ Script started on 2024-12-26 18:37:57+00:00 [COMMAND="timeout --preserve-status 
     (if 
       (flip) True 
       (recur-until-flip-true (+ 1 $n)))))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('recur-until-flip-true', 2, 0, ['Number'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['recur-until-flip-true', _n], [if, [>, _n, 40], 'False', [if, [flip], 'True', ['recur-until-flip-true', [+, 1, _n]]]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__recur-until-flip-true'</span>(<span class="pl-args"
-><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->&gt;</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->40</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ assign ,   C   ,'False'],
-        [ assign ,   A   ,   C   ]], 
-      [ [ <span class="pl-atom"
->prolog_if</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->D</span>, 
-              <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->flip</span></span>)</span></span>]</span>], 
-            [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-              <span class="pl-var"
->D</span>]], 
-          [ [ assign,  E   ,'True'],
-            [ assign,  F   ,  E   ]], 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->G</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-int"
->1</span>, <span class="pl-var"
->_n</span>]], 
-            [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->H</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'recur-until-flip-true'</span></span>)</span>, 
-                <span class="pl-var"
->G</span>]], 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->F</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('recur-until-flip-true',2,>,3)
-Asserting: transpiler_depends_on('recur-until-flip-true',2,flip,1)
-<span class="ansi36"
->transpiler_stub_created(flip/1).
-
-</span>; % ######### warning: creating stub for:flip
-<span class="ansi36"
->
-mc_0__flip(B) :-
-    B=[flip].
-
-</span>Asserting: transpiler_depends_on('recur-until-flip-true',2,+,3)
-'mc_1__recur-until-flip-true'(_n, A) :-
-    (   'mc_2__>'(_n, 40, B),
-        is_True(B)
-    *-> C='False',
-        A=C
-    ;   (   mc_0__flip(D),
-            is_True(D)
-        *-> E='True',
-            F=E
-        ;   'mc_2__+'(1, _n, G),
-            'mc_1__recur-until-flip-true'(G, H),
-            F=H
-        ),
-        A=F
-    ).
-<span class="ansi36"
->
-'mc_1__recur-until-flip-true'(_n, A) :-
-    (   'mc_2__>'(_n, 40, B),
-        is_True(B)
-    *-> C='False',
-        A=C
-    ;   (   mc_0__flip(D),
-            is_True(D)
-        *-> E='True',
-            F=E
-        ;   'mc_2__+'(1, _n, G),
-            'mc_1__recur-until-flip-true'(G, H),
-            F=H
-        ),
-        A=F
-    ).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: recur-until-flip-false (-> Number Bool))
 </span><span class="ansi38-255165000"
 > (= (recur-until-flip-false $n)  
@@ -266,139 +126,7 @@ mc_0__flip(B) :-
     (if 
       (flip) 
       (recur-until-flip-false (+ 1 $n)) True)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('recur-until-flip-false', 2, 0, ['Number'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['recur-until-flip-false', _n], [if, [>, _n, 40], 'False', [if, [flip], ['recur-until-flip-false', [+, 1, _n]], 'True']]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__recur-until-flip-false'</span>(<span class="pl-args"
-><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->&gt;</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->40</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ assign ,   C   ,'False'],
-        [ assign ,   A   ,   C   ]], 
-      [ [ <span class="pl-atom"
->prolog_if</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->D</span>, 
-              <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->flip</span></span>)</span></span>]</span>], 
-            [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-              <span class="pl-var"
->D</span>]], 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->E</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-int"
->1</span>, <span class="pl-var"
->_n</span>]], 
-            [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->F</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'recur-until-flip-false'</span></span>)</span>, 
-                <span class="pl-var"
->E</span>]], 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->G</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-          [ [ assign,  H   ,'True'],
-            [ assign,  G   ,  H   ]]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('recur-until-flip-false',2,>,3)
-Asserting: transpiler_depends_on('recur-until-flip-false',2,flip,1)
-Asserting: transpiler_depends_on('recur-until-flip-false',2,+,3)
-'mc_1__recur-until-flip-false'(_n, A) :-
-    (   'mc_2__>'(_n, 40, B),
-        is_True(B)
-    *-> C='False',
-        A=C
-    ;   (   mc_0__flip(D),
-            is_True(D)
-        *-> 'mc_2__+'(1, _n, E),
-            'mc_1__recur-until-flip-false'(E, F),
-            G=F
-        ;   H='True',
-            G=H
-        ),
-        A=G
-    ).
-<span class="ansi36"
->
-'mc_1__recur-until-flip-false'(_n, A) :-
-    (   'mc_2__>'(_n, 40, B),
-        is_True(B)
-    *-> C='False',
-        A=C
-    ;   (   mc_0__flip(D),
-            is_True(D)
-        *-> 'mc_2__+'(1, _n, E),
-            'mc_1__recur-until-flip-false'(E, F),
-            G=F
-        ;   H='True',
-            G=H
-        ),
-        A=G
-    ).
-
-</span>
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (recur-until-flip-true 1) (True))
 
 </span>
@@ -406,7 +134,7 @@ Asserting: transpiler_depends_on('recur-until-flip-false',2,+,3)
 >;; HYPERON-METTALOG-SANITY.FLIP-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.39 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqualToResult (recur-until-flip-true 1) (True))
 
@@ -426,7 +154,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FLIP-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000684 secs. (684.33 microseconds) 
+; took 0.002 secs. (2.50 milliseconds) 
 
 !(assertEqualToResult (recur-until-flip-false 1) (True))
 
@@ -480,7 +208,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 18:38:06+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:13:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

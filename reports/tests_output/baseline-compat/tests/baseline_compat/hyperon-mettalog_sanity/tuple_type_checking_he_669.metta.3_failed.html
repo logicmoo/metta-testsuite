@@ -14,15 +14,12 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi31 { color: #aa0000; }
 .ansi33 { color: #aa5500; }
-.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -30,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:52:38+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:25:26+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -66,6 +63,9 @@ Script started on 2024-12-26 18:52:38+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -105,9 +105,9 @@ Script started on 2024-12-26 18:52:38+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "Missed result: (Error (wrong type) BadType))]" )
 P;HTML|
-;                          #( = 2 "0.04user 0.00system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27620maxresident)k" )
+;                          #( = 2 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 27616maxresident)k" )
 P;HTML|
-;                          #( = 2 "0inputs+0outputs (0major+3307minor)pagefaults 0swaps" )
+;                          #( = 2 "0inputs+0outputs (0major+3310minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta)
 
@@ -120,7 +120,7 @@ Script started on 2024-12-26 18:52:38+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000904 secs. (904.32 microseconds) 
+; took 0.000764 secs. (764.22 microseconds) 
 
 !(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -141,28 +141,7 @@ Deterministic: <span class="ansi33"
 > (: foo_mixed (-> (%Undefined% T) %Undefined%))
 </span><span class="ansi38-255165000"
 > (= (foo_mixed $x)  $x)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(foo_mixed, 2, 0, [['%Undefined%', 'T']], '%Undefined%', [x(doeval, eager)], x(doeval, eager), [foo_mixed, _x], _x).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__foo_mixed</span>(<span class="pl-args"
-><span class="pl-var"
->_x</span>, <span class="pl-var"
->_x</span></span>)</span>, 
-  []].&#13;&#10;
-mc_1__foo_mixed(_x, _x).
-<span class="ansi36"
->
-mc_1__foo_mixed(_x, _x).
-
-</span>
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
 </span>
@@ -170,7 +149,7 @@ mc_1__foo_mixed(_x, _x).
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000843 secs. (842.54 microseconds) 
+; took 0.000811 secs. (810.83 microseconds) 
 
 !(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
@@ -195,107 +174,7 @@ Deterministic: <span class="ansi33"
     (== $n 0) 1 
     (* 
       (fact_strict (- $n 1)) $n)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(fact_strict, 2, 0, ['Integer'], 'Integer', [x(doeval, eager)], x(doeval, eager), [fact_strict, _n], [if, [==, _n, 0], 1, [*, [fact_strict, [-, _n, 1]], _n]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__fact_strict</span>(<span class="pl-args"
-><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->0</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ assign,  A   ,  1   ]], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->C</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->-</span></span>)</span>, <span class="pl-var"
->_n</span>, <span class="pl-int"
->1</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->D</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->fact_strict</span></span>)</span>, 
-            <span class="pl-var"
->C</span>]], 
-        [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->E</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->*</span></span>)</span>, <span class="pl-var"
->D</span>, <span class="pl-var"
->_n</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(fact_strict,2,==,3)
-Asserting: transpiler_depends_on(fact_strict,2,-,3)
-Asserting: transpiler_depends_on(fact_strict,2,*,3)
-mc_1__fact_strict(_n, A) :-
-    (   'mc_2__=='(_n, 0, B),
-        is_True(B)
-    *-> A=1
-    ;   'mc_2__-'(_n, 1, C),
-        mc_1__fact_strict(C, D),
-        'mc_2__*'(D, _n, E),
-        A=E
-    ).
-<span class="ansi36"
->
-mc_1__fact_strict(_n, A) :-
-    (   'mc_2__=='(_n, 0, B),
-        is_True(B)
-    *-> A=1
-    ;   'mc_2__-'(_n, 1, C),
-        mc_1__fact_strict(C, D),
-        'mc_2__*'(D, _n, E),
-        A=E
-    ).
-
-</span>
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict 5) ((120)))
 
 </span>
@@ -303,7 +182,7 @@ mc_1__fact_strict(_n, A) :-
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.51 milliseconds) 
+; took 0.007 secs. (6.56 milliseconds) 
 
 !(assertEqualToResult (fact_strict 5) ((120)))
 
@@ -325,7 +204,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04</h3>
 
-Script done on 2024-12-26 18:53:18+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 23:26:06+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

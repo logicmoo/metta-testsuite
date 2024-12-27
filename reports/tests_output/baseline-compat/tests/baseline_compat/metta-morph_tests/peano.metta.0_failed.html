@@ -18,9 +18,7 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -29,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 19:22:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/peano.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:54:39+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/peano.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -65,6 +63,9 @@ Script started on 2024-12-26 19:22:11+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -100,106 +101,17 @@ Script started on 2024-12-26 19:22:11+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27728maxresident)k" )
 P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3332minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3331minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/peano.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/peano.metta)
 
 <span class="ansi38-255165000"
 > (= (Add $x Z)  $x)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('Add', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['Add', _x, 'Z'], _x).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__Add</span>(<span class="pl-args"
-><span class="pl-var"
->_x</span>, <span class="pl-atom"
->'Z'</span>, <span class="pl-var"
->_x</span></span>)</span>, 
-  []].&#13;&#10;
-mc_2__Add(_x, 'Z', _x).
-<span class="ansi36"
->
-mc_2__Add(_x, 'Z', _x).
-
-</span>
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (Add $x (S $y))  
   (Add 
     (S $x) $y))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('Add', 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['Add', _x, ['S', _y]], ['Add', ['S', _x], _y]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__Add</span>(<span class="pl-args"
-><span class="pl-var"
->_x</span>, <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'S'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'S'</span></span>)</span>, 
-        <span class="pl-var"
->_x</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Add'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_y'</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('Add',3,'S',2)
-<span class="ansi36"
->transpiler_stub_created('S'/2).
-
-</span>; % ######### warning: creating stub for:'S'
-<span class="ansi36"
->
-mc_1__S(B, C) :-
-    C=['S', B].
-
-</span>mc_2__Add(_x, ['S', _y], A) :-
-    mc_1__S(_x, B),
-    mc_2__Add(B, _y, A).
-<span class="ansi36"
->
-mc_2__Add(_x, ['S', _y], A) :-
-    mc_1__S(_x, B),
-    mc_2__Add(B, _y, A).
-
-</span>
-<span class="ansi38-255165009"
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(Add (S (S Z)) (S (S (S Z))))
@@ -212,7 +124,7 @@ mc_2__Add(_x, ['S', _y], A) :-
 >;; METTA-MORPH-TESTS.PEANO.01</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.69 milliseconds) 
+; took 0.007 secs. (6.60 milliseconds) 
 
 !(assertEqualToResult (Add (S (S Z)) (S (S (S Z)))) ((S (S (S (S (S Z)))))))
 
@@ -265,7 +177,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-26 19:22:20+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:54:48+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

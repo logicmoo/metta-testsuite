@@ -12,332 +12,63 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
-.ansi36 { color: #00aaaa; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
+.ansi31 { color: #aa0000; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 18:46:39+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-28 12:11:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         #(set_debug transpiler false)
+;         {set_debug transpiler false}
 
 P;HTML|
-;          #(set_debug overtime 4.0)
+;          {set_debug overtime 4.0}
 
 P;HTML|
-;          #(set_debug overflow 1000)
+;          {set_debug overflow 1000}
 
 P;HTML|
-;          #(set_debug eval false)
+;          {set_debug eval false}
 
 P;HTML|
-;          #(set_debug load silent)
+;          {set_debug load silent}
 
 P;HTML|
-;          #(set_debug trace-on-load false)
+;          {set_debug trace-on-load false}
 
 P;HTML|
-;          #(set_debug exec false)
+;          {set_debug exec false}
 
 P;HTML|
-;          #(set_debug error non-type)
+;          {set_debug error non-type}
 
 P;HTML|
-;          #(set_debug fail false)
+;          {set_debug fail false}
 
 P;HTML|
-;          #(set_debug test true)
+;          {set_debug test true}
 
 P;HTML|
-;         #(set_debug test false)
+;         {set_debug test false}
 
 P;HTML|
-;         #(set_debug fail false)
-P;HTML|
-;          #(set_debug transpiler false)
-P;HTML|
-;          #(set_debug overtime 4.0)
-P;HTML|
-;          #(set_debug overflow 1000)
-P;HTML|
-;          #(set_debug eval false)
-P;HTML|
-;          #(set_debug load silent)
-P;HTML|
-;          #(set_debug trace-on-load false)
-P;HTML|
-;          #(set_debug exec false)
-P;HTML|
-;          #(set_debug error non-type)
-P;HTML|
-;          #(set_debug fail false)
-P;HTML|
-;          #(set_debug test true)
-P;HTML|
-;          #(set_debug test false)
-P;HTML|
-;          #(set_debug fail false)
+;         {set_debug fail false}
 
-; #( : user #(load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta) )
 P;HTML|
-;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
-P;HTML|
-;                       #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
-P;HTML|
-;                        #( = 1 "[()]" )
-P;HTML|
-;                        #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
-P;HTML|
-;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27740maxresident)k" )
-P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3354minor)pagefaults 0swaps" )
-P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
+;         {set_debug load false}
 
-;;; Test File: Single-Sided Matching in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/674
-;;; Issue Overview:
-;;; MeTTa currently uses double-sided matching as the default, where both sides of a pattern
-;;; can contribute substitutions during unification. Single-sided matching, commonly used
-;;; in functional programming and combinatory logic, only allows one side (the "pattern") to
-;;; generate substitutions. This test demonstrates the current behavior and highlights the
-;;; need for single-sided matching.
-;;; Supporting Functions for Single-Sided Matching
-;;; ----------------------------------------------
-;;; Define a grounded function for single-sided matching
-<span class="ansi38-255165000"
-> (: single-side-match (-> Atom Atom))
-</span><span class="ansi38-255165000"
-> (= (single-side-match $expr)  
-  (grounded-single-side-match $expr))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('single-side-match', 2, 0, ['Atom'], 'Atom', [x(doeval, eager)], x(doeval, eager), ['single-side-match', _expr], ['grounded-single-side-match', _expr]).
 
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__single-side-match'</span>(<span class="pl-args"
-><span class="pl-var"
->_expr</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'grounded-single-side-match'</span></span>)</span>, 
-        <span class="pl-var"
->_expr</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-match',2)
-<span class="ansi36"
->transpiler_stub_created('grounded-single-side-match'/2).
-
-</span>; % ######### warning: creating stub for:'grounded-single-side-match'
-<span class="ansi36"
->
-'mc_1__grounded-single-side-match'(B, C) :-
-    C=['grounded-single-side-match', B].
-
-</span>'mc_1__single-side-match'(_expr, A) :-
-    'mc_1__grounded-single-side-match'(_expr, A).
-<span class="ansi36"
->
-'mc_1__single-side-match'(_expr, A) :-
-    'mc_1__grounded-single-side-match'(_expr, A).
-
+; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta} }
+<span class="ansi31"
+>{in { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta} } {error {existence_error procedure { / parse_sexpr_metta 2 }} {context { / parse_answer_str 2 } $Context}}}
+</span><span class="ansi31"
+>{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
 </span>
-;;; Define assertSingleSideEqualToResult for testing single-sided matching
-<span class="ansi38-255165000"
-> (: assertSingleSideEqualToResult (-> Atom Atom Atom))
-</span><span class="ansi38-255165000"
-> (= (assertSingleSideEqualToResult $expr $expected)  
-  (let $result 
-    (single-side-match $expr) 
-    (if 
-      (== $result $expected) 
-      (Success) 
-      (Error (assertSingleSideEqualToResult $expr $expected $result)))))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(assertSingleSideEqualToResult, 3, 0, ['Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [assertSingleSideEqualToResult, _expr, _expected], [let, _result, ['single-side-match', _expr], [if, [==, _result, _expected], ['Success'], ['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]]]]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__assertSingleSideEqualToResult</span>(<span class="pl-args"
-><span class="pl-var"
->_expr</span>, <span class="pl-var"
->_expected</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_result</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'single-side-match'</span></span>)</span>, 
-        <span class="pl-var"
->_expr</span>]], 
-    [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-var"
->_result</span>, <span class="pl-var"
->_expected</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->C</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Success'</span></span>)</span></span>]</span>], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->D</span>, 
-          [ <span class="pl-atom"
->'Error'</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assertSingleSideEqualToResult</span>, <span class="pl-var"
->_expr</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,'single-side-match',2)
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,==,3)
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,'Success',1)
-<span class="ansi36"
->transpiler_stub_created('Success'/1).
-
-</span>; % ######### warning: creating stub for:'Success'
-<span class="ansi36"
->
-mc_0__Success(B) :-
-    B=['Success'].
-
-</span>mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
-    'mc_1__single-side-match'(_expr, _result),
-    (   'mc_2__=='(_result, _expected, B),
-        is_True(B)
-    *-> mc_0__Success(C),
-        A=C
-    ;   D=['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]],
-        A=D
-    ).
-<span class="ansi36"
->
-mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
-    'mc_1__single-side-match'(_expr, _result),
-    (   'mc_2__=='(_result, _expected, B),
-        is_True(B)
-    *-> mc_0__Success(C),
-        A=C
-    ;   D=['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]],
-        A=D
-    ).
-
-</span>
-;;; Example 1: Current Double-Sided Matching
-;;; ----------------------------------------
-;;; Define a reduction rule for SKI combinatory logic
-<span class="ansi38-255165000"
-> (= ((S K) K)  I)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(['S', 'K'], 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [['S', 'K'], 'K'], 'I').
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-var"
->A</span> =  
-       
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'S'</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>, 
-      <span class="pl-atom"
->'K'</span>], 
-  [ [ assign,  A   , 'I'  ]]].&#13;&#10;
-A=[call(['S', 'K']), 'K'] :-
-    A='I'.
-<span class="ansi36"
->
-A=[call(['S', 'K']), 'K'] :-
-    A='I'.
-
-</span>
-;;; Test: Matching ((S K) $x) with double-sided unification
-   <span class="ansi1 ansi32"
->Call: </span>(105) [user] do_metta(file(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta'</span>), +, '&self', exec([assertEqualToResult, [['S', 'K'], _180306], ['I']]), _1086) ? 
-Script done on 2024-12-26 18:47:19+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-28 12:11:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m

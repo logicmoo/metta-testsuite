@@ -1,4 +1,4 @@
-!(pragma! compile False)
+; !(pragma! compile False)
 
 (: is-variable (-> Atom Bool))
 (= (is-variable $x) (== (get-metatype $x) Variable))

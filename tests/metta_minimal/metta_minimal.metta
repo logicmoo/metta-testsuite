@@ -29,7 +29,7 @@
 (= (subst $atom $var $templ)
   (unify $atom $var $templ
     (Error (subst $atom $var $templ)
-      \"subst expects a variable as a second argument\") ))
+      "subst expects a variable as a second argument") ))
 
 (= (reduce $atom $var $templ)
   (chain (eval $atom) $res

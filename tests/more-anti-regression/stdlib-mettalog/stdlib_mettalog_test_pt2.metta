@@ -1,4 +1,9 @@
 
+(: assertEqualNoOrder (-> Atom Atom $t))
+(= (assertEqualNoOrder $eval $results)
+   (let ($es $rs) ((sort (eval $eval)) (sort $results))
+	  (assertEqual (quote $es) (quote $rs))))
+   
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -17,8 +22,8 @@
 ;; }
 
 ;; Converted:
-!(assertEqual (eval) ("Error" (eval) "expected: (eval <atom>), found: (eval)"))
-!(assertEqual (eval a b) ("Error" (eval a b) "expected: (eval <atom>), found: (eval a b)"))
+!(assertEqual (eval) (Error (eval) "expected: (eval <atom>), found: (eval)"))
+!(assertEqual (eval a b) (Error (eval a b) "expected: (eval <atom>), found: (eval a b)"))
 
 ;; Original:
 ;; #[test]
@@ -242,7 +247,7 @@ $t
     (unify $b value
       (return ())
       (return (Error () "Unexpected error"))))))
-!(assertEqual (chain (eval (foo $a)) $_ $a) ("value"))
+!(assertEqual (chain (eval (foo $a)) $_ $a) (value))
 
 (= (bar) (function (return ())))
 (= (foo $b) (function
@@ -279,9 +284,9 @@ $t
 ;; }
 
 ;; Converted:
-!(assertEqual (chain n $v t o) ("Error" (chain n v t o) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n $v t o)"))
-!(assertEqual (chain n v t) ("Error" (chain n v t) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n v t)"))
-!(assertEqual (chain n $v) ("Error" (chain n v) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n $v)"))
+!(assertEqual (chain n $v t o) (Error (chain n v t o) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n $v t o)"))
+!(assertEqual (chain n v t) (Error (chain n v t) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n v t)"))
+!(assertEqual (chain n $v) (Error (chain n v) "expected: (chain <nested> (: <var> Variable) <templ>), found: (chain n $v)"))
 
 ;; Original:
 ;; #[test]
@@ -380,8 +385,8 @@ $t
 ;; }
 
 ;; Converted:
-!(assertEqual (unify a p t e o) ("Error" (unify a p t e o) "expected: (unify <atom> <pattern> <then> <else>), found: (unify a p t e o)"))
-!(assertEqual (unify a p t) ("Error" (unify a p t) "expected: (unify <atom> <pattern> <then> <else>), found: (unify a p t)"))
+!(assertEqual (unify a p t e o) (Error (unify a p t e o) "expected: (unify <atom> <pattern> <then> <else>), found: (unify a p t e o)"))
+!(assertEqual (unify a p t) (Error (unify a p t) "expected: (unify <atom> <pattern> <then> <else>), found: (unify a p t)"))
 
 ;; Original:
 ;; #[test]
@@ -415,9 +420,9 @@ $t
 ;; }
 
 ;; Converted:
-!(assertEqual (decons-atom a) ("Error" (decons-atom a) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom a)"))
-!(assertEqual (decons-atom (a) (b)) ("Error" (decons-atom (a) (b)) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom (a) (b))"))
-!(assertEqual (decons-atom) ("Error" (decons-atom) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom)"))
+!(assertEqual (decons-atom a) (Error (decons-atom a) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom a)"))
+!(assertEqual (decons-atom (a) (b)) (Error (decons-atom (a) (b)) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom (a) (b))"))
+!(assertEqual (decons-atom) (Error (decons-atom) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom)"))
 
 ;; Original:
 ;; #[test]
@@ -427,7 +432,7 @@ $t
 ;; }
 
 ;; Converted:
-!(assertEqual (decons-atom ()) ("Error" (decons-atom ()) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom ())"))
+!(assertEqual (decons-atom ()) (Error (decons-atom ()) "expected: (decons-atom (: <expr> Expression)), found: (decons-atom ())"))
 
 ;; Original:
 ;; #[test]
@@ -461,9 +466,9 @@ $t
 ;; }
 
 ;; Converted:
-!(assertEqual (cons-atom a (e) o) ("Error" (cons-atom a (e) o) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a (e) o)"))
-!(assertEqual (cons-atom a e) ("Error" (cons-atom a e) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a e)"))
-!(assertEqual (cons-atom a) ("Error" (cons-atom a) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a)"))
+!(assertEqual (cons-atom a (e) o) (Error (cons-atom a (e) o) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a (e) o)"))
+!(assertEqual (cons-atom a e) (Error (cons-atom a e) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a e)"))
+!(assertEqual (cons-atom a) (Error (cons-atom a) "expected: (cons-atom <head> (: <tail> Expression)), found: (cons-atom a)"))
 
 ;; Original:
 ;; #[test]
@@ -689,8 +694,8 @@ $t
 ;;            Ok(vec![expr!(x "A")]));
 ;;    }
 ;; Converted:
-(let space (new-space))
-!(assertEqual (case! space (x "A") (((x x)))) (x "A"))
+!(bind! space (new-space))
+!(assertEqual (case (x A) (((x x)))) (x A))
 
 
 ;;    fn assert_runtime_error(actual: Result<Vec<Atom>, ExecError>, expected: Regex) {
@@ -701,7 +706,7 @@ $t
 ;;        }
 ;;    }
 ;; Converted:
-(let assert-runtime-error (actual expected)
+!(bind! assert-runtime-error (actual expected)
   (match actual
     (Err (ExecError::Runtime msg)) (assert (expected.is_match msg))
     _ (assert false)))
@@ -730,18 +735,18 @@ $t
 ;;        assert_runtime_error(actual, expected);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A B))
 (= (foo) (B C))
 (= (bar) (B C))
 (= (bar) (A B))
 (= (err) (A B))
-!(assertEqual (assert-equal! space ("foo") ("bar")) (unit-result))
-(let actual (assert-equal! space ("foo") ("err")))
-(let expected (Regex::new "\nExpected: \\[(A B)\\]\nGot: \\[\\((B C)|, |(A B)\\){3}\\]\nExcessive result: (B C)"))
+!(assertEqual (assertEqual (foo) (bar)) ())
+!(bind! actual (assertEqual (foo) (err)))
+!(bind! expected (Regex::new "\nExpected: \\[(A B)\\]\nGot: \\[\\((B C)|, |(A B)\\){3}\\]\nExcessive result: (B C)"))
 !(assert-runtime-error actual expected)
-(let actual (assert-equal! space ("err") ("foo")))
-(let expected (Regex::new "\nExpected: \\[\\((B C)|, |(A B)\\){3}\\]\nGot: \\[(A B)\\]\nMissed result: (B C)"))
+!(bind! actual (assertEqual (err) (foo)))
+!(bind! expected (Regex::new "\nExpected: \\[\\((B C)|, |(A B)\\){3}\\]\nGot: \\[(A B)\\]\nMissed result: (B C)"))
 !(assert-runtime-error actual expected)
 
 
@@ -758,10 +763,10 @@ $t
 ;;                unit_result());
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A B))
 (= (foo) (B C))
-!(assertEqual (assert-equal-to-result! space ("foo") (("B" "C") ("A" "B"))) (unit-result))
+!(assertEqual (assert-equal-to-result (foo) ((B C) (A B))) (unit-result))
 
 
 ;;    #[test]
@@ -779,10 +784,10 @@ $t
 ;;            vec![expr!("B" "C"), expr!("A" "B")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A B))
 (= (foo) (B C))
-(let actual (collapse! space ("foo")))
+!(bind! actual (collapse (foo)))
 !(assertEqual (length actual) 1)
 !(assertEqualNoOrder (children (first actual)) ((B C) (A B)))
 
@@ -795,8 +800,8 @@ $t
 ;;            Ok(vec![sym!("A"), expr!("B" "C")]));
 ;;    }
 ;; Converted:
-(let space (new-space))
-!(assertEqual (superpose! space ("A" ("B" "C"))) (("A") ("B" "C")))
+!(bind! space (new-space))
+!(assertEqual (superpose (A (B C))) ((A) (B C)))
 
 
 ;;    #[test]
@@ -815,14 +820,14 @@ $t
 ;;                   vec![expr!("A" ("B" "C")), expr!("f" "g"), expr!("Z")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A (B C)))
 (= (foo) (A (B C)))
 (= (foo) (f g))
 (= (foo) (f g))
 (= (foo) (f g))
 (= (foo) Z)
-(let actual (unique! space ("foo")))
+!(bind! actual (unique (foo)))
 !(assertEqualNoOrder actual ((A (B C)) (f g) (Z)))
 
 
@@ -847,7 +852,7 @@ $t
 ;;                        expr!("A" ("B" "C")), expr!("p"), expr!("p"), expr!("Q" "a")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A (B C)))
 (= (foo) (A (B C)))
 (= (foo) (f g))
@@ -858,7 +863,7 @@ $t
 (= (bar) p)
 (= (bar) p)
 (= (bar) (Q a))
-(let actual (union! space ("foo") ("bar")))
+!(bind! actual (union (foo) (bar)))
 !(assertEqualNoOrder actual ((A (B C)) (A (B C)) (f g) (f g) (f g) (Z) (A (B C)) (p) (p) (Q a)))
 
 
@@ -896,7 +901,7 @@ $t
 ;;                   vec![expr!("5"), expr!("3")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) Z)
 (= (foo) (A (B C)))
 (= (foo) (A (B C)))
@@ -917,9 +922,9 @@ $t
 (= (nsl) 2)
 (= (nsr) 5)
 (= (nsr) 3)
-(let actual (intersection! space ("foo") ("bar")))
+!(bind! actual (intersection (foo) (bar)))
 !(assertEqualNoOrder actual ((A (B C)) (f g) (f g) (Z)))
-!(assertEqualNoOrder (intersection! space ("nsl") ("nsr")) (5 3))
+!(assertEqualNoOrder (intersection (nsl) (nsr)) (5 3))
 
 
 ;;    #[test]
@@ -950,7 +955,7 @@ $t
 ;;                   vec![expr!("A" ("B" "C")), expr!("f" "g"), expr!("f" "g"), expr!("P" "b")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) Z)
 (= (foo) S)
 (= (foo) S)
@@ -969,7 +974,7 @@ $t
 (= (bar) S)
 (= (bar) S)
 (= (bar) S)
-(let actual (subtraction! space ("foo") ("bar")))
+!(bind! actual (subtraction (foo) (bar)))
 !(assertEqualNoOrder actual ((A (B C)) (f g) (f g) (P b)))
 
 
@@ -981,8 +986,8 @@ $t
 ;;            {Number::Integer(1)})));
 ;;    }
 ;; Converted:
-(let space (new-space))
-!(assert (validate-atom space (sum! (superpose! space (1 2 3)) 1)))
+!(bind! space (new-space))
+!(assert (validate-atom space (sum! (superpose (1 2 3)) 1)))
 
 
 ;;    #[test]
@@ -1015,7 +1020,7 @@ $t
 ;;            (= (f) A)
 ;;            (= (f) B)
 ;;
-;;            !(let $x (collapse (f)) (superpose $x))
+;;            !!(bind! $x (collapse (f)) (superpose $x))
 ;;        ");
 ;;
 ;;        assert_eq_metta_results!(metta.run(parser),
@@ -1024,7 +1029,7 @@ $t
 ;; Converted:
 (= (f) A)
 (= (f) B)
-!(assertEqualToResult (let $x (collapse (f)) (superpose $x)) (A B))
+!(assertEqualToResult !(bind! $x (collapse (f)) (superpose $x)) (A B))
 
 
 ;;    #[test]
@@ -1049,7 +1054,7 @@ $t
 (= (f $x) $x)
 (: a A)
 (: b B)
-!(assertEqual (superpose ((f (superpose ())) (f a) (f b))) (Error (f (superpose ())) "NoValidAlternatives") (a) (Error b "BadType"))
+!(assertEqual (superpose ((f (superpose ())) (f a) (f b))) (Error (f (superpose ())) NoValidAlternatives) (a) (Error b BadType))
 
 
 ;;    #[test]
@@ -1066,12 +1071,12 @@ $t
 ;;            vec![sym!("B"), sym!("C")]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (: B Type)
 (: C Type)
 (: A B)
 (: A C)
-!(assertEqualNoOrder (get-type! space A) (B C))
+!(assertEqualNoOrder (get-type A) (B C))
 
 
 
@@ -1090,12 +1095,12 @@ $t
 ;;            Vec::<Atom>::new());
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (: f (-> Number String))
 (: 42 Number)
-(: "test" String)
-!(assertEqualNoOrder (get-type! space ("f" 42)) ("String"))
-!(assertEqualNoOrder (get-type! space ("f" "test")) ())
+(: test String)
+!(assertEqualNoOrder (get-type (f 42)) (String))
+!(assertEqualNoOrder (get-type (f test)) ())
 
 
 ;;    #[test]
@@ -1108,9 +1113,9 @@ $t
 ;;        assert_eq_no_order!(space_atoms, vec![expr!(("foo" "bar"))]);
 ;;    }
 ;; Converted:
-(let space (new-space))
-(add-atom space (foo bar))
-!(assertEqualNoOrder (get-atoms space) ((foo bar)))
+!(bind! space (new-space))
+(add-atom space (superpose (foo bar)))
+!(assertEqualNoOrder (get-atoms space) (foo bar))
 
 
 ;;    #[test]
@@ -1127,7 +1132,7 @@ $t
 ;;        assert_eq_no_order!(space_atoms, vec![expr!(("bar" "foo"))]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (add-atom space (foo bar))
 (add-atom space (bar foo))
 (remove-atom space (foo bar))
@@ -1147,7 +1152,7 @@ $t
 ;;        assert_eq_no_order!(res, vec![expr!(("foo" "bar")), expr!(("bar" "foo"))]);
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (add-atom space (foo bar))
 (add-atom space (bar foo))
 !(assertEqualNoOrder (get-atoms space) ((foo bar) (bar foo)))
@@ -1159,7 +1164,7 @@ $t
 ;;        assert_eq!(res, vec![expr!("A" "C")]);
 ;;    }
 ;; Converted:
-!(assertEqual (car-atom (("A" "C") "B")) ("A" "C"))
+!(assertEqual (car-atom ((A C) B)) (A C))
 
 
 ;;    #[test]
@@ -1172,8 +1177,8 @@ $t
 ;;        assert_eq!(res, Err(ExecError::Runtime("cdr-atom expects non-empty expression".into())));
 ;;    }
 ;; Converted:
-!(assertEqual (cdr-atom (("A"))) ())
-!(assertEqual (cdr-atom (("A" "C") ("D" "E") "B")) (("D" "E") "B"))
+!(assertEqual (cdr-atom ((A))) ())
+!(assertEqual (cdr-atom ((A C) (D E) B)) ((D E) B))
 !(assertEqual (cdr-atom ()) (error "cdr-atom expects non-empty expression"))
 
 
@@ -1185,8 +1190,8 @@ $t
 ;;        assert_eq!(res, vec![expr!(("A" "F") ("B" "C") "D")]);
 ;;    }
 ;; Converted:
-!(assertEqual (cons-atom ("A") ()) (("A")))
-!(assertEqual (cons-atom ("A" "F") (("B" "C") "D")) (("A" "F") ("B" "C") "D"))
+!(assertEqual (cons-atom (A) ()) ((A)))
+!(assertEqual (cons-atom (A F) ((B C) D)) ((A F) (B C) D))
 
 
 ;;    #[test]
@@ -1202,7 +1207,7 @@ $t
 ;;        assert_eq!(constr.unwrap()("&my"), Ok(sym!("definition")));
 ;;    }
 ;; Converted:
-(let &my definition)
+!(bind! &my definition)
 !(assertEqual (&my) definition)
 
 
@@ -1222,10 +1227,10 @@ $t
 ;;            Ok(vec![Atom::sym("D")]));
 ;;    }
 ;; Converted:
-(let space (new-space))
+!(bind! space (new-space))
 (= (foo) (A B))
-!(assertEqual (case! space ("foo") (((n "B") n) ("Empty" "D"))) "A")
-!(assertEqual (case! space (match! space ("B" "C") ("C" "B")) (((n "C") n) ("Empty" "D"))) "D")
+!(assertEqual (case (foo) (((n B) n) (Empty D))) A)
+!(assertEqual (case (match (B C) (C B)) (((n C) n) (Empty D))) D)
 
 
 ;;    #[test]
@@ -1239,7 +1244,7 @@ $t
 ;;            Ok(vec![expr!(ext "A")]));
 ;;    }
 ;; Converted:
-(let space (new-space))
-!(assertEqual (case! space ext (((t t)))) ext)
-!(assertEqual (case! space (ext "A") (((t t)))) (ext "A"))
+!(bind! space (new-space))
+!(assertEqual (case ext (((t t)))) ext)
+!(assertEqual (case (ext A) (((t t)))) (ext A))
 

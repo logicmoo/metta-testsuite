@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2024-12-30 22:31:47+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         {set_debug transpiler false}
+
+P;HTML|
+;          {set_debug overtime 4.0}
+
+P;HTML|
+;          {set_debug overflow 1000}
+
+P;HTML|
+;          {set_debug eval false}
+
+P;HTML|
+;          {set_debug load silent}
+
+P;HTML|
+;          {set_debug trace-on-load false}
+
+P;HTML|
+;          {set_debug exec false}
+
+P;HTML|
+;          {set_debug error non-type}
+
+P;HTML|
+;          {set_debug fail false}
+
+P;HTML|
+;          {set_debug test true}
+
+P;HTML|
+;         {set_debug test false}
+
+P;HTML|
+;         {set_debug fail false}
+
+P;HTML|
+;         {set_debug load false}
+
+; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta} }
+;;; Test File: Backward Chaining on Lambda Abstraction in MeTTa
+;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/556
+;;; Issue Overview:
+;;; The MeTTa interpreter previously crashed when performing backward chaining on lambda abstraction.
+;;; This test reproduces the original conditions to validate that the issue is resolved.
+;;; Example 1: Knowledge Base Setup
+;;; --------------------------------
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Add successor function
+<span class="ansi38-013099040"
+>!(add-atom &kb (: S (-> (: $x Nat) Nat)))
+
+</span><span class="ansi38-255165000"
+> (: S (-> (: $x Nat) Nat))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Add a generic variable
+<span class="ansi38-013099040"
+>!(add-atom &kb (: $x Var))
+
+</span><span class="ansi38-255165000"
+> (: $x Var)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Add lambda abstraction
+<span class="ansi38-013099040"
+>!(add-atom &kb (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b)))))
+
+</span><span class="ansi38-255165000"
+> (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Example 2: Backward Chainer Definitions
+;;; ---------------------------------------
+;;; Base case: Query the knowledge base for a rule or fact
+<span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $_58042)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;; Recursive step: Recurse on proof abstraction and argument
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> 
+            (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span>;;; Example 3: Tests
+;;; ----------------
+;;; Test: Prove unary functions over natural numbers with depth 2
+<span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01"
+>;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
+; 
+; EVAL TEST
+; took 0.008 secs. (7.72 milliseconds) 
+
+!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
+
+<span class="ansi31"
+>  {loonit_failureR 
+    {equal_enough_for_test 
+      ( (: S 
+          (-> 
+            (: $k Nat) Nat))) ()}}
+</span>
+Deterministic: <span class="ansi33"
+>({Error {got ((: S (-> (: $k Nat) Nat)))} {expected ()}})
+</span>;;; Explanation:
+;;; The backward chainer should not crash and return an empty result when the depth is 2.
+;;; Test: Prove unary functions over natural numbers with depth 5
+<span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S (S (S (S Z)))))) ())
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02"
+>;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
+
+Script done on 2024-12-30 22:32:27+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta" --halt=true\033[0m

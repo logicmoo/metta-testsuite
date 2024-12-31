@@ -32,47 +32,47 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:05:37+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:24:08+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         {set_debug transpiler false}
+;         [set_debug transpiler false]
 
 P;HTML|
-;          {set_debug overtime 4.0}
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          {set_debug overflow 1000}
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          {set_debug eval false}
+;          [set_debug eval false]
 
 P;HTML|
-;          {set_debug load silent}
+;          [set_debug load silent]
 
 P;HTML|
-;          {set_debug trace-on-load false}
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          {set_debug exec false}
+;          [set_debug exec false]
 
 P;HTML|
-;          {set_debug error non-type}
+;          [set_debug error non-type]
 
 P;HTML|
-;          {set_debug fail false}
+;          [set_debug fail false]
 
 P;HTML|
-;          {set_debug test true}
+;          [set_debug test true]
 
 P;HTML|
-;         {set_debug test false}
+;         [set_debug test false]
 
 P;HTML|
-;         {set_debug fail false}
+;         [set_debug fail false]
 
 P;HTML|
-;         {set_debug load false}
+;         [set_debug load false]
 
-; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta} }
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] ]
 ;;;; Test basic subtraction functionality
 ;;;; This checks that subtracting (b c) from (a b c d) correctly returns (a d).
 <span class="ansi38-013099040"
@@ -83,15 +83,15 @@ Script started on 2024-12-31 15:05:37+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.049 secs. (49.31 milliseconds) 
+; took 0.049 secs. (48.70 milliseconds) 
 
 !(assertEqual (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (a d)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a d) 
-      (a d)}}
+      (a d)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -105,15 +105,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.46 milliseconds) 
+; took 0.001 secs. (1.36 milliseconds) 
 
 !(assertEqual (subtraction (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose (a)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a) 
-      (a)}}
+      (a)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -127,15 +127,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.71 milliseconds) 
+; took 0.005 secs. (4.51 milliseconds) 
 
 !(assertEqual (subtraction (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((foo bar))))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ( (foo bar)) 
-      ( (foo bar))}}
+      ( (foo bar))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -149,15 +149,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.28 milliseconds) 
+; took 0.001 secs. (1.19 milliseconds) 
 
 !(assertEqual (subtraction (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (1 3 bar)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (1 3 bar) 
-      (1 3 bar)}}
+      (1 3 bar)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -171,15 +171,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.18 milliseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a d) 
-      (a d)}}
+      (a d)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -193,15 +193,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.02 milliseconds) 
+; took 0.001 secs. (1.00 milliseconds) 
 
 !(assertEqual (unique (subtraction (superpose (a b b c)) (superpose (b c c d)))) (superpose (a)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a) 
-      (a)}}
+      (a)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -215,15 +215,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.18 milliseconds) 
+; took 0.000976 secs. (975.79 microseconds) 
 
 !(assertEqual (subtraction (unique (superpose (a b b c))) (unique (superpose (b c c d)))) (superpose (a)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a) 
-      (a)}}
+      (a)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -237,15 +237,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000772 secs. (771.75 microseconds) 
+; took 0.000733 secs. (733.10 microseconds) 
 
 !(assertEqual (subtraction (superpose ($x $y)) (superpose (b))) (superpose ($x $y)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ($x $y) 
-      ($x $y)}}
+      ($x $y)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -259,15 +259,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000866 secs. (865.90 microseconds) 
+; took 0.000782 secs. (781.72 microseconds) 
 
 !(assertEqual (subtraction (superpose (a b c)) (superpose ())) (superpose (a b c)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (a b c) 
-      (a b c)}}
+      (a b c)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -281,15 +281,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.55 milliseconds) 
+; took 0.004 secs. (4.30 milliseconds) 
 
 !(assertEqual (subtraction (superpose ((foo $x) (bar $y))) (superpose ((bar $y) (foo qux)))) (superpose ((foo $x))))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ( (foo $x)) 
-      ( (foo $x))}}
+      ( (foo $x))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -313,9 +313,9 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 <span class="ansi31"
->{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
+>[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:05:46+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-31 15:24:16+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

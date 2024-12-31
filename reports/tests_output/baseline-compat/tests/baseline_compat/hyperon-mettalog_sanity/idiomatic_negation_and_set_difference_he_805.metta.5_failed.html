@@ -40,47 +40,47 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 14:57:41+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:16:16+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         {set_debug transpiler false}
+;         [set_debug transpiler false]
 
 P;HTML|
-;          {set_debug overtime 4.0}
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          {set_debug overflow 1000}
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          {set_debug eval false}
+;          [set_debug eval false]
 
 P;HTML|
-;          {set_debug load silent}
+;          [set_debug load silent]
 
 P;HTML|
-;          {set_debug trace-on-load false}
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          {set_debug exec false}
+;          [set_debug exec false]
 
 P;HTML|
-;          {set_debug error non-type}
+;          [set_debug error non-type]
 
 P;HTML|
-;          {set_debug fail false}
+;          [set_debug fail false]
 
 P;HTML|
-;          {set_debug test true}
+;          [set_debug test true]
 
 P;HTML|
-;         {set_debug test false}
+;         [set_debug test false]
 
 P;HTML|
-;         {set_debug fail false}
+;         [set_debug fail false]
 
 P;HTML|
-;         {set_debug load false}
+;         [set_debug load false]
 
-; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta} }
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta] ]
 ;;; Test File: Idiomatic Negation and Set Difference in MeTTa
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/805
 ;;; Create a new space for testing
@@ -111,17 +111,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000259 secs. (258.75 microseconds) 
+; took 0.000222 secs. (221.97 microseconds) 
 
 !(assertEqualToResult (match &test-space (friend bob $f) (match &test-space (carpenter $f) $f)) (larry))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test () 
-      (larry)}}
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (larry)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ()} {expected (larry)}})
+>([Error [got ()] [expected (larry)]])
 </span>;;; Example 2: Friend of Bob AND NOT a Carpenter
 ;;; --------------------------------------------
 ;;; Test: Friend of Bob AND NOT a carpenter
@@ -133,17 +133,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000378 secs. (377.64 microseconds) 
+; took 0.000275 secs. (275.11 microseconds) 
 
 !(assertEqualToResult (unify &test-space (friend bob $f) (unify &test-space (carpenter $f) (empty) $f) (empty)) (mike))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test () 
-      (mike)}}
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (mike)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ()} {expected (mike)}})
+>([Error [got ()] [expected (mike)]])
 </span>;;; Example 3: Mammals That ARE NOT Pets
 ;;; ------------------------------------
 <span class="ansi38-255165000"
@@ -171,17 +171,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000355 secs. (355.33 microseconds) 
+; took 0.000262 secs. (262.14 microseconds) 
 
 !(assertEqualToResult (unify &test-space (mammal $m) (unify &test-space (pet $m) (empty) $m) (empty)) (tiger))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test () 
-      (tiger)}}
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (tiger)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ()} {expected (tiger)}})
+>([Error [got ()] [expected (tiger)]])
 </span>;;; Example 4: OR/Union Query
 ;;; -------------------------
 ;;; Test: Mammals OR Birds
@@ -193,17 +193,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000749 secs. (748.85 microseconds) 
+; took 0.000658 secs. (657.63 microseconds) 
 
 !(assertEqualToResult (superpose ((unify &test-space (mammal $m) $m (empty)) (unify &test-space (bird $b) $b (empty)))) (tiger cat dog vulture parrot))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test () 
-      (tiger cat dog vulture parrot)}}
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (tiger cat dog vulture parrot)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ()} {expected (tiger cat dog vulture parrot)}})
+>([Error [got ()] [expected (tiger cat dog vulture parrot)]])
 </span>;;; Example 5: Everything EXCEPT Pets
 ;;; ---------------------------------
 ;;; Test: Returns anything that is NOT a pet
@@ -215,17 +215,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000363 secs. (362.72 microseconds) 
+; took 0.000260 secs. (259.87 microseconds) 
 
 !(assertEqualToResult (unify &test-space ($p $s) (unify &test-space (pet $s) (empty) $s) (empty)) (tiger vulture))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test () 
-      (tiger vulture)}}
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (tiger vulture)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ()} {expected (tiger vulture)}})
+>([Error [got ()] [expected (tiger vulture)]])
 </span><span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -236,15 +236,15 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[({Error {got ()} {expected (larry)}})]
-[({Error {got ()} {expected (mike)}})]
-[({Error {got ()} {expected (tiger)}})]
-[({Error {got ()} {expected (tiger cat dog vulture parrot)}})]
-[({Error {got ()} {expected (tiger vulture)}})]
+[([Error [got ()] [expected (larry)]])]
+[([Error [got ()] [expected (mike)]])]
+[([Error [got ()] [expected (tiger)]])]
+[([Error [got ()] [expected (tiger cat dog vulture parrot)]])]
+[([Error [got ()] [expected (tiger vulture)]])]
 <span class="ansi31"
->{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
+>[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 14:57:50+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-31 15:16:24+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -30,47 +30,47 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 14:54:20+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:12:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         {set_debug transpiler false}
+;         [set_debug transpiler false]
 
 P;HTML|
-;          {set_debug overtime 4.0}
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          {set_debug overflow 1000}
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          {set_debug eval false}
+;          [set_debug eval false]
 
 P;HTML|
-;          {set_debug load silent}
+;          [set_debug load silent]
 
 P;HTML|
-;          {set_debug trace-on-load false}
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          {set_debug exec false}
+;          [set_debug exec false]
 
 P;HTML|
-;          {set_debug error non-type}
+;          [set_debug error non-type]
 
 P;HTML|
-;          {set_debug fail false}
+;          [set_debug fail false]
 
 P;HTML|
-;          {set_debug test true}
+;          [set_debug test true]
 
 P;HTML|
-;         {set_debug test false}
+;         [set_debug test false]
 
 P;HTML|
-;         {set_debug fail false}
+;         [set_debug fail false]
 
 P;HTML|
-;         {set_debug load false}
+;         [set_debug load false]
 
-; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta} }
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/compile_tests_mw.metta] ]
 ;;;; define foo
 <span class="ansi38-255165000"
 > (: foo (-> Number Number))
@@ -85,15 +85,15 @@ Script started on 2024-12-31 14:54:20+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000843 secs. (842.76 microseconds) 
+; took 0.000780 secs. (779.88 microseconds) 
 
 !(assertEqualToResult (foo 1) (2))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (2) 
-      (2)}}
+      (2)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -105,15 +105,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000604 secs. (603.73 microseconds) 
+; took 0.000535 secs. (535.09 microseconds) 
 
 !(assertEqualToResult (foo 2) (3))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (3) 
-      (3)}}
+      (3)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -125,18 +125,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000309 secs. (308.92 microseconds) 
+; took 0.000275 secs. (275.01 microseconds) 
 
 !(assertEqualToResult (get-type foo) (-> Number Number))
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test 
+>  [loonit_failureR 
+    [equal_enough_for_test 
       ( (-> Number Number)) 
-      (-> Number Number)}}
+      (-> Number Number)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ((-> Number Number))} {expected (-> Number Number)}})
+>([Error [got ((-> Number Number))] [expected (-> Number Number)]])
 </span>;;;; foo compiles successfully
 <span class="ansi38-013099040"
 >!(assertEqualToResult (compile! foo) (()))
@@ -145,7 +145,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.COMPILE-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.COMPILE-TESTS.04</h3>
 
-{ = {error {existence_error procedure { / compile_metta_defn 6 }} {context { : $apply { / forall 2 } } $Context_Kw}} {compile! foo} }
+[ = [error [existence_error procedure [ / compile_metta_defn 6 ]] [context [ : $apply [ / forall 2 ] ] $Context_Kw]] [compile! foo] ]
 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(175) [system] sig_atomic(rtrace:restart_rtrace)
@@ -1633,21 +1633,21 @@ Deterministic: <span class="ansi33"
 ^  <span class="ansi1 ansi32"
 >Call: </span>(192) [user] clause(user:do_compile('&self', foo, _67530), true, _950432)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(192) [user] clause(do_compile('&self', foo, _67530), true, <clause>(0x560bc089a590))
+>Exit: </span>(192) [user] clause(do_compile('&self', foo, _67530), true, <clause>(0x55c0ba6b2050))
    <span class="ansi1 ansi32"
->Call: </span>(192) [$syspreds] clause_property(<clause>(0x560bc089a590), module(user))
+>Call: </span>(192) [$syspreds] clause_property(<clause>(0x55c0ba6b2050), module(user))
    <span class="ansi1 ansi34"
->Unify: </span>(192) [$syspreds] clause_property(<clause>(0x560bc089a590), module(user))
+>Unify: </span>(192) [$syspreds] clause_property(<clause>(0x55c0ba6b2050), module(user))
    <span class="ansi1 ansi32"
->Exit: </span>(192) [$syspreds] clause_property(<clause>(0x560bc089a590), module(user))
+>Exit: </span>(192) [$syspreds] clause_property(<clause>(0x55c0ba6b2050), module(user))
 ^  <span class="ansi1 ansi32"
->Call: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x560bc089a590))
+>Call: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x55c0ba6b2050))
 ^  <span class="ansi1 ansi34"
->Unify: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x560bc089a590))
+>Unify: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x55c0ba6b2050))
 ^  <span class="ansi1 ansi32"
->Call: </span>(193) [user] clause(_957600, _957602, <clause>(0x560bc089a590))
+>Call: </span>(193) [user] clause(_957600, _957602, <clause>(0x55c0ba6b2050))
 ^  <span class="ansi1 ansi32"
->Exit: </span>(193) [user] clause(do_compile('&self', foo, _958636), true, <clause>(0x560bc089a590))
+>Exit: </span>(193) [user] clause(do_compile('&self', foo, _958636), true, <clause>(0x55c0ba6b2050))
 ^  <span class="ansi1 ansi32"
 >Call: </span>(193) [user] strip_m(do_compile('&self', foo, _958636), _959672)
 ^  <span class="ansi1 ansi34"
@@ -1669,7 +1669,7 @@ Deterministic: <span class="ansi33"
    <span class="ansi1 ansi32"
 >Exit: </span>(193) [system] cl(do_compile('&self', foo, _958636), true)=@=cl(do_compile('&self', foo, _67530), true)
 ^  <span class="ansi1 ansi32"
->Exit: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x560bc089a590))
+>Exit: </span>(192) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true, <clause>(0x55c0ba6b2050))
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(191) [user] is_asserted_exact(user, do_compile('&self', foo, _67530), true)
 ^  <span class="ansi1 ansi32"
@@ -4795,7 +4795,7 @@ Deterministic: <span class="ansi33"
 >'&lt;garbage_collected&gt;'</span></span>)</span>)]
 </span>   <span class="ansi1 ansi35"
 >Exception: </span>(179) [user] compile_metta_defn('&self', foo, _4030, [_4100], [+, _4100, 1], _4036) ? 
-Script done on 2024-12-31 14:55:00+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-31 15:13:35+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

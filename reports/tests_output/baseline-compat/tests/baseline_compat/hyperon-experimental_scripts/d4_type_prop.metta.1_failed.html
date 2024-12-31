@@ -70,47 +70,47 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 14:51:01+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:09:37+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         {set_debug transpiler false}
+;         [set_debug transpiler false]
 
 P;HTML|
-;          {set_debug overtime 4.0}
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          {set_debug overflow 1000}
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          {set_debug eval false}
+;          [set_debug eval false]
 
 P;HTML|
-;          {set_debug load silent}
+;          [set_debug load silent]
 
 P;HTML|
-;          {set_debug trace-on-load false}
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          {set_debug exec false}
+;          [set_debug exec false]
 
 P;HTML|
-;          {set_debug error non-type}
+;          [set_debug error non-type]
 
 P;HTML|
-;          {set_debug fail false}
+;          [set_debug fail false]
 
 P;HTML|
-;          {set_debug test true}
+;          [set_debug test true]
 
 P;HTML|
-;         {set_debug test false}
+;         [set_debug test false]
 
 P;HTML|
-;         {set_debug fail false}
+;         [set_debug fail false]
 
 P;HTML|
-;         {set_debug load false}
+;         [set_debug load false]
 
-; { : user {load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop.metta} }
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Types as propositions can be used in MeTTa but with nuances
@@ -138,15 +138,15 @@ Script started on 2024-12-31 14:51:01+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000574 secs. (574.33 microseconds) 
+; took 0.000409 secs. (409.25 microseconds) 
 
 !(assertEqual (get-type (Mortal Plato)) Type)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (Type) 
-      (Type)}}
+      (Type)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -177,15 +177,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.15 milliseconds) 
+; took 0.002 secs. (1.84 milliseconds) 
 
 !(assertEqual (get-type (HumansAreMortal SocratesIsHuman)) (Mortal Socrates))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ( (Mortal Socrates)) 
-      ( (Mortal Socrates))}}
+      ( (Mortal Socrates))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -198,14 +198,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000424 secs. (423.94 microseconds) 
+; took 0.000343 secs. (343.28 microseconds) 
 
 !(assertEqualToResult (get-type (HumansAreMortal (Human Socrates))) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
-      (()) ()}}
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -239,19 +239,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.61 milliseconds) 
+; took 0.005 secs. (4.50 milliseconds) 
 
 !(assertEqualToResult ("sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal SocratesIsHuman))) (("sameTypes" (Mortal Socrates) (Mortal Socrates))))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ( ("sameTypes" 
           (Mortal Socrates) 
           (Mortal Socrates))) 
       ( ("sameTypes" 
           (Mortal Socrates) 
-          (Mortal Socrates)))}}
+          (Mortal Socrates)))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -264,16 +264,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000763 secs. (762.66 microseconds) 
+; took 0.000616 secs. (615.79 microseconds) 
 
 !(assertEqual (get-type (= SocratesIsMortal  
   (HumansAreMortal SocratesIsHuman))) Type)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (Type) 
-      (Type)}}
+      (Type)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -295,16 +295,16 @@ N(1): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000775 secs. (775.14 microseconds) 
+; took 0.000799 secs. (798.97 microseconds) 
 
 !(assertEqual (get-type (= (Mortal Socrates)  
   (Mortal Plato))) Type)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (Type) 
-      (Type)}}
+      (Type)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -324,15 +324,15 @@ N(1): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000572 secs. (572.01 microseconds) 
+; took 0.000532 secs. (531.66 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsMortal  
   (HumansAreMortal PlatoIsHuman))) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
-      (()) ()}}
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -351,14 +351,14 @@ N(1): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000415 secs. (414.56 microseconds) 
+; took 0.000399 secs. (398.85 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman  PlatoIsHuman)) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
-      (()) ()}}
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -376,14 +376,14 @@ N(1): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000388 secs. (387.85 microseconds) 
+; took 0.000377 secs. (377.21 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman  SocratesIsMortal)) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
-      (()) ()}}
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -416,21 +416,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000715 secs. (715.09 microseconds) 
+; took 0.000599 secs. (599.07 microseconds) 
 
 !(assertEqual (= SocratesIsMortal  
   (HumansAreMortal SocratesIsHuman)) T)
 
 <span class="ansi31"
->  {loonit_failureR 
-    {equal_enough_for_test 
+>  [loonit_failureR 
+    [equal_enough_for_test 
       ( (= SocratesIsMortal  
           (HumansAreMortal SocratesIsHuman))) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ((= SocratesIsMortal  
-  (HumansAreMortal SocratesIsHuman)))} {expected (T)}})
+>([Error [got ((= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)))] [expected (T)]])
 </span><span class="ansi38-013099040"
 >!(assertEqual (= (+ 1 1)  
   (- 3 1)) T)
@@ -440,16 +440,16 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.57 milliseconds) 
+; took 0.001 secs. (1.42 milliseconds) 
 
 !(assertEqual (= (+ 1 1)  
   (- 3 1)) T)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (T) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -466,15 +466,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000931 secs. (931.27 microseconds) 
+; took 0.000810 secs. (809.91 microseconds) 
 
 !(assertEqual (= (Mortal Socrates)  T) T)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (T) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -487,13 +487,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000922 secs. (922.06 microseconds) 
+; took 0.000743 secs. (742.56 microseconds) 
 
 !(assertEqualToResult (= (Mortal Plato)  T) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test () ()}}
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -512,15 +512,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.14</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.75 milliseconds) 
+; took 0.002 secs. (1.59 milliseconds) 
 
 !(assertEqual (= (Mortal Plato)  T) T)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (T) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -534,13 +534,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000887 secs. (886.89 microseconds) 
+; took 0.000853 secs. (852.98 microseconds) 
 
 !(assertEqualToResult (= (Human Sam)  T) ())
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test () ()}}
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -556,15 +556,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000920 secs. (919.62 microseconds) 
+; took 0.000818 secs. (818.32 microseconds) 
 
 !(assertEqualToResult (Mortal Plato) ((Mortal Plato)))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       ( (Mortal Plato)) 
-      ( (Mortal Plato))}}
+      ( (Mortal Plato))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -577,15 +577,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.17</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.55 milliseconds) 
+; took 0.001 secs. (1.34 milliseconds) 
 
 !(assertEqual (= (= $x  $x)  T) T)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (T) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -607,15 +607,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000785 secs. (784.99 microseconds) 
+; took 0.000679 secs. (678.71 microseconds) 
 
 !(assertEqual (Mortal Plato) T)
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (T) 
-      (T)}}
+      (T)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -632,15 +632,15 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP.19</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
 !(assertEqualToResult (ift (Mortal $x) $x) (Socrates Plato))
 
 <span class="ansi36"
->  {loonit_success 
-    {equal_enough_for_test 
+>  [loonit_success 
+    [equal_enough_for_test 
       (Socrates Plato) 
-      (Socrates Plato)}}
+      (Socrates Plato)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -666,8 +666,8 @@ Deterministic: <span class="ansi33"
 [()]
 [("!sameTypes" (Human Socrates) (Mortal Socrates))]
 [()]
-[({Error {got ((= SocratesIsMortal  
-  (HumansAreMortal SocratesIsHuman)))} {expected (T)}})]
+[([Error [got ((= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)))] [expected (T)]])]
 [()]
 [()]
 [()]
@@ -678,9 +678,9 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 <span class="ansi31"
->{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
+>[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 14:51:10+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-31 15:09:46+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

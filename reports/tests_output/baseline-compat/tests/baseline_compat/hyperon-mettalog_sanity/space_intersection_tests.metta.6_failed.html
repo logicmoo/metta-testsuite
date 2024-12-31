@@ -94,7 +94,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-30 22:37:51+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:04:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         {set_debug transpiler false}
 
@@ -205,7 +205,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.115 secs. (114.60 milliseconds) 
+; took 0.113 secs. (113.42 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space2)) (superpose ((= (foo $x $y)  
   (+ $x $y)) (foo 1 2) (foo (foo 1 2) 3))))
@@ -250,7 +250,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.30 milliseconds) 
+; took 0.018 secs. (18.02 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space3)) (superpose ()))
 
@@ -284,7 +284,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.036 secs. (36.21 milliseconds) 
+; took 0.036 secs. (36.11 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space4)) (superpose ((foo 1 2) (foo 3 4))))
 
@@ -320,14 +320,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.96 milliseconds) 
+; took 0.019 secs. (19.04 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space4) (get-atoms &space5)) (superpose ((foo $m $n))))
 
 <span class="ansi36"
 >  {loonit_success 
     {equal_enough_for_test 
-      ( (foo $_395252 $n)) 
+      ( (foo $_388172 $n)) 
       ( (foo $m $n))}}
 </span>
 Deterministic: <span class="ansi33"
@@ -356,7 +356,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.031 secs. (31.11 milliseconds) 
+; took 0.031 secs. (30.74 milliseconds) 
 
 !(assertEqual (pred-intersection unified (get-atoms &space4) (get-atoms &space6)) (superpose ((foo 7 7))))
 
@@ -367,11 +367,11 @@ Deterministic: <span class="ansi33"
           (foo 1 2) 3) 
         (foo 7 7) 
         (foo 
-          (foo $_550268 2) 3)) 
+          (foo $_539894 2) 3)) 
       ( (foo 7 7))}}
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $_550268 2) 3))} {expected ((foo 7 7))}})
+>({Error {got ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $_539894 2) 3))} {expected ((foo 7 7))}})
 </span>;;;; Test intersection with nested variables using alpha equivalency
 ;;;; This test checks the behavior when intersecting nested structures containing variables, treating equivalent variables as equal.
 <span class="ansi38-013099040"
@@ -396,7 +396,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.021 secs. (21.36 milliseconds) 
+; took 0.021 secs. (21.21 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space6) (get-atoms &space7)) (superpose ((foo (foo 1 2) 3))))
 
@@ -420,7 +420,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.022 secs. (22.41 milliseconds) 
+; took 0.023 secs. (22.59 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space7) (get-atoms &space6)) (superpose ((foo (foo 1 2) 3))))
 
@@ -471,18 +471,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.95 milliseconds) 
+; took 0.010 secs. (10.32 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space8) (get-atoms &space9)) (superpose ((foo 3 $c))))
 
 <span class="ansi31"
 >  {loonit_failureR 
     {equal_enough_for_test 
-      ( (foo $_868054 $_868060) (foo 3 $_868036)) 
+      ( (foo $_852832 $_852838) (foo 3 $_852814)) 
       ( (foo 3 $c))}}
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ((foo $_868054 $_868060) (foo 3 $_868036))} {expected ((foo 3 $c))}})
+>({Error {got ((foo $_852832 $_852838) (foo 3 $_852814))} {expected ((foo 3 $c))}})
 </span>;;;; Test intersection with strict variable identity to ensure non-matching variables are excluded
 ;;;; This test ensures that only exact variable names match and others are excluded.
 <span class="ansi38-013099040"
@@ -493,7 +493,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.021 secs. (21.26 milliseconds) 
+; took 0.021 secs. (21.42 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space1) (get-atoms &space8)) (superpose ()))
 
@@ -513,17 +513,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.75 milliseconds) 
+; took 0.012 secs. (11.86 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space4) (get-atoms &space8)) (superpose ()))
 
 <span class="ansi31"
 >  {loonit_failureR 
     {equal_enough_for_test 
-      ( (foo $_1002788 $_1002794)) ()}}
+      ( (foo $_984976 $_984982)) ()}}
 </span>
 Deterministic: <span class="ansi33"
->({Error {got ((foo $_1002788 $_1002794))} {expected ()}})
+>({Error {got ((foo $_984976 $_984982))} {expected ()}})
 </span>;;;; Test intersection between a fresh space and another space using alpha equivalency
 ;;;; This should return the common atom: (foo (foo 1 2) 3)
 <span class="ansi38-013099040"
@@ -548,7 +548,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.42 milliseconds) 
+; took 0.014 secs. (14.45 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space10) (get-atoms &space2)) (superpose ((foo (foo 1 2) 3))))
 
@@ -600,7 +600,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.70 milliseconds) 
+; took 0.003 secs. (2.85 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space11) (get-atoms &space12)) (superpose ((foo $x $x))))
 
@@ -637,7 +637,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (16.95 milliseconds) 
+; took 0.017 secs. (16.78 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space21) (superpose ((foo 1 2) (foo 7 8)))) (superpose ((foo 1 2))))
 
@@ -674,7 +674,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.35 milliseconds) 
+; took 0.016 secs. (15.55 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space22) (superpose ((foo 5 10) (foo 3 $z)))) (superpose ((foo 5 10) (foo 3 4))))
 
@@ -710,7 +710,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.01 milliseconds) 
+; took 0.012 secs. (12.09 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space23) (superpose ((foo $x $y) (foo 3 4)))) (superpose ((foo 3 4))))
 
@@ -747,7 +747,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.61 milliseconds) 
+; took 0.012 secs. (11.56 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space24) (superpose ((foo 7 7)))) (superpose ((foo 7 7))))
 
@@ -821,7 +821,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-INTERSECTION-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.29 milliseconds) 
+; took 0.013 secs. (13.44 milliseconds) 
 
 !(assertEqual (intersection (get-atoms &space26) (superpose ((foo (foo 1 2) 3)))) (superpose ((foo (foo 1 2) 3))))
 
@@ -860,7 +860,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[({Error {got ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $_550268 2) 3))} {expected ((foo 7 7))}})]
+[({Error {got ((foo (foo 1 2) 3) (foo 7 7) (foo (foo $_539894 2) 3))} {expected ((foo 7 7))}})]
 [()]
 [()]
 [({Error {got ((foo (foo 1 2) 3) (foo 7 7))} {expected ((foo (foo 1 2) 3))}})]
@@ -869,9 +869,9 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[({Error {got ((foo $_868054 $_868060) (foo 3 $_868036))} {expected ((foo 3 $c))}})]
+[({Error {got ((foo $_852832 $_852838) (foo 3 $_852814))} {expected ((foo 3 $c))}})]
 [()]
-[({Error {got ((foo $_1002788 $_1002794))} {expected ()}})]
+[({Error {got ((foo $_984976 $_984982))} {expected ()}})]
 [()]
 [()]
 [()]
@@ -901,10 +901,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
 </span>
-Script done on 2024-12-30 22:38:02+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-31 15:04:42+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/space_intersection_tests.metta" --halt=true\033[0m

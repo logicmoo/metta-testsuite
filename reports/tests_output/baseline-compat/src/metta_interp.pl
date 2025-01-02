@@ -382,149 +382,534 @@ user:file_search_path(mettalog,Dir):- metta_dir(Dir).
 :- multifile(metta_compiled_predicate/3).
 :- dynamic(metta_compiled_predicate/3).
 
+%!  once_writeq_nl(+P) is det.
+%
+%   Ensures that the given term `P` is printed exactly once in the current session.
+%
+%   This predicate prevents duplicate printing of the same term using a global
+%   non-backtrackable variable (`$once_writeq_ln`). It utilizes `numbervars/4`
+%   to standardize variable names for comparison and `ansi_format/3` to provide
+%   colored output.
+%
+%   @arg P The term to be printed. It will be printed once per invocation with
+%          `ansi_format` using cyan foreground text.
+%
+%   @example Print a term only once:
+%     ?- once_writeq_nl(foo(bar)).
+%     foo(bar).
+%
 
-once_writeq_nl(_):- \+ clause(pfcTraceExecution,true),!.
-once_writeq_nl(P):- nb_current('$once_writeq_ln',W),W=@=P,!.
-once_writeq_nl(P):-
- \+ \+ (numbervars(P,444,_,[attvar(skip),singletons(true)]),
- ansi_format([fg(cyan)],'~N~q.~n',[P])),nb_setval('$once_writeq_ln',P),!.
-% TODO uncomment this next line but it is breaking the curried chainer
+once_writeq_nl(_) :-
+    % If the predicate `pfcTraceExecution` is not defined, succeed immediately.
+    \+ clause(pfcTraceExecution, true), !.
+once_writeq_nl(P) :-
+    % If `$once_writeq_ln` is already set to the current term `P`, succeed silently.
+    nb_current('$once_writeq_ln', W),
+    W=@=P,!.
+once_writeq_nl(P):- once_writeq_nl_now(P).
+once_writeq_nl_now(P) :-
+    % Standardize variable names in `P` and print it using `ansi_format`.
+    % Use `nb_setval` to store the printed term in `$once_writeq_ln`.
+    \+ \+ (must_det_ll((numbervars(P, 444, _, [attvar(skip), singletons(true)]),
+           src_vars(P,PP),
+           with_output_to(user_error,ansi_format([fg(cyan)], '~N~q.~n', [PP]))))),
+    nb_setval('$once_writeq_ln', P),!.
+
+%!  pfcAdd_Now(+P) is det.
+%
+%   Adds a clause or fact `P` to the database using `pfcAdd/1` or `assert/1`.
+%
+%   This predicate checks whether the predicate `pfcAdd/1` exists in the database.
+%   If it exists, it calls `pfcAdd/1` after printing the term using `once_writeq_nl`.
+%   If not, it defaults to using `assert/1` after printing the term.
+%
+%   @arg P The clause or fact to be added to the database.
+%
+%   @example Add a fact to the database:
+%     ?- pfcAdd_Now(foo(bar)).
+%     foo(bar).
+%
+%   @see once_writeq_nl/1
+%
+
+% TODO: Uncomment the following line if the `pfcAdd` predicate is stable and
+%       does not interfere with the curried chainer logic.
 % pfcAdd_Now(P):- pfcAdd(P),!.
-pfcAdd_Now(P):- current_predicate(pfcAdd/1),!, once_writeq_nl(pfcAdd(P)),pfcAdd(P).
-pfcAdd_Now(P):- once_writeq_nl(asssert(P)),assert(P).
+pfcAdd_Now(P) :-
+    % If `pfcAdd/1` is defined, print the term using `once_writeq_nl` and call `pfcAdd/1`.
+    current_predicate(pfcAdd/1),!,
+    once_writeq_nl(pfcAdd(P)),
+    pfcAdd(P).
+pfcAdd_Now(P) :-
+    % If `pfcAdd/1` is not defined, print the term using `once_writeq_nl` and assert it.
+    once_writeq_nl(assssssssssssssert(P)),
+    assert(P).
 %:- endif.
 
-system:copy_term_g(I,O):- ground(I),!,I=O.
-system:copy_term_g(I,O):- copy_term(I,O).
+%!  system:copy_term_g(+I, -O) is det.
+%
+%   Optimized version of `copy_term/2` for ground terms.
+%
+%   If `I` is ground, it unifies `I` directly with `O`. Otherwise, it behaves
+%   like `copy_term/2`, creating a fresh copy of `I`.
+%
+%   @arg I The input term (ground or non-ground).
+%   @arg O The output term, a copy of `I`.
+%
+system:copy_term_g(I, O) :-
+    % Directly unify if the input is ground.
+    ground(I),!,I = O.
+system:copy_term_g(I, O) :-
+    % Otherwise, use `copy_term/2`.
+    copy_term(I, O).
 
 :- ensure_loaded(metta_debug).
 
-is_metta_flag(What):- notrace(is_flag0(What)).
+%!  is_metta_flag(+What) is nondet.
+%
+%   Checks if a specific flag `What` is enabled in the current configuration.
+%
+%   This predicate uses `is_flag0/1` to verify the status of the given flag,
+%   while suppressing tracing for performance reasons.
+%
+%   @arg What The name of the flag to check.
+%
+is_metta_flag(What) :-
+    % Check the flag without enabling tracing.
+    notrace(is_flag0(What)).
 
 true_flag.
-false_flag:- fail.
+false_flag :- fail.
 
-is_tRuE(TF):- TF=='True',!.
-is_tRuE(TF):- TF=='true',!.
-is_fAlSe(TF):- TF=='False',!.
-is_fAlSe(TF):- TF=='false',!.
-is_flag0(What):- nb_current(What,TF),is_tRuE(TF), !.
-is_flag0(What):- nb_current(What,TF),is_fAlSe(TF), !, fail.
-is_flag0(What):- current_prolog_flag(What,TF),is_tRuE(TF),!.
-is_flag0(What):- current_prolog_flag(What,TF),is_fAlSe(TF),!.
-is_flag0(What):-
- symbol_concat('--',What,FWhat),symbol_concat(FWhat,'=true',FWhatTrue),
- symbol_concat('--no-',What,NoWhat),symbol_concat(FWhat,'=false',FWhatFalse),
- is_flag0(What,[FWhat,FWhatTrue],[NoWhat,FWhatFalse]).
+%!  is_tRuE(+TF) is det.
+%
+%   Checks if the given term `TF` represents a logical "true" value.
+%
+%   @arg TF A term expected to be either `'True'` or `'true'`.
+%
+is_tRuE(TF) :-
+    % Match 'True' exactly.
+    TF == 'True',!.
+is_tRuE(TF) :-
+    % Match 'true' exactly.
+    TF == 'true',!.
 
-is_flag0(What,_FWhatTrue,FWhatFalse):-
-   current_prolog_flag(os_argv,ArgV),
-   member(FWhat,FWhatFalse),member(FWhat,ArgV),!,
-   %notrace(catch(set_prolog_flag(What,false),_,true)),
-   set_option_value(What,'False'),!,fail.
-is_flag0(What,FWhatTrue,_FWhatFalse):-
-   current_prolog_flag(os_argv,ArgV),
-   member(FWhat,FWhatTrue),member(FWhat,ArgV),!,
-   %notrace(catch(set_prolog_flag(What,true),_,true)),
-   set_option_value(What,'True'),!.
-is_flag0(What,_FWhatTrue,_FWhatFalse):-
-  current_prolog_flag(os_argv,ArgV),
-  symbolic_list_concat(['--',What,'='],Starts),
-  member(FWhat,ArgV),symbol_concat(Starts,Rest,FWhat),
-  set_option_value_interp(What,Rest),!.
+%!  is_fAlSe(+TF) is det.
+%
+%   Checks if the given term `TF` represents a logical "false" value.
+%
+%   @arg TF A term expected to be either `'False'` or `'false'`.
+%
+is_fAlSe(TF) :-
+    % Match 'False' exactly.
+    TF == 'False',!.
+is_fAlSe(TF) :-
+    % Match 'false' exactly.
+    TF == 'false',!.
 
-is_compiling:- current_prolog_flag(os_argv,ArgV),member(E,ArgV),   (E==qcompile_mettalog;E==qsave_program),!.
-is_compiled:- current_prolog_flag(os_argv,ArgV), member('-x',ArgV),!.
-is_compiled:- current_prolog_flag(os_argv,ArgV),\+ member('swipl',ArgV),!.
+%!  is_flag0(+What) is nondet.
+%
+%   Checks if a flag `What` is logically true in the current environment.
+%
+%   @arg What The flag to check.
+%
+is_flag0(What) :-
+    % Check if the flag exists as a non-backtrackable global variable and is true.
+    nb_current(What, TF),is_tRuE(TF),!.
+is_flag0(What) :-
+    % Check if the flag exists as a non-backtrackable global variable and is false.
+    nb_current(What, TF),is_fAlSe(TF),!,fail.
+is_flag0(What) :-
+    % Check if the flag exists as a Prolog configuration flag and is true.
+    current_prolog_flag(What, TF),is_tRuE(TF),!.
+is_flag0(What) :-
+    % Check if the flag exists as a Prolog configuration flag and is false.
+    current_prolog_flag(What, TF),is_fAlSe(TF),!.
+is_flag0(What) :-
+    % Build flag strings for parsing command-line arguments.
+    symbol_concat('--', What, FWhat),
+    symbol_concat(FWhat, '=true', FWhatTrue),
+    symbol_concat('--no-', What, NoWhat),
+    symbol_concat(FWhat, '=false', FWhatFalse),
+    is_flag0(What, [FWhat, FWhatTrue], [NoWhat, FWhatFalse]).
 
-is_converting:- is_metta_flag('convert').
+%!  is_flag0(+What, +FWhatTrue, +FWhatFalse) is nondet.
+%
+%   Checks command-line arguments (`os_argv`) to determine the status of a flag.
+%
+%   @arg What       The flag being checked.
+%   @arg FWhatTrue  A list of patterns representing a "true" status for the flag.
+%   @arg FWhatFalse A list of patterns representing a "false" status for the flag.
+%
+is_flag0(What, _FWhatTrue, FWhatFalse) :-
+    % Check if the flag is explicitly set to false in command-line arguments.
+    current_prolog_flag(os_argv, ArgV),member(FWhat, FWhatFalse),member(FWhat, ArgV),!,
+    % notrace(catch(set_prolog_flag(What, false), _, true)),
+    set_option_value(What, 'False'),!,fail.
+is_flag0(What, FWhatTrue, _FWhatFalse) :-
+    % Check if the flag is explicitly set to true in command-line arguments.
+    current_prolog_flag(os_argv, ArgV),member(FWhat, FWhatTrue),member(FWhat, ArgV),!,
+    % notrace(catch(set_prolog_flag(What, true), _, true)),
+    set_option_value(What, 'True'),!.
+is_flag0(What, _FWhatTrue, _FWhatFalse) :-
+    % Parse flags with specific key-value pair syntax in command-line arguments.
+    current_prolog_flag(os_argv, ArgV),symbolic_list_concat(['--', What, '='], Starts),
+    member(FWhat, ArgV),symbol_concat(Starts, Rest, FWhat),set_option_value_interp(What, Rest),!.
 
-is_compat:- is_metta_flag('compat').
+%!  is_compiling is nondet.
+%
+%   Succeeds if the program is currently in a compilation phase.
+%
+%   This predicate checks the Prolog runtime arguments (`os_argv`) to determine if
+%   the system is performing specific compilation tasks, such as `qcompile_mettalog`
+%   or `qsave_program`.
+%
+is_compiling :-
+    current_prolog_flag(os_argv, ArgV),member(E, ArgV),
+    % Check if compilation-specific arguments are present.
+    (E == qcompile_mettalog; E == qsave_program),!.
 
-%is_mettalog:- is_win64,!.
-is_mettalog:- is_metta_flag('log').
-is_devel:- is_metta_flag('devel').
+%!  is_compiled is nondet.
+%
+%   Succeeds if the program has been compiled into an executable.
+%
+%   This predicate verifies whether Prolog is running a precompiled executable by
+%   checking for the `-x` flag in `os_argv` or ensuring `swipl` is not present in the
+%   argument list.
+%
+is_compiled :-
+    current_prolog_flag(os_argv, ArgV),
+    % Check if the `-x` flag is present, indicating an executable was started.
+    member('-x', ArgV),!.
+is_compiled :-
+    current_prolog_flag(os_argv, ArgV),
+    % If 'swipl' is absent from the arguments, assume it is a compiled binary.
+    \+ member('swipl', ArgV),!.
 
-is_synthing_unit_tests:- notrace(is_synthing_unit_tests0).
-is_synthing_unit_tests0:- is_testing.
-%is_synthing_unit_tests0:- is_html.
-% is_synthing_unit_tests0:- is_compatio,!,fail.
+%!  is_converting is nondet.
+%
+%   Succeeds if the 'convert' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_converting.
+%     true.
+is_converting :- is_metta_flag('convert').
 
-is_testing:- is_metta_flag('test').
-is_html:- is_metta_flag('html').
+%!  is_compat is nondet.
+%
+%   Succeeds if the 'compat' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_compat.
+%     true.
+is_compat :- is_metta_flag('compat').
 
+%!  is_mettalog is nondet.
+%
+%   Succeeds if the 'log' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_mettalog.
+%     true.
+
+% is_mettalog :- is_win64,!.
+is_mettalog :- is_metta_flag('log').
+
+%!  is_devel is nondet.
+%
+%   Succeeds if the 'devel' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_devel.
+%     true.
+is_devel :- is_metta_flag('devel').
+
+%!  is_synthing_unit_tests is nondet.
+%
+%   Wrapper around is_synthing_unit_tests0/0, executed without tracing.
+%
+%   @see is_synthing_unit_tests0/0
+%
+%   @example
+%     ?- is_synthing_unit_tests.
+%     true.
+is_synthing_unit_tests :- notrace(is_synthing_unit_tests0).
+
+%!  is_synthing_unit_tests0 is nondet.
+%
+%   Succeeds if is_testing/0 is true.
+%
+%   @see is_testing/0
+%
+%   @example
+%     ?- is_synthing_unit_tests0.
+%     true.
+is_synthing_unit_tests0 :- is_testing.
+% is_synthing_unit_tests0 :- is_html.
+% is_synthing_unit_tests0 :- is_compatio,!,fail.
+
+%!  is_testing is nondet.
+%
+%   Succeeds if the 'test' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_testing.
+%     true.
+is_testing :- is_metta_flag('test').
+
+%!  is_html is nondet.
+%
+%   Succeeds if the 'html' flag is set using is_metta_flag/1.
+%
+%   @see is_metta_flag/1
+%
+%   @example
+%     ?- is_html.
+%     true.
+is_html :- is_metta_flag('html').
+
+% If the file is not already loaded, this is equivalent to consult/1. Otherwise, if the file defines a module,
+% import all public predicates. Finally, if the file is already loaded, is not a module file, and the context
+% module is not the global user module, ensure_loaded/1 will call consult/1.
 :- ensure_loaded(metta_printer).
 :- ensure_loaded(metta_loader).
 
-
+%   This directive ensures that debugging messages or tracing for
+%   `'trace-on-eval'` are suppressed, reducing console output during evaluation.
 :- nodebug(metta('trace-on-eval')).
 
-is_compatio:- notrace(is_compatio0).
-%is_compatio0:- is_win64,!,fail.
-is_compatio0:- is_testing,!,fail.
-is_compatio0:- is_flag0('compatio').
-is_compatio0:- is_mettalog,!,fail.
-%is_compatio0:- is_html,!,fail.
-is_compatio0:- !.
+%!  is_compatio is nondet.
+%
+%   Succeeds if `is_compatio0/0` succeeds, executed without tracing.
+%
+%   This predicate wraps around `is_compatio0/0`, using `notrace/1`
+%   to suppress tracing during its execution.
+%
+%   @example
+%     ?- is_compatio.
+%     true.
+is_compatio :- notrace(is_compatio0).
 
-keep_output:- !.
-keep_output:- dont_change_streams,!.
-keep_output:- is_win64,!.
-keep_output:- is_mettalog,!.
-keep_output:- is_testing,!.
+%!  is_compatio0 is nondet.
+%
+%   Base predicate for determining compatibility conditions.
+%
+%   This predicate evaluates several conditions, each possibly
+%   succeeding or failing based on system flags or runtime conditions.
+%
+%   @example
+%     ?- is_compatio0.
+%     true.
 
-keep_output:- is_compatio,!,fail.
+%is_compatio0 :- is_win64,!,fail.
+is_compatio0 :- is_testing, !, fail.
+is_compatio0 :- is_flag0('compatio').
+is_compatio0 :- is_mettalog, !, fail.
+%is_compatio0 :- is_html,!,fail.
+is_compatio0 :- !.
 
+%!  keep_output is nondet.
+%
+%   Determines if output should be preserved based on several conditions.
+%
+%   This predicate evaluates multiple conditions in sequence to decide
+%   whether output streams should remain unchanged or suppressed.
+%
+%   @example
+%     ?- keep_output.
+%     true.
+keep_output :- !.
+keep_output :- dont_change_streams, !.
+keep_output :- is_win64, !.
+keep_output :- is_mettalog, !.
+keep_output :- is_testing, !.
+% fail condition
+keep_output :- is_compatio, !, fail.
 
+%
+%   The `volatile/1` directive indicates that the predicate should not
+%   be saved in a saved state of the program (e.g., when using `qsave_program/2`).
+%   It ensures that `original_user_output/1` is only meaningful during runtime
+%   and is not preserved across sessions.
+%
+%   @example
+%     ?- volatile(original_user_output/1).
+%     true.
 :- volatile(original_user_output/1).
+
+% This directive allows the predicate `original_user_output/1` to be modified during runtime.
 :- dynamic(original_user_output/1).
-original_user_output(X):- stream_property(X,file_no(1)).
-original_user_error(X):- stream_property(X,file_no(2)).
+
+%!  original_user_output(-X) is nondet.
+%
+%   Retrieves the stream associated with the standard output (file descriptor 1).
+%
+%   This predicate succeeds if `X` unifies with a stream that corresponds to the
+%   standard output stream, as determined by the stream property `file_no(1)`.
+%
+%   @arg X The stream associated with standard output.
+%
+%   @example
+%     ?- original_user_output(Stream).
+%     Stream = <stream>.
+original_user_output(X) :- stream_property(X, file_no(1)).
+
+%!  original_user_error(-X) is nondet.
+%
+%   Retrieves the stream associated with the standard error (file descriptor 2).
+%
+%   This predicate succeeds if `X` unifies with a stream that corresponds to the
+%   standard error stream, as determined by the stream property `file_no(2)`.
+%
+%   @arg X The stream associated with standard error.
+%
+%   @example
+%     ?- original_user_error(Stream).
+%     Stream = <stream>.
+original_user_error(X) :- stream_property(X, file_no(2)).
+
+% Ensure that the original output stream is set if not already defined.
 :- original_user_output(_)->true;(current_output(Out),asserta(original_user_output(Out))).
-unnullify_output:- current_output(MFS),  original_user_output(OUT), MFS==OUT, !.
-unnullify_output:- original_user_output(MFS), set_prolog_IO(user_input,MFS,user_error).
 
-null_output(MFS):- dont_change_streams,!, original_user_output(MFS),!.
-null_output(MFS):- use_module(library(memfile)),
-  new_memory_file(MF),open_memory_file(MF,append,MFS).
+%!  unnullify_output is det.
+%
+%   Restores the output stream to its original state.
+%
+%   If the current output stream matches the original user output, the predicate
+%   succeeds immediately. Otherwise, it restores the output stream to the value
+%   stored in `original_user_output/1`.
+%
+%   @example
+%     ?- unnullify_output.
+%     true.
+unnullify_output :-
+    current_output(MFS),
+    original_user_output(OUT),
+    MFS == OUT,
+    !.
+unnullify_output :-
+    original_user_output(MFS),
+    set_prolog_IO(user_input, MFS, user_error).
+
+%!  null_output(-MFS) is det.
+%
+%   Sets the output stream to a memory file stream.
+%
+%   If `dont_change_streams/0` succeeds, the original user output is preserved.
+%   Otherwise, a new memory file is created and used as the output stream.
+%
+%   @arg MFS The memory file stream set as the output.
+%
+%   @example
+%     ?- null_output(Stream).
+%     Stream = <memory_file_stream>.
+null_output(MFS) :- dont_change_streams, !, original_user_output(MFS), !.
+null_output(MFS) :- use_module(library(memfile)),new_memory_file(MF),open_memory_file(MF, append, MFS).
+
+% Ensure `null_user_output/1` is not preserved in saved states (e.g., with qsave_program/2).
 :- volatile(null_user_output/1).
+
+% Allow `null_user_output/1` to be modified dynamically at runtime.
 :- dynamic(null_user_output/1).
-:- null_user_output(_)->true;(null_output(MFS),
-   asserta(null_user_output(MFS))).
 
+% Initialize `null_user_output/1` with a memory file stream if it is not already defined.
+:- null_user_output(_) -> true ; (null_output(MFS), asserta(null_user_output(MFS))).
 
-nullify_output:- keep_output,!.
-nullify_output:- dont_change_streams,!.
-nullify_output:- nullify_output_really.
-nullify_output_really:- current_output(MFS), null_user_output(OUT),  MFS==OUT, !.
-nullify_output_really:- null_user_output(MFS), set_prolog_IO(user_input,MFS,MFS).
+%!  nullify_output is det.
+%
+%   Redirects the output stream to a memory file.
+%
+%   If `keep_output/0` or `dont_change_streams/0` succeed, the predicate does nothing.
+%   Otherwise, it calls `nullify_output_really/0` to set up the memory file stream.
+%
+%   @example
+%     ?- nullify_output.
+%     true.
+nullify_output :- keep_output, !.
+nullify_output :- dont_change_streams, !.
+nullify_output :- nullify_output_really.
 
-set_output_stream :- dont_change_streams,!.
-set_output_stream :- \+ keep_output -> nullify_output;  unnullify_output.
+%!  nullify_output_really is det.
+%
+%   Forces the output stream to be redirected to a memory file.
+%
+%   If the current output matches `null_user_output/1`, the predicate succeeds.
+%   Otherwise, it switches to the memory file stream defined in `null_user_output/1`.
+%
+%   @example
+%     ?- nullify_output_really.
+%     true.
+nullify_output_really :- current_output(MFS), null_user_output(OUT), MFS == OUT, !.
+nullify_output_really :- null_user_output(MFS), set_prolog_IO(user_input, MFS, MFS).
+
+%!  set_output_stream is det.
+%
+%   Configures the output stream based on current conditions.
+%
+%   If `dont_change_streams/0` is true, no changes are made.
+%   Otherwise, the stream is either nullified or restored, depending on `keep_output/0`.
+%
+%   @example
+%     ?- set_output_stream.
+%     true.
+set_output_stream :- dont_change_streams, !.
+set_output_stream :- \+ keep_output -> nullify_output; unnullify_output.
+
+% Initialize the output stream configuration at startup.
 :- set_output_stream.
 % :- nullify_output.
 
-switch_to_mettalog:-
-  unnullify_output,
-  set_option_value('compatio',false),
-  set_option_value('compat',false),
-  set_option_value('load',show),
-  set_option_value('load',verbose),
-  set_option_value('log',true),
-  %set_option_value('test',true),
-  forall(mettalog_option_value_def(Name, DefaultValue),set_option_value(Name, DefaultValue)),
-  set_output_stream.
+%!  switch_to_mettalog is det.
+%
+%   Switches the system configuration to the `mettalog` mode.
+%
+%   This predicate adjusts several runtime options specific to the
+%   `mettalog` mode, including output stream configuration and option values.
+%   It ensures the system behaves according to the `mettalog` runtime settings.
+%
+%   @example
+%     ?- switch_to_mettalog.
+%     true.
+switch_to_mettalog :-
+    unnullify_output,
+    set_option_value('compatio', false),
+    set_option_value('compat', false),
+    set_option_value('load', show),
+    set_option_value('load', verbose),
+    set_option_value('log', true),
+    %set_option_value('test', true),
+    forall(mettalog_option_value_def(Name, DefaultValue), set_option_value(Name, DefaultValue)),
+    set_output_stream.
 
-switch_to_mettarust:-
-  nullify_output,
-  set_option_value('compatio',true),
-  set_option_value('compat',true),
-  set_option_value('log',false),
-  set_option_value('test',false),
-  forall(rust_option_value_def(Name, DefaultValue),set_option_value(Name, DefaultValue)),
-  set_output_stream.
-
-
+%!  switch_to_mettarust is det.
+%
+%   Switches the system configuration to the `mettarust` mode.
+%
+%   This predicate adjusts several runtime options specific to the
+%   `mettarust` mode, including output stream configuration and option values.
+%   It ensures the system behaves according to the `mettarust` runtime settings.
+%
+%   @example
+%     ?- switch_to_mettarust.
+%     true.
+switch_to_mettarust :-
+    nullify_output,
+    set_option_value('compatio', true),
+    set_option_value('compat', true),
+    set_option_value('log', false),
+    set_option_value('test', false),
+    forall(rust_option_value_def(Name, DefaultValue), set_option_value(Name, DefaultValue)),
+    set_output_stream.
 
 show_os_argv:- is_compatio,!.
 show_os_argv:- current_prolog_flag(os_argv,ArgV),write('; libswipl: '),writeln(ArgV).
@@ -539,12 +924,12 @@ is_pyswip:- current_prolog_flag(os_argv,ArgV),member( './',ArgV).
 :- use_module(library(shell)).
 %:- use_module(library(tabling)).
 
-use_top_self :- \+ fast_option_value('top-self', false).
+use_top_self :- fast_option_value('top-self', true).
 top_self('&top'):- use_top_self,!.
 top_self('&self').
 
 %:- top_self(Self), nb_setval(self_space, '&self'),
-current_self(Self):- ((nb_current(self_space,Self),Self\==[])->true;top_self(Self)).
+current_self(Self):- ((nb_current(self_space,Self),Self\==[],assertion(Self\=='&self'))->true;top_self(Self)).
 :- nb_setval(repl_mode, '+').
 
 
@@ -1544,10 +1929,10 @@ rtrace_on_failure_and_break(G):-
 
 assertion_hb(metta_eq_def(Eq,Self,H,B),Self,Eq,H,B):-!.
 assertion_hb(metta_defn(Self,H,B),Self,'=',H,B):-!.
-assertion_hb(metta_atom_asserted(KB,HB),Self,Eq,H,B):- !, assertion_hb(metta_atom(KB,HB),Self,Eq,H,B).
-assertion_hb(metta_atom(Self,[Eq,H,B]),Self,Eq,H,B):- assertion_neck_cl(Eq),!.
 assertion_hb(metta_defn(Eq,Self,H,B),Self,Eq,H,B):- assertion_neck_cl(Eq),!.
-assertion_hb(asserted_metta_atom(Self,[Eq,H,B]),Self,Eq,H,B):- assertion_neck_cl(Eq),!.
+assertion_hb(X,Self,Eq,H,B):- maybe_xform(X,Y),!, assertion_hb(Y,Self,Eq,H,B).
+assertion_hb(metta_atom_asserted(Self,[Eq,H,B]),Self,Eq,H,B):- !, assertion_neck_cl(Eq),!.
+
 
 assertion_neck_cl(Eq):- \+ symbol(Eq),!,fail.
 assertion_neck_cl('=').
@@ -1601,17 +1986,25 @@ do_show_options_values:-
 :- multifile(metta_atom_asserted/2).
 :- dynamic(metta_atom_deduced/2).
 :- multifile(metta_atom_deduced/2).
-metta_atom_asserted(X,Y):-
-    metta_atom_deduced(X,Y),
-    \+ clause(metta_atom_asserted(X,Y),true).
-
+:- dynamic(metta_atom_in_file/2).
+:- multifile(metta_atom_in_file/2).
+:- dynamic(metta_atom_asserted_last/2).
+:- multifile(metta_atom_asserted_last/2).
 
 %get_metta_atom(Eq,KB, [F|List]):- KB='&flybase',fb_pred(F, Len), length(List,Len),apply(F,List).
 
 
-maybe_into_top_self(WSelf, Self):- use_top_self,WSelf=='&self',current_self(Self),Self\==WSelf,!.
+maybe_into_top_self(_, _):- \+ use_top_self, !, fail.
+maybe_into_top_self(WSelf, Self):- var(WSelf), !, \+ attvar(WSelf), !, freeze(Self, from_top_self(Self, WSelf)).
+maybe_into_top_self(WSelf, Self):- WSelf='&self',current_self(Self),Self\==WSelf,!.
 into_top_self(WSelf, Self):- maybe_into_top_self(WSelf, Self),!.
 into_top_self(Self, Self).
+
+from_top_self(Self, WSelf):- var(Self), !, \+  attvar(Self), !, freeze(Self, from_top_self(Self, WSelf)).
+%from_top_self(Self, WSelf):- var(Self), trace, !, freeze(Self, from_top_self(Self, WSelf)).
+from_top_self(Self, WSelf):- top_self(CSelf), CSelf == Self, WSelf='&self', !.
+from_top_self(Self, WSelf):- current_self(CSelf), CSelf == Self, WSelf='&self', !.
+from_top_self(Self, Self).
 
 
 get_metta_atom_from(KB,Atom):- metta_atom(KB,Atom).
@@ -1619,6 +2012,14 @@ get_metta_atom_from(KB,Atom):- metta_atom(KB,Atom).
 get_metta_atom(Eq,Space, Atom):- metta_atom(Space, Atom), \+ (Atom =[EQ,_,_], EQ==Eq).
 
 metta_atom(Atom):- current_self(KB),metta_atom(KB,Atom).
+
+metta_atom_added(X,Y):- metta_atom_asserted(X,Y).
+metta_atom_added(X,Y):- metta_atom_in_file(X,Y).
+metta_atom_added(X,Y):-
+        metta_atom_deduced(X,Y),
+        \+ clause(metta_atom_asserted(X,Y),true).
+metta_atom_added(X,Y):- metta_atom_asserted_last(X,Y).
+
 %metta_atom([Superpose,ListOf], Atom):- Superpose == 'superpose',is_list(ListOf),!,member(KB,ListOf),get_metta_atom_from(KB,Atom).
 metta_atom(Space, Atom):- typed_list(Space,_,L),!, member(Atom,L).
 metta_atom(KB, [F, A| List]):- KB=='&flybase',fb_pred_nr(F, Len),current_predicate(F/Len), length([A|List],Len),apply(F,[A|List]).
@@ -1627,18 +2028,45 @@ metta_atom(KB, [F, A| List]):- KB=='&flybase',fb_pred_nr(F, Len),current_predica
 
 metta_atom(X,Y):- maybe_into_top_self(X, TopSelf),!,metta_atom(TopSelf,Y).
 %metta_atom(X,Y):- var(X),use_top_self,current_self(TopSelf),metta_atom(TopSelf,Y),X='&self'.
-metta_atom(KB,Atom):- metta_atom_in_file( KB,Atom).
-metta_atom(KB,Atom):- metta_atom_asserted( KB,Atom).
+metta_atom(KB,Atom):- metta_atom_added( KB,Atom).
 
 %metta_atom(KB,Atom):- KB == '&corelib', !, metta_atom_asserted('&self',Atom).
 %metta_atom(KB,Atom):- KB \== '&corelib', using_all_spaces,!, metta_atom('&corelib',Atom).
 %metta_atom(KB,Atom):- KB \== '&corelib', !, metta_atom('&corelib',Atom).
-metta_atom(KB,Atom):- KB \== '&corelib', !, % is_code_inheritor(KB),
-   \+ \+ (metta_atom_asserted(KB,'&corelib'),
+
+metta_atom(KB,Atom):- fail, nonvar(KB), \+ nb_current(space_inheritance,false), should_inhert_from(KB,Atom).
+%metta_atom(KB,Atom):- metta_atom_asserted_last(KB,Atom).
+
+:- dynamic(no_space_inheritance_to/1).
+wo_inheritance_to(Where,Goal):- setup_call_cleanup(asserta(no_space_inheritance_to(Where),Clause), Goal, erase(Clause)).
+
+should_inhert_from(KB,Atom):- \+ no_space_inheritance_to(KB), wo_inheritance_to(KB,should_inhert_from_now(KB,Atom)).
+
+should_inhert_from_now(KB,Atom):- \+ attvar(Atom),
+   freeze(SubKB, symbol(SubKB)), !,
+   metta_atom_added(KB,SubKB), SubKB \== KB,
+   metta_atom(SubKB,Atom),
+   \+ should_not_inherit_from(KB, SubKB, Atom).
+/*
+   KB \== '&corelib',  % is_code_inheritor(KB),
+   \+ \+ (metta_atom_added(KB,'&corelib'),
           should_inherit_from_corelib(Atom)), !,
-   metta_atom('&corelib',Atom).
+   metta_atom('&corelib',Atom),
+   \+ should_not_inherit_from_corelib(Atom).
+*/
+
+should_not_inherit_from(_,_,S):- symbol(S).
+/*
+should_not_inherit_from_corelib('&corelib').
+should_not_inherit_from_corelib('&stdlib').
+should_not_inherit_from_corelib('&self').
+%should_not_inherit_from_corelib('&top').
+*/
+
+
 should_inherit_from_corelib(_):- using_all_spaces,!.
-should_inherit_from_corelib([H,A|_]):- nonvar(A), should_inherit_op_from_corelib(H),!,nonvar(A).
+should_inherit_from_corelib(_):- !.
+should_inherit_from_corelib([H,A|_]):- nonvar(H), should_inherit_op_from_corelib(H),!,nonvar(A).
 %should_inherit_from_corelib([H|_]):- H == '@doc', !.
 should_inherit_from_corelib([H,A|T]):- fail,
   H == '=',write_src_uo(try([H,A|T])),!,
@@ -1656,13 +2084,14 @@ should_inherit_op_from_corelib('@doc').
 
 %metta_atom_asserted('&self','&corelib').
 %metta_atom_asserted('&self','&stdlib').
-metta_atom_asserted(Top,'&corelib'):- top_self(Top).
-metta_atom_asserted(Top,'&stdlib'):- top_self(Top).
-metta_atom_asserted('&stdlib','&corelib').
-metta_atom_asserted('&flybase','&corelib').
-metta_atom_asserted('&flybase','&stdlib').
-metta_atom_asserted('&catalog','&corelib').
-metta_atom_asserted('&catalog','&stdlib').
+metta_atom_asserted_last(Top,'&corelib'):- top_self(Top).
+metta_atom_asserted_last(Top,'&stdlib'):- top_self(Top).
+metta_atom_asserted_last('&stdlib','&corelib').
+metta_atom_asserted_last('&flybase','&corelib').
+metta_atom_asserted_last('&flybase','&stdlib').
+metta_atom_asserted_last('&catalog','&corelib').
+metta_atom_asserted_last('&catalog','&stdlib').
+
 
 maybe_resolve_space_dag(Var,[XX]):- var(Var),!, \+ attvar(Var), freeze(XX,space_to_ctx(XX,Var)).
 maybe_resolve_space_dag('&self',[Self]):- current_self(Self).
@@ -1706,17 +2135,24 @@ maybe_xform(metta_eq_def(Eq,KB,Head,Body),metta_atom(KB,[Eq,Head,Body])).
 maybe_xform(metta_defn(KB,Head,Body),metta_atom(KB,['=',Head,Body])).
 maybe_xform(metta_type(KB,Head,Body),metta_atom(KB,[':',Head,Body])).
 maybe_xform(metta_atom(KB,HeadBody),metta_atom_asserted(KB,HeadBody)).
+maybe_xform(metta_atom_in_file(KB,HB),metta_atom_asserted(KB,HB)).
+maybe_xform(metta_atom_deduced(KB,HB),metta_atom_asserted(KB,HB)).
+maybe_xform(metta_atom_asserted_last(KB,HB),metta_atom_asserted(KB,HB)).
+maybe_xform(metta_atom_asserted(WKB,HB),metta_atom_asserted(KB,HB)):- maybe_into_top_self(WKB, KB),!.
+
+
 maybe_xform(_OBO,_XForm):- !, fail.
 
 metta_anew1(Load,_OBO):- var(Load),trace,!.
 metta_anew1(Ch,OBO):-  metta_interp_mode(Ch,Mode), !, metta_anew1(Mode,OBO).
 metta_anew1(Load,OBO):- maybe_xform(OBO,XForm),!,metta_anew1(Load,XForm).
-metta_anew1(load,OBO):- OBO= metta_atom(Space,Atom),!,'add-atom'(Space, Atom).
+metta_anew1(load,OBO):- OBO= metta_atom(Space,Atom),!, 'add-atom'(Space, Atom).
 metta_anew1(unload,OBO):- OBO= metta_atom(Space,Atom),!,'remove-atom'(Space, Atom).
 metta_anew1(unload_all,OBO):- OBO= forall(metta_atom(Space,Atom),ignore('remove-atom'(Space, Atom))).
 
 metta_anew1(load,OBO):- !,
-  must_det_ll((load_hook(load,OBO),
+  must_det_ll((
+   load_hook(load,OBO),
    subst_vars(OBO,Cl),
    pfcAdd_Now(Cl))). %to_metta(Cl).
 metta_anew1(load,OBO):- !,
@@ -1728,6 +2164,14 @@ metta_anew1(unload,OBO):- subst_vars(OBO,Cl),load_hook(unload,OBO),
   predicate_property(Head,number_of_clauses(_)),
   ignore((clause(Head,Body,Ref),clause(Head2,Body2,Ref),
     (Head+Body)=@=(Head2+Body2),erase(Ref),pp_m(unload(Cl)))).
+
+metta_anew1(unload_all,OBO):- !,
+  must_det_ll((
+   load_hook(unload_all,OBO),
+   subst_vars(OBO,Cl),
+   once_writeq_nl_now(retractall(Cl)),
+   retractall(Cl))). %to_metta(Cl).
+
 metta_anew1(unload_all,OBO):- subst_vars(OBO,Cl),load_hook(unload_all,OBO),
   expand_to_hb(Cl,Head,Body),
   predicate_property(Head,number_of_clauses(_)),

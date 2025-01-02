@@ -26,89 +26,47 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 23:38:23+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:52:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         #(set_debug transpiler false)
+;         [set_debug transpiler false]
 
 P;HTML|
-;          #(set_debug overtime 4.0)
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          #(set_debug overflow 1000)
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          #(set_debug eval false)
+;          [set_debug eval false]
 
 P;HTML|
-;          #(set_debug load silent)
+;          [set_debug load silent]
 
 P;HTML|
-;          #(set_debug trace-on-load false)
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          #(set_debug exec false)
+;          [set_debug exec false]
 
 P;HTML|
-;          #(set_debug error non-type)
+;          [set_debug error non-type]
 
 P;HTML|
-;          #(set_debug fail false)
+;          [set_debug fail false]
 
 P;HTML|
-;          #(set_debug test true)
+;          [set_debug test true]
 
 P;HTML|
-;         #(set_debug test false)
+;         [set_debug test false]
 
 P;HTML|
-;         #(set_debug fail false)
-P;HTML|
-;          #(set_debug transpiler false)
-P;HTML|
-;          #(set_debug overtime 4.0)
-P;HTML|
-;          #(set_debug overflow 1000)
-P;HTML|
-;          #(set_debug eval false)
-P;HTML|
-;          #(set_debug load silent)
-P;HTML|
-;          #(set_debug trace-on-load false)
-P;HTML|
-;          #(set_debug exec false)
-P;HTML|
-;          #(set_debug error non-type)
-P;HTML|
-;          #(set_debug fail false)
-P;HTML|
-;          #(set_debug test true)
-P;HTML|
-;          #(set_debug test false)
-P;HTML|
-;          #(set_debug fail false)
+;         [set_debug fail false]
 
-; #( : user #(load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta) )
 P;HTML|
-;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta)
-P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta)
-P;HTML|
-;                         #( = 1 "[()]" )
-P;HTML|
-;                         #( = 2 "[(Error (assertEqual (is-space &corelib) True) " )
-P;HTML|
-;                         #( = 2 "Expected: [True]" )
-P;HTML|
-;                          #( = 2 "Got: [False]" )
-P;HTML|
-;                          #( = 3 "Missed result: True)]" )
-P;HTML|
-;                           #( = 3 "0.05user 0.01system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
-P;HTML|
-;                           #( = 3 "0inputs+0outputs (0major+3397minor)pagefaults 0swaps" )
-P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta)
+;         [set_debug load false]
 
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] ]
 ;;; Check whether atom is space comparing its type with type of the &self atom
 <span class="ansi38-255165000"
 > (: is-space (-> Atom Bool))
@@ -125,17 +83,18 @@ Script started on 2024-12-21 23:38:23+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000931 secs. (931.06 microseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
 !(assertEqual (is-space &self) True)
 
 <span class="ansi31"
->  #(loonit_failureR 
-    #(equal_enough_for_test () 
-      (True)))
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (== hyperon::space::DynSpace hyperon::space::DynSpace)) 
+      (True)]]
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ()) #(expected (True))))
+>([Error [got ((== hyperon::space::DynSpace hyperon::space::DynSpace))] [expected (True)]])
 </span><span class="ansi38-013099040"
 >!(assertEqual (is-space &corelib) True)
 
@@ -144,17 +103,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000864 secs. (864.49 microseconds) 
+; took 0.001 secs. (1.23 milliseconds) 
 
 !(assertEqual (is-space &corelib) True)
 
 <span class="ansi31"
->  #(loonit_failureR 
-    #(equal_enough_for_test () 
-      (True)))
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (== hyperon::space::DynSpace hyperon::space::DynSpace)) 
+      (True)]]
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ()) #(expected (True))))
+>([Error [got ((== hyperon::space::DynSpace hyperon::space::DynSpace))] [expected (True)]])
 </span><span class="ansi38-013099040"
 >!(assertEqual (is-space 666) False)
 
@@ -163,22 +123,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000949 secs. (949.12 microseconds) 
+; took 0.001 secs. (1.41 milliseconds) 
 
 !(assertEqual (is-space 666) False)
 
 <span class="ansi31"
->  #(loonit_failureR 
-    #(equal_enough_for_test () 
-      (False)))
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (== Number hyperon::space::DynSpace)) 
+      (False)]]
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ()) #(expected (False))))
-</span><span class="ansi32"
->% 162,934 inferences, 0.060 CPU in 0.062 seconds (97% CPU, 2707991 Lips)
-</span>P;HTML|
-;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta 0 )
-<span class="ansi1"
+>([Error [got ((== Number hyperon::space::DynSpace))] [expected (False)]])
+</span><span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -187,45 +144,16 @@ Deterministic: <span class="ansi33"
 >Failures: 3
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-P;HTML|
-;          #(set_debug transpiler false)
-P;HTML|
-;          #(set_debug overtime 4.0)
-P;HTML|
-;          #(set_debug overflow 1000)
-P;HTML|
-;          #(set_debug eval false)
-P;HTML|
-;          #(set_debug load silent)
-P;HTML|
-;          #(set_debug trace-on-load false)
-P;HTML|
-;          #(set_debug exec false)
-P;HTML|
-;          #(set_debug error non-type)
-P;HTML|
-;          #(set_debug fail false)
-P;HTML|
-;          #(set_debug test true)
-P;HTML|
-;          #(set_debug test false)
-P;HTML|
-;          #(set_debug fail false)
-
-[(#(Error #(got ()) #(expected (True))))]
-
-[(#(Error #(got ()) #(expected (True))))]
-
-[(#(Error #(got ()) #(expected (False))))]
-P;HTML|
-;         #(maybe_halt 7)
-<span class="ansi31"
->#(in #(maybe_halt 7) #(unwind #(halt 7)))
+[([Error [got ((== hyperon::space::DynSpace hyperon::space::DynSpace))] [expected (True)]])]
+[([Error [got ((== hyperon::space::DynSpace hyperon::space::DynSpace))] [expected (True)]])]
+[([Error [got ((== Number hyperon::space::DynSpace))] [expected (False)]])]
+<span class="ansi31"
+>[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-21 23:38:31+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:53:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m

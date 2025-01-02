@@ -54,22 +54,26 @@
 ; Equality can be typed. If some equality is well-typed,
 ; it means that it can be true.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(nop (remove-atom &self (: = (-> Atom Atom Atom))))
-(nop (remove-atom &corlib (: = (-> Atom Atom Atom))))
+;!(remove-atom &corelib (: = (-> Atom Atom Atom)))
+;!(remove-atom &corelib (: = (-> $t $t %Undefined%)))
+;!(remove-atom &corelib (: = (-> Atom Atom %Undefined%)))
+;H-E
+;!(remove-atom &corelib (: = (-> $t $t Atom)))
 (: = (-> $t $t Type))
+!(get-type =)
 
 !("sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal SocratesIsHuman)))
-!(assertEqual
+!(m (assertEqual
   (get-type (= SocratesIsMortal (HumansAreMortal SocratesIsHuman)))
-  Type)
+  Type))
 ; This equality is well-typed, because both its arguments are of `Type`.
 ; It doesn't mean they are both inhabited (true propositions), and
 ; it doesn't mean that the equality itself is true (an inhabited type).
 
 !("sameTypes" (get-type (Mortal Socrates)) (get-type (Mortal Plato)))
-!(assertEqual
+!(m (assertEqual
   (get-type (= (Mortal Socrates) (Mortal Plato)))
-  Type)
+  Type))
 
 
 !("!sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal PlatoIsHuman)))

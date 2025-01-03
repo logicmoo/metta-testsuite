@@ -111,6 +111,7 @@
 ; One can also define an equality for directly inhabited types
 (= (= $type T)
    (match &self (: $x $type) T))
+
 !(assertEqual
   (= (Mortal Socrates) T)
   T)

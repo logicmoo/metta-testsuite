@@ -1,0 +1,12 @@
+[(extend-py! mettamorph)]
+[(compile! "
+!(bind! &schemespace (new-space))
+(= (add-atom-scheme $x) (add-atom &schemespace $x))
+(= (get-atoms-scheme) (get-atoms &schemespace))
+")]
+[()]
+[()]
+[()]
+[(add-atom-scheme 44)]
+[(add-atom-scheme 45)]
+[43, 42, (get-atoms-scheme)]

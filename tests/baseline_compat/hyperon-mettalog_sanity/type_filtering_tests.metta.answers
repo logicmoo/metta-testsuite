@@ -1,0 +1,113 @@
+
+     (MeTTa-Test "Should be Passing" (+ 1 1) 
+        (2) 
+        $passes)
+
+     (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) 
+       (1 5) 
+       ($X#568 1 String () 5))
+
+     (MeTTa-Test "passing" (+ 1 1) 
+        (2) 
+        $passes)
+
+     (MeTTa-Test "Filter-String" (Filter-String (some-value)) 
+       ("a" "x: 1 y: 2") 
+       ("a" $X#1651 String "x: 1 y: 2" ()))
+
+     (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) 
+       (Z (S Z) (S (S Z))) 
+       (Z $X#2384 String (S Z) () (S (S Z))))
+
+     (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) 
+       (S GroundingSpace-top) 
+       (Error (S Z $X#4127 String ()) IncorrectNumberOfArguments))
+
+     (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) 
+       (GroundingSpace-top) 
+       ($X#4969 String ()))
+
+     (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) 
+       (1 "a" 'c' Z (S Z)) 
+       ("a" $X#5663 'c' 1 String "x: 1 y: 2" ()))
+
+     (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) 
+       (String) 
+       ($X#6514 String ()))
+
+
+     (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) 
+       (all the values) 
+       (Error (S Z "a" $X#7210 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) 
+       (1 "a" Z (S Z) (S (S Z))) 
+       (Error (S Z "a" $X#10628 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+     (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) 
+       () 
+       ($X#14300 String ()))
+
+
+     (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) 
+       ((+ 2 3) (format-args "x: {} y: {}" (1 2))) 
+       (Error (S Z "a" $X#14991 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) 
+       (1 "a" 'c' S Z (S Z)) 
+       (Error (S Z "a" $X#18143 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) 
+       ((+ 2 3)) 
+       (Error (S Z "a" $X#21333 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) 
+       (empty (println! "did it")) 
+       (Error (S Z "a" $X#24419 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) 
+       () 
+       (Error (S Z "a" $X#27513 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+
+     (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) 
+       (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) 
+       (Error (S Z "a" $X#30585 'c' 1 String (S Z) "x: 1 y: 2" () (S (S Z)) () 5 (Cons 1 (Cons 2 (Cons 3 Nil)))) IncorrectNumberOfArguments))
+
+     (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) 
+       ('c') 
+       ($X#34574 'c' String ()))
+
+     (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) 
+       (empty (println! "did it") ()) 
+       ($X#35292 String ()))
+
+     (MeTTa-Test "Filter-List" (Filter-List (some-value)) 
+       ((Cons 1 (Cons 2 (Cons 3 Nil)))) 
+       ($X#36028 String () (Cons 1 (Cons 2 (Cons 3 Nil)))))
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]

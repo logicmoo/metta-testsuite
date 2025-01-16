@@ -1,6 +1,5 @@
 ;
 ;                         Where does the zebra live?
-
 ;
 ;                          Puzzle solution written by Claude Sammut.
 

@@ -24,6 +24,8 @@
 ;; Tests for genericLT
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; !(repl!)
+
 !(assertEqualToResult (genericLT Z (S Z)) (True))
 !(assertEqualToResult (genericLT (S Z) Z) (False))
 !(assertEqualToResult (genericLT 0 1) (True))

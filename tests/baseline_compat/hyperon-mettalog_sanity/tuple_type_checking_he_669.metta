@@ -1,3 +1,7 @@
+
+(: foo_fixed (-> Number %Undefined%))
+(= (foo_fixed $x) $x)
+
 ; Test: Passing an incorrectly typed tuple to `foo_fixed`
 !(assertEqualToResult
    (foo_fixed (wrong type))
@@ -18,7 +22,7 @@
 ; an error in a list.
 
 ; Test: Recursive factorial definition with stricter type checking
-(: fact_strict (-> Integer Integer))
+(: fact_strict (-> Number Number))
 (= (fact_strict $n) (if (== $n 0) 1 (* (fact_strict (- $n 1)) $n)))
 
 !(assertEqualToResult
@@ -32,4 +36,4 @@
    (fact_strict (5 6))
    ((Error (5 6) BadType)))
 ; Explanation:
-; The tuple `(5 6)` is not a valid Integer, so the type check fails, and the error is returned in a list.
+; The tuple `(5 6)` is not a valid Number, so the type check fails, and the error is returned in a list.

@@ -41,3 +41,9 @@
 !(t-symbol  (parse "y1_value"))
 ;[(quote z1_value_value)]
 
+(: t-atom+any (-> Atom Atom))
+(: t-atom+any (-> $_ Atom))
+(= (t-atom+any $x) (quote $x))
+!(t-atom+any (parse "x_string_tag"))
+;[(quote (parse "x_string_tag"))]
+

@@ -8,7 +8,9 @@
 
 !(println "xx 110 ") 
 ; ready works 
-!(assertEqualToResult ( new-space ) ( (Space()) ) ) 
+!(bind! new-space ( new-space ))
+
+!(assertEqualToResult new-space (new-space))
 
 ;  !(assertEqualToResult ( )  (  )  ) 
 

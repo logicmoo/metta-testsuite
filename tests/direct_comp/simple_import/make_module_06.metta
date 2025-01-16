@@ -13,15 +13,15 @@ print('defining it')
 ")
 
 ; Step 2: Create a new module
-!(bind! new_module (types_module module_name))           ; Create a new module dynamically
+!(bind! &new_module (types_module module_name))           ; Create a new module dynamically
 
 ; Step 3: Execute the source code in the module's context
-!((exec_fn module_source (py-dot new_module __dict__))) ; Execute the source code in the module's namespace
+!((exec_fn module_source (py-dot &new_module __dict__))) ; Execute the source code in the module's namespace
 
 ; Step 4: Add the module to sys.modules
-!((py-dot sys_modules __setitem__) module_name new_module)
+!((py-dot sys_modules __setitem__) module_name &new_module)
 
 ; Step 5: Test the dynamically created module
-!((py-dot new_module say_hello) "World")                ; Call the say_hello function in the dynamic module
+!((py-dot &new_module say_hello) "World")                ; Call the say_hello function in the dynamic module
 
-!(new_module)
+!(&new_module)

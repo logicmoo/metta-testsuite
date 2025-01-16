@@ -22,9 +22,6 @@
      $z
    )
 )
-! (get-sister Bob)
+!(get-sister Bob)
 
-[Liz
-
-]
-% 32,268 inferences, 0.048 CPU in 0.050 seconds (95% CPU, 675601 Lips)
+; % 32,268 inferences, 0.048 CPU in 0.050 seconds (95% CPU, 675601 Lips)

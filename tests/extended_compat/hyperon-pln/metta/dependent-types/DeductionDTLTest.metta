@@ -5,7 +5,7 @@
 ;; (: = (-> $t $t Type))
 
 ;; Import modules
-!(import! &self DeductionDTL.metta)
+!(import! &self DeductionDTL)
 !(import! &self ../synthesis/Synthesize.metta)
 !(import! &self ../common/Record.metta)
 

@@ -1,4 +1,4 @@
-; !(import! &self MinerMatch.metta)
+; !(import! &self MinerMatch)
 
 ;; Load sample data
 !(import! &db ../data/sample.metta)

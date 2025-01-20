@@ -7,7 +7,7 @@
 !(import! &self ../../synthesis/Synthesize.metta)
 
 ;; Import knowledge base
-!(import! &kb orientation.kif.metta)
+!(import! &kb orientation.kif)
 
 ;; Import rule base
 !(import! &rb ../rule-base.metta)

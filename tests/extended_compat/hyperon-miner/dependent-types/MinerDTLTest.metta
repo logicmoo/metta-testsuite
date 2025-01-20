@@ -1,4 +1,4 @@
-; !(import! &self MinerDTL1.metta)
+; !(import! &self MinerDTL1)
 ;;;;;;;;;;
 ;; Test ;;
 ;;;;;;;;;;

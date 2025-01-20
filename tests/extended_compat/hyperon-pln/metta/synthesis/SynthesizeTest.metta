@@ -1,7 +1,7 @@
 ;; Setting up a simple knowledge base and rule base for demoing reasoning in MeTTa.
 
 ;; Import modules
-!(import! &self Synthesize.metta)
+!(import! &self Synthesize)
 !(import! &self ../common/Record.metta)
 
 ;; Knowledge base

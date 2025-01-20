@@ -1,5 +1,5 @@
-; !(import! &self blocks-domain.metta)
-!(import! &self logistics-i-1_flat.metta)
+; !(import! &self blocks-domain)
+!(import! &self logistics-i-1_flat)
 
 ; GET ALL PRECONDITIONS OF AN ACTION
 (= (preconditions $action)

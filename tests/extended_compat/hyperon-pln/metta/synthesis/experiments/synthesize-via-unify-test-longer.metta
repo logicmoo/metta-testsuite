@@ -1,5 +1,5 @@
 ;; Import modules
-!(import! &self synthesize-via-unify.metta)
+!(import! &self synthesize-via-unify)
 !(import! &self ../../common/Record.metta)
 
 ;; Knowledge base

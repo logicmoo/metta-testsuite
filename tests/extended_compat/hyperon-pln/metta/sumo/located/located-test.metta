@@ -4,7 +4,7 @@
 !(import! &self ../../synthesis/Synthesize.metta)
 
 ;; Import knowledge base
-!(import! &kb located.kif.metta)
+!(import! &kb located.kif)
 
 ;; Import rule base
 !(import! &rb ../rule-base.metta)

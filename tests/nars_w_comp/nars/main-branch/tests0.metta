@@ -1,5 +1,5 @@
 
-!(import! &self NARS.metta)
+!(import! &self NARS)
 
 ;;NAL tests
 

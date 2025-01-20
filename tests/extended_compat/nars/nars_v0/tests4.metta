@@ -1,4 +1,4 @@
-!(import! &self NARS.metta)
+!(import! &self NARS)
 
 !(AddBeliefEvent ((({ garfield }) --> cat) (1.0 0.9)))
 !(AddBeliefEvent (((cat * sky) --> like) (1.0 0.9)))

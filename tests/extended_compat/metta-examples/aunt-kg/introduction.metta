@@ -1,4 +1,4 @@
-!(import! &self toy.metta)
+!(import! &self toy)
 
 ; !(match &self (parent $x Bob) $x)
 ; Tom, Pam

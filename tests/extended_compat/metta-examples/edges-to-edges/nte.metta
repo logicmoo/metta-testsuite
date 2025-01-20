@@ -1,5 +1,5 @@
 ; https://apps.adamv.be/HEdit/?uri=examples/InteractiveDisneyStrategy.json&hide_gray&selected=[0]&hide_help&show_information
-!(import! &self InteractiveDisneyStrategy.metta)
+!(import! &self InteractiveDisneyStrategy)
 
 (= (transform__ $pattern $query) (match &self $pattern (add-atom &self $query)))
 (= (transform_ $pattern $query) (match &self $pattern (let $_ (add-atom &self $query) $query)))

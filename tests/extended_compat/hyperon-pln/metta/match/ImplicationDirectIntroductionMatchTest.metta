@@ -1,5 +1,5 @@
 ;; Test Implication Direct Introduction Match Rule
-!(import! &self ImplicationDirectIntroductionMatch.metta)
+!(import! &self ImplicationDirectIntroductionMatch)
 
 (≞ (P 42) (Bl True))
 (≞ (Q 42) (Bl False))

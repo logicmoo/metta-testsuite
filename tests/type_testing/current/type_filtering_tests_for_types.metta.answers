@@ -3,82 +3,36 @@
 !(assertEither "filter_Number" (filter_Number (some_value)) 	((quote $X_568) (quote String) (quote 1) (quote 5) (quote ())) 	((quote 1) (quote $X#236) (quote String) (quote 5) (quote ())))
 
 ;; Tests for filter_String
-!(assertEither "filter_String" (filter_String (some_value)) 	((quote $X_2332) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")) 	((quote $X#3205) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")))
+!(assertEither "filter_String" (filter_String (some_value)) 	((quote $X_2332) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")) 	((quote "a") (quote $X#3205) (quote String) (quote "x: 1 y: 2") (quote ())))
 
 ;; Tests for filter_Nat
-!(assertEither "filter_Nat" (filter_Nat (some_value)) 	((quote $X) (quote String) (quote Z) (quote (S Z)) (quote (S (S Z))) (quote ())) 	((quote Z) (quote $X#6157) (quote String) (quote (S Z)) (quote (S (S Z))) (quote ())))
+!(assertEither "filter_Nat" (filter_Nat (some_value)) 	((quote $X) (quote String) (quote Z) (quote (S Z)) (quote (S (S Z))) (quote ())) 	((quote $X#6157) (quote Z) (quote String) (quote (S Z)) (quote (S (S Z))) (quote ())))
 
 ;; Tests for filter_Symbol
-!(assertEither "filter_Symbol" (filter_Symbol (some_value)) 	((quote $X) (quote S) (quote String) (quote Z) (quote ())) 	((quote Z) (quote $X#12956) (quote String) (quote S) (quote ())))
+!(assertEither "filter_Symbol" (filter_Symbol (some_value)) 	((quote $X) (quote S) (quote String) (quote Z) (quote ())) 	((quote S) (quote $X#12940) (quote Z) (quote String) (quote ())))
 
 ;; Tests for filter_Variable
-!(assertEither "filter_Variable" (filter_Variable (some_value)) 	((quote $X#16319) (quote String) (quote ())) 	$passes)
+!(assertEither "filter_Variable" (filter_Variable (some_value)) 	((quote $X) (quote String) (quote ())) 	$passes)
 
 ;; Tests for filter_Undeclared
-!(assertEither "filter_Undeclared" (filter_Undeclared (some_value)) 	((quote $X#18021) (quote String) (quote ())) 	$passes)
+!(assertEither "filter_Undeclared" (filter_Undeclared (some_value)) 	((quote $X#18005) (quote String) (quote ())) 	$passes)
 
 ;; Tests for filter_Grounded
-!(assertEither "filter_Grounded" (filter_Grounded (some_value)) 	((quote $X_17422) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote String) (quote 1) (quote ()) (quote "x: 1 y: 2")) 	((quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#19723) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")))
+!(assertEither "filter_Grounded" (filter_Grounded (some_value)) 	((quote $X_17422) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote String) (quote 1) (quote ()) (quote "x: 1 y: 2")) 	((quote 1) (quote GroundingSpace-top) (quote 'c') (quote "a") (quote $X#19707) (quote String) (quote "x: 1 y: 2") (quote ())))
 
 ;; Tests for filter_Type
-!(assertEither "filter_Type" (filter_Type (some_value)) 	((quote $X#26554) (quote String) (quote ())) 	$passes)
+!(assertEither "filter_Type" (filter_Type (some_value)) 	((quote $X#26768) (quote String) (quote ())) 	$passes)
 
 ;; Tests for filter_Char
 !(assertEither "filter_Char" (filter_Char (some_value)) 	((quote 'c') (quote 'c') (quote String) (quote ())) 	$passes)
 
 ;; Tests for filter_Empty
-!(assertEither "filter_Empty" (filter_Empty (some_value)) 	((quote $X#30211) (quote String) (quote ())) 	$passes)
+!(assertEither "filter_Empty" (filter_Empty (some_value)) 	((quote $X#30425) (quote String) (quote ())) 	$passes)
 
 ;; Tests for filter_List
-!(assertEither "filter_List" (filter_List (some_value)) 	((quote $X_25168) (quote String) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil))))) 	((quote $X#31931) (quote String) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote ())))
+!(assertEither "filter_List" (filter_List (some_value)) 	((quote $X_25168) (quote String) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil))))) 	((quote $X#32145) (quote String) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote ())))
 
-
-;; Tests for filter__Undefined_
-!(assertEither "filter__Undefined_" (filter__Undefined_ (some_value)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#41923) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_Expression
-!(assertEither "filter_Expression" (let $a (some_value) (filter_Expression $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_TVar
-!(assertEither "filter_TVar" (filter_TVar (some_value)) 	((quote $X_8652) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#84801) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_Atom
-!(assertEither "filter_Atom" (let $a (some_value) (filter_Atom $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_ExpressionNumber
-!(assertEither "filter_ExpressionNumber" (let $a (some_value) (filter_ExpressionNumber $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_ExpressionUnit
-!(assertEither "filter_ExpressionUnit" (let $a (some_value) (filter_ExpressionUnit $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_ExpressionAtom
-!(assertEither "filter_ExpressionAtom" (let $a (some_value) (filter_ExpressionAtom $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-
-
-;; Tests for filter_AtomAtom
-!(assertEither "filter_AtomAtom" (let $a (some_value) (filter_AtomAtom $a)) 	((quote $a) (quote "a") (quote GroundingSpace-top) (quote 'c') (quote S) (quote String) (quote Z) (quote 1) (quote (S Z)) (quote (S (S Z))) (quote 5) (quote ()) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote "x: 1 y: 2")) 	((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))
-[("filter_Number" ((quote 1) (quote $X#236) (quote String) (quote 5) (quote ())))]
-[("filter_String" ((quote $X#3205) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_Nat" ((quote Z) (quote $X#6157) (quote String) (quote (S Z)) (quote (S (S Z))) (quote ())))]
-[("filter_Symbol" ((quote Z) (quote $X#12956) (quote String) (quote S) (quote ())))]
-[("filter_Variable" ((quote $X) (quote String) (quote ())))]
-[("filter_Undeclared" ((quote $X_16306) (quote String) (quote ())))]
-[("filter_Grounded" ((quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#19723) (quote "a") (quote String) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_Type" ((quote $X_21653) (quote String) (quote ())))]
-[("filter_Char" ((quote 'c') (quote 'c') (quote String) (quote ())))]
-[("filter_Empty" ((quote $X_24034) (quote String) (quote ())))]
-[("filter_List" ((quote $X#31931) (quote String) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote ())))]
-[("filter__Undefined_" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#41923) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_Expression" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_TVar" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $X#84801) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_Atom" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_ExpressionNumber" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_ExpressionUnit" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_ExpressionAtom" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
-[("filter_AtomAtom" ((quote Z) (quote GroundingSpace-top) (quote 1) (quote 'c') (quote $a) (quote "a") (quote String) (quote S) (quote (S Z)) (quote (S (S Z))) (quote ()) (quote (Cons 1 (Cons 2 (Cons 3 Nil)))) (quote 5) (quote ()) (quote "x: 1 y: 2")))]
+timeout: sending signal KILL to command ‘metta’
+real 10.02
+user 9.56
+sys 0.44

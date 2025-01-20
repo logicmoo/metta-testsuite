@@ -5,7 +5,7 @@
 
      (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) 
        (1 5) 
-       (String $X#568 1 5 ()))
+       ($X#568 1 String () 5))
 
      (MeTTa-Test "passing" (+ 1 1) 
         (2) 
@@ -13,83 +13,83 @@
 
      (MeTTa-Test "Filter-String" (Filter-String (some-value)) 
        ("a" "x: 1 y: 2") 
-       (String "a" $X#1657 () "x: 1 y: 2"))
+       ("a" $X#1651 String () "x: 1 y: 2"))
 
      (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) 
        (Z (S Z) (S (S Z))) 
-       (String Z $X#2396 (S Z) () (S (S Z))))
+       ($X#2384 String Z () (S Z) (S (S Z))))
 
      (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) 
        (S GroundingSpace-top) 
-       (String Z S $X#4136 ()))
+       (Error (S $X#4118 String Z ()) IncorrectNumberOfArguments))
 
      (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) 
        (GroundingSpace-top) 
-       (String $X#4930 ()))
+       ($X#4958 String ()))
 
      (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) 
        (1 "a" 'c' Z (S Z)) 
-       (String "a" $X#5630 1 'c' () "x: 1 y: 2"))
+       ("a" $X#5652 'c' 1 String () "x: 1 y: 2"))
 
      (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) 
        (String) 
-       (String $X#6487 ()))
+       ($X#6503 String ()))
 
 
      (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) 
        (all the values) 
-       (String Z S "a" $X#7189 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) 
        (1 "a" Z (S Z) (S (S Z))) 
-       (String Z S "a" $X#10203 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
      (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) 
        () 
-       (String $X#13473 ()))
+       ($X#9785 String ()))
 
 
      (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) 
        ((+ 2 3) (format-args "x: {} y: {}" (1 2))) 
-       (String Z S "a" $X#14170 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) 
        (1 "a" 'c' S Z (S Z)) 
-       (String Z S "a" $X#16920 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) 
        ((+ 2 3)) 
-       (String Z S "a" $X#19708 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) 
        (empty (println! "did it")) 
-       (String Z S "a" $X#22392 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) 
        () 
-       (String Z S "a" $X#25084 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
 
      (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) 
        (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) 
-       (String Z S "a" $X#27752 1 'c' () (S Z) (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () "x: 1 y: 2" (S (S Z))))
+       (Error "a" BadType))
 
      (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) 
        ('c') 
-       (String $X#31339 'c' ()))
+       ($X#16547 'c' String ()))
 
      (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) 
        (empty (println! "did it") ()) 
-       (String $X#32063 ()))
+       ($X#17265 String ()))
 
      (MeTTa-Test "Filter-List" (Filter-List (some-value)) 
        ((Cons 1 (Cons 2 (Cons 3 Nil)))) 
-       (String $X#32805 (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
+       ($X#18001 String () (Cons 1 (Cons 2 (Cons 3 Nil)))))
 [()]
 [()]
 [()]
@@ -111,6 +111,6 @@
 [()]
 [()]
 [()]
-real 0.45
-user 0.42
+real 0.29
+user 0.26
 sys 0.00

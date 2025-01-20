@@ -1,7 +1,7 @@
 ; DeductionMatch and ImplicationDirectionIntroductionMatch
 
-!(import! &self ImplicationDirectIntroductionMatch.metta)
-!(import! &self DeductionMatch.metta)
+!(import! &self ImplicationDirectIntroductionMatch)
+!(import! &self DeductionMatch)
 
 ; Use IDI rule to infer P->Q based on the following,
 (≞ (P 42) (Bl True))

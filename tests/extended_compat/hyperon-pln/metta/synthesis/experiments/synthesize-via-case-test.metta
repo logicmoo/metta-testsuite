@@ -1,5 +1,5 @@
 ;; Import modules
-!(import! &self synthesize-via-case.metta)
+!(import! &self synthesize-via-case)
 !(import! &self ../../common/Record.metta)
 
 ;; Test program synthesizer

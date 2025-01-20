@@ -1,5 +1,5 @@
 ;; Import modules
-!(import! &self ModusPonensDTL.metta)
+!(import! &self ModusPonensDTL)
 !(import! &self ../synthesis/Synthesize.metta)
 
 ;; Puzzle:

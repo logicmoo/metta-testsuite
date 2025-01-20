@@ -1,6 +1,6 @@
 ;; Import modules
 !(import! &self ../common/Num.metta)
-;; !(import! &self Unify.metta)
+;; !(import! &self Unify)
 
 ;; Enumerate all programs up to a given depth that are consistent with
 ;; the query, using the given axiom non-deterministic functions and rules.

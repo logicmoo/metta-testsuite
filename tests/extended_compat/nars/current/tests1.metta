@@ -506,7 +506,7 @@
                       (GoalCycle $t)))))
 
 
-;; !(import! &self NARS.metta)
+;; !(import! &self NARS)
 
 ;;MeTTaLog only: !(pragma! trace-on-load True)
 

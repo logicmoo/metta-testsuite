@@ -1,5 +1,5 @@
 ;; Import OrderedSet
-!(import! &self OrderedSet.metta)
+!(import! &self OrderedSet)
 
 ;; Test elem
 !(assertEqual (elem 1 ∅) False)

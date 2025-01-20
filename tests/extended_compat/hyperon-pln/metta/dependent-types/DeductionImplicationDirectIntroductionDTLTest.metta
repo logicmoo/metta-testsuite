@@ -1,8 +1,8 @@
 ;; Test DeductionDTL and ImplicationDirectionIntroductionDTL rules
 
 ;; Import the rules
-!(import! &self ImplicationDirectIntroductionDTL.metta)
-!(import! &self DeductionDTL.metta)
+!(import! &self ImplicationDirectIntroductionDTL)
+!(import! &self DeductionDTL)
 !(import! &self ../synthesis/Synthesize.metta)
 
 ;; Knowledge base

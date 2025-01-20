@@ -8,5 +8,5 @@
 [(describe ((fields $ford) (where (($ford foaf:name "'FORD MOTOR CO'")))))]
 [(select ((fields ($name (as (group_concat $birth (= separator '|')) $bth))) (where (($person dbo:birthPlace dbr:Dublin) ($person dbo:birthDate $birth) ($person dbp:name $name) (filter (= (lang $name) 'en')) (filter (contains (str $name) 'Murphy')))) (group_by $name) (order_by $name) (limit 3)))]
 real 0.06
-user 0.05
+user 0.04
 sys 0.00

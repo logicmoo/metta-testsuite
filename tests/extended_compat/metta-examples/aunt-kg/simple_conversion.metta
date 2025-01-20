@@ -1,15 +1,15 @@
 ; Careful, these first three can take a long time
 ; https://github.com/Jisco/gedcom.json/blob/master/examples/royal92.json
-; !(import! &self royal92.metta)
+; !(import! &self royal92)
 
 ; https://github.com/kennethreitz/context/blob/master/gedcom/biblical/adameve.ged
-!(import! &self adameve.metta)
+!(import! &self adameve)
 
 ; https://github.com/Jisco/gedcom.json/blob/master/examples/lordOfTheRings.json
-; !(import! &self lordOfTheRings.metta)
+; !(import! &self lordOfTheRings)
 
 ; https://github.com/Jisco/gedcom.json/blob/master/examples/simpsons.json
-; !(import! &self simpsons.metta)
+; !(import! &self simpsons)
 
 (= (transform_ $pattern $query) (match &self $pattern (let $_ (add-atom &self $query) $query)))
 (= (transform $pattern $query) (match &self $pattern $query))

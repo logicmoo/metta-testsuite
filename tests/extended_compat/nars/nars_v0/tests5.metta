@@ -1,4 +1,4 @@
-!(import! &self NARS.metta)
+!(import! &self NARS)
 
 !(AddBeliefEvent ((((sheep --> ([ see ])) &/ (^ count)) =/> (sheep --> ([ counted ]))) (1.0 0.9)))
 !(BeliefCycle (get-state &currentTime))

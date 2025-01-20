@@ -1,5 +1,5 @@
 
-!(import! &self sorting_tests.metta)
+!(import! &self sorting_tests)
 
 ;; Define a generic less than operator, lessThan, for Nat.  < cannot be used
 ;; because it is a built-in, its type is hardwired and cannot be

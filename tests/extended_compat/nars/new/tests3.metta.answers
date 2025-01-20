@@ -1,4 +1,22 @@
-[(Error (import! GroundingSpace-top NARS.metta) Illegal module name: NARS.metta)]
-real 0.03
-user 0.01
+(. (((corridorIn &/ (^ forward)) =/> doorAt) (1.0 0.9)))
+(time = 1)
+(. (((windowAt &/ (^ open)) =/> Outside) (1.0 0.9)))
+(time = 2)
+(. (((doorAt &/ (^ open)) =/> Outside) (1.0 0.9)))
+(time = 3)
+(. (corridorIn (1.0 0.9)))
+(time = 4)
+(! (Outside (1.0 0.9)))
+(time = 5)
+[()]
+[]
+[]
+[]
+[]
+[(Error (assertEqual (AddGoalEvent (Outside (1.0 0.9))) None) 
+Expected: [None]
+Got: []
+Missed result: None)]
+real 2.06
+user 2.02
 sys 0.00

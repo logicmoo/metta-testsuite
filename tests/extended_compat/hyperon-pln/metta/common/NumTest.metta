@@ -1,5 +1,5 @@
 ;; Import modules
-!(import! &self Num.metta)
+!(import! &self Num)
 !(import! &self ../synthesis/Synthesize.metta)
 
 ;; Test elementary functions

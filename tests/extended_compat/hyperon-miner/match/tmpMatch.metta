@@ -206,7 +206,7 @@
   (let* (($cptrn (miner $db $ms $depth))
          ($isurp (iSurprisingness $cptrn)))
          (if (> $isurp $highsurp) (surp (get-pattern $cptrn) $isurp) (superpose ()))))
-; !(import! &self MinerMatch.metta)
+; !(import! &self MinerMatch)
 
 ;; Load sample data
 !(import! &db ../data/sample.metta)

@@ -14,6 +14,7 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -66,7 +67,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 10:58:56+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/first_answer_long.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:14:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/first_answer_long.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -108,15 +109,15 @@ Script started on 2025-01-02 10:58:56+00:00 [COMMAND="timeout --preserve-status 
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/first_answer_long.metta] ]
 
-[stream_error [ : 10 [ : 66 364 ] ] [syntax_error [unexpected_char ]] "Unexpected start character: ']'"]]
+[stream_error [ : 10 [ : 66 364 ] ] [syntax_error [unexpected_char ]] "Unexpected end character: ']'"]]
 
 <span class="ansi1 ansi31"
->ERROR: Unknown message: stream_error(10:66:364,syntax_error(unexpected_char(']'),"Unexpected start character: ']'"))
+>ERROR: Unknown message: stream_error(10:66:364,syntax_error(unexpected_char(']'),"Unexpected end character: ']'"))
 </span>
-[stream_error [ : 30 [ : 9 972 ] ] [syntax_error [unexpected_char ]] "Unexpected start character: ']'"]]
+[stream_error [ : 30 [ : 9 972 ] ] [syntax_error [unexpected_char ]] "Unexpected end character: ']'"]]
 
 <span class="ansi1 ansi31"
->ERROR: Unknown message: stream_error(30:9:972,syntax_error(unexpected_char(']'),"Unexpected start character: ']'"))
+>ERROR: Unknown message: stream_error(30:9:972,syntax_error(unexpected_char(']'),"Unexpected end character: ']'"))
 </span>;;;;  MeTTaLog
 ;;;
 ;;; deb12user@DEBIAN12B:~/metta-wam$ time mettalog tests/baseline_compat/hyperon-mettalog_sanity/first_answer_long.metta
@@ -367,8 +368,25 @@ Script started on 2025-01-02 10:58:56+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-013099040"
 >!(limit 6 (unique (synthesize (: $term $type) kb rb (S (S Z)))))
 
-</span>;; no-results ;; 
-;;; (: a A)
+</span>
+N(1): <span class="ansi33"
+>(: a A)
+</span>
+N(2): <span class="ansi33"
+>(: a B)
+</span>
+N(3): <span class="ansi33"
+>(: abc (Implication (AndLink A B) C))
+</span>
+N(4): <span class="ansi33"
+>(: cde (Implication (OrLink C D) E))
+</span>
+N(5): <span class="ansi33"
+>(: (ConjunctionEliminationLeft (ConjunctionIntroduction a a)) A)
+</span>
+R(6): <span class="ansi33"
+>(: (ConjunctionEliminationLeft (ConjunctionIntroduction a a)) A)
+</span>;;; (: a A)
 ;;; (: a B)
 ;;; (: abc (Implication (AndLink A B) C))
 ;;; (: cde (Implication (OrLink C D) E))
@@ -376,11 +394,9 @@ Script started on 2025-01-02 10:58:56+00:00 [COMMAND="timeout --preserve-status 
 ;;; (: (ConjunctionEliminationLeft (ConjunctionIntroduction a a)) A)
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 10:59:04+00:00 [COMMAND_EXIT_CODE="7"]
+[(: a A), (: a B), (: abc (Implication (AndLink A B) C)), (: cde (Implication (OrLink C D) E)), (: (ConjunctionEliminationLeft (ConjunctionIntroduction a a)) A), (: (ConjunctionEliminationLeft (ConjunctionIntroduction a a)) A)]
+
+Script done on 2025-01-21 21:14:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

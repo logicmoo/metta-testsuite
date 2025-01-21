@@ -532,7 +532,7 @@ is_final_write('#\\'(S)) :-
     !, format("'~w'", [S]).
 is_final_write(V) :-
     % If Python mode is enabled and V is a Python object, format with `py_ppp/1`.
-    py_is_enabled, notrace(catch(((py_is_py(V),_,fail), !, py_ppp(V)),_,fail)), !.
+    py_is_enabled, notrace(catch((py_is_py(V), !, py_ppp(V)),_,fail)), !.
 is_final_write([VAR, V | T]) :-
     % For lists like ['$VAR', Value], write the variable if the tail is empty.
     '$VAR' == VAR, T == [], !, write_dvar(V).
@@ -740,21 +740,77 @@ write_src_wi(V) :-
 %
 write_src(V) :-
     % Guess variables in V and pretty-print using `pp_sex/1`.
-    \+ \+ pnotrace((src_vars(V, I), pp_sex(I))), !.
+    \+ \+ pnotrace((number_src_vars(V, I, Goals),
+               copy_term_nat(I+Goals,Nat+NatGoals), pp_sex(Nat),
+               maybe_write_goals(NatGoals))), !.
 
 print_compounds_special:- true.
 src_vars(V,I):- var(V),!,I=V.
 src_vars(V,I):- %ignore(guess_metta_vars(V)),
-             must_det_lls((pre_guess_varnames(V,II),
-              call(II=V),
+             must_det_lls((
+              pre_guess_varnames(V,II),call(II=V),
               guess_varnames(II,I),
-              nop(ignore(numbervars(I,10000,_,[singleton(true),attvar(skip)]))),
-              materialize_vns(I))).
+              nop(ignore(numbervars(I,400,_,[singleton(true),attvar(skip)]))),
+              nop(materialize_vns(I)))).
 pre_guess_varnames(V,I):- \+ compound(V),!,I=V.
 pre_guess_varnames(V,I):- copy_term_nat(V,VC),compound_name_arity(V,F,A),compound_name_arity(II,F,A), metta_file_buffer(_, _, _, II, Vs, _,_), Vs\==[], copy_term_nat(II,IIC), VC=@=IIC, II=I,maybe_name_vars(Vs),!.
 pre_guess_varnames(V,I):- is_list(V),!,maplist(pre_guess_varnames,V,I).
 pre_guess_varnames(C,I):- compound_name_arguments(C,F,V),!,maplist(pre_guess_varnames,V,VV),compound_name_arguments(I,F,VV),!.
 pre_guess_varnames(V,V).
+
+write_w_attvars(Term):- \+ \+ write_w_attvars0(Term).
+
+write_w_attvars0(Term):-
+   number_src_vars(Term,PP,Goals),
+   copy_term_nat(PP+Goals,Nat+NatGoals),
+   writeq(Nat),
+   maybe_write_goals(NatGoals), !.
+
+number_src_vars(Term,TermC,Goals):-
+  must_det_lls((
+    src_vars(Term,PP),
+    copy_term(Term,TermC,Goals),
+    % copy_term(Goals,CGoals,GoalsGoals),
+    PP = TermC,
+    must(PP = Term),
+    materialize_vns(PP),
+    ignore(numbervars(PP,260,_,[singleton(true),attvar(skip)])),
+    ignore(numbervars(PP,26,_,[singleton(true),attvar(bind)])))).
+
+
+once_writeq_nl_now(P) :-
+    \+ \+ (pnotrace((
+             format('~N'),
+             write_w_attvars(P),
+             format('~N')))).
+
+maybe_write_goals(Goals):-
+   exclude(is_f_nv,Goals,LGoals),
+   if_t(LGoals\==[],format(' {~q} ', [LGoals])).
+   %if_t(LGoals\==[],with_output_to(user_error,ansi_format([fg(yellow)], ' {~q} ', [LGoals]))).
+is_f_nv(F):- compound(F), functor(F,name_variable,2,_).
+
+% Standardize variable names in `P` and print it using `ansi_format`.
+% Use `nb_setval` to store the printed term in `$once_writeq_ln`.
+once_writeq_nl_now(Color,P) :- w_color(Color,once_writeq_nl_now(P)).
+
+%!  write_src_nl(+Src) is det.
+%
+%   Prints a source line followed by a newline.
+%
+%   @arg Src The source line to print.
+%
+write_src_nl(Src) :-
+    % Print a newline, the source line, and another newline.
+    \+ \+ (must_det_ll((
+               (format('~N'), write_src(Src),
+                format('~N'))))).
+
+
+w_color(Color,Goal):-
+    \+ \+ (must_det_ll((
+           wots(Text,Goal),
+           with_output_to(user_error,ansi_format([fg(Color)], '~w', [Text]))))).
 
 materialize_vns(Term):- term_variables(Term,List), maplist(materialize_vn,List).
 materialize_vn(Var):- \+ attvar(Var),!.
@@ -831,7 +887,7 @@ pp_sexi((USER:Body)) :- fail,
 pp_sexi(V) :-
     % If concepts are allowed, disable concept formatting and print `V`.
     allow_concepts, !, with_concepts('False', pp_sex(V)), flush_output.
-pp_sexi('Empty') :-
+pp_sexi('Empty') :- fail,
     % If `V` is the atom 'Empty', do not print anything.
     !.
 pp_sexi('') :-
@@ -978,6 +1034,11 @@ pp_sexi_l([=, H, B]) :-
 
 pp_sexi_l([H | T]):- pp_sexi_lc([H | T]).
 
+
+pp_sexi_lc([H | T]) :- \+ is_list(T),!,
+    %write('#{'), writeq([H|T]), write('}.').
+    print_compound_type(0, cmpd, [H|T]).
+
 pp_sexi_lc([H | T]) :-
     % If `V` has more than two elements, print `H` followed by `T` in S-expression format.
     compound_type_s_m_e(list,L,M,R),
@@ -994,6 +1055,8 @@ pp_sexi_lc([H | T]) :-
     wots(SS, ((with_indents(false, (write(L), pp_sex_nc(H), write(' '), write_args_as_sexpression(M,T), write(R)))))),
     ((symbol_length(SS, Len), Len < 20) -> write(SS);
         with_indents(true, w_proper_indent(2, w_in_p(pp_sex_c([H | T]))))), !.
+
+
 /*
 
 pp_sexi_l([H|T]) :- is_list(T),symbol(H),upcase_atom(H,U),downcase_atom(H,U),!,

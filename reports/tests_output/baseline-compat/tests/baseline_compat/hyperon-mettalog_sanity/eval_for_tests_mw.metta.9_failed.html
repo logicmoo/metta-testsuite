@@ -1,0 +1,367 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-21 21:13:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] ]
+;;;; define foo returning Number and String
+<span class="ansi38-255165000"
+> (= (foo)  1)
+</span><span class="ansi38-255165000"
+> (= (foo)  "a")
+</span>;;;; eval-for returns of appropriate type
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for Number (foo)) (1))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.01"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.01</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.13 milliseconds) 
+
+!(assertEqualToResult (eval-for Number (foo)) (1))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 "a") 
+      (1)]]
+</span>equal_enough_for_test('[|]'(1,'[|]'("a",[])),'[|]'(1,[]))[error [error [domain_error py_term [Error [got (1 "a")] [expected (1)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (eval-for Number (foo)) (1))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for String (foo)) ("a"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.02"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.02</h3>
+; 
+; EVAL TEST
+; took 0.000659 secs. (659.49 microseconds) 
+
+!(assertEqualToResult (eval-for String (foo)) ("a"))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 "a") 
+      ("a")]]
+</span>
+equal_enough_for_test('[|]'(1,'[|]'("a",[])),'[|]'("a",[]))[error [error [domain_error py_term [Error [got (1 "a")] [expected ("a")]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (eval-for String (foo)) ("a"))];;;; eval-for works with unbound type
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for $type (foo)) (1 "a"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.03"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.03</h3>
+; 
+; EVAL TEST
+; took 0.000677 secs. (677.06 microseconds) 
+
+!(assertEqualToResult (eval-for $type (foo)) (1 "a"))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1 "a") 
+      (1 "a")]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (let $result (eval-for $type (foo)) ($result $type)) ((1 Number) ("a" String)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.04"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.04</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.36 milliseconds) 
+
+!(assertEqualToResult (let $result (eval-for $type (foo)) ($result $type)) ((1 Number) ("a" String)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (1 $type) ("a" $type)) 
+      ( (1 Number) ("a" String))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(1,'[|]'(_4128{vn = ...},[])),'[|]'('[|]'("a",'[|]'(_4096{vn = ...},[])),[])),'[|]'('[|]'(1,'[|]'('Number',[])),'[|]'('[|]'("a",'[|]'('String',[])),[])))[error [error [domain_error py_term [Error [got ((1 $type) ("a" $type))] [expected ((1 Number) ("a" String))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (let $result (eval-for $type (foo)) ($result $type)) ((1 Number) ("a" String)))];;;; eval-for works when type arg must be evaluated
+<span class="ansi38-255165000"
+> (= (type)  Number)
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for (type) (foo)) (1))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.05"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.05</h3>
+; 
+; EVAL TEST
+; took 0.000602 secs. (601.56 microseconds) 
+
+!(assertEqualToResult (eval-for (type) (foo)) (1))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 "a") 
+      (1)]]
+</span>
+<span class="ansi38-255165000"
+> (= (type)  String)
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for (type) (foo)) (1 "a"))
+
+</span>equal_enough_for_test('[|]'(1,'[|]'("a",[])),'[|]'(1,[]))[error [error [domain_error py_term [Error [got (1 "a")] [expected (1)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (eval-for (type) (foo)) (1))]
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.06"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.06</h3>
+; 
+; EVAL TEST
+; took 0.000684 secs. (683.90 microseconds) 
+
+!(assertEqualToResult (eval-for (type) (foo)) (1 "a"))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1 "a") 
+      (1 "a")]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; set up incrementer and define bar returning Number and String
+<span class="ansi38-013099040"
+>!(bind! &var (new-state 0))
+
+</span>
+<span class="ansi38-255165000"
+> (= (increment)  
+  (sequential ((do (change-state! &var (+ 1 (get-state &var)))) (get-state &var))))
+</span><span class="ansi38-255165000"
+> (= (bar)  
+  (sequential ((do (increment)) 1)))
+</span><span class="ansi38-255165000"
+> (= (bar)  
+  (sequential ((do (increment)) "a")))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (get-state &var) (0))
+
+</span>[error [error [domain_error py_term [State 0 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (bind! &var (new-state 0))]
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.07"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.07</h3>
+; 
+; EVAL TEST
+; took 0.000170 secs. (169.78 microseconds) 
+
+!(assertEqualToResult (get-state &var) (0))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ($260) 
+      (0)]]
+</span>
+equal_enough_for_test('[|]'(_3484,[]),'[|]'(0,[]))[error [error [domain_error py_term [Error [got ($260)] [expected (0)]]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (get-state &var) (0))];;;; eval-for does not re-evaluate paths
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for $type (bar)) (1 "a"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.08"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.08</h3>
+[error [error [domain_error py_term [State $260 $261]] [context [ : janus [ / py_call 2 ] ] $262]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (eval-for $type (bar)) (1 "a"))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-state &var) (2))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.09"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.09</h3>
+[error [error [domain_error py_term [State $260 $261]] [context [ : janus [ / py_call 2 ] ] $262]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (get-state &var) (2))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for (type) (bar)) (1 "a"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.10"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.10</h3>
+[error [error [domain_error py_term [State $260 $261]] [context [ : janus [ / py_call 2 ] ] $262]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (eval-for (type) (bar)) (1 "a"))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-state &var) (4))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.11"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.11</h3>
+
+[error [error [domain_error py_term [State $260 $261]] [context [ : janus [ / py_call 2 ] ] $262]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (get-state &var) (4))];;;; eval-for does one evaluation step
+<span class="ansi38-255165000"
+> (= (chain-to-foo)  
+  (foo))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $x (quote $x)) ((quote (foo))))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.12"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.12</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.16 milliseconds) 
+
+!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $x (quote $x)) ((quote (foo))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (quote 1) (quote "a")) 
+      ( (quote (foo)))]]
+</span>equal_enough_for_test('[|]'('[|]'(quote,'[|]'(1,[])),'[|]'('[|]'(quote,'[|]'("a",[])),[])),'[|]'('[|]'(quote,'[|]'('[|]'(foo,[]),[])),[]))[error [error [domain_error py_term [Error [got ((quote 1) (quote "a"))] [expected ((quote (foo)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $x (quote $x)) ((quote (foo))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (chain (eval-for $type (chain-to-foo)) $x (quote $x)) ((quote (foo))))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.13"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.13</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.22 milliseconds) 
+
+!(assertEqualToResult (chain (eval-for $type (chain-to-foo)) $x (quote $x)) ((quote (foo))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (quote 1) (quote "a")) 
+      ( (quote (foo)))]]
+</span>equal_enough_for_test('[|]'('[|]'(quote,'[|]'(1,[])),'[|]'('[|]'(quote,'[|]'("a",[])),[])),'[|]'('[|]'(quote,'[|]'('[|]'(foo,[]),[])),[]))[error [error [domain_error py_term [Error [got ((quote 1) (quote "a"))] [expected ((quote (foo)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (chain (eval-for $type (chain-to-foo)) $x (quote $x)) ((quote (foo))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $x (quote $x)) ())
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.14"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.14</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.21 milliseconds) 
+
+!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $x (quote $x)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (quote 1) (quote "a")) ()]]
+</span>equal_enough_for_test('[|]'('[|]'(quote,'[|]'(1,[])),'[|]'('[|]'(quote,'[|]'("a",[])),[])),[])[error [error [domain_error py_term [Error [got ((quote 1) (quote "a"))] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (chain (eval-for Number (chain-to-foo)) $x (quote $x)) ())]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $x (quote $x)) ())
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.15"
+>;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.15</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.17 milliseconds) 
+
+!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $x (quote $x)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (quote 1) (quote "a")) ()]]
+</span>equal_enough_for_test('[|]'('[|]'(quote,'[|]'(1,[])),'[|]'('[|]'(quote,'[|]'("a",[])),[])),[])[error [error [domain_error py_term [Error [got ((quote 1) (quote "a"))] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] (assertEqualToResult (chain (eval-for String (chain-to-foo)) $x (quote $x)) ())]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 2
+</span><span class="ansi31"
+>Failures: 13
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[()]
+[[[()]
+[[[[[[[[[[
+
+Script done on 2025-01-21 21:14:00+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta" --halt=true\033[0m

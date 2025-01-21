@@ -39,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-01 21:00:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:09:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -107,13 +107,14 @@ Script started on 2025-01-01 21:00:32+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.81 milliseconds) 
+; took 0.008 secs. (8.00 milliseconds) 
 
 !(assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test 
+      ( (metta-get-doc some-func)) 
       ( (@doc-formal 
           (@item some-func) 
           (@kind function) 
@@ -124,9 +125,7 @@ Script started on 2025-01-01 21:00:32+00:00 [COMMAND="timeout --preserve-status 
             (@type ReturnType) 
             (@desc "Return value"))))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ()] [expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))]])
-</span>;;; Same approach can be used to document single atom of any @kind.
+equal_enough_for_test('[|]'('[|]'('metta-get-doc','[|]'('some-func',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('some-func',[])),'[|]'('[|]'('@kind','[|]'(function,[])),'[|]'('[|]'('@type','[|]'('[|]'(->,'[|]'('Arg1Type','[|]'('Arg2Type','[|]'('ReturnType',[])))),[])),'[|]'('[|]'('@desc','[|]'("Test function",[])),'[|]'('[|]'('@params','[|]'('[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('Arg1Type',[])),'[|]'('[|]'('@desc','[|]'("First argument",[])),[]))),'[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('Arg2Type',[])),'[|]'('[|]'('@desc','[|]'("Second argument",[])),[]))),[])),[])),'[|]'('[|]'('@return','[|]'('[|]'('@type','[|]'('ReturnType',[])),'[|]'('[|]'('@desc','[|]'("Return value",[])),[]))),[]))))))),[]))[error [error [domain_error py_term [Error [got ((metta-get-doc some-func))] [expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))];;; Same approach can be used to document single atom of any @kind.
 <span class="ansi38-255165000"
 > (@doc SomeSymbol (@desc "Test symbol atom having specific type"))
 </span><span class="ansi38-255165000"
@@ -139,22 +138,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.06 milliseconds) 
+; took 0.003 secs. (2.58 milliseconds) 
 
 !(assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test 
+      ( (metta-get-doc SomeSymbol)) 
       ( (@doc-formal 
           (@item SomeSymbol) 
           (@kind atom) 
           (@type SomeType) 
           (@desc "Test symbol atom having specific type")))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ()] [expected ((@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))]])
-</span>;;; Grounded atoms are also can be documented using `@doc` expressions. Type of
+equal_enough_for_test('[|]'('[|]'('metta-get-doc','[|]'('SomeSymbol',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('SomeSymbol',[])),'[|]'('[|]'('@kind','[|]'(atom,[])),'[|]'('[|]'('@type','[|]'('SomeType',[])),'[|]'('[|]'('@desc','[|]'("Test symbol atom having specific type",[])),[]))))),[]))[error [error [domain_error py_term [Error [got ((metta-get-doc SomeSymbol))] [expected ((@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))];;; Grounded atoms are also can be documented using `@doc` expressions. Type of
 ;;; the grounded atom is a part of its implementation.
 <span class="ansi38-255165000"
 > (@doc some-gnd-atom (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
@@ -168,13 +166,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.99 milliseconds) 
+; took 0.008 secs. (7.53 milliseconds) 
 
 !(assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test 
+      ( (metta-get-doc some-gnd-atom)) 
       ( (@doc-formal 
           (@item some-gnd-atom) 
           (@kind function) 
@@ -185,9 +184,7 @@ Deterministic: <span class="ansi33"
             (@type %Undefined%) 
             (@desc "Return value"))))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ()] [expected ((@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))]])
-</span>;;; If atom is not documented then `get-doc` returns "No documentation"
+equal_enough_for_test('[|]'('[|]'('metta-get-doc','[|]'('some-gnd-atom',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('some-gnd-atom',[])),'[|]'('[|]'('@kind','[|]'(function,[])),'[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Test function",[])),'[|]'('[|]'('@params','[|]'('[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("First argument",[])),[]))),'[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Second argument",[])),[]))),[])),[])),'[|]'('[|]'('@return','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Return value",[])),[]))),[]))))))),[]))[error [error [domain_error py_term [Error [got ((metta-get-doc some-gnd-atom))] [expected ((@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))];;; If atom is not documented then `get-doc` returns "No documentation"
 ;;; description.
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))
@@ -197,22 +194,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.52 milliseconds) 
+; took 0.003 secs. (2.58 milliseconds) 
 
 !(assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test 
+      ( (metta-get-doc NoSuchAtom)) 
       ( (@doc-formal 
           (@item NoSuchAtom) 
           (@kind atom) 
           (@type %Undefined%) 
           (@desc "No documentation")))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ()] [expected ((@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))]])
-</span>;;; Same result is returned if for instance documentation for the function
+equal_enough_for_test('[|]'('[|]'('metta-get-doc','[|]'('NoSuchAtom',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('NoSuchAtom',[])),'[|]'('[|]'('@kind','[|]'(atom,[])),'[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("No documentation",[])),[]))))),[]))[error [error [domain_error py_term [Error [got ((metta-get-doc NoSuchAtom))] [expected ((@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))];;; Same result is returned if for instance documentation for the function
 ;;; application is queried.
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))
@@ -222,28 +218,29 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.19 milliseconds) 
+; took 0.004 secs. (3.61 milliseconds) 
 
 !(assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test 
+      ( (metta-get-doc (some-func arg1 arg2))) 
       ( (@doc-formal 
           (@item (some-func arg1 arg2)) 
           (@kind atom) 
           (@type ReturnType) 
           (@desc "No documentation")))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ()] [expected ((@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))]])
-</span>;;; `help!` function gets the documentation and prints it in a human readable
+equal_enough_for_test('[|]'('[|]'('metta-get-doc','[|]'('[|]'('some-func','[|]'(arg1,'[|]'(arg2,[]))),[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('[|]'('some-func','[|]'(arg1,'[|]'(arg2,[]))),[])),'[|]'('[|]'('@kind','[|]'(atom,[])),'[|]'('[|]'('@type','[|]'('ReturnType',[])),'[|]'('[|]'('@desc','[|]'("No documentation",[])),[]))))),[]))[error [error [domain_error py_term [Error [got ((metta-get-doc (some-func arg1 arg2)))] [expected ((@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))];;; `help!` function gets the documentation and prints it in a human readable
 ;;; format.
 <span class="ansi38-013099040"
 >!(help! some-func)
 
-</span>;; no-results ;; 
-;;; Output:
+</span>
+Deterministic: <span class="ansi33"
+>(metta-help! some-func)
+</span>;;; Output:
 ;;;
 ;;; Function some-func: (-> Arg1Type Arg2Type ReturnType) Test function
 ;;; Parameters:
@@ -254,16 +251,20 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-013099040"
 >!(help! SomeSymbol)
 
-</span>;; no-results ;; 
-;;; Output:
+</span>
+Deterministic: <span class="ansi33"
+>(metta-help! SomeSymbol)
+</span>;;; Output:
 ;;;
 ;;; Atom SomeSymbol: SomeType Test symbol atom having specific type
 ;;;
 <span class="ansi38-013099040"
 >!(help! some-gnd-atom)
 
-</span>;; no-results ;; 
-;;; Output:
+</span>
+Deterministic: <span class="ansi33"
+>(metta-help! some-gnd-atom)
+</span>;;; Output:
 ;;;
 ;;; Function some-gnd-atom: %Undefined% Test function
 ;;; Parameters:
@@ -274,16 +275,20 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-013099040"
 >!(help! NoSuchAtom)
 
-</span>;; no-results ;; 
-;;; Output:
+</span>
+Deterministic: <span class="ansi33"
+>(metta-help! NoSuchAtom)
+</span>;;; Output:
 ;;;
 ;;; Atom NoSuchAtom: %Undefined% No documentation
 ;;;
 <span class="ansi38-013099040"
 >!(help! (some-func arg1 arg2))
 
-</span>;; no-results ;; 
-;;; Output:
+</span>
+Deterministic: <span class="ansi33"
+>(metta-help! (some-func arg1 arg2))
+</span>;;; Output:
 ;;;
 ;;; Atom (some-func arg1 arg2): ReturnType No documentation
 ;;;
@@ -296,20 +301,13 @@ Deterministic: <span class="ansi33"
 >Failures: 5
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[([Error [got ()] [expected ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))]])]
-[([Error [got ()] [expected ((@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))]])]
-[([Error [got ()] [expected ((@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))]])]
-[([Error [got ()] [expected ((@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))]])]
-[([Error [got ()] [expected ((@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))]])]
-[]
-[]
-[]
-[]
-[]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-01 21:00:41+00:00 [COMMAND_EXIT_CODE="7"]
+[[[[[[(metta-help! some-func)]
+[(metta-help! SomeSymbol)]
+[(metta-help! some-gnd-atom)]
+[(metta-help! NoSuchAtom)]
+[(metta-help! (some-func arg1 arg2))]
+
+Script done on 2025-01-21 21:09:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

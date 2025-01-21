@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-21 21:19:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] ]
+;;; Test File: Partitioning Atomspaces and Performance in MeTTa
+;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/774
+;;; Example: Partitioning Atomspaces by User and Managing Knowledge Bases
+;;; ---------------------------------------------------------------------
+;;; Create a new space for testing
+<span class="ansi38-013099040"
+>!(bind! &test-space (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define functions for managing user-specific knowledge bases
+<span class="ansi38-255165000"
+> (= (add-user $name)  
+  (let $space 
+    (new-space) 
+    (add-atom &test-space 
+      (User $name $space))))
+</span><span class="ansi38-255165000"
+> (= (write-user $name $data)  
+  (let $space 
+    (match &test-space 
+      (User $name $s) $s) 
+    (add-atom $space $data)))
+</span><span class="ansi38-255165000"
+> (= (read-user $name $query $template)  
+  (let $space 
+    (match &test-space 
+      (User $name $s) $s) 
+    (match $space $query $template)))
+</span>;;; Test 1: Add user-specific knowledge bases
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(add-user Alice)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (add-user Alice) (()))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.01"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.01</h3>
+[error [error [domain_error py_term [Space ()]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (add-user Alice) (()))]<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(add-user Bob)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (add-user Bob) (()))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.02"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.02</h3>
+
+[error [error [domain_error py_term [Space ()]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (add-user Bob) (()))];;; Test: Verify user knowledge bases exist
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
+; 
+; EVAL TEST
+; took 0.000186 secs. (186.03 microseconds) 
+
+!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (Alice Bob)]]
+</span>
+equal_enough_for_test([],'[|]'('Alice','[|]'('Bob',[])))[error [error [domain_error py_term [Error [got ()] [expected (Alice Bob)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))];;; Test 2: Write data to user-specific knowledge bases
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(write-user Alice (Age 20))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (write-user Alice (Age 20)) (()))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.04"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.04</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.56 milliseconds) 
+
+!(assertEqualToResult (write-user Alice (Age 20)) (()))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(write-user Bob (Age 22))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (write-user Bob (Age 22)) (()))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.05"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.05</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.50 milliseconds) 
+
+!(assertEqualToResult (write-user Bob (Age 22)) (()))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test: Verify data written to Alice's knowledge base
+<span class="ansi38-013099040"
+>!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.29 milliseconds) 
+
+!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (Age Alice 20)]]
+</span>
+equal_enough_for_test([],'[|]'('Age','[|]'('Alice','[|]'(20,[]))))[error [error [domain_error py_term [Error [got ()] [expected (Age Alice 20)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))];;; Test: Verify data written to Bob's knowledge base
+<span class="ansi38-013099040"
+>!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.36 milliseconds) 
+
+!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (Age Bob 22)]]
+</span>
+equal_enough_for_test([],'[|]'('Age','[|]'('Bob','[|]'(22,[]))))[error [error [domain_error py_term [Error [got ()] [expected (Age Bob 22)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))];;; Example: Manage Atomspaces for Thematic Partitioning
+;;; ----------------------------------------------------
+;;; Define functions to add, retrieve, and manage partitioned knowledge
+<span class="ansi38-255165000"
+> (= (add-partition $name)  
+  (let $space 
+    (new-space) 
+    (add-atom &test-space 
+      (Partition $name $space))))
+</span><span class="ansi38-255165000"
+> (= (write-partition $name $data)  
+  (let $space 
+    (match &test-space 
+      (Partition $name $s) $s) 
+    (add-atom $space $data)))
+</span><span class="ansi38-255165000"
+> (= (read-partition $name $query $template)  
+  (let $space 
+    (match &test-space 
+      (Partition $name $s) $s) 
+    (match $space $query $template)))
+</span>;;; Test 3: Add partitioned knowledge bases
+<span class="ansi38-013099040"
+>!(add-partition People)
+
+</span>[error [error [domain_error py_term [Space ()]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (add-partition People)]
+<span class="ansi38-013099040"
+>!(add-partition Games)
+
+</span>
+[error [error [domain_error py_term [Space ()]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (add-partition Games)];;; Test: Verify partitions exist
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
+; 
+; EVAL TEST
+; took 0.000137 secs. (136.93 microseconds) 
+
+!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (People Games)]]
+</span>
+equal_enough_for_test([],'[|]'('People','[|]'('Games',[])))[error [error [domain_error py_term [Error [got ()] [expected (People Games)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))];;; Test 4: Write and read data from a partitioned knowledge base
+<span class="ansi38-013099040"
+>!(write-partition People (Friend Bob Alice))
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(write-partition Games (GameRole Predator))
+
+</span>;; no-results ;; 
+;;; Test: Verify data in People partition
+<span class="ansi38-013099040"
+>!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.33 milliseconds) 
+
+!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (Friend Bob Alice)]]
+</span>
+equal_enough_for_test([],'[|]'('Friend','[|]'('Bob','[|]'('Alice',[]))))[error [error [domain_error py_term [Error [got ()] [expected (Friend Bob Alice)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))];;; Test: Verify data in Games partition
+<span class="ansi38-013099040"
+>!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10"
+>;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.38 milliseconds) 
+
+!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (GameRole Predator)]]
+</span>equal_enough_for_test([],'[|]'('GameRole','[|]'('Predator',[])))[error [error [domain_error py_term [Error [got ()] [expected (GameRole Predator)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] (assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 2
+</span><span class="ansi31"
+>Failures: 8
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[[[[()]
+[()]
+[[[[[[]
+[]
+[[
+
+Script done on 2025-01-21 21:19:23+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta" --halt=true\033[0m

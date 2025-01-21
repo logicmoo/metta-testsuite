@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 10:53:22+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:08:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -103,7 +103,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000244 secs. (243.75 microseconds) 
+; took 0.000391 secs. (391.37 microseconds) 
 
 !(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
@@ -112,10 +112,8 @@ Deterministic: <span class="ansi33"
     [equal_enough_for_test 
       (88) 
       ( (Error "S" BadType))]]
-</span>
-Deterministic: <span class="ansi33"
->([Error [got (88)] [expected ((Error "S" BadType))]])
-</span><span class="ansi38-013099040"
+</span>equal_enough_for_test('[|]'(88,[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))[error [error [domain_error py_term [Error [got (88)] [expected ((Error "S" BadType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (+ 5 "S") ((Error "S" BadType)))]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
 </span>
@@ -123,19 +121,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000352 secs. (352.35 microseconds) 
+; took 0.000569 secs. (568.79 microseconds) 
 
 !(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      ( (== 5 "S")) 
+      (False) 
       ( (Error "S" BadType))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ((== 5 "S"))] [expected ((Error "S" BadType))]])
-</span>;;; declaring some custom types
+equal_enough_for_test('[|]'('False',[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))[error [error [domain_error py_term [Error [got (False)] [expected ((Error "S" BadType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (== 5 "S") ((Error "S" BadType)))];;; declaring some custom types
 <span class="ansi38-255165000"
 > (: Entity Type)
 </span><span class="ansi38-255165000"
@@ -164,19 +160,17 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000381 secs. (380.96 microseconds) 
+; took 0.000586 secs. (585.55 microseconds) 
 
 !(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      ( (== SocratesIsHuman SamIsMortal)) 
+      (False) 
       ( (Error SamIsMortal BadType))]]
-</span>
-Deterministic: <span class="ansi33"
->([Error [got ((== SocratesIsHuman SamIsMortal))] [expected ((Error SamIsMortal BadType))]])
-</span><span class="ansi38-013099040"
+</span>equal_enough_for_test('[|]'('False',[]),'[|]'('[|]'('Error','[|]'('SamIsMortal','[|]'('BadType',[]))),[]))[error [error [domain_error py_term [Error [got (False)] [expected ((Error SamIsMortal BadType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
 </span>
@@ -184,7 +178,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000624 secs. (624.39 microseconds) 
+; took 0.000785 secs. (785.50 microseconds) 
 
 !(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
@@ -195,9 +189,7 @@ Deterministic: <span class="ansi33"
       ( (Error 
           (Human Socrates) BadType))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ((HumansAreMortal (Human Socrates)))] [expected ((Error (Human Socrates) BadType))]])
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+equal_enough_for_test('[|]'('[|]'('HumansAreMortal','[|]'('[|]'('Human','[|]'('Socrates',[])),[])),[]),'[|]'('[|]'('Error','[|]'('[|]'('Human','[|]'('Socrates',[])),'[|]'('BadType',[]))),[]))[error [error [domain_error py_term [Error [got ((HumansAreMortal (Human Socrates)))] [expected ((Error (Human Socrates) BadType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `collapse` evaluates its argument, so it shows a type error
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -209,7 +201,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000366 secs. (366.40 microseconds) 
+; took 0.000545 secs. (545.01 microseconds) 
 
 !(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -219,9 +211,7 @@ Deterministic: <span class="ansi33"
       ( (88)) 
       ( ( (Error "S" BadType)))]]
 </span>
-Deterministic: <span class="ansi33"
->([Error [got ((88))] [expected (((Error "S" BadType)))]])
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+equal_enough_for_test('[|]'('[|]'(88,[]),[]),'[|]'('[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]),[]))[error [error [domain_error py_term [Error [got ((88))] [expected (((Error "S" BadType)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `match` does not perform type checking on its pattern,
 ;;; so it accepts a badly typed expression, which is expected.
@@ -243,7 +233,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000175 secs. (175.00 microseconds) 
+; took 0.000273 secs. (272.96 microseconds) 
 
 !(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) ())
 
@@ -275,7 +265,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000655 secs. (655.00 microseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
@@ -284,10 +274,7 @@ Deterministic: <span class="ansi33"
     [equal_enough_for_test 
       ( (f 88)) 
       ( (Error "S" BadType))]]
-</span>
-Deterministic: <span class="ansi33"
->([Error [got ((f 88))] [expected ((Error "S" BadType))]])
-</span><span class="ansi1"
+</span>equal_enough_for_test('[|]'('[|]'(f,'[|]'(88,[])),[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))[error [error [domain_error py_term [Error [got ((f 88))] [expected ((Error "S" BadType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -297,18 +284,11 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[([Error [got (88)] [expected ((Error "S" BadType))]])]
-[([Error [got ((== 5 "S"))] [expected ((Error "S" BadType))]])]
-[([Error [got ((== SocratesIsHuman SamIsMortal))] [expected ((Error SamIsMortal BadType))]])]
-[([Error [got ((HumansAreMortal (Human Socrates)))] [expected ((Error (Human Socrates) BadType))]])]
-[([Error [got ((88))] [expected (((Error "S" BadType)))]])]
-[()]
+[[[[[[()]
 [88]
-[([Error [got ((f 88))] [expected ((Error "S" BadType))]])]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 10:53:30+00:00 [COMMAND_EXIT_CODE="7"]
+[
+
+Script done on 2025-01-21 21:08:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

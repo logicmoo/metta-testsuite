@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 10:52:44+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:06:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -104,7 +104,7 @@ Script started on 2025-01-02 10:52:44+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000297 secs. (296.80 microseconds) 
+; took 0.000511 secs. (511.35 microseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -122,21 +122,8 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
-; 
-; EVAL TEST
-; took 0.000385 secs. (384.79 microseconds) 
 
-!(assertEqual (get-type (+ 5 7)) Number)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (Number) 
-      (Number)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; It works for built-in symbols too
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (+ 5 7)) Number)];;; It works for built-in symbols too
 <span class="ansi38-013099040"
 >!(assertEqual (get-type +) (-> Number Number Number))
 
@@ -145,7 +132,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000220 secs. (220.06 microseconds) 
+; took 0.000414 secs. (414.22 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -165,39 +152,15 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
-; 
-; EVAL TEST
-; took 0.000247 secs. (247.09 microseconds) 
-
-!(assertEqualToResult (get-type (+ 5 "4")) ())
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (()) ()]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqualToResult (get-type (+ 5 "4")) ())]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (+ -)) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
-; 
-; EVAL TEST
-; took 0.000196 secs. (196.07 microseconds) 
 
-!(assertEqualToResult (get-type (+ -)) ())
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (()) ()]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; Also works for custom types
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqualToResult (get-type (+ -)) ())];;; Also works for custom types
 <span class="ansi38-255165000"
 > (: Either Type)
 </span><span class="ansi38-013099040"
@@ -208,7 +171,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000191 secs. (191.30 microseconds) 
+; took 0.000263 secs. (262.55 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -234,21 +197,8 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
-; 
-; EVAL TEST
-; took 0.000229 secs. (229.13 microseconds) 
 
-!(assertEqual (get-type (Left 5)) Either)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (Either) 
-      (Either)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165000"
+<span class="ansi38-255165000"
 > (: isLeft (-> Either Bool))
 </span><span class="ansi38-255165000"
 > (= (isLeft (Left $x))  True)
@@ -257,44 +207,19 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (isLeft (Right 5))) Bool)
 
-</span>
+</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (Left 5)) Either)]
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
-; 
-; EVAL TEST
-; took 0.000398 secs. (397.93 microseconds) 
 
-!(assertEqual (get-type (isLeft (Right 5))) Bool)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (Bool) 
-      (Bool)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; Badly typed expression
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (isLeft (Right 5))) Bool)];;; Badly typed expression
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (isLeft 5)) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
-; 
-; EVAL TEST
-; took 0.000250 secs. (250.15 microseconds) 
 
-!(assertEqualToResult (get-type (isLeft 5)) ())
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (()) ()]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqualToResult (get-type (isLeft 5)) ())];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Parameterized types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -310,47 +235,19 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
-; 
-; EVAL TEST
-; took 0.000781 secs. (781.24 microseconds) 
 
-!(assertEqual (get-type (LeftP 5)) (EitherP Number))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( (EitherP Number)) 
-      ( (EitherP Number))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165000"
+<span class="ansi38-255165000"
 > (: Pair (-> $a $b Type))
 </span><span class="ansi38-255165000"
 > (: pair (-> $a $b (Pair $a $b)))
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
-</span>
+</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (LeftP 5)) (EitherP Number))]
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
-; 
-; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
 
-!(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( (Pair 
-          (EitherP Number) String)) 
-      ( (Pair 
-          (EitherP Number) String))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Recursively parameterized types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -366,40 +263,15 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
-; 
-; EVAL TEST
-; took 0.000888 secs. (888.17 microseconds) 
-
-!(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( (List Number)) 
-      ( (List Number))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
-; 
-; EVAL TEST
-; took 0.000326 secs. (325.84 microseconds) 
 
-!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (()) ()]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `let` can be convenient to extract information from `get-type` results
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -409,47 +281,21 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
-; 
-; EVAL TEST
-; took 0.000763 secs. (763.00 microseconds) 
-
-!(assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (Number) 
-      (Number)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi1"
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] (assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 14
-</span><span class="ansi32"
->Failures: 0
+>Successes: 3
+</span><span class="ansi31"
+>Failures: 11
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 10:52:52+00:00 [COMMAND_EXIT_CODE="7"]
+[[()]
+[[[()]
+[[[[[[[[
+
+Script done on 2025-01-21 21:06:40+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -972,6 +972,30 @@ cont_sexpr_once(EndChar, Stream, Item) :-
 % If EOF, return end_of_file
 cont_sexpr_from_char(_EndChar, _Stream, end_of_file, end_of_file).
 
+% If '!' followed by '(', '#', or file depth 0, read a directive to be executed
+cont_sexpr_from_char(EndChar, Stream, '!', Item) :-
+    peek_char(Stream, Next),
+    \+ paren_pair_functor(_, Next, _),
+    if_t(Next == ' ',  nb_current('$file_src_depth', 0) ),
+    once(
+       Next == '('
+     ; Next == '['
+     ; Next == '#'
+     ; true
+     ; nb_current('$file_src_depth', 0)),
+
+    cont_sexpr_once(EndChar, Stream, Subr), !,
+    Item = exec(Subr).
+
+% allow in mettalog the special ` ,(<eval this>) ` form in intepreter
+cont_sexpr_from_char(EndChar, Stream, ',', Item) :-
+    peek_char(Stream, Next),
+    Next == '(',
+    %\+ paren_pair_functor(_, Next, _),
+    %Next \== ' ',
+    cont_sexpr_once(EndChar, Stream, Subr), !,
+    Item = exec(Subr).
+
 % If '(', read an S-expression list.
 cont_sexpr_from_char(_EndChar, Stream, '(', Item) :-
     read_list(')', Stream, Item).
@@ -981,7 +1005,7 @@ cont_sexpr_from_char(_EndChar, Stream, '[', Item) :- prolog_term_start('['),
     read_list(']', Stream, List),
     univ_list_to_item(List,Item).
 
-% If '[', read an S-expression list.
+% If '{', read an S-expression list.
 cont_sexpr_from_char(_EndChar, Stream, '{', Item) :- prolog_term_start('{'),
     read_list('}', Stream, List),
     univ_list_to_item(List,Item).
@@ -996,10 +1020,10 @@ cont_sexpr_from_char(EndChar, Stream, '#', Item) :- peek_char(Stream, '('),
     cont_sexpr_once(EndChar, Stream, Subr),
     univ_maybe_var(Item, Subr).
 
-% Unexpected start character
+% Unexpected end character
 cont_sexpr_from_char(EndChar, Stream, Char, Item) :- paren_pair_functor(_, Char, _),
     nb_current('$file_src_depth', 0),
-    sformat(Reason, "Unexpected start character: '~w'", [Char]),
+    sformat(Reason, "Unexpected end character: '~w'", [Char]),
     throw_stream_error(Stream, syntax_error(unexpected_char(Char), Reason)),
     % keep going we consumed the Char (if thorw_stream_error/2 permits)
     cont_sexpr(EndChar,  Stream, Item).
@@ -1007,15 +1031,6 @@ cont_sexpr_from_char(EndChar, Stream, Char, Item) :- paren_pair_functor(_, Char,
 % If '"', read a quoted string.
 cont_sexpr_from_char(_EndChar, Stream, '"', Item) :-
     read_quoted_string(Stream, '"', Item).
-
-% If '!' followed by '(', '#', or file depth 0, read a directive to be executed
-cont_sexpr_from_char(EndChar, Stream, '!', Item) :-
-    (  peek_char(Stream, '(')
-     ; peek_char(Stream, '[')
-     ; peek_char(Stream, '#')
-     ; nb_current('$file_src_depth', 0)),
-    cont_sexpr_once(EndChar, Stream, Subr),
-    Item = exec(Subr).
 
 % If '#' followed by '{', read Prolog syntax until '}' and a period
 cont_sexpr_from_char(_EndChar, Stream, '#', Item) :- peek_char(Stream, '{'),
@@ -1308,6 +1323,11 @@ skip_block_comment(Stream) :-
     ;   true  % Otherwise, no block comment, continue processing.
     ).
 
+
+skip_chars(_, N):- N<1,!.
+skip_chars(Stream, N):- Nm1 is N -1, get_char(Stream,_), !, skip_chars(Stream, Nm1).
+
+
 %! read_block_comment(+Stream:stream) is det.
 %
 % Reads a block comment (including nested block comments) from the stream
@@ -1317,7 +1337,8 @@ skip_block_comment(Stream) :-
 % @arg Stream The input stream from which to read the block comment.
 read_block_comment(Stream) :-
     read_line_char(Stream, StartRange),  % Capture the start position.
-    get_string(Stream, 2, _),  % Skip the '/*' characters.
+    %get_string(Stream, 2, _),  % Skip the '/*' characters.
+    skip_chars(Stream, 2),
     read_nested_block_comment(Stream, 1, Chars),  % Read the block comment, supporting nested ones.
     string_chars(Comment, Chars),
    read_line_char(Stream, EndRange),   %capture the end pos
@@ -1339,7 +1360,7 @@ read_nested_block_comment(Stream, Level, Comment) :-
 read_nested_block_comment(Stream, Level, Acc, Comment) :-
     peek_string(Stream, 2, LookAhead),
     (   LookAhead = "*/" ->
-        (   get_string(Stream, 2, _),  % Consume the '*/'.
+        (   skip_chars(Stream, 2),  % Consume the '*/'.
             NewLevel is Level - 1,  % Decrease the nesting level.
             (   NewLevel = 0 ->
                 reverse(Acc, Comment)  % If outermost comment is closed, return the accumulated comment.
@@ -1347,7 +1368,7 @@ read_nested_block_comment(Stream, Level, Acc, Comment) :-
             )
         )
     ;   LookAhead = "/*" ->
-        (   get_string(Stream, 2, _),  % Consume the '/*'.
+        (   skip_chars(Stream, 2),  % Consume the '/*'.
             NewLevel is Level + 1,  % Increase the nesting level.
             read_nested_block_comment(Stream, NewLevel, ['/', '*' | Acc], Comment)  % Continue, append '/*'.
         )

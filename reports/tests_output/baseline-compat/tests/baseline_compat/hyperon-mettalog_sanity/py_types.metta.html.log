@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content">
+Script started on 2025-01-21 21:29:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+^@P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta] ]
+<span class="ansi38-013099040">!(assertEqual (py-list ()) (py-eval "[]"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.01">;; HYPERON-METTALOG-SANITY.PY-TYPES.01</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (16.98 milliseconds) 
+
+!(assertEqual (py-list ()) (py-eval "[]"))
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test 
+      ([]) 
+      ([])]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (py-tuple ()) (py-eval "()"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.02">;; HYPERON-METTALOG-SANITY.PY-TYPES.02</h3>
+; 
+; EVAL TEST
+; took 0.000560 secs. (559.80 microseconds) 
+
+!(assertEqual (py-tuple ()) (py-eval "()"))
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (py-dict ()) (py-eval "{}"))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.03">;; HYPERON-METTALOG-SANITY.PY-TYPES.03</h3>
+; 
+; EVAL TEST
+; took 0.000513 secs. (513.50 microseconds) 
+
+!(assertEqual (py-dict ()) (py-eval "{}"))
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test 
+      ({}) 
+      ({})]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (py-tuple (1 (2 (3 "3")) (py-atom list))) , (py-eval "(1,(2,(3, " 3"))
+
+</span>
+Deterministic: 
+ERROR: Received fatal signal 11 (segv)
+Time: Tue Jan 21 21:29:29 2025
+Inferences: 36229350
+Thread: 1 (main)
+C-stack trace labeled "crash":
+  [0] PL_raise() at ??:? [0x7ff439b6b855]
+  [1] Sdprintf() at ??:? [0x7ff439b1386e]
+  [2] __sigaction() at ??:? [0x7ff439845320]
+  [3] Py_TYPE() at /home/runner/work/_temp/SourceCode/./Include/object.h:220 [0x7ff43560a1c5]
+  [4] PyInit__swipl() at ??:? [0x7ff4377a3fec]
+  [5] PyInit__swipl() at ??:? [0x7ff4377a3ccd]
+  [6] PyInit__swipl() at ??:? [0x7ff4377a6b68]
+  [7] cfunction_call() at /home/runner/work/_temp/SourceCode/Objects/methodobject.c:551 [0x7ff435633019]
+  [8] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7ff435610fff]
+  [9] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7ff43558a1be]
+  [10] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7ff435611f45]
+  [11] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7ff4356bfc70]
+  [12] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7ff435634fdc]
+  [13] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7ff435632f1e]
+  [14] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7ff435611813]
+  [15] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7ff43558a1be]
+  [16] PyInit__swipl() at ??:? [0x7ff4377a59fb]
+  [17] PyInit__swipl() at ??:? [0x7ff4377a7e6b]
+  [18] PL_malloc_atomic() at ??:? [0x7ff439b22bd5]
+  [19] ??() at ??:0 [0x7ff439a8ed0f]
+  [20] PL_release_stream_noerror() at ??:? [0x7ff439b09466]
+  [21] PL_malloc_atomic() at ??:? [0x7ff439b1f9e3]
+  [22] PL_unify_blob() at ??:? [0x7ff439b5b2eb]
+  [23] PL_unify_blob() at ??:? [0x7ff439b5b178]
+  [24] swipl(+0x119d) [0x56173dacd19d]
+  [25] __libc_init_first() at ??:? [0x7ff43982a1ca]
+  [26] __libc_start_main() at ??:? [0x7ff43982a28b]
+  [27] swipl(+0x10c5) [0x56173dacd0c5]
+
+
+PROLOG STACK (without arguments):
+  [193] py_call/2 <foreign>
+  [191] py_ppp/1 [PC=8 in clause 3]
+  [189] system:catch/3 [PC=2 in clause 1]
+  [188] system:once/1 [PC=3 in clause 1]
+  [187] setup_call_cleanup/3 [PC=5 in clause 1]
+  [185] is_final_write/1 [PC=27 in clause 4]
+  [184] pp_sexi/1 [PC=4 in clause 1]
+  [183] pp_sex/1 [PC=4 in clause 1]
+  [182] write_args_as_sexpression/2 [PC=8 in clause 4]
+  [181] pp_sexi_lc/1 [PC=30 in clause 2]
+
+
+PROLOG STACK (with arguments; may crash if data is corrupted):
+
+ERROR: API error: invalid atom_t 120325 (no valid atom at this index)
+Recursive crash; omitting crash report
+timeout: the monitored command dumped core
+Aborted
+
+Script done on 2025-01-21 21:30:00+00:00 [COMMAND_EXIT_CODE="134"]
+
+</pre>
+</body>
+
+</html>
+\033[0;31mTest aborted by user (EXITCODE=134) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta" --halt=true\033[0m

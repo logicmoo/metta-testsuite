@@ -12,62 +12,123 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-29 11:53:20+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:18:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
-;         {set_debug transpiler false}
+;         [set_debug transpiler false]
 
 P;HTML|
-;          {set_debug overtime 4.0}
+;          [set_debug overtime 4.0]
 
 P;HTML|
-;          {set_debug overflow 1000}
+;          [set_debug overflow 1000]
 
 P;HTML|
-;          {set_debug eval false}
+;          [set_debug eval false]
 
 P;HTML|
-;          {set_debug load silent}
+;          [set_debug load silent]
 
 P;HTML|
-;          {set_debug trace-on-load false}
+;          [set_debug trace-on-load false]
 
 P;HTML|
-;          {set_debug exec false}
+;          [set_debug exec false]
 
 P;HTML|
-;          {set_debug error non-type}
+;          [set_debug error non-type]
 
 P;HTML|
-;          {set_debug fail false}
+;          [set_debug fail false]
 
 P;HTML|
-;          {set_debug test true}
+;          [set_debug test true]
 
 P;HTML|
-;         {set_debug test false}
+;         [set_debug test false]
 
 P;HTML|
-;         {set_debug fail false}
+;         [set_debug fail false]
 
 P;HTML|
-;         {set_debug load false}
+;         [set_debug load false]
 
-; { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta} }
-<span class="ansi31"
->{in { : user {load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta} } {error {existence_error procedure { / parse_sexpr_metta 2 }} {context { / parse_answer_str 2 } $Context}}}
-</span><span class="ansi31"
->{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] ]
+;;; Create a new space and bind it to &new-space
+<span class="ansi38-013099040"
+>!(bind! &new-space (new-space))
+
 </span>
-Script done on 2024-12-29 11:53:28+00:00 [COMMAND_EXIT_CODE="7"]
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Add (likes John Jane) to &new-space
+<span class="ansi38-013099040"
+>!(add-atom &new-space (likes John Jane))
+
+</span><span class="ansi38-255165000"
+> (likes John Jane)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that matching 'likes' returns (John Jane)
+<span class="ansi38-013099040"
+>!(assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.01"
+>;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.01</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (assertEqualToResult (metta (match &self (likes $x $y) ($x $y)) Atom &new-space) ((John Jane)))];;; Add a definition of foo to &new-space
+<span class="ansi38-013099040"
+>!(add-atom &new-space (= (foo $x)  
+  (+ $x 1)))
+
+</span><span class="ansi38-255165000"
+> (= (foo $x)  
+  (+ $x 1))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that (foo 1) evaluates to 2 in &new-space
+<span class="ansi38-013099040"
+>!(assertEqualToResult (metta (foo 1) Number &new-space) (2))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.02"
+>;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.02</h3>
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2))]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 2
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[[()]
+[
+
+Script done on 2025-01-21 21:18:22+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: ./mettalog '--output=./reports/tests_output/baseline-compat/' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta" --halt=true\033[0m

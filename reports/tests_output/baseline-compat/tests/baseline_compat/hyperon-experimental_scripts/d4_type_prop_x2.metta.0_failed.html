@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-21 21:07:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Types as propositions can be used in MeTTa but with nuances
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Entities
+<span class="ansi38-255165000"
+> (: Entity Type)
+</span><span class="ansi38-255165000"
+> (: Socrates Entity)
+</span><span class="ansi38-255165000"
+> (: Plato Entity)
+</span>;;; Predicates (functions) from `Entity` to `Type`
+<span class="ansi38-255165000"
+> (: Human (-> Entity Type))
+</span><span class="ansi38-255165000"
+> (: Mortal (-> Entity Type))
+</span>;;; `(Mortal Plato)` is an expression of `Type` type
+;;; It represents the proposition "Plato is mortal"
+;;; but doesn't mean this proposition is inhabited/proven
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (Mortal Plato)) Type)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.01</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqual (get-type (Mortal Plato)) Type)];;; A function type as an implication
+;;; `HumansAreMortal` represents the implication:
+;;; "For all x, if Human(x) then Mortal(x)"
+<span class="ansi38-255165000"
+> (: HumansAreMortal (-> (Human $t) (Mortal $t)))
+</span>;;; NOTE: MeTTa doesn't differentiate between type constructors and
+;;;       other symbols (including functional) of the same type.
+;;;       Thus, ATM, we cannot prove any proposition with universal
+;;;       quantification (e.g., that all humans are mortal) by
+;;;       providing a total function as an instance of a
+;;;       corresponding type.
+;;; These might be considered as assertions that Plato and
+;;; Socrates are Humans:
+<span class="ansi38-255165000"
+> (: SocratesIsHuman (Human Socrates))
+</span><span class="ansi38-255165000"
+> (: PlatoIsHuman (Human Plato))
+</span>;;; `(HumansAreMortal SocratesIsHuman)` might be considered
+;;; as a proof that that `(Mortal Socrates)`.
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (HumansAreMortal SocratesIsHuman)) (Mortal Socrates))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.02</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqual (get-type (HumansAreMortal SocratesIsHuman)) (Mortal Socrates))];;; Bad typing
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (HumansAreMortal (Human Socrates))) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.03</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqualToResult (get-type (HumansAreMortal (Human Socrates))) ())];;; We can write this code, but it will make not too much
+;;; difference for the assertion that "all humans are mortal"
+<span class="ansi38-255165000"
+> (: SocratesIsMortal (Mortal Socrates))
+</span><span class="ansi38-255165000"
+> (= (HumansAreMortal SocratesIsHuman)  SocratesIsMortal)
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Equalities themselves are typed. If some equality is well-typed,
+;;; it means that it can be true. Equality is of Atom type.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman))) Atom)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.04</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqual (get-type (= SocratesIsMortal  
+
+  (HumansAreMortal SocratesIsHuman))) Atom)];;; This equality is well-typed, because both its arguments are of `Type`.
+;;; It doesn't mean they are both inhabited (true propositions), and
+;;; it doesn't mean that the equality itself is true (an inhabited type).
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (= (Mortal Socrates)  
+  (Mortal Plato))) Atom)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.05</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqual (get-type (= (Mortal Socrates)  
+
+  (Mortal Plato))) Atom)];;; Wrong proof
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (= SocratesIsMortal  
+  (HumansAreMortal PlatoIsHuman))) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.06"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.06</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqualToResult (get-type (= SocratesIsMortal  
+
+  (HumansAreMortal PlatoIsHuman))) ())];;; Wrong equalities
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (= SocratesIsHuman  PlatoIsHuman)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.07"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.07</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqualToResult (get-type (= SocratesIsHuman  PlatoIsHuman)) ())]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (= SocratesIsHuman  SocratesIsMortal)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.08"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.08</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] (assertEqualToResult (get-type (= SocratesIsHuman  SocratesIsMortal)) ())];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; A standard type-theoretic way of saying that some equality is true
+;;; is to present an instance of the corresponding equality type.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; (: Refl (-> (: $x $T) (= $x $x))).
+;;; As per https://github.com/trueagi-io/hyperon-experimental/issues/177 ,
+;;; there is no way to match both argument and its type in type definition.
+;;; Such syntax `(: (Refl $x) (-> Type (= $x $x)))` also doesn't work now.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Another (MeTTa) way is to have explicit reduction of types to True
+;;; (equalities over equalities), although a more practical way would
+;;; be just to use a dedicated comparison operator.
+;;; Notice that this code works, although T is declared as of Type type,
+;;; because the type of equality expressions is Atom, which can be
+;;; matched against any other type. Such permissiveness allows using
+;;; `=` in custom type systems.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: T Type)
+</span><span class="ansi38-255165000"
+> (= (= $x  $x)  T)
+</span>;;; These equalities will be true
+;;; failing in mettalog
+<span class="ansi38-013099040"
+>!(assertEqual (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.09"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.09</h3>
+; 
+; EVAL TEST
+; took 0.000826 secs. (826.32 microseconds) 
+
+!(assertEqual (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (= (+ 1 1)  
+  (- 3 1)) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.10"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.10</h3>
+; 
+; EVAL TEST
+; took 0.000923 secs. (923.36 microseconds) 
+
+!(assertEqual (= (+ 1 1)  
+  (- 3 1)) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; One can also define an equality for directly inhabited types
+<span class="ansi38-255165000"
+> (= (= $type  T)  
+  (match &self 
+    (: $x $type) T))
+</span><span class="ansi38-013099040"
+>!(assertEqual (= (Mortal Socrates)  T) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.11"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.11</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.64 milliseconds) 
+
+!(assertEqual (= (Mortal Socrates)  T) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; It will not immediately work for implications
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= (Mortal Plato)  T) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.12"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.12</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.53 milliseconds) 
+
+!(assertEqualToResult (= (Mortal Plato)  T) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; But we can add 'reasoning'
+<span class="ansi38-255165000"
+> (= (= $type  T)  
+  (match &self 
+    (: $impl 
+      (-> $cause $type)) 
+    (if 
+      (== $cause $type) 
+      (empty) 
+      (= $cause  T))))
+</span>;;; failing in mettalog
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= (Mortal Plato)  T) (T))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.13"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.13</h3>
+
+Script done on 2025-01-21 21:08:20+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta" --halt=true\033[0m

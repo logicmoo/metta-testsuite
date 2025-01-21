@@ -447,7 +447,7 @@ get_type(Depth, Self, Val, TypeO) :-
     call_nth(get_type_each(Depth, Self, Val, Type),Nth), Type\=='',
     ((Nth > 1) -> Type\== 'Atom' ; true),
     % Ensure the type matches the expected no-repeat type.
-    NoRepeatType = Type,
+    \+ \+ (NoRepeatType = Type),
     Type = TypeO,
     % If only the first type should be returned, cut; otherwise, proceed.
     (return_only_first_type -> !; true).
@@ -543,29 +543,6 @@ is_dynaspace(S) :-
 is_PyObject(S) :-
     % Succeeds if S is recognized as a Python object.
     py_is_py(S).
-is_PyObject(S) :-
-    % Fail if S is an unbound variable.
-    var(S), !, fail.
-is_PyObject('@'(S)) :-
-    % Succeeds if S is a non-variable and recognized as a Python constant.
-    !, nonvar(S), is_py_const(S).
-
-%!  is_py_const(+Const) is nondet.
-%
-%   Succeeds if the given Const is a recognized Python constant.
-%
-%   @arg Const The constant to be evaluated.
-%
-%   @example
-%     ?- is_py_const('True').
-%     true.
-%
-%     ?- is_py_const('Unknown').
-%     false.
-%
-is_py_const('None').
-is_py_const('False').
-is_py_const('True').
 
 %!  get_type_each(+Depth, +Self, +Val, -Type) is nondet.
 %
@@ -597,6 +574,8 @@ get_type_each(Depth, _Slf, _Type, _) :-
 % get_type(Depth, Self, Val, Type) :- is_debugging(eval),
 %     ftrace(get_type_each(Depth, Self, Val, Type)),
 %     fail.
+get_type_each(Depth, Self, Var, Type) :- var(Var), get_attr(Var,cns, _ = Set),member(Type,Set).
+
 get_type_each(Depth, Self, Expr, ['StateMonad', Type]) :-
     % Handle state monad expressions.
     notrace(is_valid_nb_state(Expr)), !,
@@ -606,7 +585,7 @@ get_type_each(Depth, Self, Expr, ['StateMonad', Type]) :-
 get_type_each(_Dpth, Self, Var, Type) :-
     % Retrieve type from variable attributes.
     var(Var), !,
-    get_attr(Var, metta_type, Self = TypeList),
+    get_attr(Var, cns, Self = TypeList),
     member(Type, TypeList).
 get_type_each(_Dpth, _Slf, Expr, 'hyperon::space::DynSpace') :-
     % Check if the expression is a dynamic space.
@@ -688,7 +667,7 @@ typed_expression(Depth, Self, [Op | Args], ArgTypes, RType) :-
     % Get the length of arguments or determine if unbound.
     len_or_unbound(Args, Len),
     % Retrieve the operator type definition.
-    get_operator_typedef1(Self, Op, Len, ArgTypes, RType).
+    get_operator_typedef_R(Self, Op, Len, ArgTypes, RType).
 
 %!  badly_typed_expression(+Depth, +Self, +Expr) is nondet.
 %
@@ -843,10 +822,10 @@ get_dict_type(_Vl, Type, TypeO) :-
 get_dict_type(Val, _, Type) :-
     % Retrieve the type from the dictionary 'type' field.
     get_dict(Val, type, Type).
-get_dict_type(Val, _, TypeO) :-
+get_dict_type(Val, _, Type) :-
     % Retrieve the type from the dictionary 'class' field.
     get_dict(Val, class, Type).
-get_dict_type(Val, _, TypeO) :-
+get_dict_type(Val, _, Type) :-
     % Retrieve the type from the dictionary 'types' field if it is a list.
     get_dict(Val, types, TypeL),
     is_list(TypeL),
@@ -881,13 +860,16 @@ get_type_cmpd(Depth,Self,[[Op|Args]|Arg],Type,curried(W)):-
  last(Type1,Type).
 get_type_cmpd(Depth,Self,[Op|Args],Type,ac(Op,[P|Arams],RetType)):- symbol(Op),
   len_or_unbound(Args,Len),
-  get_operator_typedef1(Self,Op,Len,[P|Arams],RetType),
+  get_operator_typedef(Self,Op,Len,[P|Arams],RetType),
   % Fills in type variables when possible
   args_conform(Depth,Self,Args,[P|Arams]),
   % \+ maplist(var,Arams),
   % unitests:  arg violations should return ()
   (\+ args_violation(Depth,Self,Args,[P|Arams])),
   Type=RetType.
+
+get_type_cmpd(Depth,Self,ArTypeDecl,Type,arrow_type(ParamTypes,RetType)):- arrow_type(ArTypeDecl,ParamTypes,RetType), Type='%Undefined%',!.
+
 get_type_cmpd(_Dpth,_Slf,Cmpd,Type,typed_list):-
   typed_list(Cmpd,Type,_List).
 % commenting this fails two tests
@@ -939,7 +921,7 @@ get_type_cmpd_eval(Depth2, Self, EvalMe, Val, Type, maplist(get_type)) :-
     maplist(get_type(Depth2, Self), List, Type),
     % Ensure the expression is not badly typed.
     \+ badly_typed_expression(Depth, Self, Type).
-get_type_cmpd_eval(Depth2, Self, EvalMe, Val, Type, eval_first) :-
+get_type_cmpd_eval(Depth2, Self, _EvalMe, Val, Type, eval_first) :-
     % Handle first-evaluation strategy.
     !,
     \+ needs_eval(Val),
@@ -969,7 +951,6 @@ state_decltype(Expr,Type):- functor(Expr,_,A),
 %     ?- get_value_type(_, _, X, Type).
 %     Type = '%Undefined%'.
 %
-get_value_type(_Dpth,_Slf,Var,'%Undefined%'):- var(Var),!.
 get_value_type(_Dpth,_Slf,Val,'Number'):- number(Val),!.
 get_value_type(_Dpth,_Slf,Val,'String'):- string(Val),!.
 get_value_type(Depth,Self,Val,T):- get_type(Depth,Self,Val,T), T\==[], T\=='%Undefined%',!.
@@ -1021,7 +1002,7 @@ get_value_type(_Dpth,_Slf,Val,'Bool'):- (Val=='False';Val=='True'),!.
 %
 as_prolog(I, O) :-
     % Use default recursion depth of 10 and '&self' as context.
-    as_prolog(10, '&self', I, O).
+    as_prolog(0, '&self', I, O).
 
 %!  as_prolog(+Depth, +Self, +I, -O) is det.
 %
@@ -1040,32 +1021,48 @@ as_prolog(I, O) :-
 %     ?- as_prolog(_, _, ['@', foo, a, b], O).
 %     O = foo(a, b).
 %
+
+:- dynamic(dont_de_Cons/0).
+dont_de_Cons.
+
+as_prolog(0, _Slf, S, P):- S=='Nil', \+ dont_de_Cons, !,P=[].
+as_prolog(_Dpth, _Slf, I, O) :- \+ compound(I), !, O = I.
+as_prolog(0, Self, [Cons, H, T | Nil], [HH | TT]) :-
+    % Handle 'Cons' structures as lists.
+    Cons=='Cons',
+    Nil == [], \+ dont_de_Cons, !,
+    as_prolog(0, Self, H, HH),
+    as_prolog(0, Self, T, TT).
+as_prolog(0, Self, [CC | List], O) :-
+    % Handle '::' operator by mapping elements to Prolog terms.
+    CC =='::',
+    is_list(List), \+ dont_de_Cons, !,
+    maplist(as_prolog(0, Self), List, L),
+    !, O = L.
+
+as_prolog(_, Self, exec(Eval), O) :- !, eval_args(30, Self, Eval, O).
+as_prolog(_, Self, quote(O), O) :- !.
 as_prolog(_Dpth, _Slf, I, O) :-
     % If I is not a 'conz' structure, unify it directly with O.
     \+ iz_conz(I), !, I = O.
-as_prolog(Depth, Self, [Cons, H, T], [HH | TT]) :-
-    % Handle 'Cons' structures as lists.
-    Cons=='Cons',
-    !,
-    as_prolog(Depth, Self, H, HH),
-    as_prolog(Depth, Self, T, TT).
-as_prolog(Depth, Self, [List, H | T], O) :-
-    % Handle '::' operator by mapping elements to Prolog terms.
-    List=='::',
-    !,
-    maplist(as_prolog(Depth, Self), [H | T], L),
-    !, O = L.
-as_prolog(Depth, Self, [At, H | T], O) :-
+
+as_prolog(N, Self, [At| List], O) :-
     % Handle '@' symbol by constructing compound terms.
-    At=='@',
-    !,
-    maplist(as_prolog(Depth, Self), [H | T], [HH | L]),
-    atom(H), !,
-    O =.. [HH | L].
+    At=='@', \+ dont_de_Cons,
+    is_list(List), \+ dont_de_Cons,
+    maplist(as_prolog(N, Self), List, [HH | L]),
+    atom(HH), !,
+    compound_name_arguments(O, HH, L).
+
+
 as_prolog(Depth, Self, I, O) :-
     % If I is a list, map each element to Prolog terms.
     is_list(I), !,
     maplist(as_prolog(Depth, Self), I, O).
+as_prolog(Depth, Self, [H|T], [HH|TT]) :-
+    % If is a list, map each element to Prolog terms.
+    as_prolog(Depth, Self, H, HH),
+    as_prolog(1, Self, T, TT), !.
 as_prolog(_Dpth, _Slf, I, I).
 
 %!  try_adjust_arg_types(+Eq, +RetType, +Depth, +Self, +Params, +X, -Y) is nondet.
@@ -1159,11 +1156,24 @@ adjust_args(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
 %   @arg X         The input arguments.
 %   @arg Y         The final adjusted arguments.
 %
-adjust_argsA(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
+adjust_argsA(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y):-
+   if_or_else(adjust_argsA1(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y),
+              adjust_argsA2(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y)).
+
+adjust_argsA1(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
     len_or_unbound(X, Len),
     get_operator_typedef(Self, Op, Len, ParamTypes, RRetType),
     (nonvar(NewRes) -> CRes = NewRes ; CRes = Res),
     RRetType = RetType,
+    args_conform(Depth, Self, [CRes | X], [RRetType | ParamTypes]),
+    trace_if_debug(Op,Len),
+    into_typed_args(Depth, Self, [RRetType | ParamTypes], [Res | X], [NewRes | Y]).
+adjust_argsA2(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
+    len_or_unbound(X, Len),
+    get_operator_typedef(Self, Op, Len, ParamTypes, RRetType),
+    (nonvar(NewRes) -> CRes = NewRes ; CRes = Res),
+    RRetType = RetType,
+    trace_if_debug(Op,Len),
     args_conform(Depth, Self, [CRes | X], [RRetType | ParamTypes]),
     into_typed_args(Depth, Self, [RRetType | ParamTypes], [Res | X], [NewRes | Y]).
 
@@ -1251,15 +1261,39 @@ reset_cache :-
 %   @arg ParamTypes  The list of parameter types.
 %   @arg RetType     The return type of the operator.
 %
-get_operator_typedef(Self, Op, Len, ParamTypes, RetType) :-
+
+get_operator_typedef(Self, Op, Len, ParamTypes, RetType):-
+    no_repeats(ParamTypes+RetType,get_operator_typedef_NR(Self, Op, Len, ParamTypes, RetType)).
+
+get_operator_typedef_NR(Self, Op, Len, ParamTypes, RetType) :-
     % Ensure the length matches the parameter types or is unbound.
     len_or_unbound(ParamTypes, Len),
     % Try to retrieve the type definition from cache, or fallback to other strategies.
     if_or_else(
         get_operator_typedef0(Self, Op, Len, ParamTypes, RetType),
-        if_or_else(
             get_operator_typedef1(Self, Op, Len, ParamTypes, RetType),
-            get_operator_typedef2(Self, Op, Len, ParamTypes, RetType))).
+        get_operator_typedef2(Self, Op, Len, ParamTypes, RetType)).
+
+%!  get_operator_typedef_R(+Self, +Op, +Len, -ParamTypes, -RetType) is nondet.
+%
+%   _REALLY_ Retrieves the operator type definition based on the `'->'` type structure
+%   and caches the result in `get_operator_typedef0/5`.
+%
+%   @arg Self        The context or structure being evaluated.
+%   @arg Op          The operator whose type is being retrieved.
+%   @arg Len         The arity of the operator.
+%   @arg ParamTypes  The list of parameter types.
+%   @arg RetType     The return type of the operator.
+%
+get_operator_typedef_R(Self, Op, Len, ParamTypes, RetType) :-
+    % Ensure the length matches the parameter types or is unbound.
+    len_or_unbound(ParamTypes, Len),
+    % Build the type list for metta_type lookup.
+    if_t(nonvar(ParamTypes), append(ParamTypes, [RetType], List)),
+    % Check the type definition in metta_type/3.
+    metta_type(Self, Op, ['->' | List]),
+    % Cache the result for future lookups.
+    if_t(var(ParamTypes), append(ParamTypes, [RetType], List)).
 
 %!  get_operator_typedef1(+Self, +Op, +Len, -ParamTypes, -RetType) is nondet.
 %
@@ -1272,15 +1306,9 @@ get_operator_typedef(Self, Op, Len, ParamTypes, RetType) :-
 %   @arg ParamTypes  The list of parameter types.
 %   @arg RetType     The return type of the operator.
 %
+
 get_operator_typedef1(Self, Op, Len, ParamTypes, RetType) :-
-    % Ensure the length matches the parameter types or is unbound.
-    len_or_unbound(ParamTypes, Len),
-    % Build the type list for metta_type lookup.
-    if_t(nonvar(ParamTypes), append(ParamTypes, [RetType], List)),
-    % Check the type definition in metta_type/3.
-    metta_type(Self, Op, ['->' | List]),
-    % Cache the result for future lookups.
-    if_t(var(ParamTypes), append(ParamTypes, [RetType], List)),
+    get_operator_typedef_R(Self, Op, Len, ParamTypes, RetType),
     assert(get_operator_typedef0(Self, Op, Len, ParamTypes, RetType)).
 
 %!  get_operator_typedef2(+Self, +Op, +Len, -ParamTypes, -RetType) is nondet.
@@ -1337,7 +1365,7 @@ ignored_arg_conform(Depth, Self, A, L) :-
 ignored_arg_conform(Depth, Self, A, L) :-
     % Check the argument type and verify it conforms to the expected type.
     get_type(Depth, Self, A, T),
-    type_conform(T, L), !.
+    can_assign(T, L), !.
 ignored_arg_conform(Depth, Self, _, _) :- !.
 
 %!  args_conform(+Depth, +Self, +Args, +List) is det.
@@ -1366,33 +1394,10 @@ args_conform(Depth, Self, [A | Args], [L | List]) :-
 %   @arg Arg      The argument to be checked.
 %   @arg Expected The expected type or value.
 %
-arg_conform(_Dpth, _Slf, _A, L) :-
-    % Succeed if the expected type is a non-specific type.
-    nonvar(L), is_nonspecific_type(L), !.
-arg_conform(Depth, Self, A, L) :-
-    % Check the argument type and verify it conforms to the expected type.
-    get_type_each(Depth, Self, A, T), T \== 'Var',
-    type_conform(T, L), !.
+arg_conform(_Depth, Self, A, ParamType):- non_arg_violation_each(Self,ParamType, A).
 % arg_conform(_Dpth, _Slf, _, _).
 % arg_conform(Depth, Self, A, _) :- get_type(Depth, Self, A, _), !.
 
-%!  type_conform(+Type, +Expected) is nondet.
-%
-%   Checks if a type (Type) conforms to the expected type (Expected).
-%
-%   @arg Type     The type to be checked.
-%   @arg Expected The expected type.
-%
-type_conform(T, L) :-
-    % Succeed if the types are equal.
-    T = L, !.
-type_conform(T, L) :- \+ is_nonspecific_type(T), \+ is_nonspecific_type(L), !, can_assign(T, L).
-type_conform(T, L) :- fail,
-    % Succeed if either type is non-specific.
-    \+ \+ (is_nonspecific_type(T); is_nonspecific_type(L)), !.
-type_conform(T, L) :-
-    % Succeed if the type can be assigned.
-    can_assign(T, L).
 
 % Declare `thrown_metta_return/1` as dynamic to allow runtime modifications.
 :- dynamic(thrown_metta_return/1).
@@ -1445,7 +1450,7 @@ into_typed_args(Depth, Self, [T | TT], [M | MM], [Y | YY]) :-
 %
 into_typed_arg(_Dpth, Self, T, M, Y) :-
     % If the value is a variable, assign the type attribute and unify it.
-    var(M), !, Y = M, nop(put_attr(M, metta_type, Self = T)).
+    var(M), !, Y = M, nop(put_attr(M, cns, Self = T)).
 into_typed_arg(Depth, Self, T, M, Y) :-
     % Use into_typed_arg0 for further evaluation or fallback to direct unification.
     into_typed_arg0(Depth, Self, T, M, Y) *-> true ; M = Y.
@@ -1490,17 +1495,20 @@ wants_eval_kind(T) :-
     nonvar(T), is_pro_eval_kind(T), !.
 wants_eval_kind(_) :- true.
 
-%!  metta_type:attr_unify_hook(+Input, +NewValue) is det.
+%!  cns:attr_unify_hook(+Input, +NewValue) is det.
 %
-%   Handles the unification of a value with a `metta_type` attribute.
+%   Handles the unification of a value with a `cns` attribute.
 %
 %   @arg Input     The context or structure being evaluated.
 %   @arg NewValue  The value being unified with the attribute.
 %
-metta_type:attr_unify_hook(Self = TypeList, NewValue) :-
+prevent_type_violations(BecomingValue,RequireType):- non_arg_violation(_Self, RequireType, BecomingValue).
+% TODO make sure it is inclusive rather than exclusive
+cns:attr_unify_hook(_=TypeRequirements,BecomingValue):- \+ maplist(prevent_type_violations(BecomingValue),TypeRequirements), !, fail.
+cns:attr_unify_hook(Self = TypeList, NewValue) :-
     % If the new value is an attributed variable, assign the same attribute.
-    attvar(NewValue), !, put_attr(NewValue, metta_type, Self = TypeList).
-metta_type:attr_unify_hook(Self = TypeList, NewValue) :-
+    attvar(NewValue), !, put_attr(NewValue, cns, Self = TypeList).
+cns:attr_unify_hook(Self = TypeList, NewValue) :-
     % Retrieve the type of the new value and check if it can be assigned.
     get_type(20, Self, NewValue, Was),
     can_assign(Was, Type).
@@ -1545,7 +1553,7 @@ add_type(_Depth, _Self, _Var, TypeL, Type) :-
 add_type(_Depth, Self, Var, TypeL, Type) :- var(Var), !,
     % Add the new type to the list and set it as an attribute.
     append([Type], TypeL, TypeList),
-    put_attr(Var, metta_type, Self = TypeList).
+    put_attr(Var, cns, Self = TypeList).
 add_type(_Depth, _Self, Var, TypeL, Type) :-
     ignore(append(_,[Type|_], TypeL)),!.
     % If the variable is not bound, do nothing.
@@ -1564,10 +1572,14 @@ add_type(_Depth, _Self, Var, TypeL, Type) :-
 %     ?- can_assign('Number', 'Number').
 %     true.
 %
-
+can_assign(T, L) :-
+    % Succeed if the types are equal.
+    T == L, !.
+can_assign(T, L) :- fail,
+    % Succeed if either type is non-specific.
+    \+ \+ (is_nonspecific_type(T); is_nonspecific_type(L)), !.
 % If the types are identical, assignment is allowed.
-can_assign(Was, Type) :- nonvar(Was),nonvar(Type),
-   formated_data_type(Was),formated_data_type(Type),!,Type==Was.
+can_assign(Was, Type) :- nonvar(Was),nonvar(Type), formated_data_type(Was),formated_data_type(Type),!,Type==Was.
 % If the types are identical, assignment is allowed.
 can_assign(Was, Type) :- Was = Type, !.
 % If either type is non-specific, assignment is allowed.
@@ -1598,6 +1610,7 @@ is_non_eval_kind(Type) :-
     % If the type is non-variable, not 'Any', and non-specific, succeed.
     nonvar(Type), Type \== 'Any', is_nonspecific_type(Type), !.
 is_non_eval_kind('Atom').
+is_non_eval_kind('Expression').
 
 %!  is_nonspecific_type(+Type) is nondet.
 %
@@ -1751,17 +1764,17 @@ narrow_types([A], A).
 is_pro_eval_kind(Var) :-
     % If the input is a variable, succeed.
     var(Var), !.
-is_pro_eval_kind(SDT) :-
-    % Check if the type is a formatted data type.
-    formated_data_type(SDT).
-is_pro_eval_kind(A) :-
-    % Fail for certain types.
+is_pro_eval_kind(A) :- is_non_eval_kind(A),!,fail.
+is_pro_eval_kind(SDT) :- % Check if the type is a formatted data type.
+    formated_data_type(SDT), !.
+is_pro_eval_kind(A) :- % Fail for certain types.
     A == 'Atom', !, fail.
 is_pro_eval_kind(A) :-
-    A == '%Undefined%', !, fail.
+    A == '%Undefined%', !.
 is_pro_eval_kind(A) :-
     % Check for non-specific "any" types.
     is_nonspecific_any(A), !.
+is_pro_eval_kind(_A) :- !.
 
 %!  is_feo_f(+F) is nondet.
 %
@@ -2230,324 +2243,4 @@ is_math_op('zerop', 1, exists).     % Test for Zero
 
 % :- load_pfc_file('metta_ontology.pl.pfc').
 
-
-
-% Enums for Guarded Type Handling in Prolog
-
-% GuardMatchResult: Describes the result of evaluating several type guards against the function arguments.
-mo_match_behavior(fail_on_no_match).
-mo_match_behavior(return_original_on_no_match).
-% EvaluationOrder: Describes how the type guards are prioritized during evaluation.
-evaluation_order(fittest_first_priority).
-evaluation_order(clause_order_priority).
-% ExecutionResult: Describes the outcome of executing the guarded expression.
-execution_result_behavior(cut_on_first_success).
-execution_result_behavior(continue_on_success).
-% ExecutionResult: Describes the outcome of executing the guarded expression.
-execution_failed_behavior(cut_on_first_failure).
-execution_failed_behavior(continue_on_failure).
-% What do when there are no successfull bodies
-out_of_clauses_behavior(fail_on_no_success).
-out_of_clauses_behavior(return_original_on_no_success).
-
-
-%predicate_behavior(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior)
-predicate_behavior_impl('get-type', 1, fail_on_no_match, clause_order_priority, continue_on_success, continue_on_failure, fail_on_no_success).
-% default
-predicate_behavior_fallback(_, _, return_original_on_no_match, clause_order_priority, continue_on_success, continue_on_failure, return_original_on_no_success).
-
-predicate_behavior(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior):-
-   predicate_behavior_impl(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior)
-    *->true; predicate_behavior_fallback(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior).
-
-function_declaration(Predicate, Len, Parameters, ParamTypes, RetType, [let,ReturnVal,Body,ReturnVal], ReturnVal):-
-   Self='&self',
-   len_or_unbound(Parameters, Len),
-   NR = ([Predicate|Parameters]+Body),
-   copy_term(NR,NRR),
-   no_repeats_var(NRR),
-   metta_defn(Self,[Predicate|Parameters],Body),
-   get_operator_typedef(Self, Predicate, Len, ParamTypes, RetType),
-   NR=NRR,
-   write_src_nl(metta_defn(Self,[Predicate|Parameters],Body)).
-
-clause_match_level(Predicate, Len, Parameters, Score, Body, ReturnVal):-
-   function_declaration(Predicate, Len, Parameters, Types, RetType, Body, ReturnVal),
-   maplist(nc_weight,[RetType|Types],XXL),sumlist(XXL,Score).
-
-info_about(Predicate, Len):-
-   predicate_behavior(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior),
-   write_src_nl(predicate_behavior(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior)),!,
-   findall(Score- Body, clause_match_level(Predicate, Len, Parameters, Score, Body, ReturnVal), ScoredBodies),
-   maplist(write_src_nl,ScoredBodies),!.
-
-implement_predicate([Predicate|Parameters], ReturnVal):-
-  catch(implement_predicate_nr([Predicate|Parameters], ReturnVal),metta_notreducable(ReturnVal),true).
-
-implement_predicate_nr([Predicate|Parameters], ReturnVal) :-
-    len_or_unbound(Parameters, Len),
-
-    predicate_behavior(Predicate, Len, NoMatchBehavior, EvaluationOrder, SuccessBehavior, FailureBehavior, OutOfClausesBehavior),
-
-    % Generate Score-Body pairs
-    findall(Score- Body, clause_match_level(Predicate, Len, Parameters, Score, Body, ReturnVal), ScoredBodies),
-
-    % Handle no matches
-    (ScoredBodies \== [] ->
-        true ;
-        (NoMatchBehavior == fail_on_no_match -> fail ; throw(metta_notreducable([Predicate | Parameters])))), % vs return_original_on_no_match
-
-    % Sort based on evaluation order
-    (EvaluationOrder == clause_order_priority ->
-        OrderedBodies = ScoredBodies ;
-        sort(ScoredBodies, OrderedBodies)), % fittest_first_priority
-
-    % Extract bodies from sorted or original pairs
-    maplist(arg(2), OrderedBodies, Bodies),
-
-    % Iterate over bodies and handle success/failure policies
-    (((member(Body, Bodies), call(Body)) *->
-        (SuccessBehavior == cut_on_first_success -> ! ; true) % vs continue_on_success
-    ;
-        (FailureBehavior == cut_on_first_failure -> (!, fail) ; fail)) % vs continue_on_failure
-    *->
-        true ;
-        (OutOfClausesBehavior == fail_on_no_success -> fail ; throw(metta_notreducable([Predicate | Parameters])))). % vs return_original_on_no_success
-
-
-
-% ------------------------------------------------------------------------------
-% Core Logic with Type Guards
-% ------------------------------------------------------------------------------
-
-% Helper to check type guards.
-guard_match(X, number) :- number(X).
-guard_match(X, atom) :- atom(X).
-guard_match(X, list) :- is_list(X).
-guard_match(X, complex) :- is_list(X), length(X, N), N > 5.
-guard_match(X, simple) :- is_list(X), length(X, N), N =< 5.
-guard_match(_, generic).
-
-% Define what happens inside the guarded body.
-guarded_body(X, Result, success) :-
-    writeln(successful_guard(X)),
-    Result = processed(X).
-
-guarded_body(X, Result, failure) :-
-    writeln(failed_guard(X)),
-    Result = return_original(X).
-
-% Fallback logic if no guards match.
-fallback_logic(X, Result) :-
-    writeln('No type guard matched. Executing fallback.'),
-    Result = default_value(X).
-
-% Nested guard logic.
-nested_guard(X, Result) :-
-    (   X = hello ->
-        Result = special_case_handled
-    ;   Result = default_atom_result
-    ).
-
-% ------------------------------------------------------------------------------
-% Tests
-% ------------------------------------------------------------------------------
-
-% Test 1: Simple Type Guard Matching
-test_simple_guard :-
-    function(42, Result1), writeln(Result1),
-    function(hello, Result2), writeln(Result2),
-    function([], Result3), writeln(Result3),
-    function(foo, Result4), writeln(Result4).
-
-% Test 2: Fallback Behavior
-test_fallback :-
-    function_with_fallback([], Result), writeln(Result).
-
-% Test 3: Prioritized Type Guard Evaluation
-test_prioritized :-
-    prioritized_function([1,2,3], Result1), writeln(Result1),
-    prioritized_function([1,2,3,4,5,6], Result2), writeln(Result2),
-    prioritized_function(hello, Result3), writeln(Result3).
-
-% Test 4: Nested Guarded Logic with Errors
-test_nested :-
-    nested_function(42, Result1), writeln(Result1),
-    nested_function(hello, Result2), writeln(Result2),
-    nested_function(world, Result3), writeln(Result3),
-    nested_function([], Result4), writeln(Result4).
-
-% ------------------------------------------------------------------------------
-% Function Definitions
-% ------------------------------------------------------------------------------
-
-% Function with basic guards.
-function(X, Result) :-
-    (   guard_match(X, number) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, atom) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, list) ->
-        guarded_body(X, Result, success)
-    ;   guarded_body(X, Result, failure)
-    ).
-
-% Function with a fallback mechanism.
-function_with_fallback(X, Result) :-
-    (   guard_match(X, number) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, atom) ->
-        guarded_body(X, Result, success)
-    ;   fallback_logic(X, Result)
-    ).
-
-% Function with prioritized guards.
-prioritized_function(X, Result) :-
-    evaluation_order(fittest_first), % Assume we process most specific guards first.
-    (   guard_match(X, complex) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, simple) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, generic) ->
-        guarded_body(X, Result, success)
-    ;   guarded_body(X, Result, failure)
-    ).
-
-% Function with nested guards and error handling.
-nested_function(X, Result) :-
-    (   guard_match(X, number) ->
-        guarded_body(X, Result, success)
-    ;   guard_match(X, atom) ->
-        nested_guard(X, Result)
-    ;   fallback_logic(X, Result)
-    ).
-
-ffffff:- writeln('
-    ?- test_simple_guard.
-    ?- test_fallback.
-    ?- test_prioritized.
-    ?- test_nested.
-').
-
-
-%! freeist(+X, +Y, -Result) is det.
-%
-%  A comparison predicate for `predsort/3` that sorts terms by freeness.
-%
-%  Terms are sorted based on the following criteria:
-%  - Variables are considered the "most free" and are sorted first.
-%  - Partially instantiated terms come next.
-%  - Fully ground terms are sorted last. Among them, they are further sorted by
-%    their complexity (the total number of functors and arguments in the term).
-%
-%  If two terms have the same degree of freeness and complexity, a lexicographic comparison
-%  is used as a final fallback.
-%
-%  Example usage with `predsort/3`:
-%  ==
-%  ?- predsort(freeist, [X, f(Y), g(a), Z, b, h(1,2,3)], Sorted).
-%  % Sorted = [X, Z, f(Y), b, g(a), h(1, 2, 3)].
-%
-%  ?- predsort(freeist, [a, f(a), h(a, b, c), g(a), b], Sorted).
-%  % Sorted = [a, b, g(a), f(a), h(a, b, c)].
-%
-%  ?- predsort(freeist, [X, Z, f(X, Y), b, h(a), g(a)], Sorted).
-%  % Sorted = [X, Z, f(X, Y), b, g(a), h(a)].
-%
-%  ?- predsort(freeist, [g(a), g(b), f(a, b), a, h(a, b, c), X, Z], Sorted).
-%  % Sorted = [X, Z, a, g(a), g(b), f(a, b), h(a, b, c)].
-%  ==
-%
-%  @param Result Comparison result: `<`, `=`, or `>`.
-%  @param Y Second term to compare.
-%  @param X First term to compare.
-
-%freeist(Result, X, Y):- X == Y, !, Result = (=).
-freeist(Result, X, Y):- X =@= Y, !, compare(Result, Y, X).
-freeist(Result, Y, X) :- compound(Y),Y=(YY-_),!,freeist(Result, YY, X).
-freeist(Result, Y, X) :- compound(X),X=(XX-_),!,freeist(Result, Y, XX).
-freeist(Result, Y, X) :-
-    term_freeness(Y, FX),
-    term_freeness(X, FY),
-    ( FX = FY ->
-        ( FX = 2 -> % If both terms are ground
-            term_arity(Y, AX),
-            term_arity(X, AY),
-            ( AX = AY ->
-                term_complexity(Y, CX),
-                term_complexity(X, CY),
-                ( CX = CY ->
-                    (compound_term_compare(ResultNE, X, Y), (ResultNE \= (=) -> ResultNE=Result ; compare(Result, Y, X))) % Compare compound terms argument by argument
-                ; compare(Result, CX, CY) )
-            ; compare(Result, AX, AY) )
-        ; compare(Result, Y, X) ) % Fallback for other types if freeness is the same
-    ; compare(Result, FX, FY) % Compare by freeness
-    ), !.
-
-% Calculate term freeness
-term_freeness(Term, 1) :- attvar(Term), !.
-term_freeness(Term, 0) :- var(Term), !.
-%term_freeness(Term, 1) :- term_variables(Term, Vars), Vars \= [], !.
-term_freeness(_, 2).
-
-% Calculate term arity (number of arguments)
-term_arity(Term, Arity) :-
-    %ground(Term), % Only applies to ground terms
-    Term =.. [_|Args],
-    length(Args, Arity).
-term_arity([_|Args], Arity):-length(Args, Arity).
-
-% Calculate term complexity (total number of functors and arguments in the term)
-term_complexity(Term, Complexity) :- fail,
-    ground(Term), % Only applies to ground terms
-    term_complexity_acc(Term, 0, Complexity).
-term_complexity(_,1).
-
-term_complexity_acc(Term, Acc, Complexity) :-
-    Term =.. [_|Args],
-    length(Args, ArgCount),
-    NewAcc is Acc + 1 + ArgCount,
-    foldl(term_complexity_acc, Args, NewAcc, Complexity).
-
-term_to_list(L, [L]):- \+ compound(L),!.
-term_to_list(L,L):- is_list(L),!.
-term_to_list(C, [F|Args]):- C \=[_|_],!, compound_name_arguments(C,F,Args).
-term_to_list(L, [L]).
-
-% Compare compound terms argument by argument
-compound_term_compare(Result, X, Y) :-
-    term_to_list(X,XX),
-    term_to_list(Y,YY),
-    maplist(nc_weight,XX,XXL),sumlist(XXL,SX),
-    maplist(nc_weight,YY,YYL),sumlist(YYL,SY),
-    compare(FunctorResult, SY, SX), % Compare functors lexicographically
-    ( FunctorResult = (=) ->
-        compare_args(Result, XX, YY)  % Compare arguments recursively
-    ; Result = FunctorResult ).
-
-% Recursively compare lists of arguments
-compare_args(Result, [A1|Rest1], [A2|Rest2]) :- !,
-    non_compound_compare(ArgResult, A1, A2), % Compare individual arguments using the custom predicate
-    ( ArgResult = (=) ->
-        compare_args(Result, Rest1, Rest2) % Continue with the remaining arguments
-    ; Result = ArgResult ).
-compare_args(Result, A, B) :- A==B, Result = (=). % Both lists are empty
-compare_args(Result, A, _) :- A==[], Result = (<). % First list is shorter
-compare_args(Result, _, B) :- B==[], Result = (>). % Second list is shorter
-
-% Example custom comparison for individual atoms or non-compound terms
-non_compound_compare(Result, A, B) :-
-    % Example: Comparing atoms by custom weights
-    nc_weight(A, WA),
-    nc_weight(B, WB),
-    (WA==WB-> compare(Result, WB, WA); compare(Result, A, B)).
-
-% Example weight mapping for atomics
-nc_weight(Attvar, 7):- attvar(Attvar),!.
-nc_weight(Var, 8):- var(Var),!.
-nc_weight(T, N):- is_decl_mtype(T,N),!.
-nc_weight(T, N):- is_decl_utype(T,N),!.
-nc_weight(T, 6):- atomic(T),!.
-
-
-
+:- ensure_loaded(metta_typed_functions).

@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 11:03:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-21 21:18:54+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -95,11 +95,9 @@ Script started on 2025-01-02 11:03:24+00:00 [COMMAND="timeout --preserve-status 
 >!(bind! &evaluated (new-state False))
 
 </span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165000"
+<span class="ansi38-255165000"
 > (: set-evaluated (-> Bool))
-</span>;;; this must return boolean
+</span>[error [error [domain_error py_term [State False $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (bind! &evaluated (new-state False))];;; this must return boolean
 <span class="ansi38-255165000"
 > (= (set-evaluated)  
   ( (change-state! &evaluated True) True))
@@ -115,10 +113,8 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-013099040"
 >!(bind! &evaluated (new-state False))
 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>[error [error [domain_error py_term [State False $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (bind! &evaluated (new-state False))]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (or True (set-evaluated)) (True))
 
 </span>
@@ -126,14 +122,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000861 secs. (860.93 microseconds) 
+; took 0.001 secs. (1.23 milliseconds) 
 
 !(assertEqualToResult (or True (set-evaluated)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test 
-      (True True) 
+      (True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -144,28 +140,13 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.OR-TEST.02"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.02</h3>
-; 
-; EVAL TEST
-; took 0.000287 secs. (286.65 microseconds) 
 
-!(assertEqual (get-state &evaluated) False)
-
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test 
-      (True) 
-      (False)]]
-</span>
-Deterministic: <span class="ansi33"
->([Error [got (True)] [expected (False)]])
-</span>;;;; assertEqualToResult is used here to force all solutions (backtracking)
+[error [error [domain_error py_term [State True $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (assertEqual (get-state &evaluated) False)];;;; assertEqualToResult is used here to force all solutions (backtracking)
 <span class="ansi38-013099040"
 >!(bind! &evaluated (new-state False))
 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>[error [error [domain_error py_term [State False $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (bind! &evaluated (new-state False))]
+<span class="ansi38-013099040"
 >!(assertEqualToResult (or False (set-evaluated)) (True))
 
 </span>
@@ -173,39 +154,23 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000809 secs. (809.23 microseconds) 
+; took 0.000935 secs. (935.30 microseconds) 
 
 !(assertEqualToResult (or False (set-evaluated)) (True))
 
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (True) 
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
       (True)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>equal_enough_for_test([],'[|]'('True',[]))[error [error [domain_error py_term [Error [got ()] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (assertEqualToResult (or False (set-evaluated)) (True))]
+<span class="ansi38-013099040"
 >!(assertEqual (get-state &evaluated) True)
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.OR-TEST.04"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.04</h3>
-; 
-; EVAL TEST
-; took 0.000271 secs. (271.16 microseconds) 
 
-!(assertEqual (get-state &evaluated) True)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (True) 
-      (True)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;; Basic `or` Logic
+[error [error [domain_error py_term [State True $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (assertEqual (get-state &evaluated) True)];;;; Basic `or` Logic
 <span class="ansi38-013099040"
 >!(assertEqual (or True False) True)
 
@@ -214,7 +179,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000200 secs. (199.83 microseconds) 
+; took 0.000201 secs. (201.09 microseconds) 
 
 !(assertEqual (or True False) True)
 
@@ -234,7 +199,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000192 secs. (191.72 microseconds) 
+; took 0.000170 secs. (170.17 microseconds) 
 
 !(assertEqual (or False True) True)
 
@@ -254,7 +219,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000204 secs. (204.19 microseconds) 
+; took 0.000198 secs. (197.88 microseconds) 
 
 !(assertEqual (or True True) True)
 
@@ -274,7 +239,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000193 secs. (193.09 microseconds) 
+; took 0.000170 secs. (169.53 microseconds) 
 
 !(assertEqual (or False False) False)
 
@@ -295,7 +260,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000201 secs. (201.42 microseconds) 
+; took 0.000170 secs. (169.83 microseconds) 
 
 !(assertEqualToResult (or True False) (True))
 
@@ -315,7 +280,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000200 secs. (199.88 microseconds) 
+; took 0.000161 secs. (160.80 microseconds) 
 
 !(assertEqualToResult (or False True) (True))
 
@@ -335,7 +300,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000206 secs. (206.01 microseconds) 
+; took 0.000181 secs. (181.14 microseconds) 
 
 !(assertEqualToResult (or True True) (True))
 
@@ -355,7 +320,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000199 secs. (198.73 microseconds) 
+; took 0.000172 secs. (171.82 microseconds) 
 
 !(assertEqualToResult (or False False) (False))
 
@@ -376,7 +341,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000469 secs. (469.20 microseconds) 
+; took 0.000668 secs. (667.64 microseconds) 
 
 !(assertEqual (or (> 5 3) (< 2 1)) True)
 
@@ -396,7 +361,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqual (or (== 1 1) (== 2 2)) True)
 
@@ -416,7 +381,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000364 secs. (363.95 microseconds) 
+; took 0.000363 secs. (363.36 microseconds) 
 
 !(assertEqual (or (not True) (and True False)) False)
 
@@ -432,7 +397,7 @@ Deterministic: <span class="ansi33"
 > (: mprogn (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (mprogn $code1 $code2)  
-  (let $_36316 
+  (let $260 
     (eval $code1) 
     (eval $code2)))
 </span>;;;; or with Side Effects to Ensure Both Expressions Are Evaluated
@@ -446,7 +411,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.68 milliseconds) 
+; took 0.002 secs. (2.15 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") True) (mprogn (println! "Second") False)) (True))
 
@@ -468,7 +433,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.63 milliseconds) 
+; took 0.002 secs. (1.62 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") True) (mprogn (println! "Second") True)) (True))
 
@@ -490,7 +455,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.002 secs. (1.73 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") False) (mprogn (println! "Second") True)) (True))
 
@@ -512,7 +477,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.63 milliseconds) 
+; took 0.002 secs. (1.60 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") False) (mprogn (println! "Second") False)) (False))
 
@@ -534,7 +499,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000371 secs. (371.48 microseconds) 
+; took 0.000353 secs. (352.98 microseconds) 
 
 !(assertEqualToResult (or (superpose (False True)) (superpose (False True))) (False True True True))
 
@@ -543,26 +508,18 @@ Deterministic: <span class="ansi33"
     [equal_enough_for_test 
       (True True) 
       (False True True True)]]
-</span>
-Deterministic: <span class="ansi33"
->([Error [got (True True)] [expected (False True True True)]])
-</span><span class="ansi1"
+</span>equal_enough_for_test('[|]'('True','[|]'('True',[])),'[|]'('False','[|]'('True','[|]'('True','[|]'('True',[])))))[error [error [domain_error py_term [Error [got (True True)] [expected (False True True True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] (assertEqualToResult (or (superpose (False True)) (superpose (False True))) (False True True True))]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 18
+>Successes: 16
 </span><span class="ansi31"
->Failures: 2
+>Failures: 4
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[()]
-[()]
-[()]
-[()]
-[([Error [got (True)] [expected (False)]])]
-[()]
-[()]
-[()]
+[[()]
+[[()]
+[[[[[()]
 [()]
 [()]
 [()]
@@ -577,12 +534,9 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[()]
-[([Error [got (True True)] [expected (False True True True)]])]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 11:03:33+00:00 [COMMAND_EXIT_CODE="7"]
+[
+
+Script done on 2025-01-21 21:19:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

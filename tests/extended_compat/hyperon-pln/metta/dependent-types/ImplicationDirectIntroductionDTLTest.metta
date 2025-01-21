@@ -1,7 +1,7 @@
 ;; Test Implication Direct Introduction DTL Rule
 
 ;; Import modules
-!(import! &self ImplicationDirectIntroductionDTL.metta)
+!(import! &self ImplicationDirectIntroductionDTL)
 !(import! &self ../synthesis/Synthesize.metta)
 
 ;; Knowledge base

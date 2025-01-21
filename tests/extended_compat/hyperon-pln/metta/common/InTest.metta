@@ -1,8 +1,8 @@
 ;; Test ∉
 
 ;; Import modules
-!(import! &self In.metta)
-!(import! &self Num.metta)
+!(import! &self In)
+!(import! &self Num)
 !(import! &self ../synthesis/Synthesize.metta)
 
 ;; Define knowledge and rule bases to reason about ∉.  This requires

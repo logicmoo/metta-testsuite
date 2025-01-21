@@ -1,0 +1,61 @@
+(cli_new! System.Text.StringBuilder ())
+(cli_call! (cli_new! System.Text.StringBuilder ()) ToString)
+(cli_call! (cli_call! (cli_new! System.Text.StringBuilder ()) Append Chained) ToString)
+(cli_get! (cli_new! System.Text.StringBuilder ()) Capacity)
+(cli_get! (cli_new! System.Text.StringBuilder ()) Capacity)
+There was an issue building the string.
+(lambda (&builder &text) (cli_call! &builder Append &text))
+(cli_call! (cli_new! System.Text.StringBuilder ()) ToString)
+(cli_call! (cli_new! System.Text.StringBuilder ()) ToString)
+UnityEngine assembly loaded successfully.
+(cli_new! UnityEngine.Vector3 (0.0 0.0 0.0))
+(cli_new! UnityEngine.GameObject ("MyGameObject"))
+(cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) get_transform_position)
+(cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) AddComponent UnityEngine.Rigidbody)
+(cli_call! (cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) AddComponent UnityEngine.Rigidbody) get_velocity)
+There was an issue with the GameObject's creation.
+(lambda (&obj &newPosition) (cli_call! &obj set_transform_position &newPosition))
+(cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) get_transform_position)
+Unity object manipulation complete.
+[(use-module! [library swicli])]
+[()]
+[()]
+[(cli_call! (cli_new! System.Text.StringBuilder ()) Append "Hello, ")]
+[(cli_call! (cli_new! System.Text.StringBuilder ()) Append "MeTTa!")]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[(cli_set! (cli_new! System.Text.StringBuilder ()) Capacity 100)]
+[()]
+[()]
+[()]
+[()]
+[((lambda (&builder &text) (cli_call! &builder Append &text)) (cli_new! System.Text.StringBuilder ()) " Another appended string!")]
+[()]
+[()]
+[()]
+[(cli_load_assembly! "UnityEngine")]
+[()]
+[()]
+[()]
+[()]
+[()]
+[(cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) set_transform_position (cli_new! UnityEngine.Vector3 (0.0 0.0 0.0)))]
+[()]
+[()]
+[()]
+[(cli_call! (cli_call! (cli_new! UnityEngine.GameObject ("MyGameObject")) AddComponent UnityEngine.Rigidbody) AddForce (cli_new! UnityEngine.Vector3 (0.0 10.0 0.0)))]
+[()]
+[()]
+[()]
+[()]
+[()]
+[((lambda (&obj &newPosition) (cli_call! &obj set_transform_position &newPosition)) (cli_new! UnityEngine.GameObject ("MyGameObject")) (cli_new! UnityEngine.Vector3 (5.0 5.0 5.0)))]
+[()]
+[()]
+real 0.06
+user 0.03
+sys 0.01

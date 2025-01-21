@@ -6,7 +6,7 @@
 ;;MeTTaLog: !(pragma! trace-on-overflow False)
 ;;MeTTaLog: !(pragma! trace-on-load False)
 
-!(import! &self NARS.metta)
+!(import! &self NARS)
 
 ;;MeTTaLog: !(pragma! trace-on-load True)
 

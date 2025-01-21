@@ -7,7 +7,7 @@
 !(import! &self ../../synthesis/Synthesize.metta)
 
 ;; Import knowledge base
-!(import! &kb john-carry-flower.kif.metta)
+!(import! &kb john-carry-flower.kif)
 
 ;; Import rule base
 !(import! &rb ../rule-base.metta)

@@ -7,7 +7,7 @@
 ;;MeTTaLog: !(pragma! trace-on-load False)
 ;;MeTTaLog: !(pragma! trace-on-exec True)
 
-!(import! &self NARS.metta)
+!(import! &self NARS)
 
 ;;MeTTaLog: !(pragma! trace-on-load True)
 ;;MeTTaLog: !(pragma! trace-on-exec True)

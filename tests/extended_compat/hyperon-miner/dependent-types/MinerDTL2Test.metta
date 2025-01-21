@@ -1,4 +1,4 @@
-!(import! &self MinerDTL2.metta)
+!(import! &self MinerDTL2)
 ;; Test
 !(bind! &db (new-space))
 !(add-atom &db (Inheritance B A))

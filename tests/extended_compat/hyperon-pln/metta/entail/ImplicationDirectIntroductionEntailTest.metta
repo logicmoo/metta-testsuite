@@ -1,5 +1,5 @@
 ;; Test Implication Direct Introduction Entail Rule
-!(import! &self ImplicationDirectIntroductionEntail.metta)
+!(import! &self ImplicationDirectIntroductionEntail)
 
 ;; Test formula
 !("========== Test formula ==========")

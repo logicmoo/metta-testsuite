@@ -19,7 +19,7 @@
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content">
-Script started on 2025-01-21 21:29:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-22 00:57:42+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@P;HTML|
 ;         [set_debug transpiler false]
 
@@ -66,7 +66,7 @@ Script started on 2025-01-21 21:29:21+00:00 [COMMAND="timeout --preserve-status 
 ;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.01">;; HYPERON-METTALOG-SANITY.PY-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (16.98 milliseconds) 
+; took 0.017 secs. (16.83 milliseconds) 
 
 !(assertEqual (py-list ()) (py-eval "[]"))
 
@@ -82,7 +82,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.02">;; HYPERON-METTALOG-SANITY.PY-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000560 secs. (559.80 microseconds) 
+; took 0.000451 secs. (450.70 microseconds) 
 
 !(assertEqual (py-tuple ()) (py-eval "()"))
 
@@ -98,7 +98,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.03">;; HYPERON-METTALOG-SANITY.PY-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000513 secs. (513.50 microseconds) 
+; took 0.000410 secs. (409.75 microseconds) 
 
 !(assertEqual (py-dict ()) (py-eval "{}"))
 
@@ -113,38 +113,38 @@ Deterministic: <span class="ansi33">()
 </span>
 Deterministic: 
 ERROR: Received fatal signal 11 (segv)
-Time: Tue Jan 21 21:29:29 2025
-Inferences: 36229350
+Time: Wed Jan 22 00:57:50 2025
+Inferences: 36229580
 Thread: 1 (main)
 C-stack trace labeled "crash":
-  [0] PL_raise() at ??:? [0x7ff439b6b855]
-  [1] Sdprintf() at ??:? [0x7ff439b1386e]
-  [2] __sigaction() at ??:? [0x7ff439845320]
-  [3] Py_TYPE() at /home/runner/work/_temp/SourceCode/./Include/object.h:220 [0x7ff43560a1c5]
-  [4] PyInit__swipl() at ??:? [0x7ff4377a3fec]
-  [5] PyInit__swipl() at ??:? [0x7ff4377a3ccd]
-  [6] PyInit__swipl() at ??:? [0x7ff4377a6b68]
-  [7] cfunction_call() at /home/runner/work/_temp/SourceCode/Objects/methodobject.c:551 [0x7ff435633019]
-  [8] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7ff435610fff]
-  [9] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7ff43558a1be]
-  [10] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7ff435611f45]
-  [11] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7ff4356bfc70]
-  [12] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7ff435634fdc]
-  [13] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7ff435632f1e]
-  [14] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7ff435611813]
-  [15] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7ff43558a1be]
-  [16] PyInit__swipl() at ??:? [0x7ff4377a59fb]
-  [17] PyInit__swipl() at ??:? [0x7ff4377a7e6b]
-  [18] PL_malloc_atomic() at ??:? [0x7ff439b22bd5]
-  [19] ??() at ??:0 [0x7ff439a8ed0f]
-  [20] PL_release_stream_noerror() at ??:? [0x7ff439b09466]
-  [21] PL_malloc_atomic() at ??:? [0x7ff439b1f9e3]
-  [22] PL_unify_blob() at ??:? [0x7ff439b5b2eb]
-  [23] PL_unify_blob() at ??:? [0x7ff439b5b178]
-  [24] swipl(+0x119d) [0x56173dacd19d]
-  [25] __libc_init_first() at ??:? [0x7ff43982a1ca]
-  [26] __libc_start_main() at ??:? [0x7ff43982a28b]
-  [27] swipl(+0x10c5) [0x56173dacd0c5]
+  [0] PL_raise() at ??:? [0x7fe0006cb855]
+  [1] Sdprintf() at ??:? [0x7fe00067386e]
+  [2] __sigaction() at ??:? [0x7fe000245320]
+  [3] Py_TYPE() at /home/runner/work/_temp/SourceCode/./Include/object.h:220 [0x7fdff7a0a1c5]
+  [4] PyInit__swipl() at ??:? [0x7fdffea5ffec]
+  [5] PyInit__swipl() at ??:? [0x7fdffea5fccd]
+  [6] PyInit__swipl() at ??:? [0x7fdffea62b68]
+  [7] cfunction_call() at /home/runner/work/_temp/SourceCode/Objects/methodobject.c:551 [0x7fdff7a33019]
+  [8] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7fdff7a10fff]
+  [9] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7fdff798a1be]
+  [10] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7fdff7a11f45]
+  [11] _Py_IsImmortal() at /home/runner/work/_temp/SourceCode/./Include/object.h:242 [0x7fdff7abfc70]
+  [12] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7fdff7a34fdc]
+  [13] _Py_LeaveRecursiveCallTstate() at /home/runner/work/_temp/SourceCode/./Include/internal/pycore_ceval.h:144 [0x7fdff7a32f1e]
+  [14] _Py_CheckFunctionResult() at /home/runner/work/_temp/SourceCode/Objects/call.c:28 [0x7fdff7a11813]
+  [15] _PyEval_EvalFrameDefault() at /home/runner/work/_temp/SourceCode/Python/bytecodes.c:2719 [0x7fdff798a1be]
+  [16] PyInit__swipl() at ??:? [0x7fdffea619fb]
+  [17] PyInit__swipl() at ??:? [0x7fdffea63e6b]
+  [18] PL_malloc_atomic() at ??:? [0x7fe000682bd5]
+  [19] ??() at ??:0 [0x7fe0005eed0f]
+  [20] PL_release_stream_noerror() at ??:? [0x7fe000669466]
+  [21] PL_malloc_atomic() at ??:? [0x7fe00067f9e3]
+  [22] PL_unify_blob() at ??:? [0x7fe0006bb2eb]
+  [23] PL_unify_blob() at ??:? [0x7fe0006bb178]
+  [24] swipl(+0x119d) [0x55cd7b2ca19d]
+  [25] __libc_init_first() at ??:? [0x7fe00022a1ca]
+  [26] __libc_start_main() at ??:? [0x7fe00022a28b]
+  [27] swipl(+0x10c5) [0x55cd7b2ca0c5]
 
 
 PROLOG STACK (without arguments):
@@ -167,7 +167,7 @@ Recursive crash; omitting crash report
 timeout: the monitored command dumped core
 Aborted
 
-Script done on 2025-01-21 21:30:00+00:00 [COMMAND_EXIT_CODE="134"]
+Script done on 2025-01-22 00:58:21+00:00 [COMMAND_EXIT_CODE="134"]
 
 </pre>
 </body>

@@ -4,12 +4,12 @@
 |----|-----|----|-------|--------|-----------|
 |   4|2   0|   4|   66% |  compat hyperon-mettalog sanity synth buffer | baseline_compat/hyperon-mettalog_sanity/synth_buffer |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-| 108|2  18| 126|   84% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+| 110|   18| 128|   85% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 137|2  59| 196|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
 | 475|15375| 850|   54% |  compat hyperon-mettalog sanity | baseline_compat/hyperon-mettalog_sanity |
-| 726|19452|1178|   60% |  compat                        | baseline_compat |
-| 726|19452|1178|   60% | tests output -compat           | tests_output/baseline-compat |
-| 726|19452|1178|   60% | tests                          | tests |
+| 728|17452|1180|   60% |  compat                        | baseline_compat |
+| 728|17452|1180|   60% | tests output -compat           | tests_output/baseline-compat |
+| 728|17452|1180|   60% | tests                          | tests |
 
 
 
@@ -144,7 +144,7 @@
 |       |       |          | Dir: ./baseline_compat/metta-morph_tests                                       |
 |       |       |          | Mod:  compat metta-morph tests                                                 |
 |       |       |          |                                                                                |
-|    -1 |    -1 |      0%  | [nalifier.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/nalifier.metta.html) |
+|     1 |     0 |    100%  | [nalifier.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/nalifier.metta.html) |
 |     7 |     2 |     77%  | [match_empty_void.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_empty_void.metta.html) |
 |     9 |     0 |    100%  | [match_empty_same.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_empty_same.metta.html) |
 |     2 |     0 |    100%  | [zeroargs.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/zeroargs.metta.html) |
@@ -166,7 +166,7 @@
 |     2 |     0 |    100%  | [let_superpose_list.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/let_superpose_list.metta.html) |
 |     3 |     0 |    100%  | [match_superposed_spaces.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta.html) |
 |    17 |     0 |    100%  | [boolean_twice.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/boolean_twice.metta.html) |
-|    -1 |    -1 |      0%  | [minnars.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/minnars.metta.html) |
+|     1 |     0 |    100%  | [minnars.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/minnars.metta.html) |
 |     1 |     0 |    100%  | [and_or.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/and_or.metta.html) |
 |     1 |     0 |    100%  | [let_superpose_list2.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta.html) |
 |     1 |     0 |    100%  | [add_atom_match.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/add_atom_match.metta.html) |
@@ -177,7 +177,7 @@
 |     1 |     0 |    100%  | [if.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/if.metta.html) |
 |     1 |     0 |    100%  | [types.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/types.metta.html) |
 |       |       |          |                                                                                |
-|   108 |    20 |     84%  | Total                                                                          |
+|   110 |    18 |     85%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -213,22 +213,22 @@
 |----|-----|----|-------|--------|-----------|
 |   4|2   0|   4|   66% |  compat hyperon-mettalog sanity synth buffer | baseline_compat/hyperon-mettalog_sanity/synth_buffer |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-| 108|2  18| 126|   84% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+| 110|   18| 128|   85% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 137|2  59| 196|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
 | 475|15375| 850|   54% |  compat hyperon-mettalog sanity | baseline_compat/hyperon-mettalog_sanity |
-| 726|19452|1178|   60% |  compat                        | baseline_compat |
-| 726|19452|1178|   60% | tests output -compat           | tests_output/baseline-compat |
-| 726|19452|1178|   60% | tests                          | tests |
+| 728|17452|1180|   60% |  compat                        | baseline_compat |
+| 728|17452|1180|   60% | tests output -compat           | tests_output/baseline-compat |
+| 728|17452|1180|   60% | tests                          | tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-| 108|2  18| 126|   84% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+| 110|   18| 128|   85% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 |   4|2   0|   4|   66% |  compat hyperon-mettalog sanity synth buffer | baseline_compat/hyperon-mettalog_sanity/synth_buffer |
 | 475|15375| 850|   54% |  compat hyperon-mettalog sanity | baseline_compat/hyperon-mettalog_sanity |
 | 137|2  59| 196|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 726|19452|1178|   60% |  compat                        | baseline_compat |
-| 726|19452|1178|   60% | tests                          | tests |
-| 726|19452|1178|   60% | tests output -compat           | tests_output/baseline-compat |
+| 728|17452|1180|   60% |  compat                        | baseline_compat |
+| 728|17452|1180|   60% | tests                          | tests |
+| 728|17452|1180|   60% | tests output -compat           | tests_output/baseline-compat |
 [?7h

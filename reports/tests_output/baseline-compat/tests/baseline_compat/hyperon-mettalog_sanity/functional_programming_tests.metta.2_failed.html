@@ -39,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:17:38+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:42:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -125,13 +125,13 @@ Script started on 2025-01-22 17:17:38+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.70 milliseconds) 
+; took 0.018 secs. (18.07 milliseconds) 
 
 !(assertEqualToResult (maplist! is-even (1 2 3)) ((False True False)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (False True False)) 
       ( (False True False))]]
 </span>
@@ -146,13 +146,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.14 milliseconds) 
+; took 0.004 secs. (3.54 milliseconds) 
 
 !(assertEqualToResult (maplist! < (1 2 3) (2 2 2)) ((True False False)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (True False False)) 
       ( (True False False))]]
 </span>
@@ -167,13 +167,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.13 milliseconds) 
+; took 0.012 secs. (12.18 milliseconds) 
 
 !(assertEqualToResult (maplist! plus-ternary (1 2 3) (4 5 6) (7 8 9)) ((12 15 18)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (12 15 18)) 
       ( (12 15 18))]]
 </span>
@@ -188,13 +188,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.24 milliseconds) 
+; took 0.013 secs. (12.72 milliseconds) 
 
 !(assertEqualToResult (maplist! maplist! (< >) ((1 2 3) (1 2 3)) ((2 2 2) (2 2 2))) (((True False False) (False False True))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( ( (True False False) (False False True))) 
       ( ( (True False False) (False False True)))]]
 </span>
@@ -214,13 +214,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000534 secs. (534.04 microseconds) 
+; took 0.000669 secs. (669.44 microseconds) 
 
 !(assertEqualToResult (maplist! get-type (my-list)) (((-> Expression))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( ( (-> Expression))) 
       ( ( (-> Expression)))]]
 </span>
@@ -238,17 +238,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.67 milliseconds) 
+; took 0.027 secs. (27.15 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! is-even (1 2 3))) time_limit_exceeded time_limit_exceeded) ((False True False)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (time_limit_exceeded) 
       ( (False True False))]]
-</span>
-equal_enough_for_test('[|]'(time_limit_exceeded,[]),'[|]'('[|]'('False','[|]'('True','[|]'('False',[]))),[]))[error [error [domain_error py_term [Error [got (time_limit_exceeded)] [expected ((False True False))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta] (assertEqualToResult (catch (max-time! 1 (concurrent-maplist! is-even (1 2 3))) time_limit_exceeded time_limit_exceeded) ((False True False)))];;;; test concurrent-maplist! with binary function
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(time_limit_exceeded,[]),'[|]'('[|]'('False','[|]'('True','[|]'('False',[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' ((False True False))))
+</span>;;;; test concurrent-maplist! with binary function
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! < (1 2 3) (2 2 2))) time_limit_exceeded time_limit_exceeded) ((True False False)))
 
@@ -257,13 +260,13 @@ equal_enough_for_test('[|]'(time_limit_exceeded,[]),'[|]'('[|]'('False','[|]'('T
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.47 milliseconds) 
+; took 0.011 secs. (10.99 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! < (1 2 3) (2 2 2))) time_limit_exceeded time_limit_exceeded) ((True False False)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (True False False)) 
       ( (True False False))]]
 </span>
@@ -282,17 +285,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.91 milliseconds) 
+; took 0.003 secs. (3.31 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! concurrent-maplist! (is-even is-odd) ((1 2 3) (1 2 3)))) time_limit_exceeded time_limit_exceeded) (((False True False) (True False True))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (time_limit_exceeded) 
       ( ( (False True False) (True False True)))]]
-</span>
-equal_enough_for_test('[|]'(time_limit_exceeded,[]),'[|]'('[|]'('[|]'('False','[|]'('True','[|]'('False',[]))),'[|]'('[|]'('True','[|]'('False','[|]'('True',[]))),[])),[]))[error [error [domain_error py_term [Error [got (time_limit_exceeded)] [expected (((False True False) (True False True)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta] (assertEqualToResult (catch (max-time! 1 (concurrent-maplist! concurrent-maplist! (is-even is-odd) ((1 2 3) (1 2 3)))) time_limit_exceeded time_limit_exceeded) (((False True False) (True False True))))];;;; the arguments are not evaluated
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(time_limit_exceeded,[]),'[|]'('[|]'('[|]'('False','[|]'('True','[|]'('False',[]))),'[|]'('[|]'('True','[|]'('False','[|]'('True',[]))),[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' (((False True False) (True False True)))))
+</span>;;;; the arguments are not evaluated
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (maplist! get-type (my-list))) time_limit_exceeded time_limit_exceeded) (((-> Expression))))
 
@@ -301,13 +307,13 @@ equal_enough_for_test('[|]'(time_limit_exceeded,[]),'[|]'('[|]'('[|]'('False','[
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.001 secs. (1.31 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (maplist! get-type (my-list))) time_limit_exceeded time_limit_exceeded) (((-> Expression))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( ( (-> Expression))) 
       ( ( (-> Expression)))]]
 </span>
@@ -327,10 +333,12 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[[()]
-[[()]
+[(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' ((False True False))))]
+[()]
+[(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' (((False True False) (True False True)))))]
+[()]
 
-Script done on 2025-01-22 17:17:49+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:42:35+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

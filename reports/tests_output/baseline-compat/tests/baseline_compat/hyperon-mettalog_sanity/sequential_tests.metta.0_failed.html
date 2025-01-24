@@ -13,7 +13,6 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
-.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
@@ -30,7 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 11:06:46+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:51:35+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -102,13 +101,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEQUENTIAL-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.98 milliseconds) 
+; took 0.010 secs. (10.26 milliseconds) 
 
 !(assertEqualToResult (sequential ((do (foo $x)) (get-state &var))) (4))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (4) 
       (4)]]
 </span>
@@ -124,13 +123,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEQUENTIAL-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.02 milliseconds) 
+; took 0.020 secs. (19.85 milliseconds) 
 
 !(assertEqualToResult (sequential ((do (change-state! &var 0)) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (get-state &var))) (1 2 3 4 5 6 7 8 9 10 10))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (1 2 3 4 5 6 7 8 9 10 10) 
       (1 2 3 4 5 6 7 8 9 10 10)]]
 </span>
@@ -148,10 +147,8 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 11:06:54+00:00 [COMMAND_EXIT_CODE="7"]
+
+Script done on 2025-01-24 06:51:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

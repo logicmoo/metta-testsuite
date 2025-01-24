@@ -29,7 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:12:54+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:36:52+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -87,13 +87,13 @@ Script started on 2025-01-22 17:12:54+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.004 secs. (4.03 milliseconds) 
 
 !(assertEqual (foo) (R $x $y))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (R $x $y)) 
       ( (R $x $y))]]
 </span>
@@ -108,8 +108,28 @@ Deterministic: <span class="ansi33"
 >!(assertAlphaEqual (foo) (R $x $y))
 
 </span>
+;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.02"
+>;; HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.02</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.37 milliseconds) 
+
+!(assertAlphaEqual (foo) (R $x $y))
+
+P;HTML|
+; alpha_equ(['R',_117578,_117584],['R',_117596,_117602])
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l alpha_equ 
+      ( (R $x $y)) 
+      ( (R $x $y))]]
+</span>P;HTML|
+; alpha_equ(['R',_136260,_136266],['R',_136278,_136284])
+
+
 Deterministic: <span class="ansi33"
->(assertAlphaEqual (R $x $y) (R $x $y))
+>()
 </span>;;; Example 2: Nested Alpha Equivalence
 ;;; -----------------------------------
 ;;; Define a function with nested variables
@@ -122,8 +142,44 @@ Deterministic: <span class="ansi33"
 >!(assertAlphaEqual (bar) (S $a (T $b)))
 
 </span>
+;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.03"
+>;; HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.03</h3>
+; 
+; EVAL TEST
+; took 0.007 secs. (7.22 milliseconds) 
+
+!(assertAlphaEqual (bar) (S $a (T $b)))
+
+P;HTML|
+; alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'S',
+;      _261074,
+;      ['T',_261092]],
+;    [ 'S',
+;      _244400,
+;      ['T',_244418]])
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l alpha_equ 
+      ( (S $x 
+          (T $y))) 
+      ( (S $a 
+          (T $b)))]]
+</span>P;HTML|
+; alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'S',
+;      _378602,
+;      ['T',_378620]],
+;    [ 'S',
+;      _361928,
+;      ['T',_361946]])
+
+
 Deterministic: <span class="ansi33"
->(assertAlphaEqual (S $x (T $y)) (S $a (T $b)))
+>()
 </span>;;; Example 3: Complex Structures
 ;;; -----------------------------
 ;;; Define a complex structure
@@ -137,8 +193,46 @@ Deterministic: <span class="ansi33"
 >!(assertAlphaEqual (baz) (U (R $a $b) (V $c)))
 
 </span>
+;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.04"
+>;; HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.04</h3>
+; 
+; EVAL TEST
+; took 0.011 secs. (11.14 milliseconds) 
+
+!(assertAlphaEqual (baz) (U (R $a $b) (V $c)))
+
+P;HTML|
+; alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'U',
+;      ['R',_595704,_595710],
+;      ['V',_595728]],
+;    [ 'U',
+;      ['R',_573940,_573946],
+;      ['V',_573964]])
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l alpha_equ 
+      ( (U 
+          (R $x $y) 
+          (V $z))) 
+      ( (U 
+          (R $a $b) 
+          (V $c)))]]
+</span>P;HTML|
+; alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'U',
+;      ['R',_748288,_748294],
+;      ['V',_748312]],
+;    [ 'U',
+;      ['R',_726524,_726530],
+;      ['V',_726548]])
+
+
 Deterministic: <span class="ansi33"
->(assertAlphaEqual (U (R $x $y) (V $z)) (U (R $a $b) (V $c)))
+>()
 </span>;;; Example 4: Non-equivalent Structures
 ;;; ------------------------------------
 ;;; Test: Ensure non-equivalent structures are not considered equivalent
@@ -146,24 +240,62 @@ Deterministic: <span class="ansi33"
 >!(assertNotAlphaEqual (baz) (U (R $a $b) (W $c)))
 
 </span>
+;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.05"
+>;; HYPERON-METTALOG-SANITY.ALPHA-EQUIVALENCE-ASSERTIONS-HE-744.05</h3>
+; 
+; EVAL TEST
+; took 0.011 secs. (11.16 milliseconds) 
+
+!(assertNotAlphaEqual (baz) (U (R $a $b) (W $c)))
+
+P;HTML|
+; not_alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'U',
+;      ['R',_962012,_962018],
+;      ['V',_962036]],
+;    [ 'U',
+;      ['R',_940222,_940228],
+;      ['W',_940246]])
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l not_alpha_equ 
+      ( (U 
+          (R $x $y) 
+          (V $z))) 
+      ( (U 
+          (R $a $b) 
+          (W $c)))]]
+</span>P;HTML|
+; not_alpha_equ<span class="pl-functor"
+>( </span>
+;    [ 'U',
+;      ['R',_133208,_133214],
+;      ['V',_133232]],
+;    [ 'U',
+;      ['R',_111418,_111424],
+;      ['W',_111442]])
+
+
 Deterministic: <span class="ansi33"
->(assertNotAlphaEqual (U (R $x $y) (V $z)) (U (R $a $b) (W $c)))
+>()
 </span><span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 1
+>Successes: 5
 </span><span class="ansi32"
 >Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[(assertAlphaEqual (R $x $y) (R $x $y))]
-[(assertAlphaEqual (S $x (T $y)) (S $a (T $b)))]
-[(assertAlphaEqual (U (R $x $y) (V $z)) (U (R $a $b) (V $c)))]
-[(assertNotAlphaEqual (U (R $x $y) (V $z)) (U (R $a $b) (W $c)))]
+[()]
+[()]
+[()]
+[()]
 
-Script done on 2025-01-22 17:13:02+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:37:01+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

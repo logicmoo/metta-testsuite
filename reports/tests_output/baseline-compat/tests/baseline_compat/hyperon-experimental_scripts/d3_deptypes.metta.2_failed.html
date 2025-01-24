@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-24 06:31:37+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; A classical example of dependent types
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Simple type definitions:
+;;; Defines the natural numbers `Nat` for counting
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;; `Vec` takes a `$t` type and a `Nat` length.
+<span class="ansi38-255165000"
+> (: Vec (-> $t Nat Type))
+</span>;;; `Cons` and `Nil` construct `Vec` values, with `Cons` incrementing the length by 1.
+<span class="ansi38-255165000"
+> (: Cons (-> $t (Vec $t $x) (Vec $t (S $x))))
+</span><span class="ansi38-255165000"
+> (: Nil (Vec $t Z))
+</span>;;; We can query the derived type
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01</h3>
+; 
+; EVAL TEST
+; took 6.68 seconds.
+
+!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) 
+      ( (Vec Number 
+          (S (S Z))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ((Vec Number (S (S Z))))))
+</span>;;; `drop` removes the head from a `Vec`, returning a `Vec` with length decrease by 1
+<span class="ansi38-255165000"
+> (: drop (-> (Vec $t (S $x)) (Vec $t $x)))
+</span><span class="ansi38-255165000"
+> (= (drop (Cons $x $xs))  $xs)
+</span>;;; Query type
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.75 milliseconds) 
+
+!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) 
+      ( (Vec Number Z))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('Z',[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ((Vec Number Z))))
+</span>;;; Check length after dropping
+<span class="ansi38-013099040"
+>!(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03</h3>
+
+Script done on 2025-01-24 06:32:17+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta" --halt=true\033[0m

@@ -61,7 +61,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:15:09+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:39:49+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -153,7 +153,7 @@ Script started on 2025-01-22 17:15:09+00:00 [COMMAND="timeout --preserve-status 
       (collapse $passes2)) 
     (case 
       (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($260 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
+      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($_179480 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
@@ -175,7 +175,7 @@ Script started on 2025-01-22 17:15:09+00:00 [COMMAND="timeout --preserve-status 
     ($Name (collapse $Form)) 
     (case 
       (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($260 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
+      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($_190504 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
 </span><span class="ansi38-255165000"
 > (: atom-atom (-> Atom Atom))
 </span><span class="ansi38-255165000"
@@ -197,28 +197,73 @@ Script started on 2025-01-22 17:15:09+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-013099040"
 >!(assertPEqual (match-maybe-empty &self (no-stuff $a) (no-stuff $a)) Empty $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (match-maybe-empty &self (no-stuff $a) (no-stuff $a)) Empty $same)]
+</span>;; no-results ;; 
 <span class="ansi38-013099040"
 >!(assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)]
-<span class="ansi38-013099040"
+</span>
+	 (assertPEqual (atom-atom (+ 1 1)) (atom-atom 2) (atom-atom 2) $same)
+
+N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (atom-atom (+ 1 1)) (atom-atom 2) (atom-atom 2) $same)
+
+N(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertPEqual (number-atom (+ 1 1)) (number-atom 2) $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (number-atom (+ 1 1)) (number-atom 2) $same)]
-<span class="ansi38-013099040"
+</span>
+	 (assertPEqual (number-atom (+ 1 1)) (number-atom 2) (number-atom 2) $same)
+
+N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (number-atom (+ 1 1)) (number-atom 2) (number-atom 2) $same)
+
+N(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)]
-<span class="ansi38-013099040"
+</span>
+	 (assertPEqual (atom-unit (+ 1 1)) (atom-unit 2) (atom-unit 2) $same)
+
+N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (atom-unit (+ 1 1)) (atom-unit 2) (atom-unit 2) $same)
+
+N(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) $same)]
-<span class="ansi38-013099040"
+</span>
+	 (assertPEqual (var-var (+ 1 1)) (var-var 2) (var-var 2) $same)
+
+N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (var-var (+ 1 1)) (var-var 2) (var-var 2) $same)
+
+N(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)
 
-</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)]
-<span class="ansi38-013099040"
+</span>
+	 (assertPEqual (atom-var (+ 1 1)) (atom-var 2) (atom-var 2) $same)
+
+N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (atom-var (+ 1 1)) (atom-var 2) (atom-var 2) $same)
+
+N(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $same)
 
 </span>[error metta_NotReducible [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $same)]
@@ -234,9 +279,14 @@ Script started on 2025-01-22 17:15:09+00:00 [COMMAND="timeout --preserve-status 
 >!(assertPEqual (return-number 2) 2 $same)
 
 </span>
-	 (assertPEqual 2 2 2 $same)
+	 (assertPEqual (return-number 2) 2 2 $same)
 
 N(1): <span class="ansi33"
+>()
+</span>
+	 (assertPEqual (return-number 2) 2 2 $same)
+
+N(2): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
 >!(assertPEqualToResult "re1" (return-empty) () $same)
@@ -278,14 +328,20 @@ N(1): <span class="ansi33"
 ;;;!(assertPEqual "rn3" (return-number a) (Error a BadType) $same)
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[[[[[[[[[[()]
+[]
+[(), ()]
+[(), ()]
+[(), ()]
+[(), ()]
+[(), ()]
+[[[[(), ()]
 []
 []
 []
 [()]
 [()]
 
-Script done on 2025-01-22 17:15:18+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:39:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

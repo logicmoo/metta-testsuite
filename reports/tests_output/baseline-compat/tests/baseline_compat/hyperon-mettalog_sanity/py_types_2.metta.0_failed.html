@@ -13,6 +13,7 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
@@ -23,7 +24,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:21:44+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types_2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:48:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types_2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -72,13 +73,13 @@ Script started on 2025-01-22 17:21:44+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.PY-TYPES-2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (16.87 milliseconds) 
+; took 0.017 secs. (16.85 milliseconds) 
 
 !(assertEqual (py-list ()) (py-eval "[]"))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ([]) 
       ([])]]
 </span>
@@ -92,31 +93,23 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES-2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000430 secs. (429.71 microseconds) 
+; took 0.000608 secs. (607.82 microseconds) 
 
 !(assertEqual (py-tuple ()) (py-eval "()"))
 
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (()) 
-      (())]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi1"
+[error [error [domain_error compound_non_zero_arity ()] [context [ : system [ / functor 3 ] ] $_11466]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/py_types_2.metta] (assertEqual (py-tuple ()) (py-eval "()"))]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 2
-</span><span class="ansi32"
->Failures: 0
+>Successes: 1
+</span><span class="ansi31"
+>Failures: 1
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[()]
+[
 
-Script done on 2025-01-22 17:21:52+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:48:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

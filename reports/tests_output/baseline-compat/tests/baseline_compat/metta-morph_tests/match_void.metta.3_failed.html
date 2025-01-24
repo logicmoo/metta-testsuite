@@ -41,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:35:07+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/match_void.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 07:02:45+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/match_void.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -107,13 +107,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000241 secs. (241.29 microseconds) 
+; took 0.000283 secs. (282.82 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) ())
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test () ()]]
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -138,13 +138,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000253 secs. (253.40 microseconds) 
+; took 0.000290 secs. (289.72 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) (belief1))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (belief1) 
       (belief1)]]
 </span>
@@ -158,16 +158,19 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000143 secs. (142.96 microseconds) 
+; took 0.000147 secs. (147.29 microseconds) 
 
 !(assertEqualToResult (case belief1 ((%void% WasVoid))) (WasVoid))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (WasVoid)]]
-</span>equal_enough_for_test([],'[|]'('WasVoid',[]))[error [error [domain_error py_term [Error [got ()] [expected (WasVoid)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_void.metta] (assertEqualToResult (case belief1 ((%void% WasVoid))) (WasVoid))]
-<span class="ansi38-013099040"
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('WasVoid',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (case (match &belief_events $1 $1) ((%void% WasVoid))) (WasVoid))
 
 </span>
@@ -175,16 +178,19 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000356 secs. (356.27 microseconds) 
+; took 0.000395 secs. (394.97 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) ((%void% WasVoid))) (WasVoid))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (WasVoid)]]
-</span>equal_enough_for_test([],'[|]'('WasVoid',[]))[error [error [domain_error py_term [Error [got ()] [expected (WasVoid)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_void.metta] (assertEqualToResult (case (match &belief_events $1 $1) ((%void% WasVoid))) (WasVoid))]
-<span class="ansi38-013099040"
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('WasVoid',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (case (match &belief_events $1 $1) ((belief1 yes) (%void% WasVoid))) (yes))
 
 </span>
@@ -192,13 +198,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000380 secs. (380.12 microseconds) 
+; took 0.000399 secs. (398.90 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) ((belief1 yes) (%void% WasVoid))) (yes))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (yes) 
       (yes)]]
 </span>
@@ -212,13 +218,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000255 secs. (255.32 microseconds) 
+; took 0.000367 secs. (367.22 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((%void% WasVoid))) (WasVoid))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (WasVoid) 
       (WasVoid)]]
 </span>
@@ -232,13 +238,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000285 secs. (285.16 microseconds) 
+; took 0.000492 secs. (491.60 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) (%void% WasVoid))) (WasVoid))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (WasVoid) 
       (WasVoid)]]
 </span>
@@ -260,13 +266,13 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000340 secs. (339.52 microseconds) 
+; took 0.000504 secs. (503.64 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) (%void% WasVoid))) (yes))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (yes) 
       (yes)]]
 </span>
@@ -280,15 +286,19 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000292 secs. (291.75 microseconds) 
+; took 0.000422 secs. (421.80 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((%void% WasVoid))) (WasVoid))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test () 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (WasVoid)]]
-</span>equal_enough_for_test([],'[|]'('WasVoid',[]))[error [error [domain_error py_term [Error [got ()] [expected (WasVoid)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_void.metta] (assertEqualToResult (case (match &goal_events $1 $1) ((%void% WasVoid))) (WasVoid))]<span class="ansi1"
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('WasVoid',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))
+</span><span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -302,14 +312,16 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[[[()]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))]
 [()]
 [()]
 [()]
 [()]
-[
+[()]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (WasVoid)))]
 
-Script done on 2025-01-22 17:35:16+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 07:02:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

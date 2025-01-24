@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:26:54+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:54:08+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -92,13 +92,13 @@ Script started on 2025-01-22 17:26:54+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000201 secs. (200.94 microseconds) 
+; took 0.000240 secs. (240.02 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -114,13 +114,13 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.78 milliseconds) 
+; took 0.004 secs. (4.34 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -134,13 +134,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000945 secs. (944.52 microseconds) 
+; took 0.002 secs. (2.35 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (John Jane)) 
       ( (John Jane))]]
 </span>
@@ -154,13 +154,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000242 secs. (242.42 microseconds) 
+; took 0.000379 secs. (378.51 microseconds) 
 
 !(assertEqualToResult (match &self (likes $x $y) ($x $y)) ())
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test () ()]]
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () ()]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -175,13 +175,13 @@ Deterministic: <span class="ansi33"
 > (likes Kate Karl)
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.79 milliseconds) 
+; took 0.005 secs. (4.81 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes Kate Karl)) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -195,13 +195,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000925 secs. (925.00 microseconds) 
+; took 0.003 secs. (3.19 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane) (Kate Karl)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (John Jane) (Kate Karl)) 
       ( (John Jane) (Kate Karl))]]
 </span>
@@ -219,13 +219,13 @@ Deterministic: <span class="ansi33"
 >retractall(metta_atom_asserted('&new-space',[likes,'John','Jane']))
 </span>; 
 ; EVAL TEST
-; took 0.008 secs. (7.71 milliseconds) 
+; took 0.008 secs. (8.38 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -239,13 +239,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000583 secs. (583.47 microseconds) 
+; took 0.002 secs. (1.82 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((Kate Karl)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Kate Karl)) 
       ( (Kate Karl))]]
 </span>
@@ -264,14 +264,14 @@ Deterministic: <span class="ansi33"
   (+ $x 1))
 </span>; 
 ; EVAL TEST
-; took 0.010 secs. (10.05 milliseconds) 
+; took 0.011 secs. (11.26 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -284,7 +284,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.10"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.10</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2))];;;; modify function definition in new space
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12834]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2))];;;; modify function definition in new space
 <span class="ansi38-013099040"
 >!(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
@@ -297,14 +297,14 @@ Deterministic: <span class="ansi33"
   (+ $x 2))
 </span>; 
 ; EVAL TEST
-; took 0.010 secs. (9.92 milliseconds) 
+; took 0.010 secs. (10.23 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -316,7 +316,7 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.12</h3>
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2 3))]
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12754]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2 3))]
 <span class="ansi38-013099040"
 >!(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -331,14 +331,14 @@ Deterministic: <span class="ansi33"
 >retractall(metta_atom_asserted('&new-space',[=,[foo,_x],[+,_x,1]]))
 </span>; 
 ; EVAL TEST
-; took 0.035 secs. (34.62 milliseconds) 
+; took 0.036 secs. (35.76 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (()) 
       (())]]
 </span>
@@ -350,7 +350,7 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.14"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.14</h3>
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (3))]<span class="ansi1"
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12730]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (3))]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -372,7 +372,7 @@ Deterministic: <span class="ansi33"
 [[()]
 [
 
-Script done on 2025-01-22 17:27:03+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:54:17+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

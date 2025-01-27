@@ -1,0 +1,10 @@
+[(extend-py! mettalog)]
+[(fb-info!)]
+[(ensure-loaded! whole_flybase)]
+[(number-of (, (fbgn_fbtr_fbpp_expanded! $GeneID $TranscriptType $TranscriptID $GeneSymbol $GeneFullName $AnnotationID $_ $_ $_ $_ $_) (dmel_unique_protein_isoforms! $ProteinID $ProteinSymbol $TranscriptSymbol $_) (dmel_paralogs! $ParalogGeneID $ProteinSymbol $_ $_ $_ $_ $_ $_ $_ $_ $_) (gene_map_table! $MapID $OrganismAbbreviation $ParalogGeneID $RecombinationLoc $CytogeneticLoc $SequenceLoc) (synonym! $SynonymID $MapID $CurrentSymbol $CurrentFullName $_ $_)) "
+
+;; Query: Connect Gene Mapping with Expanded Transcripts, Protein Isoforms, Gene Summaries, and Basic Transcripts
+(query-info " Link gene mapping data with expanded transcripts, unique protein isoforms, gene summaries, and basic transcript information." (mapping-transcripts-proteins-summaries $MapID $GeneSymbol $TranscriptID $ProteinID $GeneSummaryID) (, (gene_map_table! $MapID $OrganismAbbreviation $GeneSymbol $RecombinationLoc $CytogeneticLoc $SequenceLoc) (fbgn_fbtr_fbpp_expanded! $TranscriptType $TranscriptID $TranscriptSymbol $OrganismAbbreviation $_ $_ $_ $_ $_ $_) (dmel_unique_protein_isoforms! $ProteinID $ProteinSymbol $TranscriptSymbol $_) (best_gene_summary! $GeneSummaryID $ProteinSymbol $SummarySource $SummaryText) (fbgn_fbtr_fbpp! $GeneSummaryID $_ $_)))]
+[(fb-info!)]
+[(mettalog::vspace-main)]
+[(Error (match &flybase (gene_map_table $Org $Sym $G 3-59 $D $E) ($Sym $G $D $E)) match expects a space as the first argument)]

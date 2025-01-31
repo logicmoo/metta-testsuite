@@ -82,6 +82,7 @@ self_eval0([]).
 self_eval0('%Undefined%').
 self_eval0(X):- atom(X),!, X\=='NotReducible', \+ nb_bound(X,_),!.
 
+
 nb_bound(Name,X):- atom(Name), % atom_concat('&', _, Name),
   nb_current(Name, X), compound(X). % spaces and states are stored as compounds
 
@@ -303,7 +304,7 @@ subst_args_there(Eq,RetType,Depth2,Self,Y,YO):-
 
 subst_args_there_real(Eq,RetType,Depth2,Self,Y,YO):- !, 
   subst_args(Eq,RetType,Depth2,Self,Y,YO).
-  
+
 subst_args_there_real(Eq,RetType,Depth2,Self,Y,YO):-
   subst_args(Eq,RetType,Depth2,Self,Y,YO),
   %Y =YO,
@@ -469,6 +470,7 @@ eval_20(Eq,RetType,Depth,Self,[F,[Eval,V]|VI],VO):- Eval == eval,!,
 eval_20(Eq,RetType,Depth,Self,[[Eval,V]|VI],VO):- Eval == eval,!,
   ((eval_args(Eq,_FRype,Depth,Self,V,VV), V\=@=VV)*-> true; VV = V),
   eval_args(Eq,RetType,Depth,Self,[VV|VI],VO).
+
 % DMILES @ TODO make sure this isnt an implicit curry
 eval_20(Eq,_RetType,Depth,Self,[V|VI],VO):-  \+ callable(V), is_list(VI),!,
   maplist(eval_ret(Eq,_ArgRetType,Depth,Self),[V|VI],VOO),VO=VOO.
@@ -2723,7 +2725,6 @@ eval_40(Eq,RetType,Depth,Self,[Sym|Args],Res):- symbol(Sym), is_list(Args),
 with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,apply(Fn,PArgs)):- !, apply(Fn,PArgs).
 with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,Goal):-  Goal.
 
-
 suggest_type(_RetType,_Bool).
 
 naive_eval_args:-
@@ -3115,7 +3116,7 @@ get_defn_expansions(_Eq,_RetType,_Depth,Self,[[H|HArgs]|Args],XX,B0):- symbol(H)
    metta_atom(Self,[=,[[HH|NewHArgs]|NewArgs],B0]),H==HH,
    [[H|NewHArgs]|NewArgs]=XX,
    sanity_check_eval(curry0,B0).
-   
+
 get_defn_expansions(Eq,_RetType,_Depth,Self,[H|Args],[H|NewArgs],B0):- same_len_copy(Args,NewArgs),
    metta_atom(Self,[=,[HH|NewArgs],B0]),H==HH.
 
@@ -3590,6 +3591,7 @@ end_of_file.
            maplist(eval_evals(Eq,Depth,Self),ParamTypes,Args,NewArgs),
            XX = [H|NewArgs],Y=XX.
         eval_evals(_Eq,_Depth,_Self,_RetType,X,X):-!.
+
 
 
 

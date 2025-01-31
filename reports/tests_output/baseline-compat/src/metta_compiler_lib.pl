@@ -106,8 +106,8 @@ mc_1__not(_,'True').
 
 % not sure about the signature for this one
 transpiler_predicate_store('==', 3, [x(doeval,eager,[]), x(doeval,eager,[])], x(doeval,eager,[boolean])).
-'mc_2__=='(A,A,1) :- !.
-'mc_2__=='(_,_,0).
+'mc_2__=='(A,B,'True') :- A==B,!.
+'mc_2__=='(_,_,'False').
 
 transpiler_predicate_store('<', 3, [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean])).
 'mc_2__<'(A,B,R) :- number(A),number(B),!,(A<B -> R='True' ; R='False').
@@ -192,7 +192,13 @@ match_pattern(Space, Pattern):-
     metta_atom(Space, Atom), Atom=Pattern.
 
 transpiler_predicate_store(match, 4, [x(doeval,eager,[]), x(doeval,eager,[]), x(doeval,lazy,[])], x(doeval,eager,[])).
+'mc_3__match'(Space,[','|Patterns],P1,Ret) :- !,(maplist(match_aux(Space),Patterns) -> as_p1_exec(P1,Ret) ; fail).
 'mc_3__match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),Atom=Pattern,as_p1_exec(P1,Ret).
+%'mc_3__match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),format("match1 ~w: ~w:\n",[Pattern,Atom]),Atom=Pattern,as_p1_exec(P1,Ret),format("match2 ~w:\n",[Ret]),trace.
+%transpiler_predicate_store(match, 4, [x(doeval,eager,[]), x(doeval,lazy,[]), x(doeval,lazy,[])], x(doeval,eager,[])).
+%'mc_3__match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),as_p1_exec(Pattern,Atom),as_p1_exec(P1,Ret).
+
+match_aux(Space,Pattern) :- 'mc_3__match'(Space,Pattern,ispu(true),true).
 
 % unify calls pattern matching if arg1 is a space
 unify_pattern(Space,Pattern):- is_metta_space(Space),!, match_pattern(Space, Pattern).
@@ -232,11 +238,23 @@ transpiler_predicate_store('stringToChars', 2, [x(doeval,eager,[])], x(doeval,ea
 transpiler_predicate_store('charsToString', 2, [x(doeval,eager,[])], x(doeval,eager,[])).
 'mc_1__charsToString'(C,S) :- string_chars(S,C).
 
-transpiler_predicate_store('assertEqualToResult', 3, [x(doeval,eager,[]),x(noeval,eager,[])], x(doeval,eager,[])).
-'mc_2__assertEqualToResult'(A, B, C) :- u_assign([assertEqualToResult, A, B], C).
+transpiler_predicate_store('assertEqual', 3, [x(doeval,lazy,[]),x(noeval,lazy,[])], x(doeval,eager,[])).
+'mc_2__assertEqual'(A,B,C) :-
+   loonit_assert_source_tf_empty(
+        ['assertEqual',A,B],AA,BB,
+        ('mc_1__collapse'(A,AA),
+         'mc_1__collapse'(B,BB)),
+         equal_enough_for_test_renumbered_l(strict_equals_allow_vn,AA,BB), C).
 
-transpiler_predicate_store('assertEqual', 3, [x(doeval,eager,[]),x(noeval,eager,[])], x(doeval,eager,[])).
-'mc_2__assertEqual'(A, B, C) :- u_assign([assertEqual, A, B], C).
+transpiler_predicate_store('assertEqualToResult', 3, [x(doeval,lazy,[]),x(noeval,eager,[])], x(doeval,eager,[])).
+'mc_2__assertEqualToResult'(A,B,C) :-
+   loonit_assert_source_tf_empty(
+        ['assertEqualToResult',A,B],AA,B,
+        ('mc_1__collapse'(A,AA)),
+         equal_enough_for_test_renumbered_l(strict_equals_allow_vn,AA,B), C).
+
+%transpiler_predicate_store('assertEqualToResult', 3, [x(doeval,lazy,[]),x(doeval,eager,[])], x(doeval,eager,[])).
+%'mc_2__assertEqualToResult'(A,B,C) :- 'mc_1__collapse'(A,A2),u_assign([assertEqualToResult,A2,[B]],C).
 
 transpiler_predicate_store('prolog-trace', 1, [], x(doeval,eager,[])).
 'mc_0__prolog-trace'([]) :- trace.

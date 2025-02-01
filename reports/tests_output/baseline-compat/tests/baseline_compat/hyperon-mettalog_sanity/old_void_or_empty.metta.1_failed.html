@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-31 09:11:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-01 09:50:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -96,7 +96,7 @@ Script started on 2025-01-31 09:11:22+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000655 secs. (655.09 microseconds) 
+; took 0.000602 secs. (602.41 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty") (%void% "Found %void%"))) ((quote (Empty $else))))
 
@@ -120,7 +120,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000397 secs. (396.92 microseconds) 
+; took 0.000406 secs. (405.89 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) (Empty "Found Empty"))) ("Found Empty"))
 
@@ -145,7 +145,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000425 secs. (425.05 microseconds) 
+; took 0.000456 secs. (456.36 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-missing $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty"))) ((quote (Empty $else))))
 
@@ -175,7 +175,7 @@ Deterministic: <span class="ansi33"
 (quote (found (+ 1 1)))
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.43 milliseconds) 
+; took 0.000983 secs. (983.15 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty") (%void% "Found %void%"))) (() ()))
 
@@ -202,7 +202,7 @@ Deterministic: <span class="ansi33"
 (quote (found (+ 1 1)))
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.32 milliseconds) 
+; took 0.000911 secs. (911.04 microseconds) 
 
 !(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $bar) (println! (quote (found $bar)))) (Empty "Found Empty"))) (() ()))
 
@@ -220,26 +220,26 @@ Deterministic: <span class="ansi33"
 >!(case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty")))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty"))) ((2 (quote ((+ 1 1) $_277720))) (a (quote (a $_277720)))))
+>!(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty"))) ((2 (quote ((+ 1 1) $_278098))) (a (quote (a $_278098)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.06"
 >;; HYPERON-METTALOG-SANITY.OLD-VOID-OR-EMPTY.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.94 milliseconds) 
+; took 0.004 secs. (4.02 milliseconds) 
 
-!(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty"))) ((2 (quote ((+ 1 1) $_322174))) (a (quote (a $_322174)))))
+!(assertEqualToResult (case (match &self (foo-found $bar) (quote $bar)) (((quote $n) ($n (quote ($n $bar)))) ($n (quote ($n $bar))) (Empty "Found Empty"))) ((2 (quote ((+ 1 1) $_321212))) (a (quote (a $_321212)))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1))))) 
-      ( (2 (quote ((+ 1 1) $_260306))) (a (quote (a $_260306))))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(a,'[|]'('[|]'(quote,'[|]'('[|]'(a,'[|]'(a,[])),[])),[])),'[|]'('[|]'(2,'[|]'('[|]'(quote,'[|]'('[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),'[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),[])),[])),[])),[])),'[|]'('[|]'(2,'[|]'('[|]'(quote,'[|]'('[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),'[|]'(_133886,[])),[])),[])),'[|]'('[|]'(a,'[|]'('[|]'(quote,'[|]'('[|]'(a,'[|]'(_133886,[])),[])),[])),[])))
+      ( (2 (quote ((+ 1 1) $_259204))) (a (quote (a $_259204))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(a,'[|]'('[|]'(quote,'[|]'('[|]'(a,'[|]'(a,[])),[])),[])),'[|]'('[|]'(2,'[|]'('[|]'(quote,'[|]'('[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),'[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),[])),[])),[])),[])),'[|]'('[|]'(2,'[|]'('[|]'(quote,'[|]'('[|]'('[|]'(+,'[|]'(1,'[|]'(1,[]))),'[|]'(_134254,[])),[])),[])),'[|]'('[|]'(a,'[|]'('[|]'(quote,'[|]'('[|]'(a,'[|]'(_134254,[])),[])),[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) ('~nExpected: ' ((2 (quote ((+ 1 1) $_223602))) (a (quote (a $_223602))))))
+>(Error ('~nGot: ' ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) ('~nExpected: ' ((2 (quote ((+ 1 1) $_222482))) (a (quote (a $_222482))))))
 </span><span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -254,9 +254,9 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) ('~nExpected: ' ((2 (quote ((+ 1 1) $_224572))) (a (quote (a $_224572))))))]
+[(Error ('~nGot: ' ((a (quote (a a))) (2 (quote ((+ 1 1) (+ 1 1)))))) ('~nExpected: ' ((2 (quote ((+ 1 1) $_223452))) (a (quote (a $_223452))))))]
 
-Script done on 2025-01-31 09:11:32+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-01 09:50:44+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

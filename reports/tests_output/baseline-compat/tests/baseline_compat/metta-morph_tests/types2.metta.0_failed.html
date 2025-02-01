@@ -28,12 +28,21 @@
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-31 09:28:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-01 10:06:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -99,7 +108,7 @@ Script started on 2025-01-31 09:28:43+00:00 [COMMAND="timeout --preserve-status 
 >;; METTA-MORPH-TESTS.TYPES2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000846 secs. (845.70 microseconds) 
+; took 0.000839 secs. (839.12 microseconds) 
 
 !(assertEqualToResult (get-type lion1) (Lion))
 
@@ -122,12 +131,114 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.TYPES2.02"
 >;; METTA-MORPH-TESTS.TYPES2.02</h3>
-^  <span class="ansi1 ansi32"
->Call: </span>(190) [user] subst_args_there(_34166, _34168, 498, _34172, [reproduce, lion1, lion2], _31904{cns = ...}) ? 
-Script done on 2025-01-31 09:29:23+00:00 [COMMAND_EXIT_CODE="143"]
+; 
+; EVAL TEST
+; took 0.002 secs. (1.55 milliseconds) 
+
+!(assertEqualToResult (reproduce lion1 lion2) (childlion))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (childlion) 
+      (childlion)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type Lion)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type Lion) (Cat))
+
+</span>
+;<h3 id="METTA-MORPH-TESTS.TYPES2.03"
+>;; METTA-MORPH-TESTS.TYPES2.03</h3>
+; 
+; EVAL TEST
+; took 0.000282 secs. (282.14 microseconds) 
+
+!(assertEqualToResult (get-type Lion) (Cat))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Cat) 
+      (Cat)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(match &self (: Lion $1) $1)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (: Lion $1) $1) (Cat))
+
+</span>
+;<h3 id="METTA-MORPH-TESTS.TYPES2.04"
+>;; METTA-MORPH-TESTS.TYPES2.04</h3>
+; 
+; EVAL TEST
+; took 0.000378 secs. (377.71 microseconds) 
+
+!(assertEqualToResult (match &self (: Lion $1) $1) (Cat))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Cat) 
+      (Cat)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(match &self (: reproduce $1) $1)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (: reproduce $1) $1) ((-> Lion Lion Lion)))
+
+</span>
+;<h3 id="METTA-MORPH-TESTS.TYPES2.05"
+>;; METTA-MORPH-TESTS.TYPES2.05</h3>
+; 
+; EVAL TEST
+; took 0.000314 secs. (313.73 microseconds) 
+
+!(assertEqualToResult (match &self (: reproduce $1) $1) ((-> Lion Lion Lion)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (-> Lion Lion Lion)) 
+      ( (-> Lion Lion Lion))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 5
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-02-01 10:06:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/types2.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/types2.metta" --halt=true\033[0m

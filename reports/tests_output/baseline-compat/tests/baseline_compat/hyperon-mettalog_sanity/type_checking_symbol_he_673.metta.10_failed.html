@@ -48,7 +48,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 11:13:13+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-01 10:00:11+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -111,13 +111,13 @@ Script started on 2025-01-02 11:13:13+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000510 secs. (509.59 microseconds) 
+; took 0.002 secs. (2.13 milliseconds) 
 
 !(assertEqualToResult (foo S) (S))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (S) 
       (S)]]
 </span>
@@ -134,19 +134,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000860 secs. (860.14 microseconds) 
+; took 0.004 secs. (3.60 milliseconds) 
 
 !(assertEqualToResult (foo (This is an expression)) (Error (This is an expression) BadType))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (This is an expression)) 
       (Error 
         (This is an expression) BadType)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('This','[|]'(is,'[|]'(an,'[|]'(expression,[])))),[]),'[|]'('Error','[|]'('[|]'('This','[|]'(is,'[|]'(an,'[|]'(expression,[])))),'[|]'('BadType',[]))))
+
 Deterministic: <span class="ansi33"
->([Error [got ((This is an expression))] [expected (Error (This is an expression) BadType)]])
+>(Error ('~nGot: ' ((This is an expression))) ('~nExpected: ' (Error (This is an expression) BadType)))
 </span>;;; Explanation:
 ;;; The input `(This is an expression)` is not a Symbol, so the type check should fail.
 ;;; Example 2: Type Checking for Variables
@@ -166,18 +167,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000428 secs. (427.75 microseconds) 
+; took 0.000887 secs. (887.27 microseconds) 
 
 !(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (Number) 
       (Error 100 BadType)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('Number',[]),'[|]'('Error','[|]'(100,'[|]'('BadType',[]))))
+
 Deterministic: <span class="ansi33"
->([Error [got (Number)] [expected (Error 100 BadType)]])
+>(Error ('~nGot: ' (Number)) ('~nExpected: ' (Error 100 BadType)))
 </span>;;; Explanation:
 ;;; The input `100` is not a Variable, so the type check should fail.
 ;;; Test: Passing a valid Variable
@@ -189,13 +191,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000404 secs. (404.21 microseconds) 
+; took 0.000814 secs. (813.78 microseconds) 
 
 !(assertEqualToResult (foo_var $x) (%Undefined%))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (%Undefined%) 
       (%Undefined%)]]
 </span>
@@ -212,18 +214,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000421 secs. (420.64 microseconds) 
+; took 0.000901 secs. (901.21 microseconds) 
 
 !(assertEqualToResult (foo_var S) (Error S BadType))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (%Undefined%) 
       (Error S BadType)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('%Undefined%',[]),'[|]'('Error','[|]'('S','[|]'('BadType',[]))))
+
 Deterministic: <span class="ansi33"
->([Error [got (%Undefined%)] [expected (Error S BadType)]])
+>(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' (Error S BadType)))
 </span>;;; Explanation:
 ;;; The input `S` is not a Variable, so the type check should fail.
 ;;; Test: Passing a complex expression to `foo_var`
@@ -235,19 +238,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000685 secs. (684.90 microseconds) 
+; took 0.002 secs. (2.29 milliseconds) 
 
 !(assertEqualToResult (foo_var (an expression)) (Error (an expression) BadType))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
-      (()) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) 
       (Error 
         (an expression) BadType)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),'[|]'('Error','[|]'('[|]'(an,'[|]'(expression,[])),'[|]'('BadType',[]))))
+
 Deterministic: <span class="ansi33"
->([Error [got (())] [expected (Error (an expression) BadType)]])
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' (Error (an expression) BadType)))
 </span>;;; Explanation:
 ;;; The input `(an expression)` is not a Variable, so the type check should fail.
 ;;; Example 3: Testing with Undefined Types
@@ -261,18 +265,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000203 secs. (203.13 microseconds) 
+; took 0.000675 secs. (675.31 microseconds) 
 
 !(assertEqualToResult (get-type (This is an expression)) (%Undefined%))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
-      (()) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) 
       (%Undefined%)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),'[|]'('%Undefined%',[]))
+
 Deterministic: <span class="ansi33"
->([Error [got (())] [expected (%Undefined%)]])
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' (%Undefined%)))
 </span>;;; Explanation:
 ;;; The type of `(This is an expression)` is `%Undefined%`, as it is not explicitly typed.
 ;;; Example 4: Suggested Fix Behavior
@@ -290,19 +295,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000819 secs. (819.40 microseconds) 
+; took 0.004 secs. (3.73 milliseconds) 
 
 !(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (This is an expression)) 
       (Error 
         (This is an expression) BadType)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('This','[|]'(is,'[|]'(an,'[|]'(expression,[])))),[]),'[|]'('Error','[|]'('[|]'('This','[|]'(is,'[|]'(an,'[|]'(expression,[])))),'[|]'('BadType',[]))))
+
 Deterministic: <span class="ansi33"
->([Error [got ((This is an expression))] [expected (Error (This is an expression) BadType)]])
+>(Error ('~nGot: ' ((This is an expression))) ('~nExpected: ' (Error (This is an expression) BadType)))
 </span>;;; Explanation:
 ;;; If fixed, this behavior should be consistent with the expected type checking for Symbols.
 ;;; Summary:
@@ -332,19 +338,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000821 secs. (820.64 microseconds) 
+; took 0.003 secs. (3.44 milliseconds) 
 
 !(assertEqualToResult (foo (%Undefined%)) ((Error (%Undefined%) BadType)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (%Undefined%)) 
       ( (Error 
           (%Undefined%) BadType))]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('%Undefined%',[]),[]),'[|]'('[|]'('Error','[|]'('[|]'('%Undefined%',[]),'[|]'('BadType',[]))),[]))
+
 Deterministic: <span class="ansi33"
->([Error [got ((%Undefined%))] [expected ((Error (%Undefined%) BadType))]])
+>(Error ('~nGot: ' ((%Undefined%))) ('~nExpected: ' ((Error (%Undefined%) BadType))))
 </span>;;; Explanation:
 ;;; `%Undefined%` is not a valid Symbol, so the type check fails and returns an error wrapped in a list.
 ;;; Test: Using `foo_var` with a valid variable
@@ -356,18 +363,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000388 secs. (387.55 microseconds) 
+; took 0.000986 secs. (986.43 microseconds) 
 
 !(assertEqualToResult (foo_var $valid_variable) ((%Undefined%)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (%Undefined%) 
       ( (%Undefined%))]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('%Undefined%',[]),'[|]'('[|]'('%Undefined%',[]),[]))
+
 Deterministic: <span class="ansi33"
->([Error [got (%Undefined%)] [expected ((%Undefined%))]])
+>(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))
 </span>;;; Explanation:
 ;;; `$valid_variable` is a valid Variable, but since it is unbound, its type is `%Undefined%`.
 ;;; Test: Using `foo_var` with a partially typed tuple
@@ -379,19 +387,20 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000631 secs. (630.62 microseconds) 
+; took 0.002 secs. (2.40 milliseconds) 
 
 !(assertEqualToResult (foo_var (typed $x)) ((Error (typed $x) BadType)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
-      (()) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (AnyRet AnyRet) 
       ( (Error 
           (typed $x) BadType))]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('AnyRet','[|]'('AnyRet',[])),'[|]'('[|]'('Error','[|]'('[|]'(typed,'[|]'(_96714{vn = ...},[])),'[|]'('BadType',[]))),[]))
+
 Deterministic: <span class="ansi33"
->([Error [got (())] [expected ((Error (typed $x) BadType))]])
+>(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $x) BadType))))
 </span>;;; Explanation:
 ;;; The tuple `(typed $x)` is not a valid Variable and should return an error wrapped in a list.
 ;;; Test: Confirming type for direct input
@@ -403,18 +412,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000145 secs. (144.53 microseconds) 
+; took 0.000158 secs. (158.41 microseconds) 
 
 !(assertEqualToResult (get-type $x) ((%Undefined%)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (%Undefined%) 
       ( (%Undefined%))]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('%Undefined%',[]),'[|]'('[|]'('%Undefined%',[]),[]))
+
 Deterministic: <span class="ansi33"
->([Error [got (%Undefined%)] [expected ((%Undefined%))]])
+>(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))
 </span>;;; Explanation:
 ;;; Since `$x` is an unbound Variable, its type is `%Undefined%` and should be returned in a list.
 <span class="ansi1"
@@ -427,21 +437,19 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[([Error [got ((This is an expression))] [expected (Error (This is an expression) BadType)]])]
-[([Error [got (Number)] [expected (Error 100 BadType)]])]
+[(Error ('~nGot: ' ((This is an expression))) ('~nExpected: ' (Error (This is an expression) BadType)))]
+[(Error ('~nGot: ' (Number)) ('~nExpected: ' (Error 100 BadType)))]
 [()]
-[([Error [got (%Undefined%)] [expected (Error S BadType)]])]
-[([Error [got (())] [expected (Error (an expression) BadType)]])]
-[([Error [got (())] [expected (%Undefined%)]])]
-[([Error [got ((This is an expression))] [expected (Error (This is an expression) BadType)]])]
-[([Error [got ((%Undefined%))] [expected ((Error (%Undefined%) BadType))]])]
-[([Error [got (%Undefined%)] [expected ((%Undefined%))]])]
-[([Error [got (())] [expected ((Error (typed $x) BadType))]])]
-[([Error [got (%Undefined%)] [expected ((%Undefined%))]])]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 11:13:22+00:00 [COMMAND_EXIT_CODE="7"]
+[(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' (Error S BadType)))]
+[(Error ('~nGot: ' (() ())) ('~nExpected: ' (Error (an expression) BadType)))]
+[(Error ('~nGot: ' (() ())) ('~nExpected: ' (%Undefined%)))]
+[(Error ('~nGot: ' ((This is an expression))) ('~nExpected: ' (Error (This is an expression) BadType)))]
+[(Error ('~nGot: ' ((%Undefined%))) ('~nExpected: ' ((Error (%Undefined%) BadType))))]
+[(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))]
+[(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $x) BadType))))]
+[(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))]
+
+Script done on 2025-02-01 10:00:19+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

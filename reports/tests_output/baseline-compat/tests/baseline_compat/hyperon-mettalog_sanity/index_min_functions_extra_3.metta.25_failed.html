@@ -181,7 +181,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-12 14:05:21+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-12 15:43:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -227,7 +227,7 @@ Script started on 2025-02-12 14:05:21+00:00 [COMMAND="timeout --preserve-status 
 >!(bind! &new-space (new-space))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >()
 </span>;;; Add the stdlib module to the new space
 <span class="ansi38-013099040"
@@ -247,25 +247,26 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000335 secs. (334.78 microseconds) 
+; took 0.001 secs. (1.47 milliseconds) 
 
 !(assertEqualToResult (get-atoms &new-space) ((mod-space! stdlib)))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (&stdlib) 
       ( (mod-space! stdlib))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('mod-space!','[|]'(stdlib,[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('&stdlib',[]),'[|]'('[|]'('mod-space!','[|]'(stdlib,[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' ((mod-space! stdlib))))
+>(Error ('~nGot: ' (&stdlib)) ('~nExpected: ' ((mod-space! stdlib))))
 </span>;;; Test removing duplicated atom
 ;;; Create a new space
 <span class="ansi38-013099040"
 >!(bind! &space (new-space))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >()
 </span>;;; Add 'a' multiple times to the space
 <span class="ansi38-013099040"
@@ -299,7 +300,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > a
 </span><span class="ansi33"
->retractall(metta_atom_asserted(space_6,a))
+>retractall(metta_atom_asserted('&space',a))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -312,7 +313,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (373.62 microseconds) 
+; took 0.000188 secs. (188.10 microseconds) 
 
 !(assertEqualToResult (get-atoms &space) ((a a)))
 
@@ -399,7 +400,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000520 secs. (519.61 microseconds) 
+; took 0.000723 secs. (723.16 microseconds) 
 
 !(assertEqualToResult (get-type (a b) &self) (((A B) (AA B) (A BB) (AA BB) %Undefined%)))
 
@@ -425,7 +426,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000915 secs. (915.00 microseconds) 
+; took 0.001 secs. (1.14 milliseconds) 
 
 !(assertEqualToResult (index-atom (5 4 3 2 1) 2) ((3)))
 
@@ -448,7 +449,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.06 milliseconds) 
+; took 0.001 secs. (1.30 milliseconds) 
 
 !(assertEqualToResult (index-atom (A B C D E) 5) ((Error (index-atom (A B C D E) 5) "Index is out of bounds")))
 
@@ -468,7 +469,7 @@ Deterministic: <span class="ansi33"
 >!(bind! &space (new-space))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >()
 </span>;;; Add atom 'a' to the space
 <span class="ansi38-013099040"
@@ -489,10 +490,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > b
 </span><span class="ansi33"
->retractall(metta_atom_asserted(space_10,b))
+>retractall(metta_atom_asserted('&space',b))
 </span>; 
 ; EVAL TEST
-; took 0.000728 secs. (727.79 microseconds) 
+; took 0.000600 secs. (600.32 microseconds) 
 
 !(assertEqualToResult (remove-atom &space b) ((False)))
 
@@ -547,7 +548,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.07"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.07</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12626]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))];;; Test variable name conflict resolution
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12588]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))];;; Test variable name conflict resolution
 ;;; Define a function 'b' that takes a tuple and returns a 'c' expression
 <span class="ansi38-013099040"
 >!(add-atom &self (= (b ($x $y))  
@@ -567,7 +568,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.08"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.08</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_63814]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a $y) $x $y)))];;; Test sealed operation to create scoped variables
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_63790]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a $y) $x $y)))];;; Test sealed operation to create scoped variables
 ;;; Use 'sealed' to prevent variable capture
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
@@ -579,7 +580,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000389 secs. (388.88 microseconds) 
+; took 0.000363 secs. (362.70 microseconds) 
 
 !(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -604,7 +605,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000204 secs. (204.18 microseconds) 
+; took 0.000200 secs. (199.69 microseconds) 
 
 !(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
@@ -626,7 +627,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.11</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.83 milliseconds) 
+; took 0.010 secs. (10.25 milliseconds) 
 
 !(assertEqualToResult (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) ((output (input $x))))
 
@@ -667,7 +668,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000800 secs. (799.71 microseconds) 
+; took 0.000933 secs. (932.76 microseconds) 
 
 !(assertEqualToResult (foo) ((baz)))
 
@@ -696,7 +697,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000781 secs. (780.52 microseconds) 
+; took 0.000827 secs. (827.11 microseconds) 
 
 !(assertEqualToResult (foo) ((foo)))
 
@@ -718,7 +719,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000018 secs. (17.91 microseconds) 
+; took 0.000026 secs. (26.28 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -736,7 +737,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000025 secs. (25.49 microseconds) 
+; took 0.000017 secs. (16.88 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -759,7 +760,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000310 secs. (310.27 microseconds) 
+; took 0.000300 secs. (299.64 microseconds) 
 
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
@@ -781,7 +782,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000372 secs. (372.24 microseconds) 
+; took 0.000305 secs. (305.12 microseconds) 
 
 !(assertEqualToResult (get-metatype Error) ((Symbol)))
 
@@ -803,7 +804,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000547 secs. (546.85 microseconds) 
+; took 0.000595 secs. (595.24 microseconds) 
 
 !(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
@@ -825,7 +826,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000031 secs. (31.08 microseconds) 
+; took 0.000022 secs. (21.51 microseconds) 
 
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
@@ -851,7 +852,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000736 secs. (735.64 microseconds) 
+; took 0.000783 secs. (783.30 microseconds) 
 
 !(assertEqualToResult (id "test") (("test")))
 
@@ -873,7 +874,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000670 secs. (670.20 microseconds) 
+; took 0.000792 secs. (791.75 microseconds) 
 
 !(assertEqualToResult (id "te st") (("te st")))
 
@@ -895,7 +896,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000666 secs. (666.02 microseconds) 
+; took 0.000765 secs. (764.90 microseconds) 
 
 !(assertEqualToResult (id "te\"st") (("te\"st")))
 
@@ -917,7 +918,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000683 secs. (683.43 microseconds) 
+; took 0.000759 secs. (758.66 microseconds) 
 
 !(assertEqualToResult (id "") (("")))
 
@@ -939,7 +940,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000710 secs. (710.29 microseconds) 
+; took 0.000734 secs. (733.58 microseconds) 
 
 !(assertEqualToResult (id "te\nst") (("te\nst")))
 
@@ -961,7 +962,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000228 secs. (227.78 microseconds) 
+; took 0.000242 secs. (242.41 microseconds) 
 
 !(assertEqualToResult ("te\nst" test) (("te\nst" test)))
 
@@ -1016,7 +1017,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.26</h3>
 ; 
 ; EVAL TEST
-; took 0.000406 secs. (405.86 microseconds) 
+; took 0.000384 secs. (383.84 microseconds) 
 
 !(assertEqualToResult (get-type (f_sym (b))) ((D)))
 
@@ -1038,7 +1039,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.27</h3>
 ; 
 ; EVAL TEST
-; took 0.000434 secs. (433.56 microseconds) 
+; took 0.000420 secs. (420.00 microseconds) 
 
 !(assertEqualToResult (get-type (f_expr (b))) ((D)))
 
@@ -1060,7 +1061,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.28</h3>
 ; 
 ; EVAL TEST
-; took 0.000355 secs. (354.84 microseconds) 
+; took 0.000361 secs. (360.54 microseconds) 
 
 !(assertEqualToResult (get-type (f_var (b))) ((D)))
 
@@ -1117,7 +1118,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.30"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.30</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_41892]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))];;; Test that variables defined via other variables are handled correctly
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_41876]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))];;; Test that variables defined via other variables are handled correctly
 ;;; Define functions 'myif', 'mynot', 'a', and 'b'
 <span class="ansi38-013099040"
 >!(add-atom &self (= (myif T $y)  $y))
@@ -1161,7 +1162,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.31"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.31</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_37824]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (myif (a $x) $x) %Undefined% &self) ((d)))];;; Test that variable name conflicts are resolved by renaming
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_37830]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (myif (a $x) $x) %Undefined% &self) ((d)))];;; Test that variable name conflicts are resolved by renaming
 ;;; Define a function with a potential variable name conflict
 <span class="ansi38-013099040"
 >!(add-atom &self (= (a ($W))  True))
@@ -1179,7 +1180,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.32"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.32</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_31148]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a $W) %Undefined% &self) ((True)))];;; Test that operations can be higher-order functions
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_31134]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a $W) %Undefined% &self) ((True)))];;; Test that operations can be higher-order functions
 ;;; Define types and functions
 <span class="ansi38-013099040"
 >!(add-atom &self (: foo (-> (-> A A))))
@@ -1221,7 +1222,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.33</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12578]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))];;; Test the use of sealed operation for scope management
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12556]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))];;; Test the use of sealed operation for scope management
 ;;; Test that sealed variables prevent name clashes
 <span class="ansi38-013099040"
 >!(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
@@ -1233,7 +1234,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (373.98 microseconds) 
+; took 0.000338 secs. (338.15 microseconds) 
 
 !(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -1258,7 +1259,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000199 secs. (199.45 microseconds) 
+; took 0.000210 secs. (210.16 microseconds) 
 
 !(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
@@ -1279,7 +1280,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.36</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.39 milliseconds) 
+; took 0.011 secs. (10.50 milliseconds) 
 
 !(assertEqualToResult (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) ((output (input $x))))
 
@@ -1320,7 +1321,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000931 secs. (931.11 microseconds) 
+; took 0.001 secs. (1.03 milliseconds) 
 
 !(assertEqualToResult (foo) ((baz)))
 
@@ -1349,7 +1350,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.38</h3>
 ; 
 ; EVAL TEST
-; took 0.000863 secs. (862.95 microseconds) 
+; took 0.000871 secs. (870.86 microseconds) 
 
 !(assertEqualToResult (foo) ((foo)))
 
@@ -1371,7 +1372,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000026 secs. (26.44 microseconds) 
+; took 0.000025 secs. (25.27 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -1389,7 +1390,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000031 secs. (30.94 microseconds) 
+; took 0.000025 secs. (25.23 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -1411,7 +1412,7 @@ R(2): <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.41"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.41</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12930]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta () %Undefined% &self) (()))];;; Test that interpreting an expression with unknown function returns the expression itself
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12906]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta () %Undefined% &self) (()))];;; Test that interpreting an expression with unknown function returns the expression itself
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (unknown-func a) %Undefined% &self) ((unknown-func a)))
 
@@ -1419,7 +1420,7 @@ R(2): <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.42"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.42</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12568]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (unknown-func a) %Undefined% &self) ((unknown-func a)))];;; Test that interpreting an expression with known function evaluates correctly
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12546]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (unknown-func a) %Undefined% &self) ((unknown-func a)))];;; Test that interpreting an expression with known function evaluates correctly
 <span class="ansi38-013099040"
 >!(add-atom &self (= (known-func $x)  
   ($x $x)))
@@ -1437,7 +1438,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.43"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.43</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12578]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (known-func a) %Undefined% &self) ((a a)))];;; Test that metta can interpret expressions with multiple possible outcomes
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12576]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (known-func a) %Undefined% &self) ((a a)))];;; Test that metta can interpret expressions with multiple possible outcomes
 ;;; Define multiple definitions for 'color'
 <span class="ansi38-013099040"
 >!(add-atom &self (= (color)  blue))
@@ -1471,7 +1472,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.44"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.44</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12564]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (color) %Undefined% &self) ((blue red green)))];;; Test that variables are correctly assigned in higher-order functions
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12540]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (color) %Undefined% &self) ((blue red green)))];;; Test that variables are correctly assigned in higher-order functions
 ;;; Define functions 'b' and 'c'
 <span class="ansi38-013099040"
 >!(add-atom &self (= (b ($x $y))  
@@ -1491,7 +1492,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.45"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.45</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_63814]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a $y) $x $y)))];;; Test that error is returned when incorrect number of arguments are provided
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_63798]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (a (b $a) $x $y) %Undefined% &self) ((a (c $a $y) $x $y)))];;; Test that error is returned when incorrect number of arguments are provided
 ;;; Define function 'foo' with two arguments
 <span class="ansi38-013099040"
 >!(add-atom &self (: foo (-> A B C)))
@@ -1541,7 +1542,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.46"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.46</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12594]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))];;; Test that calling 'foo' with insufficient arguments returns an error
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12574]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))];;; Test that calling 'foo' with insufficient arguments returns an error
 <span class="ansi38-013099040"
 >!(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
 
@@ -1549,7 +1550,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.47"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.47</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12634]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))];;; Test that metta can handle function calls with variables as types
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12616]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))];;; Test that metta can handle function calls with variables as types
 ;;; Define a function 'id_num' that returns its argument if it's a number
 <span class="ansi38-013099040"
 >!(add-atom &self (= (id_num $x)  $x))
@@ -1567,7 +1568,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.48"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.48</h3>
 
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12554]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (id_num myAtom) %Undefined% &self) ((myAtom)))];;; Test that metta returns a 'BadType' error when type checking fails
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12530]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (id_num myAtom) %Undefined% &self) ((myAtom)))];;; Test that metta returns a 'BadType' error when type checking fails
 ;;; Define 'myAtom' with type 'myType' and function 'id_a' of type (-> A A)
 <span class="ansi38-013099040"
 >!(add-atom &self (: myAtom myType))
@@ -1600,7 +1601,7 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.49"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.49</h3>
-[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12600]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (id_a myAtom) %Undefined% &self) ((Error myAtom "BadType")))]<span class="ansi1"
+[error [error [existence_error procedure [ / type_conform 2 ]] [context [ / filter_type 2 ] $_12580]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] (assertEqualToResult (metta (id_a myAtom) %Undefined% &self) ((Error myAtom "BadType")))]<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -1611,7 +1612,7 @@ Deterministic: <span class="ansi33"
 >Return to summaries</a><br/>
 [()]
 [()]
-[(Error ('~nGot: ' ()) ('~nExpected: ' ((mod-space! stdlib))))]
+[(Error ('~nGot: ' (&stdlib)) ('~nExpected: ' ((mod-space! stdlib))))]
 [()]
 [()]
 [()]
@@ -1700,7 +1701,7 @@ Deterministic: <span class="ansi33"
 [()]
 [
 
-Script done on 2025-02-12 14:05:31+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-12 15:43:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

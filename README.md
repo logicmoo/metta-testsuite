@@ -14,8 +14,11 @@ For descriptions of individual test directories, please see [tests/README.md](./
   [https://github.com/trueagi-io/hyperon-experimental/](https://github.com/trueagi-io/hyperon-experimental/)  
 
 - **MORK**  
-  [https://github.com/trueagi-io/MORK/](https://github.com/trueagi-io/MORK/)  
+  [https://github.com/trueagi-io/MORK/](https://github.com/trueagi-io/MORK/)
 
+- **METTA-Morph**
+
+  [https://github.com/trueagi-io/metta-morph](https://github.com/trueagi-io/metta-morph/)
 
 ## How This Test Suite Is Organized
 

@@ -41,46 +41,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 03:58:04+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:35:19+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,9 +53,9 @@ Script started on 2025-02-14 03:58:04+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (Frog Sam)
 </span><span class="ansi38-255165000"
-> (= (frog $x)  
+> (= (frog $_9154)  
   (match &self 
-    (Frog $x) T))
+    (Frog $_9154) T))
 </span>;;; `(Frog Sam)` is not reduced; it is just a declaration
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Frog Sam) ((Frog Sam)))
@@ -103,7 +65,7 @@ Script started on 2025-02-14 03:58:04+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.90 milliseconds) 
+; took 0.000997 secs. (997.09 microseconds) 
 
 !(assertEqualToResult (Frog Sam) ((Frog Sam)))
 
@@ -124,7 +86,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000970 secs. (969.85 microseconds) 
+; took 0.000639 secs. (639.07 microseconds) 
 
 !(assertEqual (frog Sam) T)
 
@@ -144,7 +106,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000840 secs. (840.13 microseconds) 
+; took 0.000694 secs. (694.20 microseconds) 
 
 !(assertEqualToResult (frog Fritz) ())
 
@@ -168,31 +130,31 @@ Deterministic: <span class="ansi33"
 > (Evaluation (likes-to-wrestle Plato))
 </span>;;; An implication rule
 <span class="ansi38-255165000"
-> (Implication (And (Evaluation (philosopher $x)) (Evaluation (likes-to-wrestle $x))) (Evaluation (human $x)))
+> (Implication (And (Evaluation (philosopher $_23678)) (Evaluation (likes-to-wrestle $_23678))) (Evaluation (human $_23678)))
 </span>;;; Another implication rule
 <span class="ansi38-255165000"
-> (Implication (Evaluation (human $x)) (Evaluation (mortal $x)))
+> (Implication (Evaluation (human $_26984)) (Evaluation (mortal $_26984)))
 </span>;;; Deduction case when the desired evaluation is present in
 ;;; the knowledge base
 <span class="ansi38-255165000"
-> (= (deduce (Evaluation ($P $x)))  
+> (= (deduce (Evaluation ($_2572 $_2578)))  
   (match &self 
-    (Evaluation ($P $x)) T))
+    (Evaluation ($_2572 $_2578)) T))
 </span>;;; Deduction case when the desired evaluation is the result
 ;;; of an implication, which implies a recursion
 <span class="ansi38-255165000"
-> (= (deduce (Evaluation ($P $x)))  
+> (= (deduce (Evaluation ($_6874 $_6880)))  
   (match &self 
-    (Implication $a 
-      (Evaluation ($P $x))) 
-    (deduce $a)))
+    (Implication $_6916 
+      (Evaluation ($_6874 $_6880))) 
+    (deduce $_6916)))
 </span>;;; Deduction case for generic "And" expressions;
 ;;; also recursive
 <span class="ansi38-255165000"
-> (= (deduce (And $a $b))  
+> (= (deduce (And $_10152 $_10158))  
   (And 
-    (deduce $a) 
-    (deduce $b)))
+    (deduce $_10152) 
+    (deduce $_10158)))
 </span>;;; True & True = True
 <span class="ansi38-255165000"
 > (= (And T T)  T)
@@ -205,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (23.46 milliseconds) 
+; took 0.015 secs. (14.96 milliseconds) 
 
 !(assertEqual (deduce (Evaluation (mortal Plato))) T)
 
@@ -219,9 +181,9 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; TODO : Some variables are not substituted
 <span class="ansi38-255165000"
-> (= (ift T $then)  $then)
+> (= (ift T $_35682)  $_35682)
 </span><span class="ansi38-255165000"
-> (ift (deduce (Evaluation (mortal $x))) $x)
+> (ift (deduce (Evaluation (mortal $_39030))) $_39030)
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Another example of backchaining
@@ -229,25 +191,25 @@ Deterministic: <span class="ansi33"
 ;;; Definition of explain when the desired Evaluation is
 ;;; in the knowledge base
 <span class="ansi38-255165000"
-> (= (explain (Evaluation ($P $x)))  
+> (= (explain (Evaluation ($_42798 $_42804)))  
   (match &self 
-    (Evaluation ($P $x)) 
-    ($P $x)))
+    (Evaluation ($_42798 $_42804)) 
+    ($_42798 $_42804)))
 </span>;;; Definition of explain when the desired Evaluation is
 ;;; the result of an implication
 <span class="ansi38-255165000"
-> (= (explain (Evaluation ($P $x)))  
+> (= (explain (Evaluation ($_46628 $_46634)))  
   (match &self 
-    (Implication $a 
-      (Evaluation ($P $x))) 
-    ( ($P $x) proven by 
-      (explain $a))))
+    (Implication $_46670 
+      (Evaluation ($_46628 $_46634))) 
+    ( ($_46628 $_46634) proven by 
+      (explain $_46670))))
 </span>;;; Definition of explain for And
 <span class="ansi38-255165000"
-> (= (explain (And $a $b))  
+> (= (explain (And $_49880 $_49886))  
   (And 
-    (explain $a) 
-    (explain $b)))
+    (explain $_49880) 
+    (explain $_49886)))
 </span>;;; Example of explain why Plato is mortal
 <span class="ansi38-013099040"
 >!(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
@@ -257,7 +219,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.088 secs. (87.69 milliseconds) 
+; took 0.054 secs. (53.75 milliseconds) 
 
 !(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
 
@@ -292,7 +254,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-14 03:58:12+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:35:20+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

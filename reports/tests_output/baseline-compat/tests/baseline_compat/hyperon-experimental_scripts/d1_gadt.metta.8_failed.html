@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-15 18:35:29+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Basic types of grounded symbols
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `get-type` returns the type of its argument
+<span class="ansi38-013099040"
+>!(assertEqual (get-type 5) Number)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
+; 
+; EVAL TEST
+; took 0.000763 secs. (763.09 microseconds) 
+
+!(assertEqual (get-type 5) Number)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Number) 
+      (Number)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (+ 5 7)) Number)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
+; 
+; EVAL TEST
+; took 0.000837 secs. (837.12 microseconds) 
+
+!(assertEqual (get-type (+ 5 7)) Number)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Number Number) 
+      (Number)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; It works for built-in symbols too
+<span class="ansi38-013099040"
+>!(assertEqual (get-type +) (-> Number Number Number))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
+; 
+; EVAL TEST
+; took 0.000261 secs. (261.45 microseconds) 
+
+!(assertEqual (get-type +) (-> Number Number Number))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (-> Number Number Number)) 
+      ( (-> Number Number Number))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; If its argument is a badly typed expression,
+;;; `get-type` returns the empty set
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (+ 5 "4")) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
+; 
+; EVAL TEST
+; took 0.000767 secs. (767.14 microseconds) 
+
+!(assertEqualToResult (get-type (+ 5 "4")) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (+ -)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
+; 
+; EVAL TEST
+; took 0.000545 secs. (545.05 microseconds) 
+
+!(assertEqualToResult (get-type (+ -)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (AnyRet AnyRet) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('AnyRet','[|]'('AnyRet',[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ()))
+</span>;;; Also works for custom types
+<span class="ansi38-255165000"
+> (: Either Type)
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type Either) Type)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
+; 
+; EVAL TEST
+; took 0.000242 secs. (241.80 microseconds) 
+
+!(assertEqual (get-type Either) Type)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Type) 
+      (Type)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Arrow types of functions and constructors
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: Left (-> %Undefined% Either))
+</span><span class="ansi38-255165000"
+> (: Right (-> %Undefined% Either))
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (Left 5)) Either)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
+; 
+; EVAL TEST
+; took 0.000425 secs. (425.14 microseconds) 
+
+!(assertEqual (get-type (Left 5)) Either)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Either Either) 
+      (Either)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (: isLeft (-> Either Bool))
+</span><span class="ansi38-255165000"
+> (= (isLeft (Left $_6324))  True)
+</span><span class="ansi38-255165000"
+> (= (isLeft (Right $_9298))  False)
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (isLeft (Right 5))) Bool)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
+; 
+; EVAL TEST
+; took 0.000713 secs. (712.60 microseconds) 
+
+!(assertEqual (get-type (isLeft (Right 5))) Bool)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (Bool Bool) 
+      (Bool)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Badly typed expression
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (isLeft 5)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
+; 
+; EVAL TEST
+; took 0.000576 secs. (576.19 microseconds) 
+
+!(assertEqualToResult (get-type (isLeft 5)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Parameterized types
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: EitherP (-> $_25152 Type))
+</span><span class="ansi38-255165000"
+> (: LeftP (-> $_28500 (EitherP $_28500)))
+</span><span class="ansi38-255165000"
+> (: RightP (-> $_2358 (EitherP $_2358)))
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (LeftP 5)) (EitherP Number))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.89 milliseconds) 
+
+!(assertEqual (get-type (LeftP 5)) (EitherP Number))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (EitherP $_3912) (EitherP $_3930)) 
+      ( (EitherP Number))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_3194,[])),'[|]'('[|]'('EitherP','[|]'(_3176,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((EitherP $_10652) (EitherP $_10670))) ('~nExpected: ' ((EitherP Number))))
+</span><span class="ansi38-255165000"
+> (: Pair (-> $_15804 $_15810 Type))
+</span><span class="ansi38-255165000"
+> (: pair (-> $_19514 $_19520 (Pair $_19514 $_19520)))
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (4.21 milliseconds) 
+
+!(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Pair $_5264 $_5270) (Pair $_5288 $_5294)) 
+      ( (Pair 
+          (EitherP Number) String))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3394,'[|]'(_3400,[]))),'[|]'('[|]'('Pair','[|]'(_3370,'[|]'(_3376,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Pair $_11738 $_11744) (Pair $_11762 $_11768))) ('~nExpected: ' ((Pair (EitherP Number) String))))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Recursively parameterized types
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: List (-> $_16512 Type))
+</span><span class="ansi38-255165000"
+> (: Nil (List $_19806))
+</span><span class="ansi38-255165000"
+> (: Cons (-> $_23214 (List $_23214) (List $_23214)))
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.47 milliseconds) 
+
+!(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (List $_27674) (List $_27692)) 
+      ( (List Number))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_3332,[])),'[|]'('[|]'('List','[|]'(_3314,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((List $_8240) (List $_8258))) ('~nExpected: ' ((List Number))))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.81 milliseconds) 
+
+!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (List $_10084) (List $_10102)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_8192,[])),'[|]'('[|]'('List','[|]'(_8174,[])),[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((List $_16292) (List $_16310))) ('~nExpected: ' ()))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `let` can be convenient to extract information from `get-type` results
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (let (List $_20128) (get-type (Cons 5 (Cons 6 Nil))) $_20128) Number)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.93 milliseconds) 
+
+!(assertEqual (let (List $_21040) (get-type (Cons 5 (Cons 6 Nil))) $_21040) Number)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ($_22102 $_22108) 
+      (Number)]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_20056{vn = ...},'[|]'(_20034{vn = ...},[])),'[|]'('Number',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ($_28506 $_28512)) ('~nExpected: ' (Number)))
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 6
+</span><span class="ansi31"
+>Failures: 8
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ()))]
+[()]
+[()]
+[()]
+[(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((EitherP $_11752) (EitherP $_11770))) ('~nExpected: ' ((EitherP Number))))]
+[(Error ('~nGot: ' ((Pair $_12844 $_12850) (Pair $_12868 $_12874))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
+[(Error ('~nGot: ' ((List $_9338) (List $_9356))) ('~nExpected: ' ((List Number))))]
+[(Error ('~nGot: ' ((List $_17388) (List $_17406))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ($_29600 $_29606)) ('~nExpected: ' (Number)))]
+
+Script done on 2025-02-15 18:35:30+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta" --halt=true\033[0m

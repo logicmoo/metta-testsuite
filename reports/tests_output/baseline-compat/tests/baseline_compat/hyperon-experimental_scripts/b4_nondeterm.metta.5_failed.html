@@ -1,0 +1,440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-15 18:35:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Nondeterminism in matching and interpretation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (color)  green)
+</span><span class="ansi38-255165000"
+> (= (color)  yellow)
+</span><span class="ansi38-255165000"
+> (= (color)  red)
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; In `a1_symbols` we saw that `match` can return multiple or no results
+;;; The same is true for equality queries
+;;; `superpose` turns a tuple into a non-deterministic result (for comparison here)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (match &self (= (color)  $_13436) $_13436) (superpose (red yellow green)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.01</h3>
+; 
+; EVAL TEST
+; took 0.000454 secs. (453.72 microseconds) 
+
+!(assertEqual (match &self (= (color)  $_22786) $_22786) (superpose (red yellow green)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (green yellow red) 
+      (red yellow green)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;!(assertEqual (match &self (= (color) $x) $x) (color))
+;;;!(assertEqual (collapse (color)) (red yellow green))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `collapse` converts a nondeterministic result into a tuple
+;;; We don't use it above, because the order of non-deterministic results
+;;; is not guaranteed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (collapse (match &self (= (shape)  $_4444) $_4444)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.02</h3>
+; 
+; EVAL TEST
+; took 0.000346 secs. (346.17 microseconds) 
+
+!(assertEqual (collapse (match &self (= (shape)  $_12132) $_12132)) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Multiple results from equality queries
+;;; are also returned by the interpreter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (color) (superpose (red yellow green)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.03</h3>
+; 
+; EVAL TEST
+; took 0.000572 secs. (571.96 microseconds) 
+
+!(assertEqual (color) (superpose (red yellow green)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (green yellow red) 
+      (red yellow green)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `superpose` reverts `collapse`
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `let` is used to introduce temporary variable bindings within an expression
+<span class="ansi38-013099040"
+>!(assertEqual (color) (let $_13602 (collapse (color)) (superpose $_13602)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.04</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.95 milliseconds) 
+
+!(assertEqual (color) (let $_30010 (collapse (color)) (superpose $_3992)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (green yellow red) 
+      (green yellow red)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; In contrast to `match`, if the equality query returns an empty result
+;;; the interpreter doesn't reduce a symbolic expression
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (collapse (shape)) ((shape)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.05</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.76 milliseconds) 
+
+!(assertEqual (collapse (shape)) ((shape)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( ( (shape))) 
+      ( ( (shape)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (shape) ((shape)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.06"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.06</h3>
+; 
+; EVAL TEST
+; took 0.000689 secs. (688.97 microseconds) 
+
+!(assertEqualToResult (shape) ((shape)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (shape)) 
+      ( (shape))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; If the expression is composed over nondeterministic
+;;; expressions, all combinations will be produced
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (bin)  A)
+</span><span class="ansi38-255165000"
+> (= (bin)  B)
+</span><span class="ansi38-255165000"
+> (= (pair $_31298 $_31304)  
+  ($_2652 $_2658))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (pair (bin) (bin)) ((A A) (A B) (B A) (B B)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.07"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.07</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.86 milliseconds) 
+
+!(assertEqualToResult (pair (bin) (bin)) ((A A) (A B) (B A) (B B)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (A A)) 
+      ( (A A) 
+        (A B) 
+        (B A) 
+        (B B))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('A','[|]'('A',[])),[]),'[|]'('[|]'('A','[|]'('A',[])),'[|]'('[|]'('A','[|]'('B',[])),'[|]'('[|]'('B','[|]'('A',[])),'[|]'('[|]'('B','[|]'('B',[])),[])))))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((A A))) ('~nExpected: ' ((A A) (A B) (B A) (B B))))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; For the ordinary symbolic expression, if its subexpressions
+;;; are nondeterministic, and no reduction rule is available
+;;; for some combinations of their values, the whole expression
+;;; for these values will appear in the set of final results,
+;;; but without reduction. However, `match` can be called
+;;; directly to filter out non-reducible results
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (foo)  red)
+</span><span class="ansi38-255165000"
+> (= (foo)  boo)
+</span><span class="ansi38-255165000"
+> (= (eq $_21246 $_21246)  T)
+</span><span class="ansi38-255165000"
+> (= (find-equal $_25008 $_25014)  
+  (match &self 
+    (= (eq $_25008 $_25014)  T) $_25008))
+</span><span class="ansi38-013099040"
+>!(assertEqual (find-equal (color) (foo)) red)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.08"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.08</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.18 milliseconds) 
+
+!(assertEqual (find-equal (color) (foo)) red)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      (red)]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'(red,[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ()) ('~nExpected: ' (red)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; One can pass nondeterministic expressions to an ordinary
+;;; function and get multiple results.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (rev $_26588 $_26594)  
+  ($_26594 $_26588))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (rev A (superpose (B C D))) ((B A) (C A) (D A)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.09"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.09</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.47 milliseconds) 
+
+!(assertEqualToResult (rev A (superpose (B C D))) ((B A) (C A) (D A)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (B A)) 
+      ( (B A) 
+        (C A) 
+        (D A))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('B','[|]'('A',[])),[]),'[|]'('[|]'('B','[|]'('A',[])),'[|]'('[|]'('C','[|]'('A',[])),'[|]'('[|]'('D','[|]'('A',[])),[]))))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((B A))) ('~nExpected: ' ((B A) (C A) (D A))))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Extended example
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Some rules
+<span class="ansi38-255165000"
+> (= (ift T $_29320)  $_29320)
+</span><span class="ansi38-255165000"
+> (= (And T T)  T)
+</span><span class="ansi38-255165000"
+> (= (make $_6666)  
+  (ift 
+    (makes $_6696 $_6666) 
+    (start $_6696)))
+</span><span class="ansi38-255165000"
+> (= (make $_10466)  
+  (ift 
+    (And 
+      (prevents 
+        (making $_10520) 
+        (making $_10466)) 
+      (makes $_10556 $_10520)) 
+    (stop $_10556)))
+</span>;;; Add facts to knowledge base
+<span class="ansi38-255165000"
+> (= (prevents (making (air dry)) (making (air wet)))  T)
+</span><span class="ansi38-255165000"
+> (= (prevents (making (air wet)) (making (air dry)))  T)
+</span><span class="ansi38-255165000"
+> (= (makes humidifier (air wet))  T)
+</span><span class="ansi38-255165000"
+> (= (makes kettle (air wet))  T)
+</span><span class="ansi38-255165000"
+> (= (makes ventilation (air dry))  T)
+</span><span class="ansi38-255165000"
+> (= (is (air dry))  
+  (make (air wet)))
+</span><span class="ansi38-255165000"
+> (= (is (air wet))  
+  (make (air dry)))
+</span>;;; the results are not sequential in sense that their order is arbitrary
+<span class="ansi38-013099040"
+>!(assertEqual (is (air dry)) (superpose ((stop ventilation) (start kettle) (start humidifier))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.10"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.10</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (17.13 milliseconds) 
+
+!(assertEqual (is (air dry)) (superpose ((stop ventilation) (start kettle) (start humidifier))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (start humidifier) (stop ventilation)) 
+      ( (stop ventilation) 
+        (start kettle) 
+        (start humidifier))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(start,'[|]'(humidifier,[])),'[|]'('[|]'(stop,'[|]'(ventilation,[])),[])),'[|]'('[|]'(stop,'[|]'(ventilation,[])),'[|]'('[|]'(start,'[|]'(kettle,[])),'[|]'('[|]'(start,'[|]'(humidifier,[])),[]))))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((start humidifier) (stop ventilation))) ('~nExpected: ' ((stop ventilation) (start kettle) (start humidifier))))
+</span><span class="ansi38-013099040"
+>!(assertEqual (is (air wet)) (superpose ((stop kettle) (stop humidifier) (start ventilation))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.11"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.11</h3>
+; 
+; EVAL TEST
+; took 0.016 secs. (16.46 milliseconds) 
+
+!(assertEqual (is (air wet)) (superpose ((stop kettle) (stop humidifier) (start ventilation))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (start ventilation) (stop humidifier)) 
+      ( (stop kettle) 
+        (stop humidifier) 
+        (start ventilation))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(start,'[|]'(ventilation,[])),'[|]'('[|]'(stop,'[|]'(humidifier,[])),[])),'[|]'('[|]'(stop,'[|]'(kettle,[])),'[|]'('[|]'(stop,'[|]'(humidifier,[])),'[|]'('[|]'(start,'[|]'(ventilation,[])),[]))))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((start ventilation) (stop humidifier))) ('~nExpected: ' ((stop kettle) (stop humidifier) (start ventilation))))
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 6
+</span><span class="ansi31"
+>Failures: 5
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[(Error ('~nGot: ' ((A A))) ('~nExpected: ' ((A A) (A B) (B A) (B B))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (red)))]
+[(Error ('~nGot: ' ((B A))) ('~nExpected: ' ((B A) (C A) (D A))))]
+[(Error ('~nGot: ' ((start humidifier) (stop ventilation))) ('~nExpected: ' ((stop ventilation) (start kettle) (start humidifier))))]
+[(Error ('~nGot: ' ((start ventilation) (stop humidifier))) ('~nExpected: ' ((stop kettle) (stop humidifier) (start ventilation))))]
+
+Script done on 2025-02-15 18:35:22+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta" --halt=true\033[0m

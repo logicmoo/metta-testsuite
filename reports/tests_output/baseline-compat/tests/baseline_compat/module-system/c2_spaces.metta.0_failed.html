@@ -58,46 +58,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 03:57:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/module-system/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-^@P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:35:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/module-system/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+^@
 ; [ : user [load_metta_file &self tests/baseline_compat/module-system/c2_spaces.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -141,16 +103,16 @@ Deterministic: <span class="ansi33"
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; We can `match` over `&self` or another space
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
+>!(assertEqualToResult (match &kb (, (= is  $_12146) (= is-a  Color) (= is-a  Planet)) (Color of Planet = is =)) ((Color of Planet Mars is Red)))
 
 </span>
 ;<h3 id="MODULE-SYSTEM.C2-SPACES.01"
 >;; MODULE-SYSTEM.C2-SPACES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.02 milliseconds) 
+; took 0.002 secs. (1.90 milliseconds) 
 
-!(assertEqualToResult (match &kb (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
+!(assertEqualToResult (match &kb (, (= is  $_4912) (= is-a  Color) (= is-a  Planet)) (Color of Planet = is =)) ((Color of Planet Mars is Red)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -162,16 +124,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; The knowledge in `&kb` is not in `&self`
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self ($p is-a Color) $p) ())
+>!(assertEqualToResult (match &self (= is-a  Color) =) ())
 
 </span>
 ;<h3 id="MODULE-SYSTEM.C2-SPACES.02"
 >;; MODULE-SYSTEM.C2-SPACES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000365 secs. (364.80 microseconds) 
+; took 0.000183 secs. (183.30 microseconds) 
 
-!(assertEqualToResult (match &self ($p is-a Color) $p) ())
+!(assertEqualToResult (match &self (= is-a  Color) =) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -184,16 +146,16 @@ Deterministic: <span class="ansi33"
 ;;; Checking that grounded symbols from different spaces are compatible
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (match &kb (, (Venus orbit $x au) (Mars orbit $y au)) (- $y $x)) 0.8)
+>!(assertEqual (match &kb (, (Venus orbit $_3410 au) (Mars orbit $_3434 au)) (- $_3434 $_3410)) 0.8)
 
 </span>
 ;<h3 id="MODULE-SYSTEM.C2-SPACES.03"
 >;; MODULE-SYSTEM.C2-SPACES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000719 secs. (719.45 microseconds) 
 
-!(assertEqual (match &kb (, (Venus orbit $x au) (Mars orbit $y au)) (- $y $x)) 0.8)
+!(assertEqual (match &kb (, (Venus orbit $_16210 au) (Mars orbit $_16234 au)) (- $_16234 $_16210)) 0.8)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -212,16 +174,16 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (Chair is High)
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &kb ($prop is-a Color) (match &self ($obj is $prop) $obj)) (Ball))
+>!(assertEqualToResult (match &kb (= is-a  Color) (match &self (= is  =) =)) (Ball))
 
 </span>
 ;<h3 id="MODULE-SYSTEM.C2-SPACES.04"
 >;; MODULE-SYSTEM.C2-SPACES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.000923 secs. (922.67 microseconds) 
 
-!(assertEqualToResult (match &kb ($prop is-a Color) (match &self ($obj is $prop) $obj)) (Ball))
+!(assertEqualToResult (match &kb (= is-a  Color) (match &self (= is  =) =)) (Ball))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -271,16 +233,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
+>!(assertEqualToResult (match &self (, (= is  $_24644) (= is-a  Color) (= is-a  Planet)) (Color of Planet = is =)) ((Color of Planet Mars is Red)))
 
 </span>
 ;<h3 id="MODULE-SYSTEM.C2-SPACES.05"
 >;; MODULE-SYSTEM.C2-SPACES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.71 milliseconds) 
+; took 0.002 secs. (1.65 milliseconds) 
 
-!(assertEqualToResult (match &self (, ($obj is $prop) ($prop is-a Color) ($obj is-a Planet)) (Color of Planet $obj is $prop)) ((Color of Planet Mars is Red)))
+!(assertEqualToResult (match &self (, (= is  $_16508) (= is-a  Color) (= is-a  Planet)) (Color of Planet = is =)) ((Color of Planet Mars is Red)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -307,7 +269,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-14 03:57:16+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:35:10+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

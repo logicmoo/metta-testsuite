@@ -38,46 +38,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:02:54+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:36:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -87,17 +49,17 @@ Script started on 2025-02-14 04:02:54+00:00 [COMMAND="timeout --preserve-status 
 ;;; unique tokens for them (it can be used for any grounded atom)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (= (new-goal-status! $goal $status)  
-  (let $new_state 
-    (new-state $status) 
+> (= (new-goal-status! $_12550 $_12556)  
+  (let $_12574 
+    (new-state $_12556) 
     (add-atom &self 
-      (= (status (Goal $goal))  $new_state))))
+      (= (status (Goal $_12550))  $_12574))))
 </span><span class="ansi38-013099040"
 >!(new-goal-status! lunch-order inactive)
 
 </span><span class="ansi38-255165000"
 > (= (status (Goal lunch-order))  
-  [State inactive $_23986])
+  [State inactive $_28760])
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -106,7 +68,7 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (= (status (Goal meditation))  
-  [State inactive $_46994])
+  [State inactive $_22318])
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -119,7 +81,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.02 milliseconds) 
+; took 0.001 secs. (1.36 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) inactive)
 
@@ -149,7 +111,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.57 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqualToResult (nop (change-state! (status (Goal lunch-order)) active)) (()))
 
@@ -174,7 +136,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.02 milliseconds) 
+; took 0.001 secs. (1.26 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) active)
 
@@ -210,7 +172,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000344 secs. (343.74 microseconds) 
+; took 0.000371 secs. (370.66 microseconds) 
 
 !(assertEqualToResult (nop (change-state! &state-active inactive)) (()))
 
@@ -227,16 +189,16 @@ Deterministic: <span class="ansi33"
 ;;; `(let $state-active (new-state active)) ...) here.
 ;;; In any case, direct matching against expressions with states work:
 <span class="ansi38-013099040"
->!(assertEqual (match &self (= (status (Goal $goal))  &state-active) $goal) meditation)
+>!(assertEqual (match &self (= (status (Goal $_5356))  &state-active) $_5356) meditation)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000333 secs. (332.88 microseconds) 
+; took 0.000238 secs. (238.46 microseconds) 
 
-!(assertEqual (match &self (= (status (Goal $goal))  &state-active) $goal) meditation)
+!(assertEqual (match &self (= (status (Goal $_13064))  &state-active) $_13064) meditation)
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -249,16 +211,16 @@ Deterministic: <span class="ansi33"
 </span>;;; But we can also find all goal statuses, unwrap them from State,
 ;;; and compare to the desirable result
 <span class="ansi38-013099040"
->!(assertEqual (if (== (get-state (status (Goal $goal))) active) $goal (superpose ())) lunch-order)
+>!(assertEqual (if (== (get-state (status (Goal $_23702))) active) $_23702 (superpose ())) lunch-order)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.93 milliseconds) 
+; took 0.002 secs. (2.24 milliseconds) 
 
-!(assertEqual (if (== (get-state (status (Goal $goal))) active) $goal (superpose ())) lunch-order)
+!(assertEqual (if (== (get-state (status (Goal $_20832))) active) $_20832 (superpose ())) lunch-order)
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -287,7 +249,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ()) ('~nExpected: ' (meditation)))]
 [(Error ('~nGot: ' ()) ('~nExpected: ' (lunch-order)))]
 
-Script done on 2025-02-14 04:03:02+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:36:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

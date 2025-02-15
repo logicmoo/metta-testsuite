@@ -13,10 +13,23 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi2 { font-weight: lighter; }
+.ansi5 { text-decoration: blink; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
+.ansi40 { background-color: #000316; }
+.ansi92 { color: #00ff00; }
+.ansi93 { color: #ffff00; }
+.ansi94 { color: #5c5cff; }
+.ansi95 { color: #ff00ff; }
+.ansi96 { color: #00ffff; }
+.ansi97 { color: #ffffff; }
+.ansi100 { background-color: #7f7f7f; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -74,46 +87,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 03:58:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:35:23+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -126,11 +101,11 @@ Script started on 2025-02-14 03:58:30+00:00 [COMMAND="timeout --preserve-status 
 ;;; evaluation of badly typed expressions leads to a error expression.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (= (Add $x Z)  $x)
+> (= (Add $_6528 Z)  $_6528)
 </span><span class="ansi38-255165000"
-> (= (Add $x (S $y))  
+> (= (Add $_9992 (S $_10010))  
   (Add 
-    (S $x) $y))
+    (S $_9992) $_10010))
 </span>;;; `(Add S Z)` will be reduced to `S` without type definitions
 <span class="ansi38-013099040"
 >!(assertEqual (Add S Z) S)
@@ -140,7 +115,7 @@ Script started on 2025-02-14 03:58:30+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.000652 secs. (651.52 microseconds) 
 
 !(assertEqual (Add S Z) S)
 
@@ -180,7 +155,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.27 milliseconds) 
+; took 0.000625 secs. (625.43 microseconds) 
 
 !(assertEqualToResult (Add S Z) ((Error S BadType)))
 
@@ -202,7 +177,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.03</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.35 milliseconds) 
+; took 0.003 secs. (2.72 milliseconds) 
 
 !(assertEqual (Add (S Z) Z) (S Z))
 
@@ -222,7 +197,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.36 milliseconds) 
+; took 0.004 secs. (3.72 milliseconds) 
 
 !(assertEqual (Add Z (S Z)) (S Z))
 
@@ -247,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.03 milliseconds) 
+; took 0.000659 secs. (659.43 microseconds) 
 
 !(assertEqual (Add Something Z) Something)
 
@@ -276,7 +251,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.000904 secs. (904.37 microseconds) 
 
 !(assertEqualToResult (Add Z Ten) ((Add Z Ten)))
 
@@ -300,13 +275,13 @@ Deterministic: <span class="ansi33"
 ;;; takes parameter $t (which, per the definition above,
 ;;; is the same type as $t)
 <span class="ansi38-255165000"
-> (: Nil (List $t))
+> (: Nil (List $_11226))
 </span>;;; Cons is defined as a parametrized List constructor
 ;;; Based on the definition of List above, Cons' arguments
 ;;; are equally typed, and it returns the same type
 ;;; as its arguments.
 <span class="ansi38-255165000"
-> (: Cons (-> $t (List $t) (List $t)))
+> (: Cons (-> $_14686 (List $_14686) (List $_14686)))
 </span>;;; This list is well typed and evaluated to itself
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Cons (S Z) (Cons Z Nil)) ((Cons (S Z) (Cons Z Nil))))
@@ -316,7 +291,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.07</h3>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.35 milliseconds) 
+; took 0.003 secs. (2.58 milliseconds) 
 
 !(assertEqualToResult (Cons (S Z) (Cons Z Nil)) ((Cons (S Z) (Cons Z Nil))))
 
@@ -343,7 +318,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.08</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.97 milliseconds) 
+; took 0.001 secs. (1.38 milliseconds) 
 
 !(assertEqualToResult (Cons S (Cons Z Nil)) ((Error (Cons Z Nil) BadType)))
 
@@ -369,10 +344,10 @@ Deterministic: <span class="ansi33"
 ;;; must be of the same type, but its own type is left undefined,
 ;;; just as a Type.
 <span class="ansi38-255165000"
-> (: eq (-> $t $t Type))
+> (: eq (-> $_9426 $_9426 Type))
 </span>;;; The definition of `eq` specifies its actual type (T)
 <span class="ansi38-255165000"
-> (= (eq $x $x)  T)
+> (= (eq $_12762 $_12762)  T)
 </span>;;; Accepted and reduced
 <span class="ansi38-013099040"
 >!(assertEqual (eq (Add Z Z) Z) T)
@@ -382,7 +357,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.09</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.75 milliseconds) 
+; took 0.000977 secs. (977.39 microseconds) 
 
 !(assertEqual (eq (Add Z Z) Z) T)
 
@@ -404,7 +379,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.10</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.62 milliseconds) 
+; took 0.002 secs. (1.78 milliseconds) 
 
 !(assertEqualToResult (eq Z (S Z)) ((eq Z (S Z))))
 
@@ -427,7 +402,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.000835 secs. (835.08 microseconds) 
 
 !(assertEqualToResult (eq Z S) ((Error S BadType)))
 
@@ -459,12 +434,12 @@ Deterministic: <span class="ansi33"
 > (: Circle Shape)
 </span>;;; This type definition is the same as that of `eq` above
 <span class="ansi38-255165000"
-> (: of-same-type (-> $t $t Type))
+> (: of-same-type (-> $_25926 $_25926 Type))
 </span>;;; It returns True for any pair of arguments, as long as there
 ;;; is not Type error
 ;;; Accepted
 <span class="ansi38-255165000"
-> (= (of-same-type $x $y)  T)
+> (= (of-same-type $_29624 $_29630)  T)
 </span><span class="ansi38-013099040"
 >!(assertEqual (of-same-type Color Shape) T)
 
@@ -473,7 +448,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000986 secs. (986.27 microseconds) 
+; took 0.000548 secs. (548.41 microseconds) 
 
 !(assertEqual (of-same-type Color Shape) T)
 
@@ -493,7 +468,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000968 secs. (967.99 microseconds) 
+; took 0.000540 secs. (540.35 microseconds) 
 
 !(assertEqual (of-same-type Green Red) T)
 
@@ -514,7 +489,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.000526 secs. (525.91 microseconds) 
 
 !(assertEqualToResult (of-same-type Green Color) ((Error Color BadType)))
 
@@ -535,7 +510,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.15</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.000528 secs. (528.01 microseconds) 
 
 !(assertEqualToResult (of-same-type Green Circle) ((Error Circle BadType)))
 
@@ -567,16 +542,16 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (Green Sam)  T)
 </span><span class="ansi38-013099040"
->!(assertEqual (Green $who) T)
+>!(assertEqual (Green $_1810) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.16"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000678 secs. (677.62 microseconds) 
+; took 0.000516 secs. (516.46 microseconds) 
 
-!(assertEqual (Green $who) T)
+!(assertEqual (Green $_11140) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -587,16 +562,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqual (match &self (Green $who) $who) Sam)
+>!(assertEqual (match &self (Green $_22906) $_22906) Sam)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.17"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000321 secs. (320.69 microseconds) 
+; took 0.000263 secs. (262.98 microseconds) 
 
-!(assertEqual (match &self (Green $who) $who) Sam)
+!(assertEqual (match &self (Green $_3762) $_3762) Sam)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -613,16 +588,16 @@ Deterministic: <span class="ansi33"
 ;;; returns `(Green Sam)`, which is then evaluated to `T`.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (match &self (Green $who) (Green $who)) T)
+>!(assertEqual (match &self (Green $_15708) (Green $_15708)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.18"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000898 secs. (898.48 microseconds) 
+; took 0.000696 secs. (695.64 microseconds) 
 
-!(assertEqual (match &self (Green $who) (Green $who)) T)
+!(assertEqual (match &self (Green $_26434) (Green $_26434)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -638,16 +613,16 @@ Deterministic: <span class="ansi33"
 ;;; to `match`, `let` can be used:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let $r (Add (S Z) Z) (match &self (= (eq $r (S Z))  $tv) $tv)) T)
+>!(assertEqual (let $_9068 (Add (S Z) Z) (match &self (= (eq $_9068 (S Z))  $_9128) $_9128)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.19"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.19</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.67 milliseconds) 
+; took 0.003 secs. (2.58 milliseconds) 
 
-!(assertEqual (let $r (Add (S Z) Z) (match &self (= (eq $r (S Z))  $tv) $tv)) T)
+!(assertEqual (let $_9414 (Add (S Z) Z) (match &self (= (eq $_9414 (S Z))  $_9474) $_9474)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -659,16 +634,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; but it will not work inside `match`:
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $tv) $tv) ())
+>!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $_21234) $_21234) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.20"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000303 secs. (302.73 microseconds) 
+; took 0.000249 secs. (249.21 microseconds) 
 
-!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $tv) $tv) ())
+!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $_4224) $_4224) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -690,16 +665,16 @@ Deterministic: <span class="ansi33"
 ;;; the whole pattern (S (S $r)), and extracts the inner variable $r
 ;;; This is cleaner than binding and re-matching.
 <span class="ansi38-013099040"
->!(assertEqual (let (S (S $r)) (Add (S Z) (S Z)) $r) Z)
+>!(assertEqual (let (S (S $_15874)) (Add (S Z) (S Z)) $_15874) Z)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.21"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.21</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.84 milliseconds) 
+; took 0.007 secs. (6.77 milliseconds) 
 
-!(assertEqual (let (S (S $r)) (Add (S Z) (S Z)) $r) Z)
+!(assertEqual (let (S (S $_21930)) (Add (S Z) (S Z)) $_21930) Z)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -715,16 +690,16 @@ Deterministic: <span class="ansi33"
 ;;; substitutions are needed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let* (($r1 (Add Z Z)) ($r2 (Add $r1 (S Z))) ($r3 (Add $r2 (S Z)))) (match &self (= (eq (S (S Z)) $r3)  $tv) $tv)) T)
+>!(assertEqual (let* (($_4384 (Add Z Z)) ($_4396 (Add $_4384 (S Z))) ($_4426 (Add $_4396 (S Z)))) (match &self (= (eq (S (S Z)) $_4426)  $_4504) $_4504)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.22"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.22</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.14 milliseconds) 
+; took 0.012 secs. (11.53 milliseconds) 
 
-!(assertEqual (let* (($r1 (Add Z Z)) ($r2 (Add $r1 (S Z))) ($r3 (Add $r2 (S Z)))) (match &self (= (eq (S (S Z)) $r3)  $tv) $tv)) T)
+!(assertEqual (let* (($_23094 (Add Z Z)) ($_23106 (Add $_23094 (S Z))) ($_23136 (Add $_23106 (S Z)))) (match &self (= (eq (S (S Z)) $_23136)  $_23214) $_23214)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -742,7 +717,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (: eqa (-> Atom Atom Type))
 </span><span class="ansi38-255165000"
-> (= (eqa $x $x)  T)
+> (= (eqa $_38630 $_38630)  T)
 </span>;;; These expressions are identical:
 <span class="ansi38-013099040"
 >!(assertEqual (eqa (Add Z Z) (Add Z Z)) T)
@@ -752,7 +727,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000928 secs. (928.12 microseconds) 
+; took 0.000605 secs. (605.35 microseconds) 
 
 !(assertEqual (eqa (Add Z Z) (Add Z Z)) T)
 
@@ -773,9 +748,2289 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.24"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.24</h3>
+
+[needed_subst_args (eqa Z (Add Z Z)) T]
+
+ [186] <span class="ansi34"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(...,8000,...,_5308))|_5284],_5272))|_5248],_5236))|_5212],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
+ [185] <span class="ansi34"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(...,8000,...,_5458))|_5434],_5422))|_5398],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(185,clause(<clause>(0x55c539b3e560),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,...,...)|_5548],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(185,clause(<clause>(0x55c539b3e560),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_5598))|_5572],_5500))|_5474],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
+ [184] <span class="ansi34"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_5740],_5728))|_5704],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(185,clause(<clause>(0x55c539b3e560),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(...,8000,...,...)),frame(185,...,...)|_5824],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(184,clause(<clause>(0x55c53932c040),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_5884)))|_5848],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [183] <span class="ansi34"
+>setup_call_cleanup(system:'$notrace'(12,-1),system:once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(186,clause(<clause>(0x55c539419600),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(186,...,...)|_6004],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(185,clause(<clause>(0x55c539b3e560),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>)),frame(184,clause(<clause>(0x55c53932c040),3),once(...)),frame(183,...,...)|_6102],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),system:'$restore_trace'(12,-1))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [181] <span class="ansi34"
+>logicmoo_startup:ds</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1043
+ [180] <span class="ansi34"
+>logicmoo_startup:bt</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1038
+ [179] <span class="ansi34"
+>'<meta-call>'((write_src_uo(needed_subst_args(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                       <span class="pl-atom"
+>eqa</span>, 
+                                                       <span class="pl-atom"
+>'Z'</span>, 
+                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')),bt,sleep(1.0)))</span> <foreign>
+ [178] <span class="ansi34"
+>if_t_else((wont_need_subst(P;HTML|<span class="pl-functor"
+>[ </span>
+                                    <span class="pl-atom"
+>eqa</span>, 
+                                    <span class="pl-atom"
+>'Z'</span>, 
+                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]\=@='T'),(write_src_uo(needed_subst_args(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]))))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:353
+ [177] <span class="ansi34"
+>once(user:if_t_else((wont_need_subst(P;HTML|<span class="pl-functor"
+>[ </span>
+                                              <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]\=@='T'),(write_src_uo(needed_subst_args(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>])))))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [176] <span class="ansi34"
+>setup_call_cleanup(system:'$notrace'(12,0),system:once(user:if_t_else((wont_need_subst(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>\=@='T'),(write_src_uo(needed_subst_args([eqa,'Z'|...],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args([eqa,'Z'|...]))))),system:'$restore_trace'(12,0))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [174] <span class="ansi34"
+>subst_args_there_real(=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                   <span class="pl-atom"
+>eqa</span>, 
+                                                   <span class="pl-atom"
+>'Z'</span>, 
+                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:326
+ [173] <span class="ansi34"
+>subst_args_there(P;HTML|<span class="pl-functor"
+>[ </span>
+                          <span class="pl-atom"
+>eqa</span>, 
+                          <span class="pl-atom"
+>'Z'</span>, 
+                          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                           <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                           <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:312
+ [172] <span class="ansi34"
+>subst_args_here(=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                             <span class="pl-atom"
+>eqa</span>, 
+                                             <span class="pl-atom"
+>'Z'</span>, 
+                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:283
+ [170] <span class="ansi34"
+>if_or_else(eval_rust(P;HTML|<span class="pl-functor"
+>[ </span>
+                              <span class="pl-atom"
+>eqa</span>, 
+                              <span class="pl-atom"
+>'Z'</span>, 
+                              <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                               <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                               <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T'),eval_subst_args_here(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T'))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:5905
+ [169] <span class="ansi34"
+>eval_41(P;HTML|<span class="pl-functor"
+>[ </span>
+                 <span class="pl-atom"
+>eqa</span>, 
+                 <span class="pl-atom"
+>'Z'</span>, 
+                 <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3189
+ [168] <span class="ansi34"
+>if_or_else(eval_defn(P;HTML|<span class="pl-functor"
+>[ </span>
+                              <span class="pl-atom"
+>eqa</span>, 
+                              <span class="pl-atom"
+>'Z'</span>, 
+                              <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                               <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                               <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T'),eval_41(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T'))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:5905
+ [167] <span class="ansi34"
+>eval_40(P;HTML|<span class="pl-functor"
+>[ </span>
+                 <span class="pl-atom"
+>eqa</span>, 
+                 <span class="pl-atom"
+>'Z'</span>, 
+                 <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3185
+ [166] <span class="ansi34"
+>eval_20(=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>eqa</span>, 
+                                     <span class="pl-atom"
+>'Z'</span>, 
+                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3181
+ [165] <span class="ansi34"
+>eval_10(=,'Type',498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>eqa</span>, 
+                                     <span class="pl-atom"
+>'Z'</span>, 
+                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3173
+ [163] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_09(=,'Type'),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],'T')*->nb_setarg(1,retval(fail),'T');fail,trace,call(eval_09(=,'Type'),498,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,'T')),ignore(notrace((\+'T'\=_8088,nb_setarg(1,retval(fail),'T'))))))</span> <foreign>
+ [162] <span class="ansi34"
+>call_cleanup(user:((call(eval_09(=,'Type'),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                               <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],'T')*->nb_setarg(1,retval(fail),'T');fail,trace,call(eval_09(=,'Type'),498,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,'T')),ignore(notrace((\+'T'\=_8276,nb_setarg(1,retval(fail),'T'))))),user:ignore((_8314==1->ignore(\+ \+ (flag(eval_num,_8340,...),(...;...)));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [161] <span class="ansi34"
+>trace_eval(eval_09(=,'Type'),e,498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                   <span class="pl-atom"
+>eqa</span>, 
+                                                   <span class="pl-atom"
+>'Z'</span>, 
+                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],'T')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_debug.pl:975
+ [160] <span class="ansi34"
+>eval_01(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>eqa</span>, 
+                                     <span class="pl-atom"
+>'Z'</span>, 
+                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8498)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:258
+ [156] <span class="ansi34"
+>catch(user:eval_args(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  <span class="pl-atom"
+>eqa</span>, 
+                                                  <span class="pl-atom"
+>'Z'</span>, 
+                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8582),metta_return(_8622),user:ignore(retract(thrown_metta_return(_8640))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [153] <span class="ansi34"
+>rtrace_on_error(eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  <span class="pl-atom"
+>eqa</span>, 
+                                                  <span class="pl-atom"
+>'Z'</span>, 
+                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8678))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3779
+ [152] <span class="ansi34"
+>'<meta-call>'(user:(rtrace_on_error(eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                      <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8778)),is_returned(_8812)))</span> <foreign>
+ [151] <span class="ansi34"
+>findall_loop(_8836,user:(rtrace_on_error(eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                           <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8872)),is_returned(_8906)),_8840,[])</span> at /usr/lib/swi-prolog/boot/bags.pl:109
+ [150] <span class="ansi34"
+>cleanup_bag('$bags':findall_loop(_8942,user:(rtrace_on_error(eval(=,'Type',499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_8978)),is_returned(_9000)),_8946,[]),'$bags':'$destroy_findall_bag')</span> at /usr/lib/swi-prolog/boot/bags.pl:106
+ [145] <span class="ansi34"
+>'<meta-call>'((findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                         <span class="pl-atom"
+>eqa</span>, 
+                                                         <span class="pl-atom"
+>'Z'</span>, 
+                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9060),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                       [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9102)))</span> <foreign>
+ [144] <span class="ansi34"
+>rtrace_on_error((findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                           <span class="pl-atom"
+>eqa</span>, 
+                                                           <span class="pl-atom"
+>'Z'</span>, 
+                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9188),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                         [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9230)))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3779
+ [143] <span class="ansi34"
+>ctimed_call((findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                       <span class="pl-atom"
+>eqa</span>, 
+                                                       <span class="pl-atom"
+>'Z'</span>, 
+                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9318),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                     [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9360)),_9298)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6159
+ [141] <span class="ansi34"
+>time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                        <span class="pl-atom"
+>eqa</span>, 
+                                                                        <span class="pl-atom"
+>'Z'</span>, 
+                                                                        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9448),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                      [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                        <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9490)))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6077
+ [140] <span class="ansi34"
+>once(user:time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                  <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9588),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                    [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]],_9624))))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [139] <span class="ansi34"
+>loonit_asserts0(P;HTML|<span class="pl-functor"
+>[ </span>
+                         <span class="pl-atom"
+>assertEqualToResult</span>, 
+                         [ <span class="pl-atom"
+>eqa</span>, 
+                           <span class="pl-atom"
+>'Z'</span>, 
+                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                         [ [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_9798),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9840))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_9882,_9884))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_testing.pl:377
+ [138] <span class="ansi34"
+>setup_call_cleanup(user:get_pass_fail(18,5,23),user:loonit_asserts0(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                             [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                                             [ [ eqa,'Z',...]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                   <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],_10038),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>eqa,'Z',...]],_10068))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_10098,_10100)),user:(get_pass_fail(_10116,_10118,_10120),if_t(_10130==23,flag(loonit_failure,_10138,_10144+1))))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [135] <span class="ansi34"
+>call_cleanup(user:loonit_asserts(P;HTML|<span class="pl-functor"
+>[ </span>
+                                          <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                          [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                          [ [ eqa,'Z',...]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],_10284),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>eqa,'Z',...]],_10314))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_10344,_10346)),user:(as_tf(notrace(equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_10374,_10376)),_10364),!,ignore((once((_10412='True',trace_on_pass;_10424='False',trace_on_fail)),with_debug(eval_args,time_eval('Trace',(findall_eval(=,_10450,499,'&top',...,_10458),as_prolog(...,_10464))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [133] <span class="ansi34"
+>loonit_assert_source_tf_empty(P;HTML|<span class="pl-functor"
+>[ </span>
+                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                       [ <span class="pl-atom"
+>eqa</span>, 
+                                         <span class="pl-atom"
+>'Z'</span>, 
+                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                       [ [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]],_10490,_10492,(findall_eval(=,'Type',499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_10608),as_prolog(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>'Z'</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_10650)),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_10698,_10700),_10498)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:982
+ [131] <span class="ansi34"
+>eval_10(=,_10726,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                     [ <span class="pl-atom"
+>eqa</span>, 
+                                       <span class="pl-atom"
+>'Z'</span>, 
+                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                     [ [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]],_10734)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3173
+ [129] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_09(=,_10900),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                [ <span class="pl-atom"
+>eqa</span>, 
+                                                                  <span class="pl-atom"
+>'Z'</span> | 
+                                                                  <span class="pl-atom"
+>...</span>], 
+                                                                <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_10894)*->nb_setarg(1,retval(fail),_10944);fail,trace,call(eval_09(=,_10978),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>assertEqualToResult</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, <span class="pl-atom"
+>...</span>],_10972)),ignore(notrace((\+_11024\=_11026,nb_setarg(1,retval(fail),_11034))))))</span> <foreign>
+ [128] <span class="ansi34"
+>call_cleanup(user:((call(eval_09(=,_11106),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                               <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                               [ <span class="pl-atom"
+>eqa</span>, 
+                                                                 <span class="pl-atom"
+>'Z'</span> | 
+                                                                 <span class="pl-atom"
+>...</span>], 
+                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_11100)*->nb_setarg(1,retval(fail),_11150);fail,trace,call(eval_09(=,_11184),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>assertEqualToResult</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, <span class="pl-atom"
+>...</span>],_11178)),ignore(notrace((\+_11230\=_11232,nb_setarg(1,retval(fail),_11240))))),user:ignore((_11270==1->ignore(\+ \+ (flag(eval_num,_11296,...),(...;...)));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [127] <span class="ansi34"
+>trace_eval(eval_09(=,_11384),e,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                   <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                   [ <span class="pl-atom"
+>eqa</span>, 
+                                                     <span class="pl-atom"
+>'Z'</span>, 
+                                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                   [ [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]],_11378)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_debug.pl:975
+ [126] <span class="ansi34"
+>eval_01(=,_11500,500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                     [ <span class="pl-atom"
+>eqa</span>, 
+                                       <span class="pl-atom"
+>'Z'</span>, 
+                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                     [ [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]]],_11508)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:258
+ [122] <span class="ansi34"
+>catch(user:eval_args(=,_11638,500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                  [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                  [ [ eqa,'Z',...]]],_11646),metta_return(_11722),user:ignore(retract(thrown_metta_return(_11740))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [119] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [118] <span class="ansi34"
+>rtrace_on_error('<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3779
+ [117] <span class="ansi34"
+>ctimed_call('<garbage_collected>',_11824)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6159
+ [115] <span class="ansi34"
+>forall_interactive('<garbage_collected>','<garbage_collected>',_11852,'<garbage_collected>',(print_result_output(false,_11868,_11870,prev_result('Empty'),[],contrl(10,inf,each),res(_11902),_11880,[],_11884,_11886),(_11924>=inf->!;true),_11936=_11938,_11948=_11950,(_11972==true->repeat,...,...;true),((...;...)->!;true),(... -> ...;true),(... -> ...;true)))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_repl.pl:1303
+ [114] <span class="ansi34"
+>u_do_metta_exec02('<garbage_collected>','&top','<garbage_collected>','<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_12082)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_repl.pl:1095
+ [112] <span class="ansi34"
+>catch(user:u_do_metta_exec01(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                       [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                                                                                                                                                                                       [ [ eqa,'Z',...]]],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>...</span>]]],_12222),_12128,[],[],_12134,_12136),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>...</span>]]])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [110] <span class="ansi34"
+>catch(user:u_do_metta_exec000(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                        <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                        [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                                                                                                                                                                                        [ [ eqa,'Z',...]]],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                 <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                 [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                 [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                     <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                     <span class="pl-atom"
+>...</span>]]],_12502),_12408,[],[],_12414,_12416),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>...</span>]]])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [108] <span class="ansi34"
+>catch(user:u_do_metta_exec00(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                       [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                                                                                                                                                                                       [ [ eqa,'Z',...]]],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>...</span>]]],_12782),_12688,[],[],_12694,_12696),_12668,user:write_src(error(_12856,file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <span class="pl-atom"
+>...</span>]]])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [105] <span class="ansi34"
+>catch(user:(if_t(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>)=file(_12984),output_language(metta,write_exec(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                  [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                    <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                    <span class="pl-atom"
+>...</span>], 
+                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>]))),notrace(into_metta_callable('&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                            [ <span class="pl-atom"
+>eqa</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>'Z'</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>...</span>], 
+                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_13048,_13050,_13052,_13054)),!,user:u_do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span class="pl-atom"
+>assertEqualToResult</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>eqa</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, <span class="pl-atom"
+>...</span>],_13112,_13114,_13116,_13118,_13120,_13122)),give_up(_13154),user:pp_m('red',gave_up(_13170)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [103] <span class="ansi34"
+>catch(user:do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                   <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                   [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>, <span class="pl-atom"
+>'Z'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                                                                                                                                                                                                                   [ [ eqa,'Z',...]]],_13214),give_up(_13294),user:write_src_uo(dont_give_up(_13308)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [99] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [98] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [96] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [95] <span class="ansi34"
+>forall(user:metta_file_buffer(0,50000162,ref_assert,exec(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                  [ <span class="pl-atom"
+>eqa</span>, <span class="pl-atom"
+>'Z'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'Add'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                  [ [ <span class="pl-atom"
+>eqa</span>, 
+                                                                      <span class="pl-atom"
+>'Z'</span> | 
+                                                                      <span class="pl-atom"
+>...</span>]]]),[],P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,range(line_char(244,0),line_char(246,23))),user:(maybe_name_vars([]),(must_det_ll(do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),+,'&top',exec([assertEqualToResult,...|...]),_13566))->true;trace,pp_m(unknown_do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),+,'&top',exec([assertEqualToResult,...|...]))))))</span> at /usr/lib/swi-prolog/boot/apply.pl:52
+  [92] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [91] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [88] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),user:((must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,1)),must_det_ll(load_answer_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>)),must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,0))),must_det_ll(load_metta_file_stream_fast(8471,read_file_sexpr,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,'&top',<stream>(0x55c53ac80410)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [85] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [84] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [82] <span class="ansi34"
+>setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,read,<stream>(0x55c53ac80410),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,'&top',<stream>(0x55c53ac80410))),user:close(<stream>(0x55c53ac80410)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [81] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [80] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [78] <span class="ansi34"
+>setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,read,<stream>(0x55c53ac80410),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,'&top',<stream>(0x55c53ac80410))),close(<stream>(0x55c53ac80410)))),user:working_directory(_14082,'/home/runner/work/metta-testsuite/metta-testsuite/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [75] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [74] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [72] <span class="ansi34"
+>include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_loader.pl:894
+  [71] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [70] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span></span>)</span>, 
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span></span>)</span>]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),user:(nb_current('$circular_goals',_14282),select(include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_14294,_14296),nb_setval('$circular_goals',_14308)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [66] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [65] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [63] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>),user:must_det_ll(include_metta('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),user:set_option_value(loading_file,[]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [61] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [60] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [58] <span class="ansi34"
+>track_load_into_file0(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/loaders/genome/flybase_loader.pl:2071
+  [57] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [56] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [54] <span class="ansi34"
+>track_load_into_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/loaders/genome/flybase_loader.pl:2050
+  [53] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [52] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [49] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [48] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span></span>)</span></span>]</span>),user:call(load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),user:(nb_current('$circular_goals',_14738),select(load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_14750,_14752),nb_setval('$circular_goals',_14764)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [42] <span class="ansi34"
+>catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_14790,user:(always_rethrow(_14826)->throw(_14830);pp_m_m_red('red',user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')in _14842)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [39] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [38] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1109
+  [36] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [35] <span class="ansi34"
+>catch(user:(must_det_ll(not_compatio((nl,write('; '),write_src(user:...),nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'))),!,must_det_ll(flush_output)),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),(must_det_ll(not_compatio((nl,write('; '),...,nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'))),!,must_det_ll(flush_output)))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [32] <span class="ansi34"
+>cmdline_load_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3040
+  [30] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+  [28] <span class="ansi34"
+>cmdline_load_metta(execute,'&self',P;HTML|<span class="pl-functor"
+>[ </span>
+                                            <span class="pl-atom"
+>'tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'</span>, <span class="pl-atom"
+>'--halt=true'</span>, <span class="pl-atom"
+>'--stdin=tty'</span>, <span class="pl-atom"
+>'--stdout=tty'</span>, 
+                                            <span class="pl-atom"
+>'--stderr=tty'</span>])</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:2966
+  [21] <span class="ansi34"
+>do_cmdline_load_metta(execute,'&self','<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:2808
+  [18] <span class="ansi34"
+>catch(user:run_cmd_args,_15316,user:(always_rethrow(_15346)->throw(_15350);pp_m_m_red('red',run_cmd_args in _15362)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [15] <span class="ansi34"
+>if_or_else('<garbage_collected>',true)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:5905
+  [13] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:226
+   [9] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:227
+   [5] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+   [4] <span class="ansi34"
+>do_loon</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6617
+
+Note: some frames are missing due to last-call optimization.
+Re-run your program in debug mode (:- debug.) to get more detail.
+(0)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML| '$c_call_prolog'. P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(1)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[$toplevel]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> '$toplevel'. </span>  %  toplevel.pl:865: 
+(2)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[$toplevel]</span>P;HTML| '$runtoplevel'.   %  toplevel.pl:877: 
+(4)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML| do_loon.   %  metta_interp.pl:6616: 
+(5)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi97"
+></span><span class="ansi97 ansi40"
+></span><span class="ansi97 ansi40"
+> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(9)P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[apply]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(13)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[apply]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(15)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> if_or_else('<garbage_collected>',true). </span>  %  metta_interp.pl:5903: 
+(18)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:run_cmd_args,_S706,user:(always_rethrow(_S706)->throw(_S706);pp_m_m_red(red,run_cmd_args in _S706))). </span>  %  init.pl:564: 
+(21)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+> do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2802: 
+(28)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> cmdline_load_metta(execute,'&self',['tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty']). </span>  %  metta_interp.pl:2963: 
+(30)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi97"
+></span><span class="ansi97 ansi40"
+></span><span class="ansi97 ansi40"
+> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(32)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+> cmdline_load_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'). </span>  %  metta_interp.pl:3040: 
+(35)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),!,flush_output)))). </span>  %  init.pl:564: 
+(36)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(38)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(39)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(42)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_S864,user:(always_rethrow(_S864)->throw(_S864);pp_m_m_red(red,user:load_metta_file('&self','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')in _S864))). </span>  %  init.pl:564: 
+(48)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')]),user:call(load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),user:(nb_current('$circular_goals',_S230),select(load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_S230,_67244),nb_setval('$circular_goals',_67244))). </span>  %  init.pl:680: 
+(49)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(52)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(53)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(54)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> track_load_into_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(56)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(57)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(58)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> track_load_into_file0('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
+(60)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(61)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(63)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),user:include_metta('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
+(65)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(66)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(70)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),load_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')),user:(nb_current('$circular_goals',_S378),select(include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),_S378,_6268),nb_setval('$circular_goals',_6268))). </span>  %  init.pl:680: 
+(71)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(72)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> include_metta1('&top','tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'). </span>  %  metta_loader.pl:894: 
+(74)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(75)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(78)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts'),user:setup_call_cleanup(open('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta',read,<stream>(0x55c53ac80410),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','&top',<stream>(0x55c53ac80410)),close(<stream>(0x55c53ac80410))),user:working_directory(_S252,'/home/runner/work/metta-testsuite/metta-testsuite/')). </span>  %  init.pl:680: 
+(80)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(81)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(82)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:open('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta',read,<stream>(0x55c53ac80410),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','&top',<stream>(0x55c53ac80410)),user:close(<stream>(0x55c53ac80410))). </span>  %  init.pl:680: 
+(84)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(85)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(88)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),user:((set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta',1),load_answer_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta',0)),load_metta_file_stream_fast(8471,read_file_sexpr,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta','&top',<stream>(0x55c53ac80410))),user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')). </span>  %  init.pl:680: 
+(91)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(92)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(95)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+>[$apply]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> forall(user:metta_file_buffer(0,50000162,ref_assert,exec([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]),[],'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta',range(line_char(244,0),line_char(246,23))),user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),+,'&top',exec([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]),_S332)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),+,'&top',exec([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]])))))). </span>  %  apply.pl:51: 
+(96)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(98)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(99)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(103)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:do_metta_exec(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_S982),give_up(_69086),user:write_src_uo(dont_give_up(_69086))). </span>  %  init.pl:564: 
+(105)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:(if_t(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta')=file(_S868),output_language(metta,write_exec([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]))),notrace(into_metta_callable('&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_93992,_93994,_93996,_93998)),!,user:u_do_metta_exec(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_93992,_93994,_93996,_93998,_93994,_94030)),give_up(_94034),user:pp_m(red,gave_up(_94034))). </span>  %  init.pl:564: 
+(108)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> catch(user:u_do_metta_exec00(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],eval_H(500,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_S968),_S968,[],[],_S968,_5976),_5948,user:write_src(error(_5948,file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(110)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:u_do_metta_exec000(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],eval_H(500,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_S164),_S164,[],[],_S164,_27172),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]))). </span>  %  init.pl:564: 
+(112)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:u_do_metta_exec01(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],eval_H(500,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_S086),_S086,[],[],_S086,_55094),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta'),[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]))). </span>  %  init.pl:564: 
+(114)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+> u_do_metta_exec02('<garbage_collected>','&top','<garbage_collected>','<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_S992). </span>  %  metta_repl.pl:1060: 
+(115)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> forall_interactive('<garbage_collected>','<garbage_collected>',_S902,'<garbage_collected>',(print_result_output(false,_S902,_5920,prev_result('Empty'),[],contrl(10,inf,each),res(_5952),_5930,[],_5934,_5936),(_5920>=inf->!;true),_5986=_5988,_5998=_6000,(_5936==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_6068),old_not_compatio((writeq(key=_6068),nl)),(_6068==b->once(repl),fail;_6068=='B'->once(prolog),fail;_6068==a->notrace(abort),fail;_6068==e->notrace(halt(5)),fail;_6068==m->make,fail;_6068==c->trace,_5998=true;_6068=='C'->once(cls),fail;_6068==' '->trace,_5998=true;_6068==t->nop(set_debug(eval,true)),rtrace,_5998=true;_6068=='T'->set_debug(eval,true),_5998=true;_6068== ? -> print_debug_help,fail;_6068==(;)->_5998=true;_6068==esc('[A',[27,91,65])->_5986=true,_5998=false;_6068==esc('[B',[27,91,66])->nb_setarg(3,contrl(10,inf,each),leap),_5986=false,_5998=true;_6068=='L'->nb_setarg(2,contrl(10,inf,each),_5920);_6068==l->nb_setarg(3,contrl(10,inf,each),leap),_5998=true;(_6068=='\n';_6068=='\r')->_5986=false,nb_setarg(3,contrl(10,inf,each),leap),_5998=true;_6068==g->write_src(exec([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]]));_6068=='G'->bt,_5998=false;_6068==s->_5986=true,_5998=false;true->write('Unknown Char'),fail),(nonvar(_5998);nonvar(_5986));true),((_S902==true;_5986==true)->!;true),(nonvar(_5998)->_5998==true;true),(flag(result_num,_5920,_5920),_5920>=inf->!,fail;true))). </span>  %  metta_repl.pl:1300: 
+(117)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi92"
+></span><span class="ansi92"
+></span><span class="ansi92"
+> ctimed_call('<garbage_collected>',_S358). </span>  %  metta_interp.pl:6156: 
+(118)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi35"
+></span><span class="ansi35"
+></span><span class="ansi35"
+> rtrace_on_error('<garbage_collected>'). </span>  %  metta_interp.pl:3779: 
+(119)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(122)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:eval_args(=,_S682,500,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_5874),metta_return(_5874),user:ignore(retract(thrown_metta_return(_5874)))). </span>  %  init.pl:564: 
+(126)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML| eval_01(=,_S686,500,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_16694).   %  metta_eval.pl:253: 
+(127)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> trace_eval(eval_09(=,_S088),e,499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_41082). </span>  %  metta_debug.pl:947: 
+(128)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> call_cleanup(user:((call(eval_09(=,_S624),499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_65618)*->nb_setarg(1,retval(fail),_65618);fail,trace,call(eval_09(=,_S624),499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_65618)),ignore(notrace((\+_65618\=_65780,nb_setarg(1,retval(fail),_65618))))),user:ignore((_65814==1->ignore(\+ \+ (flag(eval_num,_65840,_65840+1),(retval(fail)\=@=retval(fail),nonvar(_65618)->indentq(0,_65840,<--,[e,_65618]);indentq(0,_65840,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_65840,_65840+1),(retval(fail)\=@=retval(fail),nonvar(_65618)->indentq(0,_65840,<--,[e,_65618]);indentq(0,_65840,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(129)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> '<meta-call>'(user:((call(eval_09(=,_S396),499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_99390)*->nb_setarg(1,retval(fail),_99390);fail,trace,call(eval_09(=,_S396),499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_99390)),ignore(notrace((\+_99390\=_99552,nb_setarg(1,retval(fail),_99390)))))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(131)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> eval_10(=,_S312,499,'&top',[assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_23320). </span>  %  metta_eval.pl:3171: 
+(133)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> loonit_assert_source_tf_empty([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],_S606,_47608,(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S606),as_prolog([[eqa,'Z',['Add','Z','Z']]],_47608)),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_S606,_47608),_47614). </span>  %  metta_eval.pl:981: 
+(135)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> call_cleanup(user:loonit_asserts([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S816),as_prolog([[eqa,'Z',['Add','Z','Z']]],_73822))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_S816,_73822)),user:(as_tf(notrace(equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_S816,_73822)),_73848),!,ignore((once((_73848='True',trace_on_pass;_73848='False',trace_on_fail)),with_debug(eval_args,time_eval('Trace',(findall_eval(=,_73926,499,'&top',[eqa,'Z',['Add','Z','Z']],_73934),as_prolog([[eqa,'Z',['Add','Z','Z']]],_73940)))))))). </span>  %  init.pl:684: 
+(138)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> setup_call_cleanup(user:get_pass_fail(18,5,23),user:loonit_asserts0([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S424),as_prolog([[eqa,'Z',['Add','Z','Z']]],_103430))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_S424,_103430)),user:(get_pass_fail(_103454,_103456,_103458),if_t(_103458==23,flag(loonit_failure,_103476,_103476+1)))). </span>  %  init.pl:680: 
+(139)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> loonit_asserts0([assertEqualToResult,[eqa,'Z',['Add','Z','Z']],[[eqa,'Z',['Add','Z','Z']]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S868),as_prolog([[eqa,'Z',['Add','Z','Z']]],_5874))),equal_enough_for_test_renumbered_l(strict_equals_allow_vn,_S868,_5874)). </span>  %  metta_testing.pl:369: 
+(140)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once(user:time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S768),as_prolog([[eqa,'Z',['Add','Z','Z']]],_31810)))). </span>  %  init.pl:537: 
+(141)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+> time_eval('\n; EVAL TEST\n;',(findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S024),as_prolog([[eqa,'Z',['Add','Z','Z']]],_56066))). </span>  %  metta_interp.pl:6076: 
+(143)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi92"
+></span><span class="ansi92"
+></span><span class="ansi92"
+> ctimed_call((findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S374),as_prolog([[eqa,'Z',['Add','Z','Z']]],_80416)),_80354). </span>  %  metta_interp.pl:6156: 
+(144)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi35"
+></span><span class="ansi35"
+></span><span class="ansi35"
+> rtrace_on_error((findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S430),as_prolog([[eqa,'Z',['Add','Z','Z']]],_104472))). </span>  %  metta_interp.pl:3779: 
+(145)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '<meta-call>'((findall_eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S688),as_prolog([[eqa,'Z',['Add','Z','Z']]],_5730))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(150)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+>[$bags]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> cleanup_bag('$bags':findall_loop(_S916,user:(rtrace_on_error(eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S916)),is_returned(_S916)),_38920,[]),'$bags':'$destroy_findall_bag'). </span>  %  bags.pl:104: 
+(151)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+>[$bags]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> findall_loop(_S122,user:(rtrace_on_error(eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S122)),is_returned(_S122)),_63126,[]). </span>  %  bags.pl:108: 
+(152)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> '<meta-call>'(user:(rtrace_on_error(eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S424)),is_returned(_S424))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(153)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi35"
+></span><span class="ansi35"
+></span><span class="ansi35"
+> rtrace_on_error(eval(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S648)). </span>  %  metta_interp.pl:3779: 
+(156)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> catch(user:eval_args(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S954),metta_return(_S954),user:ignore(retract(thrown_metta_return(_S954)))). </span>  %  init.pl:564: 
+(160)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML| eval_01(=,'Type',499,'&top',[eqa,'Z',['Add','Z','Z']],_S636).   %  metta_eval.pl:253: 
+(161)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> trace_eval(eval_09(=,'Type'),e,498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_debug.pl:947: 
+(162)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> call_cleanup(user:((call(eval_09(=,'Type'),498,'&top',[eqa,'Z',['Add','Z','Z']],'T')*->nb_setarg(1,retval(fail),'T');fail,trace,call(eval_09(=,'Type'),498,'&top',[eqa,'Z',['Add','Z','Z']],'T')),ignore(notrace((\+'T'\=_S872,nb_setarg(1,retval(fail),'T'))))),user:ignore((_94906==1->ignore(\+ \+ (flag(eval_num,_94932,_94932+1),(retval(fail)\=@=retval(fail),nonvar('T')->indentq(1,_94932,<--,[e,'T']);indentq(1,_94932,<--,[e,retval(fail)]))));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_94932,_94932+1),(retval(fail)\=@=retval(fail),nonvar('T')->indentq(1,_94932,<--,[e,'T']);indentq(1,_94932,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(163)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> '<meta-call>'(user:((call(eval_09(=,'Type'),498,'&top',[eqa,'Z',['Add','Z','Z']],'T')*->nb_setarg(1,retval(fail),'T');fail,trace,call(eval_09(=,'Type'),498,'&top',[eqa,'Z',['Add','Z','Z']],'T')),ignore(notrace((\+'T'\=_S698,nb_setarg(1,retval(fail),'T')))))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(165)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> eval_10(=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:3171: 
+(166)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> eval_20(=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:3176: 
+(167)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+> eval_40([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:3184: 
+(168)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> if_or_else(eval_defn([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'),eval_41([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T')). </span>  %  metta_interp.pl:5903: 
+(169)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> eval_41([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:3188: 
+(170)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> if_or_else(eval_rust([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'),eval_subst_args_here([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T')). </span>  %  metta_interp.pl:5903: 
+(172)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> subst_args_here(=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:282: 
+(173)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> subst_args_there([eqa,'Z',['Add','Z','Z']],=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:310: 
+(174)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> subst_args_there_real(=,'Type',498,'&top',[eqa,'Z',['Add','Z','Z']],'T'). </span>  %  metta_eval.pl:323: 
+(176)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> setup_call_cleanup(system:'$notrace'(12,0),system:once(user:if_t_else((wont_need_subst([eqa,'Z',['Add','Z','Z']]),[eqa,'Z',['Add','Z','Z']]\=@='T'),(write_src_uo(needed_subst_args([eqa,'Z',['Add','Z','Z']],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args([eqa,'Z',['Add','Z','Z']]))))),system:'$restore_trace'(12,0)). </span>  %  init.pl:680: 
+(177)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> once(user:if_t_else((wont_need_subst([eqa,'Z',['Add','Z','Z']]),[eqa,'Z',['Add','Z','Z']]\=@='T'),(write_src_uo(needed_subst_args([eqa,'Z',['Add','Z','Z']],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args([eqa,'Z',['Add','Z','Z']]))))). </span>  %  init.pl:537: 
+(178)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+> if_t_else((wont_need_subst([eqa,'Z',['Add','Z','Z']]),[eqa,'Z',['Add','Z','Z']]\=@='T'),(write_src_uo(needed_subst_args([eqa,'Z',['Add','Z','Z']],'T')),bt,sleep(1.0)),nop(write_src_uo(unneeded_subst_args([eqa,'Z',['Add','Z','Z']])))). </span>  %  metta_eval.pl:353: 
+(179)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '<meta-call>'((write_src_uo(needed_subst_args([eqa,'Z',['Add','Z','Z']],'T')),bt,sleep(1.0))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> no(clause). </span>
+(183)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> bugger:dumpST_now(2933,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.46 milliseconds) 
+; took 0.623 secs. (622.98 milliseconds) 
 
 !(assertEqualToResult (eqa Z (Add Z Z)) ((eqa Z (Add Z Z))))
 
@@ -799,7 +3054,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.25</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.71 milliseconds) 
+; took 0.000979 secs. (978.82 microseconds) 
 
 !(assertEqual (eq Z (Add Z Z)) T)
 
@@ -813,16 +3068,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Or this:
 <span class="ansi38-013099040"
->!(assertEqual (let $z (Add Z Z) (eqa Z $z)) T)
+>!(assertEqual (let $_34094 (Add Z Z) (eqa Z $_34094)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.26"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.26</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.43 milliseconds) 
+; took 0.000995 secs. (994.54 microseconds) 
 
-!(assertEqual (let $z (Add Z Z) (eqa Z $z)) T)
+!(assertEqual (let $_47938 (Add Z Z) (eqa Z $_47938)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -869,7 +3124,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-14 03:58:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:35:25+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

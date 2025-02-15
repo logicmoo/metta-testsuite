@@ -45,46 +45,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:08:25+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_until_bindings_ready_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:39:24+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_until_bindings_ready_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_until_bindings_ready_he_659.metta] ]
 ;;; Test File: Delaying Reduction Until Bindings Are Ready
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/659
@@ -102,34 +64,34 @@ Script started on 2025-02-14 04:08:25+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: 0< (-> Number Bool))
 </span><span class="ansi38-255165000"
-> (= (0< $x)  
-  (< 0 $x))
+> (= (0< $_2834)  
+  (< 0 $_2834))
 </span>;;; Define Backward Chainer
 ;;; -----------------------
 <span class="ansi38-255165000"
-> (: bc (-> $a $b Nat $b))
+> (: bc (-> $_6498 $_6504 Nat $_6504))
 </span>;;; Result
 ;;; Base case: Knowledge base lookup
 <span class="ansi38-255165000"
-> (= (bc $kb (: $prf $ccln) $_68944)  
-  (match $kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
+> (= (bc $_10648 (: $_10666 $_10672) $_10678)  
+  (match $_10648 
+    (: $_10666 $_10672) 
+    (: $_10666 $_10672)))
 </span>;;; Base case: CPU check
 <span class="ansi38-255165000"
-> (= (bc $kb (: CPU (0⍃ $x)) $_81296)  
+> (= (bc $_14130 (: CPU (0⍃ $_14166)) $_14172)  
   (case 
-    (0< $x) 
-    ( (True (: CPU (0⍃ $x))) (False (empty)))))
+    (0< $_14166) 
+    ( (True (: CPU (0⍃ $_14166))) (False (empty)))))
 </span>;;; Recursive step: Recurse on proof abstraction and proof argument
 <span class="ansi38-255165000"
-> (= (bc $kb (: ($prfabs $prfarg) $ccln) (S $k))  
+> (= (bc $_19578 (: ($_19602 $_19608) $_19614) (S $_19632))  
   (let* 
-    ( ( (: $prfabs 
+    ( ( (: $_19602 
           (-> 
-            (: $prfarg $prms) $ccln)) (bc $kb (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc $kb (: $prfarg $prms) $k))) 
+            (: $_19608 $_19710) $_19614)) (bc $_19578 (: $_19602 (-> (: $_19608 $_19710) $_19614)) $_19632)) ((: $_19608 $_19710) (bc $_19578 (: $_19608 $_19710) $_19632))) 
     (: 
-      ($prfabs $prfarg) $ccln)))
+      ($_19602 $_19608) $_19614)))
 </span>;;; Define Knowledge Base
 ;;; ----------------------
 <span class="ansi38-013099040"
@@ -148,26 +110,26 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; 2 is a prime number
 <span class="ansi38-013099040"
->!(add-atom &kb (: Rule (-> (: $_94404 (0⍃ $x)) (-> (: $x Prime) (0⍃' $x)))))
+>!(add-atom &kb (: Rule (-> (: $_19092 (0⍃ $_19110)) (-> (: $_19110 Prime) (0⍃' $_19110)))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (: $_68650 (0⍃ $x)) (-> (: $x Prime) (0⍃' $x))))
+> (: Rule (-> (: $_28100 (0⍃ $_28118)) (-> (: $_28118 Prime) (0⍃' $_28118))))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; $x is a prime number > 0
 ;;; Test Case 1: Query with Ungrounded Variable
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) (empty))
+>!(assertEqualToResult (bc &kb (: $_8498 (0⍃' $_8516)) (S (S Z))) (empty))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.01"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.01</h3>
 ; 
 ; EVAL TEST
-; took 0.027 secs. (26.67 milliseconds) 
+; took 0.015 secs. (14.68 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) (empty))
+!(assertEqualToResult (bc &kb (: $_30530 (0⍃' $_30548)) (S (S Z))) (empty))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -180,16 +142,16 @@ Deterministic: <span class="ansi33"
 </span>;;; Issue: Expected proof not found
 ;;; Test Case 2: Query with Grounded Variable
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' 2)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $_40790 (0⍃' 2)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.02"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.02</h3>
 ; 
 ; EVAL TEST
-; took 0.068 secs. (68.04 milliseconds) 
+; took 0.041 secs. (40.63 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' 2)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $_87938 (0⍃' 2)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -206,16 +168,16 @@ Deterministic: <span class="ansi33"
 </span>;;; Expected proof when $x is grounded
 ;;; Test Case 3: Adjust CPU Check for Explicit Handling
 <span class="ansi38-013099040"
->!(assertEqualToResult (let* (($kb &kb) ($x 2) ($result (case (0< $x) ((True (: CPU (0⍃ $x))) (False (empty)))))) $result) ((: CPU (0⍃ 2))))
+>!(assertEqualToResult (let* (($_100730 &kb) ($_100742 2) ($_100754 (case (0< $_100742) ((True (: CPU (0⍃ $_100742))) (False (empty)))))) $_100754) ((: CPU (0⍃ 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.03"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.03</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (19.02 milliseconds) 
+; took 0.012 secs. (12.47 milliseconds) 
 
-!(assertEqualToResult (let* (($kb &kb) ($x 2) ($result (case (0< $x) ((True (: CPU (0⍃ $x))) (False (empty)))))) $result) ((: CPU (0⍃ 2))))
+!(assertEqualToResult (let* (($_83418 &kb) ($_83430 2) ($_83442 (case (0< $_83430) ((True (: CPU (0⍃ $_83430))) (False (empty)))))) $_83442) ((: CPU (0⍃ 2))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -231,34 +193,34 @@ Deterministic: <span class="ansi33"
 ;;; Test Case 4: Proposed Set-Based Parameter Handling
 ;;; --------------------------------------------------
 <span class="ansi38-255165000"
-> (: handle-prmlst (-> $a $b List $d))
+> (: handle-prmlst (-> $_96302 $_96308 List $_96320))
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $kb $k Nil)  Nil)
+> (= (handle-prmlst $_99878 $_99884 Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $kb $k (Cons (: $prfarg $prms) $xs))  
+> (= (handle-prmlst $_104546 $_104552 (Cons (: $_104582 $_104588) $_104594))  
   (Cons 
-    (bc $kb 
-      (: $prfarg $prms) $k) 
-    (handle-prmlst $kb $k $xs)))
+    (bc $_104546 
+      (: $_104582 $_104588) $_104552) 
+    (handle-prmlst $_104546 $_104552 $_104594)))
 </span><span class="ansi38-013099040"
->!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x))))
+>!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $_106666) (0⍃ $_106666)) (Cons (: $_106666 Prime) Nil)) (0⍃' $_106666))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x)))
+> (: Rule (-> (Cons (: CPU (is-closed $_115640) (0⍃ $_115640)) (Cons (: $_115640 Prime) Nil)) (0⍃' $_115640)))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $_125050 (0⍃' $_125068)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.04"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-UNTIL-BINDINGS-READY-HE-659.04</h3>
 ; 
 ; EVAL TEST
-; took 0.025 secs. (24.93 milliseconds) 
+; took 0.014 secs. (13.94 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $_19738 (0⍃' $_19756)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -292,7 +254,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' ()) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
 
-Script done on 2025-02-14 04:08:34+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:39:25+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

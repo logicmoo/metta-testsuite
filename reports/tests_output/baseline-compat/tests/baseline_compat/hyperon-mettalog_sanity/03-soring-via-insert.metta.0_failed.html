@@ -13,6 +13,7 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
@@ -34,101 +35,63 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:04:06+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:37:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta] ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; sorted lists
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (: List (-> $a Type))
+> (: List (-> $_5796 Type))
 </span><span class="ansi38-255165000"
-> (: Nil (List $a))
+> (: Nil (List $_9054))
 </span><span class="ansi38-255165000"
-> (: Cons (-> $a (List $a) (List $a)))
+> (: Cons (-> $_12424 (List $_12424) (List $_12424)))
 </span>;;;(: if (-> bool Any Any) Any)
 ;;;(= (if true $then $else) $then)
 ;;;(= (if false $then $else) $else)
 <span class="ansi38-255165000"
-> (: insert (-> $a (List $a) (List $a)))
+> (: insert (-> $_15766 (List $_15766) (List $_15766)))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(get-type insert)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (get-type insert) ((-> $a (List $a) (List $a))))
+>!(assertEqualToResult (get-type insert) ((-> $_20548 (List $_20548) (List $_20548))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000870 secs. (869.54 microseconds) 
+; took 0.000361 secs. (361.33 microseconds) 
 
-!(assertEqualToResult (get-type insert) ((-> $a (List $a) (List $a))))
+!(assertEqualToResult (get-type insert) ((-> $_29534 (List $_29534) (List $_4072))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (-> $a 
-          (List $a) 
-          (List $a))) 
-      ( (-> $a 
-          (List $a) 
-          (List $a)))]]
+      ( (-> $_8578 
+          (List $_8578) 
+          (List $_8578))) 
+      ( (-> $_8632 
+          (List $_8632) 
+          (List $_8632)))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165000"
-> (= (insert $x Nil)  
-  (Cons $x Nil))
+> (= (insert $_18214 Nil)  
+  (Cons $_18214 Nil))
 </span><span class="ansi38-255165000"
-> (= (insert $x (Cons $head $tail))  
+> (= (insert $_22162 (Cons $_22180 $_22186))  
   (if 
-    (< $x $head) 
-    (Cons $x 
-      (Cons $head $tail)) 
-    (Cons $head 
-      (insert $x $tail))))
+    (< $_22162 $_22180) 
+    (Cons $_22162 
+      (Cons $_22180 $_22186)) 
+    (Cons $_22180 
+      (insert $_22162 $_22186))))
 </span><span class="ansi38-013099040"
 >!(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -137,7 +100,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02</h3>
 ; 
 ; EVAL TEST
-; took 17.59 seconds.
+; took 0.009 secs. (8.60 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -159,7 +122,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.53 milliseconds) 
+; took 0.001 secs. (1.22 milliseconds) 
 
 !(assertEqual (Cons 1 Nil) (Cons 1 Nil))
 
@@ -179,7 +142,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.46 milliseconds) 
+; took 0.002 secs. (1.75 milliseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -199,7 +162,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05</h3>
 ; 
 ; EVAL TEST
-; took 13.92 seconds.
+; took 0.006 secs. (6.40 milliseconds) 
 
 !(assertEqual (insert 1 (insert 2 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -219,11 +182,44 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06</h3>
+; 
+; EVAL TEST
+; took 0.022 secs. (21.88 milliseconds) 
 
-Script done on 2025-02-14 04:04:47+00:00 [COMMAND_EXIT_CODE="143"]
+!(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Cons 1 
+          (Cons 2 
+            (Cons 3 Nil)))) 
+      ( (Cons 1 
+          (Cons 2 
+            (Cons 3 Nil))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 6
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-02-15 18:37:14+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta" --halt=true\033[0m

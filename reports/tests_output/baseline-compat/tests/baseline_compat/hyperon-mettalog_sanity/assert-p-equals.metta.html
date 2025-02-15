@@ -35,123 +35,85 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:05:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:37:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta] ]
 <span class="ansi38-255165000"
 > (: eval-maybe-empty (-> Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (eval-maybe-empty $eval)  
-  (let $res 
-    (case $eval 
-      ( ( (Error $a $b) (eval (Error $a $b))) 
+> (= (eval-maybe-empty $_22826)  
+  (let $_22844 
+    (case $_22826 
+      ( ( (Error $_22892 $_22898) (eval (Error $_22892 $_22898))) 
         (Empty (eval Empty)) 
-        ($var $var))) $res))
+        ($_22952 $_22952))) $_22844))
 </span><span class="ansi38-255165000"
 > (: match-maybe-empty (-> hyperon::space::DynSpace Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (match-maybe-empty $space $match $template)  
-  (eval-maybe-empty (match $space $match $template)))
+> (= (match-maybe-empty $_29648 $_29654 $_29660)  
+  (eval-maybe-empty (match $_29648 $_29654 $_29660)))
 </span><span class="ansi38-255165000"
 > (: string-repr (-> Atom String))
 </span><span class="ansi38-255165000"
-> (= (string-repr $obj)  
-  (let $type 
-    (get-type $obj) 
+> (= (string-repr $_6658)  
+  (let $_6676 
+    (get-type $_6658) 
     (if 
-      (== $type String) 
+      (== $_6676 String) 
       (format-args "\"{}\"" 
-        ($obj)) 
-      (repr $obj))))
+        ($_6658)) 
+      (repr $_6658))))
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Form $List $passes)  
+> (= (assertPEqual $_13550 $_13556 $_13562)  
   (assertPEqualR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $_13550) $_13550 $_13556 $_13562))
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Name $Form $Form2 $passes2)  
+> (= (assertPEqual $_20206 $_20212 $_20218 $_20224)  
   (assertPEqualR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $_20206) $_20212 $_20218 $_20224))
 </span><span class="ansi38-255165000"
 > (: assertPEqualR (-> String Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualR $Name $Form $Form2 $passes2)  
+> (= (assertPEqualR $_29532 $_29538 $_29544 $_29550)  
   (let 
-    ($n $res $List $passes) 
-    ($Name 
-      (eval-maybe-empty $Form) 
-      (eval-maybe-empty $Form2) 
-      (collapse $passes2)) 
+    ($_29574 $_29580 $_29586 $_29592) 
+    ($_29532 
+      (eval-maybe-empty $_3516) 
+      (eval-maybe-empty $_3522) 
+      (collapse $_3528)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($_174764 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
+      (quote $_3558) 
+      ( ( (quote $_3564) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($_3510 $_3516 $_3522 $_3528)))) ($_3768 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($_3510 $_3516 $_3522 $_3558))))))))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Form $List $passes)  
+> (= (assertPEqualToResult $_10726 $_10732 $_10738)  
   (assertPEqualToResultR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $_10726) $_10726 $_10732 $_10738))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Name $Form $Form2 $passes2)  
+> (= (assertPEqualToResult $_17390 $_17396 $_17402 $_17408)  
   (assertPEqualToResultR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $_17390) $_17396 $_17402 $_17408))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResultR (-> String Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResultR $Name $Form $List $passes)  
+> (= (assertPEqualToResultR $_25874 $_25880 $_25886 $_25892)  
   (let 
-    ($n $res) 
-    ($Name (collapse $Form)) 
+    ($_25916 $_25922) 
+    ($_25874 (collapse $_25880)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($_185452 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
+      (quote $_25922) 
+      ( ( (quote $_25886) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($_3358 $_3364 $_3370 $_3376)))) ($_3568 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($_3358 $_3364 $_3370 $_3406))))))))
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 
-Script done on 2025-02-14 04:05:35+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:37:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

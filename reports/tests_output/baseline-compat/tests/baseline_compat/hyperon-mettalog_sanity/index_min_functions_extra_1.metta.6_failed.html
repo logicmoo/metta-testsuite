@@ -1,0 +1,3585 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-15 18:40:28+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta] ]
+;;; Test run-metta using nested context, expecting (foo a) evaluates to 'a' in nested space
+<span class="ansi38-013099040"
+>!(bind! &outer-space (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(bind! &nested-space (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &nested-space (= (foo $_4954)  $_4954))
+
+</span><span class="ansi38-255165000"
+> (= (foo $_13240)  $_13240)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (metta (foo a) Atom &nested-space) ((foo a)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.01"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.01</h3>
+; 
+; EVAL TEST
+; took 0.000957 secs. (957.28 microseconds) 
+
+!(assertEqualToResult (metta (foo a) Atom &nested-space) ((foo a)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (a) 
+      ( (foo a))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(a,[]),'[|]'('[|]'(foo,'[|]'(a,[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (a)) ('~nExpected: ' ((foo a))))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (metta (foo a) Symbol &nested-space) (a))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.02"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.02</h3>
+; 
+; EVAL TEST
+; took 0.000604 secs. (603.56 microseconds) 
+
+!(assertEqualToResult (metta (foo a) Symbol &nested-space) (a))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (a) 
+      (a)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (metta (foo a) %Undefined% &nested-space) (a))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.03"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.03</h3>
+; 
+; EVAL TEST
+; took 0.000616 secs. (615.76 microseconds) 
+
+!(assertEqualToResult (metta (foo a) %Undefined% &nested-space) (a))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (a) 
+      (a)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-type operation for atom 'A' in a space with types B and C
+<span class="ansi38-013099040"
+>!(bind! &type-space (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &type-space (: B Type))
+
+</span><span class="ansi38-255165000"
+> (: B Type)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &type-space (: C Type))
+
+</span><span class="ansi38-255165000"
+> (: C Type)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &type-space (: A B))
+
+</span><span class="ansi38-255165000"
+> (: A B)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &type-space (: A C))
+
+</span><span class="ansi38-255165000"
+> (: A C)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Expecting types B and C for atom 'A'
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (evalc (get-type A) &type-space) (B C)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.04"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.04</h3>
+; 
+; EVAL TEST
+; took 0.000256 secs. (255.87 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (evalc (get-type A) &type-space) (B C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (B C) 
+      (B C)]]
+</span>
+Deterministic: <span class="ansi33"
+>(H-E-Fails ())
+</span><span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (metta (get-type A) %Undefined% &type-space) (B C)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.05"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.05</h3>
+; 
+; EVAL TEST
+; took 0.000636 secs. (636.28 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (metta (get-type A) %Undefined% &type-space) (B C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (B C) 
+      (B C)]]
+</span>
+Deterministic: <span class="ansi33"
+>(H-E-Fails ())
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (metta (get-type-space &type-space A) %Undefined% &type-space) (B C))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.06"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.06</h3>
+; 
+; EVAL TEST
+; took 0.000645 secs. (645.30 microseconds) 
+
+!(assertEqualToResult (metta (get-type-space &type-space A) %Undefined% &type-space) (B C))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (B C) 
+      (B C)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (evalc (get-type-space &type-space A) &type-space) (B C))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.07"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.07</h3>
+; 
+; EVAL TEST
+; took 0.000361 secs. (360.72 microseconds) 
+
+!(assertEqualToResult (evalc (get-type-space &type-space A) &type-space) (B C))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (B C) 
+      (B C)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test get-type operation with non-valid atom, expecting 'String' type
+<span class="ansi38-013099040"
+>!(bind! &nonvalid-space (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &nonvalid-space (: f (-> Number String)))
+
+</span><span class="ansi38-255165000"
+> (: f (-> Number String))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &nonvalid-space (: 42 Number))
+
+</span><span class="ansi38-255165000"
+> (: 42 Number)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &nonvalid-space (: "test" String))
+
+</span><span class="ansi38-255165000"
+> (: "test" String)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Expecting 'String' when applying 'f' to 42
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type-space &nonvalid-space (f 42)) (String))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.08"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.08</h3>
+; 
+; EVAL TEST
+; took 0.000415 secs. (414.81 microseconds) 
+
+!(assertEqualToResult (get-type-space &nonvalid-space (f 42)) (String))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (String String) 
+      (String)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Expecting Undefined when applying 'f' to "test" (invalid argument)
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type-space &nonvalid-space (f "test")) ())
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.09"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.09</h3>
+; 
+; EVAL TEST
+; took 0.000438 secs. (437.92 microseconds) 
+
+!(assertEqualToResult (get-type-space &nonvalid-space (f "test")) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))
+</span>;;; Test car-atom with expression (A $b), expecting 'A'
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval (car-atom (A $_26352))) (A))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.10"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.10</h3>
+; 
+; EVAL TEST
+; took 0.000016 secs. (16.46 microseconds) 
+
+!(assertEqualToResult (eval (car-atom (A $_6042))) (A))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (A) 
+      (A)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test car-atom with expression ($a B), expecting '$a'
+<span class="ansi38-013099040"
+>!(assertEqualToResult (eval (car-atom ($_16886 B))) ($_16886))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.11"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.11</h3>
+; 
+; EVAL TEST
+; took 0.000023 secs. (23.12 microseconds) 
+
+!(assertEqualToResult (eval (car-atom ($_26380 B))) ($_26380))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ($_29696) 
+      ($_29696)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test car-atom with empty expression, expecting error
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqual (eval (car-atom ())) (Error (car-atom ()) "car-atom expects a non-empty expression as an argument")))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.12"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.12</h3>
+; 
+; EVAL TEST
+; took 0.000138 secs. (137.87 microseconds) 
+
+!(H-E-Fails (assertEqual (eval (car-atom ())) (Error (car-atom ()) "car-atom expects a non-empty expression as an argument")))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      ( (Error 
+          (car-atom ()) "car-atom expects a non-empty expression as an argument"))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('Error','[|]'('[|]'('car-atom','[|]'([],[])),'[|]'("car-atom expects a non-empty expression as an argument",[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(H-E-Fails (Error ('~nGot: ' ()) ('~nExpected: ' ((Error (car-atom ()) "car-atom expects a non-empty expression as an argument")))))
+</span>;;; Test car-atom with atom A, expecting error
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (eval (car-atom A)) ((Error (car-atom A) "car-atom expects a non-empty expression as an argument"))))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.13"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.13</h3>
+; 
+; EVAL TEST
+; took 0.000117 secs. (117.47 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (eval (car-atom A)) ((Error (car-atom A) "car-atom expects a non-empty expression as an argument"))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      ( (Error 
+          (car-atom A) "car-atom expects a non-empty expression as an argument"))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('Error','[|]'('[|]'('car-atom','[|]'('A',[])),'[|]'("car-atom expects a non-empty expression as an argument",[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(H-E-Fails (Error ('~nGot: ' ()) ('~nExpected: ' ((Error (car-atom A) "car-atom expects a non-empty expression as an argument")))))
+</span>;;; Test cdr-atom with expression (a b c), expecting (b c)
+<span class="ansi38-013099040"
+>!(assertEqualToResult (cdr-atom (a b c)) ((b c)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.14"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.14</h3>
+; 
+; EVAL TEST
+; took 0.000987 secs. (987.37 microseconds) 
+
+!(assertEqualToResult (cdr-atom (a b c)) ((b c)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (b c)) 
+      ( (b c))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test cdr-atom with expression ($a b $c), expecting (b $c)
+<span class="ansi38-013099040"
+>!(assertEqualToResult (cdr-atom (= b  $_1872)) ((b $_1872)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.15"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.15</h3>
+; 
+; EVAL TEST
+; took 0.000970 secs. (970.02 microseconds) 
+
+!(assertEqualToResult (cdr-atom (= b  $_16984)) ((b $_16984)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (b $_20426)) 
+      ( (b $_20444))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test cdr-atom with empty expression, expecting error
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (cdr-atom ()) ((Error (cdr-atom ()) "cdr-atom expects a non-empty expression as an argument"))))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.16"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.16</h3>
+; 
+; EVAL TEST
+; took 0.000144 secs. (143.54 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (cdr-atom ()) ((Error (cdr-atom ()) "cdr-atom expects a non-empty expression as an argument"))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      ( (Error 
+          (cdr-atom ()) "cdr-atom expects a non-empty expression as an argument"))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('Error','[|]'('[|]'('cdr-atom','[|]'([],[])),'[|]'("cdr-atom expects a non-empty expression as an argument",[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(H-E-Fails (Error ('~nGot: ' ()) ('~nExpected: ' ((Error (cdr-atom ()) "cdr-atom expects a non-empty expression as an argument")))))
+</span>;;; Test cdr-atom with atom 'a', expecting error
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (cdr-atom a) ((Error (cdr-atom a) "cdr-atom expects a non-empty expression as an argument"))))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.17"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.17</h3>
+; 
+; EVAL TEST
+; took 0.000123 secs. (123.33 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (cdr-atom a) ((Error (cdr-atom a) "cdr-atom expects a non-empty expression as an argument"))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      ( (Error 
+          (cdr-atom a) "cdr-atom expects a non-empty expression as an argument"))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('Error','[|]'('[|]'('cdr-atom','[|]'(a,[])),'[|]'("cdr-atom expects a non-empty expression as an argument",[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(H-E-Fails (Error ('~nGot: ' ()) ('~nExpected: ' ((Error (cdr-atom a) "cdr-atom expects a non-empty expression as an argument")))))
+</span>;;; Test size-atom with expression (5 4 3 2 1), expecting 5
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqual (size-atom (5 4 3 2 1)) 5))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.18"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.18</h3>
+; 
+; EVAL TEST
+; took 0.000631 secs. (630.61 microseconds) 
+
+!(H-E-Fails (assertEqual (size-atom (5 4 3 2 1)) 5))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (5) 
+      (5)]]
+</span>
+Deterministic: <span class="ansi33"
+>(H-E-Fails ())
+</span>;;; Test size-atom with empty expression, expecting 0
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (size-atom ()) (0)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.19"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.19</h3>
+; 
+; EVAL TEST
+; took 0.000529 secs. (528.86 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (size-atom ()) (0)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (0) 
+      (0)]]
+</span>
+Deterministic: <span class="ansi33"
+>(H-E-Fails ())
+</span>;;; Test min-atom with numbers (5 4 5.5), expecting 4
+<span class="ansi38-013099040"
+>!(H-E-Fails (assertEqualToResult (min-atom (5 4 5.5)) (4)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.20"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.20</h3>
+; 
+; EVAL TEST
+; took 0.000576 secs. (575.59 microseconds) 
+
+!(H-E-Fails (assertEqualToResult (min-atom (5 4 5.5)) (4)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (4) 
+      (4)]]
+</span>
+Deterministic: <span class="ansi33"
+>(H-E-Fails ())
+</span>;;; Test min-atom with empty expression, expecting error
+<span class="ansi38-013099040"
+>!(assertEqualToResult (min-atom ()) ((Error (min-atom ()) Empty expression)))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.21"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.21</h3>
+; 
+; EVAL TEST
+; took 0.000523 secs. (522.68 microseconds) 
+
+!(assertEqualToResult (min-atom ()) ((Error (min-atom ()) Empty expression)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+      ( (Error 
+          (min-atom ()) Empty expression))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test min-atom with non-number elements (3 A B 5), expecting error
+<span class="ansi38-013099040"
+>!(assertEqualToResult (min-atom (3 A B 5)) ((Error (min-atom 3 A B 5) "Only numbers are allowed in expression")))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.22"
+>;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-1.22</h3>
+error(type_error(evaluable,A/0),context(system:(is)/2,_4496))
+^  <span class="ansi1 ansi32"
+>Call: </span>(176) [user] call(min_list([3, 'A', 'B', 5]), _4108)
+^  <span class="ansi1 ansi34"
+>Unify: </span>(176) [system] call(user:min_list([3, 'A', 'B', 5]), _4108)
+<span class="ansi34"
+>% Got exception type_error(evaluable,'A'/0) (Ctx0=system:is/2, Catcher=system:catch/3)
+</span><span class="ansi34"
+>% Stack = P;HTML|<span class="pl-functor"
+>[ </span>
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>179</span>, <span class="pl-compound"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-var"
+>Min</span> <span class="pl-infix"
+>is</span> <span class="pl-compound"
+><span class="pl-functor"
+>min</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>178</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>16</span></span>)</span>, <span class="pl-compound"
+><span class="pl-atom"
+>lists</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>177</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>11</span></span>)</span>, 
+              <span class="pl-atom"
+>lists</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-int"
+>3</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>List80</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>176</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span></span>)</span></span>, <span class="pl-var"
+>Call_Kw</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>175</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-atom"
+>system</span> <span class="pl-infix"
+>:</span> <span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>/</span> <span class="pl-ellipsis"
+>...</span></span></span></span>)</span>, 
+              &lt;meta-call&gt;( <span class="pl-atom"
+>bugger</span>: ( <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>, <span class="pl-var"
+>Call_Min_list</span></span>)</span>  ,
+                                                                        <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>deterministic</span>(<span class="pl-args"
+><span class="pl-var"
+>Deterministic</span></span>)</span> , 
+                                                                        ( <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>==</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span><span class="pl-infix"
+>-&gt;</span><span class="pl-atom"
+>!</span></span>  ;
+                                                                          <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>tAt_normal</span></span><span class="pl-infix"
+>,</span><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span> ; 
+                                                                          ( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>restart_rtrace</span></span>  ,
+                                                                            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span>, <span class="pl-compound"
+><span class="pl-functor"
+>mquietly_if</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span>, <span class="pl-atom"
+>true</span></span>)</span></span>)</span> , 
+                                                                            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-atom"
+>fail</span></span>)</span>))))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>174</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>restart_rtrace</span></span>, 
+                <span class="pl-atom"
+>bugger</span>: ( <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>, <span class="pl-var"
+>Call_Min_list4</span></span>)</span>  ,
+                                                       <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>deterministic</span>(<span class="pl-args"
+><span class="pl-var"
+>Deterministic85</span></span>)</span> , 
+                                                       ( <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>==</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span><span class="pl-infix"
+>-&gt;</span><span class="pl-atom"
+>!</span></span>  ;
+                                                         <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>tAt_normal</span></span><span class="pl-infix"
+>,</span><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span> ; 
+                                                         ( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>restart_rtrace</span></span>  ,
+                                                           <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span>, <span class="pl-compound"
+><span class="pl-functor"
+>mquietly_if</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span>, <span class="pl-atom"
+>true</span></span>)</span></span>)</span> , 
+                                                           <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-atom"
+>fail</span></span>)</span>))), 
+                <span class="pl-atom"
+>bugger</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mquietly_if</span>(<span class="pl-args"
+><span class="pl-atom"
+>true</span>, <span class="pl-compound"
+><span class="pl-atom"
+>rtrace</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>tAt_normal</span></span></span>)</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>171</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>170</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>catch</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>169</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>43</span></span>)</span>, 
+              <span class="pl-atom"
+>as_tf_traceable</span>( 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>min_list</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>, <span class="pl-var"
+>Call_Min_list6</span></span>)</span>, 
+                 <span class="pl-var"
+>Traceable_Call</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>168</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>29</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>eval_call_fn</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>166</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>22</span></span>)</span>, 
+              <span class="pl-atom"
+>eval_10</span>( <span class="pl-atom"
+>=</span>, 
+                <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>497</span>, <span class="pl-atom"
+>'&amp;top'</span>, 
+                [ <span class="pl-atom"
+>'call-fn!'</span>, 
+                  <span class="pl-atom"
+>min_list</span>, 
+                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-int"
+>3</span>, <span class="pl-atom"
+>'A'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                <span class="pl-var"
+>Eval_10</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>164</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>163</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                       (  ((&#13;&#10; 
+                                                           (  ((&#13;&#10; 
+                                                               (<span class="pl-atom"
+>call</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_09</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span></span>)</span>, 
+                                                                  <span class="pl-int"
+>497</span>, 
+                                                                  <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                  [ <span class="pl-atom"
+>'call-fn!'</span>, <span class="pl-atom"
+>min_list</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-int"
+>3</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>], 
+                                                                  <span class="pl-var"
+>Call89</span>))*-&gt;
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span>, <span class="pl-compound"
+><span class="pl-functor"
+>retval</span>(<span class="pl-args"
+><span class="pl-atom"
+>fail</span></span>)</span>, <span class="pl-var"
+>Setarg_Retval</span></span>)</span>)  )));
+                                                           (( <span class="pl-atom"
+>fail</span>  ,
+                                                              <span class="pl-atom"
+>trace</span> , 
+                                                              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>eval_09</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span></span>)</span>, <span class="pl-int"
+>497</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'call-fn!'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>Call91</span></span>)</span>))  ))),
+                                                       (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+>(<span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span>)</span>)</span></span>)</span>)  )), 
+                 <span class="pl-atom"
+>user</span>: ignore(   ((&#13;&#10; 
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-avar"
+>_95620</span><span class="pl-infix"
+>==</span><span class="pl-int"
+>1</span></span><span class="pl-infix"
+>-&gt;</span><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-prefix"
+>\+</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span></span>);
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>if_t</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span>)</span>)  ))))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>162</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>423</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>trace_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>e</span>, <span class="pl-int"
+>497</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>161</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>63</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_01</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>498</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Eval_01_Garbage_collected</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>160</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>107</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_01</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Eval_01_Garbage_collected12</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>156</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_args</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>Args</span></span>)</span>, 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>metta_return</span>(<span class="pl-args"
+><span class="pl-var"
+>Return</span></span>)</span>, 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>retract</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>153</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>4</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>rtrace_on_error</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>152</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>151</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>findall_loop</span>(<span class="pl-args"
+><span class="pl-var"
+>Garbage_collected13</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Findall_loop</span>, []</span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>150</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>4</span></span>)</span>, 
+              <span class="pl-atom"
+>cleanup_bag</span>( 
+                 <span class="pl-atom"
+>'$bags'</span>: <span class="pl-atom"
+>findall_loop</span>( <span class="pl-var"
+>Kw15</span>, 
+                                                         <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>rtrace_on_error</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>Eval</span></span>)</span></span>)</span>),
+                                                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>is_returned</span>(<span class="pl-args"
+><span class="pl-var"
+>Returned</span></span>)</span>)  )),  <span class="pl-var"
+>Findall_loop16</span>, []), 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>'$bags'</span> <span class="pl-infix"
+>:</span> <span class="pl-atom"
+>'$destroy_findall_bag'</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>145</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>144</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>4</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>rtrace_on_error</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>143</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>24</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>ctimed_call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Call_Garbage_collected17</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>141</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>6</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>time_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'\n; EVAL TEST\n;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>140</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>139</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>24</span></span>)</span>, 
+              <span class="pl-atom"
+>loonit_asserts0</span>( 
+                 [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                   [ <span class="pl-atom"
+>'min-atom'</span>, 
+                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-int"
+>3</span>, <span class="pl-atom"
+>'A'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                   [ [ <span class="pl-atom"
+>'Error'</span>, 
+                       [ <span class="pl-atom"
+>'min-atom'</span>, 
+                         <span class="pl-int"
+>3</span>, 
+                         <span class="pl-atom"
+>'A'</span> | 
+                         <span class="pl-atom"
+>...</span>], 
+                       <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                 <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>equal_enough_for_test_renumbered_l</span>(<span class="pl-args"
+><span class="pl-atom"
+>strict_equals_allow_vn</span>, <span class="pl-var"
+>Strict_equals_allow_vn</span>, <span class="pl-var"
+>L</span></span>)</span>)), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>138</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>get_pass_fail</span>(<span class="pl-args"
+><span class="pl-int"
+>15</span>, <span class="pl-int"
+>6</span>, <span class="pl-int"
+>21</span></span>)</span></span>, 
+                <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>loonit_asserts0</span>( 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-atom"
+>time_eval</span>( <span class="pl-atom"
+>'\n; EVAL TEST\n;'</span>, 
+                                                          ((&#13;&#10; 
+                                                           (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>findall_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>Eval102</span></span>)</span>),
+                                                           (<span class="pl-atom"
+>as_prolog</span>( 
+                                                               [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                                   <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]], 
+                                                               <span class="pl-var"
+>Prolog</span>))  ))), 
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>equal_enough_for_test_renumbered_l</span>(<span class="pl-args"
+><span class="pl-atom"
+>strict_equals_allow_vn</span>, <span class="pl-var"
+>Strict_equals_allow_vn19</span>, <span class="pl-var"
+>L104</span></span>)</span>), 
+                <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>get_pass_fail</span>(<span class="pl-args"
+><span class="pl-var"
+>Get_pass_fail21</span>, <span class="pl-var"
+>Get_pass_fail</span>, <span class="pl-var"
+>Fail</span></span>)</span>),
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>if_t</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-avar"
+>_70070</span><span class="pl-infix"
+>==</span><span class="pl-int"
+>21</span></span>, <span class="pl-compound"
+><span class="pl-functor"
+>flag</span>(<span class="pl-args"
+><span class="pl-atom"
+>loonit_failure</span>, <span class="pl-var"
+>Loonit_failure</span>, <span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>+</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span></span>)</span>)  )))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>135</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>loonit_asserts</span>( 
+                                                       [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                         [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                           [ <span class="pl-int"
+>3</span>, 
+                                                             <span class="pl-atom"
+>'A'</span>, 
+                                                             <span class="pl-atom"
+>'B'</span> | 
+                                                             <span class="pl-atom"
+>...</span>]], 
+                                                         [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                             <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                       <span class="pl-atom"
+>time_eval</span>( <span class="pl-atom"
+>'\n; EVAL TEST\n;'</span>, 
+                                                           ((&#13;&#10; 
+                                                            (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>findall_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-atom"
+>'Number'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>Eval106</span></span>)</span>),
+                                                            (<span class="pl-atom"
+>as_prolog</span>( 
+                                                                [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                                    <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]], 
+                                                                <span class="pl-var"
+>Prolog107</span>))  ))), 
+                                                       <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>equal_enough_for_test_renumbered_l</span>(<span class="pl-args"
+><span class="pl-atom"
+>strict_equals_allow_vn</span>, <span class="pl-var"
+>Strict_equals_allow_vn23</span>, <span class="pl-var"
+>L108</span></span>)</span>), 
+                 <span class="pl-atom"
+>user</span>: ( <span class="pl-atom"
+>as_tf</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>equal_enough_for_test_renumbered_l</span>(<span class="pl-args"
+><span class="pl-atom"
+>strict_equals_allow_vn</span>, <span class="pl-var"
+>Strict_equals_allow_vn24</span>, <span class="pl-var"
+>L109</span></span>)</span></span>)</span>, 
+                                                        <span class="pl-var"
+>Tf_Notrace</span>)  ,
+                                                      <span class="pl-atom"
+>!</span> , 
+                                                      ignore(   ((&#13;&#10; 
+                                                                 (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+>(<span class="pl-compound"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span><span class="pl-infix"
+>;</span><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span></span>)</span>)</span>),
+                                                                 (<span class="pl-atom"
+>with_debug</span>( <span class="pl-atom"
+>eval_args</span>, 
+                                                                    <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>time_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Trace'</span>, (<span class="pl-compound"
+><span class="pl-compound"
+><span class="pl-functor"
+>findall_eval</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span><span class="pl-infix"
+>,</span><span class="pl-compound"
+><span class="pl-functor"
+>as_prolog</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span>)</span>))  )))))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>133</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>10</span></span>)</span>, 
+              <span class="pl-atom"
+>loonit_assert_source_tf_empty</span>( <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                <span class="pl-var"
+>Garbage_collected28</span>, <span class="pl-var"
+>Garbage_collected29</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                       <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Empty_Garbage_collected30</span>)), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>131</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>22</span></span>)</span>, 
+              <span class="pl-atom"
+>eval_10</span>( <span class="pl-atom"
+>=</span>, 
+                <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, 
+                [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                  [ <span class="pl-atom"
+>'min-atom'</span>, 
+                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-int"
+>3</span>, <span class="pl-atom"
+>'A'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>], 
+                  [ [ <span class="pl-atom"
+>'Error'</span>, 
+                      [ <span class="pl-atom"
+>'min-atom'</span>, 
+                        <span class="pl-int"
+>3</span>, 
+                        <span class="pl-atom"
+>'A'</span> | 
+                        <span class="pl-atom"
+>...</span>], 
+                      <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                <span class="pl-var"
+>Eval_10114</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>129</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>128</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                       (  ((&#13;&#10; 
+                                                           (  ((&#13;&#10; 
+                                                               (<span class="pl-atom"
+>call</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_09</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-var"
+>Eval_09</span></span>)</span>, 
+                                                                  <span class="pl-int"
+>499</span>, 
+                                                                  <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                  [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>, <span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>], 
+                                                                  <span class="pl-var"
+>Call116</span>))*-&gt;
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_setarg</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span>, <span class="pl-compound"
+><span class="pl-functor"
+>retval</span>(<span class="pl-args"
+><span class="pl-atom"
+>fail</span></span>)</span>, <span class="pl-var"
+>Setarg_Retval31</span></span>)</span>)  )));
+                                                           (( <span class="pl-atom"
+>fail</span>  ,
+                                                              <span class="pl-atom"
+>trace</span> , 
+                                                              <span class="pl-atom"
+>call</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_09</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-var"
+>Eval_09118</span></span>)</span>, 
+                                                                <span class="pl-int"
+>499</span>, 
+                                                                <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                [ <span class="pl-atom"
+>assertEqualToResult</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, <span class="pl-atom"
+>...</span>], 
+                                                                <span class="pl-var"
+>Call119</span>)))  ))),
+                                                       (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+>(<span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span>)</span>)</span></span>)</span>)  )), 
+                 <span class="pl-atom"
+>user</span>: ignore(   ((&#13;&#10; 
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-avar"
+>_171242</span><span class="pl-infix"
+>==</span><span class="pl-int"
+>1</span></span><span class="pl-infix"
+>-&gt;</span><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-prefix"
+>\+</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span></span>);
+                                                               (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>notrace</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>if_t</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span>)</span>)  ))))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>127</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>423</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>trace_eval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>e</span>, <span class="pl-int"
+>499</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>126</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>63</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>eval_01</span>(<span class="pl-args"
+><span class="pl-atom"
+>=</span>, <span class="pl-avar"
+>_20450</span>, <span class="pl-int"
+>500</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Eval_01_Garbage_collected34</span></span>)</span>), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>122</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>eval_args</span>( <span class="pl-atom"
+>=</span>, 
+                                                      _58302, <span class="pl-int"
+>500</span>, <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-var"
+>Args122</span>), 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>metta_return</span>(<span class="pl-args"
+><span class="pl-var"
+>Return123</span></span>)</span>, 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>retract</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>119</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>118</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>4</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>rtrace_on_error</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>117</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>24</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>ctimed_call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Call_Garbage_collected35</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>115</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>10</span></span>)</span>, 
+              <span class="pl-atom"
+>forall_interactive</span>( <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Garbage_collected44</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                ( <span class="pl-atom"
+>print_result_output</span>( <span class="pl-atom"
+>false</span>, 
+                    <span class="pl-var"
+>False36</span>, 
+                    <span class="pl-var"
+>Prev_result</span>, 
+                    <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>prev_result</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Empty'</span></span>)</span>, 
+                    [], 
+                    <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>contrl</span>(<span class="pl-args"
+><span class="pl-int"
+>10</span>, <span class="pl-atom"
+>inf</span>, <span class="pl-atom"
+>each</span></span>)</span>, 
+                    <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>res</span>(<span class="pl-args"
+><span class="pl-var"
+>Res126</span></span>)</span>,  <span class="pl-var"
+>Res</span>, [], <span class="pl-var"
+>Print_result_output</span>, <span class="pl-var"
+>Output</span>)  ,
+                  <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>&gt;=</span> <span class="pl-ellipsis"
+>...</span></span> <span class="pl-infix"
+>-&gt;</span> <span class="pl-atom"
+>!</span></span><span class="pl-infix"
+>;</span><span class="pl-atom"
+>true</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-avar"
+>_20648</span><span class="pl-infix"
+>=</span><span class="pl-avar"
+>_20650</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-avar"
+>_20660</span><span class="pl-infix"
+>=</span><span class="pl-avar"
+>_20662</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>==</span> <span class="pl-ellipsis"
+>...</span></span> <span class="pl-infix"
+>-&gt;</span> <span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span></span><span class="pl-infix"
+>;</span><span class="pl-atom"
+>true</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+>(<span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>;</span><span class="pl-ellipsis"
+>...</span></span>)<span class="pl-infix"
+>-&gt;</span><span class="pl-atom"
+>!</span></span><span class="pl-infix"
+>;</span><span class="pl-atom"
+>true</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-atom"
+>...</span> <span class="pl-infix"
+>-&gt;</span> <span class="pl-atom"
+>...</span></span><span class="pl-infix"
+>;</span><span class="pl-atom"
+>true</span></span> , 
+                  <span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-atom"
+>...</span> <span class="pl-infix"
+>-&gt;</span> <span class="pl-atom"
+>...</span></span><span class="pl-infix"
+>;</span><span class="pl-atom"
+>true</span></span>))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>114</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>971</span></span>)</span>, 
+              <span class="pl-atom"
+>u_do_metta_exec02</span>( <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>,      <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, [], [], <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-var"
+>Exec02</span>)), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>112</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>u_do_metta_exec01</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                      <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-atom"
+>eval_H</span>( <span class="pl-int"
+>500</span>, 
+                                                        <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                        [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                          [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                            [ <span class="pl-int"
+>3</span>, 
+                                                              <span class="pl-atom"
+>'A'</span> | 
+                                                              <span class="pl-atom"
+>...</span>]], 
+                                                          [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                              <span class="pl-atom"
+>...</span> | 
+                                                              <span class="pl-atom"
+>...</span>]]], 
+                                                        <span class="pl-var"
+>H</span>),  <span class="pl-var"
+>Eval_H</span>, [], [], <span class="pl-var"
+>Do_metta_exec01FileTopC91_c124_c93</span>, <span class="pl-var"
+>Exec01</span>), 
+                 <span class="pl-atom"
+>'$aborted'</span>, 
+                 <span class="pl-atom"
+>user</span>: fbug( <span class="pl-atom"
+>aborted</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), [
+                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                            [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                              [ <span class="pl-int"
+>3</span>, 
+                                                                <span class="pl-atom"
+>'A'</span> | 
+                                                                <span class="pl-atom"
+>...</span>]], 
+                                                            [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                                <span class="pl-atom"
+>...</span> | 
+                                                                <span class="pl-atom"
+>...</span>]]])))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>110</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>u_do_metta_exec000</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                      <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-atom"
+>eval_H</span>( <span class="pl-int"
+>500</span>, 
+                                                        <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                        [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                          [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                            [ <span class="pl-int"
+>3</span>, 
+                                                              <span class="pl-atom"
+>'A'</span> | 
+                                                              <span class="pl-atom"
+>...</span>]], 
+                                                          [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                              <span class="pl-atom"
+>...</span> | 
+                                                              <span class="pl-atom"
+>...</span>]]], 
+                                                        <span class="pl-var"
+>H131</span>),  <span class="pl-var"
+>Eval_H51</span>, [], [], <span class="pl-var"
+>Do_metta_exec000FileTopC91_c124_c93</span>, <span class="pl-var"
+>Exec000</span>), 
+                 <span class="pl-atom"
+>'$aborted'</span>, 
+                 <span class="pl-atom"
+>user</span>: fbug( <span class="pl-atom"
+>aborted</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), [
+                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                            [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                              [ <span class="pl-int"
+>3</span>, 
+                                                                <span class="pl-atom"
+>'A'</span> | 
+                                                                <span class="pl-atom"
+>...</span>]], 
+                                                            [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                                <span class="pl-atom"
+>...</span> | 
+                                                                <span class="pl-atom"
+>...</span>]]])))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>108</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>u_do_metta_exec00</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                      <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-atom"
+>eval_H</span>( <span class="pl-int"
+>500</span>, 
+                                                        <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                        [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                          [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                            [ <span class="pl-int"
+>3</span>, 
+                                                              <span class="pl-atom"
+>'A'</span> | 
+                                                              <span class="pl-atom"
+>...</span>]], 
+                                                          [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                              <span class="pl-atom"
+>...</span> | 
+                                                              <span class="pl-atom"
+>...</span>]]], 
+                                                        <span class="pl-var"
+>H133</span>),  <span class="pl-var"
+>Eval_H55</span>, [], [], <span class="pl-var"
+>Do_metta_exec00FileTopC91_c124_c93</span>, <span class="pl-var"
+>Exec00</span>), 
+                 <span class="pl-var"
+>Kw60</span>, 
+                 <span class="pl-atom"
+>user</span>: write_src( <span class="pl-atom"
+>error</span>( <span class="pl-var"
+>File</span>, 
+                                                                 file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                                 [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                   [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                                     [ <span class="pl-int"
+>3</span>, 
+                                                                       <span class="pl-atom"
+>'A'</span> | 
+                                                                       <span class="pl-atom"
+>...</span>]], 
+                                                                   [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                                       <span class="pl-atom"
+>...</span> | 
+                                                                       <span class="pl-atom"
+>...</span>]]])))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>105</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: ( <span class="pl-atom"
+>if_t</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>) =  
+                                                                                              
+                                                                                           <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>file</span>(<span class="pl-args"
+><span class="pl-var"
+>File135</span></span>)</span>, 
+                                                        <span class="pl-atom"
+>output_language</span>( <span class="pl-atom"
+>metta</span>, 
+                                                          <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>write_exec</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assertEqualToResult</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>))  ,
+                                                      notrace( <span class="pl-atom"
+>into_metta_callable</span>( <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                 [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>, <span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],  <span class="pl-avar"
+>_119176</span>, <span class="pl-var"
+>Into_metta_callableTop62</span>, <span class="pl-var"
+>Into_metta_callableTop</span>, <span class="pl-var"
+>Callable</span>)) , 
+                                                      <span class="pl-atom"
+>!</span> , 
+                                                      <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>u_do_metta_exec</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                                                           <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                                           [ <span class="pl-atom"
+>assertEqualToResult</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, <span class="pl-atom"
+>...</span>], <span class="pl-avar"
+>_33626</span>, <span class="pl-var"
+>Do_metta_execFileTop66</span>, 
+                                                                                              <span class="pl-var"
+>Do_metta_execFileTop65</span>, <span class="pl-var"
+>Do_metta_execFileTop64</span>, <span class="pl-var"
+>Do_metta_execFileTop</span>, <span class="pl-var"
+>Exec137</span>)), 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>give_up</span>(<span class="pl-args"
+><span class="pl-var"
+>Up</span></span>)</span>, 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>pp_m</span>(<span class="pl-args"
+><span class="pl-atom"
+>red</span>, <span class="pl-compound"
+><span class="pl-functor"
+>gave_up</span>(<span class="pl-args"
+><span class="pl-var"
+>Up139</span></span>)</span></span>)</span>)), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>103</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>do_metta_exec</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                      <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                      [ <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                        [ <span class="pl-atom"
+>'min-atom'</span>, 
+                                                          [ <span class="pl-int"
+>3</span>, 
+                                                            <span class="pl-atom"
+>'A'</span>, 
+                                                            <span class="pl-atom"
+>'B'</span> | 
+                                                            <span class="pl-atom"
+>...</span>]], 
+                                                        [ [ <span class="pl-atom"
+>'Error'</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'min-atom'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>, 
+                                                            <span class="pl-string"
+>"Only numbers are allowed in expression"</span>]]], 
+                                                      <span class="pl-var"
+>Exec140</span>), 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>give_up</span>(<span class="pl-args"
+><span class="pl-var"
+>Up141</span></span>)</span>, 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>write_src_uo</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>dont_give_up</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span></span>)</span></span>)</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>99</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>98</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>96</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>95</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>11</span></span>)</span>, 
+              <span class="pl-atom"
+>forall</span>( <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, 
+                <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>maybe_name_vars</span>(<span class="pl-args"
+>[]</span>)</span>),
+                                                      (  ((&#13;&#10; 
+                                                          (must_det_ll( <span class="pl-atom"
+>do_metta</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                                          <span class="pl-atom"
+>+</span>, 
+                                                                          <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                          <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>exec</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assertEqualToResult</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>, 
+                                                                          <span class="pl-var"
+>Metta_Exec</span>)) -&gt;  
+                                                                
+                                                             <span class="pl-atom"
+>true</span>);
+                                                          (  ((&#13;&#10; 
+                                                              (<span class="pl-atom"
+>trace</span>),
+                                                              (pp_m( <span class="pl-atom"
+>unknown_do_metta</span>( file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                                                                       <span class="pl-atom"
+>+</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>exec</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assertEqualToResult</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>)))  )))  )))  )))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>92</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>91</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>88</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>set_option_value</span>( <span class="pl-atom"
+>loading_file</span>, 
+                                                                                                    <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                <span class="pl-atom"
+>user</span>: ( must_det_ll( <span class="pl-atom"
+>set_exec_num</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                                    <span class="pl-int"
+>1</span>))  ,
+                                                     must_det_ll( load_answer_file( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>)) , 
+                                                     must_det_ll( <span class="pl-atom"
+>set_exec_num</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                                    <span class="pl-int"
+>0</span>)) , 
+                                                     must_det_ll( <span class="pl-atom"
+>load_metta_file_stream_fast</span>( <span class="pl-int"
+>7538</span>, 
+                                                                    <span class="pl-atom"
+>read_file_sexpr</span>,  <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, <span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-blob"
+>&lt;stream&gt;</span>))), 
+                <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>set_option_value</span>( <span class="pl-atom"
+>loading_file</span>, 
+                                                     <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>85</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>84</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>82</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>open</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                      <span class="pl-atom"
+>read</span>, 
+                                                      <span class="pl-blob"
+>&lt;stream&gt;</span>, 
+                                                      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>), 
+                 <span class="pl-atom"
+>user</span>: must_det_ll( <span class="pl-atom"
+>load_metta_file_stream</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                                   <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                   <span class="pl-blob"
+>&lt;stream&gt;</span>)), 
+                 <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>close</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;stream&gt;</span></span>)</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>81</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>80</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>78</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>working_directory</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/'</span>, 
+                                                                                                    <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity'</span>), 
+                <span class="pl-atom"
+>user</span>: must_det_ll( <span class="pl-atom"
+>setup_call_cleanup</span>( 
+                                                                   <span class="pl-atom"
+>open</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                                     <span class="pl-atom"
+>read</span>, 
+                                                                     <span class="pl-blob"
+>&lt;stream&gt;</span>, 
+                                                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>), 
+                                                                   must_det_ll( <span class="pl-atom"
+>load_metta_file_stream</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                                                                                  <span class="pl-atom"
+>'&amp;top'</span>, 
+                                                                                  <span class="pl-blob"
+>&lt;stream&gt;</span>)), 
+                                                                   <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>close</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;stream&gt;</span></span>)</span>)), 
+                <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>working_directory</span>( <span class="pl-var"
+>Home_c47_runner_c47_work_c47_metta_testsuite_c47_metta_testsuite</span>, 
+                                                     <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/'</span>))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>75</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>74</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>72</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>83</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>71</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>70</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>nb_setval</span>( <span class="pl-atom"
+>'$circular_goals'</span>, [
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>, 
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>]), 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)</span>, 
+                 <span class="pl-atom"
+>user</span>: ( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_current</span>(<span class="pl-args"
+><span class="pl-atom"
+>'$circular_goals'</span>, <span class="pl-var"
+>Current_Circular_goals</span></span>)</span>  ,
+                                                      <span class="pl-atom"
+>select</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>, 
+                                                        <span class="pl-var"
+>Include_metta1</span>, 
+                                                        <span class="pl-var"
+>Select</span>) , 
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_setval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'$circular_goals'</span>, <span class="pl-var"
+>Setval_Circular_goals71</span></span>)</span>))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>66</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>65</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>63</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>set_option_value</span>( <span class="pl-atom"
+>loading_file</span>, 
+                                                                                                    <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>), 
+                <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>must_det_ll</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>include_metta</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)</span>, 
+                <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>set_option_value</span>(<span class="pl-args"
+><span class="pl-atom"
+>loading_file</span>, []</span>)</span></span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>61</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>60</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>58</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>50</span></span>)</span>, 
+              <span class="pl-atom"
+>track_load_into_file0</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>57</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>56</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>54</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>19</span></span>)</span>, 
+              <span class="pl-atom"
+>track_load_into_file</span>( <span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, 
+                <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>)), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>53</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>52</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>49</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>48</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>5</span></span>)</span>, 
+              <span class="pl-atom"
+>setup_call_cleanup</span>( 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-atom"
+>nb_setval</span>( <span class="pl-atom"
+>'$circular_goals'</span>, [
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>]), 
+                 <span class="pl-atom"
+>user</span>: <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)</span>, 
+                 <span class="pl-atom"
+>user</span>: ( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_current</span>(<span class="pl-args"
+><span class="pl-atom"
+>'$circular_goals'</span>, <span class="pl-var"
+>Current_Circular_goals72</span></span>)</span>  ,
+                                                      <span class="pl-atom"
+>select</span>( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>, 
+                                                        <span class="pl-var"
+>Load_metta1</span>, 
+                                                        <span class="pl-var"
+>Select148</span>) , 
+                                                      <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>nb_setval</span>(<span class="pl-args"
+><span class="pl-atom"
+>'$circular_goals'</span>, <span class="pl-var"
+>Setval_Circular_goals74</span></span>)</span>))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>42</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>load_metta_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>, 
+                <span class="pl-var"
+>Kw76</span>, 
+                <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-functor"
+>always_rethrow</span>(<span class="pl-args"
+><span class="pl-var"
+>Rethrow</span></span>)</span><span class="pl-infix"
+>-&gt;</span><span class="pl-compound"
+><span class="pl-functor"
+>throw</span>(<span class="pl-args"
+><span class="pl-var"
+>Throw</span></span>)</span></span>);
+                                                      (<span class="pl-atom"
+>pp_m_m_red</span>( 'red', 
+                                                           ((&#13;&#10; 
+                                                            (<span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>load_metta_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)in
+                                                            (<span class="pl-var"
+>In_Kw75</span>)  ))))  )))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>39</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>once</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>38</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>md</span>(<span class="pl-args"
+><span class="pl-atom"
+>once</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>36</span>, <span class="pl-compound"
+><span class="pl-functor"
+>foreign</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span> <span class="pl-infix"
+>:</span> <span class="pl-ellipsis"
+>...</span></span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>'&lt;meta-call&gt;'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>35</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( <span class="pl-atom"
+>user</span>: ( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>must_det_ll</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>not_compatio</span>(<span class="pl-args"
+>(<span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span>)</span>)</span></span>)</span>  ,
+                                                                                       must_det_ll( catch_red( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>load_metta_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)) , 
+                                                                                       <span class="pl-atom"
+>!</span> , 
+                                                                                       <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>must_det_ll</span>(<span class="pl-args"
+><span class="pl-atom"
+>flush_output</span></span>)</span>), 
+                <span class="pl-atom"
+>'$aborted'</span>, 
+                <span class="pl-atom"
+>user</span>: fbug( <span class="pl-atom"
+>aborted</span>( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>load_metta_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>, 
+                                                           ( <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>must_det_ll</span>(<span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>not_compatio</span>(<span class="pl-args"
+>(<span class="pl-compound"
+><span class="pl-ellipsis"
+>...</span><span class="pl-infix"
+>,</span><span class="pl-ellipsis"
+>...</span></span>)</span>)</span></span>)</span>  ,
+                                                             must_det_ll( catch_red( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>load_metta_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span></span>)) , 
+                                                             <span class="pl-atom"
+>!</span> , 
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>must_det_ll</span>(<span class="pl-args"
+><span class="pl-atom"
+>flush_output</span></span>)</span>))))), 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>32</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>63</span></span>)</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>cmdline_load_file</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span></span>)</span>), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>30</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>28</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>35</span></span>)</span>, 
+              <span class="pl-atom"
+>cmdline_load_metta</span>( <span class="pl-atom"
+>execute</span>, 
+                <span class="pl-atom"
+>'&amp;self'</span>, 
+                [ <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta'</span>, <span class="pl-atom"
+>'--halt=true'</span>, <span class="pl-atom"
+>'--stdin=tty'</span>, <span class="pl-atom"
+>'--stdout=tty'</span>, 
+                  <span class="pl-atom"
+>'--stderr=tty'</span>])), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>21</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>17</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>do_cmdline_load_metta</span>(<span class="pl-args"
+><span class="pl-atom"
+>execute</span>, <span class="pl-atom"
+>'&amp;self'</span>, <span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-atom"
+>frame</span>( <span class="pl-int"
+>18</span>, 
+              <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>2</span></span>)</span>, 
+              <span class="pl-atom"
+>catch</span>( <span class="pl-compound pl-level-0"
+><span class="pl-atom"
+>user</span><span class="pl-infix"
+>:</span><span class="pl-atom"
+>run_cmd_args</span></span>, 
+                <span class="pl-var"
+>Kw78</span>, 
+                <span class="pl-atom"
+>user</span>:   ((&#13;&#10; 
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-compound"
+><span class="pl-functor"
+>always_rethrow</span>(<span class="pl-args"
+><span class="pl-var"
+>Rethrow153</span></span>)</span><span class="pl-infix"
+>-&gt;</span><span class="pl-compound"
+><span class="pl-functor"
+>throw</span>(<span class="pl-args"
+><span class="pl-var"
+>Throw154</span></span>)</span></span>);
+                                                      (<span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>pp_m_m_red</span>(<span class="pl-args"
+><span class="pl-atom"
+>red</span>, <span class="pl-compound"
+><span class="pl-atom"
+>run_cmd_args</span> <span class="pl-infix"
+>in</span> <span class="pl-var"
+>Run_cmd_args</span></span></span>)</span>)  )))), 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>15</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>6</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>if_or_else</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span>, <span class="pl-atom"
+>true</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>13</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>8</span></span>)</span>, <span class="pl-compound"
+><span class="pl-atom"
+>apply</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>maplist_</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>9</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>19</span></span>)</span>, <span class="pl-compound"
+><span class="pl-atom"
+>apply</span><span class="pl-infix"
+>:</span><span class="pl-compound"
+><span class="pl-functor"
+>maplist_</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>5</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>3</span></span>)</span>, <span class="pl-compound"
+><span class="pl-functor"
+>ignore</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&lt;garbage_collected&gt;'</span></span>)</span></span>)</span>, 
+            <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>frame</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span>, <span class="pl-compound"
+><span class="pl-functor"
+>clause</span>(<span class="pl-args"
+><span class="pl-blob"
+>&lt;clause&gt;</span>, <span class="pl-int"
+>54</span></span>)</span>, <span class="pl-atom"
+>do_loon</span></span>)</span>]
+</span>^  <span class="ansi1 ansi35"
+>Exception: </span>(176) [system] call(user:min_list([3, 'A', 'B', 5]), _4098) ? 
+Script done on 2025-02-15 18:41:08+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_1.metta" --halt=true\033[0m

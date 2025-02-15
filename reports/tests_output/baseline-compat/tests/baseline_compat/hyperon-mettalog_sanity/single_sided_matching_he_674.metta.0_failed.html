@@ -28,46 +28,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:19:15+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:45:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] ]
 ;;; Test File: Single-Sided Matching in MeTTa
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/674
@@ -83,19 +45,19 @@ Script started on 2025-02-14 04:19:15+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: single-side-match (-> Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (single-side-match $expr)  
-  (grounded-single-side-match $expr))
+> (= (single-side-match $_13166)  
+  (grounded-single-side-match $_13166))
 </span>;;; Define assertSingleSideEqualToResult for testing single-sided matching
 <span class="ansi38-255165000"
 > (: assertSingleSideEqualToResult (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertSingleSideEqualToResult $expr $expected)  
-  (let $result 
-    (single-side-match $expr) 
+> (= (assertSingleSideEqualToResult $_20350 $_20356)  
+  (let $_20374 
+    (single-side-match $_20350) 
     (if 
-      (== $result $expected) 
+      (== $_20374 $_20356) 
       (Success) 
-      (Error (assertSingleSideEqualToResult $expr $expected $result)))))
+      (Error (assertSingleSideEqualToResult $_20350 $_20356 $_20374)))))
 </span>;;; Example 1: Current Double-Sided Matching
 ;;; ----------------------------------------
 ;;; Define a reduction rule for SKI combinatory logic
@@ -103,16 +65,16 @@ Script started on 2025-02-14 04:19:15+00:00 [COMMAND="timeout --preserve-status 
 > (= ((S K) K)  I)
 </span>;;; Test: Matching ((S K) $x) with double-sided unification
 <span class="ansi38-013099040"
->!(assertEqualToResult ((S K) $x) (I))
+>!(assertEqualToResult ((S K) $_25358) (I))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.16 milliseconds) 
+; took 0.000993 secs. (993.09 microseconds) 
 
-!(assertEqualToResult ((S K) $x) (I))
+!(assertEqualToResult ((S K) $_4962) (I))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -129,7 +91,7 @@ Deterministic: <span class="ansi33"
 ;;; --------------------------------------------------
 ;;; Test: Matching ((S K) $x) with single-sided unification (using single-side-match)
 <span class="ansi38-013099040"
->!(assertSingleSideEqualToResult ((S K) $x) ((S K) $x))
+>!(assertSingleSideEqualToResult ((S K) $_15716) ((S K) $_15716))
 
 </span>
 N(1): <span class="ansi33"
@@ -144,17 +106,18 @@ N(2): <span class="ansi33"
 ;;; ----------------------------------------
 ;;; Define a reduction rule for a symmetry operator
 <span class="ansi38-255165000"
-> (= (: (Sym (: (Sym (: $x $a)) $b)) $c)  
-  (: $x $a))
+> (= (: (Sym (: (Sym (: $_20928 $_20934)) $_20940)) $_20946)  
+  (: $_20928 $_20934))
 </span>;;; Test: Current double-sided behavior leads to infinite recursion
 <span class="ansi38-013099040"
->!(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
+>!(assertEqualToResult (: (Sym (: (Sym (: $_24230 $_24236)) $_24242)) $_24248) (InfiniteRecursion))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 
-Script done on 2025-02-14 04:19:55+00:00 [COMMAND_EXIT_CODE="143"]
+[needed_subst_args (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: (Sym (: $_261222 $_261228)) $_261234)) $_261240)) $_261246)) $_261252)) $_261258)
+Script done on 2025-02-15 18:45:49+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

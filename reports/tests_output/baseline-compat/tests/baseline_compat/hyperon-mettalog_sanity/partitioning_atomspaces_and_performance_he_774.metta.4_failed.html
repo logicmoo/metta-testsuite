@@ -59,46 +59,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:15:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:42:54+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] ]
 ;;; Test File: Partitioning Atomspaces and Performance in MeTTa
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/774
@@ -113,23 +75,23 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Define functions for managing user-specific knowledge bases
 <span class="ansi38-255165000"
-> (= (add-user $name)  
-  (let $space 
+> (= (add-user $_30762)  
+  (let $_2742 
     (new-space) 
     (add-atom &test-space 
-      (User $name $space))))
+      (User $_2724 $_2742))))
 </span><span class="ansi38-255165000"
-> (= (write-user $name $data)  
-  (let $space 
+> (= (write-user $_7756 $_7762)  
+  (let $_7780 
     (match &test-space 
-      (User $name $s) $s) 
-    (add-atom $space $data)))
+      (User $_7756 $_7822) $_7822) 
+    (add-atom $_7780 $_7762)))
 </span><span class="ansi38-255165000"
-> (= (read-user $name $query $template)  
-  (let $space 
+> (= (read-user $_12616 $_12622 $_12628)  
+  (let $_12646 
     (match &test-space 
-      (User $name $s) $s) 
-    (match $space $query $template)))
+      (User $_12616 $_12688) $_12688) 
+    (match $_12646 $_12622 $_12628)))
 </span>;;; Test 1: Add user-specific knowledge bases
 <span class="ansi38-255165009"
 >;; In file as:  
@@ -143,10 +105,10 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.01"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.01</h3>
 <span class="ansi38-255165000"
-> (User Alice space_2)
+> (User Alice [Space ()])
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (3.03 milliseconds) 
+; took 0.002 secs. (1.70 milliseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
@@ -170,10 +132,10 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.02"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.02</h3>
 <span class="ansi38-255165000"
-> (User Bob space_3)
+> (User Bob [Space ()])
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.45 milliseconds) 
+; took 0.001 secs. (1.48 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
@@ -187,16 +149,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify user knowledge bases exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
+>!(assertEqualToResult (match &test-space (User $_19532 $_19538) $_19532) (Alice Bob))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000257 secs. (257.41 microseconds) 
+; took 0.000265 secs. (264.67 microseconds) 
 
-!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
+!(assertEqualToResult (match &test-space (User $_28820 $_28826) $_28820) (Alice Bob))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -222,7 +184,7 @@ Deterministic: <span class="ansi33"
 > (Age 20)
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.57 milliseconds) 
+; took 0.002 secs. (2.31 milliseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -249,7 +211,7 @@ Deterministic: <span class="ansi33"
 > (Age 22)
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.53 milliseconds) 
+; took 0.002 secs. (2.25 milliseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -263,75 +225,73 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data written to Alice's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
+>!(assertEqualToResult (read-user Alice (Age $_28950) (Age Alice $_28950)) (Age Alice 20))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.73 milliseconds) 
+; took 0.002 secs. (2.24 milliseconds) 
 
-!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
+!(assertEqualToResult (read-user Alice (Age $_23718) (Age Alice $_23718)) (Age Alice 20))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Age Alice 20)) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (Age Alice 20)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Age','[|]'('Alice','[|]'(20,[]))),[]),'[|]'('Age','[|]'('Alice','[|]'(20,[]))))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('Age','[|]'('Alice','[|]'(20,[]))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Age Alice 20))) ('~nExpected: ' (Age Alice 20)))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (Age Alice 20)))
 </span>;;; Test: Verify data written to Bob's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
+>!(assertEqualToResult (read-user Bob (Age $_6166) (Age Bob $_6166)) (Age Bob 22))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.79 milliseconds) 
+; took 0.002 secs. (2.23 milliseconds) 
 
-!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
+!(assertEqualToResult (read-user Bob (Age $_4090) (Age Bob $_4090)) (Age Bob 22))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Age Bob 22)) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (Age Bob 22)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Age','[|]'('Bob','[|]'(22,[]))),[]),'[|]'('Age','[|]'('Bob','[|]'(22,[]))))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('Age','[|]'('Bob','[|]'(22,[]))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Age Bob 22))) ('~nExpected: ' (Age Bob 22)))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (Age Bob 22)))
 </span>;;; Example: Manage Atomspaces for Thematic Partitioning
 ;;; ----------------------------------------------------
 ;;; Define functions to add, retrieve, and manage partitioned knowledge
 <span class="ansi38-255165000"
-> (= (add-partition $name)  
-  (let $space 
+> (= (add-partition $_16598)  
+  (let $_16616 
     (new-space) 
     (add-atom &test-space 
-      (Partition $name $space))))
+      (Partition $_16598 $_16616))))
 </span><span class="ansi38-255165000"
-> (= (write-partition $name $data)  
-  (let $space 
+> (= (write-partition $_21094 $_21100)  
+  (let $_21118 
     (match &test-space 
-      (Partition $name $s) $s) 
-    (add-atom $space $data)))
+      (Partition $_21094 $_21160) $_21160) 
+    (add-atom $_21118 $_21100)))
 </span><span class="ansi38-255165000"
-> (= (read-partition $name $query $template)  
-  (let $space 
+> (= (read-partition $_25958 $_25964 $_25970)  
+  (let $_25988 
     (match &test-space 
-      (Partition $name $s) $s) 
-    (match $space $query $template)))
+      (Partition $_25958 $_26030) $_26030) 
+    (match $_25988 $_25964 $_25970)))
 </span>;;; Test 3: Add partitioned knowledge bases
 <span class="ansi38-013099040"
 >!(add-partition People)
 
 </span><span class="ansi38-255165000"
-> (Partition People space_4)
+> (Partition People [Space ()])
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -339,22 +299,22 @@ Deterministic: <span class="ansi33"
 >!(add-partition Games)
 
 </span><span class="ansi38-255165000"
-> (Partition Games space_5)
+> (Partition Games [Space ()])
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify partitions exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
+>!(assertEqualToResult (match &test-space (Partition $_16044 $_16050) $_16044) (People Games))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000245 secs. (244.56 microseconds) 
+; took 0.000264 secs. (263.64 microseconds) 
 
-!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
+!(assertEqualToResult (match &test-space (Partition $_25336 $_25342) $_25336) (People Games))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -383,48 +343,46 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data in People partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
+>!(assertEqualToResult (read-partition People (Friend $_5572 $_5578) (Friend $_5572 $_5578)) (Friend Bob Alice))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.64 milliseconds) 
+; took 0.002 secs. (2.27 milliseconds) 
 
-!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
+!(assertEqualToResult (read-partition People (Friend $_30808 $_30814) (Friend $_30808 $_30814)) (Friend Bob Alice))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Friend Bob Alice)) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (Friend Bob Alice)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Friend','[|]'('Bob','[|]'('Alice',[]))),[]),'[|]'('Friend','[|]'('Bob','[|]'('Alice',[]))))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('Friend','[|]'('Bob','[|]'('Alice',[]))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (Friend Bob Alice)))
 </span>;;; Test: Verify data in Games partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
+>!(assertEqualToResult (read-partition Games (GameRole $_12292) (GameRole $_12292)) (GameRole Predator))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.57 milliseconds) 
+; took 0.002 secs. (2.29 milliseconds) 
 
-!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
+!(assertEqualToResult (read-partition Games (GameRole $_8954) (GameRole $_8954)) (GameRole Predator))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (GameRole Predator)) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (GameRole Predator)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('GameRole','[|]'('Predator',[])),[]),'[|]'('GameRole','[|]'('Predator',[])))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('GameRole','[|]'('Predator',[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((GameRole Predator))) ('~nExpected: ' (GameRole Predator)))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (GameRole Predator)))
 </span><span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -440,17 +398,17 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ((Age Alice 20))) ('~nExpected: ' (Age Alice 20)))]
-[(Error ('~nGot: ' ((Age Bob 22))) ('~nExpected: ' (Age Bob 22)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (Age Alice 20)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (Age Bob 22)))]
 [()]
 [()]
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))]
-[(Error ('~nGot: ' ((GameRole Predator))) ('~nExpected: ' (GameRole Predator)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (Friend Bob Alice)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (GameRole Predator)))]
 
-Script done on 2025-02-14 04:15:36+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:42:55+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -32,46 +32,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:17:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:44:58+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/recursive_tuple_list_perf_he_394.metta] ]
 
 [stream_error [ : 31 [ : 129 1260 ] ] [syntax_error [unexpected_char )] "Unexpected end character: ')'"]]
@@ -97,11 +59,11 @@ Script started on 2025-02-14 04:17:46+00:00 [COMMAND="timeout --preserve-status 
 ;;; Example 1: TupleCount Performance
 ;;; ---------------------------------
 <span class="ansi38-255165000"
-> (= (TupleCount $tuple)  
+> (= (TupleCount $_9892)  
   (if 
-    (== $tuple ()) 0 
+    (== $_9892 ()) 0 
     (+ 1 
-      (TupleCount (cdr-atom $tuple)))))
+      (TupleCount (cdr-atom $_9892)))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (TupleCount (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)) (30))
 
@@ -110,7 +72,7 @@ Script started on 2025-02-14 04:17:46+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.01</h3>
 ; 
 ; EVAL TEST
-; took 0.050 secs. (50.33 milliseconds) 
+; took 0.043 secs. (43.29 milliseconds) 
 
 !(assertEqualToResult (TupleCount (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)) (30))
 
@@ -129,14 +91,14 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (= (ListCount Nil)  0)
 </span><span class="ansi38-255165000"
-> (= (ListCount (Cons $head $tail))  
+> (= (ListCount (Cons $_162120 $_162126))  
   (+ 1 
-    (ListCount $tail)))
+    (ListCount $_162126)))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (ListCount (Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 (Cons 7 (Cons 8 (Cons 9 (Cons 10 (Cons 11 (Cons 12 (Cons 13 (Cons 14 (Cons 15 (Cons 16 (Cons 17 (Cons 18 (Cons 19 (Cons 20 (Cons 21 (Cons 22 (Cons 23 (Cons 24 (Cons 25 (Cons 26 (Cons 27 (Cons 28 (Cons 29 (Cons 30 Nil))))))))))))))))))))))))))))))))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >(assertEqualToResult 30)
 </span><span class="ansi38-255165000"
 > (30)
@@ -145,12 +107,12 @@ N(1): <span class="ansi33"
 ;;; Example 3: BuildList Performance
 ;;; --------------------------------
 <span class="ansi38-255165000"
-> (= (BuildList $w $c)  
+> (= (BuildList $_150844 $_150850)  
   (if 
-    (> $c 0) 
+    (> $_150850 0) 
     (BuildList 
-      (Cons 1 $w) 
-      (- $c 1)) $w))
+      (Cons 1 $_150844) 
+      (- $_150850 1)) $_150844))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (BuildList Nil 30) ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil))))))))))))))))))))))))))))))))
 
@@ -159,7 +121,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.02</h3>
 ; 
 ; EVAL TEST
-; took 2.72 seconds.
+; took 2.62 seconds.
 
 !(assertEqualToResult (BuildList Nil 30) ((Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 (Cons 1 Nil))))))))))))))))))))))))))))))))
 
@@ -234,12 +196,12 @@ Deterministic: <span class="ansi33"
 ;;; Example 4: BuildTuple Performance
 ;;; ---------------------------------
 <span class="ansi38-255165000"
-> (= (BuildTuple $w $c)  
+> (= (BuildTuple $_144096 $_144102)  
   (if 
-    (> $c 0) 
+    (> $_144102 0) 
     (BuildTuple 
-      (1 $w) 
-      (- $c 1)) $w))
+      (1 $_144096) 
+      (- $_144102 1)) $_144096))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (BuildTuple () 30) (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
 
@@ -248,7 +210,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RECURSIVE-TUPLE-LIST-PERF-HE-394.03</h3>
 ; 
 ; EVAL TEST
-; took 0.864 secs. (863.59 milliseconds) 
+; took 0.489 secs. (488.88 milliseconds) 
 
 !(assertEqualToResult (BuildTuple () 30) (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
 
@@ -280,7 +242,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' ((1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 (1 ())))))))))))))))))))))))))))))))) ('~nExpected: ' (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)))]
 
-Script done on 2025-02-14 04:17:58+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:45:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

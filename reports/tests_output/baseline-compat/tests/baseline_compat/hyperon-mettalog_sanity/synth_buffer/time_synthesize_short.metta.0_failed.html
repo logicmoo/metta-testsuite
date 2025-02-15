@@ -48,46 +48,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:23:31+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/time_synthesize_short.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:47:19+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/time_synthesize_short.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/time_synthesize_short.metta] ]
 ;;;; Import modules
 ;;;; Define Nat
@@ -129,67 +91,67 @@ Script started on 2025-02-14 04:23:31+00:00 [COMMAND="timeout --preserve-status 
 ;;;; TODO: recurse over curried rules instead of duplicating code over
 ;;;; tuples.
 <span class="ansi38-255165000"
-> (: synthesize (-> $a (-> $kt) (-> $rt) Nat $a))
+> (: synthesize (-> $_15218 (-> $_15236) (-> $_15254) Nat $_15218))
 </span>;;;; Nullary rule (axiom)
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb $depth)  
-  (let $query 
-    ($kb) $query))
+> (= (synthesize $_19596 $_19602 $_19608 $_19614)  
+  (let $_19596 
+    ($_19602) $_19596))
 </span>;;;; Unary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb (S $k))  
+> (= (synthesize $_25560 $_25566 $_25572 (S $_25590))  
   (let* 
-    ( ( (: $ructor 
-          (-> $premise $conclusion)) ($rb)) 
+    ( ( (: $_25632 
+          (-> $_25650 $_25656)) ($_25572)) 
       ( (: 
-          ($ructor $proof) $conclusion) $query) 
-      ( (: $proof $premise) (synthesize (: $proof $premise) $kb $rb $k))) $query))
+          ($_25632 $_25704) $_25656) $_25560) 
+      ( (: $_3462 $_3408) (synthesize (: $_3462 $_3408) $_3324 $_3330 $_3348))) $_3318))
 </span>;;;; Binary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb (S $k))  
+> (= (synthesize $_10634 $_10640 $_10646 (S $_10664))  
   (let* 
-    ( ( (: $ructor 
-          (-> $premise1 $premise2 $conclusion)) ($rb)) 
+    ( ( (: $_10706 
+          (-> $_10724 $_10730 $_10736)) ($_10646)) 
       ( (: 
-          ($ructor $proof1 $proof2) $conclusion) $query) 
-      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
-      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k))) $query))
+          (= $_10784  $_10790) $_10736) $_10634) 
+      ( (: $_10784 $_10724) (synthesize (: $_10784 $_10724) $_10640 $_10646 $_10664)) 
+      ( (: $_10790 $_10730) (synthesize (: $_10790 $_10730) $_10640 $_10646 $_10664))) $_10634))
 </span>;;;; Trinary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb (S $k))  
+> (= (synthesize $_18194 $_18200 $_18206 (S $_18224))  
   (let* 
-    ( ( (: $ructor 
-          (-> $premise1 $premise2 $premise3 $conclusion)) ($rb)) 
+    ( ( (: $_18266 
+          (-> $_18284 $_18290 $_18296 $_18302)) ($_18206)) 
       ( (: 
-          ($ructor $proof1 $proof2 $proof3) $conclusion) $query) 
-      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
-      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
-      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k))) $query))
+          ($_18266 $_18350 $_18356 $_18362) $_18302) $_18194) 
+      ( (: $_18350 $_18284) (synthesize (: $_18350 $_18284) $_18200 $_18206 $_18224)) 
+      ( (: $_18356 $_18290) (synthesize (: $_18356 $_18290) $_18200 $_18206 $_18224)) 
+      ( (: $_18362 $_18296) (synthesize (: $_18362 $_18296) $_18200 $_18206 $_18224))) $_18194))
 </span>;;;; Quaternary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb (S $k))  
+> (= (synthesize $_26610 $_26616 $_26622 (S $_26640))  
   (let* 
-    ( ( (: $ructor 
-          (-> $premise1 $premise2 $premise3 $premise4 $conclusion)) ($rb)) 
+    ( ( (: $_26682 
+          (-> $_26700 $_26706 $_26712 $_26718 $_26724)) ($_26622)) 
       ( (: 
-          ($ructor $proof1 $proof2 $proof3 $proof4) $conclusion) $query) 
-      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
-      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
-      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
-      ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k))) $query))
+          ($_4240 $_4330 $_4336 $_4342 $_4348) $_4282) $_4168) 
+      ( (: $_4330 $_4258) (synthesize (: $_4330 $_4258) $_4174 $_4180 $_4198)) 
+      ( (: $_4336 $_4264) (synthesize (: $_4336 $_4264) $_4174 $_4180 $_4198)) 
+      ( (: $_4342 $_4270) (synthesize (: $_4342 $_4270) $_4174 $_4180 $_4198)) 
+      ( (: $_4348 $_4276) (synthesize (: $_4348 $_4276) $_4174 $_4180 $_4198))) $_4168))
 </span>;;;; Quintenary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $rb (S $k))  
+> (= (synthesize $_14110 $_14116 $_14122 (S $_14140))  
   (let* 
-    ( ( (: $ructor 
-          (-> $premise1 $premise2 $premise3 $premise4 $premise5 $conclusion)) ($rb)) 
+    ( ( (: $_14182 
+          (-> $_14200 $_14206 $_14212 $_14218 $_14224 $_14230)) ($_14122)) 
       ( (: 
-          ($ructor $proof1 $proof2 $proof3 $proof4 $proof5) $conclusion) $query) 
-      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
-      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
-      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
-      ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k)) 
-      ( (: $proof5 $premise5) (synthesize (: $proof5 $premise5) $kb $rb $k))) $query))
+          ($_14182 $_14278 $_14284 $_14290 $_14296 $_14302) $_14230) $_14110) 
+      ( (: $_14278 $_14200) (synthesize (: $_14278 $_14200) $_14116 $_14122 $_14140)) 
+      ( (: $_14284 $_14206) (synthesize (: $_14284 $_14206) $_14116 $_14122 $_14140)) 
+      ( (: $_14290 $_14212) (synthesize (: $_14290 $_14212) $_14116 $_14122 $_14140)) 
+      ( (: $_14296 $_14218) (synthesize (: $_14296 $_14218) $_14116 $_14122 $_14140)) 
+      ( (: $_14302 $_14224) (synthesize (: $_14302 $_14224) $_14116 $_14122 $_14140))) $_14110))
 </span><span class="ansi38-255165000"
 > (: kb (-> Atom))
 </span><span class="ansi38-255165000"
@@ -216,7 +178,7 @@ Script started on 2025-02-14 04:23:31+00:00 [COMMAND="timeout --preserve-status 
 >;; SYNTH-BUFFER.TIME-SYNTHESIZE-SHORT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (15.60 milliseconds) 
+; took 0.011 secs. (10.72 milliseconds) 
 
 !(assertEqualToResult (kb) ((: abc (Implication (AndLink A B) C)) (: a A) (: a B) (: cde (Implication (OrLink C D) E))))
 
@@ -248,57 +210,57 @@ Deterministic: <span class="ansi33"
 > (= (rb)  
   (: ModusPonens 
     (-> 
-      (ImplicationLink $p $q) $p $q)))
+      (ImplicationLink $_6716 $_6722) $_6716 $_6722)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: Deduction 
     (-> 
-      (ImplicationLink $p $q) 
-      (ImplicationLink $q $r) 
-      (ImplicationLink $p $r))))
+      (ImplicationLink $_10440 $_10446) 
+      (ImplicationLink $_10446 $_10470) 
+      (ImplicationLink $_10440 $_10470))))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
-      (OrLink $p $q) 
-      (NotLink $p) $q)))
+      (OrLink $_13720 $_13726) 
+      (NotLink $_13720) $_13726)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
-      (OrLink $p $q) 
-      (NotLink $q) $p)))
+      (OrLink $_17036 $_17042) 
+      (NotLink $_17042) $_17036)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionIntroduction 
-    (-> $p $q 
-      (AndLink $p $q))))
+    (-> $_20316 $_20322 
+      (AndLink $_20316 $_20322))))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationLeft 
     (-> 
-      (AndLink $p $q) $p)))
+      (AndLink $_23616 $_23622) $_23616)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationRight 
     (-> 
-      (AndLink $p $q) $q)))
+      (AndLink $_26910 $_26916) $_26916)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctionIntroduction 
-    (-> $p $q 
-      (OrLink $p $q))))
+    (-> $_30204 $_30210 
+      (OrLink $_30204 $_30210))))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (synthesize (: $term $type) kb rb (S Z)) ((: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: a A) (: a B) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B)) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B))))
+>!(assertEqualToResult (synthesize (: $_42552 $_42558) kb rb (S Z)) ((: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: a A) (: a B) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B)) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B))))
 
 </span>
 ;<h3 id="SYNTH-BUFFER.TIME-SYNTHESIZE-SHORT.02"
 >;; SYNTH-BUFFER.TIME-SYNTHESIZE-SHORT.02</h3>
 ; 
 ; EVAL TEST
-; took 2.46 seconds.
+; took 1.620 secs. (1619.71 milliseconds) 
 
-!(assertEqualToResult (synthesize (: $term $type) kb rb (S Z)) ((: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: a A) (: a B) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B)) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B))))
+!(assertEqualToResult (synthesize (: $_176978 $_176984) kb rb (S Z)) ((: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: a A) (: a B) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B)) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -643,16 +605,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (synthesize (: $term $type) kb rb Z) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E))))
+>!(assertEqualToResult (synthesize (: $_63490 $_63496) kb rb Z) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E))))
 
 </span>
 ;<h3 id="SYNTH-BUFFER.TIME-SYNTHESIZE-SHORT.03"
 >;; SYNTH-BUFFER.TIME-SYNTHESIZE-SHORT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.046 secs. (46.20 milliseconds) 
+; took 0.031 secs. (31.28 milliseconds) 
 
-!(assertEqualToResult (synthesize (: $term $type) kb rb Z) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E))))
+!(assertEqualToResult (synthesize (: $_39996 $_40002) kb rb Z) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -689,7 +651,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-14 04:23:42+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:47:21+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

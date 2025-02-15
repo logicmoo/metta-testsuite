@@ -28,46 +28,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:20:56+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:42:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta] ]
 ;;; Test File: Non-Deterministic Functions and Referential Transparency in MeTTa
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/744
@@ -88,13 +50,13 @@ Script started on 2025-01-22 17:20:56+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.049 secs. (49.01 milliseconds) 
+; took 0.002 secs. (2.09 milliseconds) 
 
 !(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (d) 
       (d)]]
 </span>
@@ -105,9 +67,9 @@ Deterministic: <span class="ansi33"
 ;;; Wrapping the logic in a function
 ;;; Define an untyped function `test6`
 <span class="ansi38-255165000"
-> (= (test6 $set $subset)  
-  (subtraction $subset 
-    (intersection $set $subset)))
+> (= (test6 $_2536 $_2542)  
+  (subtraction $_2542 
+    (intersection $_2536 $_2542)))
 </span>;;; Test: Call the untyped function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
@@ -117,18 +79,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.02</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.84 milliseconds) 
+; took 0.001 secs. (1.09 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (b d a d a b d) 
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       (b d a d a b d)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'(b,'[|]'(d,'[|]'(a,'[|]'(d,'[|]'(a,'[|]'(b,'[|]'(d,[]))))))))
+
 Deterministic: <span class="ansi33"
->()
+>(Error ('~nGot: ' ()) ('~nExpected: ' (b d a d a b d)))
 </span>;;; Explanation:
 ;;; When `test6` is called without a type declaration, its arguments are evaluated element-wise
 ;;; due to the semantics of non-determinism in MeTTa. The function is applied to all combinations
@@ -139,9 +101,9 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (: test6 (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (test6 $set $subset)  
-  (subtraction $subset 
-    (intersection $set $subset)))
+> (= (test6 $_5262 $_5268)  
+  (subtraction $_5268 
+    (intersection $_5262 $_5268)))
 </span>;;; Test: Call the typed function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
@@ -151,17 +113,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.91 milliseconds) 
+; took 0.002 secs. (2.25 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test 
-      (b b d d a a d d a a b b d d) 
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (d) 
       (d)]]
 </span>
-equal_enough_for_test('[|]'(b,'[|]'(b,'[|]'(d,'[|]'(d,'[|]'(a,'[|]'(a,'[|]'(d,'[|]'(d,'[|]'(a,'[|]'(a,'[|]'(b,'[|]'(b,'[|]'(d,'[|]'(d,[])))))))))))))),'[|]'(d,[]))[error [error [domain_error py_term [Error [got (b b d d a a d d a a b b d d)] [expected (d)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta] (assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))];;; Explanation:
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Explanation:
 ;;; By typing the function, the arguments are not evaluated prematurely. Instead, the sets are passed
 ;;; as a whole to the function, resulting in the correct and referentially transparent behavior.
 ;;; Summary:
@@ -178,10 +142,10 @@ equal_enough_for_test('[|]'(b,'[|]'(b,'[|]'(d,'[|]'(d,'[|]'(a,'[|]'(a,'[|]'(d,'[
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (b d a d a b d)))]
 [()]
-[
 
-Script done on 2025-01-22 17:21:04+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:42:50+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

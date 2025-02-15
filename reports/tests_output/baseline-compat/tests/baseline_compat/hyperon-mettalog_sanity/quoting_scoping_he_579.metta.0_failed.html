@@ -29,46 +29,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:16:25+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:43:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] ]
 ;;; Test File: Quoting/Scoping Mechanism in MeTTa
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/579
@@ -79,16 +41,16 @@ Script started on 2025-02-14 04:16:25+00:00 [COMMAND="timeout --preserve-status 
 ;;; Example 1: Basic Quoting Issue
 ;;; --------------------------------
 <span class="ansi38-013099040"
->!(assertEqualToResult (let (quote $x) (quote A) $x) (A))
+>!(assertEqualToResult (let (quote $_10368) (quote A) $_10368) (A))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000197 secs. (196.60 microseconds) 
+; took 0.000204 secs. (204.43 microseconds) 
 
-!(assertEqualToResult (let (quote $x) (quote A) $x) (A))
+!(assertEqualToResult (let (quote $_17770) (quote A) $_17770) (A))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -101,16 +63,16 @@ Deterministic: <span class="ansi33"
 </span>;;; Explanation:
 ;;; Without a scoping mechanism, `quote` does not isolate `$x`, and substitution occurs.
 <span class="ansi38-013099040"
->!(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
+>!(assertEqualToResult (let (quote $_28244) (quote (+ 1 1)) $_28244) (2))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
-!(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
+!(assertEqualToResult (let (quote $_8652) (quote (+ 1 1)) $_8652) (2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -133,51 +95,51 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Add K and S combinators to the knowledge base
 <span class="ansi38-013099040"
->!(add-atom &kb (: AK (-> $a (-> $b $a))))
+>!(add-atom &kb (: AK (-> $_31224 (-> $_2080 $_2062))))
 
 </span><span class="ansi38-255165000"
-> (: AK (-> $a (-> $b $a)))
+> (: AK (-> $_10996 (-> $_11014 $_10996)))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(add-atom &kb (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c)))))
+>!(add-atom &kb (: AS (-> (-> $_20408 (-> $_20426 $_20432)) (-> (-> $_20408 $_20426) (-> $_20408 $_20432)))))
 
 </span><span class="ansi38-255165000"
-> (: AS (-> (-> $a (-> $b $c)) (-> (-> $a $b) (-> $a $c))))
+> (: AS (-> (-> $_29338 (-> $_29356 $_29362)) (-> (-> $_29338 $_29356) (-> $_29338 $_29362))))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Define Backward Chainer
 ;;; Base case
 <span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $_121920)  
+> (= (bc (: $_10450 $_10456) $_10462)  
   (match &kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
+    (: $_10450 $_10456) 
+    (: $_10450 $_10456)))
 </span>;;; Recursive step
 <span class="ansi38-255165000"
-> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+> (= (bc (: ($_15380 $_15386) $_15392) (S $_15410))  
   (let* 
-    ( ( (: $prfabs 
-          (-> $prms $ccln)) (bc (: $prfabs (-> $prms $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    ( ( (: $_15380 
+          (-> $_15470 $_15392)) (bc (: $_15380 (-> $_15470 $_15392)) $_15410)) ((: $_15386 $_15470) (bc (: $_15386 $_15470) $_15410))) 
     (: 
-      ($prfabs $prfarg) $ccln)))
+      ($_15380 $_15386) $_15392)))
 </span>;;; Synthesize function composition (.)
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
+>!(assertEqualToResult (bc (: $_18858 (-> (-> $_18888 $_18894) (-> (-> $_18924 $_18888) (-> $_18924 $_18894)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03</h3>
 ; 
 ; EVAL TEST
-; took 20.16 seconds.
+; took 16.08 seconds.
 
-!(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
+!(assertEqualToResult (bc (: $_103620 (-> (-> $_103650 $_103656) (-> (-> $_103686 $_103650) (-> $_103686 $_103656)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 
-Script done on 2025-02-14 04:17:05+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-15 18:44:17+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

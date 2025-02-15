@@ -36,188 +36,150 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-14 04:08:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:39:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta] ]
 ;;; Additional Tests for Delaying Reduction Until Bindings Are Ready
 ;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/659
 ;;; Test Case 1: Reordering Premises in Knowledge Base
 <span class="ansi38-013099040"
->!(add-atom &kb (: Rule (-> (: $x Prime) (-> (: $_68272 (0⍃ $x)) (0⍃' $x)))))
+>!(add-atom &kb (: Rule (-> (: $_19660 Prime) (-> (: $_19690 (0⍃ $_19660)) (0⍃' $_19660)))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (: $x Prime) (-> (: $_35688 (0⍃ $x)) (0⍃' $x))))
+> (: Rule (-> (: $_28586 Prime) (-> (: $_28616 (0⍃ $_28586)) (0⍃' $_28586))))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $_8902 (0⍃' $_8920)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.01"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.01</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.84 milliseconds) 
+; took 0.005 secs. (5.48 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $_29572 (0⍃' $_29590)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (bc &kb 
-          (: $prf 
-            (0⍃' $x)) 
+          (: $_6450 
+            (0⍃' $_6468)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_67634{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_67666{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_4252{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_4284{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
+>(Error ('~nGot: ' ((bc &kb (: $_13538 (0⍃' $_13556)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
 </span>;;; Expected proof with reordered premises
 ;;; Test Case 2: Using is-closed to Delay Reduction
 <span class="ansi38-255165000"
 > (: is-closed (-> Atom Bool))
 </span><span class="ansi38-255165000"
-> (= (is-closed $x)  
+> (= (is-closed $_22074)  
   (case 
-    (get-metatype $x) 
+    (get-metatype $_22074) 
     ( (Symbol True) 
       (Grounded True) 
       (Variable False) 
-      (Expression (if (== $x ()) True (and (let $head (car-atom $x) (is-closed $head)) (let $tail (cdr-atom $x) (is-closed $tail))))))))
+      (Expression (if (== $_22074 ()) True (and (let $_22206 (car-atom $_22074) (is-closed $_22206)) (let $_22260 (cdr-atom $_22074) (is-closed $_3538))))))))
 </span><span class="ansi38-255165000"
 > (: 0< (-> Number Bool))
 </span><span class="ansi38-255165000"
-> (= (0< $x)  
+> (= (0< $_9894)  
   (if 
-    (is-closed $x) 
-    (< 0 $x) 
+    (is-closed $_9894) 
+    (< 0 $_9894) 
     (empty)))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $_12448 (0⍃' $_12466)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.02"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.02</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.44 milliseconds) 
+; took 0.006 secs. (5.58 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $_5240 (0⍃' $_5258)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (bc &kb 
-          (: $prf 
-            (0⍃' $x)) 
+          (: $_6456 
+            (0⍃' $_6474)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_146684{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_146716{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_4270{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_4302{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
+>(Error ('~nGot: ' ((bc &kb (: $_13544 (0⍃' $_13562)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
 </span>;;; Valid proof with is-closed applied
 ;;; Test Case 3: Recursive Parameter List Handling
 <span class="ansi38-255165000"
-> (: handle-prmlst (-> $a $b List $d))
+> (: handle-prmlst (-> $_18718 $_18724 List $_18736))
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $kb $k Nil)  Nil)
+> (= (handle-prmlst $_22278 $_22284 Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $kb $k (Cons (: $prfarg $prms) $xs))  
+> (= (handle-prmlst $_26930 $_26936 (Cons (: $_26966 $_26972) $_26978))  
   (Cons 
-    (bc $kb 
-      (: $prfarg $prms) $k) 
-    (handle-prmlst $kb $k $xs)))
+    (bc $_26930 
+      (: $_26966 $_26972) $_26936) 
+    (handle-prmlst $_26930 $_26936 $_26978)))
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $kb $k (Cons (: CPU $check $prms) $xs))  
-  (if $check 
+> (= (handle-prmlst $_3366 $_3372 (Cons (: CPU $_3408 $_3414) $_3420))  
+  (if $_3408 
     (Cons 
-      (bc $kb 
-        (: CPU $var $prms) $k) 
-      (handle-prmlst $kb $k $xs)) 
-    (let $xs 
-      (handle-prmlst $kb $k $xs) 
+      (bc $_3366 
+        (: CPU $_3492 $_3414) $_3372) 
+      (handle-prmlst $_3366 $_3372 $_3420)) 
+    (let $_3420 
+      (handle-prmlst $_3366 $_3372 $_3420) 
       (Cons 
-        (bc $kb 
-          (: CPU $var $prms) $k) $xs))))
+        (bc $_3366 
+          (: CPU $_3492 $_3414) $_3372) $_3420))))
 </span><span class="ansi38-013099040"
->!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x))))
+>!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $_5936) (0⍃ $_5936)) (Cons (: $_5936 Prime) Nil)) (0⍃' $_5936))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x)))
+> (: Rule (-> (Cons (: CPU (is-closed $_14798) (0⍃ $_14798)) (Cons (: $_14798 Prime) Nil)) (0⍃' $_14798)))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $_24028 (0⍃' $_24046)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.03"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-ADDITIONAL-TESTS-HE-659.03</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.71 milliseconds) 
+; took 0.006 secs. (5.80 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $_17158 (0⍃' $_17176)) (S (S Z))) ((: ((Rule CPU) 2) (0⍃' 2))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (bc &kb 
-          (: $prf 
-            (0⍃' $x)) 
+          (: $_18286 
+            (0⍃' $_18304)) 
           (S (S Z)))) 
       ( (: 
           ( (Rule CPU) 2) 
           (0⍃' 2)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_243376{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_243408{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(bc,'[|]'('&kb','[|]'('[|]'(:,'[|]'(_15952{vn = ...},'[|]'('[|]'('0⍃\'','[|]'(_15984{vn = ...},[])),[]))),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])))),[]),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('Rule','[|]'('CPU',[])),'[|]'(2,[])),'[|]'('[|]'('0⍃\'','[|]'(2,[])),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
+>(Error ('~nGot: ' ((bc &kb (: $_25376 (0⍃' $_25394)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))
 </span>;;; Valid proof with parameter list handling
 <span class="ansi1"
 >LoonIt Report
@@ -229,12 +191,12 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
-[(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
+[(Error ('~nGot: ' ((bc &kb (: $_14520 (0⍃' $_14538)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
+[(Error ('~nGot: ' ((bc &kb (: $_14526 (0⍃' $_14544)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
 [()]
-[(Error ('~nGot: ' ((bc &kb (: $prf (0⍃' $x)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
+[(Error ('~nGot: ' ((bc &kb (: $_6792 (0⍃' $_6810)) (S (S Z))))) ('~nExpected: ' ((: ((Rule CPU) 2) (0⍃' 2)))))]
 
-Script done on 2025-02-14 04:08:16+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:39:22+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

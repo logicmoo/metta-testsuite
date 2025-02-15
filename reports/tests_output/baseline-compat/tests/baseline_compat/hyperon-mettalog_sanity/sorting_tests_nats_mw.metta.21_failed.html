@@ -104,46 +104,8 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 17:26:12+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-P;HTML|
-;         [set_debug transpiler false]
-
-P;HTML|
-;          [set_debug overtime 4.0]
-
-P;HTML|
-;          [set_debug overflow 1000]
-
-P;HTML|
-;          [set_debug eval false]
-
-P;HTML|
-;          [set_debug load silent]
-
-P;HTML|
-;          [set_debug trace-on-load false]
-
-P;HTML|
-;          [set_debug exec false]
-
-P;HTML|
-;          [set_debug error non-type]
-
-P;HTML|
-;          [set_debug fail false]
-
-P;HTML|
-;          [set_debug test true]
-
-P;HTML|
-;         [set_debug test false]
-
-P;HTML|
-;         [set_debug fail false]
-
-P;HTML|
-;         [set_debug load false]
-
+Script started on 2025-02-15 18:45:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1718-879.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] ]
 <span class="ansi38-013099040"
 >!(import! &self sorting_tests)
@@ -153,86 +115,86 @@ Script started on 2025-01-22 17:26:12+00:00 [COMMAND="timeout --preserve-status 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Declaration of List data type and constructors
 <span class="ansi38-255165000"
-> (: List (-> $a Type))
+> (: List (-> $_8536 Type))
 </span><span class="ansi38-255165000"
-> (: Nil (List $a))
+> (: Nil (List $_11866))
 </span><span class="ansi38-255165000"
-> (: Cons (-> $a (List $a) (List $a)))
+> (: Cons (-> $_15310 (List $_15310) (List $_15310)))
 </span>;;;; Insert an element to a presumably sorted list, remains sorted.
 <span class="ansi38-255165000"
-> (: insert (-> $a (List $a) (List $a)))
+> (: insert (-> $_18724 (List $_18724) (List $_18724)))
 </span><span class="ansi38-255165000"
-> (= (insert $x Nil)  
-  (Cons $x Nil))
+> (= (insert $_22060 Nil)  
+  (Cons $_22060 Nil))
 </span><span class="ansi38-255165000"
-> (= (insert $x (Cons $head $tail))  
+> (= (insert $_26076 (Cons $_26094 $_26100))  
   (if 
-    (lessThan $x $head) 
-    (Cons $x 
-      (Cons $head $tail)) 
-    (Cons $head 
-      (insert $x $tail))))
+    (lessThan $_26076 $_26094) 
+    (Cons $_26076 
+      (Cons $_26094 $_26100)) 
+    (Cons $_26094 
+      (insert $_26076 $_26100))))
 </span>;;;; Sort a list
 <span class="ansi38-255165000"
-> (: sort (-> (List $a) (List $a)))
+> (: sort (-> (List $_29368) (List $_29368)))
 </span><span class="ansi38-255165000"
 > (= (sort Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (sort (Cons $head $tail))  
-  (insert $head 
-    (sort $tail)))
+> (= (sort (Cons $_8686 $_8692))  
+  (insert $_8686 
+    (sort $_8692)))
 </span>;;;; Check if an element is in a list (sorted or not)
 <span class="ansi38-255165000"
-> (: elem (-> $a (List $a) Bool))
+> (: elem (-> $_12022 (List $_12022) Bool))
 </span><span class="ansi38-255165000"
-> (= (elem $x Nil)  False)
+> (= (elem $_15332 Nil)  False)
 </span><span class="ansi38-255165000"
-> (= (elem $x (Cons $head $tail))  
+> (= (elem $_19252 (Cons $_19270 $_19276))  
   (if 
-    (== $x $head) True 
-    (elem $x $tail)))
+    (== $_19252 $_19270) True 
+    (elem $_19252 $_19276)))
 </span>;;;; Remove duplicates from a list
 <span class="ansi38-255165000"
-> (: uniq_ (-> (List $a) (List $a) (List $a)))
+> (: uniq_ (-> (List $_22632) (List $_22632) (List $_22632)))
 </span><span class="ansi38-255165000"
-> (= (uniq_ $acc Nil)  Nil)
+> (= (uniq_ $_25922 Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (uniq_ $acc (Cons $head $tail))  
+> (= (uniq_ $_29962 (Cons $_29980 $_29986))  
   (if 
-    (elem $head $acc) 
-    (uniq_ $acc $tail) 
-    (Cons $head 
+    (elem $_5304 $_5286) 
+    (uniq_ $_5286 $_5310) 
+    (Cons $_5304 
       (uniq_ 
-        (Cons $head $acc) $tail))))
+        (Cons $_5304 $_5286) $_5310))))
 </span><span class="ansi38-255165000"
-> (: uniq (-> (List $a) (List $a)))
+> (: uniq (-> (List $_9126) (List $_9126)))
 </span><span class="ansi38-255165000"
-> (= (uniq $l)  
-  (uniq_ Nil $l))
+> (= (uniq $_12436)  
+  (uniq_ Nil $_12436))
 </span>;;;; Insert an element in a presumably sorted list without duplicate.
 ;;;; Only insert if the element is not already in the list as to produce
 ;;;; a sorted list without duplicate.
 <span class="ansi38-255165000"
-> (: insert_uniq (-> $a (List $a) (List $a)))
+> (: insert_uniq (-> $_15872 (List $_15872) (List $_15872)))
 </span><span class="ansi38-255165000"
-> (= (insert_uniq $x Nil)  
-  (Cons $x Nil))
+> (= (insert_uniq $_19210 Nil)  
+  (Cons $_19210 Nil))
 </span><span class="ansi38-255165000"
-> (= (insert_uniq $x (Cons $head $tail))  
+> (= (insert_uniq $_23346 (Cons $_23364 $_23370))  
   (if 
-    (== $x $head) 
-    (Cons $head $tail) 
+    (== $_23346 $_23364) 
+    (Cons $_23364 $_23370) 
     (if 
-      (lessThan $x $head) 
-      (Cons $x 
-        (Cons $head $tail)) 
-      (Cons $head 
-        (insert_uniq $x $tail)))))
+      (lessThan $_23346 $_23364) 
+      (Cons $_23346 
+        (Cons $_23364 $_23370)) 
+      (Cons $_23364 
+        (insert_uniq $_23346 $_23370)))))
 </span><span class="ansi38-255165000"
 > (: lessThan (-> Number Number Bool))
 </span><span class="ansi38-255165000"
-> (= (lessThan $x $y)  
-  (< $x $y))
+> (= (lessThan $_29872 $_29878)  
+  (< $_29872 $_29878))
 </span>;;;; Test insert
 <span class="ansi38-013099040"
 >!("============ Test insert ============")
@@ -248,13 +210,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.34 milliseconds) 
+; took 0.002 secs. (2.38 milliseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 Nil)) 
       ( (Cons 1 Nil))]]
 </span>
@@ -268,13 +230,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.49 milliseconds) 
+; took 0.010 secs. (9.50 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 Nil))) 
       ( (Cons 1 
@@ -290,13 +252,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.62 milliseconds) 
+; took 0.025 secs. (25.40 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 
             (Cons 3 Nil)))) 
@@ -310,7 +272,7 @@ Deterministic: <span class="ansi33"
 >!(== (Cons 1 Nil) (Cons 1 Nil))
 
 </span>
-Deterministic: <span class="ansi33"
+N(1): <span class="ansi33"
 >True
 </span>;;;; Test sort
 <span class="ansi38-013099040"
@@ -327,13 +289,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.68 milliseconds) 
+; took 0.003 secs. (3.42 milliseconds) 
 
 !(assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 Nil)) 
       ( (Cons 1 Nil))]]
 </span>
@@ -347,13 +309,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.00 milliseconds) 
+; took 0.013 secs. (13.11 milliseconds) 
 
 !(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 Nil))) 
       ( (Cons 1 
@@ -369,13 +331,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.53 milliseconds) 
+; took 0.032 secs. (31.77 milliseconds) 
 
 !(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 
             (Cons 3 Nil)))) 
@@ -400,13 +362,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.00 milliseconds) 
+; took 0.007 secs. (7.08 milliseconds) 
 
 !(assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -420,13 +382,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.28 milliseconds) 
+; took 0.009 secs. (8.95 milliseconds) 
 
 !(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -447,13 +409,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.64 milliseconds) 
+; took 0.066 secs. (65.91 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 2 
           (Cons 3 
             (Cons 1 Nil)))) 
@@ -471,13 +433,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.46 milliseconds) 
+; took 0.046 secs. (46.33 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 2 
           (Cons 3 Nil))) 
       ( (Cons 2 
@@ -500,13 +462,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.05 milliseconds) 
+; took 0.011 secs. (11.02 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 Nil))) 
       ( (Cons 1 
@@ -522,13 +484,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.25 milliseconds) 
+; took 0.032 secs. (31.64 milliseconds) 
 
 !(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 
             (Cons 3 Nil)))) 
@@ -546,13 +508,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.18 milliseconds) 
+; took 0.050 secs. (49.55 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 1 
           (Cons 2 
             (Cons 3 Nil)))) 
@@ -571,12 +533,12 @@ R(2): <span class="ansi33"
 <span class="ansi38-255165000"
 > (: lessThan (-> Nat Nat Bool))
 </span><span class="ansi38-255165000"
-> (= (lessThan $260 Z)  False)
+> (= (lessThan $_12006 Z)  False)
 </span><span class="ansi38-255165000"
-> (= (lessThan Z (S $x))  True)
+> (= (lessThan Z (S $_14730))  True)
 </span><span class="ansi38-255165000"
-> (= (lessThan (S $x) (S $y))  
-  (lessThan $x $y))
+> (= (lessThan (S $_18276) (S $_18294))  
+  (lessThan $_18276 $_18294))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -590,13 +552,13 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000142 secs. (141.66 microseconds) 
+; took 0.000155 secs. (154.67 microseconds) 
 
 !(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( ("============ Test lessThan ============")) 
       ( ("============ Test lessThan ============"))]]
 </span>
@@ -611,18 +573,23 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.38 milliseconds) 
+; took 0.008 secs. (7.82 milliseconds) 
 
 !(assertEqual (lessThan Z (S Z)) True)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< Z 
+          (S Z)) True 
+        (< Z 
           (S Z)) True) 
       (True)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[])),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< Z (S Z)) True)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan Z (S Z)) True)];;;; 0 < 1
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[])))),'[|]'('True',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))
+</span>;;;; 0 < 1
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan Z (S (S Z))) True)
 
@@ -631,18 +598,23 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[])
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.69 milliseconds) 
+; took 0.013 secs. (12.79 milliseconds) 
 
 !(assertEqual (lessThan Z (S (S Z))) True)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< Z 
+          (S (S Z))) True 
+        (< Z 
           (S (S Z))) True) 
       (True)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True',[])),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< Z (S (S Z))) True)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan Z (S (S Z))) True)];;;; 0 < 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True',[])))),'[|]'('True',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< Z (S (S Z))) True (< Z (S (S Z))) True)) ('~nExpected: ' (True)))
+</span>;;;; 0 < 2
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan Z Z) False)
 
@@ -651,17 +623,21 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.92 milliseconds) 
+; took 0.004 secs. (3.65 milliseconds) 
 
 !(assertEqual (lessThan Z Z) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
-      ( (< Z Z) False) 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (< Z Z) False 
+        (< Z Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[])),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< Z Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan Z Z) False)];;;; 0 < 0
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 0 < 0
 ;;;; Test when the second number is zero
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S Z) Z) False)
@@ -671,18 +647,23 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[]))
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.31 milliseconds) 
+; took 0.008 secs. (7.68 milliseconds) 
 
 !(assertEqual (lessThan (S Z) Z) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
+          (S Z) Z) False 
+        (< 
           (S Z) Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[])),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S Z) Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S Z) Z) False)];;;; 1 < 0
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 1 < 0
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S Z)) Z) False)
 
@@ -691,18 +672,23 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[])
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.70 milliseconds) 
+; took 0.013 secs. (12.81 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) Z) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
+          (S (S Z)) Z) False 
+        (< 
           (S (S Z)) Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False',[])),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S Z)) Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S Z)) Z) False)];;;; 2 < 0
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S Z)) Z) False (< (S (S Z)) Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 2 < 0
 ;;;; Test when both numbers are the same
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S Z) (S Z)) False)
@@ -712,20 +698,28 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.60 milliseconds) 
+; took 0.017 secs. (16.94 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S Z)) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S Z) 
           (S Z)) 
+        (< Z Z) False 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
         (< Z Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[]))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S Z) (S Z)) (< Z Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S Z) (S Z)) False)];;;; 1 < 1
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[])))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S Z) (S Z)) (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 1 < 1
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S Z)) (S (S Z))) False)
 
@@ -734,23 +728,39 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (14.93 milliseconds) 
+; took 0.050 secs. (50.28 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S (S Z))) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S Z)) 
           (S (S Z))) 
         (< 
           (S Z) 
           (S Z)) 
+        (< Z Z) False 
+        (< 
+          (S (S Z)) 
+          (S (S Z))) 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
+        (< Z Z) False 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
         (< Z Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S Z)) (S (S Z))) False)];;;; 2 < 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[]))))))))))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 2 < 2
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S (S Z))) (S (S (S Z)))) False)
 
@@ -759,13 +769,13 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.027 secs. (27.12 milliseconds) 
+; took 0.123 secs. (122.95 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S Z))) (S (S (S Z)))) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S (S Z))) 
           (S (S (S Z)))) 
@@ -775,10 +785,42 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
         (< 
           (S Z) 
           (S Z)) 
+        (< Z Z) False 
+        (< 
+          (S (S (S Z))) 
+          (S (S (S Z)))) 
+        (< 
+          (S (S Z)) 
+          (S (S Z))) 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
+        (< Z Z) False 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
+        (< Z Z) False 
+        (< 
+          (S (S Z)) 
+          (S (S Z))) 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
+        (< Z Z) False 
+        (< 
+          (S Z) 
+          (S Z)) 
+        (< Z Z) False 
         (< Z Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[]))))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S (S Z))) (S (S (S Z)))) (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S (S Z))) (S (S (S Z)))) False)];;;; 3 < 3
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('Z','[|]'('Z',[]))),'[|]'('False',[])))))))))))))))))))))))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S (S Z))) (S (S (S Z)))) (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< (S (S (S Z))) (S (S (S Z)))) (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 3 < 3
 ;;;; Test when the first number is smaller
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S Z) (S (S Z))) True)
@@ -788,21 +830,31 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'(
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.76 milliseconds) 
+; took 0.029 secs. (28.57 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S (S Z))) True)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S Z) 
           (S (S Z))) 
         (< Z 
+          (S Z)) True 
+        (< 
+          (S Z) 
+          (S (S Z))) 
+        (< Z 
+          (S Z)) True 
+        (< Z 
           (S Z)) True) 
       (True)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[]))),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< (S Z) (S (S Z))) (< Z (S Z)) True)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S Z) (S (S Z))) True)];;;; 1 < 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[])))))))),'[|]'('True',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S Z) (S (S Z))) (< Z (S Z)) True (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))
+</span>;;;; 1 < 2
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S Z)) (S (S (S Z)))) True)
 
@@ -811,13 +863,13 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (20.01 milliseconds) 
+; took 0.076 secs. (76.39 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S (S (S Z)))) True)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S Z)) 
           (S (S (S Z)))) 
@@ -825,10 +877,30 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('
           (S Z) 
           (S (S Z))) 
         (< Z 
+          (S Z)) True 
+        (< 
+          (S (S Z)) 
+          (S (S (S Z)))) 
+        (< 
+          (S Z) 
+          (S (S Z))) 
+        (< Z 
+          (S Z)) True 
+        (< Z 
+          (S Z)) True 
+        (< 
+          (S Z) 
+          (S (S Z))) 
+        (< Z 
+          (S Z)) True 
+        (< Z 
           (S Z)) True) 
       (True)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[])))),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< (S (S Z)) (S (S (S Z)))) (< (S Z) (S (S Z))) (< Z (S Z)) True)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S Z)) (S (S (S Z)))) True)];;;; 2 < 3
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('True',[]))))))))))))))),'[|]'('True',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S Z)) (S (S (S Z)))) (< (S Z) (S (S Z))) (< Z (S Z)) True (< (S (S Z)) (S (S (S Z)))) (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))
+</span>;;;; 2 < 3
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S Z) (S (S (S Z)))) True)
 
@@ -837,21 +909,31 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.69 milliseconds) 
+; took 0.043 secs. (43.30 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S (S (S Z)))) True)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S Z) 
           (S (S (S Z)))) 
         (< Z 
+          (S (S Z))) True 
+        (< 
+          (S Z) 
+          (S (S (S Z)))) 
+        (< Z 
+          (S (S Z))) True 
+        (< Z 
           (S (S Z))) True) 
       (True)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True',[]))),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< (S Z) (S (S (S Z)))) (< Z (S (S Z))) True)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S Z) (S (S (S Z)))) True)];;;; 1 < 3
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True','[|]'('[|]'(<,'[|]'('Z','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('True',[])))))))),'[|]'('True',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S Z) (S (S (S Z)))) (< Z (S (S Z))) True (< (S Z) (S (S (S Z)))) (< Z (S (S Z))) True (< Z (S (S Z))) True)) ('~nExpected: ' (True)))
+</span>;;;; 1 < 3
 ;;;; Test when the first number is larger
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S Z)) (S Z)) False)
@@ -861,21 +943,31 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.67 milliseconds) 
+; took 0.029 secs. (28.73 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S Z)) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S Z)) 
           (S Z)) 
         (< 
+          (S Z) Z) False 
+        (< 
+          (S (S Z)) 
+          (S Z)) 
+        (< 
+          (S Z) Z) False 
+        (< 
           (S Z) Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[]))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S Z)) (S Z)) (< (S Z) Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S Z)) (S Z)) False)];;;; 2 < 1
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[])))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 2 < 1
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S (S Z))) (S (S Z))) False)
 
@@ -884,13 +976,13 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (19.75 milliseconds) 
+; took 0.076 secs. (76.41 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S Z))) (S (S Z))) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S (S Z))) 
           (S (S Z))) 
@@ -898,10 +990,30 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[]
           (S (S Z)) 
           (S Z)) 
         (< 
+          (S Z) Z) False 
+        (< 
+          (S (S (S Z))) 
+          (S (S Z))) 
+        (< 
+          (S (S Z)) 
+          (S Z)) 
+        (< 
+          (S Z) Z) False 
+        (< 
+          (S Z) Z) False 
+        (< 
+          (S (S Z)) 
+          (S Z)) 
+        (< 
+          (S Z) Z) False 
+        (< 
           (S Z) Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S (S Z))) (S (S Z))) (< (S (S Z)) (S Z)) (< (S Z) Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S (S Z))) (S (S Z))) False)];;;; 3 < 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Z',[]))),'[|]'('False',[]))))))))))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S (S Z))) (S (S Z))) (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S (S (S Z))) (S (S Z))) (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 3 < 2
 <span class="ansi38-013099040"
 >!(assertEqual (lessThan (S (S (S (S Z)))) (S (S Z))) False)
 
@@ -910,13 +1022,13 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'(
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.025 secs. (24.66 milliseconds) 
+; took 0.110 secs. (109.61 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S (S Z)))) (S (S Z))) False)
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
           (S (S (S (S Z)))) 
           (S (S Z))) 
@@ -924,10 +1036,30 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'(
           (S (S (S Z))) 
           (S Z)) 
         (< 
+          (S (S Z)) Z) False 
+        (< 
+          (S (S (S (S Z)))) 
+          (S (S Z))) 
+        (< 
+          (S (S (S Z))) 
+          (S Z)) 
+        (< 
+          (S (S Z)) Z) False 
+        (< 
+          (S (S Z)) Z) False 
+        (< 
+          (S (S (S Z))) 
+          (S Z)) 
+        (< 
+          (S (S Z)) Z) False 
+        (< 
           (S (S Z)) Z) False) 
       (False)]]
-</span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False',[])))),'[|]'('False',[]))[error [error [domain_error py_term [Error [got ((< (S (S (S (S Z)))) (S (S Z))) (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False)] [expected (False)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (lessThan (S (S (S (S Z)))) (S (S Z))) False)];;;; 4 < 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),[])),'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False','[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Z',[]))),'[|]'('False',[]))))))))))))))),'[|]'('False',[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((< (S (S (S (S Z)))) (S (S Z))) (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S (S (S Z)))) (S (S Z))) (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S Z)) Z) False (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S Z)) Z) False)) ('~nExpected: ' (False)))
+</span>;;;; 4 < 2
 ;;;!(pragma! coerce auto)
 ;;;; Test insert
 <span class="ansi38-013099040"
@@ -944,13 +1076,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.69 milliseconds) 
+; took 0.005 secs. (5.03 milliseconds) 
 
 !(assertEqual (insert (S Z) Nil) (Cons (S Z) Nil))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S Z) Nil)) 
       ( (Cons 
@@ -967,22 +1099,41 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (17.69 milliseconds) 
+; took 0.083 secs. (83.06 milliseconds) 
 
 !(assertEqual (insert (S (S Z)) (insert (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S Z)) 
           (Cons 
-            (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil))) 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil))) 
       ( (Cons 
           (S Z) 
           (Cons (S (S Z) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))] [expected ((Cons (S Z) (Cons (S (S Z) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (insert (S (S Z)) (insert (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))];;;; insert 2, then 1
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))
+</span>;;;; insert 2, then 1
 <span class="ansi38-013099040"
 >!(assertEqual (insert (S (S (S Z))) (insert (S (S Z)) (insert (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -991,32 +1142,14 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.087 secs. (87.23 milliseconds) 
+; took 0.128 secs. (128.43 milliseconds) 
 
 !(assertEqual (insert (S (S (S Z))) (insert (S (S Z)) (insert (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
           (S (S (S Z))) 
           (Cons 
             (S (S Z)) 
@@ -1040,13 +1173,16 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
             (S (S Z)) 
             (Cons 
               (S (S (S Z))) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[])))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))] [expected ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (insert (S (S (S Z))) (insert (S (S Z)) (insert (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))];;;; insert 3, then 2, then 1
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))
+</span>;;;; insert 3, then 2, then 1
 <span class="ansi38-013099040"
 >!(== (Cons (S Z) Nil) (Cons (S Z) Nil))
 
 </span>
-Deterministic: <span class="ansi33"
+N(1): <span class="ansi33"
 >True
 </span>;;;; check structural equality
 ;;;; Test sort
@@ -1064,13 +1200,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.73 milliseconds) 
+; took 0.008 secs. (7.94 milliseconds) 
 
 !(assertEqual (sort (Cons (S Z) Nil)) (Cons (S Z) Nil))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S Z) Nil)) 
       ( (Cons 
@@ -1087,22 +1223,41 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (20.13 milliseconds) 
+; took 0.096 secs. (95.53 milliseconds) 
 
 !(assertEqual (sort (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S Z) (Cons (S (S Z) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S Z)) 
           (Cons 
-            (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil))) 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil))) 
       ( (Cons 
           (S Z) 
           (Cons (S (S Z) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))] [expected ((Cons (S Z) (Cons (S (S Z) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (sort (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S Z) (Cons (S (S Z) Nil))))];;;; sort [2, 1]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))
+</span>;;;; sort [2, 1]
 <span class="ansi38-013099040"
 >!(assertEqual (sort (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1111,57 +1266,30 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.092 secs. (92.48 milliseconds) 
+; took 0.135 secs. (134.66 milliseconds) 
 
 !(assertEqual (sort (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S (S Z))) 
           (Cons 
             (S Z) 
             (Cons 
-              (S (S Z)) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S Z) 
-            (Cons 
-              (S (S Z)) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S Z) 
-            (Cons 
-              (S (S Z)) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S Z) 
-            (Cons 
-              (S (S Z)) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S Z) 
-            (Cons 
-              (S (S Z)) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S Z) 
-            (Cons 
-              (S (S Z)) Nil)))) 
+              (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) 
       ( (Cons 
           (S Z) 
           (Cons 
             (S (S Z)) 
             (Cons 
               (S (S (S Z))) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),[])))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))))] [expected ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (sort (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))];;;; sort [3, 1, 2]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('Nil',[]))),[]))),[]))),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))
+</span>;;;; sort [3, 1, 2]
 ;;;; Test elem
 <span class="ansi38-013099040"
 >!("============ Test elem ============")
@@ -1177,13 +1305,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.25 milliseconds) 
+; took 0.032 secs. (32.40 milliseconds) 
 
 !(assertEqual (elem (S Z) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -1198,13 +1326,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.021 secs. (20.92 milliseconds) 
+; took 0.102 secs. (101.68 milliseconds) 
 
 !(assertEqual (elem (S (S (S (S (S Z))))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -1226,13 +1354,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.060 secs. (60.07 milliseconds) 
+; took 0.283 secs. (283.12 milliseconds) 
 
 !(assertEqual (uniq (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S Z) Nil))))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S Z)) 
           (Cons 
@@ -1257,13 +1385,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.051 secs. (51.01 milliseconds) 
+; took 0.228 secs. (227.54 milliseconds) 
 
 !(assertEqual (uniq (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S (S Z))) (Cons (S (S Z)) Nil))))) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil)))
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S Z)) 
           (Cons 
@@ -1291,22 +1419,41 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.022 secs. (21.83 milliseconds) 
+; took 0.108 secs. (107.69 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
           (S (S Z)) 
           (Cons 
-            (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil))) 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil)) 
+        (Cons 
+          (S (S Z)) 
+          (Cons 
+            (S Z) Nil))) 
       ( (Cons 
           (S Z) 
           (Cons (S (S Z) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))] [expected ((Cons (S Z) (Cons (S (S Z) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))];;;; insert unique 1, then 2
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[])),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))
+</span>;;;; insert unique 1, then 2
 <span class="ansi38-013099040"
 >!(assertEqual (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1315,32 +1462,14 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.107 secs. (106.82 milliseconds) 
+; took 0.174 secs. (174.12 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
-          (S (S (S Z))) 
-          (Cons 
-            (S (S Z)) 
-            (Cons 
-              (S Z) Nil))) 
-        (Cons 
           (S (S (S Z))) 
           (Cons 
             (S (S Z)) 
@@ -1364,8 +1493,11 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
             (S (S Z)) 
             (Cons 
               (S (S (S Z))) Nil))))]]
-</span>
-equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[])))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))] [expected ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))];;;; insert unique 1, 2, 3
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))
+</span>;;;; insert unique 1, 2, 3
 <span class="ansi38-013099040"
 >!(assertEqual (insert_uniq (S (S Z)) (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1374,174 +1506,14 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.445 secs. (445.34 milliseconds) 
+; took 0.361 secs. (360.60 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S Z)) (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
 <span class="ansi31"
 >  [loonit_failureR 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
-          (S (S Z)) 
-          (Cons 
-            (S (S (S Z))) 
-            (Cons 
-              (S (S Z)) 
-              (Cons 
-                (S Z) Nil)))) 
-        (Cons 
           (S (S Z)) 
           (Cons 
             (S (S (S Z))) 
@@ -1579,8 +1551,11 @@ equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('
             (S (S Z)) 
             (Cons 
               (S (S (S Z))) Nil))))]]
-</span>equal_enough_for_test('[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),[])))))))))))))))))))))))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (
-S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))))] [expected ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] (assertEqual (insert_uniq (S (S Z)) (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))];;;; ensure duplicates are avoided
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('Nil',[]))),[]))),[]))),[]))),[])))),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('Z',[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'('[|]'('Cons','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[])),'[|]'('Nil',[]))),[]))),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))
+</span>;;;; ensure duplicates are avoided
 <span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -1592,21 +1567,41 @@ S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S 
 >Return to summaries</a><br/>
 [()]
 [()]
-[[[[[[[[[[[[[[[("============ Test insert ============")]
+[(Error ('~nGot: ' ((< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))]
+[(Error ('~nGot: ' ((< Z (S (S Z))) True (< Z (S (S Z))) True)) ('~nExpected: ' (True)))]
+[(Error ('~nGot: ' ((< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S (S Z)) Z) False (< (S (S Z)) Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S Z) (S Z)) (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S (S (S Z))) (S (S (S Z)))) (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< (S (S (S Z))) (S (S (S Z)))) (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S (S Z)) (S (S Z))) (< (S Z) (S Z)) (< Z Z) False (< Z Z) False (< (S Z) (S Z)) (< Z Z) False (< Z Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S Z) (S (S Z))) (< Z (S Z)) True (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))]
+[(Error ('~nGot: ' ((< (S (S Z)) (S (S (S Z)))) (< (S Z) (S (S Z))) (< Z (S Z)) True (< (S (S Z)) (S (S (S Z)))) (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True (< (S Z) (S (S Z))) (< Z (S Z)) True (< Z (S Z)) True)) ('~nExpected: ' (True)))]
+[(Error ('~nGot: ' ((< (S Z) (S (S (S Z)))) (< Z (S (S Z))) True (< (S Z) (S (S (S Z)))) (< Z (S (S Z))) True (< Z (S (S Z))) True)) ('~nExpected: ' (True)))]
+[(Error ('~nGot: ' ((< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S (S (S Z))) (S (S Z))) (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S (S (S Z))) (S (S Z))) (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False (< (S (S Z)) (S Z)) (< (S Z) Z) False (< (S Z) Z) False)) ('~nExpected: ' (False)))]
+[(Error ('~nGot: ' ((< (S (S (S (S Z)))) (S (S Z))) (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S (S (S Z)))) (S (S Z))) (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S Z)) Z) False (< (S (S (S Z))) (S Z)) (< (S (S Z)) Z) False (< (S (S Z)) Z) False)) ('~nExpected: ' (False)))]
+[("============ Test insert ============")]
 [()]
-[[[True]
+[(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))]
+[(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
+[True]
 [("============ Test sort ============")]
 [()]
-[[[("============ Test elem ============")]
+[(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))]
+[(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
+[("============ Test elem ============")]
 [()]
 [()]
 [("============ Test uniq ============")]
 [()]
 [()]
 [("============ Test insert_uniq ============")]
-[[[
+[(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)) (Cons (S (S Z)) (Cons (S Z) Nil)))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z) Nil))))))]
+[(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
+[(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
 
-Script done on 2025-01-22 17:26:32+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-15 18:45:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

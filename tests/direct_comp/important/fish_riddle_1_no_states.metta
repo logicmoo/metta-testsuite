@@ -132,9 +132,15 @@
 ;; TEST Queries ;;
 ;;;;;;;;;;;;;;;;;;
 
-!(query &self (because red house keeps dogs the $norwegian is the fish owner))
+!(assertEqualToResult 
+   (query &self (because red house keeps dogs the $norwegian is the fish owner))
+  ((Succeed ((quote (because red house keeps dogs the norwegian is the fish owner))))))
 
-!(query &self (because blue house keeps dogs the $brit is the fish owner))
+!(assertEqualToResult 
+  (query &self (because blue house keeps dogs the $brit is the fish owner))
+ ((Succeed ((quote (because blue house keeps dogs the brit is the fish owner))))))
 
-!(query &self (because red house keeps cats the $norwegian is the fish owner))
+!(assertEqualToResult 
+  (query &self (because red house keeps cats the $norwegian is the fish owner))
+ ((Succeed ((quote (because red house keeps cats the norwegian is the fish owner))))))
 

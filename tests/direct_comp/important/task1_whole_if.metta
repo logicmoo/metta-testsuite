@@ -534,4 +534,5 @@
 
 ; !(state-transition 1)
 ;; Hyperon doesn't allow for importing multiple files into same space
-!(time (collapse (planner-main 100)))
+!(assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
+;(B=ispeEnN(C, 'mc_1__planner-main'(100, C), D, D=['planner-main', 100]), mc_1__time(B, A)).

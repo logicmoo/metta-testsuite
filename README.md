@@ -7,12 +7,13 @@ For descriptions of individual test directories, please see [tests/README.md](./
 ## Interpreter Projects
 
 - **MeTTaLog**  
-  The MeTTaLog repository contains a MeTTa-to-WAM (Warren Abstract Machine) compilation approach, enabling logic execution of MeTTa code within a Prolog-like environment.
+| Link | Description |
 |------|------------|
+| [https://github.com/trueagi-io/metta-wam/issues](https://github.com/trueagi-io/metta-wam/issues) | **ISSUES** – Bug reports and feature tracking |
 | [https://github.com/trueagi-io/metta-wam/](https://github.com/trueagi-io/metta-wam/) | **MeTTaLog Official** – Main repository for MeTTaLog |
 | [https://github.com/logicmoo/metta-wam/](https://github.com/logicmoo/metta-wam/) | **Compiler Development** – Active development of the MeTTa compiler |
 | [https://github.com/logicmoo/metta-testsuite/tree/master](https://github.com/logicmoo/metta-testsuite/tree/master) | **Interpreter Development** – Work on the MeTTa interpreter |
-| [https://github.com/logicmoo/metta-testsuite/tree/development](https://github.com/logicmoo/metta-testsuite/tree/development) | **Testing Suite** – Development branch for automated tests |  
+| [https://github.com/logicmoo/metta-testsuite/tree/development](https://github.com/logicmoo/metta-testsuite/tree/development) | **Testing Suite** – Development branch for automated tests |
 
 
 - **Hyperon Experimental (H-E)**  

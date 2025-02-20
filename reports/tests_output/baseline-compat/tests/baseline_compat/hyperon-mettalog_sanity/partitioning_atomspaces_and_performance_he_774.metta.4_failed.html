@@ -59,7 +59,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:02:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:02:48+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] ]
 P;HTML|
@@ -102,23 +102,23 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Define functions for managing user-specific knowledge bases
 <span class="ansi38-255165000"
-> (= (add-user $_8342)  
-  (let $_8360 
+> (= (add-user $name)  
+  (let $space 
     (new-space) 
     (add-atom &test-space 
-      (User $_8342 $_8360))))
+      (User $name $space))))
 </span><span class="ansi38-255165000"
-> (= (write-user $_12836 $_12842)  
-  (let $_12860 
+> (= (write-user $name $data)  
+  (let $space 
     (match &test-space 
-      (User $_12836 $_12902) $_12902) 
-    (add-atom $_12860 $_12842)))
+      (User $name $s) $s) 
+    (add-atom $space $data)))
 </span><span class="ansi38-255165000"
-> (= (read-user $_17698 $_17704 $_17710)  
-  (let $_17728 
+> (= (read-user $name $query $template)  
+  (let $space 
     (match &test-space 
-      (User $_17698 $_17770) $_17770) 
-    (match $_17728 $_17704 $_17710)))
+      (User $name $s) $s) 
+    (match $space $query $template)))
 </span>;;; Test 1: Add user-specific knowledge bases
 <span class="ansi38-255165009"
 >;; In file as:  
@@ -135,7 +135,7 @@ Deterministic: <span class="ansi33"
 > (User Alice space_2)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (1.57 milliseconds) 
+; took 0.001 secs. (1.37 milliseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
@@ -162,7 +162,7 @@ Deterministic: <span class="ansi33"
 > (User Bob space_3)
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.49 milliseconds) 
+; took 0.001 secs. (1.20 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
@@ -176,16 +176,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify user knowledge bases exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (User $_20600 $_20606) $_20600) (Alice Bob))
+>!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000262 secs. (262.19 microseconds) 
+; took 0.000231 secs. (231.28 microseconds) 
 
-!(assertEqualToResult (match &test-space (User $_30128 $_30134) $_30128) (Alice Bob))
+!(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -211,7 +211,7 @@ Deterministic: <span class="ansi33"
 > (Age 20)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.26 milliseconds) 
+; took 0.002 secs. (1.90 milliseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -238,7 +238,7 @@ Deterministic: <span class="ansi33"
 > (Age 22)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.05 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -252,16 +252,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data written to Alice's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Alice (Age $_55876) (Age Alice $_55876)) (Age Alice 20))
+>!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.96 milliseconds) 
+; took 0.003 secs. (3.45 milliseconds) 
 
-!(assertEqualToResult (read-user Alice (Age $_40296) (Age Alice $_40296)) (Age Alice 20))
+!(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -274,16 +274,16 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Age Alice 20))) ('~nExpected: ' (Age Alice 20)))
 </span>;;; Test: Verify data written to Bob's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Bob (Age $_50764) (Age Bob $_50764)) (Age Bob 22))
+>!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.07 milliseconds) 
+; took 0.003 secs. (3.42 milliseconds) 
 
-!(assertEqualToResult (read-user Bob (Age $_35178) (Age Bob $_35178)) (Age Bob 22))
+!(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -298,23 +298,23 @@ Deterministic: <span class="ansi33"
 ;;; ----------------------------------------------------
 ;;; Define functions to add, retrieve, and manage partitioned knowledge
 <span class="ansi38-255165000"
-> (= (add-partition $_47392)  
-  (let $_47410 
+> (= (add-partition $name)  
+  (let $space 
     (new-space) 
     (add-atom &test-space 
-      (Partition $_47392 $_47410))))
+      (Partition $name $space))))
 </span><span class="ansi38-255165000"
-> (= (write-partition $_51888 $_51894)  
-  (let $_51912 
+> (= (write-partition $name $data)  
+  (let $space 
     (match &test-space 
-      (Partition $_51888 $_51954) $_51954) 
-    (add-atom $_51912 $_51894)))
+      (Partition $name $s) $s) 
+    (add-atom $space $data)))
 </span><span class="ansi38-255165000"
-> (= (read-partition $_56752 $_56758 $_56764)  
-  (let $_56782 
+> (= (read-partition $name $query $template)  
+  (let $space 
     (match &test-space 
-      (Partition $_56752 $_56824) $_56824) 
-    (match $_56782 $_56758 $_56764)))
+      (Partition $name $s) $s) 
+    (match $space $query $template)))
 </span>;;; Test 3: Add partitioned knowledge bases
 <span class="ansi38-013099040"
 >!(add-partition People)
@@ -334,16 +334,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify partitions exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (Partition $_44438 $_44444) $_44438) (People Games))
+>!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000274 secs. (274.08 microseconds) 
+; took 0.000199 secs. (198.70 microseconds) 
 
-!(assertEqualToResult (match &test-space (Partition $_53970 $_53976) $_53970) (People Games))
+!(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -372,16 +372,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data in People partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition People (Friend $_63508 $_63514) (Friend $_63508 $_63514)) (Friend Bob Alice))
+>!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.08 milliseconds) 
+; took 0.004 secs. (3.70 milliseconds) 
 
-!(assertEqualToResult (read-partition People (Friend $_45862 $_45868) (Friend $_45862 $_45868)) (Friend Bob Alice))
+!(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -394,16 +394,16 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))
 </span>;;; Test: Verify data in Games partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition Games (GameRole $_56270) (GameRole $_56270)) (GameRole Predator))
+>!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.84 milliseconds) 
+; took 0.003 secs. (3.47 milliseconds) 
 
-!(assertEqualToResult (read-partition Games (GameRole $_39334) (GameRole $_39334)) (GameRole Predator))
+!(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -441,7 +441,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))]
 [(Error ('~nGot: ' ((GameRole Predator))) ('~nExpected: ' (GameRole Predator)))]
 
-Script done on 2025-02-18 13:02:44+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:02:49+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

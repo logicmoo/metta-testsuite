@@ -33,7 +33,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 12:56:38+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/backchainer_219.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:54:18+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/backchainer_219.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/backchainer_219.metta] ]
 P;HTML|
@@ -79,46 +79,46 @@ Deterministic: <span class="ansi33"
 </span>;;;; Backward chainer
 ;;;; Base case
 <span class="ansi38-255165000"
-> (= (bc $_34618 $_34624 (: $_34642 $_34648))  
-  (match $_34618 
-    (: $_34642 $_34648) 
-    (: $_34642 $_34648)))
+> (= (bc $kb $_29768 (: $prg $type))  
+  (match $kb 
+    (: $prg $type) 
+    (: $prg $type)))
 </span>;;;; Recursive steps
 ;;;; Unary operators
 <span class="ansi38-255165000"
-> (= (bc $_39892 (S $_39910) (: ($_39934 $_39940) $_39946))  
+> (= (bc $kb (S $k) (: ($fun $arg) $type))  
   (let* 
-    ( ( (: $_39934 
-          (-> $_40006 $_39946)) (bc $_39892 $_39910 (: $_39934 (-> $_40006 $_39946)))) ((: $_39940 $_40006) (bc $_39892 $_39910 (: $_39940 $_40006)))) 
+    ( ( (: $fun 
+          (-> $prms $type)) (bc $kb $k (: $fun (-> $prms $type)))) ((: $arg $prms) (bc $kb $k (: $arg $prms)))) 
     (: 
-      ($_39934 $_39940) $_39946)))
+      ($fun $arg) $type)))
 </span>;;;; Binary operators
 <span class="ansi38-255165000"
-> (= (bc $_45904 (S $_45922) (: (= $_45952  $_45958) $_45964))  
+> (= (bc $kb (S $k) (: ($fun $arg1 $arg2) $type))  
   (let* 
-    ( ( (: = 
-          (-> $_46024 $_46030 $_45964)) (bc $_45904 $_45922 (: = (-> $_46024 $_46030 $_45964)))) 
-      ( (: $_45952 $_46024) (bc $_45904 $_45922 (: $_45952 $_46024))) 
-      ( (: $_45958 $_46030) (bc $_45904 $_45922 (: $_45958 $_46030)))) 
+    ( ( (: $fun 
+          (-> $prms1 $prms2 $type)) (bc $kb $k (: $fun (-> $prms1 $prms2 $type)))) 
+      ( (: $arg1 $prms1) (bc $kb $k (: $arg1 $prms1))) 
+      ( (: $arg2 $prms2) (bc $kb $k (: $arg2 $prms2)))) 
     (: 
-      (= $_45952  $_45958) $_45964)))
+      ($fun $arg1 $arg2) $type)))
 </span>;;;; Test bc
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(bc &kb (S (S Z)) (: $_48712 Boolean))
+>!(bc &kb (S (S Z)) (: $prg Boolean))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (S (S Z)) (: $_51314 Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
+>!(assertEqualToResult (bc &kb (S (S Z)) (: $prg Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.BACKCHAINER-219.01"
 >;; HYPERON-METTALOG-SANITY.BACKCHAINER-219.01</h3>
 ; 
 ; EVAL TEST
-; took 0.123 secs. (122.88 milliseconds) 
+; took 0.108 secs. (108.18 milliseconds) 
 
-!(assertEqualToResult (bc &kb (S (S Z)) (: $_64586 Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
+!(assertEqualToResult (bc &kb (S (S Z)) (: $prg Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -153,16 +153,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (S (S Z)) (: $_80092 Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
+>!(assertEqualToResult (bc &kb (S (S Z)) (: $prg Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.BACKCHAINER-219.02"
 >;; HYPERON-METTALOG-SANITY.BACKCHAINER-219.02</h3>
 ; 
 ; EVAL TEST
-; took 0.121 secs. (120.81 milliseconds) 
+; took 0.107 secs. (106.86 milliseconds) 
 
-!(assertEqualToResult (bc &kb (S (S Z)) (: $_39616 Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
+!(assertEqualToResult (bc &kb (S (S Z)) (: $prg Boolean)) ((: X Boolean) (: (AND X X) Boolean) (: (AND X (AND X X)) Boolean) (: (AND (AND X X) X) Boolean) (: (AND (AND X X) (AND X X)) Boolean)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -213,7 +213,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 12:56:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:54:18+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

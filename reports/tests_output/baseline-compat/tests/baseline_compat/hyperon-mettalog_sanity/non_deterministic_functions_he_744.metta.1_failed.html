@@ -28,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:02:39+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:02:29+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta] ]
 P;HTML|
@@ -69,7 +69,7 @@ Script started on 2025-02-18 13:02:39+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.92 milliseconds) 
+; took 0.002 secs. (1.69 milliseconds) 
 
 !(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
@@ -86,9 +86,9 @@ Deterministic: <span class="ansi33"
 ;;; Wrapping the logic in a function
 ;;; Define an untyped function `test6`
 <span class="ansi38-255165000"
-> (= (test6 $_31900 $_31906)  
-  (subtraction $_31906 
-    (intersection $_31900 $_31906)))
+> (= (test6 $set $subset)  
+  (subtraction $subset 
+    (intersection $set $subset)))
 </span>;;; Test: Call the untyped function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
@@ -98,7 +98,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.000999 secs. (998.61 microseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -120,9 +120,9 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (: test6 (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (test6 $_63994 $_64000)  
-  (subtraction $_2844 
-    (intersection $_2838 $_2844)))
+> (= (test6 $set $subset)  
+  (subtraction $subset 
+    (intersection $set $subset)))
 </span>;;; Test: Call the typed function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
@@ -132,7 +132,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.25 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -166,7 +166,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ()) ('~nExpected: ' (b d a d a b d)))]
 [()]
 
-Script done on 2025-02-18 13:02:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:02:29+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

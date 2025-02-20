@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:09:17+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/hyperpose.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:11:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/hyperpose.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/hyperpose.metta] ]
 P;HTML|
@@ -57,16 +57,16 @@ Script started on 2025-02-18 13:09:17+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If True $_25916)  $_25916)
+> (= (If True $then)  $then)
 </span><span class="ansi38-255165000"
-> (= (If False $_29296)  
-  (let $_29314 0 
-    (let $_29314 1 $_29314)))
+> (= (If False $then)  
+  (let $x 0 
+    (let $x 1 $x)))
 </span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If $_35526 $_35532 $_35538)  
-  (if $_35526 $_35532 $_35538))
+> (= (If $cond $then $else)  
+  (if $cond $then $else))
 </span><span class="ansi38-013099040"
 >!(assertEqual (hyperpose (1 2)) (superpose (1 2)))
 
@@ -75,7 +75,7 @@ Script started on 2025-02-18 13:09:17+00:00 [COMMAND="timeout --preserve-status 
 >;; METTA-MORPH-TESTS.HYPERPOSE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000953 secs. (953.18 microseconds) 
+; took 0.000904 secs. (903.92 microseconds) 
 
 !(assertEqual (hyperpose (1 2)) (superpose (1 2)))
 
@@ -95,7 +95,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.75 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1))))
 
@@ -115,7 +115,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.03 milliseconds) 
+; took 0.002 secs. (1.77 milliseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 1)) (superpose ((If (== 1 2) 1) 1)))
 
@@ -135,7 +135,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000837 secs. (837.05 microseconds) 
+; took 0.000620 secs. (619.54 microseconds) 
 
 !(assertEqual (hyperpose (1 2 3)) (superpose (1 2 3)))
 
@@ -155,7 +155,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.03 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 2 3)) (superpose ((If (== 1 2) 1) 2 3)))
 
@@ -175,7 +175,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.68 milliseconds) 
+; took 0.001 secs. (1.31 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) 3)) (superpose (1 (If (== 1 2) 1) 3)))
 
@@ -195,7 +195,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.55 milliseconds) 
+; took 0.001 secs. (1.36 milliseconds) 
 
 !(assertEqual (hyperpose (1 2 (If (== 1 2) 1))) (superpose (1 2 (If (== 1 2) 1))))
 
@@ -215,7 +215,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.45 milliseconds) 
+; took 0.002 secs. (1.98 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1) (If (== 1 2) 1))))
 
@@ -235,7 +235,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000715 secs. (714.76 microseconds) 
+; took 0.000623 secs. (622.99 microseconds) 
 
 !(assertEqual (hyperpose (1 2 3 4)) (superpose (1 2 3 4)))
 
@@ -255,7 +255,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.HYPERPOSE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.83 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqual (hyperpose ((1 2) (3 4))) (superpose ((1 2) (3 4))))
 
@@ -289,7 +289,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:09:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:11:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

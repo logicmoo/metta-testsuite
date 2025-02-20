@@ -31,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:09:52+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:13:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/types3.metta] ]
 P;HTML|
@@ -46,39 +46,39 @@ Script started on 2025-02-18 13:09:52+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If True $_46678)  $_46678)
+> (= (If True $then)  $then)
 </span><span class="ansi38-255165000"
-> (= (If False $_50058)  
-  (let $_50076 0 
-    (let $_50076 1 $_50076)))
+> (= (If False $then)  
+  (let $x 0 
+    (let $x 1 $x)))
 </span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If $_56288 $_56294 $_56300)  
-  (if $_56288 $_56294 $_56300))
+> (= (If $cond $then $else)  
+  (if $cond $then $else))
 </span><span class="ansi38-255165000"
 > (GreaterThan 42 21)
 </span><span class="ansi38-255165000"
-> (= (EqualOrGreater $_62784 $_62790)  
+> (= (EqualOrGreater $x $y)  
   (or 
-    (> $_62784 $_62790) 
-    (== $_2704 $_2710)))
+    (> $x $y) 
+    (== $x $y)))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(match &self (GreaterThan $_6870 $_6876) (If (and (== (get-type $_6870) Number) (== (get-type $_6876) Number)) (If (EqualOrGreater $_6870 $_6876) yay)))
+>!(match &self (GreaterThan $x $y) (If (and (== (get-type $x) Number) (== (get-type $y) Number)) (If (EqualOrGreater $x $y) yay)))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (GreaterThan $_9272 $_9278) (If (and (== (get-type $_9272) Number) (== (get-type $_9278) Number)) (If (EqualOrGreater $_9272 $_9278) yay))) (yay))
+>!(assertEqualToResult (match &self (GreaterThan $x $y) (If (and (== (get-type $x) Number) (== (get-type $y) Number)) (If (EqualOrGreater $x $y) yay))) (yay))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.TYPES3.01"
 >;; METTA-MORPH-TESTS.TYPES3.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (2.65 milliseconds) 
 
-!(assertEqualToResult (match &self (GreaterThan $_42490 $_42496) (If (and (== (get-type $_42490) Number) (== (get-type $_42496) Number)) (If (EqualOrGreater $_42490 $_42496) yay))) (yay))
+!(assertEqualToResult (match &self (GreaterThan $x $y) (If (and (== (get-type $x) Number) (== (get-type $y) Number)) (If (EqualOrGreater $x $y) yay))) (yay))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -101,7 +101,7 @@ Deterministic: <span class="ansi33"
 >Return to summaries</a><br/>
 [()]
 
-Script done on 2025-02-18 13:09:53+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:13:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

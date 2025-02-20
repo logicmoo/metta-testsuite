@@ -27,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 12:59:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:58:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta] ]
 P;HTML|
@@ -49,9 +49,9 @@ Script started on 2025-02-18 12:59:44+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: is-even (-> Number Bool))
 </span><span class="ansi38-255165000"
-> (= (is-even $_59444)  
+> (= (is-even $X)  
   (== 
-    (% $_59444 2) 0))
+    (% $X 2) 0))
 </span>;;;; basic hyperpose evaluation
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
@@ -60,15 +60,15 @@ Script started on 2025-02-18 12:59:44+00:00 [COMMAND="timeout --preserve-status 
 ;<h3 id="HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 1 2) 0 ]] [ = $_9100 True ] ] [ = $_9100 False ] ]] [error [type_error () (% 1 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 1 2) 0 ]] [ = $_19102 True ] ] [ = $_19102 False ] ]] [error [type_error () (% 1 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $_9056 True ] ] [ = $_9056 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $_9266 True ] ] [ = $_9266 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 3 2) 0 ]] [ = $_9054 True ] ] [ = $_9054 False ] ]] [error [type_error () (% 3 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 3 2) 0 ]] [ = $_9220 True ] ] [ = $_9220 False ] ]] [error [type_error () (% 3 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
 
 ; 
 ; EVAL TEST
-; took 0.014 secs. (13.63 milliseconds) 
+; took 0.013 secs. (12.98 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
@@ -88,11 +88,11 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $_15356 True ] ] [ = $_15356 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $_11282 True ] ] [ = $_11282 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
 
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.92 milliseconds) 
+; took 0.005 secs. (5.41 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
@@ -114,7 +114,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.82 milliseconds) 
+; took 0.002 secs. (2.49 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
@@ -141,7 +141,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' (False False 3 4)) ('~nExpected: ' (False True 3 4)))]
 [()]
 
-Script done on 2025-02-18 12:59:45+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:58:44+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

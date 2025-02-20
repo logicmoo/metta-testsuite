@@ -32,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 12:56:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:53:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta] ]
 P;HTML|
@@ -89,16 +89,16 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (PQ SS-Q_BAD C_BAD)
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (= A_AS  $_37826) (= A_AS  $_37826)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
+>!(assertEqualToResult (match &kb ($SS A_AS $X) ($SS A_AS $X)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.01"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.48 milliseconds) 
+; took 0.002 secs. (2.34 milliseconds) 
 
-!(assertEqualToResult (match &kb (= A_AS  $_63024) (= A_AS  $_4376)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
+!(assertEqualToResult (match &kb ($SS A_AS $X) ($SS A_AS $X)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -110,16 +110,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Basic Match
 <span class="ansi38-013099040"
->!(assertEqual (match &kb (= A_AS  $_17164) (= $_17164)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
+>!(assertEqual (match &kb ($rel A_AS $x) ($rel $x)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.02"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.70 milliseconds) 
+; took 0.004 secs. (4.07 milliseconds) 
 
-!(assertEqual (match &kb (= A_AS  $_5950) (= $_5950)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
+!(assertEqual (match &kb ($rel A_AS $x) ($rel $x)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -131,16 +131,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; cases can be used for deconstruction
 <span class="ansi38-013099040"
->!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb (= A_AS  $_18750) (= $_18750)) (((SS-P_AS $_18798) (P_AS $_18798)) ((SS-Q_AS $_18798) (Q_AS $_18798)))))
+>!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($rel A_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.60 milliseconds) 
+; took 0.007 secs. (6.65 milliseconds) 
 
-!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb (= A_AS  $_39004) (= $_39004)) (((SS-P_AS $_39052) (P_AS $_39052)) ((SS-Q_AS $_39052) (Q_AS $_39052)))))
+!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($rel A_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -152,16 +152,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; %void% can be used to capture empty results
 <span class="ansi38-013099040"
->!(assertEqual (case (match &kb (= B_AS  $_51562) (= $_51562)) (((SS-P_AS $_51610) (P_AS $_51610)) ((SS-Q_AS $_51610) (Q_AS $_51610)) (%void% no-match))) no-match)
+>!(assertEqual (case (match &kb ($rel B_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)) (%void% no-match))) no-match)
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.87 milliseconds) 
+; took 0.001 secs. (1.50 milliseconds) 
 
-!(assertEqual (case (match &kb (= B_AS  $_14234) (= $_14234)) (((SS-P_AS $_14282) (P_AS $_14282)) ((SS-Q_AS $_14282) (Q_AS $_14282)) (%void% no-match))) no-match)
+!(assertEqual (case (match &kb ($rel B_AS $x) ($rel $x)) (((SS-P_AS $y) (P_AS $y)) ((SS-Q_AS $y) (Q_AS $y)) (%void% no-match))) no-match)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -190,7 +190,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 12:56:28+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:53:46+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

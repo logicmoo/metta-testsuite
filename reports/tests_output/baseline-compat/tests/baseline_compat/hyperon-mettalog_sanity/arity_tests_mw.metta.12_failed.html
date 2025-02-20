@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 12:56:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:54:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta] ]
 P;HTML|
@@ -82,7 +82,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.13 milliseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (predicate-arity foo) (1))
 
@@ -103,7 +103,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000912 secs. (912.43 microseconds) 
+; took 0.000775 secs. (775.13 microseconds) 
 
 !(assertEqualToResult (function-arity foo) (0))
 
@@ -129,7 +129,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.000805 secs. (804.68 microseconds) 
 
 !(assertEqualToResult (predicate-arity bar) (2 3))
 
@@ -150,7 +150,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000888 secs. (888.31 microseconds) 
+; took 0.000772 secs. (771.59 microseconds) 
 
 !(assertEqualToResult (function-arity bar) (1 2))
 
@@ -174,7 +174,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000909 secs. (908.55 microseconds) 
+; took 0.000793 secs. (792.74 microseconds) 
 
 !(assertEqualToResult (predicate-arity foo) (1 2))
 
@@ -195,7 +195,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000875 secs. (875.45 microseconds) 
+; took 0.000810 secs. (810.30 microseconds) 
 
 !(assertEqualToResult (function-arity foo) (0 1))
 
@@ -215,16 +215,16 @@ Deterministic: <span class="ansi33"
 > (add-atom &test-space (predicate-arity size-atom 2))
 </span>;;; Test: Match using `size-atom` as a predicate
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (size-atom (a b c) $_24418) $_24418) (3))
+>!(assertEqualToResult (match &test-space (size-atom (a b c) $size) $size) (3))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ARITY-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000206 secs. (206.46 microseconds) 
+; took 0.000189 secs. (189.49 microseconds) 
 
-!(assertEqualToResult (match &test-space (size-atom (a b c) $_31866) $_31866) (3))
+!(assertEqualToResult (match &test-space (size-atom (a b c) $size) $size) (3))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -237,47 +237,47 @@ Deterministic: <span class="ansi33"
 </span>;;; Test: Reverse execution using `size-atom`
 ;;; This functionality is just part of how size-atom was designed to run bi-directionaly
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (size-atom $_43350 4) $_43350) (($_43374 $_43380 $_43386 $_43392)))
+>!(assertEqualToResult (match &test-space (size-atom $new_atom 4) $new_atom) (($1 $2 $3 $4)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ARITY-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000182 secs. (182.30 microseconds) 
+; took 0.000170 secs. (170.31 microseconds) 
 
-!(assertEqualToResult (match &test-space (size-atom $_51174 4) $_51174) (($_51198 $_51204 $_51210 $_51216)))
+!(assertEqualToResult (match &test-space (size-atom $new_atom 4) $new_atom) (($1 $2 $3 $4)))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
-      ( ($_52206 $_52212 $_52218 $_52224))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(_41020{vn = ...},'[|]'(_40702{vn = ...},'[|]'(_40384{vn = ...},'[|]'(_40066{vn = ...},[])))),[]))
+      ( ($1 $2 $3 $4))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(_23258{vn = ...},'[|]'(_23042{vn = ...},'[|]'(_22826{vn = ...},'[|]'(_22610{vn = ...},[])))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' (($_58690 $_58696 $_58702 $_58708))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (($1 $2 $3 $4))))
 </span>;;; Example 2: Testing `predicate-arity`
 ;;; -----------------------------------
 ;;; Define rules for `max`
 <span class="ansi38-255165000"
-> (add-atom &test-space (max $_63134 $_63140 $_63134) (<= $_63134 $_63140))
+> (add-atom &test-space (max $X $Y $X) (<= $X $Y))
 </span><span class="ansi38-255165000"
-> (add-atom &test-space (max $_3318 $_3324 $_3324) (> $_3318 $_3324))
+> (add-atom &test-space (max $X $Y $Y) (> $X $Y))
 </span>;;; Declare `max` predicate with arity 3
 <span class="ansi38-255165000"
 > (add-atom &test-space (predicate-arity max 3))
 </span>;;; Test: Use `max` declaratively as a predicate
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (max 5 10 $_7820) $_7820) (10))
+>!(assertEqualToResult (match &test-space (max 5 10 $max) $max) (10))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ARITY-TESTS.09"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000239 secs. (239.01 microseconds) 
+; took 0.000159 secs. (159.17 microseconds) 
 
-!(assertEqualToResult (match &test-space (max 5 10 $_15206) $_15206) (10))
+!(assertEqualToResult (match &test-space (max 5 10 $max) $max) (10))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -290,25 +290,25 @@ Deterministic: <span class="ansi33"
 </span>;;; Test: Reverse execution using `max`
 ;;; This functionality uses mettalog's builtin finite domain equational solver
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (max $_26198 $_26204 10) ($_26198 $_26204)) (((<exists> (<= 10 $_26270)) 10) (10 (<exists> (<= 10 $_26270)))))
+>!(assertEqualToResult (match &test-space (max $a $b 10) ($a $b)) (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ARITY-TESTS.10"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000213 secs. (212.53 microseconds) 
+; took 0.000175 secs. (175.26 microseconds) 
 
-!(assertEqualToResult (match &test-space (max $_34802 $_34808 10) ($_34802 $_34808)) (((<exists> (<= 10 $_34874)) 10) (10 (<exists> (<= 10 $_34874)))))
+!(assertEqualToResult (match &test-space (max $a $b 10) ($a $b)) (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $)))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
-      ( ( (<exists> (<= 10 $_35816)) 10) (10 (<exists> (<= 10 $_35816))))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_23556{vn = ...},[]))),[])),'[|]'(10,[])),'[|]'('[|]'(10,'[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_23556{vn = ...},[]))),[])),[])),[])))
+      ( ( (<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1248{vn = ...},[]))),[])),'[|]'(10,[])),'[|]'('[|]'(10,'[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1248{vn = ...},[]))),[])),[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $_42410)) 10) (10 (<exists> (<= 10 $_42410))))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))))
 </span>;;; Example 3: Testing `function-arity`
 ;;; -----------------------------------
 ;;; Enable `max` as a callable function
@@ -323,7 +323,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000965 secs. (965.30 microseconds) 
+; took 0.000796 secs. (795.60 microseconds) 
 
 !(assertEqualToResult (max 5 10) (10))
 
@@ -339,25 +339,25 @@ Deterministic: <span class="ansi33"
 </span>;;; Test: Use `max` procedurally as reversable a function
 ;;; This functionality uses mettalog's builtin finite domain equational solver
 <span class="ansi38-013099040"
->!(assertEqualToResult (let (= (= $_12512  $_12518)  $_12524) (== (max $_12512 $_12518) 10) ($_12512 $_12518)) (((<exists> (<= 10 $_12626)) 10) (10 (<exists> (<= 10 $_12626)))))
+>!(assertEqualToResult (let ($_44162 ($_44174 $a $b) $_44180) (== (max $a $b) 10) ($a $b)) (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ARITY-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.ARITY-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.27 milliseconds) 
+; took 0.002 secs. (2.05 milliseconds) 
 
-!(assertEqualToResult (let (= (= $_13400  $_13406)  $_13412) (== (max $_13400 $_13406) 10) ($_13400 $_13406)) (((<exists> (<= 10 $_13514)) 10) (10 (<exists> (<= 10 $_13514)))))
+!(assertEqualToResult (let ($_13046 ($_13058 $a $b) $_13064) (== (max $a $b) 10) ($a $b)) (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $)))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
-      ( ( (<exists> (<= 10 $_14360)) 10) (10 (<exists> (<= 10 $_14360))))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1128{vn = ...},[]))),[])),'[|]'(10,[])),'[|]'('[|]'(10,'[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1128{vn = ...},[]))),[])),[])),[])))
+      ( ( (<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1170{vn = ...},[]))),[])),'[|]'(10,[])),'[|]'('[|]'(10,'[|]'('[|]'('<exists>','[|]'('[|]'(<=,'[|]'(10,'[|]'(_1170{vn = ...},[]))),[])),[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $_20954)) 10) (10 (<exists> (<= 10 $_20954))))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/arity_tests_mw.metta 0 ]
 <span class="ansi1"
@@ -377,13 +377,13 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((predicate-arity foo))) ('~nExpected: ' (1 2)))]
 [(Error ('~nGot: ' ((function-arity foo))) ('~nExpected: ' (0 1)))]
 [(Error ('~nGot: ' ()) ('~nExpected: ' (3)))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' (($_59594 $_59600 $_59606 $_59612))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (($1 $2 $3 $4))))]
 [(Error ('~nGot: ' ()) ('~nExpected: ' (10)))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $_43322)) 10) (10 (<exists> (<= 10 $_43322))))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))))]
 [(Error ('~nGot: ' ((max 5 10))) ('~nExpected: ' (10)))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $_21866)) 10) (10 (<exists> (<= 10 $_21866))))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' (((<exists> (<= 10 $)) 10) (10 (<exists> (<= 10 $))))))]
 
-Script done on 2025-02-18 12:56:35+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:54:04+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

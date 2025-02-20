@@ -104,7 +104,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:05:40+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:06:33+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests_nats_mw.metta] ]
 P;HTML|
@@ -177,86 +177,86 @@ Script started on 2025-02-18 13:05:40+00:00 [COMMAND="timeout --preserve-status 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Declaration of List data type and constructors
 <span class="ansi38-255165000"
-> (: List (-> $_51066 Type))
+> (: List (-> $a Type))
 </span><span class="ansi38-255165000"
-> (: Nil (List $_54396))
+> (: Nil (List $a))
 </span><span class="ansi38-255165000"
-> (: Cons (-> $_57840 (List $_57840) (List $_57840)))
+> (: Cons (-> $a (List $a) (List $a)))
 </span>;;;; Insert an element to a presumably sorted list, remains sorted.
 <span class="ansi38-255165000"
-> (: insert (-> $_61254 (List $_61254) (List $_61254)))
+> (: insert (-> $a (List $a) (List $a)))
 </span><span class="ansi38-255165000"
-> (= (insert $_4732 Nil)  
-  (Cons $_4732 Nil))
+> (= (insert $x Nil)  
+  (Cons $x Nil))
 </span><span class="ansi38-255165000"
-> (= (insert $_9266 (Cons $_9284 $_9290))  
+> (= (insert $x (Cons $head $tail))  
   (if 
-    (lessThan $_9266 $_9284) 
-    (Cons $_9266 
-      (Cons $_9284 $_9290)) 
-    (Cons $_9284 
-      (insert $_9266 $_9290))))
+    (lessThan $x $head) 
+    (Cons $x 
+      (Cons $head $tail)) 
+    (Cons $head 
+      (insert $x $tail))))
 </span>;;;; Sort a list
 <span class="ansi38-255165000"
-> (: sort (-> (List $_12556) (List $_12556)))
+> (: sort (-> (List $a) (List $a)))
 </span><span class="ansi38-255165000"
 > (= (sort Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (sort (Cons $_19004 $_19010))  
-  (insert $_19004 
-    (sort $_19010)))
+> (= (sort (Cons $head $tail))  
+  (insert $head 
+    (sort $tail)))
 </span>;;;; Check if an element is in a list (sorted or not)
 <span class="ansi38-255165000"
-> (: elem (-> $_22340 (List $_22340) Bool))
+> (: elem (-> $a (List $a) Bool))
 </span><span class="ansi38-255165000"
-> (= (elem $_25650 Nil)  False)
+> (= (elem $x Nil)  False)
 </span><span class="ansi38-255165000"
-> (= (elem $_29570 (Cons $_29588 $_29594))  
+> (= (elem $x (Cons $head $tail))  
   (if 
-    (== $_29570 $_29588) True 
-    (elem $_29570 $_29594)))
+    (== $x $head) True 
+    (elem $x $tail)))
 </span>;;;; Remove duplicates from a list
 <span class="ansi38-255165000"
-> (: uniq_ (-> (List $_32950) (List $_32950) (List $_32950)))
+> (: uniq_ (-> (List $a) (List $a) (List $a)))
 </span><span class="ansi38-255165000"
-> (= (uniq_ $_36240 Nil)  Nil)
+> (= (uniq_ $acc Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (uniq_ $_40280 (Cons $_40298 $_40304))  
+> (= (uniq_ $acc (Cons $head $tail))  
   (if 
-    (elem $_40298 $_40280) 
-    (uniq_ $_40280 $_40304) 
-    (Cons $_40298 
+    (elem $head $acc) 
+    (uniq_ $acc $tail) 
+    (Cons $head 
       (uniq_ 
-        (Cons $_40298 $_40280) $_40304))))
+        (Cons $head $acc) $tail))))
 </span><span class="ansi38-255165000"
-> (: uniq (-> (List $_43572) (List $_43572)))
+> (: uniq (-> (List $a) (List $a)))
 </span><span class="ansi38-255165000"
-> (= (uniq $_46882)  
-  (uniq_ Nil $_46882))
+> (= (uniq $l)  
+  (uniq_ Nil $l))
 </span>;;;; Insert an element in a presumably sorted list without duplicate.
 ;;;; Only insert if the element is not already in the list as to produce
 ;;;; a sorted list without duplicate.
 <span class="ansi38-255165000"
-> (: insert_uniq (-> $_50318 (List $_50318) (List $_50318)))
+> (: insert_uniq (-> $a (List $a) (List $a)))
 </span><span class="ansi38-255165000"
-> (= (insert_uniq $_53656 Nil)  
-  (Cons $_53656 Nil))
+> (= (insert_uniq $x Nil)  
+  (Cons $x Nil))
 </span><span class="ansi38-255165000"
-> (= (insert_uniq $_57792 (Cons $_57810 $_57816))  
+> (= (insert_uniq $x (Cons $head $tail))  
   (if 
-    (== $_57792 $_57810) 
-    (Cons $_57810 $_57816) 
+    (== $x $head) 
+    (Cons $head $tail) 
     (if 
-      (lessThan $_57792 $_57810) 
-      (Cons $_57792 
-        (Cons $_57810 $_57816)) 
-      (Cons $_57810 
-        (insert_uniq $_57792 $_57816)))))
+      (lessThan $x $head) 
+      (Cons $x 
+        (Cons $head $tail)) 
+      (Cons $head 
+        (insert_uniq $x $tail)))))
 </span><span class="ansi38-255165000"
 > (: lessThan (-> Number Number Bool))
 </span><span class="ansi38-255165000"
-> (= (lessThan $_5032 $_5038)  
-  (< $_5032 $_5038))
+> (= (lessThan $x $y)  
+  (< $x $y))
 </span>;;;; Test insert
 <span class="ansi38-013099040"
 >!("============ Test insert ============")
@@ -272,7 +272,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.18 milliseconds) 
+; took 0.002 secs. (2.11 milliseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -292,7 +292,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.45 milliseconds) 
+; took 0.008 secs. (8.21 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -314,7 +314,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.026 secs. (26.01 milliseconds) 
+; took 0.022 secs. (22.25 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -351,7 +351,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.64 milliseconds) 
+; took 0.003 secs. (3.22 milliseconds) 
 
 !(assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))
 
@@ -371,7 +371,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.96 milliseconds) 
+; took 0.012 secs. (11.60 milliseconds) 
 
 !(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
 
@@ -393,7 +393,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.032 secs. (32.13 milliseconds) 
+; took 0.028 secs. (27.94 milliseconds) 
 
 !(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -424,7 +424,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.13 milliseconds) 
+; took 0.006 secs. (6.22 milliseconds) 
 
 !(assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)
 
@@ -444,7 +444,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.07 milliseconds) 
+; took 0.008 secs. (7.99 milliseconds) 
 
 !(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
 
@@ -471,7 +471,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.067 secs. (66.65 milliseconds) 
+; took 0.059 secs. (59.04 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))
 
@@ -495,7 +495,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.046 secs. (45.91 milliseconds) 
+; took 0.041 secs. (41.46 milliseconds) 
 
 !(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
 
@@ -524,7 +524,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.80 milliseconds) 
+; took 0.013 secs. (12.63 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -546,7 +546,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.031 secs. (31.32 milliseconds) 
+; took 0.029 secs. (28.72 milliseconds) 
 
 !(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -570,7 +570,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.048 secs. (48.47 milliseconds) 
+; took 0.044 secs. (44.00 milliseconds) 
 
 !(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -595,12 +595,12 @@ R(2): <span class="ansi33"
 <span class="ansi38-255165000"
 > (: lessThan (-> Nat Nat Bool))
 </span><span class="ansi38-255165000"
-> (= (lessThan $_11424 Z)  False)
+> (= (lessThan $_52214 Z)  False)
 </span><span class="ansi38-255165000"
-> (= (lessThan Z (S $_14148))  True)
+> (= (lessThan Z (S $_54642))  True)
 </span><span class="ansi38-255165000"
-> (= (lessThan (S $_17694) (S $_17712))  
-  (lessThan $_17694 $_17712))
+> (= (lessThan (S $x) (S $y))  
+  (lessThan $x $y))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -614,7 +614,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000142 secs. (142.35 microseconds) 
+; took 0.000114 secs. (114.32 microseconds) 
 
 !(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
 
@@ -635,7 +635,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.72 milliseconds) 
+; took 0.007 secs. (7.06 milliseconds) 
 
 !(assertEqual (lessThan Z (S Z)) True)
 
@@ -660,7 +660,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.65 milliseconds) 
+; took 0.011 secs. (11.48 milliseconds) 
 
 !(assertEqual (lessThan Z (S (S Z))) True)
 
@@ -685,7 +685,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.57 milliseconds) 
+; took 0.003 secs. (3.30 milliseconds) 
 
 !(assertEqual (lessThan Z Z) False)
 
@@ -709,7 +709,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.62 milliseconds) 
+; took 0.007 secs. (6.97 milliseconds) 
 
 !(assertEqual (lessThan (S Z) Z) False)
 
@@ -734,7 +734,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.67 milliseconds) 
+; took 0.012 secs. (11.54 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) Z) False)
 
@@ -760,7 +760,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (16.94 milliseconds) 
+; took 0.015 secs. (15.25 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S Z)) False)
 
@@ -790,7 +790,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.050 secs. (49.79 milliseconds) 
+; took 0.045 secs. (44.77 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S (S Z))) False)
 
@@ -831,7 +831,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.120 secs. (119.97 milliseconds) 
+; took 0.111 secs. (110.64 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S Z))) (S (S (S Z)))) False)
 
@@ -892,7 +892,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.00 milliseconds) 
+; took 0.026 secs. (25.98 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S (S Z))) True)
 
@@ -925,7 +925,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.24</h3>
 ; 
 ; EVAL TEST
-; took 0.075 secs. (74.57 milliseconds) 
+; took 0.069 secs. (69.50 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S (S (S Z)))) True)
 
@@ -971,7 +971,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.25</h3>
 ; 
 ; EVAL TEST
-; took 0.042 secs. (42.39 milliseconds) 
+; took 0.039 secs. (39.31 milliseconds) 
 
 !(assertEqual (lessThan (S Z) (S (S (S Z)))) True)
 
@@ -1005,7 +1005,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.26</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (27.91 milliseconds) 
+; took 0.026 secs. (25.79 milliseconds) 
 
 !(assertEqual (lessThan (S (S Z)) (S Z)) False)
 
@@ -1038,7 +1038,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.27</h3>
 ; 
 ; EVAL TEST
-; took 0.075 secs. (74.80 milliseconds) 
+; took 0.069 secs. (68.96 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S Z))) (S (S Z))) False)
 
@@ -1084,7 +1084,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.28</h3>
 ; 
 ; EVAL TEST
-; took 0.116 secs. (115.55 milliseconds) 
+; took 0.098 secs. (98.07 milliseconds) 
 
 !(assertEqual (lessThan (S (S (S (S Z)))) (S (S Z))) False)
 
@@ -1138,7 +1138,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.29</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.91 milliseconds) 
+; took 0.005 secs. (4.64 milliseconds) 
 
 !(assertEqual (insert (S Z) Nil) (Cons (S Z) Nil))
 
@@ -1161,7 +1161,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.30</h3>
 ; 
 ; EVAL TEST
-; took 0.081 secs. (81.21 milliseconds) 
+; took 0.074 secs. (73.81 milliseconds) 
 
 !(assertEqual (insert (S (S Z)) (insert (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))
 
@@ -1204,7 +1204,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.31</h3>
 ; 
 ; EVAL TEST
-; took 0.126 secs. (126.07 milliseconds) 
+; took 0.114 secs. (113.80 milliseconds) 
 
 !(assertEqual (insert (S (S (S Z))) (insert (S (S Z)) (insert (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1262,7 +1262,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.59 milliseconds) 
+; took 0.007 secs. (7.10 milliseconds) 
 
 !(assertEqual (sort (Cons (S Z) Nil)) (Cons (S Z) Nil))
 
@@ -1285,7 +1285,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.33</h3>
 ; 
 ; EVAL TEST
-; took 0.093 secs. (93.31 milliseconds) 
+; took 0.085 secs. (84.80 milliseconds) 
 
 !(assertEqual (sort (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S Z) (Cons (S (S Z) Nil))))
 
@@ -1328,7 +1328,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.34</h3>
 ; 
 ; EVAL TEST
-; took 0.130 secs. (129.60 milliseconds) 
+; took 0.118 secs. (118.06 milliseconds) 
 
 !(assertEqual (sort (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1367,7 +1367,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.35</h3>
 ; 
 ; EVAL TEST
-; took 0.032 secs. (31.55 milliseconds) 
+; took 0.029 secs. (28.98 milliseconds) 
 
 !(assertEqual (elem (S Z) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) True)
 
@@ -1388,7 +1388,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.36</h3>
 ; 
 ; EVAL TEST
-; took 0.098 secs. (98.43 milliseconds) 
+; took 0.091 secs. (90.91 milliseconds) 
 
 !(assertEqual (elem (S (S (S (S (S Z))))) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil)))) False)
 
@@ -1416,7 +1416,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.37</h3>
 ; 
 ; EVAL TEST
-; took 0.274 secs. (274.06 milliseconds) 
+; took 0.251 secs. (250.74 milliseconds) 
 
 !(assertEqual (uniq (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S Z) (Cons (S (S Z)) Nil))))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S Z) Nil))))
 
@@ -1447,7 +1447,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.38</h3>
 ; 
 ; EVAL TEST
-; took 0.224 secs. (223.69 milliseconds) 
+; took 0.202 secs. (202.09 milliseconds) 
 
 !(assertEqual (uniq (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S (S Z))) (Cons (S (S Z)) Nil))))) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil)))
 
@@ -1481,7 +1481,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.39</h3>
 ; 
 ; EVAL TEST
-; took 0.107 secs. (107.26 milliseconds) 
+; took 0.095 secs. (95.27 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)) (Cons (S Z) (Cons (S (S Z) Nil))))
 
@@ -1524,7 +1524,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.40</h3>
 ; 
 ; EVAL TEST
-; took 0.171 secs. (170.69 milliseconds) 
+; took 0.153 secs. (153.38 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1568,7 +1568,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS-NATS.41</h3>
 ; 
 ; EVAL TEST
-; took 0.353 secs. (352.67 milliseconds) 
+; took 0.318 secs. (317.75 milliseconds) 
 
 !(assertEqual (insert_uniq (S (S Z)) (insert_uniq (S (S (S Z))) (insert_uniq (S (S Z)) (insert_uniq (S Z) Nil)))) (Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))
 
@@ -1665,7 +1665,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
 [(Error ('~nGot: ' ((Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))) (Cons (S (S Z)) (Cons (S (S (S Z))) (Cons (S (S Z)) (Cons (S Z) Nil)))))) ('~nExpected: ' ((Cons (S Z) (Cons (S (S Z)) (Cons (S (S (S Z))) Nil))))))]
 
-Script done on 2025-02-18 13:05:44+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:06:36+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

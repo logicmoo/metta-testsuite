@@ -75,7 +75,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 12:56:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:53:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta] ]
 P;HTML|
@@ -119,7 +119,7 @@ Script started on 2025-02-18 12:56:13+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000218 secs. (217.98 microseconds) 
+; took 0.000195 secs. (195.26 microseconds) 
 
 !(assertEqualToResult (get-type &self) (hyperon::space::DynSpace))
 
@@ -132,15 +132,15 @@ Script started on 2025-02-18 12:56:13+00:00 [COMMAND="timeout --preserve-status 
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqual ((let $_13252 (get-atoms &self) (get-type $_13252))) ((get-type &self)))
+>!(assertEqual ((let $x (get-atoms &self) (get-type $x))) ((get-type &self)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.02</h3>
 P;HTML|
-;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_14132 $_14134]]] [ = $_14138 True ] ] [ = $_14138 False ] ]] [error instantiation_error $_14152] ]
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_41398 $_41400]]] [ = $_41404 True ] ] [ = $_41404 False ] ]] [error instantiation_error $_41418] ]
 
-[error metta_NotReducible [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta] (assertEqual ((let $_2258 (get-atoms &self) (get-type $_2258))) ((get-type &self)))];;; stdlib is already loaded
+[error metta_NotReducible [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta] (assertEqual ((let $x (get-atoms &self) (get-type $x))) ((get-type &self)))];;; stdlib is already loaded
 <span class="ansi38-013099040"
 >!(assertEqual (if (> 1 2) 1 2) 2)
 
@@ -149,7 +149,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000545 secs. (545.10 microseconds) 
+; took 0.000501 secs. (501.11 microseconds) 
 
 !(assertEqual (if (> 1 2) 1 2) 2)
 
@@ -202,8 +202,8 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: g (-> Number Numer))
 </span><span class="ansi38-255165000"
-> (= (g $_56888)  
-  (+ $_56888 
+> (= (g $x)  
+  (+ $x 
     (__g)))
 </span>
 Deterministic: <span class="ansi33"
@@ -220,7 +220,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000456 secs. (455.79 microseconds) 
+; took 0.000401 secs. (401.18 microseconds) 
 
 !(assertEqual (+ 1 2) 3)
 
@@ -240,7 +240,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000165 secs. (165.46 microseconds) 
+; took 0.000115 secs. (115.44 microseconds) 
 
 !(assertEqual (if True "S" "F") "S")
 
@@ -253,19 +253,19 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165000"
-> (= (dup $_37034)  
+> (= (dup $x)  
   (if 
-    (== $_37034 0) 
-    (+ $_37034 10) 
-    (g $_37034)))
+    (== $x 0) 
+    (+ $x 10) 
+    (g $x)))
 </span><span class="ansi38-255165000"
 > (: f (-> Number Number))
 </span><span class="ansi38-255165000"
-> (= (f $_43314)  
+> (= (f $x)  
   (if 
-    (< $_43314 0) 
-    (- 0 $_43314) 
-    (g (+ 1 $_43314))))
+    (< $x 0) 
+    (- 0 $x) 
+    (g (+ 1 $x))))
 </span>
 R(2): <span class="ansi33"
 >()
@@ -289,16 +289,16 @@ R(2): <span class="ansi33"
 ;;; for importing modules with functions.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (match &m (= (f 2)  $_50544) $_50544) (g 3))
+>!(assertEqual (match &m (= (f 2)  $x) $x) (g 3))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.80 milliseconds) 
+; took 0.003 secs. (3.21 milliseconds) 
 
-!(assertEqual (match &m (= (f 2)  $_30432) $_30432) (g 3))
+!(assertEqual (match &m (= (f 2)  $x) $x) (g 3))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -342,8 +342,8 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: g (-> Number Numer))
 </span><span class="ansi38-255165000"
-> (= (g $_55558)  
-  (+ $_55558 
+> (= (g $x)  
+  (+ $x 
     (__g)))
 </span>
 Deterministic: <span class="ansi33"
@@ -360,7 +360,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000536 secs. (536.46 microseconds) 
+; took 0.000477 secs. (477.26 microseconds) 
 
 !(assertEqual (+ 1 2) 3)
 
@@ -380,7 +380,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000154 secs. (153.62 microseconds) 
+; took 0.000372 secs. (371.97 microseconds) 
 
 !(assertEqual (if True "S" "F") "S")
 
@@ -393,19 +393,19 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165000"
-> (= (dup $_36152)  
+> (= (dup $x)  
   (if 
-    (== $_36152 0) 
-    (+ $_36152 10) 
-    (g $_36152)))
+    (== $x 0) 
+    (+ $x 10) 
+    (g $x)))
 </span><span class="ansi38-255165000"
 > (: f (-> Number Number))
 </span><span class="ansi38-255165000"
-> (= (f $_41764)  
+> (= (f $x)  
   (if 
-    (< $_41764 0) 
-    (- 0 $_41764) 
-    (g (+ 1 $_41764))))
+    (< $x 0) 
+    (- 0 $x) 
+    (g (+ 1 $x))))
 </span>
 R(2): <span class="ansi33"
 >()
@@ -418,7 +418,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.12 milliseconds) 
+; took 0.000991 secs. (990.97 microseconds) 
 
 !(assertEqual (g 2) 102)
 
@@ -438,7 +438,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.35 milliseconds) 
+; took 0.002 secs. (2.08 milliseconds) 
 
 !(assertEqual (f 2) 103)
 
@@ -456,28 +456,28 @@ Deterministic: <span class="ansi33"
 ;;; - moduleC imported by moduleA and removed from A after its import to &self
 ;;; - moduleA itself, which is the same as &m
 <span class="ansi38-013099040"
->!(assertEqual &m (let* (($_40566 (collapse (get-atoms &self))) ($_40578 (cdr-atom $_40566)) ($_40608 (cdr-atom $_40578))) (car-atom $_40608)))
+>!(assertEqual &m (let* (($a (collapse (get-atoms &self))) ($x (cdr-atom $a)) ($y (cdr-atom $x))) (car-atom $y)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.11"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.11</h3>
 P;HTML|
-;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_30004 $_30006]]] [ = $_30010 True ] ] [ = $_30010 False ] ]] [error instantiation_error $_30024] ]
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_99936 $_99938]]] [ = $_99942 True ] ] [ = $_99942 False ] ]] [error instantiation_error $_99956] ]
 
-[error metta_NotReducible [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta] (assertEqual &m (let* (($_2656 (collapse (get-atoms &self))) ($_2668 (cdr-atom $_2656)) ($_2698 (cdr-atom $_2668))) (car-atom $_2698)))];;; NOTE: now the first atom, which was a space, is removed from `&m`,
+[error metta_NotReducible [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/f1_imports.metta] (assertEqual &m (let* (($a (collapse (get-atoms &self))) ($x (cdr-atom $a)) ($y (cdr-atom $x))) (car-atom $y)))];;; NOTE: now the first atom, which was a space, is removed from `&m`,
 ;;; because we load modules only once, and we collect atoms-spaces to
 ;;; prevent duplication
 <span class="ansi38-013099040"
->!(assertEqual (== (let* (($_4956 (collapse (get-atoms &m))) ($_4968 (car-atom $_4956))) (get-type $_4968)) (get-type &self)) False)
+>!(assertEqual (== (let* (($x (collapse (get-atoms &m))) ($y (car-atom $x))) (get-type $y)) (get-type &self)) False)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.12"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.02 milliseconds) 
+; took 0.011 secs. (10.52 milliseconds) 
 
-!(assertEqual (== (let* (($_7876 (collapse (get-atoms &m))) ($_7888 (car-atom $_7876))) (get-type $_7888)) (get-type &self)) False)
+!(assertEqual (== (let* (($x (collapse (get-atoms &m))) ($y (car-atom $x))) (get-type $y)) (get-type &self)) False)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -496,7 +496,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000564 secs. (564.14 microseconds) 
+; took 0.000539 secs. (539.36 microseconds) 
 
 !(assertEqual (if (> 1 2) 1 2) 2)
 
@@ -545,18 +545,18 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: g (-> Number Numer))
 </span><span class="ansi38-255165000"
-> (= (g $_55072)  
-  (+ $_55072 
+> (= (g $x)  
+  (+ $x 
     (__g)))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165000"
-> (= (dup $_61872)  
+> (= (dup $x)  
   (if 
-    (== $_61872 0) 
-    (g $_61872) 
-    (+ $_4992 10)))
+    (== $x 0) 
+    (g $x) 
+    (+ $x 10)))
 </span>
 R(2): <span class="ansi33"
 >()
@@ -570,7 +570,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.13 milliseconds) 
+; took 0.001 secs. (1.15 milliseconds) 
 
 !(assertEqual (g 2) 102)
 
@@ -590,7 +590,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.35 milliseconds) 
+; took 0.002 secs. (2.14 milliseconds) 
 
 !(assertEqual (f 2) 103)
 
@@ -612,7 +612,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.09 milliseconds) 
+; took 0.002 secs. (2.09 milliseconds) 
 
 !(assertEqualToResult (dup 2) (12 102))
 
@@ -658,18 +658,18 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: g (-> Number Numer))
 </span><span class="ansi38-255165000"
-> (= (g $_54842)  
-  (+ $_54842 
+> (= (g $x)  
+  (+ $x 
     (__g)))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-255165000"
-> (= (dup $_61618)  
+> (= (dup $x)  
   (if 
-    (== $_61618 0) 
-    (g $_61618) 
-    (+ $_4864 10)))
+    (== $x 0) 
+    (g $x) 
+    (+ $x 10)))
 </span>
 R(2): <span class="ansi33"
 >()
@@ -681,7 +681,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqual (g 2) 102)
 
@@ -701,7 +701,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.28 milliseconds) 
+; took 0.002 secs. (2.11 milliseconds) 
 
 !(assertEqual (f 2) 103)
 
@@ -721,7 +721,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-IMPORTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.33 milliseconds) 
+; took 0.002 secs. (2.05 milliseconds) 
 
 !(assertEqualToResult (dup 2) (12 102))
 
@@ -762,7 +762,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 12:56:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:53:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

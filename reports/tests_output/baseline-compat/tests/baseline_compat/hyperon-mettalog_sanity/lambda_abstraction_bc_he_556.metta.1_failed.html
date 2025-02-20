@@ -30,7 +30,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:00:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:00:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta] ]
 P;HTML|
@@ -71,28 +71,28 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Add successor function
 <span class="ansi38-013099040"
->!(add-atom &kb (: S (-> (: $_13118 Nat) Nat)))
+>!(add-atom &kb (: S (-> (: $x Nat) Nat)))
 
 </span><span class="ansi38-255165000"
-> (: S (-> (: $_21542 Nat) Nat))
+> (: S (-> (: $x Nat) Nat))
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a generic variable
 <span class="ansi38-013099040"
->!(add-atom &kb (: $_30108 Var))
+>!(add-atom &kb (: $x Var))
 
 </span><span class="ansi38-255165000"
-> (: $_38324 Var)
+> (: $x Var)
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;; Add lambda abstraction
 <span class="ansi38-013099040"
->!(add-atom &kb (: λ (-> (: $_48296 Var) (-> (: $_48326 $_48332) (-> (: $_48296 $_48368) $_48332)))))
+>!(add-atom &kb (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b)))))
 
 </span><span class="ansi38-255165000"
-> (: λ (-> (: $_57470 Var) (-> (: $_57500 $_57506) (-> (: $_57470 $_57542) $_57506))))
+> (: λ (-> (: $x Var) (-> (: $y $b) (-> (: $x $a) $b))))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -100,55 +100,55 @@ Deterministic: <span class="ansi33"
 ;;; ---------------------------------------
 ;;; Base case: Query the knowledge base for a rule or fact
 <span class="ansi38-255165000"
-> (= (bc (: $_4582 $_4588) $_4594)  
+> (= (bc (: $prf $ccln) $_48214)  
   (match &kb 
-    (: $_4582 $_4588) 
-    (: $_4582 $_4588)))
+    (: $prf $ccln) 
+    (: $prf $ccln)))
 </span>;;; Recursive step: Recurse on proof abstraction and argument
 <span class="ansi38-255165000"
-> (= (bc (: ($_9594 $_9600) $_9606) (S $_9624))  
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
   (let* 
-    ( ( (: $_9594 
+    ( ( (: $prfabs 
           (-> 
-            (: $_9600 $_9702) $_9606)) (bc (: $_9594 (-> (: $_9600 $_9702) $_9606)) $_9624)) ((: $_9600 $_9702) (bc (: $_9600 $_9702) $_9624))) 
+            (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
     (: 
-      ($_9594 $_9600) $_9606)))
+      ($prfabs $prfarg) $ccln)))
 </span>;;; Example 3: Tests
 ;;; ----------------
 ;;; Test: Prove unary functions over natural numbers with depth 2
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $_12026 (-> (: $_12056 Nat) Nat)) (S (S Z))) ())
+>!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (22.78 milliseconds) 
+; took 0.019 secs. (18.98 milliseconds) 
 
-!(assertEqualToResult (bc (: $_24728 (-> (: $_24758 Nat) Nat)) (S (S Z))) ())
+!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (: S 
           (-> 
-            (: $_25802 Nat) Nat))) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_23740{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[]),[])
+            (: $k Nat) Nat))) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_17106{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((: S (-> (: $_32266 Nat) Nat)))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((: S (-> (: $k Nat) Nat)))) ('~nExpected: ' ()))
 </span>;;; Explanation:
 ;;; The backward chainer should not crash and return an empty result when the depth is 2.
 ;;; Test: Prove unary functions over natural numbers with depth 5
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $_35972 (-> (: $_36002 Nat) Nat)) (S (S (S (S (S Z)))))) ())
+>!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S (S (S (S Z)))))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
 
-Script done on 2025-02-18 13:01:14+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-20 05:00:42+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

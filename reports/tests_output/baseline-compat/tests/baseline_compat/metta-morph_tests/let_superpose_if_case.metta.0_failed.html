@@ -31,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:09:21+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1278-967.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:12:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta] ]
 P;HTML|
@@ -48,34 +48,34 @@ Script started on 2025-02-18 13:09:21+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If True $_49948)  $_49948)
+> (= (If True $then)  $then)
 </span><span class="ansi38-255165000"
-> (= (If False $_53332)  
-  (let $_53350 0 
-    (let $_53350 1 $_53350)))
+> (= (If False $then)  
+  (let $x 0 
+    (let $x 1 $x)))
 </span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If $_59570 $_59576 $_59582)  
-  (if $_59570 $_59576 $_59582))
+> (= (If $cond $then $else)  
+  (if $cond $then $else))
 </span><span class="ansi38-255165000"
-> (= (f $_62720)  42)
+> (= (f $x)  42)
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(let $_3468 (superpose (3 4 5)) (If (> $_3468 3) (case (1 $_3468) (((1 3) (f 0)) ((1 4) (42 42)) ($_3564 (1 1))))))
+>!(let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1))))))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (let $_5880 (superpose (3 4 5)) (If (> $_5880 3) (case (1 $_5880) (((1 3) (f 0)) ((1 4) (42 42)) ($_5976 (1 1)))))) ((1 1) (42 42)))
+>!(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((1 1) (42 42)))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.01"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.47 milliseconds) 
+; took 0.003 secs. (3.13 milliseconds) 
 
-!(assertEqualToResult (let $_5780 (superpose (3 4 5)) (If (> $_5780 3) (case (1 $_5780) (((1 3) (f 0)) ((1 4) (42 42)) ($_5876 (1 1)))))) ((1 1) (42 42)))
+!(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((1 1) (42 42)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -86,16 +86,16 @@ Script started on 2025-02-18 13:09:21+00:00 [COMMAND="timeout --preserve-status 
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (let $_18532 (superpose (3 4 5)) (If (> $_18532 3) (case (1 $_18532) (((1 3) (f 0)) ((1 4) (42 42)) ($_18628 (1 1)))))) ((42 42) (1 1)))
+>!(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((42 42) (1 1)))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.02"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.35 milliseconds) 
+; took 0.003 secs. (2.87 milliseconds) 
 
-!(assertEqualToResult (let $_19680 (superpose (3 4 5)) (If (> $_19680 3) (case (1 $_19680) (((1 3) (f 0)) ((1 4) (42 42)) ($_19776 (1 1)))))) ((42 42) (1 1)))
+!(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((42 42) (1 1)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -119,7 +119,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:09:22+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:12:10+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

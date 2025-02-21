@@ -1,15 +1,15 @@
 
-	 (assertPEqual "(match-maybe-empty GroundingSpace-top (no-stuff $a) (no-stuff $a))" (match-maybe-empty GroundingSpace-top (no-stuff $a) (no-stuff $a)) Empty $same)
+	 (assertPEqual (match-maybe-empty ModuleSpace(GroundingSpace-top) (no-stuff $a) (no-stuff $a)) (match-maybe-empty ModuleSpace(GroundingSpace-top) (no-stuff $a) (no-stuff $a)) Empty $same)
 
-	 (assertPEqual "(atom-atom (+ 1 1))" (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)
+	 (assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)
 
-	 (assertPEqual "(number-atom (+ 1 1))" (number-atom (+ 1 1)) (number-atom 2) $same)
+	 (assertPEqual (number-atom (+ 1 1)) (number-atom (+ 1 1)) (number-atom 2) $same)
 
-	 (assertPEqual "(atom-unit (+ 1 1))" (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)
+	 (assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)
 
-	 (assertPEqual "(var-var (+ 1 1))" (var-var (+ 1 1)) (var-var (+ 1 1)) $same)
+	 (assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) (var-var (+ 1 1)) $same)
 
-	 (assertPEqual "(atom-var (+ 1 1))" (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)
+	 (assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)
 
 	 (assertPEqualToResult "nr1" (returns-not-reducible) 
 	   (NotReducible) 
@@ -19,7 +19,7 @@
 	   (NotReducible) 
 	   ((returns-not-reducible)))
 
-	 (assertPEqual "(return-number 2)" (return-number 2) 2 $same)
+	 (assertPEqual (return-number 2) (return-number 2) 2 $same)
 
 	 (assertPEqualToResult "re1" (return-empty) () $same)
 

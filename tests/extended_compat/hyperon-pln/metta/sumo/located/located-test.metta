@@ -1,7 +1,8 @@
 ;; Test reasoning on located.kif.metta.
 
 ;; Import synthesizer
-!(import! &self ../../synthesis/Synthesize.metta)
+!(register-module! ../../synthesis)
+!(import! &self synthesis:Synthesize)
 
 ;; Import knowledge base
 !(import! &kb located.kif)

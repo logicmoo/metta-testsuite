@@ -20,7 +20,8 @@
 (: zip (-> Value Value Expression))
 (= (zip $i $j) ($i $j))
 
-!(import! &self ../io/file-output.metta)
+!(register-module! ../io)
+!(import! &self io:file-output)
 
 (: iterate (-> Atom Atom))
 (= (iterate $iterable)

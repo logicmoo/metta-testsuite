@@ -15,9 +15,12 @@
 ;; represents the resulting truth value of the conclusion.
 
 ;; Import modules
-!(import! &self ../common/OrderedSet.metta)
-!(import! &self ../common/truthvalue/EvidentialTruthValue.metta)
-!(import! &self ../common/formula/ImplicationDirectIntroductionFormula.metta)
+!(register-module! ../common)
+!(import! &self common:OrderedSet)
+!(register-module! ../common)
+!(import! &self common:truthvalue:EvidentialTruthValue)
+!(register-module! ../common)
+!(import! &self common:formula:ImplicationDirectIntroductionFormula)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Rule Definition ;;

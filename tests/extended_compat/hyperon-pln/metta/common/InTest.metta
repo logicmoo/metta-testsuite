@@ -3,7 +3,8 @@
 ;; Import modules
 !(import! &self In)
 !(import! &self Num)
-!(import! &self ../synthesis/Synthesize.metta)
+!(register-module! ../synthesis)
+!(import! &self synthesis:Synthesize)
 
 ;; Define knowledge and rule bases to reason about ∉.  This requires
 ;; reasoning about order as well (Natural for now).

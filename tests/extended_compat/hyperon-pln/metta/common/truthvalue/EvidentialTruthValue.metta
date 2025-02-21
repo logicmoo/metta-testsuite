@@ -2,7 +2,8 @@
 ;; evidence.
 
 !(import! &self TruthValue)
-!(import! &self ../OrderedSet.metta)
+!(register-module! ../OrderedSet)
+!(import! &self OrderedSet)
 
 ;;;;;;;;;;
 ;; Type ;;

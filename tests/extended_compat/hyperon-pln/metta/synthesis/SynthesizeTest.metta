@@ -2,7 +2,8 @@
 
 ;; Import modules
 !(import! &self Synthesize)
-!(import! &self ../common/Record.metta)
+!(register-module! ../common)
+!(import! &self common:Record)
 
 ;; Knowledge base
 (: kb (-> Atom))

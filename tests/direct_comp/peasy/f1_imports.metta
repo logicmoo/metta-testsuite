@@ -112,7 +112,8 @@
 ; Let's import f1_moduleB.metta once more using a different path.
 ; Such import should be ignored and thus f, g and dup should remain
 ; unchanged.
-!(import! &self ../hyperon-experimental_scripts/f1_moduleB.metta)
+!(register-module! ../hyperon-experimental)
+!(import! &self hyperon-experimental_scripts/f1_moduleB)
 !(assertEqual (g 2) 102)
 !(assertEqual (f 2) 103)
 !(assertEqualToResult

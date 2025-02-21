@@ -2,7 +2,8 @@
 
 ;; Import modules
 !(import! &self ImplicationDirectIntroductionDTL)
-!(import! &self ../synthesis/Synthesize.metta)
+!(register-module! ../synthesis)
+!(import! &self synthesis:Synthesize)
 
 ;; Knowledge base
 (: kb (-> Atom))

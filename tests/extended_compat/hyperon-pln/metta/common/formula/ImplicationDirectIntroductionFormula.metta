@@ -1,7 +1,8 @@
 ;; Formula for the inductive Implication Direct Introduction rule.
 
 ;; Import modules
-!(import! &self ../truthvalue/TruthValue.metta)
+!(register-module! ../truthvalue)
+!(import! &self truthvalue:TruthValue)
 
 ;; Alternate implication direct introduction formula assuming Boolean
 ;; evidence.  Base case, meaning there is only one piece of evidence.

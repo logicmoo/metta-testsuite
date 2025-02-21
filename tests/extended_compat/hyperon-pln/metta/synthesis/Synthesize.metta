@@ -1,5 +1,6 @@
 ;; Import modules
-!(import! &self ../common/Num.metta)
+!(register-module! ../common)
+!(import! &self common:Num)
 ;; !(import! &self Unify)
 
 ;; Enumerate all programs up to a given depth that are consistent with

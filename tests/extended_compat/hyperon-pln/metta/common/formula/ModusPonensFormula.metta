@@ -1,8 +1,10 @@
 ;; Formula for the modus ponens rule
 
 ;; Import modules
-!(import! &self ../truthvalue/TruthValue.metta)
-!(import! &self ../Num.metta)
+!(register-module! ../truthvalue)
+!(import! &self truthvalue:TruthValue)
+!(register-module! ../Num)
+!(import! &self Num)
 
 (= (modus-ponens-formula (STV $As $Ac)
                          (STV $ABs $ABc))

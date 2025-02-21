@@ -1,5 +1,7 @@
-!(import! &self ../../hyperon-pln/metta/synthesis/Synthesize.metta)
-!(import! &self ../utils/MinerUtils.metta)
+!(register-module! ../../hyperon-pln)
+!(import! &self hyperon-pln:metta:synthesis:Synthesize)
+!(register-module! ../utils)
+!(import! &self utils:MinerUtils)
 !(import! &succ succAxiom)
 
 (= (get-witness $x) (: (WitnessOf $x) $x))

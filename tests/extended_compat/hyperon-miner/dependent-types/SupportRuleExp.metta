@@ -1,4 +1,5 @@
-!(import! &self ../../hyperon-pln/metta/synthesis/Synthesize)
+!(register-module! ../../hyperon-pln)
+!(import! &self hyperon-pln:synthesis:Synthesize)
 
 !(bind! &db (new-space))
 !(add-atom &db (Inheritance Allen man))

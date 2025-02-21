@@ -1,4 +1,5 @@
-!(import! &self ../../hyperon-pln/metta/synthesis/Synthesize.metta)
+!(register-module! ../../hyperon-pln)
+!(import! &self hyperon-pln:metta:synthesis:Synthesize)
 ; !(import! &self ../utils/MinerUtils.metta)
 !(import! &succ succAxiom)
 

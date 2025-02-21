@@ -1,6 +1,7 @@
 ;; Import modules
 !(import! &self synthesize-via-case)
-!(import! &self ../../common/Record.metta)
+!(register-module! ../../common)
+!(import! &self common:Record)
 
 ;; Test program synthesizer
 !(record syn ((: $term $type) Z))                  ; (: f (-> Number String)), (: g (-> String Bool)), (: h (-> Bool Number))

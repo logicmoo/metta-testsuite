@@ -4,7 +4,8 @@
 
 ; kb (Link A B) (Link B C)
 
-!(import! &self ../../../../hyperon-pln/metta/synthesis/Synthesize.metta)
+!(register-module! ../../../../hyperon-pln)
+!(import! &self hyperon-pln:metta:synthesis:Synthesize)
 
 !(bind! &db (new-space))
 !(add-atom &db (link a b))

@@ -1,6 +1,7 @@
 ;; Import modules
 !(import! &self Num)
-!(import! &self ../synthesis/Synthesize.metta)
+!(register-module! ../synthesis)
+!(import! &self synthesis:Synthesize)
 
 ;; Test elementary functions
 !(assertEqual (fromNumber 1) (S Z))

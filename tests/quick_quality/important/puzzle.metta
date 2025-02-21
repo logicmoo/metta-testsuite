@@ -111,5 +111,11 @@
             )
 )
 
-!(let $r (foo $Employees) (if $r $Employees (empty)))
+!(time (assertEqualToResult 
+  (let $r (foo $Employees) (if $r $Employees (empty)))
+
+ (((Cons (Cons ivan (Cons cashier (Cons no_sister Nil))) 
+   (Cons (Cons boris (Cons controller (Cons has_sister Nil))) 
+   (Cons (Cons semyon (Cons supervisor (Cons $v2 Nil))) Nil)))
+   ))))
 

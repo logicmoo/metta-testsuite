@@ -1,4 +1,5 @@
 [(Error (assertEqualToResult (let $s (open! (filename) write) (call-cleanup! (with-output-to! $s (foo $x)) (close! $s))) ("(bar 1)" "(bar 2)")) 
 Expected: ["(bar 1)", "(bar 2)"]
-Got: [(call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 2)")) (close! (open! "output_load_tests.tmp" write))), (call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 1)")) (close! (open! "output_load_tests.tmp" write)))]
-Missed result: "(bar 1)")]
+Got: [(call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 1)")) (close! (open! "output_load_tests.tmp" write))), (call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 2)")) (close! (open! "output_load_tests.tmp" write)))]
+Missed results: "(bar 1)", "(bar 2)"
+Excessive results: (call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 1)")) (close! (open! "output_load_tests.tmp" write))), (call-cleanup! (with-output-to! (open! "output_load_tests.tmp" write) (print "(bar 2)")) (close! (open! "output_load_tests.tmp" write))))]

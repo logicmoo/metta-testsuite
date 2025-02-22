@@ -1,15 +1,7 @@
-[(py-module random_binding "from hyperon.atoms import OperationAtom
-from hyperon.ext import register_atoms
-import random
-
-@register_atoms
-def my_atoms():
-    return {
-        'random': OperationAtom('random', random.random),
-    }
-")]
+[(py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n")]
 [(extend-py! random_binding)]
 [(Error (assertEqualToResult (let $r1 (random) (let $r2 (random) (== $r1 $r2))) (False)) 
 Expected: [False]
 Got: [True]
-Missed result: False)]
+Missed results: False
+Excessive results: True)]

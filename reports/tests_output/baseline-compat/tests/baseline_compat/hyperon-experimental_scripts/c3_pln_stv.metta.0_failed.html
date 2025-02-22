@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:41:42+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta] ]
 P;HTML|
@@ -73,10 +73,13 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
 > (= (min $a $b)  
   (if 
     (< $a $b) $a $b))
+ 
 </span><span class="ansi38-255165000"
 > (= (s-tv (stv $s $c))  $s)
+ 
 </span><span class="ansi38-255165000"
 > (= (c-tv (stv $s $c))  $c)
+ 
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `TV` "metarule" based on `match` to run
@@ -88,6 +91,7 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
 > (= (TV $x)  
   (match &self 
     (.tv $x $stv) $stv))
+ 
 </span>;;; Definition of TV for a conjunction
 ;;; we could use `(.tv (And $a $b) (stv ...))` instead of this
 <span class="ansi38-255165000"
@@ -99,18 +103,20 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
     (min 
       (c-tv (TV $a)) 
       (c-tv (TV $b)))))
+ 
 </span>;;; Definition of TV for $x when it's the consequent of an implication
 <span class="ansi38-255165000"
 > (= (TV $x)  
   (match &self 
     (.tv 
       (Implication $y $x) 
-      (stv $s $c)) 
+      (stv $20958 $20964)) 
     (stv 
-      (* $s 
+      (* $20958 
         (s-tv (TV $y))) 
-      (* $c 
+      (* $20964 
         (c-tv (TV $y))))))
+ 
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; First example
@@ -120,10 +126,13 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
 ;;; Some facts
 <span class="ansi38-255165000"
 > (.tv (Evaluation (Predicate P) (Concept A)) (stv 0.5 0.8))
+ 
 </span><span class="ansi38-255165000"
 > (.tv (Evaluation (Predicate P) (Concept B)) (stv 0.3 0.9))
+ 
 </span><span class="ansi38-255165000"
 > (.tv (Implication (Evaluation (Predicate P) (Concept A)) (Evaluation (Predicate F) (Concept A))) (stv 0.8 1.0))
+ 
 </span>;;; FIXME? `(PA)` and `(PB)` are used because otherwise
 ;;; substitution is not invoked (atm of test creation)
 <span class="ansi38-255165000"
@@ -131,16 +140,19 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
   (Evaluation 
     (Predicate P) 
     (Concept A)))
+ 
 </span><span class="ansi38-255165000"
 > (= (PB)  
   (Evaluation 
     (Predicate P) 
     (Concept B)))
+ 
 </span><span class="ansi38-255165000"
 > (= (FA)  
   (Evaluation 
     (Predicate F) 
     (Concept A)))
+ 
 </span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
@@ -150,7 +162,7 @@ Script started on 2025-02-20 04:50:55+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.01</h3>
 ; 
 ; EVAL TEST
-; took 0.036 secs. (35.55 milliseconds) 
+; took 0.050 secs. (50.36 milliseconds) 
 
 !(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
 
@@ -170,7 +182,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.02</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (14.97 milliseconds) 
+; took 0.018 secs. (18.10 milliseconds) 
 
 !(assertEqual (TV (FA)) (stv 0.4 0.8))
 
@@ -189,13 +201,17 @@ Deterministic: <span class="ansi33"
 ;;; Implication rule
 <span class="ansi38-255165000"
 > (.tv (Implication (And (croaks $x) (eat_flies $x)) (frog $x)) (stv 0.9 0.8))
+ 
 </span>;;; Some facts
 <span class="ansi38-255165000"
 > (.tv (croaks Fritz) (stv 0.95 0.85))
+ 
 </span><span class="ansi38-255165000"
 > (.tv (eat_flies Fritz) (stv 0.87 0.95))
+ 
 </span><span class="ansi38-255165000"
 > (.tv (Implication (frog $x) (green $x)) (stv 0.9 1.0))
+ 
 </span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
@@ -205,7 +221,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.93 milliseconds) 
+; took 0.003 secs. (3.23 milliseconds) 
 
 !(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
@@ -225,7 +241,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.04</h3>
 ; 
 ; EVAL TEST
-; took 0.034 secs. (33.86 milliseconds) 
+; took 0.047 secs. (47.40 milliseconds) 
 
 !(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
@@ -245,7 +261,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.05</h3>
 ; 
 ; EVAL TEST
-; took 0.070 secs. (70.21 milliseconds) 
+; took 0.098 secs. (98.46 milliseconds) 
 
 !(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
@@ -274,7 +290,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-20 04:50:56+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:41:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

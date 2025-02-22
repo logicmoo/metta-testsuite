@@ -28,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 05:05:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:54:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] ]
 P;HTML|
@@ -55,42 +55,47 @@ Script started on 2025-02-20 05:05:44+00:00 [COMMAND="timeout --preserve-status 
 ;;; Define a grounded function for single-sided matching
 <span class="ansi38-255165000"
 > (: single-side-match (-> Atom Atom))
+ 
 </span><span class="ansi38-255165000"
 > (= (single-side-match $expr)  
   (grounded-single-side-match $expr))
+ 
 </span>;;; Define assertSingleSideEqualToResult for testing single-sided matching
 <span class="ansi38-255165000"
 > (: assertSingleSideEqualToResult (-> Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
 > (= (assertSingleSideEqualToResult $expr $expected)  
-  (let $result 
+  (let $6048 
     (single-side-match $expr) 
     (if 
-      (== $result $expected) 
+      (== $6048 $expected) 
       (Success) 
-      (Error (assertSingleSideEqualToResult $expr $expected $result)))))
+      (Error (assertSingleSideEqualToResult $expr $expected $6048)))))
+ 
 </span>;;; Example 1: Current Double-Sided Matching
 ;;; ----------------------------------------
 ;;; Define a reduction rule for SKI combinatory logic
 <span class="ansi38-255165000"
 > (= ((S K) K)  I)
+ 
 </span>;;; Test: Matching ((S K) $x) with double-sided unification
 <span class="ansi38-013099040"
->!(assertEqualToResult ((S K) $x) (I))
+>!(assertEqualToResult ((S K) $10804) (I))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.67 milliseconds) 
+; took 0.000307 secs. (306.71 microseconds) 
 
-!(assertEqualToResult ((S K) $x) (I))
+!(assertEqualToResult ((S K) $17282) (I))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (I I) 
+      (I) 
       (I)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -102,13 +107,10 @@ Deterministic: <span class="ansi33"
 ;;; --------------------------------------------------
 ;;; Test: Matching ((S K) $x) with single-sided unification (using single-side-match)
 <span class="ansi38-013099040"
->!(assertSingleSideEqualToResult ((S K) $x) ((S K) $x))
+>!(assertSingleSideEqualToResult ((S K) $26986) ((S K) $26986))
 
 </span>
 N(1): <span class="ansi33"
->(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))
-</span>
-N(2): <span class="ansi33"
 >(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))
 </span>;;; Explanation:
 ;;; Single-sided matching would leave the expression unreduced, as `$x` does not unify with
@@ -117,17 +119,18 @@ N(2): <span class="ansi33"
 ;;; ----------------------------------------
 ;;; Define a reduction rule for a symmetry operator
 <span class="ansi38-255165000"
-> (= (: (Sym (: (Sym (: $x $a)) $b)) $c)  
+> (= (: (Sym (: (Sym (: $x $a)) $23328)) $23334)  
   (: $x $a))
+ 
 </span>;;; Test: Current double-sided behavior leads to infinite recursion
 <span class="ansi38-013099040"
->!(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
+>!(assertEqualToResult (: (Sym (: (Sym (: $26282 $26288)) $26294)) $26300) (InfiniteRecursion))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 
-Script done on 2025-02-20 05:06:24+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-22 20:54:42+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

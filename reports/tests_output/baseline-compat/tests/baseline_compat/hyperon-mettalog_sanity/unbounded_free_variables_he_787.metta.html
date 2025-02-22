@@ -31,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 05:09:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:57:06+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] ]
 P;HTML|
@@ -67,6 +67,7 @@ Script started on 2025-02-20 05:09:27+00:00 [COMMAND="timeout --preserve-status 
 
 </span><span class="ansi38-255165000"
 > (subsumption Dog Corgi)
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -75,6 +76,7 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (subsumption Animal Dog)
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -83,6 +85,7 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (subsumption Being Animal)
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -91,6 +94,7 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (subsumption Mortal Being)
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -99,16 +103,20 @@ Deterministic: <span class="ansi33"
 > (= (type-of $x $y)  
   (match &self 
     (subsumption $x $y) $x))
+ 
 </span><span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (type-of $x $z))
+ 
 </span><span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (get-entity-subsumptions $x 
-    (type-of $y $z)))
+    (type-of $8556 $z)))
+ 
 </span><span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x)  
   (get-entity-subsumptions $a $x))
+ 
 </span>;;; Test: Querying subsumptions for Corgi
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
@@ -116,8 +124,14 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01"
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01</h3>
+; 
+; EVAL TEST
+; took 12.23 seconds.
 
-Script done on 2025-02-20 05:10:08+00:00 [COMMAND_EXIT_CODE="143"]
+!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
+
+
+Script done on 2025-02-22 20:57:46+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

@@ -34,7 +34,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:50:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:41:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta] ]
 P;HTML|
@@ -68,15 +68,19 @@ Script started on 2025-02-20 04:50:22+00:00 [COMMAND="timeout --preserve-status 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
 > (= (I $x)  $x)
+ 
 </span><span class="ansi38-255165000"
 > (= ((K $x) $y)  $x)
+ 
 </span>;;; Note that `(K $x)` is allowed here
 <span class="ansi38-255165000"
 > (= (K $x $y)  $x)
+ 
 </span><span class="ansi38-255165000"
-> (= (S $x $y $z)  
-  ($x $z 
-    ($y $z)))
+> (= (S $x $y $6552)  
+  ($x $6552 
+    ($y $6552)))
+ 
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `assertEqual` compares (sets of) results of evaluation
@@ -91,7 +95,7 @@ Script started on 2025-02-20 04:50:22+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.74 milliseconds) 
+; took 0.000372 secs. (372.30 microseconds) 
 
 !(assertEqual (S K K x) x)
 
@@ -116,7 +120,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000834 secs. (834.48 microseconds) 
+; took 0.000972 secs. (971.57 microseconds) 
 
 !(assertEqualToResult (expression without known equalities) ((expression without known equalities)))
 
@@ -134,10 +138,12 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
 > (= (Add $x Z)  $x)
+ 
 </span><span class="ansi38-255165000"
 > (= (Add $x (S $y))  
   (Add 
     (S $x) $y))
+ 
 </span><span class="ansi38-013099040"
 >!(assertEqual (Add (S Z) (S Z)) (S (S Z)))
 
@@ -146,7 +152,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.03</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.74 milliseconds) 
+; took 0.005 secs. (5.39 milliseconds) 
 
 !(assertEqual (Add (S Z) (S Z)) (S (S Z)))
 
@@ -171,7 +177,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.79 milliseconds) 
+; took 0.011 secs. (11.00 milliseconds) 
 
 !(assertEqual (Something? (Add (S Z) (S Z))) (Something? (S (S Z))))
 
@@ -191,6 +197,7 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
 > (= (eq $x $x)  T)
+ 
 </span><span class="ansi38-013099040"
 >!(assertEqual (eq (S K K x) x) T)
 
@@ -199,7 +206,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.87 milliseconds) 
+; took 0.000752 secs. (752.33 microseconds) 
 
 !(assertEqual (eq (S K K x) x) T)
 
@@ -219,7 +226,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000735 secs. (735.38 microseconds) 
+; took 0.000813 secs. (813.26 microseconds) 
 
 !(assertEqualToResult (eq Green Blue) ((eq Green Blue)))
 
@@ -249,7 +256,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-20 04:50:22+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:41:35+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

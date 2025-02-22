@@ -35,7 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:54:08+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:44:18+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta] ]
 P;HTML|
@@ -47,20 +47,25 @@ Script started on 2025-02-20 04:54:08+00:00 [COMMAND="timeout --preserve-status 
 
 <span class="ansi38-255165000"
 > (: eval-maybe-empty (-> Atom Atom))
+ 
 </span><span class="ansi38-255165000"
 > (= (eval-maybe-empty $eval)  
   (let $res 
     (case $eval 
-      ( ( (Error $a $b) (eval (Error $a $b))) 
+      ( ( (Error $12896 $12902) (eval (Error $12896 $12902))) 
         (Empty (eval Empty)) 
-        ($var $var))) $res))
+        ($12956 $12956))) $res))
+ 
 </span><span class="ansi38-255165000"
 > (: match-maybe-empty (-> hyperon::space::DynSpace Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (match-maybe-empty $space $match $template)  
-  (eval-maybe-empty (match $space $match $template)))
+> (= (match-maybe-empty $space $match $22506)  
+  (eval-maybe-empty (match $space $match $22506)))
+ 
 </span><span class="ansi38-255165000"
 > (: string-repr (-> Atom String))
+ 
 </span><span class="ansi38-255165000"
 > (= (string-repr $obj)  
   (let $type 
@@ -70,59 +75,72 @@ Script started on 2025-02-20 04:54:08+00:00 [COMMAND="timeout --preserve-status 
       (format-args "\"{}\"" 
         ($obj)) 
       (repr $obj))))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Form $List $passes)  
+> (= (assertPEqual $Form $List $41146)  
   (assertPEqualR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $Form) $Form $List $41146))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Name $Form $Form2 $passes2)  
+> (= (assertPEqual $Name $Form $52844 $52850)  
   (assertPEqualR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $Name) $Form $52844 $52850))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualR (-> String Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualR $Name $Form $Form2 $passes2)  
+> (= (assertPEqualR $Name $Form $30600 $30606)  
   (let 
-    ($n $res $List $passes) 
+    ($30630 $30636 $30642 $30648) 
     ($Name 
       (eval-maybe-empty $Form) 
-      (eval-maybe-empty $Form2) 
-      (collapse $passes2)) 
+      (eval-maybe-empty $30600) 
+      (collapse $30606)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($_36384 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
+      (quote $30636) 
+      ( ( (quote $30642) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $30600 $30606)))) ($30834 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $30600 $30636))))))))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Form $List $passes)  
+> (= (assertPEqualToResult $Form $List $39850)  
   (assertPEqualToResultR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $Form) $Form $List $39850))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Name $Form $Form2 $passes2)  
+> (= (assertPEqualToResult $Name $Form $51556 $51562)  
   (assertPEqualToResultR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $Name) $Form $51556 $51562))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResultR (-> String Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResultR $Name $Form $List $passes)  
+> (= (assertPEqualToResultR $Name $Form $16966 $16972)  
   (let 
-    ($n $res) 
+    ($16996 $17002) 
     ($Name (collapse $Form)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($_55012 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
+      (quote $17002) 
+      ( ( (quote $16966) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $16966 $16972)))) ($17140 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $16966 $17002))))))))
+ 
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta 0 ]
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 
-Script done on 2025-02-20 04:54:08+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:44:19+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -41,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:50:26+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:41:35+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta] ]
 P;HTML|
@@ -69,10 +69,12 @@ Script started on 2025-02-20 04:50:26+00:00 [COMMAND="timeout --preserve-status 
 ;;; Fact
 <span class="ansi38-255165000"
 > (Frog Sam)
+ 
 </span><span class="ansi38-255165000"
 > (= (frog $x)  
   (match &self 
     (Frog $x) T))
+ 
 </span>;;; `(Frog Sam)` is not reduced; it is just a declaration
 <span class="ansi38-013099040"
 >!(assertEqualToResult (Frog Sam) ((Frog Sam)))
@@ -82,7 +84,7 @@ Script started on 2025-02-20 04:50:26+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000925 secs. (925.28 microseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (Frog Sam) ((Frog Sam)))
 
@@ -103,7 +105,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000579 secs. (579.11 microseconds) 
+; took 0.000357 secs. (357.08 microseconds) 
 
 !(assertEqual (frog Sam) T)
 
@@ -123,7 +125,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000519 secs. (519.17 microseconds) 
+; took 0.000271 secs. (271.14 microseconds) 
 
 !(assertEqualToResult (frog Fritz) ())
 
@@ -143,28 +145,34 @@ Deterministic: <span class="ansi33"
 ;;; Some facts in the knowledge base
 <span class="ansi38-255165000"
 > (Evaluation (philosopher Plato))
+ 
 </span><span class="ansi38-255165000"
 > (Evaluation (likes-to-wrestle Plato))
+ 
 </span>;;; An implication rule
 <span class="ansi38-255165000"
 > (Implication (And (Evaluation (philosopher $x)) (Evaluation (likes-to-wrestle $x))) (Evaluation (human $x)))
+ 
 </span>;;; Another implication rule
 <span class="ansi38-255165000"
 > (Implication (Evaluation (human $x)) (Evaluation (mortal $x)))
+ 
 </span>;;; Deduction case when the desired evaluation is present in
 ;;; the knowledge base
 <span class="ansi38-255165000"
 > (= (deduce (Evaluation ($P $x)))  
   (match &self 
     (Evaluation ($P $x)) T))
+ 
 </span>;;; Deduction case when the desired evaluation is the result
 ;;; of an implication, which implies a recursion
 <span class="ansi38-255165000"
 > (= (deduce (Evaluation ($P $x)))  
   (match &self 
-    (Implication $a 
+    (Implication $5000 
       (Evaluation ($P $x))) 
-    (deduce $a)))
+    (deduce $5000)))
+ 
 </span>;;; Deduction case for generic "And" expressions;
 ;;; also recursive
 <span class="ansi38-255165000"
@@ -172,9 +180,11 @@ Deterministic: <span class="ansi33"
   (And 
     (deduce $a) 
     (deduce $b)))
+ 
 </span>;;; True & True = True
 <span class="ansi38-255165000"
 > (= (And T T)  T)
+ 
 </span>;;; Test deduction that Plato is mortal
 <span class="ansi38-013099040"
 >!(assertEqual (deduce (Evaluation (mortal Plato))) T)
@@ -184,7 +194,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.04</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.75 milliseconds) 
+; took 0.009 secs. (9.02 milliseconds) 
 
 !(assertEqual (deduce (Evaluation (mortal Plato))) T)
 
@@ -199,8 +209,10 @@ Deterministic: <span class="ansi33"
 </span>;;; TODO : Some variables are not substituted
 <span class="ansi38-255165000"
 > (= (ift T $then)  $then)
+ 
 </span><span class="ansi38-255165000"
 > (ift (deduce (Evaluation (mortal $x))) $x)
+ 
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Another example of backchaining
@@ -212,21 +224,24 @@ Deterministic: <span class="ansi33"
   (match &self 
     (Evaluation ($P $x)) 
     ($P $x)))
+ 
 </span>;;; Definition of explain when the desired Evaluation is
 ;;; the result of an implication
 <span class="ansi38-255165000"
 > (= (explain (Evaluation ($P $x)))  
   (match &self 
-    (Implication $a 
+    (Implication $45452 
       (Evaluation ($P $x))) 
     ( ($P $x) proven by 
-      (explain $a))))
+      (explain $45452))))
+ 
 </span>;;; Definition of explain for And
 <span class="ansi38-255165000"
 > (= (explain (And $a $b))  
   (And 
     (explain $a) 
     (explain $b)))
+ 
 </span>;;; Example of explain why Plato is mortal
 <span class="ansi38-013099040"
 >!(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
@@ -236,7 +251,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.05</h3>
 ; 
 ; EVAL TEST
-; took 0.048 secs. (47.78 milliseconds) 
+; took 0.050 secs. (49.75 milliseconds) 
 
 !(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
 
@@ -273,7 +288,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-20 04:50:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:41:36+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

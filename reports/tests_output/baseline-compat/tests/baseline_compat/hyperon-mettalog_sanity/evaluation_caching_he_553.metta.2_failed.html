@@ -1,0 +1,1110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi2 { font-weight: lighter; }
+.ansi5 { text-decoration: blink; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
+.ansi40 { background-color: #000316; }
+.ansi91 { color: #ff0000; }
+.ansi92 { color: #00ff00; }
+.ansi93 { color: #ffff00; }
+.ansi94 { color: #5c5cff; }
+.ansi95 { color: #ff00ff; }
+.ansi96 { color: #00ffff; }
+.ansi97 { color: #ffffff; }
+.ansi100 { background-color: #7f7f7f; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-22 20:46:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+P;HTML|
+;                       [ = 1 "[(py-module random_binding \"from hyperon.atoms import OperationAtom\\nfrom hyperon.ext import register_atoms\\nimport random\\n\\n@register_atoms\\ndef my_atoms():\\n    return {\\n        'random': OperationAtom('random', random.random),\\n    }\\n\")]" ]
+P;HTML|
+;                       [ = 2 "[(extend-py! random_binding)]" ]
+P;HTML|
+;                       [ = 3 "[(Error (assertEqualToResult (let $r1 (random) (let $r2 (random) (== $r1 $r2))) (False)) " ]
+P;HTML|
+;                        [ = 3 "Expected: [False]" ]
+P;HTML|
+;                        [ = 3 "Got: [True]" ]
+P;HTML|
+;                         [ = 4 "Missed results: False" ]
+P;HTML|
+;                         [ = 4 "Excessive results: True)]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+
+;;; Test File: Evaluation Caching in MeTTa
+;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/553
+;;; Issue Overview:
+;;; This test explores unexpected behavior caused by caching in MeTTa, where cached results 
+;;; for expressions lead to incorrect evaluation outcomes. The issue specifically arises when 
+;;; evaluating functions that generate non-deterministic results, such as random numbers.
+;;; Define the Python Module
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n")
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n") ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n")))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.EVALUATION-CACHING-HE-553.01"
+>;; HYPERON-METTALOG-SANITY.EVALUATION-CACHING-HE-553.01</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.54 milliseconds) 
+
+!(assertEqualToResult (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n") ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n")))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n")) 
+      ( (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n"))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('py-module','[|]'(random_binding,'[|]'("from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n",[]))),[]),'[|]'('[|]'('py-module','[|]'(random_binding,'[|]'("from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n",[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n"))) ('~nExpected: ' ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n"))))
+</span>;;; Example 1: Testing Non-Deterministic Functionality
+;;; ---------------------------------------------------
+<span class="ansi38-013099040"
+>!(extend-py! random_binding)
+
+</span>P;HTML|
+;                                [extend-py! random_binding]
+ [156] <span class="ansi34"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(...,8000,...,_3074))|_3050],_3038))|_3014],_3002))|_2978],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
+ [155] <span class="ansi34"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(...,8000,...,_3224))|_3200],_3188))|_3164],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(155,clause(<clause>(0x55f544d8f170),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,...,...)|_3314],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(155,clause(<clause>(0x55f544d8f170),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_3364))|_3338],_3266))|_3240],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
+ [154] <span class="ansi34"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_3506],_3494))|_3470],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(155,clause(<clause>(0x55f544d8f170),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(156,clause(<clause>(0x55f544663410),8),call(...,8000,...,...)),frame(155,...,...)|_3590],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(154,clause(<clause>(0x55f544577020),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_3650)))|_3614],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [152] <span class="ansi34"
+>logicmoo_startup:ds</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1043
+ [151] <span class="ansi34"
+>logicmoo_startup:bt</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1038
+ [150] <span class="ansi34"
+>py_error_fail(error(python_error('AttributeError',<py_AttributeError>(0x7f0a729a5cb0)),context(_3752,python_stack(<py_traceback>(0x7f0a853ed2c0)))))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_python.pl:864
+ [149] <span class="ansi34"
+>catch('<garbage_collected>','<garbage_collected>','<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [148] <span class="ansi34"
+>py_ocall(mettalog:load_functions(random_binding),_3812)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_python.pl:685
+ [147] <span class="ansi34"
+>py_load_modfile(random_binding)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_python.pl:1890
+ [145] <span class="ansi34"
+>catch(user:(random_binding==mettalog->true;py_load_modfile(random_binding)),_3872,user:(pybug(_3922=py_catch((random_binding==mettalog->true;py_load_modfile(random_binding)))),py_dump,trace,(random_binding==mettalog->true;py_load_modfile(random_binding))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [143] <span class="ansi34"
+>py_catch('<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_python.pl:207
+ [139] <span class="ansi34"
+>setup_call_cleanup(user:set_prolog_flag(argv,[]),user:py_catch((assert_new(is_pymod_in_space(random_binding,'&top')),(nonvar(_4096)->random_binding=_4102;random_binding=random_binding),pybug('extend-py!'(random_binding)),(random_binding==mettalog->true;py_load_modfile(random_binding)),nb_setval('$py_ready',true),_4172=[],true)),user:set_prolog_flag(argv,['--python=enable',--,'--timeout=40','--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat','--html','--test','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'|...]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [137] <span class="ansi34"
+>self_extend_py('&top',random_binding,'<garbage_collected>','<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_python.pl:1860
+ [135] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [131] <span class="ansi34"
+>eval_10(=,'<garbage_collected>',499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_4316)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:3499
+ [129] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [128] <span class="ansi34"
+>call_cleanup(user:((call(eval_09(=,_4430),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_4424)*->nb_setarg(1,retval(fail),_4450);fail,trace,call(eval_09(=,_4484),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_4478)),ignore(notrace((\+_4518\=_4520,nb_setarg(1,retval(fail),_4528))))),user:ignore((_4558==1->ignore(\+ \+ (flag(eval_num,_4584,...),(...;...)));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [127] <span class="ansi34"
+>trace_eval('<garbage_collected>',e,499,'&top','<garbage_collected>','<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_debug.pl:982
+ [126] <span class="ansi34"
+>eval_01(=,_4692,500,'&top','<garbage_collected>',_4700)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_eval.pl:259
+ [122] <span class="ansi34"
+>catch(user:eval_args(=,_4740,500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_4748),metta_return(_4764),user:ignore(retract(thrown_metta_return(_4782))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [119] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [118] <span class="ansi34"
+>rtrace_on_error('<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3787
+ [117] <span class="ansi34"
+>ctimed_call('<garbage_collected>',_4866)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6232
+ [115] <span class="ansi34"
+>forall_interactive('<garbage_collected>','<garbage_collected>',_4894,'<garbage_collected>',(print_result_output(false,_4910,_4912,prev_result('Empty'),[],contrl(10,inf,each),res(_4944),_4922,[],_4926,_4928),(_4966>=inf->!;true),_4978=_4980,_4990=_4992,(_5014==true->repeat,...,...;true),((...;...)->!;true),(... -> ...;true),(... -> ...;true)))</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_repl.pl:1303
+ [114] <span class="ansi34"
+>u_do_metta_exec02('<garbage_collected>','&top','<garbage_collected>','<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_5124)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_repl.pl:1095
+ [112] <span class="ansi34"
+>catch(user:u_do_metta_exec01(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5204),_5170,[],[],_5176,_5178),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [110] <span class="ansi34"
+>catch(user:u_do_metta_exec000(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5328),_5294,[],[],_5300,_5302),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [108] <span class="ansi34"
+>catch(user:u_do_metta_exec00(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5452),_5418,[],[],_5424,_5426),_5398,user:write_src(error(_5478,file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [105] <span class="ansi34"
+>catch(user:(if_t(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>)=file(_5558),output_language(metta,write_exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>))),notrace(into_metta_callable('&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5598,_5600,_5602,_5604)),!,user:u_do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5638,_5640,_5642,_5644,_5646,_5648)),give_up(_5668),user:pp_m('red',gave_up(_5684)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [103] <span class="ansi34"
+>catch(user:do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>,_5728),give_up(_5748),user:write_src_uo(dont_give_up(_5762)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [99] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [98] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [96] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [95] <span class="ansi34"
+>forall('<garbage_collected>',user:(maybe_name_vars(_5888),(must_det_ll(do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>),_5916))->true;trace,pp_m(unknown_do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>random_binding</span></span>]</span>))))))</span> at /usr/lib/swi-prolog/boot/apply.pl:52
+  [92] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [91] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [88] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),user:((must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,1)),must_det_ll(load_answer_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>)),must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,0))),must_det_ll(load_metta_file_stream_fast(2778,read_file_sexpr,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,'&top',<stream>(0x55f547f798f0)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [85] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [84] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [82] <span class="ansi34"
+>setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,read,<stream>(0x55f547f798f0),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,'&top',<stream>(0x55f547f798f0))),user:close(<stream>(0x55f547f798f0)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [81] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [80] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [78] <span class="ansi34"
+>setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,read,<stream>(0x55f547f798f0),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,'&top',<stream>(0x55f547f798f0))),close(<stream>(0x55f547f798f0)))),user:working_directory(_6432,'/home/runner/work/metta-testsuite/metta-testsuite/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [75] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [74] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [72] <span class="ansi34"
+>include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_loader.pl:894
+  [71] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [70] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span></span>)</span>, 
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span></span>)</span>]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),user:(nb_current('$circular_goals',_6632),select(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_6644,_6646),nb_setval('$circular_goals',_6658)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [66] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [65] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [63] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>),user:must_det_ll(include_metta('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),user:set_option_value(loading_file,[]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [61] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [60] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [58] <span class="ansi34"
+>track_load_into_file0(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/loaders/genome/flybase_loader.pl:2071
+  [57] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [56] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [54] <span class="ansi34"
+>track_load_into_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/libraries/loaders/genome/flybase_loader.pl:2050
+  [53] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [52] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [49] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [48] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span></span>)</span></span>]</span>),user:call(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),user:(nb_current('$circular_goals',_7088),select(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_7100,_7102),nb_setval('$circular_goals',_7114)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [42] <span class="ansi34"
+>catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_7140,user:(always_rethrow(_7176)->throw(_7180);pp_m_m_red('red',user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')in _7192)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [39] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [38] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_utils.pl:1111
+  [36] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [35] <span class="ansi34"
+>catch(user:(must_det_ll(not_compatio((nl,write('; '),write_src(user:...),nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'))),!,must_det_ll(flush_output)),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),(must_det_ll(not_compatio((nl,write('; '),...,nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'))),!,must_det_ll(flush_output)))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [32] <span class="ansi34"
+>cmdline_load_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:3047
+  [30] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+  [28] <span class="ansi34"
+>cmdline_load_metta(execute,'&self',P;HTML|<span class="pl-functor"
+>[ </span>
+                                            <span class="pl-atom"
+>'tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'</span>, <span class="pl-atom"
+>'--halt=true'</span>, <span class="pl-atom"
+>'--stdin=tty'</span>, <span class="pl-atom"
+>'--stdout=tty'</span>, 
+                                            <span class="pl-atom"
+>'--stderr=tty'</span>])</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:2973
+  [21] <span class="ansi34"
+>do_cmdline_load_metta(execute,'&self','<garbage_collected>')</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:2811
+  [19] <span class="ansi34"
+>run_cmd_args</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:2615
+  [18] <span class="ansi34"
+>catch(user:run_cmd_args,_7686,user:(always_rethrow(_7716)->throw(_7720);pp_m_m_red('red',run_cmd_args in _7732)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [15] <span class="ansi34"
+>if_or_else('<garbage_collected>',true)</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:5978
+  [13] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:226
+   [9] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:227
+   [5] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+   [4] <span class="ansi34"
+>do_loon</span> at /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl:6689
+
+Note: some frames are missing due to last-call optimization.
+Re-run your program in debug mode (:- debug.) to get more detail.
+(0)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> '$c_call_prolog'. </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> no(clause). </span>
+(1)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+> '$toplevel'. </span>  %  toplevel.pl:865: 
+(2)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+> '$runtoplevel'. </span>  %  toplevel.pl:877: 
+(4)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi92"
+></span><span class="ansi92"
+></span><span class="ansi92"
+> do_loon. </span>  %  metta_interp.pl:6688: 
+(5)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(9)P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+>[apply]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(13)$P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+>[apply]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(15)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+> if_or_else('<garbage_collected>',true). </span>  %  metta_interp.pl:5976: 
+(18)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:run_cmd_args,_S364,user:(always_rethrow(_S364)->throw(_S364);pp_m_m_red(red,run_cmd_args in _S364))). </span>  %  init.pl:564: 
+(19)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> run_cmd_args. </span>  %  metta_interp.pl:2609: 
+(21)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2805: 
+(28)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+> cmdline_load_metta(execute,'&self',['tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty']). </span>  %  metta_interp.pl:2970: 
+(30)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(32)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> cmdline_load_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'). </span>  %  metta_interp.pl:3047: 
+(35)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),!,flush_output)))). </span>  %  init.pl:564: 
+(36)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> no(clause). </span>
+(38)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(39)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(42)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_S940,user:(always_rethrow(_S940)->throw(_S940);pp_m_m_red(red,user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')in _S940))). </span>  %  init.pl:564: 
+(48)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')]),user:call(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),user:(nb_current('$circular_goals',_S730),select(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_S730,_32744),nb_setval('$circular_goals',_32744))). </span>  %  init.pl:680: 
+(49)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(52)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(53)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(54)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi35"
+></span><span class="ansi35"
+></span><span class="ansi35"
+> track_load_into_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(56)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(57)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(58)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> track_load_into_file0('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
+(60)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(61)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(63)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),user:include_metta('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
+(65)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(66)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(70)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')),user:(nb_current('$circular_goals',_S864),select(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),_S864,_45878),nb_setval('$circular_goals',_45878))). </span>  %  init.pl:680: 
+(71)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(72)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'). </span>  %  metta_loader.pl:894: 
+(74)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(75)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(78)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity'),user:setup_call_cleanup(open('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta',read,<stream>(0x55f547f798f0),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','&top',<stream>(0x55f547f798f0)),close(<stream>(0x55f547f798f0))),user:working_directory(_S608,'/home/runner/work/metta-testsuite/metta-testsuite/')). </span>  %  init.pl:680: 
+(80)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(81)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(82)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:open('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta',read,<stream>(0x55f547f798f0),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','&top',<stream>(0x55f547f798f0)),user:close(<stream>(0x55f547f798f0))). </span>  %  init.pl:680: 
+(84)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(85)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(88)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),user:((set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta',1),load_answer_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta',0)),load_metta_file_stream_fast(2778,read_file_sexpr,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','&top',<stream>(0x55f547f798f0))),user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')). </span>  %  init.pl:680: 
+(91)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(92)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(95)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+>[$apply]</span>#P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> forall('<garbage_collected>',user:(maybe_name_vars(_S366),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),+,'&top',exec(['extend-py!',random_binding]),_80394)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),+,'&top',exec(['extend-py!',random_binding])))))). </span>  %  apply.pl:51: 
+(96)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> no(clause). </span>
+(98)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(99)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(103)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:do_metta_exec(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),'&top',['extend-py!',random_binding],_S326),give_up(_59346),user:write_src_uo(dont_give_up(_59346))). </span>  %  init.pl:564: 
+(105)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:(if_t(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta')=file(_S404),output_language(metta,write_exec(['extend-py!',random_binding]))),notrace(into_metta_callable('&top',['extend-py!',random_binding],_80444,_80446,_80448,_80450)),!,user:u_do_metta_exec(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),'&top',['extend-py!',random_binding],_80444,_80446,_80448,_80450,_80446,_80482)),give_up(_80486),user:pp_m(red,gave_up(_80486))). </span>  %  init.pl:564: 
+(108)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> catch(user:u_do_metta_exec00(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),'&top',['extend-py!',random_binding],eval_H(500,'&top',['extend-py!',random_binding],_S514),_S514,[],[],_S514,_103522),_103494,user:write_src(error(_103494,file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),['extend-py!',random_binding]))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(110)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:u_do_metta_exec000(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),'&top',['extend-py!',random_binding],eval_H(500,'&top',['extend-py!',random_binding],_S478),_S478,[],[],_S478,_3486),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),['extend-py!',random_binding]))). </span>  %  init.pl:564: 
+(112)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:u_do_metta_exec01(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),'&top',['extend-py!',random_binding],eval_H(500,'&top',['extend-py!',random_binding],_S618),_S618,[],[],_S618,_21626),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta'),['extend-py!',random_binding]))). </span>  %  init.pl:564: 
+(114)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+> u_do_metta_exec02('<garbage_collected>','&top','<garbage_collected>','<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_S336). </span>  %  metta_repl.pl:1060: 
+(115)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> forall_interactive('<garbage_collected>','<garbage_collected>',_S936,'<garbage_collected>',(print_result_output(false,_S936,_69954,prev_result('Empty'),[],contrl(10,inf,each),res(_69986),_69964,[],_69968,_69970),(_69954>=inf->!;true),_70020=_70022,_70032=_70034,(_69970==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_70102),old_not_compatio((writeq(key=_70102),nl)),(_70102==b->once(repl),fail;_70102=='B'->once(prolog),fail;_70102==a->notrace(abort),fail;_70102==e->notrace(halt(5)),fail;_70102==m->make,fail;_70102==c->trace,_70032=true;_70102=='C'->once(cls),fail;_70102==' '->trace,_70032=true;_70102==t->nop(set_debug(eval,true)),rtrace,_70032=true;_70102=='T'->set_debug(eval,true),_70032=true;_70102== ? -> print_debug_help,fail;_70102==(;)->_70032=true;_70102==esc('[A',[27,91,65])->_70020=true,_70032=false;_70102==esc('[B',[27,91,66])->nb_setarg(3,contrl(10,inf,each),leap),_70020=false,_70032=true;_70102=='L'->nb_setarg(2,contrl(10,inf,each),_69954);_70102==l->nb_setarg(3,contrl(10,inf,each),leap),_70032=true;(_70102=='\n';_70102=='\r')->_70020=false,nb_setarg(3,contrl(10,inf,each),leap),_70032=true;_70102==g->write_src(exec(['extend-py!',random_binding]));_70102=='G'->bt,_70032=false;_70102==s->_70020=true,_70032=false;true->write('Unknown Char'),fail),(nonvar(_70032);nonvar(_70020));true),((_S936==true;_70020==true)->!;true),(nonvar(_70032)->_70032==true;true),(flag(result_num,_69954,_69954),_69954>=inf->!,fail;true))). </span>  %  metta_repl.pl:1300: 
+(117)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> ctimed_call('<garbage_collected>',_S182). </span>  %  metta_interp.pl:6229: 
+(118)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> rtrace_on_error('<garbage_collected>'). </span>  %  metta_interp.pl:3787: 
+(119)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> no(clause). </span>
+(122)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:eval_args(=,_S122,500,'&top',['extend-py!',random_binding],_59130),metta_return(_59130),user:ignore(retract(thrown_metta_return(_59130)))). </span>  %  init.pl:564: 
+(126)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> eval_01(=,_S110,500,'&top','<garbage_collected>',_80118). </span>  %  metta_eval.pl:254: 
+(127)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+> trace_eval('<garbage_collected>',e,499,'&top','<garbage_collected>','<garbage_collected>'). </span>  %  metta_debug.pl:954: 
+(128)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> call_cleanup(user:((call(eval_09(=,_S380),499,'&top',['extend-py!',random_binding],_3374)*->nb_setarg(1,retval(fail),_3374);fail,trace,call(eval_09(=,_S380),499,'&top',['extend-py!',random_binding],_3374)),ignore(notrace((\+_3374\=_3452,nb_setarg(1,retval(fail),_3374))))),user:ignore((_3486==1->ignore(\+ \+ (flag(eval_num,_3512,_3512+1),(retval(fail)\=@=retval(fail),nonvar(_3374)->indentq(0,_3512,<--,[e,_3374]);indentq(0,_3512,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_3512,_3512+1),(retval(fail)\=@=retval(fail),nonvar(_3374)->indentq(0,_3512,<--,[e,_3374]);indentq(0,_3512,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(129)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+> no(clause). </span>
+(131)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi97"
+></span><span class="ansi97 ansi40"
+></span><span class="ansi97 ansi40"
+> eval_10(=,'<garbage_collected>',499,'&top',['extend-py!',random_binding],_S340). </span>  %  metta_eval.pl:3497: 
+(135)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(137)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
+> self_extend_py('&top',random_binding,'<garbage_collected>','<garbage_collected>'). </span>  %  metta_python.pl:1859: 
+(139)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> setup_call_cleanup(user:set_prolog_flag(argv,[]),user:py_catch((assert_new(is_pymod_in_space(random_binding,'&top')),(nonvar(_S412)->random_binding=_S412;random_binding=random_binding),pybug('extend-py!'(random_binding)),(random_binding==mettalog->true;py_load_modfile(random_binding)),nb_setval('$py_ready',true),_3416=[],true)),user:set_prolog_flag(argv,['--python=enable',--,'--timeout=40','--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat','--html','--test','tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty'])). </span>  %  init.pl:680: 
+(143)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> py_catch('<garbage_collected>'). </span>  %  metta_python.pl:205: 
+(145)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> catch(user:(random_binding==mettalog->true;py_load_modfile(random_binding)),_S548,user:(pybug(_S548=py_catch((random_binding==mettalog->true;py_load_modfile(random_binding)))),py_dump,trace,(random_binding==mettalog->true;py_load_modfile(random_binding)))). </span>  %  init.pl:564: 
+(147)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> py_load_modfile(random_binding). </span>  %  metta_python.pl:1890: 
+(148)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> py_ocall(mettalog:load_functions(random_binding),_S642). </span>  %  metta_python.pl:685: 
+(149)$P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
+> catch('<garbage_collected>','<garbage_collected>','<garbage_collected>'). </span>  %  init.pl:564: 
+(150)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> py_error_fail(error(python_error('AttributeError',<py_AttributeError>(0x7f0a729a5cb0)),context(_S220,python_stack(<py_traceback>(0x7f0a853ed2c0))))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  metta_python.pl:864: 
+(154)P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+> bugger:dumpST_now(1522,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
+P;HTML|
+; error<span class="pl-functor"
+>( python_error('AttributeError',<py_AttributeError>(0x7f0a729a5cb0)),
+;   context(Python_stack,python_stack(<py_traceback>(0x7f0a853ed2c0))))</span>
+
+^  <span class="ansi1 ansi33"
+>Redo: </span>(147) [user] py_load_modfile(random_binding) ? 
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 1
+</span>[(Error ('~nGot: ' ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n"))) ('~nExpected: ' ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n"))))]
+[
+ERROR: Received fatal signal 11 (segv)
+timeout: the monitored command dumped core
+
+Script done on 2025-02-22 20:47:17+00:00 [COMMAND_EXIT_CODE="139"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=139) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta" --halt=true\033[0m

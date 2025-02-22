@@ -39,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 05:06:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:54:49+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta] ]
 P;HTML|
@@ -61,13 +61,15 @@ Script started on 2025-02-20 05:06:46+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         [ = 7 "[()]" ]
 P;HTML|
-;                         [ = 8 "[(Error (assertEqual (subtraction (get-atoms GroundingSpace-0x557383b68b48) (get-atoms GroundingSpace-0x557383b8de48)) (superpose ((foo 3 4) (foo $x 10) (foo $x $x)))) " ]
+;                         [ = 8 "[(Error (assertEqual (subtraction (get-atoms GroundingSpace-0x55cd98256808) (get-atoms GroundingSpace-0x55cd98282c78)) (superpose ((foo 3 4) (foo $x 10) (foo $x $x)))) " ]
 P;HTML|
 ;                          [ = 8 "Expected: [(foo 3 4), (foo $x 10), (foo $x $x)]" ]
 P;HTML|
 ;                          [ = 8 "Got: [(foo $x#301 $y#302), (foo 3 4), (foo $x#301 10), (foo $x#301 $x#301)]" ]
 P;HTML|
-;                           [ = 9 "Missed result: (foo $x 10))]" ]
+;                           [ = 9 "Missed results: (foo $x 10), (foo $x $x)" ]
+P;HTML|
+;                           [ = 9 "Excessive results: (foo $x#301 $y#302), (foo $x#301 10), (foo $x#301 $x#301))]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta]
 
@@ -98,19 +100,21 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; Add atoms to &space31
 <span class="ansi38-013099040"
->!(add-atom &space31 (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x))))
+>!(add-atom &space31 (superpose ((foo $37458 $37464) (foo 1 2) (foo 3 4) (foo $37458 10) (foo $37458 $37458))))
 
 </span><span class="ansi38-255165000"
 > (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x)))
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Add atoms to &space32
 <span class="ansi38-013099040"
->!(add-atom &space32 (superpose ((foo 1 2) (foo 5 6) (foo $x $y))))
+>!(add-atom &space32 (superpose ((foo 1 2) (foo 5 6) (foo $56706 $56712))))
 
 </span><span class="ansi38-255165000"
 > (superpose ((foo 1 2) (foo 5 6) (foo $x $y)))
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -120,6 +124,7 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (superpose ((foo 3 4) (foo 5 6)))
+ 
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -127,54 +132,54 @@ Deterministic: <span class="ansi33"
 ;;;; Test basic subtraction between spaces
 ;;;; This should return atoms in &space31 that are not in &space32.
 <span class="ansi38-013099040"
->!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space32)) (superpose ((foo 3 4) (foo $x 10) (foo $x $x))))
+>!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space32)) (superpose ((foo 3 4) (foo $29328 10) (foo $29328 $29328))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.029 secs. (29.43 milliseconds) 
+; took 0.031 secs. (30.96 milliseconds) 
 
-!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space32)) (superpose ((foo 3 4) (foo $x 10) (foo $x $x))))
+!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space32)) (superpose ((foo 3 4) (foo $6692 10) (foo $6692 $6692))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (foo 3 4) 
-        (foo $_21024 10) 
-        (foo $_21042 $_21042)) 
+        (foo $11162 10) 
+        (foo $11180 $11180)) 
       ( (foo 3 4) 
-        (foo $x 10) 
-        (foo $x $x))]]
+        (foo $11210 10) 
+        (foo $11228 $11228))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test subtraction with variables and self-referential structures
 ;;;; This should return atoms in &space31 that are not logically equivalent to those in &space33.
 <span class="ansi38-013099040"
->!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $x $y) (foo 1 2) (foo $x 10) (foo $x $x))))
+>!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $19330 $19336) (foo 1 2) (foo $19330 10) (foo $19330 $19330))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.026 secs. (25.85 milliseconds) 
+; took 0.027 secs. (27.39 milliseconds) 
 
-!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $x $y) (foo 1 2) (foo $x 10) (foo $x $x))))
+!(assertEqual (subtraction (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $10010 $10016) (foo 1 2) (foo $10010 10) (foo $10010 $10010))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (foo $_46304 $_46310) 
+      ( (foo $15542 $15548) 
         (foo 1 2) 
-        (foo $_46334 10) 
-        (foo $_46352 $_46352)) 
-      ( (foo $x $y) 
+        (foo $15572 10) 
+        (foo $15590 $15590)) 
+      ( (foo $15614 $15620) 
         (foo 1 2) 
-        (foo $x 10) 
-        (foo $x $x))]]
+        (foo $15644 10) 
+        (foo $15662 $15662))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -188,7 +193,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000271 secs. (270.87 microseconds) 
+; took 0.000392 secs. (391.63 microseconds) 
 
 !(assertEqual (subtraction (get-atoms &space34) (get-atoms &space31)) (superpose ()))
 
@@ -202,91 +207,91 @@ Deterministic: <span class="ansi33"
 ;;;; Test union of two spaces
 ;;;; The union of &space31 and &space32 should include all unique atoms from both spaces.
 <span class="ansi38-013099040"
->!(assertEqual (union (get-atoms &space31) (get-atoms &space32)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo 5 6) (foo $x 10) (foo $x $x))))
+>!(assertEqual (union (get-atoms &space31) (get-atoms &space32)) (superpose ((foo $40356 $40362) (foo 1 2) (foo 3 4) (foo 5 6) (foo $40356 10) (foo $40356 $40356))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.021 secs. (21.31 milliseconds) 
+; took 0.023 secs. (22.78 milliseconds) 
 
-!(assertEqual (union (get-atoms &space31) (get-atoms &space32)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo 5 6) (foo $x 10) (foo $x $x))))
+!(assertEqual (union (get-atoms &space31) (get-atoms &space32)) (superpose ((foo $7738 $7744) (foo 1 2) (foo 3 4) (foo 5 6) (foo $7738 10) (foo $7738 $7738))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (foo $_57350 $_57356) 
+      ( (foo $13854 $13860) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $_57386 10) 
-        (foo $_57404 $_57404) 
+        (foo $13890 10) 
+        (foo $13908 $13908) 
         (foo 5 6)) 
-      ( (foo $x $y) 
+      ( (foo $13932 $13938) 
         (foo 1 2) 
         (foo 3 4) 
         (foo 5 6) 
-        (foo $x 10) 
-        (foo $x $x))]]
+        (foo $13974 10) 
+        (foo $13992 $13992))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test union with overlapping spaces
 ;;;; The union should not duplicate atoms that are common to both spaces.
 <span class="ansi38-013099040"
->!(assertEqual (union (get-atoms &space32) (get-atoms &space33)) (superpose ((foo 1 2) (foo 5 6) (foo 3 4) (foo $x $y))))
+>!(assertEqual (union (get-atoms &space32) (get-atoms &space33)) (superpose ((foo 1 2) (foo 5 6) (foo 3 4) (foo $22994 $23000))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.14 milliseconds) 
+; took 0.015 secs. (15.26 milliseconds) 
 
-!(assertEqual (union (get-atoms &space32) (get-atoms &space33)) (superpose ((foo 1 2) (foo 5 6) (foo 3 4) (foo $x $y))))
+!(assertEqual (union (get-atoms &space32) (get-atoms &space33)) (superpose ((foo 1 2) (foo 5 6) (foo 3 4) (foo $23440 $23446))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (foo 1 2) 
         (foo 5 6) 
-        (foo $_19594 $_19600) 
+        (foo $28054 $28060) 
         (foo 3 4)) 
       ( (foo 1 2) 
         (foo 5 6) 
         (foo 3 4) 
-        (foo $x $y))]]
+        (foo $28096 $28102))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test union with a space containing a unique atom
 ;;;; The result should include the unique atom from the third space.
 <span class="ansi38-013099040"
->!(assertEqual (union (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo 5 6))))
+>!(assertEqual (union (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $36546 $36552) (foo 1 2) (foo 3 4) (foo $36546 10) (foo $36546 $36546) (foo 5 6))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (20.36 milliseconds) 
+; took 0.021 secs. (21.43 milliseconds) 
 
-!(assertEqual (union (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo 5 6))))
+!(assertEqual (union (get-atoms &space31) (get-atoms &space33)) (superpose ((foo $5234 $5240) (foo 1 2) (foo 3 4) (foo $5234 10) (foo $5234 $5234) (foo 5 6))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (foo $_17760 $_17766) 
+      ( (foo $12246 $12252) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $_17796 10) 
-        (foo $_17814 $_17814) 
+        (foo $12282 10) 
+        (foo $12300 $12300) 
         (foo 5 6)) 
-      ( (foo $x $y) 
+      ( (foo $12324 $12330) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $x 10) 
-        (foo $x $x) 
+        (foo $12360 10) 
+        (foo $12378 $12378) 
         (foo 5 6))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -294,31 +299,31 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test union with a non-space set
 ;;;; This checks that atoms not associated with a space are correctly unioned with a space.
 <span class="ansi38-013099040"
->!(assertEqual (union (get-atoms &space31) (superpose ((foo 7 8)))) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo 7 8))))
+>!(assertEqual (union (get-atoms &space31) (superpose ((foo 7 8)))) (superpose ((foo $21584 $21590) (foo 1 2) (foo 3 4) (foo $21584 10) (foo $21584 $21584) (foo 7 8))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.80 milliseconds) 
+; took 0.020 secs. (19.93 milliseconds) 
 
-!(assertEqual (union (get-atoms &space31) (superpose ((foo 7 8)))) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x) (foo 7 8))))
+!(assertEqual (union (get-atoms &space31) (superpose ((foo 7 8)))) (superpose ((foo $49218 $49224) (foo 1 2) (foo 3 4) (foo $49218 10) (foo $49218 $49218) (foo 7 8))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (foo $_16674 $_16680) 
+      ( (foo $55310 $55316) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $_16710 10) 
-        (foo $_16728 $_16728) 
+        (foo $55346 10) 
+        (foo $55364 $55364) 
         (foo 7 8)) 
-      ( (foo $x $y) 
+      ( (foo $55388 $55394) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $x 10) 
-        (foo $x $x) 
+        (foo $55424 10) 
+        (foo $55442 $55442) 
         (foo 7 8))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -326,30 +331,30 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test union with an empty space3
 ;;;; The result should just be the atoms from the non-empty space.
 <span class="ansi38-013099040"
->!(assertEqual (union (get-atoms &space31) (get-atoms &space34)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x))))
+>!(assertEqual (union (get-atoms &space31) (get-atoms &space34)) (superpose ((foo $2262 $2268) (foo 1 2) (foo 3 4) (foo $2262 10) (foo $2262 $2262))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.SPACE-SUBTRACTION-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (15.77 milliseconds) 
+; took 0.017 secs. (16.79 milliseconds) 
 
-!(assertEqual (union (get-atoms &space31) (get-atoms &space34)) (superpose ((foo $x $y) (foo 1 2) (foo 3 4) (foo $x 10) (foo $x $x))))
+!(assertEqual (union (get-atoms &space31) (get-atoms &space34)) (superpose ((foo $17292 $17298) (foo 1 2) (foo 3 4) (foo $17292 10) (foo $17292 $17292))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (foo $_58812 $_58818) 
+      ( (foo $23116 $23122) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $_58848 10) 
-        (foo $_58866 $_58866)) 
-      ( (foo $x $y) 
+        (foo $23152 10) 
+        (foo $23170 $23170)) 
+      ( (foo $23194 $23200) 
         (foo 1 2) 
         (foo 3 4) 
-        (foo $x 10) 
-        (foo $x $x))]]
+        (foo $23230 10) 
+        (foo $23248 $23248))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -380,7 +385,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-20 05:06:47+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:54:50+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

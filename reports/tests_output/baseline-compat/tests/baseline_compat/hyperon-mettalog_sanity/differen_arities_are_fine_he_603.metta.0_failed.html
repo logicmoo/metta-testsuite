@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:57:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1373-1.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 20:46:32+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1947-39.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] ]
 P;HTML|
@@ -52,7 +52,9 @@ Script started on 2025-02-20 04:57:13+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        [ = 2 "Got: [((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2), ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2)]" ]
 P;HTML|
-;                        [ = 3 "Missed result: 3)]" ]
+;                        [ = 3 "Missed results: 3" ]
+P;HTML|
+;                         [ = 3 "Excessive results: ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2), ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2))]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta]
 
@@ -62,21 +64,23 @@ Script started on 2025-02-20 04:57:13+00:00 [COMMAND="timeout --preserve-status 
 ;;; ---------------------
 <span class="ansi38-255165000"
 > (: λ (-> Variable Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= ((λ $x $f) $y)  
-  (let $x $y $f))
+> (= ((λ $x $f) $57946)  
+  (let $x $57946 $f))
+ 
 </span>;;; Test: Call unary lambda with one argument
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
+>!(assertEqualToResult ((λ $60028 (+ 1 $60028)) 1) (2))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.01"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.11 milliseconds) 
+; took 0.002 secs. (2.12 milliseconds) 
 
-!(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
+!(assertEqualToResult ((λ $15496 (+ 1 $15496)) 1) (2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -90,22 +94,24 @@ Deterministic: <span class="ansi33"
 ;;; ----------------------
 <span class="ansi38-255165000"
 > (: λ (-> Variable Variable Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= ((λ $x $y $f) $z $w)  
+> (= ((λ $x $y $38502) $38508 $38514)  
   (let* 
-    ( ($x $z) ($y $w)) $f))
+    ( ($x $38508) ($y $38514)) $38502))
+ 
 </span>;;; Test: Call binary lambda with two arguments
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+>!(assertEqualToResult ((λ $40300 $40306 (+ $40300 $40306)) 1 2) (3))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.02"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.40 milliseconds) 
+; took 0.003 secs. (2.54 milliseconds) 
 
-!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+!(assertEqualToResult ((λ $63458 $63464 (+ $63458 $63464)) 1 2) (3))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -122,16 +128,16 @@ Deterministic: <span class="ansi33"
 ;;; - Binary lambda should return [3]
 ;;; - Should not return duplicates, e.g., [3, 3]
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+>!(assertEqualToResult ((λ $13126 $13132 (+ $13126 $13132)) 1 2) (3))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.03"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.41 milliseconds) 
+; took 0.003 secs. (2.53 milliseconds) 
 
-!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+!(assertEqualToResult ((λ $36284 $36290 (+ $36284 $36290)) 1 2) (3))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -147,9 +153,11 @@ Deterministic: <span class="ansi33"
 ;;; Unary foo
 <span class="ansi38-255165000"
 > (: foo (-> Number Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (foo $x)  
   (+ 1 $x))
+ 
 </span>;;; Test: Call unary foo
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo 1) (2))
@@ -159,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000893 secs. (893.23 microseconds) 
+; took 0.000613 secs. (612.57 microseconds) 
 
 !(assertEqualToResult (foo 1) (2))
 
@@ -174,9 +182,11 @@ Deterministic: <span class="ansi33"
 </span>;;; Binary foo
 <span class="ansi38-255165000"
 > (: foo (-> Number Number Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (foo $x $y)  
   (+ $x $y))
+ 
 </span>;;; Test: Call binary foo
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo 1 2) (3))
@@ -186,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000893 secs. (892.82 microseconds) 
+; took 0.000551 secs. (550.73 microseconds) 
 
 !(assertEqualToResult (foo 1 2) (3))
 
@@ -202,16 +212,16 @@ Deterministic: <span class="ansi33"
 ;;; -------------------------------------------------------------
 ;;; Ensures structured `λ` functions produce correct results without duplication
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
+>!(assertEqualToResult ((λ $29852 (+ 1 $29852)) 1) (2))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.06"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.86 milliseconds) 
+; took 0.002 secs. (2.03 milliseconds) 
 
-!(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
+!(assertEqualToResult ((λ $12390 (+ 1 $12390)) 1) (2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -222,16 +232,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+>!(assertEqualToResult ((λ $22100 $22106 (+ $22100 $22106)) 1 2) (3))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.07"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.44 milliseconds) 
+; took 0.003 secs. (2.64 milliseconds) 
 
-!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
+!(assertEqualToResult ((λ $45258 $45264 (+ $45258 $45264)) 1 2) (3))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -260,7 +270,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-20 04:57:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 20:46:33+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

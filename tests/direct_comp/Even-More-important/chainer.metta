@@ -1,5 +1,5 @@
 !(import! &self utils)
-!(import! &self setspace2)
+!(import! &self setspace)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;In this chainer our statements look like
@@ -47,7 +47,8 @@
 (= (normalize ()) ())
 (= (normalize ($pset ⊢ $cset))
    (let $pset (if (is-variable $pset) () $pset)
-   (let $cset (if (is-variable $cset) ($ccls) $cset)
+   (if (is-variable $cset)
+     ($pset ⊢ ($ccls))
    (let ($npset $_ $ncset) (overlap2 $pset $cset) ($npset ⊢ $cset)))))
 
 ;;Takes a list/expression of statements and combines them

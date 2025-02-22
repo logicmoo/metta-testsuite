@@ -8,6 +8,8 @@
 
 ;; Create a new setspace. With no arguments, returns an empty setspace.
 
+;; (: trie (-> Atom Atom Atom))
+
 ;;Because mettalog eliminates duplicates
 (= (create-setspace)
  (trie () (new-state (new-space))))

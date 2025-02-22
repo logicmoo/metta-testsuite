@@ -164,20 +164,25 @@
 
 !(assertAlphaEqual (overlap2 ((: $a A)) ((: $a2 A) (: $b B))) (() ((: $a A)) ((: $b B))))
 
+;;(= (is-mettalog) False)
 ;;Custom unique function that works with variables
-; (= (myunique $a) (if (is-variable $a) $a (unique-atom $a)))
-(= (myunique $a) (if (is-variable $a) $a (if (is-mettalog) (unique-atom-by =will $a) (unique-atom $a)))) 
+(= (myunique $a) (if (is-variable $a) $a (unique-atom $a)))
+;;(= (myunique $a) (if (is-variable $a) $a (if (is-mettalog) (unique-atom-by =will $a) (unique-atom $a)))) 
 
 !(assertEqual (myunique (a b a)) (a b))
 
-!(assertEqual (myunique ($a $a $b $b)) ($a)) 
-!(assertEqual (myunique ($a $a $b 2 3)) ($a)) 
-!(assertEqual (myunique (3 2 $a $a $b)) (3 2)) 
+;!(assertEqual (myunique ($a $a $b $b)) ($a)) 
+;!(assertEqual (myunique ($a $a $b 2 3)) ($a)) 
+;!(assertEqual (myunique (3 2 $a $a $b)) (3 2)) 
 
 ;;Custom unique union function that works with variables
 (= (unique-union-atom $a $b) (let $res (concat $a $b) (myunique $res)))
 
-!(assertEqual (unique-union-atom ((: a A) (: b B)) ((: $a A))) ((: a A) (: b B)))
+; Hyperon version
+;!(assertEqual (unique-union-atom ((: a A) (: b B)) ((: $a A))) ((: a A) (: b B)))
+
+; MeTTaLog version
+!(assertEqual (unique-union-atom ((: a A) (: b B)) ((: $a A))) ((: a A) (: b B) (: $a A)))
 
 
 

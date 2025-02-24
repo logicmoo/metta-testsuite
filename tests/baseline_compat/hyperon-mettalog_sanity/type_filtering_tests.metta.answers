@@ -5,7 +5,7 @@
 
      (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) 
        (1 5) 
-       (1 $X#568 String 5 ()))
+       ($X#568 1 String 5 ()))
 
      (MeTTa-Test "passing" (+ 1 1) 
         (2) 
@@ -13,23 +13,23 @@
 
      (MeTTa-Test "Filter-String" (Filter-String (some-value)) 
        ("a" "x: 1 y: 2") 
-       ($X#1651 "a" String "x: 1 y: 2" ()))
+       ("a" $X#1651 String "x: 1 y: 2" ()))
 
      (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) 
        (Z (S Z) (S (S Z))) 
-       ($X#2384 Z String (S (S Z)) (S Z) ()))
+       ($X#2384 String Z (S (S Z)) (S Z) ()))
 
      (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) 
-       (S ModuleSpace(GroundingSpace-top)) 
-       ($X#4118 Z S String ()))
+       (S GroundingSpace-top) 
+       ($X#4118 S String Z ()))
 
      (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) 
-       (ModuleSpace(GroundingSpace-top)) 
+       (GroundingSpace-top) 
        ($X#4906 String ()))
 
      (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) 
        (1 "a" 'c' Z (S Z)) 
-       (1 $X#5600 'c' "a" String "x: 1 y: 2" ()))
+       ('c' "a" $X#5600 1 String "x: 1 y: 2" ()))
 
      (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) 
        (String) 
@@ -38,12 +38,12 @@
 
      (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) 
        (all the values) 
-       (1 $X#7147 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#7147 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) 
        (1 "a" Z (S Z) (S (S Z))) 
-       (1 $X#10155 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#10155 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
      (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) 
        () 
@@ -52,36 +52,36 @@
 
      (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) 
        ((+ 2 3) (format-args "x: {} y: {}" (1 2))) 
-       (1 $X#14110 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#14110 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) 
        (1 "a" 'c' S Z (S Z)) 
-       (1 $X#16854 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#16854 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) 
        ((+ 2 3)) 
-       (1 $X#19636 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#19636 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) 
        (empty (println! "did it")) 
-       (1 $X#22314 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#22314 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) 
        () 
-       (1 $X#25000 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#25000 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
 
      (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) 
        (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) 
-       (1 $X#27662 'c' "a" Z S String 5 (S (S Z)) (Cons 1 (Cons 2 (Cons 3 Nil))) "x: 1 y: 2" () (S Z) ()))
+       ('c' "a" $X#27662 1 S String Z "x: 1 y: 2" 5 (S (S Z)) (S Z) () (Cons 1 (Cons 2 (Cons 3 Nil))) ()))
 
      (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) 
        ('c') 
-       ($X#31243 'c' String ()))
+       ('c' $X#31243 String ()))
 
      (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) 
        (empty (println! "did it") ()) 

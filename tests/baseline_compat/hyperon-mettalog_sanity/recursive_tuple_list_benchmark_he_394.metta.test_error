@@ -1,7 +1,15 @@
-[(py-module benchmark "import time\nfrom hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\n\n@register_atoms\ndef my_atoms():\n    return {\n        'current_time': OperationAtom('current_time', lambda: time.time())\n    }\n")]
+[(py-module benchmark "import time
+from hyperon.atoms import OperationAtom
+from hyperon.ext import register_atoms
+
+@register_atoms
+def my_atoms():
+    return {
+        'current_time': OperationAtom('current_time', lambda: time.time())
+    }
+")]
 [(extend-py! benchmark)]
 [(Error (assertEqualToResult (< (- (current_time) (current_time)) 1) (True)) 
 Expected: [True]
 Got: [(< (- (current_time) (current_time)) 1)]
-Missed results: True
-Excessive results: (< (- (current_time) (current_time)) 1))]
+Missed result: True)]

@@ -12,7 +12,7 @@
 !(add-atom &self (= (if (and (is $x croaks) (is $x eats-flies)) (= (is $x frog) True) Empty)))
 
 ; Test that Fritz is deduced to be a frog
-!(assertEqualToResult (metta (is Fritz frog) %Undefined% &self) ((True)))
+(assertEqualToResult (metta (is Fritz frog) %Undefined% &self) (True))
 
 ; Test that Tweety is not deduced to be a frog
 !(assertEqualToResult (metta (is Tweety frog) %Undefined% &self) (()))
@@ -24,7 +24,7 @@
 !(add-atom &self (= (plus (S $k) $y) (S (plus $k $y))))
 
 ; Test that (eq (plus Z $n) $n) evaluates to True
-!(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) ((True)))
+(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) (True))
 
 ; Test that (eq (plus (S Z) $n) $n) evaluates to False (empty result)
 !(assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))
@@ -37,7 +37,7 @@
 !(add-atom &self (= (bar $x) $x))
 
 ; Test that ((foo) a) evaluates to 'a'
-!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
+(assertEqualToResult (metta ((foo) a) %Undefined% &self) (a))
 
 ; Test handling of bad type error
 ; Define atom with type 'myType' and function 'id_a' of type (-> A A)
@@ -57,7 +57,7 @@
 !(add-atom &self (= (foo $a $b) c))
 
 ; Test that (foo a b) evaluates to 'c' (correct number of arguments)
-!(assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))
+(assertEqualToResult (metta (foo a b) %Undefined% &self) (c))
 
 ; Test that (foo a) results in an incorrect number of arguments error
 !(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
@@ -67,29 +67,29 @@
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
 ; Test get-metatype of 'Error', expecting 'Symbol'
-!(assertEqualToResult (get-metatype Error) ((Symbol)))
+(assertEqualToResult (get-metatype Error) (Symbol))
 
 ; Test get-type of an 'Error' expression, expecting 'ErrorType'
-!(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
+(assertEqualToResult (get-type (Error Foo Boo)) (ErrorType))
 
 ; Test constructing an 'Error' expression with invalid arguments
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
 ; Test parsing of strings with special characters
 ; Test that '!(id "test")' returns "test"
-!(assertEqualToResult (id "test") (("test")))
+(assertEqualToResult (id "test") ("test"))
 
 ; Test that '!(id "te st")' returns "te st"
 !(assertEqualToResult (id "te st") (("te st")))
 
 ; Test that '!(id "te\"st")' returns 'te"st'
-!(assertEqualToResult (id "te\"st") (("te\"st")))
+(assertEqualToResult (id "te\"st") ("te\"st"))
 
 ; Test that '!(id "")' returns empty string
-!(assertEqualToResult (id "") (("")))
+(assertEqualToResult (id "") (""))
 
 ; Test that '!(id "te\nst")' returns 'te\nst'
-!(assertEqualToResult (id "te\nst") (("te\nst")))
+(assertEqualToResult (id "te\nst") ("te\nst"))
 
 ; Test that '!("te\nst"test)' returns a tuple with 'te\nst' and 'test'
 !(assertEqualToResult ("te\nst" test) ((("te\nst") test)))
@@ -109,11 +109,11 @@
 !(add-atom &self (= (color) blue))
 
 ; Test collapse of 'color', expecting one of red, green, or blue
-!(assertEqualToResult (collapse (color)) ((red)) ((green)) ((blue)))
+(assertEqualToResult (collapse (color)) (red) (green) (blue))
 
 ; Test metta_let_novar with no variable bindings
 ; Expecting 'result'
-!(assertEqualToResult (let () result) ((result)))
+(assertEqualToResult (let () result) (result))
 
 ; Test metta_let_novar with variable substitution
 ; Substitute in (P $b $a)
@@ -132,10 +132,10 @@
 !(assertEqualToResult (bar (quote (foo))) ((quote (foo))))
 
 ; Use unquote to force evaluation before 'bar' is called
-!(assertEqualToResult (bar (unquote (quote (foo)))) ((A)))
+(assertEqualToResult (bar (unquote (quote (foo)))) (A))
 
 ; Use unquote after 'bar' is called
-!(assertEqualToResult (unquote (bar (quote (foo)))) ((A)))
+(assertEqualToResult (unquote (bar (quote (foo)))) (A))
 
 ; Test get-doc for a function call
 ; Define function 'some-func' with types and documentation
@@ -193,10 +193,10 @@
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
 ; Test get-metatype of 'Error', expecting 'Symbol'
-!(assertEqualToResult (get-metatype Error) ((Symbol)))
+(assertEqualToResult (get-metatype Error) (Symbol))
 
 ; Test get-type of an 'Error' expression, expecting 'ErrorType'
-!(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
+(assertEqualToResult (get-type (Error Foo Boo)) (ErrorType))
 
 ; Test constructing an 'Error' expression with invalid arguments
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
@@ -224,7 +224,7 @@
 !(add-atom &self (= (bar $x) $x))
 
 ; Test that applying 'foo' to 'a' evaluates to 'a'
-!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
+(assertEqualToResult (metta ((foo) a) %Undefined% &self) (a))
 
 ; Test handling of conflicting variable names
 ; Define function with conflicting variable names
@@ -254,7 +254,7 @@
 !(pragma! interpreter bare-minimal)
 
 ; Test that '!(foo)' does not evaluate in bare-minimal interpreter
-!(assertEqualToResult (foo) ((foo)))
+(assertEqualToResult (foo) (foo))
 
 ; Use 'eval' to force evaluation
-!(assertEqualToResult (eval (foo)) ((baz)))
+(assertEqualToResult (eval (foo)) (baz))

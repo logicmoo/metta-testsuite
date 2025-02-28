@@ -546,7 +546,7 @@ subst_args1(Eq,RetType,Depth,Self,['get-type',Val],Type):- !, get_type_l1t(Depth
 
 % mnotrace(G):- once(G).
 /*
-is_decl_type(ST):- metta_type(_,_,Type),sub_term(T,Type),T=@=ST, \+ nontype(ST).
+is_decl_type(ST):- metta_type(_,_,Type),sub_term_safely(T,Type),T=@=ST, \+ nontype(ST).
 is_type(Type):- nontype(Type),!,fail.
 is_type(Type):- is_decl_type(Type).
 is_type(Type):- atom(Type).
@@ -932,4 +932,4 @@ setof_subst(Depth,Self,X,S):- !,findall(E,subst_args(Eq,RetType,Depth,Self,X,E),
 %setof_subst(Depth,Self,X,S):- setof(E,subst_args(Eq,RetType,Depth,Self,X,E),S)*->true;S=[].
 
 
-
+:- find_missing_cuts.

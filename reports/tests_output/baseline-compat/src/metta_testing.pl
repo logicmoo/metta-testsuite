@@ -864,7 +864,7 @@ loonit_asserts1(TestSrc, Pre, G) :-
     !.
 /*
 loonit_asserts1(TestSrc,Pre,G) :-  fail,
-    sub_var('BadType',TestSrc), \+ check_type,!,
+    sub_var_safely('BadType',TestSrc), \+ check_type,!,
     write('\n!check_type (not considering this a failure)\n'),
     color_g_mesg('#D8BFD8',write_src_wi(loonit_failureR(G))),!,
     ignore(((
@@ -1182,12 +1182,14 @@ load_answer_file(Base) :-
 
 
 
-calc_answer_file(RelFile,AnsFile):- \+ atom_concat(_, metta, RelFile),
+calc_answer_file(_Base,AnsFile):- getenv(hyperon_results,AnsFile),exists_file(AnsFile),!.
+calc_answer_file(RelFile,AnsFile):- nonvar(RelFile),
     (   \+ atom(RelFile); \+ is_absolute_file_name(RelFile); \+ exists_file(RelFile)),
     % Resolve to an absolute file path if necessary.
-    absolute_file_name(RelFile, AnsFile), RelFile\=@=AnsFile.
+    absolute_file_name(RelFile, MidFile), RelFile\=@=MidFile,
+    exists_file(MidFile),
+    calc_answer_file(MidFile,AnsFile),!.
 calc_answer_file(AnsFile,AnsFile):- \+ atom_concat(_, metta, AnsFile),!.
-calc_answer_file(_Base,AnsFile):- getenv(hyperon_results,AnsFile),exists_file(AnsFile),!.
 % Finds a file using expand_file_name for wildcard matching.
 calc_answer_file(MeTTaFile,AnsFile):-  atom_concat(MeTTaFile, '.?*', Pattern),
         expand_file_name(Pattern, Matches), member(AnsFile,Matches), ok_ansfile_name(AnsFile),  !. % Select the first match
@@ -1196,8 +1198,9 @@ calc_answer_file(Base,AnsFile):- ensure_extension(Base, answers, AnsFile),!.
 ok_ansfile_name(AnsFile):- \+ symbol(AnsFile),!,fail.
 ok_ansfile_name(AnsFile):- skip_ans_ext(Htm),symbol_concat(_,Htm,AnsFile),!,fail.
 ok_ansfile_name(_).
-skip_ans_ext('.bak').  skip_ans_ext('.tmp'). skip_ans_ext('.htm'). skip_ans_ext('.py').
-skip_ans_ext('.html').  skip_ans_ext('o'). skip_ans_ext('md'). skip_ans_ext('pl').  skip_ans_ext('txt').  skip_ans_ext('ansi'). skip_ans_ext('tee').
+skip_ans_ext(Htm):- arg(_, v('tmp', 'bak', 'html', '~', 'sav', 'ansi', 'pl', 'metta',
+             'py', 'txt', 'md', 'tee', 'o', 'dll', 'so', 'exe', 'sh', 'text', 'rc',
+            'mettalogrc', 'bat', 'c', 'java', 'datalog', 'in', 'out', 'xml', 'obo'), Htm).
 
 
 %!  load_answer_file_now(+File) is det.
@@ -1313,7 +1316,7 @@ load_answer_stream(Nth, StoredAs, String, Stream) :- % string_concat("[", _, Str
     % Store the parsed answer.
     pfcAdd_Now(file_answers(StoredAs, Nth, Metta)),
     % Skip if the answer contains a comma.
-    skip(must_det_ll(\+ sub_var(',', Metta))),
+    skip(must_det_ll(\+ sub_var_safely(',', Metta))),
     % Increment index and continue processing next line.
     Nth2 is Nth + 1,
     load_answer_stream(Nth2, StoredAs, Stream).
@@ -1384,7 +1387,7 @@ parse_answer_inner(Inner0, Metta) :-
         % Parse modified string Inner into Metta.
         parse_answer_str(Inner, Metta),
         % Skip processing if Metta meets the specified condition.
-        skip((\+ sub_var(',', rc(Metta))))
+        skip((\+ sub_var_safely(',', rc(Metta))))
     )).
 
 %!  parse_answer_str(+Inner0, -Metta) is det.
@@ -1405,16 +1408,16 @@ parse_answer_inner(Inner0, Metta) :-
 parse_answer_str(Inner, [C|Metta]) :-
     atomics_to_string(["(", Inner, ")"], Str),parse_sexpr_metta(Str, CMettaC), CMettaC = [C|MettaC],
     % Remove commas from MettaC to create Metta, if conditions are met.
-    ((remove_m_commas(MettaC, Metta),\+ sub_var(',', rc(Metta)))).
+    ((remove_m_commas(MettaC, Metta),\+ sub_var_safely(',', rc(Metta)))).
 % Handle concatenated symbols in Inner0 by converting them into a list and parsing each element.
 parse_answer_str(Inner0, Metta) :- symbolic_list_concat(InnerL, ' , ', Inner0),
     maplist(atom_string, InnerL, Inner),maplist(parse_sexpr_metta, Inner, Metta),
-    skip((must_det_ll(( \+ sub_var(',', rc2(Metta)))))), !.
+    skip((must_det_ll(( \+ sub_var_safely(',', rc2(Metta)))))), !.
 % Apply replacements in Inner0 and parse as a single expression.
 parse_answer_str(Inner0, Metta) :-
     ((replace_in_string([' , '=' '], Inner0, Inner),atomics_to_string(["(", Inner, ")"], Str), !,
-    parse_sexpr_metta(Str, Metta), !,skip((must_det_ll(\+ sub_var(',', rc3(Metta))))),
-    skip((\+ sub_var(',', rc(Metta)))))).
+    parse_sexpr_metta(Str, Metta), !,skip((must_det_ll(\+ sub_var_safely(',', rc3(Metta))))),
+    skip((\+ sub_var_safely(',', rc(Metta)))))).
 %parse_answer_string(String,Metta):- String=Metta,!,fail.
 
 parse_sexpr_metta(Str,Metta):- notrace(catch(parse_sexpr_untyped(Str,Metta),_,fail)).
@@ -1433,7 +1436,7 @@ parse_sexpr_metta(Str,Metta):- notrace(catch(parse_sexpr_untyped(Str,Metta),_,fa
 %
 
 % Return the list as-is if it contains no commas as variables.
-remove_m_commas(Metta, Metta) :- \+ sub_var(',', Metta), !.
+remove_m_commas(Metta, Metta) :- \+ sub_var_safely(',', Metta), !.
 % Remove 'and' from the beginning of the list and continue processing.
 remove_m_commas([C, H | T], [H | TT]) :- C == 'and', !, remove_m_commas(T, TT).
 % Remove ',' from the beginning of the list and continue processing.

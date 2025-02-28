@@ -264,7 +264,7 @@ function_declaration_impl(Self, Op, Len, Parameters, ParamTypes, RetType, Body, 
              function_declaration_impl2(Self, Op, Len, Parameters, ParamTypes, RetType, Body, WrappedBody, ReturnVal)).
 
 function_declaration_impl2(Self, Op, Len, Parameters, ParamTypes, RetType, Body, WrappedBody, ReturnVal):-
-  wdmsg(failed(function_declaration_impl(Self, Op, Len, Parameters, ParamTypes, RetType, Body, WrappedBody, ReturnVal))),fail.
+  if_trace(guards,wdmg(failed(function_declaration_impl(Self, Op, Len, Parameters, ParamTypes, RetType, Body, WrappedBody, ReturnVal)))),fail.
 
 function_declaration_impl1(Self, Op, Len, Parameters, ParamTypes, RetType, Body, WrappedBody, ReturnVal) :-
    call((
@@ -312,7 +312,7 @@ nearest_src_object(SrcObject, ClauseOrdinal, SrcObjectList):- ClauseOrdinal > 0,
        DistanceOther<0, DistanceOther>Distance), !.
 
 nearest_src_object(SrcObject, ClauseOrdinal, SrcObjectList):-
-    wdmsg(failing(nearest_src_object(SrcObject, ClauseOrdinal, SrcObjectList))),fail.
+    if_trace(nearest_src_object,wdmsg(failing(nearest_src_object(SrcObject, ClauseOrdinal, SrcObjectList)))),fail.
 
 nearest_src_object(SrcObject, ClauseOrdinal, SrcObjectList):- ClauseOrdinal > 0,
     select(TypeDeclLoc-SrcObject, SrcObjectList, Rest),
@@ -326,10 +326,10 @@ nearest_src_object(SrcObject, _, SrcObjectList):- last(_ - SrcObject, SrcObjectL
 
 
 
-heads_of_op(Op,Head):- metta_type(Self,Op,ArTypeDecl),arrow_type(ArTypeDecl,ParamTypes,RetType),arrow_type(RetType,LT,_LR),
+heads_of_op(Op,Head):- metta_type(_Self,Op,ArTypeDecl),arrow_type(ArTypeDecl,ParamTypes,RetType),arrow_type(RetType,LT,_LR),
    same_len_copy(ParamTypes,PTL),same_len_copy(LT,LTL),
    Head=[[Op|PTL]|LTL].
-heads_of_op(Op,Head):- metta_type(Self,Op,ArTypeDecl),arrow_type(ArTypeDecl,ParamTypes,RetType), \+ arrow_type(RetType,_LT,_LR),
+heads_of_op(Op,Head):- metta_type(_Self,Op,ArTypeDecl),arrow_type(ArTypeDecl,ParamTypes,RetType), \+ arrow_type(RetType,_LT,_LR),
    same_len_copy(ParamTypes,PTL),
    Head=[Op|PTL].
 
@@ -367,7 +367,7 @@ finfo(Op, Len, Head):-
     if_t(\+ function_declaration_scores(Self, Op, Len, Parameters, ParamTypes, __RetType, Body, ReturnVal,_),
         call_showing(function_declaration_impl(_, Op, Len, Parameters, ParamTypes, ___RetType, Body, __WrappedBody, ReturnVal))),
     if_t(\+ metta_defn(Self, [Op | Parameters], Body), call_showing(metta_defn_return(Self, [Op | Parameters], Body, _, ReturnVal),[=,[Op | Parameters],Body])),
-    call_showing((metta_atom(KB, [A, B|Out]), sub_var(Op, [A, B])), [ist,KB, [A, B|Out]]),
+    call_showing((metta_atom(KB, [A, B|Out]), sub_var_safely(Op, [A, B])), [ist,KB, [A, B|Out]]),
     true.
 
 call_showing(Var):- \+ callable(Var), !, write_src_nl(not(callable(Var))).
@@ -382,7 +382,7 @@ call_showing(SHOWP, Template):-
     no_repeats_var(TemplateNR),
     findall(Template, (SHOWP, TemplateNR=Template), ScoredBodies),
     maplist(output_showing, ScoredBodies),
-    ignore((ScoredBodies==[], functor(Template,F,A),output_showing(missing(F/A)))).
+    ignore((ScoredBodies==[], functor(Template,F,A),output_showing(Template=missing(F/A)))).
 
 output_showing(List):- is_list(List),!,write_src_nl(List).
 output_showing(Info):- w_color(white,write_w_attvars(Info)),nl, !.

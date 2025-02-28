@@ -57,9 +57,9 @@
 !(assertEqual
   (collapse (shape))
   ((shape)))
-!(assertEqualToResult
+(assertEqualToResult
    (shape)
-  ((shape)))
+  (shape))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

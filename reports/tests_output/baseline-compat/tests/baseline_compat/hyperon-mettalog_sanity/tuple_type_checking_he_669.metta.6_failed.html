@@ -14,14 +14,8 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi31 { color: #aa0000; }
 .ansi33 { color: #aa5500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -29,7 +23,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 06:07:28+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:53:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] ]
 P;HTML|
@@ -47,13 +41,6 @@ Script started on 2025-03-01 06:07:28+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
 
-<span class="ansi38-255165000"
-> (: foo_fixed (-> Number %Undefined%))
- 
-</span><span class="ansi38-255165000"
-> (= (foo_fixed $x)  $x)
- 
-</span>;;; Test: Passing an incorrectly typed tuple to `foo_fixed`
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -62,7 +49,7 @@ Script started on 2025-03-01 06:07:28+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.16 milliseconds) 
+; took 0.003 secs. (3.44 milliseconds) 
 
 !(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -76,16 +63,6 @@ Script started on 2025-03-01 06:07:28+00:00 [COMMAND="timeout --preserve-status 
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((wrong type))) ('~nExpected: ' ((Error (wrong type) BadType))))
-</span>;;; Explanation:
-;;; The tuple `(wrong type)` does not match the expected tuple type `(A B)`, so the type check fails,
-;;; and an error wrapped in a list is returned.
-;;; Test: Checking a tuple with mixed undefined and defined types
-<span class="ansi38-255165000"
-> (: foo_mixed (-> (%Undefined% T) %Undefined%))
- 
-</span><span class="ansi38-255165000"
-> (= (foo_mixed $x)  $x)
- 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
@@ -94,7 +71,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.35 milliseconds) 
+; took 0.001 secs. (1.47 milliseconds) 
 
 !(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
@@ -108,20 +85,6 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((partially_defined %Undefined%))) ('~nExpected: ' ((Error (partially_defined %Undefined%) BadType))))
-</span>;;; Explanation:
-;;; The tuple `(partially_defined %Undefined%)` fails to meet the type requirements and returns
-;;; an error in a list.
-;;; Test: Recursive factorial definition with stricter type checking
-<span class="ansi38-255165000"
-> (: fact_strict (-> Number Number))
- 
-</span><span class="ansi38-255165000"
-> (= (fact_strict $n)  
-  (if 
-    (== $n 0) 1 
-    (* 
-      (fact_strict (- $n 1)) $n)))
- 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict 5) ((120)))
 
@@ -130,7 +93,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (14.41 milliseconds) 
+; took 0.016 secs. (15.69 milliseconds) 
 
 !(assertEqualToResult (fact_strict 5) ((120)))
 
@@ -143,17 +106,14 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' (120)) ('~nExpected: ' ((120))))
-</span>;;; Explanation:
-;;; Stricter type checking for the recursive factorial function ensures that input is properly typed.
-;;; Test: Attempting to call `fact_strict` with a tuple
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict (5 6)) ((Error (5 6) BadType)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04</h3>
 
-Script done on 2025-03-01 06:08:08+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-03-01 22:54:31+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

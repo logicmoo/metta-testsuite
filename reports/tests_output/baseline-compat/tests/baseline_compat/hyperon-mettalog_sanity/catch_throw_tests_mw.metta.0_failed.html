@@ -16,17 +16,11 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -37,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:58:55+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/catch_throw_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:45:17+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/catch_throw_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/catch_throw_tests_mw.metta] ]
 P;HTML|
@@ -55,14 +49,7 @@ Script started on 2025-03-01 05:58:55+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/catch_throw_tests_mw.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/catch_throw_tests_mw.metta]
 
-;;;; when no exception is thrown, catch returns result of Form
-<span class="ansi38-255165000"
-> (= (foo)  1)
- 
-</span><span class="ansi38-255165000"
-> (= (foo)  2)
- 
-</span><span class="ansi38-013099040"
+<span class="ansi38-013099040"
 >!(assertEqualToResult (catch (foo) Error Error) (1 2))
 
 </span>
@@ -70,7 +57,7 @@ Script started on 2025-03-01 05:58:55+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000650 secs. (650.35 microseconds) 
+; took 0.000807 secs. (807.19 microseconds) 
 
 !(assertEqualToResult (catch (foo) Error Error) (1 2))
 
@@ -82,8 +69,7 @@ Script started on 2025-03-01 05:58:55+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; catch handles throw
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (throw Error) Error "An exception was caught") ("An exception was caught"))
 
 </span>
@@ -91,7 +77,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000249 secs. (248.68 microseconds) 
+; took 0.000328 secs. (328.39 microseconds) 
 
 !(assertEqualToResult (catch (throw Error) Error "An exception was caught") ("An exception was caught"))
 
@@ -103,8 +89,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; the innermost catch that unifies with the thrown exception is used
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (catch (throw Error) Error "Error level 2") Error "Error level 1") ("Error level 2"))
 
 </span>
@@ -112,7 +97,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000258 secs. (258.45 microseconds) 
+; took 0.000438 secs. (438.49 microseconds) 
 
 !(assertEqualToResult (catch (catch (throw Error) Error "Error level 2") Error "Error level 1") ("Error level 2"))
 
@@ -132,7 +117,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000285 secs. (285.49 microseconds) 
+; took 0.000387 secs. (387.13 microseconds) 
 
 !(assertEqualToResult (catch (catch (throw Error1) Error2 "Error level 2") Error1 "Error level 1") ("Error level 1"))
 
@@ -144,8 +129,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; a catch that itself throws an exception
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (catch (throw Error2) Error2 (throw Error1)) Error1 "Error level 1") ("Error level 1"))
 
 </span>
@@ -153,7 +137,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000292 secs. (292.30 microseconds) 
+; took 0.000457 secs. (457.01 microseconds) 
 
 !(assertEqualToResult (catch (catch (throw Error2) Error2 (throw Error1)) Error1 "Error level 1") ("Error level 1"))
 
@@ -165,21 +149,6 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; catch handles mix of exceptional and unexceptional paths
-;;;;; this test case may change if result order should be nondeterministic, or catch should find all results
-<span class="ansi38-255165000"
-> (= (bar)  1)
- 
-</span><span class="ansi38-255165000"
-> (= (bar)  2)
- 
-</span><span class="ansi38-255165000"
-> (= (bar)  
-  (throw Error))
- 
-</span><span class="ansi38-255165000"
-> (= (bar)  4)
- 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (bar) Error "An exception was caught") (1 2 "An exception was caught"))
 
@@ -188,7 +157,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000834 secs. (834.47 microseconds) 
+; took 0.001 secs. (1.03 milliseconds) 
 
 !(assertEqualToResult (catch (bar) Error "An exception was caught") (1 2 "An exception was caught"))
 
@@ -200,18 +169,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; catch/throw unification
-<span class="ansi38-013099040"
->!(assertEqualToResult (catch (throw (Error "This is an error message")) (Error $14344) $14344) ("This is an error message"))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (catch (throw (Error "This is an error message")) (Error $15170) $15170) ("This is an error message"))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000282 secs. (281.76 microseconds) 
+; took 0.000377 secs. (377.30 microseconds) 
 
-!(assertEqualToResult (catch (throw (Error "This is an error message")) (Error $4718) $4718) ("This is an error message"))
+!(assertEqualToResult (catch (throw (Error "This is an error message")) (Error $5178) $5178) ("This is an error message"))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -221,8 +189,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; catcher (catch arg2) not evaluated
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (catch (throw 3) (+ 1 2) "Error level 2") 3 "Error level 1") ("Error level 1"))
 
 </span>
@@ -230,7 +197,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000311 secs. (310.61 microseconds) 
+; took 0.000424 secs. (423.65 microseconds) 
 
 !(assertEqualToResult (catch (catch (throw 3) (+ 1 2) "Error level 2") 3 "Error level 1") ("Error level 1"))
 
@@ -242,8 +209,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; exception (throw arg) is evaluated
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (catch (throw (+ 1 2)) (+ 1 2) "Error level 2") 3 "Error level 1") ("Error level 1"))
 
 </span>
@@ -251,7 +217,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.29 milliseconds) 
+; took 0.003 secs. (2.56 milliseconds) 
 
 !(assertEqualToResult (catch (catch (throw (+ 1 2)) (+ 1 2) "Error level 2") 3 "Error level 1") ("Error level 1"))
 
@@ -263,18 +229,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; recover (catch arg3) is evaluated if exception is caught
-<span class="ansi38-013099040"
->!(assertEqualToResult (catch (throw (Error 2)) (Error $14058) (+ $14058 1)) (3))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (catch (throw (Error 2)) (Error $15128) (+ $15128 1)) (3))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.10"
 >;; HYPERON-METTALOG-SANITY.CATCH-THROW-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000764 secs. (763.67 microseconds) 
+; took 0.000915 secs. (914.80 microseconds) 
 
-!(assertEqualToResult (catch (throw (Error 2)) (Error $5682) (+ $5682 1)) (3))
+!(assertEqualToResult (catch (throw (Error 2)) (Error $6644) (+ $6644 1)) (3))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -306,7 +271,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 05:58:55+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:45:18+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

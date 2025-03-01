@@ -17,24 +17,14 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:57:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:43:59+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta] ]
 P;HTML|
@@ -50,67 +40,23 @@ Script started on 2025-03-01 05:57:37+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; MeTTa allows to use a separate knowledge base (Space) &kb
-;;; to accumulate inferred knowledge
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Bind &kb to a new empty Space
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Some knowledge
-<span class="ansi38-255165000"
-> (= (frog $x)  
-  (and 
-    (croaks $x) 
-    (eat_flies $x)))
- 
-</span><span class="ansi38-255165000"
-> (= (croaks Fritz)  True)
- 
-</span><span class="ansi38-255165000"
-> (= (eat_flies Fritz)  True)
- 
-</span><span class="ansi38-255165000"
-> (= (croaks Sam)  True)
- 
-</span><span class="ansi38-255165000"
-> (= (eat_flies Sam)  True)
- 
-</span><span class="ansi38-255165000"
-> (= (green $x)  
-  (frog $x))
- 
-</span>;;; Define conditional
-<span class="ansi38-255165000"
-> (: ift (-> Bool Atom Atom))
- 
-</span><span class="ansi38-255165000"
-> (= (ift True $then)  $then)
- 
-</span>;;; For anything that is green, assert it is Green in &kb
-;;; There should be two green things
-<span class="ansi38-013099040"
->!(assertEqualToResult (ift (green $33360) (add-atom &kb (Green $33360))) (() ()))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (ift (green $23288) (add-atom &kb (Green $23288))) (() ()))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.01</h3>
-<span class="ansi38-255165000"
-> (Green Fritz)
- 
-</span><span class="ansi38-255165000"
-> (Green Sam)
- 
-</span>; 
+; 
 ; EVAL TEST
-; took 0.006 secs. (6.25 milliseconds) 
+; took 0.007 secs. (6.89 milliseconds) 
 
-!(assertEqualToResult (ift (green $12520) (add-atom &kb (Green $12520))) (() ()))
+!(assertEqualToResult (ift (green $8156) (add-atom &kb (Green $8156))) (() ()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -120,18 +66,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Retrieve the inferred Green things: Fritz and Sam.
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (Green $22632) $22632) (Fritz Sam))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &kb (Green $18878) $18878) (Fritz Sam))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000205 secs. (205.33 microseconds) 
+; took 0.000316 secs. (316.21 microseconds) 
 
-!(assertEqualToResult (match &kb (Green $35530) $35530) (Fritz Sam))
+!(assertEqualToResult (match &kb (Green $32780) $32780) (Fritz Sam))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -156,7 +101,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 05:57:38+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:44:00+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

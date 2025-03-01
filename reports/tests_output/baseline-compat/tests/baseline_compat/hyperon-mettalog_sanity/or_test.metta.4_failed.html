@@ -18,8 +18,6 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -38,8 +36,6 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -50,7 +46,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 06:02:17+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:48:39+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/or_test.metta] ]
 P;HTML|
@@ -72,24 +68,13 @@ Script started on 2025-03-01 06:02:17+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi38-255165000"
-> (: set-evaluated (-> Bool))
- 
-</span>;;; this must return boolean
-<span class="ansi38-255165000"
-> (= (set-evaluated)  
-  ( (change-state! &evaluated True) True))
- 
-</span>;;; !(pragma! or-impl eager-or) ; evals all like superpose (hyperon's current version)
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(pragma! or-impl lazy-or)
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; evals until the first True happens (we think that is what people assume happens)
-;;;; assertEqualToResult is used here to force all solutions (backtracking)
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(bind! &evaluated (new-state False))
 
 </span>
@@ -103,7 +88,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.69 milliseconds) 
+; took 0.003 secs. (2.94 milliseconds) 
 
 !(assertEqualToResult (or True (set-evaluated)) (True))
 
@@ -123,7 +108,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000116 secs. (116.08 microseconds) 
+; took 0.000259 secs. (259.42 microseconds) 
 
 !(assertEqual (get-state &evaluated) False)
 
@@ -136,8 +121,7 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' (True)) ('~nExpected: ' (False)))
-</span>;;;; assertEqualToResult is used here to force all solutions (backtracking)
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(bind! &evaluated (new-state False))
 
 </span>
@@ -151,7 +135,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000891 secs. (890.70 microseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqualToResult (or False (set-evaluated)) (True))
 
@@ -171,7 +155,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000113 secs. (112.53 microseconds) 
+; took 0.000264 secs. (263.58 microseconds) 
 
 !(assertEqual (get-state &evaluated) True)
 
@@ -183,8 +167,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; Basic `or` Logic
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (or True False) True)
 
 </span>
@@ -192,7 +175,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000104 secs. (103.53 microseconds) 
+; took 0.000189 secs. (189.48 microseconds) 
 
 !(assertEqual (or True False) True)
 
@@ -212,7 +195,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000113 secs. (113.42 microseconds) 
+; took 0.000187 secs. (186.80 microseconds) 
 
 !(assertEqual (or False True) True)
 
@@ -232,7 +215,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000115 secs. (114.65 microseconds) 
+; took 0.000235 secs. (235.30 microseconds) 
 
 !(assertEqual (or True True) True)
 
@@ -252,7 +235,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000102 secs. (102.34 microseconds) 
+; took 0.000184 secs. (183.59 microseconds) 
 
 !(assertEqual (or False False) False)
 
@@ -264,8 +247,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; Makes sure they only return single nondet result
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (or True False) (True))
 
 </span>
@@ -273,7 +255,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000104 secs. (104.32 microseconds) 
+; took 0.000187 secs. (186.57 microseconds) 
 
 !(assertEqualToResult (or True False) (True))
 
@@ -293,7 +275,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000105 secs. (104.84 microseconds) 
+; took 0.000200 secs. (199.87 microseconds) 
 
 !(assertEqualToResult (or False True) (True))
 
@@ -313,7 +295,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000129 secs. (128.64 microseconds) 
+; took 0.000280 secs. (279.61 microseconds) 
 
 !(assertEqualToResult (or True True) (True))
 
@@ -333,7 +315,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000118 secs. (118.01 microseconds) 
+; took 0.000180 secs. (179.61 microseconds) 
 
 !(assertEqualToResult (or False False) (False))
 
@@ -345,8 +327,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; or with Expressions
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (or (> 5 3) (< 2 1)) True)
 
 </span>
@@ -354,7 +335,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.14 milliseconds) 
+; took 0.001 secs. (1.28 milliseconds) 
 
 !(assertEqual (or (> 5 3) (< 2 1)) True)
 
@@ -374,7 +355,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000815 secs. (814.73 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqual (or (== 1 1) (== 2 2)) True)
 
@@ -394,7 +375,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000207 secs. (206.52 microseconds) 
+; took 0.000434 secs. (434.33 microseconds) 
 
 !(assertEqual (or (not True) (and True False)) False)
 
@@ -406,17 +387,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi38-255165000"
-> (: mprogn (-> Atom Atom Atom))
- 
-</span><span class="ansi38-255165000"
-> (= (mprogn $code1 $code2)  
-  (let $4208 
-    (eval $code1) 
-    (eval $code2)))
- 
-</span>;;;; or with Side Effects to Ensure Both Expressions Are Evaluated
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (or (mprogn (println! "First") True) (mprogn (println! "Second") False)) (True))
 
 </span>
@@ -426,7 +397,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.39 milliseconds) 
+; took 0.002 secs. (2.02 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") True) (mprogn (println! "Second") False)) (True))
 
@@ -448,7 +419,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.49 milliseconds) 
+; took 0.002 secs. (1.84 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") True) (mprogn (println! "Second") True)) (True))
 
@@ -470,7 +441,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.002 secs. (1.96 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") False) (mprogn (println! "Second") True)) (True))
 
@@ -492,7 +463,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.32 milliseconds) 
+; took 0.002 secs. (1.84 milliseconds) 
 
 !(assertEqualToResult (or (mprogn (println! "First") False) (mprogn (println! "Second") False)) (False))
 
@@ -504,9 +475,7 @@ Second
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; test superposes booleans
-;;;
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (or (superpose (False True)) (superpose (False True))) (False True True True))
 
 </span>
@@ -514,7 +483,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OR-TEST.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000220 secs. (220.13 microseconds) 
+; took 0.000600 secs. (600.03 microseconds) 
 
 !(assertEqualToResult (or (superpose (False True)) (superpose (False True))) (False True True True))
 
@@ -563,7 +532,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' (True True)) ('~nExpected: ' (False True True True)))]
 
-Script done on 2025-03-01 06:02:17+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:48:40+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

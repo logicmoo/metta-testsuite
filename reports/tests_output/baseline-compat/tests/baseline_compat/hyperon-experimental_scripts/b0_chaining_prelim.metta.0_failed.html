@@ -16,15 +16,9 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -32,7 +26,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:57:21+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:43:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] ]
 P;HTML|
@@ -52,38 +46,17 @@ Script started on 2025-03-01 05:57:21+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; From matching to evaluation of expressions via equality queries chaining
-;;; It's possible to chain together matching queries
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Some knowledge base entries
-;;; `:=` is a custom symbol
-;;; Combinatory logic rules
-<span class="ansi38-255165000"
-> (:= (I $x) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= ((K $x) $y) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (K $x $y) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (S $x $y $14320) ($x $14320 ($y $14320)))
- 
-</span>;;; A single matching step
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $26618) $26618) ((K x (K x))))
+>!(assertEqualToResult (match &self (:= (S K K x) $14664) $14664) ((K x (K x))))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.96 milliseconds) 
+; took 0.003 secs. (3.31 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (S K K x) $48234) $48234) ((K x (K x))))
+!(assertEqualToResult (match &self (:= (S K K x) $38342) $38342) ((K x (K x))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -95,19 +68,17 @@ Script started on 2025-03-01 05:57:21+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; A second matching step; the result of the previous
-;;; step is manually used as input for the next query
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (K x (K x)) $58054) $58054) (x))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (K x (K x)) $48772) $48772) (x))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000188 secs. (187.64 microseconds) 
+; took 0.000450 secs. (450.29 microseconds) 
 
-!(assertEqualToResult (match &self (:= (K x (K x)) $10968) $10968) (x))
+!(assertEqualToResult (match &self (:= (K x (K x)) $5630) $5630) (x))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -117,18 +88,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Combined reduction via matching in two steps
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $20918) (match &self (:= $20918 $20960) $20960)) (x))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (S K K x) $16190) (match &self (:= $16190 $16232) $16232)) (x))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000298 secs. (297.99 microseconds) 
+; took 0.000464 secs. (463.86 microseconds) 
 
-!(assertEqualToResult (match &self (:= (S K K x) $43838) (match &self (:= $43838 $43880) $43880)) (x))
+!(assertEqualToResult (match &self (:= (S K K x) $40670) (match &self (:= $40670 $40712) $40712)) (x))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -138,28 +108,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Another example (Peano summation)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (:= (Add $x Z) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (Add $x (S $y)) (Add (S $x) $y))
- 
-</span>;;; First step
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $16278) $16278) ((Add (S (S Z)) Z)))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $8106) $8106) ((Add (S (S Z)) Z)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.78 milliseconds) 
+; took 0.002 secs. (2.23 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $42646) $42646) ((Add (S (S Z)) Z)))
+!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $37038) $37038) ((Add (S (S Z)) Z)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -171,18 +130,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Two steps together
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $53138) (match &self (:= $53138 $53180) $53180)) ((S (S Z))))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $48140) (match &self (:= $48140 $48182) $48182)) ((S (S Z))))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $18766) (match &self (:= $18766 $18808) $18808)) ((S (S Z))))
+!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $16364) (match &self (:= $16364 $16406) $16406)) ((S (S Z))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -209,7 +167,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 05:57:21+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:43:43+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

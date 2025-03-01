@@ -17,21 +17,8 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -40,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:59:59+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:46:21+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta] ]
 P;HTML|
@@ -60,44 +47,23 @@ Script started on 2025-03-01 05:59:59+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/idiomatic_negation_and_set_difference_he_805.metta]
 
-;;; Test File: Idiomatic Negation and Set Difference in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/805
-;;; Create a new space for testing
 <span class="ansi38-013099040"
 >!(bind! &test-space (new-space))
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Example 1: Friend of Bob AND a Carpenter
-;;; ---------------------------------------
-<span class="ansi38-255165000"
-> (add-atom &test-space (friend bob larry))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (friend bob mike))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (carpenter larry))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (teacher bob))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (doctor mike))
- 
-</span>;;; Test: Friend of Bob AND a carpenter
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (friend bob $39036) (match &test-space (carpenter $39036) $39036)) (larry))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &test-space (friend bob $34698) (match &test-space (carpenter $34698) $34698)) (larry))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.01"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000166 secs. (166.47 microseconds) 
+; took 0.000195 secs. (195.46 microseconds) 
 
-!(assertEqualToResult (match &test-space (friend bob $55702) (match &test-space (carpenter $55702) $55702)) (larry))
+!(assertEqualToResult (match &test-space (friend bob $51866) (match &test-space (carpenter $51866) $51866)) (larry))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -107,20 +73,17 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ()) ('~nExpected: ' (larry)))
-</span>;;; Example 2: Friend of Bob AND NOT a Carpenter
-;;; --------------------------------------------
-;;; Test: Friend of Bob AND NOT a carpenter
-<span class="ansi38-013099040"
->!(assertEqualToResult (unify &test-space (friend bob $2274) (unify &test-space (carpenter $2274) (empty) $2274) (empty)) (mike))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (unify &test-space (friend bob $62426) (unify &test-space (carpenter $62426) (empty) $62426) (empty)) (mike))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.02"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.70 milliseconds) 
+; took 0.004 secs. (4.09 milliseconds) 
 
-!(assertEqualToResult (unify &test-space (friend bob $6342) (unify &test-space (carpenter $6342) (empty) $6342) (empty)) (mike))
+!(assertEqualToResult (unify &test-space (friend bob $7876) (unify &test-space (carpenter $7876) (empty) $7876) (empty)) (mike))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -130,44 +93,17 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ()) ('~nExpected: ' (mike)))
-</span>;;; Example 3: Mammals That ARE NOT Pets
-;;; ------------------------------------
-<span class="ansi38-255165000"
-> (add-atom &test-space (mammal dog))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (mammal cat))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (mammal tiger))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (pet dog))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (pet cat))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (bird parrot))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (bird vulture))
- 
-</span><span class="ansi38-255165000"
-> (add-atom &test-space (pet parrot))
- 
-</span>;;; Test: Mammals that ARE NOT pets
-<span class="ansi38-013099040"
->!(assertEqualToResult (unify &test-space (mammal $19540) (unify &test-space (pet $19540) (empty) $19540) (empty)) (tiger))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (unify &test-space (mammal $10308) (unify &test-space (pet $10308) (empty) $10308) (empty)) (tiger))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.03"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.78 milliseconds) 
+; took 0.002 secs. (2.18 milliseconds) 
 
-!(assertEqualToResult (unify &test-space (mammal $6286) (unify &test-space (pet $6286) (empty) $6286) (empty)) (tiger))
+!(assertEqualToResult (unify &test-space (mammal $7810) (unify &test-space (pet $7810) (empty) $7810) (empty)) (tiger))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -177,20 +113,17 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ()) ('~nExpected: ' (tiger)))
-</span>;;; Example 4: OR/Union Query
-;;; -------------------------
-;;; Test: Mammals OR Birds
-<span class="ansi38-013099040"
->!(assertEqualToResult (superpose ((unify &test-space (mammal $16692) $16692 (empty)) (unify &test-space (bird $16734) $16734 (empty)))) (tiger cat dog vulture parrot))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (superpose ((unify &test-space (mammal $18826) $18826 (empty)) (unify &test-space (bird $18868) $18868 (empty)))) (tiger cat dog vulture parrot))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.04"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.06 milliseconds) 
+; took 0.004 secs. (3.84 milliseconds) 
 
-!(assertEqualToResult (superpose ((unify &test-space (mammal $11834) $11834 (empty)) (unify &test-space (bird $11876) $11876 (empty)))) (tiger cat dog vulture parrot))
+!(assertEqualToResult (superpose ((unify &test-space (mammal $16812) $16812 (empty)) (unify &test-space (bird $16854) $16854 (empty)))) (tiger cat dog vulture parrot))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -200,20 +133,17 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ()) ('~nExpected: ' (tiger cat dog vulture parrot)))
-</span>;;; Example 5: Everything EXCEPT Pets
-;;; ---------------------------------
-;;; Test: Returns anything that is NOT a pet
-<span class="ansi38-013099040"
->!(assertEqualToResult (unify &test-space ($21314 $21320) (unify &test-space (pet $21320) (empty) $21320) (empty)) (tiger vulture))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (unify &test-space ($26902 $26908) (unify &test-space (pet $26908) (empty) $26908) (empty)) (tiger vulture))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.05"
 >;; HYPERON-METTALOG-SANITY.IDIOMATIC-NEGATION-AND-SET-DIFFERENCE-HE-805.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000888 secs. (888.36 microseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
-!(assertEqualToResult (unify &test-space ($5894 $5900) (unify &test-space (pet $5900) (empty) $5900) (empty)) (tiger vulture))
+!(assertEqualToResult (unify &test-space ($6902 $6908) (unify &test-space (pet $6908) (empty) $6908) (empty)) (tiger vulture))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -241,7 +171,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ()) ('~nExpected: ' (tiger cat dog vulture parrot)))]
 [(Error ('~nGot: ' ()) ('~nExpected: ' (tiger vulture)))]
 
-Script done on 2025-03-01 06:00:00+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:46:22+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

@@ -16,31 +16,19 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:57:18+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:43:39+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta] ]
 P;HTML|
@@ -64,38 +52,17 @@ Script started on 2025-03-01 05:57:18+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; `match` searches for all expressions corresponding to
-;;; the given pattern and produces the output pattern.
-;;; It doesn't search in subexpressions.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Some expressions to be matched
-<span class="ansi38-255165000"
-> ((leaf1 leaf2) leaf3)
- 
-</span><span class="ansi38-255165000"
-> (((leaf0 leaf1) leaf2) leaf3)
- 
-</span>;;; This one contains `((leaf1 leaf2) leaf3)` as a subexpression
-;;; and thus will not be matched
-<span class="ansi38-255165000"
-> (top ((leaf1 leaf2) leaf3))
- 
-</span>;;; `assertEqualToResult` checks all the results of the first
-;;; expression; it doesn't evaluate the second expression,
-;;; which is treated as a set of expected results.
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (($34696 leaf2) leaf3) $34696) (leaf1 (leaf0 leaf1)))
+>!(assertEqualToResult (match &self (($30746 leaf2) leaf3) $30746) (leaf1 (leaf0 leaf1)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.44 milliseconds) 
+; took 0.003 secs. (2.59 milliseconds) 
 
-!(assertEqualToResult (match &self (($50990 leaf2) leaf3) $50990) (leaf1 (leaf0 leaf1)))
+!(assertEqualToResult (match &self (($48600 leaf2) leaf3) $48600) (leaf1 (leaf0 leaf1)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -105,31 +72,17 @@ Script started on 2025-03-01 05:57:18+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Symbols can be arranged in arbitrary expressions
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (Sam is a frog)
- 
-</span><span class="ansi38-255165000"
-> (Tom is a cat)
- 
-</span><span class="ansi38-255165000"
-> (Sophia is a robot)
- 
-</span>;;; `match` can bind more that one variable
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self ($23534 is a $23552) ($23534 the $23552)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self ($17456 is a $17474) ($17456 the $17474)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.90 milliseconds) 
+; took 0.002 secs. (2.14 milliseconds) 
 
-!(assertEqualToResult (match &self ($49598 is a $49616) ($49598 the $49616)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
+!(assertEqualToResult (match &self ($46144 is a $46162) ($46144 the $46162)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -143,31 +96,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; More examples of pattern matching
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; `:=` is a custom symbol. These are still purely symbolic expressions
-<span class="ansi38-255165000"
-> (:= (Green Sam) T)
- 
-</span><span class="ansi38-255165000"
-> (:= (White Tom) T)
- 
-</span><span class="ansi38-255165000"
-> (:= (Green Tom) F)
- 
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Green $23182) T) ($23182 is really green)) ((Sam is really green)))
+>!(assertEqualToResult (match &self (:= (Green $16290) T) ($16290 is really green)) ((Sam is really green)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000759 secs. (759.33 microseconds) 
+; took 0.000833 secs. (833.43 microseconds) 
 
-!(assertEqualToResult (match &self (:= (Green $44382) T) ($44382 is really green)) ((Sam is really green)))
+!(assertEqualToResult (match &self (:= (Green $39050) T) ($39050 is really green)) ((Sam is really green)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -178,16 +117,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= ($54742 $54748) T) ($54748 is really $54742)) ((Sam is really Green) (Tom is really White)))
+>!(assertEqualToResult (match &self (:= ($50020 $50026) T) ($50026 is really $50020)) ((Sam is really Green) (Tom is really White)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.27 milliseconds) 
+; took 0.001 secs. (1.46 milliseconds) 
 
-!(assertEqualToResult (match &self (:= ($16456 $16462) T) ($16462 is really $16456)) ((Sam is really Green) (Tom is really White)))
+!(assertEqualToResult (match &self (:= ($13994 $14000) T) ($14000 is really $13994)) ((Sam is really Green) (Tom is really White)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -198,16 +137,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= ($27890 $27896) $27902) ('It's' $27902 that $27896 is $27890)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
+>!(assertEqualToResult (match &self (:= ($26038 $26044) $26050) ('It's' $26050 that $26044 is $26038)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.69 milliseconds) 
+; took 0.002 secs. (2.01 milliseconds) 
 
-!(assertEqualToResult (match &self (:= ($6664 $6670) $6676) ('It's' $6676 that $6670 is $6664)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
+!(assertEqualToResult (match &self (:= ($7172 $7178) $7184) ('It's' $7184 that $7178 is $7172)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -221,18 +160,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; This type of query works as a sort of evaluation/reduction
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Green Tom) $17780) $17780) (F))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (Green Tom) $18898) $18898) (F))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000168 secs. (167.91 microseconds) 
+; took 0.000263 secs. (262.89 microseconds) 
 
-!(assertEqualToResult (match &self (:= (Green Tom) $32288) $32288) (F))
+!(assertEqualToResult (match &self (:= (Green Tom) $34410) $34410) (F))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -242,30 +180,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; One more example
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (isa red color)
- 
-</span><span class="ansi38-255165000"
-> (isa green color)
- 
-</span><span class="ansi38-255165000"
-> (isa blue color)
- 
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (isa $1838 color) $1838) (red green blue))
+>!(assertEqualToResult (match &self (isa $1968 color) $1968) (red green blue))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000218 secs. (217.89 microseconds) 
+; took 0.000434 secs. (434.12 microseconds) 
 
-!(assertEqualToResult (match &self (isa $17178 color) $17178) (red green blue))
+!(assertEqualToResult (match &self (isa $18282 color) $18282) (red green blue))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -294,7 +219,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 05:57:18+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:43:40+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

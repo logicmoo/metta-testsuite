@@ -18,11 +18,7 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -32,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 05:57:58+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:44:20+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/06_match_in_space.metta] ]
 P;HTML|
@@ -71,38 +67,26 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(add-atom &kb (SS-P_AS A_AS B_AS))
 
-</span><span class="ansi38-255165000"
-> (SS-P_AS A_AS B_AS)
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
 >!(add-atom &kb (SS-Q_AS A_AS C_AS))
 
-</span><span class="ansi38-255165000"
-> (SS-Q_AS A_AS C_AS)
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi38-255165000"
-> (PQ SS-P_BAD B_BAD)
- 
-</span><span class="ansi38-255165000"
-> (PQ SS-Q_BAD C_BAD)
- 
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &kb ($43814 A_AS $43826) ($43814 A_AS $43826)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
+>!(assertEqualToResult (match &kb ($44104 A_AS $44116) ($44104 A_AS $44116)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.01"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.17 milliseconds) 
+; took 0.004 secs. (3.65 milliseconds) 
 
-!(assertEqualToResult (match &kb ($3878 A_AS $3890) ($3878 A_AS $3890)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
+!(assertEqualToResult (match &kb ($7636 A_AS $7648) ($7636 A_AS $7648)) ((SS-P_AS A_AS B_AS) (SS-Q_AS A_AS C_AS)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -112,18 +96,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Basic Match
-<span class="ansi38-013099040"
->!(assertEqual (match &kb ($16242 A_AS $16254) ($16242 $16254)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
+</span><span class="ansi38-013099040"
+>!(assertEqual (match &kb ($19656 A_AS $19668) ($19656 $19668)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.02"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.37 milliseconds) 
+; took 0.003 secs. (2.94 milliseconds) 
 
-!(assertEqual (match &kb ($40380 A_AS $40392) ($40380 $40392)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
+!(assertEqual (match &kb ($49884 A_AS $49896) ($49884 $49896)) (superpose ((SS-P_AS B_AS) (SS-Q_AS C_AS))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -133,18 +116,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; cases can be used for deconstruction
-<span class="ansi38-013099040"
->!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($52310 A_AS $52322) ($52310 $52322)) (((SS-P_AS $52370) (P_AS $52370)) ((SS-Q_AS $52370) (Q_AS $52370)))))
+</span><span class="ansi38-013099040"
+>!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($2030 A_AS $2042) ($2030 $2042)) (((SS-P_AS $2090) (P_AS $2090)) ((SS-Q_AS $2090) (Q_AS $2090)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.95 milliseconds) 
+; took 0.005 secs. (5.06 milliseconds) 
 
-!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($31852 A_AS $31864) ($31852 $31864)) (((SS-P_AS $31912) (P_AS $31912)) ((SS-Q_AS $31912) (Q_AS $31912)))))
+!(assertEqual (superpose ((P_AS B_AS) (Q_AS C_AS))) (case (match &kb ($57920 A_AS $57932) ($57920 $57932)) (((SS-P_AS $57980) (P_AS $57980)) ((SS-Q_AS $5190) (Q_AS $5190)))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -154,18 +136,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; %void% can be used to capture empty results
-<span class="ansi38-013099040"
->!(assertEqual (case (match &kb ($43468 B_AS $43480) ($43468 $43480)) (((SS-P_AS $43528) (P_AS $43528)) ((SS-Q_AS $43528) (Q_AS $43528)) (%void% no-match))) no-match)
+</span><span class="ansi38-013099040"
+>!(assertEqual (case (match &kb ($18442 B_AS $18454) ($18442 $18454)) (((SS-P_AS $18502) (P_AS $18502)) ((SS-Q_AS $18502) (Q_AS $18502)) (%void% no-match))) no-match)
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04"
 >;; HYPERON-METTALOG-SANITY.06-MATCH-IN-SPACE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.07 milliseconds) 
+; took 0.001 secs. (1.30 milliseconds) 
 
-!(assertEqual (case (match &kb ($10198 B_AS $10210) ($10198 $10210)) (((SS-P_AS $10258) (P_AS $10258)) ((SS-Q_AS $10258) (Q_AS $10258)) (%void% no-match))) no-match)
+!(assertEqual (case (match &kb ($50580 B_AS $50592) ($50580 $50592)) (((SS-P_AS $50640) (P_AS $50640)) ((SS-Q_AS $50640) (Q_AS $50640)) (%void% no-match))) no-match)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -194,7 +175,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 05:57:58+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:44:20+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

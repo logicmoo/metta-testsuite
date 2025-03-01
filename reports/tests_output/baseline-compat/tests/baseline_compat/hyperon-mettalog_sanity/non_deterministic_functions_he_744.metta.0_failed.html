@@ -17,17 +17,14 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 06:02:15+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:48:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta] ]
 P;HTML|
@@ -49,17 +46,6 @@ Script started on 2025-03-01 06:02:15+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta]
 
-;;; Test File: Non-Deterministic Functions and Referential Transparency in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/744
-;;; Issue Overview:
-;;; In MeTTa, non-deterministic functions do not behave in a referentially transparent way when untyped.
-;;; Specifically, untyped arguments are evaluated before the function is called, causing the function to apply
-;;; element-wise to all combinations of argument elements. This results in a different behavior compared to 
-;;; when the function is used directly.
-;;; Example: Demonstrating the Issue
-;;; ---------------------------------
-;;; Top-level call with subtraction and intersection
-;;; This call subtracts the intersection of two sets from one set.
 <span class="ansi38-013099040"
 >!(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
@@ -68,7 +54,7 @@ Script started on 2025-03-01 06:02:15+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
+; took 0.003 secs. (2.81 milliseconds) 
 
 !(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
@@ -80,17 +66,7 @@ Script started on 2025-03-01 06:02:15+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Explanation:
-;;; The expected result here is `d`, which correctly reflects the subtraction operation.
-;;; Wrapping the logic in a function
-;;; Define an untyped function `test6`
-<span class="ansi38-255165000"
-> (= (test6 $set $subset)  
-  (subtraction $subset 
-    (intersection $set $subset)))
- 
-</span>;;; Test: Call the untyped function with the same inputs
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
 </span>
@@ -98,7 +74,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.02</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.39 milliseconds) 
+; took 0.008 secs. (7.94 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -110,23 +86,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Explanation:
-;;; When `test6` is called without a type declaration, its arguments are evaluated element-wise
-;;; due to the semantics of non-determinism in MeTTa. The function is applied to all combinations
-;;; of elements from `(a b c)` and `(a b d)`, producing a non-deterministic result.
-;;; Example: Fixing the Issue with Typing
-;;; -------------------------------------
-;;; Add a type declaration for `test6`
-<span class="ansi38-255165000"
-> (: test6 (-> Atom Atom Atom))
- 
-</span><span class="ansi38-255165000"
-> (= (test6 $set $subset)  
-  (subtraction $subset 
-    (intersection $set $subset)))
- 
-</span>;;; Test: Call the typed function with the same inputs
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
 </span>
@@ -134,7 +94,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.60 milliseconds) 
+; took 0.003 secs. (3.09 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -146,14 +106,7 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Explanation:
-;;; By typing the function, the arguments are not evaluated prematurely. Instead, the sets are passed
-;;; as a whole to the function, resulting in the correct and referentially transparent behavior.
-;;; Summary:
-;;; - The issue arises because untyped arguments are evaluated before the function call in MeTTa.
-;;; - This causes the function to behave in a non-deterministic, element-wise manner.
-;;; - Adding a type declaration resolves the issue by preserving referential transparency.
-P;HTML|
+</span>P;HTML|
 ;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
@@ -168,7 +121,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-03-01 06:02:15+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-01 22:48:38+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

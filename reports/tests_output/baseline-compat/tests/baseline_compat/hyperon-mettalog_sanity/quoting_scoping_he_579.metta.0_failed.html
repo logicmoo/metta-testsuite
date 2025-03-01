@@ -18,18 +18,14 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-01 06:03:01+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1701-69.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-01 22:49:24+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1694-619.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] ]
 P;HTML|
@@ -49,14 +45,6 @@ Script started on 2025-03-01 06:03:01+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.test_error /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
 
-;;; Test File: Quoting/Scoping Mechanism in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/579
-;;; Issue Overview:
-;;; This test demonstrates scenarios where unification and substitution of variables in MeTTa
-;;; lead to unexpected results. It highlights the need for a quoting/scoping mechanism to
-;;; prevent unification/substitution in specific contexts.
-;;; Example 1: Basic Quoting Issue
-;;; --------------------------------
 <span class="ansi38-013099040"
 >!(assertEqualToResult (let (quote $63956) (quote A) $1814) (A))
 
@@ -65,9 +53,9 @@ Script started on 2025-03-01 06:03:01+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000136 secs. (136.43 microseconds) 
+; took 0.000216 secs. (215.85 microseconds) 
 
-!(assertEqualToResult (let (quote $14984) (quote A) $14984) (A))
+!(assertEqualToResult (let (quote $15486) (quote A) $15486) (A))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -77,19 +65,17 @@ Script started on 2025-03-01 06:03:01+00:00 [COMMAND="timeout --preserve-status 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Explanation:
-;;; Without a scoping mechanism, `quote` does not isolate `$x`, and substitution occurs.
-<span class="ansi38-013099040"
->!(assertEqualToResult (let (quote $24382) (quote (+ 1 1)) $24382) (2))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (let (quote $25494) (quote (+ 1 1)) $25494) (2))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.11 milliseconds) 
+; took 0.007 secs. (7.26 milliseconds) 
 
-!(assertEqualToResult (let (quote $40506) (quote (+ 1 1)) $40506) (2))
+!(assertEqualToResult (let (quote $43124) (quote (+ 1 1)) $43124) (2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -99,68 +85,38 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Explanation:
-;;; `quote` fails to preserve the quoted structure, and evaluation proceeds, producing `2`.
-;;; Example 2: Real-World Example with Combinatory Logic
-;;; ---------------------------------------------------
-;;; Knowledge Base Setup
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Add K and S combinators to the knowledge base
-<span class="ansi38-013099040"
->!(add-atom &kb (: AK (-> $63580 (-> $63598 $63580))))
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: AK (-> $5648 (-> $5666 $5648))))
 
-</span><span class="ansi38-255165000"
-> (: AK (-> $a (-> $b $a)))
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(add-atom &kb (: AS (-> (-> $24330 (-> $24348 $24354)) (-> (-> $24330 $24348) (-> $24330 $24354)))))
+>!(add-atom &kb (: AS (-> (-> $28800 (-> $28818 $28824)) (-> (-> $28800 $28818) (-> $28800 $28824)))))
 
-</span><span class="ansi38-255165000"
-> (: AS (-> (-> $a (-> $b $53222)) (-> (-> $a $b) (-> $a $53222))))
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Define Backward Chainer
-;;; Base case
-<span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $2988)  
-  (match &kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
- 
-</span>;;; Recursive step
-<span class="ansi38-255165000"
-> (= (bc (: ($prfabs $prfarg) $37504) (S $37522))  
-  (let* 
-    ( ( (: $prfabs 
-          (-> $37582 $37504)) (bc (: $prfabs (-> $37582 $37504)) $37522)) ((: $prfarg $37582) (bc (: $prfarg $37582) $37522))) 
-    (: 
-      ($prfabs $prfarg) $37504)))
- 
-</span>;;; Synthesize function composition (.)
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $20760 (-> (-> $20790 $20796) (-> (-> $20826 $20790) (-> $20826 $20796)))) (S (S (S Z)))) ((AS (AK AS)) AK))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $63450 (-> (-> $2486 $2492) (-> (-> $2522 $2486) (-> $2522 $2492)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03</h3>
 ; 
 ; EVAL TEST
-; took 12.14 seconds.
+; took 14.21 seconds.
 
-!(assertEqualToResult (bc (: $254458 (-> (-> $254488 $254494) (-> (-> $254524 $254488) (-> $254524 $254494)))) (S (S (S Z)))) ((AS (AK AS)) AK))
+!(assertEqualToResult (bc (: $103596 (-> (-> $103626 $103632) (-> (-> $103662 $103626) (-> $103662 $103632)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 
-Script done on 2025-03-01 06:03:42+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-03-01 22:50:04+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

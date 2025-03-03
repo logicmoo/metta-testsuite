@@ -59,17 +59,17 @@
 (: = (-> $t $t Type))
 
 !("sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal SocratesIsHuman)))
-!(assertEqualToResult
+!(assertEqual
   (get-type (= SocratesIsMortal (HumansAreMortal SocratesIsHuman)))
-  (Type Atom))
+  Type)
 ; This equality is well-typed, because both its arguments are of `Type`.
 ; It doesn't mean they are both inhabited (true propositions), and
 ; it doesn't mean that the equality itself is true (an inhabited type).
 
 !("sameTypes" (get-type (Mortal Socrates)) (get-type (Mortal Plato)))
-!(assertEqualToResult
+!(assertEqual
   (get-type (= (Mortal Socrates) (Mortal Plato)))
-  (Type Atom))
+  Type)
 
 
 !("!sameTypes" (get-type SocratesIsMortal) (get-type (HumansAreMortal PlatoIsHuman)))

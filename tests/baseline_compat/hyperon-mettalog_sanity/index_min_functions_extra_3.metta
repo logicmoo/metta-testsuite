@@ -32,7 +32,7 @@
 
 ; Test index-atom operation with valid index
 ; Test index-atom with index 2 in list (5 4 3 2 1), expecting 3
-(assertEqualToResult (index-atom (5 4 3 2 1) 2) (3))
+!(assertEqualToResult (index-atom (5 4 3 2 1) 2) ((3)))
 
 ; Test index-atom operation with out-of-bounds index
 ; Test index-atom with index 5 in list (A B C D E), expecting error
@@ -44,7 +44,7 @@
 ; Add atom 'a' to the space
 !(add-atom &space a)
 ; Attempt to remove atom 'b' which is not in the space, expecting False
-(assertEqualToResult (remove-atom &space b) (False))
+!(assertEqualToResult (remove-atom &space b) ((False)))
 
 ; Test that an operation can be an expression
 ; Define higher-order function 'foo' and 'bar'
@@ -53,7 +53,7 @@
 !(add-atom &self (= (foo) bar))
 !(add-atom &self (= (bar $x) $x))
 ; Test that applying 'foo' to 'a' evaluates to 'a'
-(assertEqualToResult (metta ((foo) a) %Undefined% &self) (a))
+!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
 ; Test variable name conflict resolution
 ; Define a function 'b' that takes a tuple and returns a 'c' expression
@@ -77,35 +77,35 @@
 !(add-atom &self (= (bar) baz))
 !(add-atom &self (= (foo) (bar)))
 ; Test that '!(foo)' does not evaluate in default interpreter
-(assertEqualToResult (foo) (baz))
+!(assertEqualToResult (foo) ((baz)))
 ; Switch to bare-minimal interpreter
 !(pragma! interpreter bare-minimal)
 ; Test that '!(foo)' does not evaluate in bare-minimal interpreter
-(assertEqualToResult (foo) (foo))
+!(assertEqualToResult (foo) ((foo)))
 ; Use 'eval' to force evaluation in bare-minimal interpreter
-(assertEqualToResult (eval (foo)) (baz))
+!(assertEqualToResult (eval (foo)) ((baz)))
 
 ; Test that Error can be used as an argument and has appropriate types
 ; Test get-type of 'Error', expecting (-> Atom Atom ErrorType)
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 ; Test get-metatype of 'Error', expecting 'Symbol'
-(assertEqualToResult (get-metatype Error) (Symbol))
+!(assertEqualToResult (get-metatype Error) ((Symbol)))
 ; Test get-type of an 'Error' expression, expecting 'ErrorType'
-(assertEqualToResult (get-type (Error Foo Boo)) (ErrorType))
+!(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 ; Test constructing an 'Error' expression with invalid arguments
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
 ; Test string parsing with various inputs
 ; Test that '!(id "test")' returns ("test")
-(assertEqualToResult (id "test") ("test"))
+!(assertEqualToResult (id "test") (("test")))
 ; Test that '!(id "te st")' returns ("te st")
 !(assertEqualToResult (id "te st") (("te st")))
 ; Test that '!(id "te\"st")' returns ("te\"st")
-(assertEqualToResult (id "te\"st") ("te\"st"))
+!(assertEqualToResult (id "te\"st") (("te\"st")))
 ; Test that '!(id "")' returns ((""))
-(assertEqualToResult (id "") (""))
+!(assertEqualToResult (id "") (("")))
 ; Test that '!(id "te\nst")' returns ("te\nst")
-(assertEqualToResult (id "te\nst") ("te\nst"))
+!(assertEqualToResult (id "te\nst") (("te\nst")))
 ; Test that '!("te\nst" test)' returns (("te\nst" test))
 !(assertEqualToResult ("te\nst" test) (("te\nst" test)))
 
@@ -116,11 +116,11 @@
 !(add-atom &self (: f_var (-> Variable D)))
 !(add-atom &self (: b B))
 ; Test applying 'f_sym' to an expression, expecting 'D'
-(assertEqualToResult (get-type (f_sym (b))) (D))
+!(assertEqualToResult (get-type (f_sym (b))) ((D)))
 ; Test applying 'f_expr' to an expression, expecting 'D'
-(assertEqualToResult (get-type (f_expr (b))) (D))
+!(assertEqualToResult (get-type (f_expr (b))) ((D)))
 ; Test applying 'f_var' to an expression, expecting 'D'
-(assertEqualToResult (get-type (f_var (b))) (D))
+!(assertEqualToResult (get-type (f_var (b))) ((D)))
 
 ; Test that variables keep their value in different sub-expressions
 ; Define equality and addition functions
@@ -128,7 +128,7 @@
 !(add-atom &self (= (plus Z $y) $y))
 !(add-atom &self (= (plus (S $k) $y) (S (plus $k $y))))
 ; Test that (eq (plus Z $n) $n) evaluates to True
-(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) (True))
+!(assertEqualToResult (metta (eq (plus Z $n) $n) %Undefined% &self) ((True)))
 ; Test that (eq (plus (S Z) $n) $n) evaluates to False
 !(assertEqualToResult (metta (eq (plus (S Z) $n) $n) %Undefined% &self) (()))
 
@@ -139,13 +139,13 @@
 !(add-atom &self (= (a $z) (mynot (b $z))))
 !(add-atom &self (= (b d) F))
 ; Test that (myif (a $x) $x) evaluates correctly
-(assertEqualToResult (metta (myif (a $x) $x) %Undefined% &self) (d))
+!(assertEqualToResult (metta (myif (a $x) $x) %Undefined% &self) ((d)))
 
 ; Test that variable name conflicts are resolved by renaming
 ; Define a function with a potential variable name conflict
 !(add-atom &self (= (a ($W)) True))
 ; Test that matching 'a' with variable $W works correctly
-(assertEqualToResult (metta (a $W) %Undefined% &self) (True))
+!(assertEqualToResult (metta (a $W) %Undefined% &self) ((True)))
 
 ; Test that operations can be higher-order functions
 ; Define types and functions
@@ -154,7 +154,7 @@
 !(add-atom &self (= (foo) bar))
 !(add-atom &self (= (bar $x) $x))
 ; Test that ((foo) a) evaluates to 'a'
-(assertEqualToResult (metta ((foo) a) %Undefined% &self) (a))
+!(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
 ; Test the use of sealed operation for scope management
 ; Test that sealed variables prevent name clashes
@@ -171,13 +171,13 @@
 !(add-atom &self (= (bar) baz))
 !(add-atom &self (= (foo) (bar)))
 ; Test that '!(foo)' evaluates to 'baz' in default interpreter
-(assertEqualToResult (foo) (baz))
+!(assertEqualToResult (foo) ((baz)))
 ; Switch to bare-minimal interpreter
 !(pragma! interpreter bare-minimal)
 ; Test that '!(foo)' does not evaluate in bare-minimal interpreter
-(assertEqualToResult (foo) (foo))
+!(assertEqualToResult (foo) ((foo)))
 ; Use 'eval' to force evaluation in bare-minimal interpreter
-(assertEqualToResult (eval (foo)) (baz))
+!(assertEqualToResult (eval (foo)) ((baz)))
 
 ; Test handling of empty expressions in metta_interpret
 ; Test that interpreting an empty expression returns an empty tuple
@@ -212,7 +212,7 @@
 !(add-atom &self (: c C))
 !(add-atom &self (= (foo $a $b) c))
 ; Test that calling 'foo' with correct arguments returns 'c'
-(assertEqualToResult (metta (foo a b) %Undefined% &self) (c))
+!(assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))
 ; Test that calling 'foo' with insufficient arguments returns an error
 !(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
 
@@ -220,7 +220,7 @@
 ; Define a function 'id_num' that returns its argument if it's a number
 !(add-atom &self (= (id_num $x) $x))
 ; Test that 'id_num' returns 'myAtom' even if it's not a number (since types are not enforced)
-(assertEqualToResult (metta (id_num myAtom) %Undefined% &self) (myAtom))
+!(assertEqualToResult (metta (id_num myAtom) %Undefined% &self) ((myAtom)))
 
 ; Test that metta returns a 'BadType' error when type checking fails
 ; Define 'myAtom' with type 'myType' and function 'id_a' of type (-> A A)

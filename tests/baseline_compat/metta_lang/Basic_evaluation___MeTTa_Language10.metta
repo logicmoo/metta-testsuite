@@ -8,7 +8,7 @@
 
 ; ! (f A) 
 ; ready works
-(assertEqualToResult ( f A )  ( A )  ) 
+!(assertEqualToResult ( f A )  ( (A) )  ) 
 
 ; A
 ; ! (f special-value) 

@@ -92,7 +92,7 @@
 ; `%Undefined%` is not a valid Symbol, so the type check fails and returns an error wrapped in a list.
 
 ; Test: Using `foo_var` with a valid variable
-(assertEqualToResult
+!(assertEqualToResult
    (foo_var $valid_variable)
    (%Undefined%))
 ; Explanation:
@@ -106,7 +106,7 @@
 ; The tuple `(typed $x)` is not a valid Variable and should return an error wrapped in a list.
 
 ; Test: Confirming type for direct input
-(assertEqualToResult
+!(assertEqualToResult
    (get-type $x)
    (%Undefined%))
 ; Explanation:

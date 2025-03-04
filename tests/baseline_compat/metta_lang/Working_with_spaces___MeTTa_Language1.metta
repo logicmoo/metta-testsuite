@@ -10,7 +10,7 @@
 ; (foo) 
 !(println "xx 96 ") 
 ; ready works 
-(assertEqualToResult ( foo ) ( foo ) ) 
+!(assertEqualToResult ( foo ) ( foo ) ) 
 
 
 ;! (add-foo-eq (+ 1 2)) 

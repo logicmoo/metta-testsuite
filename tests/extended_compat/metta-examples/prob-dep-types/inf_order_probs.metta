@@ -87,6 +87,6 @@
   (match &self (: a $t) ($t))
   ((A) (A) (A) (A) (A) (A) (A) (A) (A)))
 !(match &self (: a' $t) ($t))
-(assertEqualToResult
+!(assertEqualToResult
   (match &self (: a' $t) ($t))
   (U_ABCD'))

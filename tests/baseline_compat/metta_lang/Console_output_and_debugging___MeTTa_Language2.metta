@@ -47,7 +47,7 @@
 
 !(println "xx 5 ") 
 ; ready works 
-(assertEqualToResult ( my-trace (Expecting 3) (+ 1 2) ) ( 3 ) ) 
+!(assertEqualToResult ( my-trace (Expecting 3) (+ 1 2) ) ( 3 ) ) 
 
 
 

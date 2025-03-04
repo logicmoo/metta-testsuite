@@ -109,7 +109,7 @@
 !(add-atom &self (= (color) blue))
 
 ; Test collapse of 'color', expecting one of red, green, or blue
-!(assertEqualToResult (collapse (color)) (red) (green) (blue))
+!(assertEqualToResult (collapse (color)) ( (red) (green) (blue) ))
 
 ; Test metta_let_novar with no variable bindings
 ; Expecting 'result'

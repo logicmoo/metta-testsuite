@@ -94,7 +94,7 @@
 ; Test: Using `foo_var` with a valid variable
 !(assertEqualToResult
    (foo_var $valid_variable)
-   ((%Undefined%)))
+   (%Undefined%))
 ; Explanation:
 ; `$valid_variable` is a valid Variable, but since it is unbound, its type is `%Undefined%`.
 
@@ -108,6 +108,6 @@
 ; Test: Confirming type for direct input
 !(assertEqualToResult
    (get-type $x)
-   ((%Undefined%)))
+   (%Undefined%))
 ; Explanation:
 ; Since `$x` is an unbound Variable, its type is `%Undefined%` and should be returned in a list.

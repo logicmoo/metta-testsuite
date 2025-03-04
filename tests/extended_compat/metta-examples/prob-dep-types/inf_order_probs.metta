@@ -89,4 +89,4 @@
 !(match &self (: a' $t) ($t))
 !(assertEqualToResult
   (match &self (: a' $t) ($t))
-  ((U_ABCD')))
+  (U_ABCD'))

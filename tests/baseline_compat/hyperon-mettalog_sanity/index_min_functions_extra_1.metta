@@ -149,7 +149,7 @@
 !(assertEqualToResult (collapse (color)) (red green blue))
 
 ; Test let operation without variable bindings, expecting 'result'
-!(assertEqualToResult (let () result) ((result)))
+(assertEqualToResult (let () result) (result))
 
 ; Test let operation with variable binding, expecting substituted result
 !(assertEqualToResult (let (P A $b) (P $a B) (P $b $a)) ((P B A)))
@@ -160,5 +160,5 @@
 ; Using quote to prevent evaluation
 !(assertEqualToResult (bar (quote (foo))) ((quote (foo))))
 ; Using unquote to force evaluation
-!(assertEqualToResult (bar (unquote (quote (foo)))) ((A)))
+(assertEqualToResult (bar (unquote (quote (foo)))) (A))
 

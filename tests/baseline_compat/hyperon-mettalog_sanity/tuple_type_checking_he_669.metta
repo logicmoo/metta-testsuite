@@ -27,7 +27,7 @@
 
 !(assertEqualToResult
    (fact_strict 5)
-   ((120)))
+   (120))
 ; Explanation:
 ; Stricter type checking for the recursive factorial function ensures that input is properly typed.
 

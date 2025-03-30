@@ -285,7 +285,7 @@ repl3 :-
         % Set the terminal prompt without tracing.
         notrace(set_metta_prompt),
         % Flush the terminal and call repl4 to handle input.
-        ((ttyflush, repl4, ttyflush)),
+        setup_call_cleanup(ttyflush, repl4, ttyflush),
         % After execution, restore the previous terminal prompt.
         notrace(prompt(_, Was))).
 
@@ -363,28 +363,30 @@ restore_metta_trace:- notrace,ignore((retract(metta_trace_restore(W)),call(W))).
 %     % This switches the system to the mettarust mode.
 %
 check_has_directive(V) :- var(V), !, fail.
+check_has_directive(V) :- notrace(check_has_directive1(V)),!,notrace(throw(restart_reading)).
+% No directive found.
+check_has_directive(_).
+
 % Directive to switch to mettalog.
-check_has_directive('@log') :- switch_to_mettalog, !, write_src_uo(switch_to_mettalog),notrace(throw(restart_reading)).
+check_has_directive1('@log') :- switch_to_mettalog, !, write_src_uo(switch_to_mettalog).
 % Directive to switch to mettarust.
-check_has_directive('@rust') :- switch_to_mettarust, !, write_src_uo(switch_to_mettarust), notrace(throw(restart_reading)).
+check_has_directive1('@rust') :- switch_to_mettarust, !, write_src_uo(switch_to_mettarust).
 % Displays options when '@' is input and restarts reading.
-check_has_directive('@') :- do_show_options_values, !, notrace(throw(restart_reading)).
+check_has_directive1('@') :- do_show_options_values, !.
 % Checks if the symbol contains a '.' (common for directives).
-check_has_directive(Atom) :- symbol(Atom), symbol_concat(_, '.', Atom), !.
+check_has_directive1(Atom) :- symbol(Atom), symbol_concat(_, '.', Atom), !.
 % Assign a value to a directive, e.g., call(N=V).
-check_has_directive(call(N=V)) :- nonvar(N), !, set_directive(N, V).
+check_has_directive1(call(N=V)) :- nonvar(N), !, set_directive(N, V).
 % Handle directive in the form [@Name, Value].
-check_has_directive([AtEq, Value]) :- symbol(AtEq), symbol_concat('@', Name, AtEq), set_directive(Name, Value).
+check_has_directive1([AtEq, Value]) :- symbol(AtEq), symbol_concat('@', Name, AtEq), set_directive(Name, Value).
 % Enable rtrace debugging and restart reading.
 % check_has_directive(call(Rtrace)) :- rtrace == Rtrace, !. % rtrace, notrace(throw(restart_reading)).
 % Handle expressions in the form of N=V.
-check_has_directive(NEV) :- symbol(NEV), symbolic_list_concat([N, V], '=', NEV), set_directive(N, V).
+check_has_directive1(NEV) :- symbol(NEV), symbolic_list_concat([N, V], '=', NEV), set_directive(N, V).
 % Handle mode changes in the REPL.
-check_has_directive(ModeChar) :- symbol(ModeChar), metta_interp_mode(ModeChar, _Mode), !, set_directive(repl_mode, ModeChar).
+check_has_directive1(ModeChar) :- symbol(ModeChar), metta_interp_mode(ModeChar, _Mode), !, set_directive(repl_mode, ModeChar).
 % Process expressions like @NEV=Value.
-check_has_directive(AtEq) :- symbol(AtEq), symbol_concat('@', NEV, AtEq), option_value(NEV, Foo), fbug(NEV = Foo), !, notrace(throw(restart_reading)).
-% No directive found.
-check_has_directive(_).
+check_has_directive1(AtEq) :- symbol(AtEq), symbol_concat('@', NEV, AtEq), option_value(NEV, Foo), fbug(NEV = Foo), !.
 
 %!  set_directive(+N, +V) is det.
 %
@@ -471,7 +473,7 @@ repl_read(In, Expr) :-
     % Read the next expression from the input stream.
     repl_read_next(In, ExprI),
     % Process it to determine the final expression.
-    next_expr(ExprI, Expr).
+    next_expr(ExprI, Expr),!.
 
 %!  repl_read(-Expr) is det.
 %
@@ -867,8 +869,9 @@ eval(Form, Out) :-
 %     Out = some_output.
 %
 eval(Self, Form, Out) :-
-    % Use eval_H with a timeout of 500 to evaluate the form.
-    eval_H(500, Self, Form, Out).
+    % Use eval_H with a depth of default_depth(DEPTH), to evaluate the form.
+    default_depth(DEPTH),
+    eval_H(DEPTH, Self, Form, Out).
 
 %! eval_I(+Self, +Form, -OOut) is det.
 %   Evaluates a form and transforms the output using xform_out/2.
@@ -882,8 +885,9 @@ eval(Self, Form, Out) :-
 %     OOut = some_output.
 %
 eval_I(Self, Form, OOut) :-
-    % Evaluate the form with a timeout using eval_H.
-    eval_H(500, Self, Form, Out),
+    % Evaluate the form with a depth using eval_H.
+    default_depth(DEPTH),
+    eval_H(DEPTH, Self, Form, Out),
     % Enable trace for debugging purposes.
     trace,
     % Transform the output.
@@ -1039,7 +1043,8 @@ skip_do_metta_exec(From,Self,TermV,BaseEval,_Term,X,NamedVarsList,_Was,_VOutput,
     option_value('exec',skip), From = file(_Filename), \+ use_metta_compiler,
     \+ always_exec(BaseEval),  \+ always_exec(TermV),
     color_g_mesg('#da70d6', (write('; SKIPPING: '), write_src_woi(TermV))),
-    prolog_only(if_t((TermV\=@=BaseEval),color_g_mesg('#da70d6', (write('\n% Thus: '), writeq(eval_H(500,Self,BaseEval,X)),writeln('.'))))),
+    default_depth(DEPTH),
+    prolog_only(if_t((TermV\=@=BaseEval),color_g_mesg('#da70d6', (write('\n% Thus: '), writeq(eval_H(DEPTH,Self,BaseEval,X)),writeln('.'))))),
     \+ \+ maybe_add_history(Self, BaseEval, NamedVarsList).
 
 maybe_add_history(Self, BaseEval, NamedVarsList) :-
@@ -2036,6 +2041,7 @@ install_readline(Input):-
     ignore(el_unwrap(Input)),
     % Wrap the input with the Metta readline handler.
     ignore(el_wrap_metta(Input)),
+    load_metta_history_from_txt_file('~/.config/metta/history.txt'),
     % Load command history from a file, if it exists.
     history_file_location(HistoryFile),
     % Check if the history file exists, ensuring we can append to it.
@@ -2051,6 +2057,28 @@ install_readline(Input):-
 
 % Clause to handle non-tty(true) clients, like SWISH or HTTP server requests.
 install_readline(_NoTTY). % For non-tty(true) clients over SWISH/Http/Rest server
+
+load_metta_history_from_txt_file(File):-
+   exists_file(File),!,
+   open(File, read, In, [encoding(utf8)]),
+   repeat,
+   read_line_to_string(In, Line),
+   (Line==end_of_file -> ! ;
+     (add_history_file_string(Line),fail)).
+load_metta_history_from_txt_file(File):-
+   expand_file_name(File,List),maplist(load_metta_history_from_txt_file,List).
+
+skip_over_history_txt(Line):- text_to_string(Line,Str),Str\==Line,!,skip_over_history_txt(Line).
+skip_over_history_txt(Line):- atom_concat('#V',_,Line),!.
+skip_over_history_txt(Line):- atom_concat('_H',_,Line),!.
+add_history_file_string(Line):- text_to_string(Line,Str),Str\==Line,!,add_history_file_string(Str).
+add_history_file_string(Line):- skip_over_history_txt(Line),!.
+add_history_file_string(Line):-
+  string_replace(Line,'\\n','\n',String),
+  string_replace(String,'\\t','\t',Str),
+  add_history_string(Str), !.
+
+
 
 %!  install_readline_editline1 is det.
 %

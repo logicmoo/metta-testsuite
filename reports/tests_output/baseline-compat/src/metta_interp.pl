@@ -65,10 +65,23 @@
 % UTF-8 is more universal and can handle a wider range of characters.
 :- encoding(utf8).
 
+o_quietly(G):- call(G).
+% o_quietly(G):- quietly(G).
+
+o_woc(G):- call(G).
+% o_woc(G):- woc(G).
+
+:- dynamic('$metta_setup':on_init_metta/1).
+on_metta_setup(Goal):-
+   assertz('$metta_setup':on_init_metta(Goal)).
+do_metta_setup:- forall('$metta_setup':on_init_metta(Goal),
+                        ignore(catch(Goal, Err, format(user_error, '; Goal: ~q   Caused: ~q', [Goal, Err])))).
+
+
 % Set the 'RUST_BACKTRACE' environment variable to 'full'.
 % This likely enables detailed error backtraces when using Rust-based components.
 % Rust will now output full stack traces when errors occur, which aids in debugging.
-:- initialization(setenv('RUST_BACKTRACE', full)).
+:- on_metta_setup(setenv('RUST_BACKTRACE', full)).
 
 % Set the Prolog flag for encoding to UTF-8 (overrides other default encodings).
 % This ensures that the Prolog interpreter treats all input/output as UTF-8 encoded.
@@ -77,7 +90,7 @@
 
 % Set a global non-backtrackable variable 'cmt_override' with a specific string pattern.
 % This could be used for customizing the way comments or other formatting behaviors are handled.
-:- initialization(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
+:- on_metta_setup(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
 
 % Set the flag to make the source search relative to the working directory.
 % This helps locate Prolog files from the current working directory.
@@ -226,9 +239,7 @@ dont_change_streams:- true.
 %   the Python environment or integration.
 %
 :- dynamic(lazy_load_python/0).
-
 lazy_load_python.
-
 
 % 'dynamic' enables runtime modification
 :- dynamic(user:is_metta_src_dir/1).
@@ -347,7 +358,6 @@ user:file_search_path(mettalog,Dir):- metta_dir(Dir).
 %   is detected as Windows 64-bit. If the platform is not Windows 64-bit, the
 %   directive does nothing.
 %
-
 :- is_win64 -> ensure_loaded(library(logicmoo_utils)) ; true.
 
 %   :- initialization(attach_packs).
@@ -376,7 +386,6 @@ user:file_search_path(mettalog,Dir):- metta_dir(Dir).
 :- initialization(nodebug(metta(prolog))).
 */
 % Each of these `nodebug/1` directives suppresses debugging output for the corresponding category.
-
 
 %
 %   This section declares several dynamic and multifile predicates used in the
@@ -456,7 +465,11 @@ once_writeq_nl(P):- once_writeq_nl_now(cyan, P), nb_setval('$once_writeq_ln', P)
 %       does not interfere with the curried chainer logic.
 % pfcAdd_Now(P):- pfcAdd(P),!.
 
-pfcAdd_Now(Cl):- \+ nb_current(allow_dupes,t),clause_asserted(Cl),!.
+
+pfcAdd_Now(Cl):-
+   once( \+ nb_current(allow_dupes,t)
+     ; sub_var_safely('&corelib',Cl )),
+    clause_asserted(Cl),!.
 
 pfcAdd_Now(P) :-
     % If `pfcAdd/1` is defined, print the term using `once_writeq_nl` and call `pfcAdd/1`.
@@ -536,6 +549,9 @@ is_fAlSe(TF) :-
 %
 %   @arg What The flag to check.
 %
+
+is_flag(What):- notrace(is_flag0(What)).
+
 is_flag0(What) :-
     % Check if the flag exists as a non-backtrackable global variable and is true.
     nb_current(What, TF),is_tRuE(TF),!.
@@ -688,7 +704,7 @@ is_synthing_unit_tests0 :- is_testing.
 %   @example
 %     ?- is_testing.
 %     true.
-is_testing :- quietly(is_metta_flag('test')).
+is_testing :- o_quietly(is_metta_flag('test')).
 
 %!  is_html is nondet.
 %
@@ -1181,8 +1197,12 @@ all_option_value_name_default_type_help('prolog', false, [false, true], "Enable 
 option_value_name_default_type_help('devel', false, [false, true], "Developer mode", 'Compatibility and Modes').
 all_option_value_name_default_type_help('exec', noskip, [noskip, skip, interp], "Controls execution during script loading: noskip or skip (don't-skip-include/binds) vs skip-all", 'Execution and Control').
 
+default_depth(DEPTH):- default_max_depth(DEPTH), !.
+%default_depth(DEPTH):- DEPTH = 200,!.
+default_max_depth(DEPTH):- current_prolog_flag(max_tagged_integer,DEPTH).
+
 % Resource Limits
-option_value_name_default_type_help('stack-max', 500, [inf,1000,10_000], "Maximum stack depth allowed during execution", 'Resource Limits').
+option_value_name_default_type_help('stack-max', DEPTH, [MAXDEPTH,1000,500], "Maximum stack depth allowed during execution", 'Resource Limits'):- default_depth(DEPTH),default_max_depth(MAXDEPTH).
 all_option_value_name_default_type_help('limit-result-count', inf, [inf,1,2,3,10], "Set the maximum number of results, infinite by default", 'Miscellaneous').
 option_value_name_default_type_help('initial-result-count', 10, [inf,10,1], "For MeTTaLog log mode: print the first 10 answers without waiting for user", 'Miscellaneous').
 
@@ -1193,6 +1213,7 @@ option_value_name_default_type_help('time', true, [false, true], "Enable or disa
 option_value_name_default_type_help('vn', true, [true, auto, false], "Enable or disable, (auto = enable but not if it breaks stuff) EXPERIMENTAL BUG-FIX where variable names are preserved (see https://github.com/trueagi-io/metta-wam/issues/221)", 'Miscellaneous').
 option_value_name_default_type_help('top-self', true, [true, false, auto], "When set, stop pretending &self==&top", 'Miscellaneous').
 option_value_name_default_type_help('devel', false, [false, true], "Set all developer flags", 'Miscellaneous').
+option_value_name_default_type_help('old-empty', false, [false, true], "Enable Old Empty undoing EXPERIMENTAL BUG-FIX (see https://github.com/trueagi-io/metta-wam/issues/275)", 'Miscellaneous').
 
 % Testing and Validation
 option_value_name_default_type_help('synth-unit-tests', false, [false, true], "Synthesize unit tests", 'Testing and Validation').
@@ -1214,7 +1235,7 @@ option_value_name_default_type_help('halt', false, [false, true], "Halts executi
 % Debugging and Tracing
 option_value_name_default_type_help('trace-length', 500, [inf], "Length of the trace buffer for debugging", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-overtime', 4.0, [inf], "Trace if execution time exceeds limit", 'Debugging and Tracing').
-option_value_name_default_type_help('trace-on-overflow', 1000, [inf], "Trace on stack overflow", 'Debugging and Tracing').
+option_value_name_default_type_help('trace-on-overflow', 10_000, [inf,10_000_000], "Trace on stack overflow", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-eval', false, [false, true], "Trace during normal evaluation", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-load', silent, [silent, verbose], "Verbosity on file loading", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-exec', false, [silent, verbose], "Trace on execution during loading", 'Debugging and Tracing').
@@ -1668,9 +1689,9 @@ fake_notrace(G) :-
     !, notrace(G).
 fake_notrace(G) :-
     !, once(G).
-% `quietly/1` allows breaking in and inspection (real `no_trace/1` does not)
+% `o_quietly/1` allows breaking in and inspection (real `no_trace/1` does not)
 fake_notrace(G) :-
-    quietly(G), !.
+    o_quietly(G), !.
 
 :- meta_predicate real_notrace(0).
 
@@ -1854,9 +1875,11 @@ not_compatio(G) :-
     if_t(
         once(is_mettalog ; is_testing ; (\+ is_compatio)),
         user_err(
-            locally(nb_setval(in_not_compatio, true), G)
+            locally(b_setval(in_not_compatio, true), G)
         )
     ).
+
+:- thread_initialization(nb_setval(in_not_compatio,[])).
 
 %!  extra_answer_padding(+Arg) is det.
 %
@@ -2203,7 +2226,7 @@ show_options_values :-
 %     ?- interpreter_source_file(File).
 %     File = 'your_prolog_file.pl'.
 %
- :- ignore((prolog_load_context(source, File), assert(interpreter_source_file(File)))).
+:- ignore((prolog_load_context(source, File), assert(interpreter_source_file(File)))).
 
 
 
@@ -2276,6 +2299,7 @@ nocut.
 :- ensure_loaded(metta_types).
 :- ensure_loaded(metta_space).
 :- ensure_loaded(metta_eval).
+:- nb_setval(self_space, '&top').
 
 :- initialization(nb_setval(self_space, '&top')).
 
@@ -2292,7 +2316,7 @@ nocut.
 %     % Disable unit testing mode:
 %     ?- set_is_unit_test(false).
 %
-:- initialization(set_is_unit_test(false)).
+:- on_metta_setup(set_is_unit_test(false)).
 
 %!  extract_prolog_arity(+TypesList, -PrologArity) is nondet.
 %
@@ -2779,7 +2803,7 @@ set_default_flags:- ignore(((
        nop((reset_default_flags))
 ))).
 
-:- initialization(set_default_flags).
+:- on_metta_setup(set_default_flags).
 
 %!  process_python_option is nondet.
 %
@@ -2799,11 +2823,12 @@ set_default_flags:- ignore(((
 %   @note The commented-out version avoids `fail/0` and skips loading `metta_python`.
 %
 
-process_python_option :- option_value('python', false),!.
 %process_python_option :- option_value('python', false), !, skip(ensure_loaded(metta_python)).
     % If the `python` option is not explicitly set to `false`, load the `metta_python` module.
-process_python_option :-
-    ensure_loaded(mettalog(metta_python)),
+process_python_option :- process_python_option_now, !.
+process_python_option_now :- option_value('python', false),!.
+process_python_option_now :-
+    %ensure_loaded(('/home/deb12user/metta-wam/prolog-NOW/metta_lang/metta_python')),
     % Initialize Python integration.
     setenv('METTALOG_VERBOSE','0'),
     real_notrace((ensure_mettalog_py)).
@@ -3043,7 +3068,6 @@ cmdline_load_metta(Phase, Self, [Filemask | Rest]) :-
     \+ symbol_concat('-', _, Filemask), !,
     if_phase(Phase, execute, cmdline_load_file(Self, Filemask)), !,
     cmdline_load_metta(Phase, Self, Rest).
-
 % Handle command-line options by setting their corresponding values.
 cmdline_load_metta(Phase, Self, [M | Rest]) :-
     m_opt(M, Opt),
@@ -3687,7 +3711,7 @@ is_conz(Self) :-
 %     true.
 %
 
-% dont_x(eval_H(Depth,Self,metta_if(A<B,L1,L2),R)).
+%dont_x(eval_H(Depth,Self,metta_if(A<B,L1,L2),R)).
 dont_x(eval_H(_<_,_)).
 
 %!  into_fp(+D, -CallAB) is det.
@@ -4253,7 +4277,7 @@ from_top_self(Self, Self).
 %   @arg Atom The atom associated with the knowledge base.
 %
 get_metta_atom_from(KB, Atom) :-
-    metta_atom(KB, Atom).
+  o_quietly(metta_atom0(no_inherit,KB, Atom)).
 
 %!  get_metta_atom(+Eq, +Space, -Atom) is nondet.
 %
@@ -4264,11 +4288,11 @@ get_metta_atom_from(KB, Atom) :-
 %   @arg Atom  The retrieved atom.
 %
 get_metta_atom(Eq, Space, Atom) :-
-   quietly(get_metta_atom0(Eq, Space, Atom)).
+   o_quietly(get_metta_atom0(Eq, Space, Atom)). %
 
 get_metta_atom0(Eq, Space, Atom) :-
-    metta_atom(Space, Atom),
-    \+ (Atom = [EQ, _, _], EQ == Eq).
+    metta_atom0(inherit([Space]),Space, Atom),
+    \+ \+ (Atom = [EQ, _, _], EQ == Eq).
 
 %!  metta_atom(-Atom) is nondet.
 %
@@ -4276,9 +4300,8 @@ get_metta_atom0(Eq, Space, Atom) :-
 %
 %   @arg Atom The atom associated with the current knowledge base.
 %
-metta_atom(Atom) :- quietly(metta_atom0(Atom)).
-metta_atom0(Atom) :-
-    current_self(KB),
+metta_atom(Atom) :-
+    notrace(current_self(KB)),
     metta_atom(KB, Atom).
 
 %!  metta_atom_added(+X, -Y) is nondet.
@@ -4314,34 +4337,43 @@ metta_atom_added(X, Y) :- nocut,
 %
 
 metta_atom(KB, Atom):-
-  quietly(metta_atom0(KB, Atom)).
+  o_quietly(metta_atom0(inherit([KB]),KB, Atom)).
+
+metta_atom_fast(KB, Atom):-
+  o_quietly(metta_atom0(no_inherit,KB, Atom)).
 
 
-metta_atom0(KB, Fact) :-
+/*
+metta_atom0(Inherit,KB, Fact) :-
    transform_about(Fact, Rule, Cond), Cond=='True',!,
    fact_store(KB, Rule, Fact, Cond).
-
+*/
 
 % metta_atom([Superpose,ListOf], Atom) :-   Superpose == 'superpose',    is_list(ListOf), !,      member(KB, ListOf),    get_metta_atom_from(KB, Atom).
-metta_atom0(Space, Atom) :- typed_list(Space, _, L), !, member(Atom, L).
-metta_atom0(KB, [F, A | List]) :-
+metta_atom0(_Inherit,Space, Atom) :- typed_list(Space, _, L), !, member(Atom, L).
+metta_atom0(_Inherit,KB, [F, A | List]) :-
     KB == '&flybase', !, fb_pred_nr(F, Len), current_predicate(F/Len),
     length([A | List], Len), apply(F, [A | List]).
 % metta_atom(KB, Atom) :- KB == '&corelib', !, metta_atom_corelib(Atom).
 % metta_atom(X, Y) :- use_top_self, maybe_resolve_space_dag(X, XX), !, in_dag(XX, XXX), XXX \== X, metta_atom(XXX, Y).
 
-metta_atom0(X, Y) :- maybe_into_top_self(X, TopSelf), !, metta_atom(TopSelf, Y).
+metta_atom0(Inherit,X, Y) :- maybe_into_top_self(X, TopSelf), !, metta_atom0(Inherit,TopSelf, Y).
 % metta_atom(X, Y) :- var(X), use_top_self, current_self(TopSelf),  metta_atom(TopSelf, Y), X = '&self'.
 
-metta_atom0(KB, Atom) :- metta_atom_added(KB, Atom), nocut.
+metta_atom0(_Inherit,KB, _Atom) :- \+atom(KB), !, fail.
+metta_atom0(_Inherit,KB, Atom) :- metta_atom_added(KB, Atom), nocut.
 % metta_atom(KB, Atom) :- KB == '&corelib', !, metta_atom_asserted('&self', Atom).
 % metta_atom(KB, Atom) :- KB \== '&corelib', using_all_spaces, !, metta_atom('&corelib', Atom).
 %metta_atom(KB, Atom) :- KB \== '&corelib', !, metta_atom('&corelib', Atom).
+metta_atom0(_Inherit,KB, Atom) :- clause(metta_atomspace(KB,Atom),Body),!, call(Body).
 
-metta_atom0(KB, Atom) :-  KB \== '&corelib', !,  nonvar(KB), \+ nb_current(space_inheritance, false),
-    should_inhert_from(KB, Atom).
+metta_atom0(inherit(Except),KB, Atom) :- inherit_into(KB,KB2), \+ member(KB2,Except), metta_atom0(inherit([KB2|Except]),KB2, Atom).
+
+
+inherit_into(KB,'&corelib') :- KB=='&top', \+ should_not_inherit_from_corelib(KB).
+
+%  should_inhert_from(KB, Atom).
 % metta_atom(KB, Atom) :- metta_atom_asserted_last(KB, Atom).
-
 
 'same-index'(X,Y):-
   transform_about(X, t(Inst,Type,Pred, Super), Cond), \+ \+ (nonvar(Pred);nonvar(Super)),
@@ -4379,133 +4411,14 @@ query_type_of(KB, Pred, Type, Cond) :-
 query_super_type(KB, Pred, Type, Cond) :-
    fact_store(KB, type_type(Pred, Type), _, Cond).
 
-
-
-
-:- dynamic(no_space_inheritance_to/1).
-
-%!  wo_inheritance_to(+Where, :Goal) is det.
-%
-%   Temporarily disables space inheritance to a specific location (`Where`) while
-%   executing the provided `Goal`. The original state of inheritance is restored
-%   after the `Goal` completes.
-%
-%   @arg Where The location or space where inheritance is temporarily disabled.
-%   @arg Goal  The Prolog goal to execute while inheritance is disabled.
-%
-%   @example
-%     % Temporarily disable inheritance to a specific space:
-%     ?- wo_inheritance_to('&my_space', writeln('Executing without inheritance.')).
-%
-wo_inheritance_to(_Where, Goal):- !, call(Goal).
-wo_inheritance_to(Where, Goal) :-
-    % Temporarily assert the `no_space_inheritance_to/1` fact.
-    setup_call_cleanup(
-        asserta(no_space_inheritance_to(Where), Clause),
-        Goal,
-        erase(Clause)
-    ).
-
-%!  should_inhert_from(+KB, -Atom) is nondet.
-%
-%   Determines if an atom (`Atom`) should be inherited from the specified knowledge
-%   base (`KB`). Inheritance is temporarily disabled for `KB` while checking for
-%   the atom's inheritance.
-%
-%   @arg KB   The knowledge base to check for inheritance.
-%   @arg Atom The atom to inherit, if applicable.
-%
-%   @example
-%     % Check if an atom should be inherited:
-%     ?- should_inhert_from('&my_space', Atom).
-%
-should_inhert_from(KB, Atom) :-
-    % Fail if inheritance to `KB` is explicitly disabled.
-    \+ no_space_inheritance_to(KB),
-    % Temporarily disable inheritance to `KB` and check inheritance rules.
-    wo_inheritance_to(KB, should_inhert_from_now(KB, Atom)).
-
-%!  should_inhert_from_now(+KB, -Atom) is nondet.
-%
-%   Directly checks if an atom (`Atom`) can be inherited from the given knowledge
-%   base (`KB`). Handles variable atoms using `freeze/2` and ensures inheritance
-%   exclusions are respected.
-%
-%   @arg KB   The knowledge base to check for inheritance.
-%   @arg Atom The atom to inherit, if applicable.
-%
-%   @example
-%     % Check if an atom can be inherited directly:
-%     ?- should_inhert_from_now('&my_space', Atom).
-%
-
-should_inhert_from_now(KB, Atom) :-
-    attvar(Atom), !,
-    % Freeze the sub-knowledge base (`SubKB`) until it is instantiated.
-    freeze(SubKB, symbol(SubKB)), !,
-    % Retrieve a sub-knowledge base associated with `KB`.
-    metta_atom_added(KB, SubKB),
-    SubKB \== KB,
-    % Retrieve atoms from the sub-knowledge base.
-    metta_atom(SubKB, Atom),
-    % Ensure the atom is not excluded from inheritance.
-    \+ should_not_inherit_from(KB, SubKB, Atom).
-
-
-should_inhert_from_now(KB, Atom) :-
-    % Ensure the atom is not an attributed variable.
-    \+ attvar(Atom),
-    % Freeze the sub-knowledge base (`SubKB`) until it is instantiated.
-    freeze(SubKB, symbol(SubKB)), !,
-    % Retrieve a sub-knowledge base associated with `KB`.
-    metta_atom_added(KB, SubKB),
-    SubKB \== KB,
-    % Retrieve atoms from the sub-knowledge base.
-    metta_atom(SubKB, Atom),
-    % Ensure the atom is not excluded from inheritance.
-    \+ should_not_inherit_from(KB, SubKB, Atom).
-
-/*
-   KB \== '&corelib',  % is_code_inheritor(KB),
-   \+ \+ (metta_atom_added(KB,'&corelib'),
-          should_inherit_atom_from_corelib(Atom)), !,
-   metta_atom('&corelib',Atom),
-   \+ should_not_inherit_from_corelib(Atom).
-*/
-
-%!  should_not_inherit_from(+KB, +SubKB, +Atom) is nondet.
-%
-%   Determines whether an atom (`Atom`) should not be inherited from a specific
-%   sub-knowledge base (`SubKB`) within the context of the parent knowledge base (`KB`).
-%   Currently, the rule only excludes symbols (`symbol/1`) from inheritance.
-%
-%   @arg KB    The parent knowledge base.
-%   @arg SubKB The sub-knowledge base being checked.
-%   @arg Atom  The atom to check for inheritance exclusion.
-%
-%   @example
-%     % Exclude symbols from inheritance:
-%     ?- should_not_inherit_from('&my_space', '&sub_space', my_atom).
-%     false.
-%
-%     % Exclude symbols explicitly:
-%     ?- should_not_inherit_from('&my_space', '&sub_space', my_symbol).
-%     true.
-%
-should_not_inherit_from(_, _, S) :-
-    % Exclude symbols from inheritance.
-    symbol(S),!.
-should_not_inherit_from(KB, Sub, _S) :- should_not_inherit_from_corelib(KB),should_not_inherit_from_corelib(Sub),!.
-
-should_not_inherit_from_corelib('&corelib').
-should_not_inherit_from_corelib('&stdlib').
 /*
 % Commented-out inheritance exclusions for core libraries.
 % Uncomment or modify as needed to apply specific rules for inheritance exclusion.
-
-should_not_inherit_from_corelib('&self').
+%should_not_inherit_from_corelib('&self').
 %should_not_inherit_from_corelib('&top').
 */
+should_not_inherit_from_corelib('&corelib').
+should_not_inherit_from_corelib('&stdlib').
 
 %!  should_inherit_atom_from_corelib(+Atom) is nondet.
 %
@@ -4593,13 +4506,20 @@ should_inherit_op_from_corelib('@doc').
 %     Atom = '&corelib'.
 
 
-the_libs('&corelib').
-the_libs('&stdlib').
-% Assert `&corelib` for the top-level context.
-metta_atom_asserted_last(Top, Lib) :- top_self(Top), nocut, the_libs(Lib).
-%metta_atom_asserted_last('&stdlib', '&corelib').
-metta_atom_asserted_last('&flybase', Lib):- nocut, the_libs(Lib).
-metta_atom_asserted_last('&catalog', Lib):- nocut, the_libs(Lib).
+metta_atom_asserted_last(_,_) :- !, fail.
+%metta_atom_asserted('&self','&corelib').
+%metta_atom_asserted('&self','&stdlib').
+metta_atom_asserted_last(Top, '&corelib') :-
+    % Assert `&corelib` for the top-level context.
+    top_self(Top).
+metta_atom_asserted_last(Top, '&stdlib') :-
+    % Assert `&stdlib` for the top-level context.
+    top_self(Top).
+metta_atom_asserted_last('&stdlib', '&corelib').
+metta_atom_asserted_last('&flybase', '&corelib').
+metta_atom_asserted_last('&flybase', '&stdlib').
+metta_atom_asserted_last('&catalog', '&corelib').
+metta_atom_asserted_last('&catalog', '&stdlib').
 
 %!  maybe_resolve_space_dag(+Var, +XX) is det.
 %
@@ -4701,8 +4621,8 @@ not_metta_atom_corelib(A, N) :-
 %     ?- is_metta_space('&unknown_space').
 %     false.
 %
-is_metta_space(Space) :-  quietly((nonvar(Space),
-    \+ \+ is_space_type(Space, _Type))).  % Enforce deterministic behavior using double negation.
+is_metta_space(Space) :-  nonvar(Space),
+    \+ \+ is_space_type(Space, _Test).  % Enforce deterministic behavior using double negation.
 
 %!  metta_eq_def(+Eq, +KB, +H, +B) is det.
 %
@@ -4725,18 +4645,9 @@ is_metta_space(Space) :-  quietly((nonvar(Space),
 
 % metta_eq_def(Eq,KB,H,B):- ignore(Eq = '='),if_or_else(metta_atom(KB,[Eq,H,B]), metta_atom_corelib(KB,[Eq,H,B])).
 % metta_eq_def(Eq,KB,H,B):-  ignore(Eq = '='),metta_atom(KB,[Eq,H,B]).
-
-metta_eq_def(Eq, KB, H, B):- quietly(metta_eq_def0(Eq, KB, H, B)).
-
-metta_eq_def0(Eq, KB, H, B) :-
-    % Ensure `Eq` is unified with '='.
-    ignore(Eq = '='),
-    if_or_else(
-        % Check if equality is defined in `KB`.
-        metta_atom(KB, [Eq, H, B]),
-        % If not, ensure it does not belong to `&corelib`.
-        not_metta_atom_corelib(KB, [Eq, H, B])
-    ).
+metta_eq_def(Eq, KB, H, B) :-
+   ignore(Eq = '='),
+   get_metta_atom(Eq, KB, [_, H, B]).
 
 % Original commented-out code, retained as-is for potential future use:
 % metta_defn(KB,Head,Body):- metta_eq_def(_Eq,KB,Head,Body).
@@ -4753,7 +4664,7 @@ metta_eq_def0(Eq, KB, H, B) :-
 %   @arg B  The body of the definition.
 metta_defn(KB, H, B) :-
     % Use `=` to define the relation in the given knowledge base.
-    quietly(metta_eq_def0('=', KB, H, B)).
+    metta_eq_def('=', KB, H, B).
 
 %!  metta_type(+KB, +H, +B) is det.
 %
@@ -4767,7 +4678,7 @@ metta_defn(KB, H, B) :-
 % metta_type(KB,H,B):- if_or_else(metta_atom(KB,[':',H,B]),not_metta_atom_corelib(KB,[':',H,B])).
 metta_type(KB, H, B) :-
     % Use `:` to associate the head with a type in the given knowledge base.
-    quietly(metta_eq_def0(':', KB, H, B)).
+    metta_eq_def(':', KB, H, B).
 % metta_type(S,H,B):- S == '&corelib', metta_atom_stdlib_types([':',H,B]).
 
 % typed_list(Cmpd,Type,List):-  compound(Cmpd), Cmpd\=[_|_], compound_name_arguments(Cmpd,Type,[List|_]),is_list(List).
@@ -4873,9 +4784,9 @@ metta_anew1(unload_all, OBO) :-
     must_det_ll((
         load_hook(unload_all, OBO),  % Execute the unload_all hook.
         subst_vars(OBO, Cl),         % Substitute variables in `OBO`.
-        if_trace(atomspace, once_writeq_nl_now(yellow, retractall(Cl))), % Log and retract all matching clauses.
+        if_trace(atomspace,once_writeq_nl_now(yellow, retractall(Cl))), % Log and retract all matching clauses.
         retractall(Cl)      %to_metta(Cl).
-    )), !.
+    )).
 % Alternative `unload_all` operation with detailed clause handling.
 metta_anew1(unload_all, OBO) :-
     subst_vars(OBO, Cl),           % Substitute variables in `OBO`.
@@ -4888,9 +4799,9 @@ metta_anew1(unload_all, OBO) :-
             ((Head + Body) =@= (Head2 + Body2)) -> % Check if the clauses are equivalent.
                 (erase(Ref), nop(pp_m(unload_all(Ref, Cl)))) % Erase and log equivalent clauses.
             ;
-                if_verbose(load,(pp_m(unload_all_diff(Cl, (Head + Body) \=@= (Head2 + Body2))))) % Log differences.
+                (pp_m(unload_all_diff(Cl, (Head + Body) \=@= (Head2 + Body2)))) % Log differences.
         ))
-    ), !.
+    ).
 
 /*
 metta_anew2(Load,_OBO):- var(Load),trace,!.
@@ -5692,8 +5603,6 @@ do_metta_exec(From, Self, TermV, FOut) :-
     % Debugging output for final state.
     % format("########################X2 ~w ~w ~w\n", [Self, TermV, FOut]).
 
-
-
 %!  a_e(+Assertion) is nondet.
 %
 %   Defines valid assertion operation names in Metta. These operations are typically used
@@ -5912,7 +5821,8 @@ into_metta_callable(_Self,TermV,Term,X,NamedVarsList,Was):-
 
 
 into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-!,
- option_else('stack-max',StackMax,100),
+ default_depth(DEPTH),
+ option_else('stack-max',StackMax,DEPTH),
  CALL = eval_H(StackMax,Self,Term,X),
  notrace(( must_det_ll((
  if_t(show_transpiler,write_compiled_exec(TermV,_Goal)),
@@ -5928,26 +5838,31 @@ into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-!,
 
 
 
-%!  eval_S(+Self, +Form) is det.
+%!  eval_S(+Form) is det.
 %
 %   Evaluates a given form (`Form`) in the context of a specific `Self` if the current
-%   context matches `Self`. This predicate ensures the form is executed in `exec` mode
+%   context matches the form is executed in `exec` mode
 %   using the `do_metta/5` predicate.
 %
 %   @arg Self  The context or "space" in which the evaluation should occur.
 %   @arg Form  The form or term to be evaluated.
 %
-%   @example
-%     % Evaluate a form when the current self matches:
-%     ?- current_self('&self'), eval_S('&self', some_term).
-%
 eval_S(Self, Form) :-
     % Ensure the `Form` is instantiated (not a variable).
     nonvar(Form),
     % Check if the current self matches the provided `Self`.
-    current_self(SelfS), SelfS == Self, !,
+    current_self(Self),
     % Execute the form in `exec` mode.
     do_metta(true, exec, Self, Form, _Out).
+
+
+% Read the form in `+` mode.
+eval_string(String):- user_io((eval_string(String, _Out))).
+eval_string(String, Out):-
+    current_self(Self),
+    read_metta(String, Metta),
+    do_metta(true, +, Self, Metta, Out).
+
 
 %!  eval_H(+Term, -Result) is det.
 %
@@ -6158,6 +6073,12 @@ not_in_eq(List, Element) :-
     member(V, List), V == Element.
 
 :- ensure_loaded(metta_repl).
+
+% Each of these `nodebug/1` directives suppresses debugging output for the corresponding category.
+:- nodebug(metta(eval)).
+:- nodebug(metta(exec)).
+:- nodebug(metta(load)).
+:- nodebug(metta(prolog)).
 
 %
 % Below code measures the execution time of a Prolog goal and displays the duration in seconds,
@@ -6507,6 +6428,9 @@ catch_red(Term) :-
 %   @arg Color The color used for formatting the log.
 %   @arg Term  The exception or term to be logged.
 %
+pp_m_m_red(_, T) :-
+    % Skip logging for specific error terms.
+    T =@= in(not_compat_io(maybe_halt(7)), unwind(halt(7))), !.
 pp_m_m_red(_, T) :- compound(T),
     % Skip logging for specific error terms.
     T = in(not_compat_io(maybe_halt(Seven)), unwind(halt(Seven))), number(Seven),!.
@@ -6783,7 +6707,7 @@ do_loon_prev :-
    metta_final,
    % ensure_corelib_types,
    set_output_stream,
-   if_t(is_compiled, update_changed_files),
+            if_t(is_compiled, update_changed_files),
    test_alarm,
    run_cmd_args,
    write_answer_output,
@@ -6884,11 +6808,9 @@ maybe_halt(_) :-
 maybe_halt(Seven) :-
     % If the REPL is disabled (`repl = false`), halt with the specified exit code.
     option_value('repl', false), !, halt(Seven).
-
 maybe_halt(Seven) :-
     % If halting is explicitly enabled (`halt = true`), halt with the specified exit code.
     option_value('halt', true), !, halt(Seven).
-
 maybe_halt(_) :-
     % Perform extended halting checks (`pre_halt2`) and fail.
     once(pre_halt2), fail.
@@ -6906,7 +6828,7 @@ maybe_halt(H) :-
 %   Runs initialization steps when the program is loaded. These include setting
 %   the `cmt_override` variable and restoring the system state.
 %
-:- initialization(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
+:- on_metta_setup(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
 
 % needs_repl:- \+ is_converting, \+ is_pyswip, \+ is_compiling, \+ has_file_arg.
 
@@ -6915,7 +6837,7 @@ maybe_halt(H) :-
 %
 %   Displays the operating system arguments (`os_argv`) during initialization.
 %
-:- initialization(show_os_argv).
+:- on_metta_setup(show_os_argv).
 
 %!  ensure_mettalog_system_compilable is det.
 %
@@ -6968,8 +6890,8 @@ ensure_mettalog_system:-
     %ensure_loaded('./src/main/flybase_main'),
     %ensure_loaded(library(flybase_convert)),
     %ensure_loaded(library(flybase_main)),
-    autoload_all,
-    make,
+    %autoload_all,
+    %make,
     autoload_all,
     %pack_install(predicate_streams, [upgrade(true),global(true)]),
     %pack_install(logicmoo_utils, [upgrade(true),global(true)]),
@@ -7040,7 +6962,7 @@ next_save_name(Name) :-
     before_underscore(E, N),
     symbol_concat(N, '_', Stem),
     gensym(Stem, Name),
-   \+ exists_file(Name),
+  \+ exists_file(Name),
     Name \== E, !.
 next_save_name('Sav.MeTTaLog').
 
@@ -7115,7 +7037,7 @@ nts :-
 %   is allowed, it handles modifications to `system:notrace/1` to customize its behavior.
 %
 
-% nts1 :- !. % Dont Disable redefinition by cutting execution.
+%nts1 :- !. % Dont Disable redefinition by cutting execution.
 nts1 :-
     % Redefine the system predicate `system:notrace/1` to customize its behavior.
     redefine_system_predicate(system:notrace/1),
@@ -7247,7 +7169,7 @@ fix_message_hook :-
     % Erase the identified clause.
     erase(Cl).
 
-:- initialization(unnullify_output).
+:- on_metta_setup(unnullify_output).
 
 %:- ensure_loaded(metta_python).
 
@@ -7291,7 +7213,6 @@ stack_times_16 :-
 %     % Perform immediate initialization while ignoring errors:
 %     ?- immediate_ignore.
 %
-
 immediate_ignore:- ignore(((
    %write_src_uo(init_prog),
    use_corelib_file,
@@ -7604,4 +7525,7 @@ complex_relationship3_ex(Likelihood1, Likelihood2, Likelihood3) :-
 %?- complex_relationship(L1, L2, L3).
 
 :- find_missing_cuts.
+
+
+:- thread_initialization(do_metta_setup).
 

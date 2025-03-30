@@ -6,6 +6,10 @@
   (@desc "The universal type; any value belongs to this type."))
 (: Any Type)
 
+(: RandomGenerator Type)
+(@doc RandomGenerator
+  (@desc "Type representing a random number generator."))
+
 (@doc Atom
   (@desc "Type representing any atom."))
 (: Atom Type)
@@ -499,6 +503,7 @@ For example:
 (==> (is-fn-r $m $p) (= ($m $a) (call-fn-r! $p $a)))
 (==> (is-fn-2 $m $p) (= ($m $a $b) (call-fn! $p $a $b)))
 (==> (is-fn-21 $m $p) (= ($m $L $N) (call-fn! $p $N $L)))
+(==> (is-fn-3 $m $p) (= ($m $a $b $c) (call-fn! $p $a $b $c)))
 (==> (is-pred-1 $m $p) (= ($m $a) (call-p! $p $a)))
 (==> (is-pred-2 $m $p) (= ($m $a $b) (call-p! $p $a $b)))
 
@@ -626,12 +631,56 @@ For example:
 ; this is deduced: (: isinf (-> Number Bool))
 (is-pred isinf-math is_Inf)
 
+(: random-int (-> RandomGenerator Number Number Number))
+(@doc random-int
+  (@desc "Returns random int number from range defined by two numbers (second and third argument)")
+  (@params (
+    (@param "Random number generator instance")
+    (@param "Range start")
+    (@param "Range end")))
+  (@return "Random int number from defined range"))
+
+(: random-float (-> RandomGenerator Number Number Number))
+(@doc random-float
+  (@desc "Returns random float number from range defined by two numbers (second and third argument)")
+  (@params (
+    (@param "Random number generator instance")
+    (@param "Range start")
+    (@param "Range end")))
+  (@return "Random float number from defined range"))
+
+(iz set-random-seed MeTTa)
+(: set-random-seed (-> RandomGenerator Number (->)))
+(@doc set-random-seed
+  (@desc "Sets a new seed (second argument) for random number generator (first argument)")
+  (@params (
+    (@param "Random number generator instance")
+    (@param "Seed")))
+  (@return "Unit atom"))
+
+(iz new-random-generator MeTTa)
+(: new-random-generator (-> Number RandomGenerator))
+(@doc new-random-generator
+  (@desc "Creates new random number generator instance using seed as input (first argument)")
+  (@params (
+    (@param "Seed")))
+  (@return "Instance of random number generator"))
+
+(iz reset-random-generator MeTTa)
+(: reset-random-generator (-> RandomGenerator RandomGenerator))
+(@doc reset-random-generator
+  (@desc "Resets instance of random number generator (first argument) to its default behavior (StdRng::from_os_rng())")
+  (@params (
+    (@param "Random number generator instance")))
+  (@return "Random number generator instance with default behavior"))
+
+;; Some code still uses the old syntax
 (iz random-int MeTTa)
 (@doc random-int
   (@desc "Returns random int number from range defined by two numbers (first and second argument)")
   (@params (
-    (@param "Range start")
-    (@param "Range end")))
+	(@param "Range start")
+	(@param "Range end")))
   (@return "Random int number from defined range"))
 (is-op-2 random-int random)
 
@@ -639,10 +688,11 @@ For example:
 (@doc random-float
   (@desc "Returns random float number from range defined by two numbers (first and second argument)")
   (@params (
-    (@param "Range start")
-    (@param "Range end")))
+	(@param "Range start")
+	(@param "Range end")))
   (@return "Random float number from defined range"))
 (is-op-2 random-int random)
+
 
 (iz collapse-bind MeTTa)
 (@doc collapse-bind
@@ -1516,10 +1566,6 @@ For example:
   (@return "Unit atom"))
 
 (: help! (-> (->)))
-(= (help!) (let $top-space (mod-space! top)
-    (unify $top-space (@doc $name (@desc $desc) $params $ret)
-      (let () (println! (format-args "{}\n\t{}" ($name $desc))) Empty)
-      Empty)))
 (= (help!) (let $top-space (mod-space! top)
     (unify $top-space (@doc $name (@desc $desc))
       (let () (println! (format-args "{}\n\t{}" ($name $desc))) Empty)

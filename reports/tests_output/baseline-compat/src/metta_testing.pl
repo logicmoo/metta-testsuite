@@ -406,11 +406,11 @@ give_pass_credit(TestSrc, _Pre, _G) :-
 give_pass_credit(TestSrc, _Pre, G) :-
     % Logs the test as passed with 'PASS' status.
     must_det_lls((
-    ignore(write_pass_fail(TestSrc, 'PASS', G)),
+    if_t(is_testing,ignore(write_pass_fail(TestSrc, 'PASS', G))),
     % Increments the success counter.
     flag(loonit_success, X, X + 1),
     % Displays a success message in cyan color.
-    color_g_mesg(cyan, ignore(write_src_wi(loonit_success(G)))))), !.
+    if_t(is_testing,color_g_mesg(cyan, ignore(write_src_wi(loonit_success(G))))))), !.
 
 %!  write_pass_fail(+TestDetails, +Status, +Goal) is det.
 %
@@ -1553,7 +1553,7 @@ dte :- gset(_X.global) = gval.
 dte :- must_det_ll((set(_X.a) = b)).
 % Use `must_det_ll` to ensure that `nb_setval/2` runs locally and call `dte` recursively
 % with a modified term involving `X.tail`.
-dte :- must_det_ll(locally(nb_setval(e, X.locally), dte([foo | set(X.tail)]))).
+dte :- must_det_ll(locally(b_setval(e, X.locally), dte([foo | set(X.tail)]))).
 % Check if `set(V.element)` is a member of `set(V.list)`.
 dte :- member(set(V.element), set(V.list)).
 % Define a specific expansion for `dte/1` with input `set(E.v)` when `set(E.that)` equals `v`.

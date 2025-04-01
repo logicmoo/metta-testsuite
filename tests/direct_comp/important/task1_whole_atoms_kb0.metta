@@ -212,9 +212,10 @@
 ;; NEXT: modularize space
 
 ;; work around for unify predicate
+(: unf (-> Atom Atom Atom Atom $a))
 (= (unf $x $y $s $f)
-  (let $unf (collapse (let (1 $x) (1 $y) True)) 
-     (if (== $unf ()) $f (let (1 $x) (1 $y) $s))))
+  (let $unf (collapse (let (quote $x) (quote $y) True)) 
+     (if (== $unf ()) $f (let (quote $x) (quote $y) $s))))
 
 !(println! (unf  (a b) ($x $y)  (=== (a b) ($x $y)) (!== (a b) ($x $y))))
 ;; state fluents must all be grounded, TODO: semantics for non-ground state?
@@ -264,32 +265,6 @@
 ;     ($q4 (insert-queue $q3 5))
 ;     (() (println! $q4))
 ; ) ())
-
-!(add-atom &kb (:action pickup
-    :parameters ($x)
-    :precondition (And ((clear $x) (on-table $x) (arm-empty)))
-    :effect (And ((holding $x) (Not (clear $x))
-        (Not (on-table $x)) (Not (arm-empty))))))
-
-!(add-atom &kb (:action putdown
-    :parameters ($x)
-    :precondition (And ((holding $x)))
-    :effect (And ((clear $x) (arm-empty) (on-table $x)
-        (Not (holding $x))))))
-
-!(add-atom &kb (:action stack
-    :parameters ($x $y)
-    :precondition (And ((clear $y) (holding $x)))
-    :effect (And ((arm-empty) (clear $x) (on $x $y)
-        (Not (clear $y)) (Not (holding $x))))))
-
-!(add-atom &kb (:action unstack
-    :parameters ($x $y)
-    :precondition (And ((on $x $y) (clear $x) (arm-empty)))
-    :effect (And ((holding $x) (clear $y) (Not (on $x $y))
-        (Not (clear $x)) (Not (arm-empty))))))
-
-
 
 
 ;; Collection of general-purpose utilities for list (or atom as list)
@@ -388,7 +363,7 @@
            $inters))))
 
 ; !(state-transition 1)
-;; Hyperon doesn't allow for importing multiple files into same space
+
 
 !(assertEqualToResult (planner-main 100) (((pickup (a)) (stack (a b)))))
 

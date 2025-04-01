@@ -301,6 +301,7 @@
 ;; NEXT: modularize space
 
 ;; work around for unify predicate
+(: unf (-> Atom Atom Atom Atom $a))
 (= (unf $x $y $s $f)
     (let $unf (collapse 
         (let $x $y True)
@@ -359,42 +360,6 @@
 ;     ($q4 (insert-queue $q3 5))
 ;     (() (println! $q4))
 ; ) ())
-(:action pickup 
-    :parameters ($x)
-    :precondition (And ((clear $x) (on-table $x) (arm-empty)))
-    :effect (And ((holding $x) (Not (clear $x)) 
-        (Not (on-table $x)) (Not (arm-empty)))
-    )
-)
-(:action putdown
-    :parameters ($x)
-    :precondition (And ((holding $x)))
-    :effect (And ((clear $x) (arm-empty) (on-table $x)
-        (Not (holding $x))))
-)
-
-(:action stack
-    :parameters ($x $y)
-    :precondition (And (
-        (clear $y) (holding $x)
-    ))
-    :effect (And (
-        (arm-empty) (clear $x) (on $x $y) 
-        (Not (clear $y)) (Not (holding $x))
-    ))
-)
-
-(:action unstack
-    :parameters ($x $y)
-    :precondition (And ((on $x $y) (clear $x) (arm-empty)))
-    :effect (And (
-        (holding $x) (clear $y) (Not (on $x $y))
-        (Not (clear $x)) (Not (arm-empty))
-    ))
-)
-
-
-
 
 ;; Collection of general-purpose utilities for list (or atom as list)
 ;; Inefficient and untyped, for quick prototyping only
@@ -533,6 +498,6 @@
 
 
 ; !(state-transition 1)
-;; Hyperon doesn't allow for importing multiple files into same space
+
 !(assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
 ;(B=ispeEnN(C, 'mc_1__planner-main'(100, C), D, D=['planner-main', 100]), mc_1__time(B, A)).

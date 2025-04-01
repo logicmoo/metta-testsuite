@@ -1,37 +1,37 @@
 
 ;; took 37 seconds
 
-!(bind! &kb (new-space))
-
-!(add-atom &kb (:object a))
-!(add-atom &kb (:object b))
-!(add-atom &kb (:object c))
-!(add-atom &kb (:init (
+(:object a) (:object b)
+(:object c) ;;
+(:init (
     (on-table a)
     (on-table b)
     (clear a)
     (clear b)
     (arm-empty)
     (on-table c) (clear c) ;;
-)))
-!(add-atom &kb (:goal (And (
+))
+(:goal (And (
     (on a b)
     (on b c) ;;
-))))
-!(add-atom &kb (:action pickup
+)))
+
+
+(:action pickup 
     :parameters ($x)
     :precondition (And ((clear $x) (on-table $x) (arm-empty)))
     :effect (And ((holding $x) (Not (clear $x)) 
         (Not (on-table $x)) (Not (arm-empty)))
     )
-))
-!(add-atom &kb (:action putdown
+)
+(:action putdown
     :parameters ($x)
     :precondition (And ((holding $x)))
     :effect (And ((clear $x) (arm-empty) (on-table $x)
         (Not (holding $x))))
-))
-!(add-atom &kb (:action stack
+)
+
+(:action stack
     :parameters ($x $y)
     :precondition (And (
         (clear $y) (holding $x)
@@ -40,15 +40,16 @@
         (arm-empty) (clear $x) (on $x $y) 
         (Not (clear $y)) (Not (holding $x))
     ))
-))
-!(add-atom &kb (:action unstack
+)
+
+(:action unstack
     :parameters ($x $y)
     :precondition (And ((on $x $y) (clear $x) (arm-empty)))
     :effect (And (
         (holding $x) (clear $y) (Not (on $x $y))
         (Not (clear $x)) (Not (arm-empty))
     ))
-))
+)
 
 ;; TODO: how to levarage native MeTTa for typing?
 
@@ -56,9 +57,9 @@
 
 ;; check satisfaction of a ground formula
 
-;!(import! &kb task0) ;; Hyperon requires to be at the top
-;!(import! &kb task1) ;; Hyperon requires to be at the top
-;!(import! &kb task2) ;; Hyperon requires to be at the top
+;!(import! &self task0) ;; Hyperon requires to be at the top
+;!(import! &self task1) ;; Hyperon requires to be at the top
+;!(import! &self task2) ;; Hyperon requires to be at the top
 
 (= (formula-satisfaction $stateId (Not $expr))
     (not (formula-satisfaction $stateId $expr))
@@ -87,20 +88,21 @@
         ((And $x) (empty))
         ((Or $x) (empty))
         ((Not $x) (empty))
-        ($1 (let $all (collapse (match &kb (State $stateId $expr) True))
+        ($1 (let $all (collapse (match &self (State $stateId $expr) True))
                 (if (== $all ()) False True)))
     ))
 )
 
 ;; check if an action is applicable in a state
 (= (action-applicable $stateId $actionId $args)
-    (match &kb (:action $actionId
+    (match &self 
+	   (:action $actionId
             :parameters $params 
             :precondition $preds 
             :effect $effs
     )  (unf $args $params 
             (formula-satisfaction $stateId $preds) 
-            (Error $params FailedUnification)))
+            (Error $params FailedUnification1)))
 )
 
 ;; (:object x) TODO: object typing, how to only extract objects with potential updating? in a state?
@@ -109,7 +111,7 @@
     (if (== $params ()) ()
         (let* (
             (($1 $rest) (decons-atom $params))
-            ($h (match &kb (:object $o) $o))
+            ($h (match &self (:object $o) $o))
             ($r (args-combination $rest))
         ) (cons-atom $h $r))
     )
@@ -117,23 +119,23 @@
 
 ;; for each action & combination of args, try if its precondition is satisfied in state
 (= (actions-applicable $stateId)
-    (match &kb (:action $actionId
+    (match &self (:action $actionId
             :parameters $params 
             :precondition $preds 
             :effect $effs
     ) (let* (
         ($args (args-combination $params))
-        ($1 (unf $args $params True (Error $params FailedUnification)))
+        ($1 (unf $args $params True (Error $params FailedUnification2)))
         ) (if (formula-satisfaction $stateId $preds) ($actionId $params) (empty))
     ))
 )
 
 (= (action-applyEffect $actionId $args)
-    (match &kb (:action $actionId
+    (match &self (:action $actionId
             :parameters $params 
             :precondition $preds 
             :effect $effs
-    ) (unf $args $params $effs FailedUnification))
+    ) (unf $args $params $effs FailedUnification3))
 )
 
 (= (signed-fluents $list)
@@ -155,14 +157,14 @@
     (let* (
         ((And $d) $diffs)
         (($pos $neg) (signed-fluents $d))
-        ($s1 (subtraction-atom  ;; remove negative fluents
-            $allStates
-            $neg
-        ))
-        ($s2  (union-atom  ;; add any positive fluents
-            $s1
-            $pos
-        ))
+        ($s1 (collapse (subtraction  ;; remove negative fluents
+            (superpose $allStates)
+            (superpose $neg)
+        )))
+        ($s2 (collapse (union  ;; add any positive fluents
+            (superpose $s1)
+            (superpose $pos)
+        )))
     )  $s2)
 )
 
@@ -171,7 +173,7 @@
     (let* (
         (($actionId $args) (actions-applicable $stateId))
         ($effsDiff (action-applyEffect $actionId $args))
-        ($stsEffs (collapse (match &kb (State $stateId $form) $form)))
+        ($stsEffs (collapse (match &self (State $stateId $form) $form)))
         ($newState (state-diff $stsEffs $effsDiff))
     ) 
         ; $newState
@@ -186,7 +188,7 @@
     (if (== $stateFluents ()) ()
         (let* (
             (($h $rest) (decons-atom $stateFluents))
-            ($included (collapse (match &kb (State $id $h) $id)))
+            ($included (collapse (match &self (State $id $h) $id)))
         ) (if (== $rest ()) 
             $included 
             (let $other (state-visited? $rest) (L-intersection $included $other))
@@ -194,26 +196,26 @@
     )
 )
 (= (state-visited $stateId)
-    (let $fs (collapse (match &kb (State $stateId $form) $form))
+    (let $fs (collapse (match &self (State $stateId $form) $form))
         (state-visited? $fs)
     )
 )
 
 (= (state-enqueued? $stateId)
-    (let $s (collapse (match &kb (State $stateId $f) $stateId))
+    (let $s (collapse (match &self (State $stateId $f) $stateId))
         (if (== $s ()) False True)
     )
 )
 
 (= (goal-satisfied $stateId)
-    (match &kb (:goal $expr) (formula-satisfaction $stateId $expr))
+    (match &self (:goal $expr) (formula-satisfaction $stateId $expr))
 )
 
 (= (retrace-steps $toStateId)
     (if (== $toStateId 0)
         ()
         (let* (
-            (($fromId $action $args) (match &kb
+            (($fromId $action $args) (match &self 
                     (Succ $fromId ($action $args) $toStateId)
                     ($fromId $action $args)))
             ($prevSteps (retrace-steps $fromId))
@@ -225,14 +227,14 @@
 ;; depends on complexity of (match)
 ;; TODO: match in space versus list
 
-;!(import! &kb alist)
+;!(import! &self alist)
 
 (= (add-state-fluents! $stateId $fluents)
     (if (== $fluents ())
         ()
         (let* (
             (($h $rest) (decons-atom $fluents))
-            (() (add-atom &kb (State $stateId $h)))
+            (() (add-atom &self (State $stateId $h)))
         ) (add-state-fluents! $stateId $rest))
     )
 )
@@ -249,7 +251,7 @@
         ) (if (== $visited ())  
             (let* (
                 (() (add-state-fluents! $nextUID $stateFluents))
-                (() (add-atom &kb (Succ $fromID ($action $args) $nextUID)))
+                (() (add-atom &self (Succ $fromID ($action $args) $nextUID)))
                 (() (println! (ENQUEUED $nextUID)))
                 ($id (+ $nextUID 1))
             ) (enqueue-next-states! $fromID $rest $id))
@@ -264,8 +266,8 @@
             ; ()
             (println! 
                 (Processing $curState 
-                    (collapse (match &kb (State $curState $f) $f))
-                    (collapse (match &kb (Succ $from ($action $args) $curState) ($from ($action $args))))
+                    (collapse (match &self (State $curState $f) $f))
+                    (collapse (match &self (Succ $from ($action $args) $curState) ($from ($action $args))))
                     ; (state-visited $curState)
                 ))
         (if (not (state-enqueued? $curState)) FailedToReachGoal
@@ -281,7 +283,7 @@
 
 (= (planner-main $statesLimit)
     (let* (
-        ($initState ((None None) (match &kb (:init $f) $f)))
+        ($initState ((None None) (match &self (:init $f) $f)))
         ($nextUID (enqueue-next-states! -1 ($initState) 0))
     ) 
     ; ()
@@ -291,17 +293,17 @@
 
 ;; NEXT: modularize space
 
+(: unf (-> Atom Atom Atom Atom $t))
 ;; work around for unify predicate
 (= (unf $x $y $s $f)
-    (let $unf (collapse 
-        (let $x $y True)
-    ) (if (== $unf ()) $f (let $x $y $s)))
+    (let $unf (collapse (let $x $y True)) 
+	  (if (== $unf ()) $f (let $x $y $s)))
 )
 
 ;; state fluents must all be grounded, TODO: semantics for non-ground state?
-; !(add-atom &kb (State 1 (clear b)))
-; !(add-atom &kb (State 1 (on-table b)))
-; !(add-atom &kb (State 1 (arm-empty)))
+; !(add-atom &self (State 1 (clear b))) 
+; !(add-atom &self (State 1 (on-table b)))
+; !(add-atom &self (State 1 (arm-empty)))
 ; !(state-visited? ((clear b) (on-table b) (arm-empty)))
 
 ; !(formula-satisfaction 1 (clear b))
@@ -350,6 +352,7 @@
 ;     ($q4 (insert-queue $q3 5))
 ;     (() (println! $q4))
 ; ) ())
+
 
 
 ;; Collection of general-purpose utilities for list (or atom as list)

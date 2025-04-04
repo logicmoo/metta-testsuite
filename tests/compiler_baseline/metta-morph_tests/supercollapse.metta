@@ -3,10 +3,11 @@
 (: If (-> Bool Atom Atom Atom))
 (= (If $cond $then $else) (if $cond $then $else))
 
+; (: TupleConcat (-> Any Any AnyRet))
 
-(= (TupleConcat $Ev1 $Ev2) (collapse (superpose ((superpose $Ev1) (superpose $Ev2)))))
-
-(: TupleConcat (-> Any Any Expression))
+(= (TupleConcat $Ev1 $Ev2) 
+  (let ($V1 $V2) ($Ev1 $Ev2)
+		 (collapse (superpose ((superpose $V1) (superpose $V2))))))
 
 !(TupleConcat (a b c) (e f g))
 !(TupleConcat () (e f g))
@@ -17,6 +18,8 @@
    (If (< $K $N)
        (TupleConcat ($K) (range (+ $K 1) $N))
        ()))
+
+!(TupleConcat (a b c) (range 1 1))
 
 (unused
 	(pragma! trace-on-exec False)

@@ -307,9 +307,9 @@
 !(pragma! test true)
 
 (= (eachfc)
-
+  (collapse 
    (let $aptrn (Inheritance (VarIdx Z) (VarIdx (S Z)))
-	(fc (: (supportwitness $aptrn) (supportOf $aptrn (countNat $aptrn))) (fromNumber 8))))
+	(fc (: (supportwitness $aptrn) (supportOf $aptrn (countNat $aptrn))) (fromNumber 8)))))
 
 
 !(let $expected (expected)

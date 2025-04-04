@@ -2,7 +2,7 @@
 
 ;; to start in MeTTaLog use    ./MeTTa 8-FlybaseQuestions.metta --repl
 
-!(extend-py! mettalog)
+!(extend-py! metta_vspace.metta_learner)
 
 !(fb-info!)
 

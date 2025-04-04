@@ -18,7 +18,7 @@
 ;! (get-type (foo-pair (a b))) 
 ; C
 ; notready
-!(assertEqualToResult ( get-type (foo-pair (a b)) )  ( (C C) )  )
+!(assertEqualToResult ( get-type (foo-pair (a b)) )   (C)   )
 
 
 ;  !(assertEqualToResult ( )  (  )  ) 

@@ -57,7 +57,7 @@
 
 !(assertEqualToResult (collapse (superpose ())) (()))
 
-!(assertEqualToResult (superpose ((nop 1))) ())
+!(assertEqualToResult (superpose ((nop 1))) (()))
 
 !(assertEqualToResult (collapse (superpose ((nop 1)))) (()))
 

@@ -48,7 +48,8 @@
 
 (: bc (-> $a hyperon::space::DynSpace Nat $a))
 ;; Base case
-(= (bc (: $prf $ccln) $space $_1) (match $space (: $prf $ccln) (: $prf $ccln)))
+(= (bc (: $prf $ccln) $space $_1) 
+ (match $space (: $prf $ccln) (: $prf $ccln)))
 ;; if conclusion equals (⍃ $X $Y), then return (: CPU (⍃ $X $Y)) 
 ;; if $x and $Y are fully grounded and (< $X $Y)
 (= (bc (: CPU (⍃ $X $Y)) $space $_2) 

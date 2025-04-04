@@ -320,12 +320,26 @@
 
 ;; TODO: mutable data structure in MeTTa?
 
-;; O(n) queue
+;; This code defines a simple queue with basic operations: creating a queue,
+;; checking if the queue is empty, and retrieving the front element of the queue.
+
+;; Define a function to create an empty queue
 (= (make-queue) ())
-(= (empty-queue? $q) (unify $q () True False))
+
+;; Define a function to check if a queue is empty
+(= (empty-queue? $q)
+    ;; Use 'unify' to compare the queue with an empty list '()', 
+    ;; returning True if they are the same, False otherwise
+    (unify $q () True False)
+)
+
+;; Define a function to get the front element of the queue
 (= (front-queue $q) 
+    ;; Check if the queue is empty
     (if (empty-queue? $q)
+        ;; Return an error if trying to get the front of an empty queue
         (Error $q "Can't get front of empty queue")
+        ;; Otherwise, return the first element of the queue
         (car-atom $q)
     )
 )

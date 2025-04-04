@@ -23,12 +23,8 @@
 ; `Nat` is a custom symbol
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (: Z Nat)
-; (: S Oper)
 (: S (-> Nat Nat))
 (: Add (-> Nat Nat Nat))
-
-!(set-debug! e)
-
 ; Now the result of its evaluation will be a error expression, because `S` is not `Nat`
 !(assertEqualToResult
   (Add S Z)
@@ -147,7 +143,6 @@
 !(assertEqualToResult
   (of-same-type Green Color)
   ((Error Color BadType)))
-
 !(assertEqualToResult
   (of-same-type Green Circle)
   ((Error Circle BadType)))

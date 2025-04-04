@@ -12,7 +12,10 @@
 ; and use it like this:
 ; (let $sum (lambda ($a $b $c) (+ (+ $a $b) $c)) ($sum (1 2 3))
 
-; Note: quote is used in lambda implementations below to prevent $body to be
+; quoted prevents wrapped atom from being interpreted
+(: quoted (-> Atom Atom))
+
+; Note: quoted is used in lambda implementations below to prevent $body to be
 ; evaluated inside let.
 
 ; Needed for putting lambda functions as input to functions
@@ -265,7 +268,28 @@
 ; b. the product of all the positive integers less than n that are relatively prime
 ;    to n (i.e., all positive integers i < n such that GCD(i,n) = 1).
 
-(= (remainder $x $y) (% $x $y))
+(= (Abs $x) (if (< $x 0) (* $x -1) $x))
+
+(= (Floor_ $x) (if (< $x 1)
+                        0
+                        (inc (Floor_ (dec $x)))))
+
+(= (Floor $x) (if (< $x 0)
+                        (dec (* (Floor_ (Abs $x)) -1))
+                        (Floor_ $x)))
+
+(= (Ceil $x) (if (< $x 0)
+                        (* (Floor_ (Abs $x)) -1)
+                        (inc (Floor_ $x))))
+
+(= (truncate $x)
+    (if (== $x 0)
+            0
+            (if (< $x 0)
+                    (Ceil $x)
+                    (Floor $x))))
+
+(= (remainder $x $y) (- $x (* $y (truncate (/ $x $y)))))
 
 (= (smallest-divisor $n)
     (find-divisor $n 2))
@@ -356,6 +380,54 @@
     1.89306640625)
 
 (= (tolerance) 0.1)
+
+; Here we had to switch places for $try and $close-enough local functions definitions (not like in SICP book)
+; or it just won't work
+
+(= (fixed-point $f $first-guess)
+    (let $try (lambda2 $guess $self-try
+        (let $next ($f $guess)
+            (let $close-enough? (lambda2 $v1 $v2 (< (Abs (- $v1 $v2)) (tolerance)))
+                (if ($close-enough? $guess $next)
+                    $next
+                    ($self-try $next $self-try)))))
+    ($try $first-guess $try)))
+
+; FIXME: Requires correct lambda type to work (see note to the lambda2 definition above)
+;!(assertEqual
+;    (fixed-point sqr 0.5)
+;    0.00390625)
+; Sqrt approximation using fixed-point function
+;!(assertEqual
+;    (fixed-point (lambda1 $y (average $y (/ 2 $y))) 1.0)
+;    1.4166666666666665)
+
+
+; Exercise 1.35.
+;
+; Show that the golden ratio Phi (section 1.2.2) is a fixed point of the
+; transformation x ->  1 + 1/x, and use this fact to compute by means of the fixed-point procedure.
+
+; FIXME: Requires correct lambda type to work (see note to the lambda2 definition above)
+;!(assertEqual
+;    (fixed-point (lambda1 $x (+ 1 (/ 1 $x))) 1.0)
+;    1.6)
+
+; -----------------------End of Exercise 1.35----------------------------
+
+; Exercise 1.36.
+;
+; Modify fixed-point so that it prints the sequence of approximations
+; it generates, using the newline and display primitives shown in exercise 1.22.
+; Then find a solution to x^x = 1000 by finding a fixed point of x -> log(1000)/log(x).
+; (Use Scheme's primitive log procedure, which computes natural logarithms.)
+; Compare the number of steps this takes with and without average damping.
+; (Note that you cannot start fixed-point with a guess of 1, as this would cause division by log(1) = 0.)
+
+; Currently fixed-point is not working (see note above).
+
+; -----------------------End of Exercise 1.36----------------------------
+
 
 ; Exercise 1.37.
 ;

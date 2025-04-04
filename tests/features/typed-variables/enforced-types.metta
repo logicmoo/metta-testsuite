@@ -1,6 +1,10 @@
-; Define a function `is-even` that takes a Number and returns a Bool.
-; This predicate checks if the given number is even by verifying that its remainder
-; when divided by 2 is zero.
+
+; =============================================================
+; Purpose: Define predicate 'is-even' to check if a number is even.
+; Operation: Uses modulo operator to determine if a number is divisible by 2 without remainder.
+; Usage: General utility function for checking evenness of numbers.
+; =============================================================
+; Define 'is-even' predicate
 (: is-even (-> Number Bool))
 ; Implementation: (is-even X) is true if (X % 2) == 0
 (= (is-even $X) (== (% $X 2) 0))

@@ -1,13 +1,6 @@
-;
 ;                   ---- Naive Recursion Method ----
-
-;
 ;                    Summary: Simple and direct implementation using the basic definition of Fibonacci numbers.
-
-;
 ;                    Pros: Easy to understand and implement.
-
-;
 ;                    Cons: Highly inefficient for large N due to recalculations of already computed Fibonacci numbers; exponential time complexity.
 
 

@@ -300,6 +300,9 @@
 
 
 !(eachfc)
+;; !(eachfc)
+!(let $expected (expected)
+  (assertEqualToResult (eachfc) $expected))
 
 ; !(expected)
 

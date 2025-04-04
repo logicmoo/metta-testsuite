@@ -1,7 +1,7 @@
 ;; call-string!
 
 !(assertEqualToResult (call-string! "member(1,[1,2,3])") (()))
-!(assertEqualToResult (call-string! "member(1,[1,2,3])") ())
+!(assertEqualToResult (call-string! "member(a,[1,2,3])") ())
 !(assertEqualToResult (call-string! "member(X,[1,2,3])") ((1) (2) (3)))
 !(assertEqualToResult (call-string! "member(X,[[1,2],[3,4]])") (((1 2)) ((3 4))))
 !(assertEqualToResult (call-string! "member([X,Y],[[1,2],[3,4]])") ((1 2) (3 4)))

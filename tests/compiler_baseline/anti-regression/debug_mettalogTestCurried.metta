@@ -310,14 +310,18 @@
 	(fc (: (supportwitness $aptrn) (supportOf $aptrn (countNat $aptrn))) (fromNumber 8)))))
 
 
-; !(eachfc)
+!(let $expected (expected)
+  (assertEqualToResult (eachfc) $expected))
 
+!a
+
+!"
 ; !(expected)
-
-;!(let $expected (expected)
+; !(let $expected (expected)
 ;  (assertEqualToResult
 ;   (let $aptrn (Inheritance (VarIdx Z) (VarIdx (S Z)))
 ;	  (fc (: (supportwitness $aptrn) 
 ;			 (supportOf $aptrn (countNat $aptrn))) (fromNumber 8))) 
 ;	$expected))
+"
 

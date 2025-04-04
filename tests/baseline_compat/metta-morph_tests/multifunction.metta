@@ -1,3 +1,4 @@
+!(pfcWatch!)
 (= (g $x) $x)
 (= (g $x) (* 2 $x))
 (= (g test ($y $z)) (* (* 1 $y) $z))
@@ -7,3 +8,15 @@
 (= (g a ($y w)) $y)
 
 !(g 42 (1 2))
+
+!(assertEqualToResult
+  (g 42
+	(1 2))
+  (1764 1764))
+
+
+!(assertEqualToResult
+  (g 42)
+  (42 84))
+
+

@@ -7,8 +7,6 @@
 (= (g $x ($y $z)) (* (* 42 $x) $y))
 (= (g a ($y w)) $y)
 
-!(listing! g)
-
 !(g 42 (1 2))
 
 !(assertEqualToResult
@@ -22,6 +20,3 @@
   (42 84))
 
 
-
-   
-!(listing! g)

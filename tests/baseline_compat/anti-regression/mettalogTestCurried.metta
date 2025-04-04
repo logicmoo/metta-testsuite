@@ -298,8 +298,8 @@
 		 ($depth (fromNumber 8)))
 	(fc $atom $depth))))
 
-!(eachfc)
 
+!(eachfc)
 ;; !(eachfc)
 !(let $expected (expected)
   (assertEqualToResult (eachfc) $expected))

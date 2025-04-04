@@ -16,7 +16,7 @@
    ((%void% 42
    ))) (42))
 !(assertEqualToResult (case (match &goal_events $1 $1)
-    ((goal1 yes)
+  ((goal1 yes)
     (%void%
       42))) (42))
 !(add-atom &goal_events goal1)

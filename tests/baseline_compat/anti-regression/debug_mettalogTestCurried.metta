@@ -31,6 +31,8 @@
 ;; This is very slow, use the grounded python function instead
 (= (tuple-count $tuple) (if (== $tuple ()) 0 (+ 1 (tuple-count (cdr-atom $tuple)))))
 
+
+
 !(bind! &specializations (new-space))
 !(bind! &abstractions (new-space))
 
@@ -125,6 +127,7 @@
 !("loading succAtoms into kb2")
 !(import! &kb2 succAxiom)
 !(match &kb2 $1 (add-atom &kb $1))
+
 
 ;; !(get-atoms &kb)
 
@@ -230,8 +233,6 @@
            Nat                           ; Number of iterations
            $a))                          ; Conclusion
 
-
-
 ;; Base case.  For now it terminates at exactly iteration Z to avoid
 ;; collecting too many redundant results.
 (= (ifc $prms $depth Z) $prms)
@@ -241,7 +242,6 @@
    (let* (($cres (collapse (fc $prms $depth)))
           ($dummy (add-atoms-nodup &kb $cres)))
      (ifc (superpose $cres) $depth $k)))
-
 ;;;;;;;;;;
 ;; Test ;;
 ;;;;;;;;;;
@@ -300,8 +300,6 @@
       (VarIdx (S Z))))) ms_Threshold) (WitnessOf (⍃ (S Z) (S (S (S (S Z)))))))) 
 				   (sp_witness (Inheritance D (VarIdx (S Z)))))) ms_Threshold)
        (-> (⍃ (S Z) (S Z)) (minsup (Inheritance D (VarIdx (S Z))))))))
-
-
 
 
 !(pragma! test true)

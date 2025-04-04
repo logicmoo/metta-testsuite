@@ -4,7 +4,7 @@
 
 !(assertEqualToResult
   (sequential
-	( (add-atom &self (man mortal))
-	  (match &self ($A mortal) (mortal $A))))
+    ( (add-atom &self (man mortal))
+      (match &self ($A mortal) (mortal $A))))
   ((mortal man)))
 

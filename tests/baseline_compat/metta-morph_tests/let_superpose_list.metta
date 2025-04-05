@@ -2,7 +2,7 @@
 
 ; !(compile-space! &self)
 
-!(pfcWatch!)
+; !(pfcWatch!)
 
 ; (: waza (-> $a (List $a)))
 
@@ -11,7 +11,7 @@
 		  ($z (superpose (4 5))))
 		 ($y $z)))
 
-!(compile! wuza)
+;!(compile! wuza)
 
 !(wuza 5)
 

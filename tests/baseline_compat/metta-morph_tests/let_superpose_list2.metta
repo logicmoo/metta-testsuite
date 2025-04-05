@@ -7,7 +7,7 @@
             ($z (superpose $L)))
         ($y $z)))
 
-!(compile! wuzaL)
+;;!(compile! wuzaL)
 
 !(assertEqual
   (wuzaL 2 (3 4))

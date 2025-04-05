@@ -1,8 +1,8 @@
-(: If (-> Bool Atom Atom))
+(: If (-> Bool Atom $t))
 (= (If True $then) $then)
 (= (If False $then) (let $x 0 (let $x 1 $x)))
 
-(: If (-> Bool Atom Atom Atom))
+(: If (-> Bool Atom Atom $t))
 (= (If $cond $then $else) (if $cond $then $else))
 
 (= (f $x) 42)

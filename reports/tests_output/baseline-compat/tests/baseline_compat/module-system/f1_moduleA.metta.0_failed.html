@@ -18,13 +18,23 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:04:08+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/module-system/f1_moduleA.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 09:33:28+00:00 [COMMAND="timeout --preserve-status --foreground 41 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1695-570.MeTTaLog  -- --python=enable -- --timeout=41 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/module-system/f1_moduleA.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/module-system/f1_moduleA.metta]
 P;HTML|
@@ -36,28 +46,50 @@ Script started on 2025-04-01 23:04:08+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[()]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleA.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleA.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleA.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleA.metta]
 
 <span class="ansi38-013099040"
 >!(import! &self f1_moduleC)
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['import!', '&self', f1_moduleC]).
 
 </span>P;HTML|
 ;                                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleC.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleC.metta]
 P;HTML|
 ;                                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleC.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleC.metta]
 
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_0___g(100).
+
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_1_g(_x, A) :-
+    mc__1_0___g(B),
+    'mc__1_2_+'(_x, B, A).
+
+</span>
 
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
 >!(assertEqual (+ 1 2) 3)
 
+</span>1 _22336 [[assign,_22336,[fcall(+,[2]),[1,2]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnN(C, 'mc__1_2_+'(1, 2, C), D, D=[+, 1, 2]), E=ispu(3), mc__1_2_assertEqual(B, E, A))).
+
 </span>
-;<h3 id="MODULE-SYSTEM.F1-MODULEA.01"
->;; MODULE-SYSTEM.F1-MODULEA.01</h3>
+;<h3 id="MODULE-SYSTEM-COMP.F1-MODULEA.01"
+>;; MODULE-SYSTEM-COMP.F1-MODULEA.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000877 secs. (877.10 microseconds) 
+; took 0.000033 secs. (32.54 microseconds) 
 
 !(assertEqual (+ 1 2) 3)
 
@@ -69,7 +101,34 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>P;HTML|
+</span><span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_1_dup(_x, A) :-
+    (   'mc__1_2_=='(_x, 0, B),
+        is_True(B)
+    *-> 'mc__1_2_+'(_x, 10, C),
+        A=C
+    ;   mc__1_1_g(_x, D),
+        A=D
+    ).
+
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_1_f(_x, A) :-
+    (   'mc__1_2_<'(_x, 0, B),
+        is_True(B)
+    *-> 'mc__1_2_-'(0, _x, C),
+        A=C
+    ;   'mc__1_2_+'(1, _x, D),
+        mc__1_1_g(D, E),
+        A=E
+    ).
+
+</span>
+P;HTML|
 ;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/module-system/f1_moduleA.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
@@ -85,10 +144,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:04:09+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 09:33:29+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/module-system/f1_moduleA.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 41 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=41 --html --repl=false  --test --compile=full "tests/baseline_compat/module-system/f1_moduleA.metta" --halt=true\033[0m

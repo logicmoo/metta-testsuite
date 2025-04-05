@@ -14,27 +14,21 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi36 { color: #00aaaa; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:09:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/superpose_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:24:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/superpose_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/superpose_nested.metta]
 P;HTML|
@@ -46,133 +40,163 @@ Script started on 2025-04-01 23:09:16+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[a, b, c]" ]
 P;HTML|
-;                     [ = 3 "[a, b, c, x, y, z]" ]
+;                      [ = 3 "[a, b, c, x, y, z]" ]
 P;HTML|
 ;                      [ = 4 "[a, b, c, x, y, z]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/superpose_nested.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/superpose_nested.metta]
-<span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/superpose_nested.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/superpose_nested.metta]
+
+<span class="ansi38-013099040"
 >!(superpose (a b c))
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (superpose (a b c)) (a b c))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[a, b, c], mc__1_1_superpose(B, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.SUPERPOSE-NESTED.01"
->;; METTA-MORPH-TESTS.SUPERPOSE-NESTED.01</h3>
-; 
-; EVAL TEST
-; took 0.000267 secs. (267.13 microseconds) 
-
-!(assertEqualToResult (superpose (a b c)) (a b c))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (a b c) 
-      (a b c)]]
+N(1): <span class="ansi33"
+>a
 </span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+N(2): <span class="ansi33"
+>b
+</span>
+R(3): <span class="ansi33"
+>c
+</span><span class="ansi38-013099040"
 >!(superpose ((superpose (a b c))))
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (superpose ((superpose (a b c)))) (a b c))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[a, b, c], mc__1_1_superpose(B, C), D=[C], mc__1_1_superpose(D, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.SUPERPOSE-NESTED.02"
->;; METTA-MORPH-TESTS.SUPERPOSE-NESTED.02</h3>
-; 
-; EVAL TEST
-; took 0.000367 secs. (366.68 microseconds) 
-
-!(assertEqualToResult (superpose ((superpose (a b c)))) (a b c))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (a b c) 
-      (a b c)]]
+N(1): <span class="ansi33"
+>a
 </span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+N(2): <span class="ansi33"
+>b
+</span>
+R(3): <span class="ansi33"
+>c
+</span><span class="ansi38-013099040"
 >!(superpose ((superpose (a b c)) (superpose (x y z))))
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (superpose ((superpose (a b c)) (superpose (x y z)))) (a b c x y z))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[a, b, c], mc__1_1_superpose(B, C), D=[x, y, z], mc__1_1_superpose(D, E), F=[C, E], mc__1_1_superpose(F, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.SUPERPOSE-NESTED.03"
->;; METTA-MORPH-TESTS.SUPERPOSE-NESTED.03</h3>
-; 
-; EVAL TEST
-; took 0.000601 secs. (600.63 microseconds) 
-
-!(assertEqualToResult (superpose ((superpose (a b c)) (superpose (x y z)))) (a b c x y z))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (a b c x y z) 
-      (a b c x y z)]]
+N(1): <span class="ansi33"
+>a
 </span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+N(2): <span class="ansi33"
+>x
+</span>
+N(3): <span class="ansi33"
+>a
+</span>
+N(4): <span class="ansi33"
+>y
+</span>
+N(5): <span class="ansi33"
+>a
+</span>
+N(6): <span class="ansi33"
+>z
+</span>
+N(7): <span class="ansi33"
+>b
+</span>
+N(8): <span class="ansi33"
+>x
+</span>
+N(9): <span class="ansi33"
+>b
+</span>
+N(10): <span class="ansi33"
+>y
+</span>
+N(11): <span class="ansi33"
+>b
+</span>
+N(12): <span class="ansi33"
+>z
+</span>
+N(13): <span class="ansi33"
+>c
+</span>
+N(14): <span class="ansi33"
+>x
+</span>
+N(15): <span class="ansi33"
+>c
+</span>
+N(16): <span class="ansi33"
+>y
+</span>
+N(17): <span class="ansi33"
+>c
+</span>
+R(18): <span class="ansi33"
+>z
+</span><span class="ansi38-013099040"
 >!(superpose ((superpose (a b c)) x y z))
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (superpose ((superpose (a b c)) x y z)) (a b c x y z))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[a, b, c], mc__1_1_superpose(B, C), D=[C, x, y, z], mc__1_1_superpose(D, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.SUPERPOSE-NESTED.04"
->;; METTA-MORPH-TESTS.SUPERPOSE-NESTED.04</h3>
-; 
-; EVAL TEST
-; took 0.000439 secs. (438.87 microseconds) 
-
-!(assertEqualToResult (superpose ((superpose (a b c)) x y z)) (a b c x y z))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (a b c x y z) 
-      (a b c x y z)]]
+N(1): <span class="ansi33"
+>a
 </span>
-Deterministic: <span class="ansi33"
->()
+N(2): <span class="ansi33"
+>x
+</span>
+N(3): <span class="ansi33"
+>y
+</span>
+N(4): <span class="ansi33"
+>z
+</span>
+N(5): <span class="ansi33"
+>b
+</span>
+N(6): <span class="ansi33"
+>x
+</span>
+N(7): <span class="ansi33"
+>y
+</span>
+N(8): <span class="ansi33"
+>z
+</span>
+N(9): <span class="ansi33"
+>c
+</span>
+N(10): <span class="ansi33"
+>x
+</span>
+N(11): <span class="ansi33"
+>y
+</span>
+R(12): <span class="ansi33"
+>z
 </span>P;HTML|
 ;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/superpose_nested.metta 0 ]
-<span class="ansi1"
->LoonIt Report
-</span>------------
-<span class="ansi32"
->Successes: 4
-</span><span class="ansi32"
->Failures: 0
-</span><br/> <a href="#" onclick="window.history.back(); return false;"
+<br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[()]
-[()]
-[()]
-[()]
+[a, b, c]
+[a, b, c]
+[a, x, a, y, a, z, b, x, b, y, b, z, c, x, c, y, c, z]
+[a, x, y, z, b, x, y, z, c, x, y, z]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:09:16+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 11:24:09+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/superpose_nested.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/superpose_nested.metta" --halt=true\033[0m

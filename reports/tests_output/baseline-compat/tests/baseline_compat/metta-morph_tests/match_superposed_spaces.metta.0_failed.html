@@ -18,18 +18,25 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:07:41+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:23:58+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta]
 P;HTML|
@@ -41,7 +48,7 @@ Script started on 2025-04-01 23:07:41+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[()]" ]
 P;HTML|
-;                     [ = 3 "[()]" ]
+;                      [ = 3 "[()]" ]
 P;HTML|
 ;                      [ = 4 "[()]" ]
 P;HTML|
@@ -51,10 +58,14 @@ Script started on 2025-04-01 23:07:41+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                       [ = 7 "[()]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta]
 
 <span class="ansi38-013099040"
 >!(bind! &attentional_focus (new-space))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    ('mc__1_0_new-space'(B), 'mc__1_2_bind!'('&attentional_focus', B, A))).
 
 </span>
 Deterministic: <span class="ansi33"
@@ -62,11 +73,18 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(add-atom &attentional_focus 1)
 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_2_add-atom'(space_1, 1, A)).
+
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
 >!(bind! &concepts (new-space))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    ('mc__1_0_new-space'(B), 'mc__1_2_bind!'('&concepts', B, A))).
 
 </span>
 Deterministic: <span class="ansi33"
@@ -74,20 +92,28 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(add-atom &concepts 2)
 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_2_add-atom'(space_2, 2, A)).
+
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &attentional_focus $41250 $41250) (1))
+>!(assertEqualToResult (match &attentional_focus $47404 $47404) (1))
+
+</span>1 _48720 [[assign,_49072,[ispu,_44760{vn = ...}]],[assign,_48720,[fcall(match,[3]),[space_1,_44760{vn = ...},_49072]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, mc__1_3_match(space_1, D, E, C), F, F=[match, space_1, D, E], E=ispu(D)), G=[1], mc__1_2_assertEqualToResult(B, G, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.01"
->;; METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.01</h3>
+;<h3 id="METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.01"
+>;; METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000359 secs. (359.17 microseconds) 
+; took 0.000075 secs. (75.03 microseconds) 
 
-!(assertEqualToResult (match &attentional_focus $50354 $50354) (1))
+!(assertEqualToResult (match &attentional_focus $58996 $58996) (1))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -98,16 +124,21 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &concepts $60372 $60372) (2))
+>!(assertEqualToResult (match &concepts $5640 $5640) (2))
+
+</span>1 _6952 [[assign,_7304,[ispu,_3686{vn = ...}]],[assign,_6952,[fcall(match,[3]),[space_2,_3686{vn = ...},_7304]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, mc__1_3_match(space_2, D, E, C), F, F=[match, space_2, D, E], E=ispu(D)), G=[2], mc__1_2_assertEqualToResult(B, G, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.02"
->;; METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.02</h3>
+;<h3 id="METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.02"
+>;; METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000312 secs. (312.19 microseconds) 
+; took 0.000047 secs. (46.87 microseconds) 
 
-!(assertEqualToResult (match &concepts $7410 $7410) (2))
+!(assertEqualToResult (match &concepts $17228 $17228) (2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -118,16 +149,21 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match (superpose (&attentional_focus &concepts)) $17518 $17518) (1 2))
+>!(assertEqualToResult (match (superpose (&attentional_focus &concepts)) $26854 $26854) (1 2))
+
+</span>1 _28222 [[assign,_28498,list([space_1,space_2])],[assign,_28380,[fcall(superpose,[1]),[_28498]]],[assign,_29308,[ispu,_24870{vn = ...}]],[assign,_28222,[fcall(match,[3]),[_28380,_24870{vn = ...},_29308]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, mc__1_3_match(D, E, F, C), G, G=[match, D, E, F], (H=[space_1, space_2], mc__1_1_superpose(H, D), F=ispu(E))), I=[1, 2], mc__1_2_assertEqualToResult(B, I, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.03"
->;; METTA-MORPH-TESTS.MATCH-SUPERPOSED-SPACES.03</h3>
+;<h3 id="METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.03"
+>;; METTA-MORPH-TESTS-COMP.MATCH-SUPERPOSED-SPACES-COMP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000541 secs. (540.88 microseconds) 
+; took 0.000062 secs. (61.58 microseconds) 
 
-!(assertEqualToResult (match (superpose (&attentional_focus &concepts)) $30572 $30572) (1 2))
+!(assertEqualToResult (match (superpose (&attentional_focus &concepts)) $7454 $7454) (1 2))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -158,10 +194,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:07:42+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 11:23:59+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta" --halt=true\033[0m

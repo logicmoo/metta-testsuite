@@ -18,24 +18,29 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:08:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/states_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:24:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/states_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/states_spaces.metta]
 P;HTML|
@@ -47,7 +52,7 @@ Script started on 2025-04-01 23:08:34+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[()]" ]
 P;HTML|
-;                     [ = 3 "[(State 45)]" ]
+;                      [ = 3 "[(State 45)]" ]
 P;HTML|
 ;                      [ = 4 "[45]" ]
 P;HTML|
@@ -57,14 +62,18 @@ Script started on 2025-04-01 23:08:34+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                       [ = 7 "[()]" ]
 P;HTML|
-;                       [ = 8 "[()]" ]
+;                        [ = 8 "[()]" ]
 P;HTML|
 ;                        [ = 9 "[()]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/states_spaces.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/states_spaces.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/states_spaces.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/states_spaces.metta]
 
 <span class="ansi38-013099040"
 >!(bind! &FIFO (new-state 42))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['new-state', 42], 'mc__1_2_bind!'('&FIFO', B, A))).
 
 </span>
 Deterministic: <span class="ansi33"
@@ -72,73 +81,57 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(bind! &WU (new-space))
 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    ('mc__1_0_new-space'(B), 'mc__1_2_bind!'('&WU', B, A))).
+
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
 >!(change-state! &FIFO 45)
 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['new-state', 42], A=['change-state!', B, 45])).
+
 </span>
 Deterministic: <span class="ansi33"
->[State 45 $15130]
-</span><span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+>(change-state! (new-state 42) 45)
+</span><span class="ansi38-013099040"
 >!(get-state &FIFO)
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (get-state &FIFO) (45))
 
-</span>
-;<h3 id="METTA-MORPH-TESTS.STATES-SPACES.01"
->;; METTA-MORPH-TESTS.STATES-SPACES.01</h3>
-; 
-; EVAL TEST
-; took 0.000254 secs. (254.02 microseconds) 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['new-state', 42], A=['get-state', B])).
 
-!(assertEqualToResult (get-state &FIFO) (45))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (45) 
-      (45)]]
 </span>
 Deterministic: <span class="ansi33"
->()
+>(get-state (new-state 42))
 </span><span class="ansi38-013099040"
 >!(add-atom &WU a)
 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
->!(match &WU $54790 $54790)
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &WU $56942 $56942) (a))
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_2_add-atom'(space_1, a, A)).
 
-</span>
-;<h3 id="METTA-MORPH-TESTS.STATES-SPACES.02"
->;; METTA-MORPH-TESTS.STATES-SPACES.02</h3>
-; 
-; EVAL TEST
-; took 0.000524 secs. (523.91 microseconds) 
-
-!(assertEqualToResult (match &WU $4584 $4584) (a))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (a) 
-      (a)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
+>!(match &WU $53114 $53114)
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispu(C), mc__1_3_match(space_1, C, B, A))).
+
+</span>
+N(1): <span class="ansi33"
+>a
+</span><span class="ansi38-013099040"
 >!(add-atom &WU b)
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_2_add-atom'(space_1, b, A)).
 
 </span>
 Deterministic: <span class="ansi33"
@@ -146,20 +139,29 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(remove-atom &WU a)
 
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_2_remove-atom'(space_1, a, A)).
+
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqual (match &WU $45506 $45506) (get-atoms &WU))
+>!(assertEqual (match &WU $33234 $33234) (get-atoms &WU))
+
+</span>1 _34562 [[assign,_34914,[ispu,_30584{vn = ...}]],[assign,_34562,[fcall(match,[3]),[space_1,_30584{vn = ...},_34914]]]]
+1 _35106 [[assign,_35106,[fcall('get-atoms',[1]),[space_1]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, mc__1_3_match(space_1, D, E, C), F, F=[match, space_1, D, E], E=ispu(D)), G=ispeEnN(H, 'mc__1_1_get-atoms'(space_1, H), I, I=['get-atoms', space_1]), mc__1_2_assertEqual(B, G, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.STATES-SPACES.03"
->;; METTA-MORPH-TESTS.STATES-SPACES.03</h3>
+;<h3 id="METTA-MORPH-TESTS-COMP.STATES-SPACES-COMP.01"
+>;; METTA-MORPH-TESTS-COMP.STATES-SPACES-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000524 secs. (524.39 microseconds) 
+; took 0.000083 secs. (83.11 microseconds) 
 
-!(assertEqual (match &WU $54702 $54702) (get-atoms &WU))
+!(assertEqual (match &WU $7432 $7432) (get-atoms &WU))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -175,27 +177,27 @@ Deterministic: <span class="ansi33"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 3
+>Successes: 1
 </span><span class="ansi32"
 >Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
 [()]
-[[State 45 $16058]]
+[(change-state! (new-state 42) 45)]
+[(get-state (new-state 42))]
 [()]
-[()]
-[()]
+[a]
 [()]
 [()]
 [()]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:08:35+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 11:24:07+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/states_spaces.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/states_spaces.metta" --halt=true\033[0m

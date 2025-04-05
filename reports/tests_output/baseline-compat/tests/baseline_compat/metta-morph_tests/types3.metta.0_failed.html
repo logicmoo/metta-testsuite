@@ -14,18 +14,23 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi36 { color: #00aaaa; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:09:20+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:24:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/types3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/types3.metta]
 P;HTML|
@@ -35,52 +40,65 @@ Script started on 2025-04-01 23:09:20+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 1 "[yay]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta]
 
-<span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
->!(match &self (GreaterThan $4382 $4388) (If (and (== (get-type $4382) Number) (== (get-type $4388) Number)) (If (EqualOrGreater $4382 $4388) yay)))
-</span>;; To unit test case:
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_2_If('True', _then, _then).
+
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_2_If('False', _then, A) :-
+    A=ispuU(_x, (_x=0, _x=1)).
+
+</span>
+<span class="ansi38-255165005"
+>1 _30744 [[prolog_if,[[native(is_True),_20960{vn = ...}]],[[assign,_30446,_20726{vn = ...}]],[[assign,_30446,_20492{vn = ...}]]],[native(as_p1_exec),_30446,_30744]]
+</span><span class="ansi38-173216230"
+>
+mc__1_3_If(_cond, _then, _else, A) :-
+    A=ispeEnN(B, ((is_True(_cond)*->C=_then;C=_else), as_p1_exec(C, B)), D, ((is_True(_cond)*->E=_then;E=_else), E=D)).
+
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_2_EqualOrGreater(_x, _y, A) :-
+    (   'mc__1_2_>'(_x, _y, B),
+        is_True(B)
+    *-> A='True'
+    ;   'mc__1_2_=='(_x, _y, C),
+        A=C
+    ).
+
+</span>
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (GreaterThan $6594 $6600) (If (and (== (get-type $6594) Number) (== (get-type $6600) Number)) (If (EqualOrGreater $6594 $6600) yay))) (yay))
+>!(match &self (GreaterThan $17682 $17688) (If (and (== (get-type $17682) Number) (== (get-type $17688) Number)) (If (EqualOrGreater $17682 $17688) yay)))
+
+</span>1 _23918 [[assign,_23204,[fcall('EqualOrGreater',[2]),[_14774{vn = ...},_14558{vn = ...}]]],[assign,_23666,[ispu,yay]],[assign,_23060,[fcall('If',[2]),[_23204,_23666]]],[native(as_p1_exec),_23060,_23918]]
+1 _24302 [[prolog_if,[[assign,_20148,[fcall('get-type',[1]),[_14774{vn = ...}]]],[assign,_20022,[fcall(==,[2]),[_20148,'Number']]],[native(is_True),_20022]],[[assign,_20810,[fcall('get-type',[1]),[_14558{vn = ...}]]],[assign,_20684,[fcall(==,[2]),[_20810,'Number']]],[assign,_19980,_20684]],[[assign,_19980,'False']]],[assign,_23884,[ispeEnNC,_23918,[[assign,_23060,[fcall('If',[2]),[_23204,_23666]]],[native(as_p1_exec),_23060,_23918]],_23962,[[assign,_23066,list(['If',_23204,_23666])],[assign,_23066,_23962]],[[assign,_23204,[fcall('EqualOrGreater',[2]),[_14774{vn = ...},_14558{vn = ...}]]],[assign,_23666,[ispu,yay]]]]],[assign,_19836,[fcall('If',[2]),[_19980,_23884]]],[native(as_p1_exec),_19836,_24302]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['GreaterThan', C, D], E=ispeEnNC(F, (mc__1_2_If(G, H, I), as_p1_exec(I, F)), J, (K=['If', G, H], K=J), (('mc__1_1_get-type'(C, L), 'mc__1_2_=='(L, 'Number', M), is_True(M)*->'mc__1_1_get-type'(D, N), 'mc__1_2_=='(N, 'Number', O), G=O;G='False'), H=ispeEnNC(P, (mc__1_2_If(Q, R, S), as_p1_exec(S, P)), T, (U=['If', Q, R], U=T), (mc__1_2_EqualOrGreater(C, D, Q), R=ispu(yay))))), mc__1_3_match('&self', B, E, A))).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.TYPES3.01"
->;; METTA-MORPH-TESTS.TYPES3.01</h3>
-; 
-; EVAL TEST
-; took 0.003 secs. (2.93 milliseconds) 
-
-!(assertEqualToResult (match &self (GreaterThan $37000 $37006) (If (and (== (get-type $37000) Number) (== (get-type $37006) Number)) (If (EqualOrGreater $37000 $37006) yay))) (yay))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (yay) 
-      (yay)]]
-</span>
-Deterministic: <span class="ansi33"
->()
+N(1): <span class="ansi33"
+>yay
 </span>P;HTML|
 ;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/types3.metta 0 ]
-<span class="ansi1"
->LoonIt Report
-</span>------------
-<span class="ansi32"
->Successes: 1
-</span><span class="ansi32"
->Failures: 0
-</span><br/> <a href="#" onclick="window.history.back(); return false;"
+<br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[()]
+[yay]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:09:20+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 11:24:52+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/types3.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/types3.metta" --halt=true\033[0m

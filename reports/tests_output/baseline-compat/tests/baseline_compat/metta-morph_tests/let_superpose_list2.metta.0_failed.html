@@ -17,13 +17,16 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:07:35+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:23:56+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta]
 P;HTML|
@@ -33,17 +36,42 @@ Script started on 2025-04-01 23:07:35+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 1 "[()]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta]
 
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_2_wuzaL(_x, L, A) :-
+    'mc__1_2_*'(2, _x, B),
+    _y=B,
+    mc__1_1_superpose(L, C),
+    _z=C,
+    transpiler_apply(mc__1_1_,
+                     _y,
+                     [_y, _z],
+                     A,
+                     [_z],
+                     [_z],
+                     [x(noeval, eager, [])],
+                     [true],
+                     [true]).
+
+</span>
 <span class="ansi38-013099040"
 >!(assertEqual (wuzaL 2 (3 4)) (superpose ((4 3) (4 4))))
 
+</span>1 _18884 [[assign,_19060,list([3,4])],[assign,_18884,[fcall(wuzaL,[2]),[2,_19060]]]]
+1 _19560 [[assign,_19732,list([4,3])],[assign,_20070,list([4,4])],[assign,_19678,list([_19732,_20070])],[assign,_19560,[fcall(superpose,[1]),[_19678]]]]
+<span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, mc__1_2_wuzaL(2, D, C), E, E=[wuzaL, 2, D], D=[3, 4]), F=ispeEnNC(G, mc__1_1_superpose(H, G), I, I=[superpose, H], (J=[4, 3], K=[4, 4], H=[J, K])), mc__1_2_assertEqual(B, F, A))).
+
 </span>
-;<h3 id="METTA-MORPH-TESTS.LET-SUPERPOSE-LIST2.01"
->;; METTA-MORPH-TESTS.LET-SUPERPOSE-LIST2.01</h3>
+;<h3 id="METTA-MORPH-TESTS-COMP.LET-SUPERPOSE-LIST2-COMP.01"
+>;; METTA-MORPH-TESTS-COMP.LET-SUPERPOSE-LIST2-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.13 milliseconds) 
+; took 0.000043 secs. (43.44 microseconds) 
 
 !(assertEqual (wuzaL 2 (3 4)) (superpose ((4 3) (4 4))))
 
@@ -70,10 +98,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-01 23:07:36+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-05 11:23:57+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta" --halt=true\033[0m

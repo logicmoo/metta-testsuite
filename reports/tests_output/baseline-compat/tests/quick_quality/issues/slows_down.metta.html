@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-04-05 11:50:05+00:00 [COMMAND="timeout --preserve-status --foreground 46 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=46 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/quick_quality/issues/slows_down.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; user:[load_metta_file &self tests/quick_quality/issues/slows_down.metta]
+P;HTML|
+;            [track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta]
+P;HTML|
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta]
+P;HTML|
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta]
+
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_2_nth(_n, _list, A) :-
+    (   'mc__1_2_=='(_n, 1, B),
+        is_True(B)
+    *-> 'mc__1_1_car-atom'(_list, C),
+        A=C
+    ;   'mc__1_2_-'(_n, 1, D),
+        'mc__1_1_cdr-atom'(_list, E),
+        mc__1_2_nth(D, E, F),
+        A=F
+    ).
+
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_7_replace_square_recursive(X1, Y1, _color, _rank, X2, Y2, _current_board, A) :-
+    (   B=['size-atom', _current_board],
+        'mc__1_2_=='(B, 0, C),
+        is_True(C)
+    *-> A=[]
+    ;   'mc__1_1_car-atom'(_current_board, D),
+        _next_sq=D,
+        mc__1_2_nth(1, _next_sq, E),
+        X=E,
+        mc__1_2_nth(2, _next_sq, F),
+        Y=F,
+        (   (   'mc__1_2_=='(X, X1, G),
+                is_True(G)
+            *-> 'mc__1_2_=='(Y, Y1, H),
+                I=H
+            ;   I='False'
+            ),
+            is_True(I)
+        *-> transpiler_apply(mc__1_1_,
+                             X1,
+                             [X1, Y1],
+                             J,
+                             [Y1],
+                             [Y1],
+                             [x(doeval, eager, [])],
+                             [true],
+                             [true]),
+            _from_square=J,
+            'mc__1_1_cdr-atom'(_current_board, K),
+            mc__1_7_replace_square_recursive(X1,
+                                             Y1,
+                                             _color,
+                                             _rank,
+                                             X2,
+                                             Y2,
+                                             K,
+                                             L),
+            _rest=L,
+            'mc__1_2_cons-atom'(_from_square, _rest, M),
+            N=M
+        ;   (   (   'mc__1_2_=='(X, X2, O),
+                    is_True(O)
+                *-> 'mc__1_2_=='(Y, Y2, P),
+                    Q=P
+                ;   Q='False'
+                ),
+                is_True(Q)
+            *-> transpiler_apply(mc__1_3_,
+                                 X2,
+                                 [X2, Y2, _color, _rank],
+                                 R,
+                                 [Y2, _color, _rank],
+                                 [Y2, _color, _rank],
+                                 [ x(doeval, eager, []),
+                                   x(doeval, eager, []),
+                                   x(doeval, eager, [])
+                                 ],
+                                 [true, true, true],
+                                 [true, true, true]),
+                _into_square=R,
+                'mc__1_1_cdr-atom'(_current_board, S),
+                mc__1_7_replace_square_recursive(X1,
+                                                 Y1,
+                                                 _color,
+                                                 _rank,
+                                                 X2,
+                                                 Y2,
+                                                 S,
+                                                 T),
+                _rest=T,
+                'mc__1_2_cons-atom'(_into_square, _rest, U),
+                V=U
+            ;   'mc__1_1_cdr-atom'(_current_board, W),
+                mc__1_7_replace_square_recursive(X1,
+                                                 Y1,
+                                                 _color,
+                                                 _rank,
+                                                 X2,
+                                                 Y2,
+                                                 W,
+                                                 X),
+                _rest=X,
+                'mc__1_2_cons-atom'(_next_sq, _rest, Y),
+                V=Y
+            ),
+            N=V
+        ),
+        A=N
+    ).
+
+</span>
+<span class="ansi38-013099040"
+>!(println! "starting...")
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, 'mc__1_1_println!'("starting...", A)).
+
+</span>starting...
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(replace_square_recursive 1 8 g r 4 4 ((1 8 g r) (2 8 g n) (3 8 g b) (4 8 g q) (5 8 g k) (6 8 g b) (7 8 g n) (8 8 g r) (1 7 g p) (2 7 g p) (3 7 g p) (4 7 g p) (5 7 g p) (6 7 g p) (7 7 g p) (8 7 g p) (1 6) (2 6) (3 6) (4 6) (5 6) (6 6) (7 6) (8 6) (1 5) (2 5) (3 5) (4 5) (5 5) (6 5) (7 5) (8 5) (1 4) (2 4) (3 4) (4 4) (5 4) (6 4) (7 4) (8 4) (1 3) (2 3) (3 3) (4 3) (5 3) (6 3) (7 3) (8 3) (1 2 s p) (2 2 s p) (3 2 s p) (4 2 s p) (5 2 s p) (6 2 s p) (7 2 s p) (8 2 s p) (1 1 s r) (2 1 s n) (3 1 s b) (4 1 s q) (5 1 s k) (6 1 s b) (7 1 s n) (8 1 s r)))
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[1, 8, g, r], C=[2, 8, g, n], D=[3, 8, g, b], E=[4, 8, g, q], F=[5, 8, g, k], G=[6, 8, g, b], H=[7, 8, g, n], I=[8, 8, g, r], J=[1, 7, g, p], K=[2, 7, g, p], L=[3, 7, g, p], M=[4, 7, g, p], N=[5, 7, g, p], O=[6, 7, g, p], P=[7, 7, g, p], Q=[8, 7, g, p], R=[1, 6], S=[2, 6], T=[3, 6], U=[4, 6], V=[5, 6], W=[6, 6], X=[7, 6], Y=[8, 6], Z=[1, 5], A1=[2, 5], B1=[3, 5], C1=[4, 5], D1=[5, 5], E1=[6, 5], F1=[7, 5], G1=[8, 5], H1=[1, 4], I1=[2, 4], J1=[3, 4], K1=[4, 4], L1=[5, 4], M1=[6, 4], N1=[7, 4], O1=[8, 4], P1=[1, 3], Q1=[2, 3], R1=[3, 3], S1=[4, 3], T1=[5, 3], U1=[6, 3], V1=[7, 3], W1=[8, 3], X1=[1, 2, s, p], Y1=[2, 2, s, p], Z1=[3, 2, s, p], A2=[4, 2, s, p], B2=[5, 2, s, p], C2=[6, 2, s, p], D2=[7, 2, s, p], E2=[8, 2, s, p], F2=[1, 1, s, r], G2=[2, 1, s, n], H2=[3, 1, s, b], I2=[4, 1, s, q], J2=[5, 1, s, k], K2=[6, 1, s, b], L2=[7, 1, s, n], M2=[8, 1, s, r], N2=[B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, A1, B1, C1, D1, E1, F1, G1, H1, I1, J1, K1, L1, M1, N1, O1, P1, Q1, R1, S1, T1, U1, V1, W1, X1, Y1, Z1, A2, B2, C2, D2, E2, F2, G2, H2, I2, J2, K2, L2, M2], mc__1_7_replace_square_recursive(1, 8, g, r, 4, 4, N2, A))).
+
+</span>;; no-results ;; 
+P;HTML|
+;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/quick_quality/issues/slows_down.metta 0 ]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+</span>
+Script done on 2025-04-05 11:50:06+00:00 [COMMAND_EXIT_CODE="1"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted successfully (EXITCODE=1) Under 46 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=46 --html --repl=false  --test --compile=full "tests/quick_quality/issues/slows_down.metta" --halt=true\033[0m

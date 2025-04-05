@@ -13,15 +13,24 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-01 23:06:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1788-851.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-05 11:23:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/factorial.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/factorial.metta]
 P;HTML|
@@ -33,24 +42,73 @@ Script started on 2025-04-01 23:06:50+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[3628800]" ]
 P;HTML|
-;                   [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta]
+;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta]
 
-<span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
->!(facF 10)
-</span>;; To unit test case:
-<span class="ansi38-013099040"
->!(assertEqualToResult (facF 10) (3_628_800))
+<span class="ansi38-255165005"
+>1 _54258 [[prolog_if,[[native(is_True),_43780{vn = ...}]],[[assign,_53960,_43546{vn = ...}]],[[assign,_53960,_43312{vn = ...}]]],[native(as_p1_exec),_53960,_54258]]
+</span><span class="ansi38-173216230"
+>
+mc__1_3_If(_cond, _then, _else, A) :-
+    A=ispeEnN(B, ((is_True(_cond)*->C=_then;C=_else), as_p1_exec(C, B)), D, ((is_True(_cond)*->E=_then;E=_else), E=D)).
 
 </span>
-;<h3 id="METTA-MORPH-TESTS.FACTORIAL.01"
->;; METTA-MORPH-TESTS.FACTORIAL.01</h3>
+<span class="ansi38-255165005"
+>1 _21772 [[assign,_22308,[fcall(-,[2]),[_7162{vn = ...},1]]],[assign,_22162,[fcall(facF,[1]),[_22308]]],[assign,_21772,[fcall(*,[2]),[_7162{vn = ...},_22162]]]]
+</span><span class="ansi38-173216230"
+>
+mc__1_1_facF(_n, A) :-
+    'mc__1_2_=='(_n, 0, B),
+    C=ispu(1),
+    D=ispeEnNC(E, 'mc__1_2_*'(_n, F, E), G, G=[*, _n, F], ('mc__1_2_-'(_n, 1, H), mc__1_1_facF(H, F))),
+    mc__1_3_If(B, C, D, I),
+    as_p1_exec(I, A).
 
-Script done on 2025-04-01 23:07:30+00:00 [COMMAND_EXIT_CODE="143"]
+</span>
+<span class="ansi38-255165005"
+></span><span class="ansi38-173216230"
+>
+mc__1_1_facf(_n, A) :-
+    (   'mc__1_2_=='(_n, 0, B),
+        is_True(B)
+    *-> A=1
+    ;   'mc__1_2_-'(_n, 1, C),
+        mc__1_1_facf(C, D),
+        'mc__1_2_*'(_n, D, E),
+        A=E
+    ).
+
+</span>
+<span class="ansi38-013099040"
+>!(facF 10)
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, mc__1_1_facF(10, A)).
+
+</span>
+Deterministic: <span class="ansi33"
+>3_628_800
+</span><span class="ansi38-013099040"
+>!(facf 10)
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, mc__1_1_facf(10, A)).
+
+</span>
+Deterministic: <span class="ansi33"
+>3_628_800
+</span>P;HTML|
+;            [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/factorial.metta 0 ]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[3_628_800]
+[3_628_800]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+</span>
+Script done on 2025-04-05 11:23:50+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;31mKilled (definitely due to timeout) (EXITCODE=143) after Under 40 seconds seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/factorial.metta" --halt=true\033[0m
+\033[1;33mCompleted successfully (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --compile=full "tests/baseline_compat/metta-morph_tests/factorial.metta" --halt=true\033[0m

@@ -107,7 +107,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-05 11:24:00+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1927-874.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/minnars.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-13 00:10:38+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1315-516.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --compile=full tests/baseline_compat/metta-morph_tests/minnars.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/minnars.metta]
 P;HTML|
@@ -139,11 +139,11 @@ mc__1_2_If('False', _then, A) :-
 
 </span>
 <span class="ansi38-255165005"
->1 _30816 [[prolog_if,[[native(is_True),_21032{vn = ...}]],[[assign,_30518,_20798{vn = ...}]],[[assign,_30518,_20564{vn = ...}]]],[native(as_p1_exec),_30518,_30816]]
+>1 _31096 [[prolog_if,[[native(is_True),_21270{vn = ...}]],[[assign,_30798,_21036{vn = ...}]],[[assign,_30798,_20802{vn = ...}]]],[native(as_p1_exec),_30798,_31096]]
 </span><span class="ansi38-173216230"
 >
 mc__1_3_If(_cond, _then, _else, A) :-
-    A=ispeEnN(B, ((is_True(_cond)*->C=_then;C=_else), as_p1_exec(C, B)), D, ((is_True(_cond)*->E=_then;E=_else), E=D)).
+    A=ispeEnN(B, ((is_True(_cond)*->C=_then;C=_else), as_p1_exec(C, B)), D, ((is_True(_cond)*->E=_then;E=_else), as_p1_expr(E, D))).
 
 </span>
 <span class="ansi38-255165005"
@@ -154,7 +154,7 @@ mc__1_1_sequential(_1, A) :-
 
 </span>
 <span class="ansi31"
->Warning: /tmp/swipl_16588_5:6:
+>Warning: /tmp/swipl_16338_5:6:
 Warning:    Singleton variable in branch: C
 </span><span class="ansi38-255165005"
 ></span><span class="ansi38-173216230"
@@ -190,7 +190,7 @@ mc__1_2_min(_1, _2, A) :-
 
 </span>
 <span class="ansi38-255165005"
->1 _22776 [[assign,_22776,[fcall(-,[2]),[0,_10772{vn = ...}]]]]
+>1 _22786 [[assign,_22786,[fcall(-,[2]),[0,_10772{vn = ...}]]]]
 </span><span class="ansi38-173216230"
 >
 mc__1_1_abs(_x, A) :-
@@ -202,7 +202,7 @@ mc__1_1_abs(_x, A) :-
 
 </span>
 <span class="ansi38-255165005"
->1 _51250 [[assign,_52040,[fcall(superpose,[1]),[_39398{vn = ...}]]],[assign,_52338,[fcall(superpose,[1]),[_39176{vn = ...}]]],[assign,_51562,list([_52040,_52338])],[assign,_51250,[fcall(superpose,[1]),[_51562]]]]
+>1 _51286 [[assign,_52076,[fcall(superpose,[1]),[_39408{vn = ...}]]],[assign,_52374,[fcall(superpose,[1]),[_39186{vn = ...}]]],[assign,_51598,list([_52076,_52374])],[assign,_51286,[fcall(superpose,[1]),[_51598]]]]
 </span><span class="ansi38-173216230"
 >
 mc__1_2_TupleConcat(Ev1, Ev2, A) :-
@@ -215,7 +215,7 @@ mc__1_2_TupleConcat(Ev1, Ev2, A) :-
 >
 mc__1_1_Truth_c2w(_c, A) :-
     'mc__1_2_-'(1, _c, B),
-    A=[/, _c, B].
+    'mc__1_2_/'(_c, B, A).
 
 </span>
 <span class="ansi38-255165005"
@@ -223,7 +223,7 @@ mc__1_1_Truth_c2w(_c, A) :-
 >
 mc__1_1_Truth_w2c(_w, A) :-
     'mc__1_2_+'(_w, 1, B),
-    A=[/, _w, B].
+    'mc__1_2_/'(_w, B, A).
 
 </span>
 <span class="ansi38-255165005"
@@ -277,7 +277,7 @@ mc__1_2_Truth_Revision([_f1, _c1], [_f2, _c2], A) :-
     'mc__1_2_*'(_w1, _f1, E),
     'mc__1_2_*'(_w2, _f2, F),
     'mc__1_2_+'(E, F, G),
-    H=[/, G, _w],
+    'mc__1_2_/'(G, _w, H),
     _f=H,
     mc__1_1_Truth_w2c(_w, I),
     _c=I,
@@ -888,28 +888,29 @@ mc__1_2_StampDisjoint(Ev1, Ev2, A) :-
 
 </span>
 <span class="ansi38-255165005"
->1 _93810 [[assign,_88438,[fcall(superpose,[1]),[_24714{vn = ...}]]],[assign,['Sentence',_23688{vn = ...},_23472{vn = ...}],_88438],[assign,_88942,[fcall(superpose,[1]),[_24714{vn = ...}]]],[assign,['Sentence',_23250{vn = ...},_23034{vn = ...}],_88942],[assign,_89268,[fcall('TupleConcat',[2]),[_23472{vn = ...},_23034{vn = ...}]]],[assign,_22812{vn = ...},_89268],[assign,_90262,[fcall('StampDisjoint',[2]),[_23472{vn = ...},_23034{vn = ...}]]],[assign,_93420,[ispuU,_90834,[[prolog_if,[[assign,_90862,[fcall('|-',[2]),[_23688{vn = ...},_23250{vn = ...}]]]],[[assign,_91472,_90862]],[[assign,_91472,'Empty']]],[transpiler_apply,mc__1_1_,_22572{vn = ...},[_22572{vn = ...},_22362{vn = ...}],_91516,[_22362{vn = ...}],[_22362{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[prolog_if,[[prolog_match,_91472,_91516]],[[transpiler_apply,mc__1_1_,_22572{vn = ...},[_22572{vn = ...},_22362{vn = ...}],_92362,[_22362{vn = ...}],[_22362{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_91876,list(['Sentence',_92362,_22812{vn = ...}])],[assign,_90834,_91876]],[[assign,_93048,'Empty'],[assign,_90834,_93048]]]]]],[assign,_88296,[fcall('If',[2]),[_90262,_93420]]],[native(as_p1_exec),_88296,_93810]]
-1 _87960 [[assign,_93776,[ispeEnNC,_93810,[[assign,_88296,[fcall('If',[2]),[_90262,_93420]]],[native(as_p1_exec),_88296,_93810]],_93890,[[assign,_88302,list(['If',_90262,_93420])],[assign,_88302,_93890]],[[assign,_88438,[fcall(superpose,[1]),[_24714{vn = ...}]]],[assign,['Sentence',_23688{vn = ...},_23472{vn = ...}],_88438],[assign,_88942,[fcall(superpose,[1]),[_24714{vn = ...}]]],[assign,['Sentence',_23250{vn = ...},_23034{vn = ...}],_88942],[assign,_89268,[fcall('TupleConcat',[2]),[_23472{vn = ...},_23034{vn = ...}]]],[assign,_22812{vn = ...},_89268],[assign,_90262,[fcall('StampDisjoint',[2]),[_23472{vn = ...},_23034{vn = ...}]]],[assign,_93420,[ispuU,_90834,[[prolog_if,[[assign,_90862,[fcall('|-',[2]),[_23688{vn = ...},_23250{vn = ...}]]]],[[assign,_91472,_90862]],[[assign,_91472,'Empty']]],[transpiler_apply,mc__1_1_,_22572{vn = ...},[_22572{vn = ...},_22362{vn = ...}],_91516,[_22362{vn = ...}],[_22362{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[prolog_if,[[prolog_match,_91472,_91516]],[[transpiler_apply,mc__1_1_,_22572{vn = ...},[_22572{vn = ...},_22362{vn = ...}],_92362,[_22362{vn = ...}],[_22362{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_91876,list(['Sentence',_92362,_22812{vn = ...}])],[assign,_90834,_91876]],[[assign,_93048,'Empty'],[assign,_90834,_93048]]]]]]]]],[assign,_88002,[fcall(collapse,[1]),[_93776]]],[assign,_23964{vn = ...},_88002],[assign,_94422,[fcall('TupleConcat',[2]),[_24714{vn = ...},_23964{vn = ...}]]],[assign,_94808,[fcall(+,[2]),[_24462{vn = ...},1]]],[assign,_87960,[fcall('Derive',[3]),[_94422,_94808,_24222{vn = ...}]]]]
+>1 _90896 [[prolog_if,[[assign,_90924,[fcall('|-',[2]),[_23708{vn = ...},_23270{vn = ...}]]]],[[assign,_91534,_90924]],[[assign,_91534,'Empty']]],[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_91578,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[prolog_if,[[prolog_match,_91534,_91578]],[[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_92424,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_91938,list(['Sentence',_92424,_22832{vn = ...}])],[assign,_90896,_91938]],[[assign,_93110,'Empty'],[assign,_90896,_93110]]]]
+1 _93904 [[assign,_88500,[fcall(superpose,[1]),[_24734{vn = ...}]]],[assign,['Sentence',_23708{vn = ...},_23492{vn = ...}],_88500],[assign,_89004,[fcall(superpose,[1]),[_24734{vn = ...}]]],[assign,['Sentence',_23270{vn = ...},_23054{vn = ...}],_89004],[assign,_89330,[fcall('TupleConcat',[2]),[_23492{vn = ...},_23054{vn = ...}]]],[assign,_22832{vn = ...},_89330],[assign,_90324,[fcall('StampDisjoint',[2]),[_23492{vn = ...},_23054{vn = ...}]]],[assign,_93482,[ispeEnNC,_90896,[[prolog_if,[[prolog_match,_91534,_91578]],[[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_92424,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_91938,list(['Sentence',_92424,_22832{vn = ...}])],[assign,_90896,_91938]],[[assign,_93110,'Empty'],[assign,_90896,_93110]]]],_90896,[[prolog_if,[[prolog_match,_91534,_91578]],[[assign,_92430,list([_22592{vn = ...},_22382{vn = ...}])],[assign,_91940,list(['Sentence',_92430,_22832{vn = ...}])],[assign,_90896,_91940]],[[assign,_93112,'Empty'],[assign,_90896,_93112]]]],[[prolog_if,[[assign,_90924,[fcall('|-',[2]),[_23708{vn = ...},_23270{vn = ...}]]]],[[assign,_91534,_90924]],[[assign,_91534,'Empty']]],[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_91578,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]]]]],[assign,_88358,[fcall('If',[2]),[_90324,_93482]]],[native(as_p1_exec),_88358,_93904]]
+1 _88022 [[assign,_93870,[ispeEnNC,_93904,[[assign,_88358,[fcall('If',[2]),[_90324,_93482]]],[native(as_p1_exec),_88358,_93904]],_93988,[[assign,_88364,list(['If',_90324,_93482])],[native(as_p1_expr),_88364,_93988]],[[assign,_88500,[fcall(superpose,[1]),[_24734{vn = ...}]]],[assign,['Sentence',_23708{vn = ...},_23492{vn = ...}],_88500],[assign,_89004,[fcall(superpose,[1]),[_24734{vn = ...}]]],[assign,['Sentence',_23270{vn = ...},_23054{vn = ...}],_89004],[assign,_89330,[fcall('TupleConcat',[2]),[_23492{vn = ...},_23054{vn = ...}]]],[assign,_22832{vn = ...},_89330],[assign,_90324,[fcall('StampDisjoint',[2]),[_23492{vn = ...},_23054{vn = ...}]]],[assign,_93482,[ispeEnNC,_90896,[[prolog_if,[[prolog_match,_91534,_91578]],[[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_92424,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_91938,list(['Sentence',_92424,_22832{vn = ...}])],[assign,_90896,_91938]],[[assign,_93110,'Empty'],[assign,_90896,_93110]]]],_90896,[[prolog_if,[[prolog_match,_91534,_91578]],[[assign,_92430,list([_22592{vn = ...},_22382{vn = ...}])],[assign,_91940,list(['Sentence',_92430,_22832{vn = ...}])],[assign,_90896,_91940]],[[assign,_93112,'Empty'],[assign,_90896,_93112]]]],[[prolog_if,[[assign,_90924,[fcall('|-',[2]),[_23708{vn = ...},_23270{vn = ...}]]]],[[assign,_91534,_90924]],[[assign,_91534,'Empty']]],[transpiler_apply,mc__1_1_,_22592{vn = ...},[_22592{vn = ...},_22382{vn = ...}],_91578,[_22382{vn = ...}],[_22382{vn = ...}],[x(noeval,eager,[])],[[]],[[]]]]]]]]],[assign,_88064,[fcall(collapse,[1]),[_93870]]],[assign,_23984{vn = ...},_88064],[assign,_94520,[fcall('TupleConcat',[2]),[_24734{vn = ...},_23984{vn = ...}]]],[assign,_94906,[fcall(+,[2]),[_24482{vn = ...},1]]],[assign,_88022,[fcall('Derive',[3]),[_94520,_94906,_24242{vn = ...}]]]]
 </span><span class="ansi38-173216230"
 >
 mc__1_3_Derive(_beliefs, _depth, _maxdepth, A) :-
     'mc__1_2_>'(_depth, _maxdepth, B),
     C=ispu(_beliefs),
-    D=ispeEnNC(E, mc__1_3_Derive(F, G, _maxdepth, E), H, H=['Derive', F, G, _maxdepth], (I=ispeEnNC(J, (mc__1_2_If(K, L, M), as_p1_exec(M, J)), N, (O=['If', K, L], O=N), (mc__1_1_superpose(_beliefs, P), ['Sentence', _x, Ev1]=P, mc__1_1_superpose(_beliefs, Q), ['Sentence', _y, Ev2]=Q, mc__1_2_TupleConcat(Ev1, Ev2, R), _stamp=R, mc__1_2_StampDisjoint(Ev1, Ev2, K), L=ispuU(S, (('mc__1_2_|-'(_x, _y, T)*->U=T;U='Empty'), transpiler_apply(mc__1_1_, T, [T, TV], V, [TV], [TV], [x(noeval, eager, [])], [true], [true]), (U=V*->transpiler_apply(mc__1_1_, T, [T, TV], W, [TV], [TV], [x(noeval, eager, [])], [true], [true]), X=['Sentence', W, _stamp], S=X;Y='Empty', S=Y))))), mc__1_1_collapse(I, Z), _derivations=Z, mc__1_2_TupleConcat(_beliefs, _derivations, F), 'mc__1_2_+'(_depth, 1, G))),
-    mc__1_3_If(B, C, D, A1),
-    as_p1_exec(A1, A).
+    D=ispeEnNC(E, mc__1_3_Derive(F, G, _maxdepth, E), H, H=['Derive', F, G, _maxdepth], (I=ispeEnNC(J, (mc__1_2_If(K, L, M), as_p1_exec(M, J)), N, (O=['If', K, L], as_p1_expr(O, N)), (mc__1_1_superpose(_beliefs, P), ['Sentence', _x, Ev1]=P, mc__1_1_superpose(_beliefs, Q), ['Sentence', _y, Ev2]=Q, mc__1_2_TupleConcat(Ev1, Ev2, R), _stamp=R, mc__1_2_StampDisjoint(Ev1, Ev2, K), L=ispeEnNC(S, (T=U*->transpiler_apply(mc__1_1_, T, [T, TV], V, [TV], [TV], [x(noeval, eager, [])], [true], [true]), W=['Sentence', V, _stamp], S=W;X='Empty', S=X), S, (T=U*->Y=[T, TV], Z=['Sentence', Y, _stamp], S=Z;A1='Empty', S=A1), (('mc__1_2_|-'(_x, _y, B1)*->T=B1;T='Empty'), transpiler_apply(mc__1_1_, T, [T, TV], U, [TV], [TV], [x(noeval, eager, [])], [true], [true]))))), mc__1_1_collapse(I, C1), _derivations=C1, mc__1_2_TupleConcat(_beliefs, _derivations, F), 'mc__1_2_+'(_depth, 1, G))),
+    mc__1_3_If(B, C, D, D1),
+    as_p1_exec(D1, A).
 
 </span>
 <span class="ansi38-255165005"
->1 _51114 [[assign,_51114,[fcall('BestCandidate',[3]),[_16658{vn = ...},_15782{vn = ...},_15548{vn = ...}]]]]
-1 _51600 [[assign,_51600,[fcall('BestCandidate',[3]),[_16658{vn = ...},_16304{vn = ...},_15548{vn = ...}]]]]
-1 _52692 [[assign,_48608,[fcall('car-atom',[1]),[_16022{vn = ...}]]],[assign,_15782{vn = ...},_48608],[assign,_49118,[fcall('cdr-atom',[1]),[_16022{vn = ...}]]],[assign,_15548{vn = ...},_49118],[transpiler_apply,mc__1_1_,_16658{vn = ...},[_16658{vn = ...},_15782{vn = ...}],_50206,[_15782{vn = ...}],[_15782{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[transpiler_apply,mc__1_1_,_16658{vn = ...},[_16658{vn = ...},_16304{vn = ...}],_50574,[_16304{vn = ...}],[_16304{vn = ...}],[x(doeval,eager,[])],[[]],[[]]],[assign,_49856,[fcall(>,[2]),[_50206,_50574]]],[assign,_52094,[ispeEnN,_51114,[[assign,_51114,[fcall('BestCandidate',[3]),[_16658{vn = ...},_15782{vn = ...},_15548{vn = ...}]]]],_51120,[[assign,_51120,list(['BestCandidate',_16658{vn = ...},_15782{vn = ...},_15548{vn = ...}])]]]],[assign,_52188,[ispeEnN,_51600,[[assign,_51600,[fcall('BestCandidate',[3]),[_16658{vn = ...},_16304{vn = ...},_15548{vn = ...}]]]],_51606,[[assign,_51606,list(['BestCandidate',_16658{vn = ...},_16304{vn = ...},_15548{vn = ...}])]]]],[assign,_48466,[fcall('If',[3]),[_49856,_52094,_52188]]],[native(as_p1_exec),_48466,_52692]]
+>1 _52656 [[assign,_52656,[fcall('BestCandidate',[3]),[_18158{vn = ...},_17282{vn = ...},_17048{vn = ...}]]]]
+1 _53142 [[assign,_53142,[fcall('BestCandidate',[3]),[_18158{vn = ...},_17804{vn = ...},_17048{vn = ...}]]]]
+1 _54234 [[assign,_50150,[fcall('car-atom',[1]),[_17522{vn = ...}]]],[assign,_17282{vn = ...},_50150],[assign,_50660,[fcall('cdr-atom',[1]),[_17522{vn = ...}]]],[assign,_17048{vn = ...},_50660],[transpiler_apply,mc__1_1_,_18158{vn = ...},[_18158{vn = ...},_17282{vn = ...}],_51748,[_17282{vn = ...}],[_17282{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[transpiler_apply,mc__1_1_,_18158{vn = ...},[_18158{vn = ...},_17804{vn = ...}],_52116,[_17804{vn = ...}],[_17804{vn = ...}],[x(doeval,eager,[])],[[]],[[]]],[assign,_51398,[fcall(>,[2]),[_51748,_52116]]],[assign,_53636,[ispeEnN,_52656,[[assign,_52656,[fcall('BestCandidate',[3]),[_18158{vn = ...},_17282{vn = ...},_17048{vn = ...}]]]],_52662,[[assign,_52662,list(['BestCandidate',_18158{vn = ...},_17282{vn = ...},_17048{vn = ...}])]]]],[assign,_53730,[ispeEnN,_53142,[[assign,_53142,[fcall('BestCandidate',[3]),[_18158{vn = ...},_17804{vn = ...},_17048{vn = ...}]]]],_53148,[[assign,_53148,list(['BestCandidate',_18158{vn = ...},_17804{vn = ...},_17048{vn = ...}])]]]],[assign,_50008,[fcall('If',[3]),[_51398,_53636,_53730]]],[native(as_p1_exec),_50008,_54234]]
 </span><span class="ansi38-173216230"
 >
 mc__1_3_BestCandidate(EvaluateCandidateFunction, BestCandidate, _tuple, A) :-
     'mc__1_2_=='(_tuple, [], B),
     C=ispu(BestCandidate),
-    D=ispeEnNC(E, (mc__1_3_If(F, G, H, I), as_p1_exec(I, E)), J, (K=['If', F, G, H], K=J), ('mc__1_1_car-atom'(_tuple, L), _head=L, 'mc__1_1_cdr-atom'(_tuple, M), _tail=M, transpiler_apply(mc__1_1_, EvaluateCandidateFunction, [EvaluateCandidateFunction, _head], N, [_head], [_head], [x(noeval, eager, [])], [true], [true]), transpiler_apply(mc__1_1_, EvaluateCandidateFunction, [EvaluateCandidateFunction, BestCandidate], O, [BestCandidate], [BestCandidate], [x(doeval, eager, [])], [true], [true]), 'mc__1_2_>'(N, O, F), G=ispeEnN(P, mc__1_3_BestCandidate(EvaluateCandidateFunction, _head, _tail, P), Q, Q=['BestCandidate', EvaluateCandidateFunction, _head, _tail]), H=ispeEnN(R, mc__1_3_BestCandidate(EvaluateCandidateFunction, BestCandidate, _tail, R), S, S=['BestCandidate', EvaluateCandidateFunction, BestCandidate, _tail]))),
+    D=ispeEnNC(E, (mc__1_3_If(F, G, H, I), as_p1_exec(I, E)), J, (K=['If', F, G, H], as_p1_expr(K, J)), ('mc__1_1_car-atom'(_tuple, L), _head=L, 'mc__1_1_cdr-atom'(_tuple, M), _tail=M, transpiler_apply(mc__1_1_, EvaluateCandidateFunction, [EvaluateCandidateFunction, _head], N, [_head], [_head], [x(noeval, eager, [])], [true], [true]), transpiler_apply(mc__1_1_, EvaluateCandidateFunction, [EvaluateCandidateFunction, BestCandidate], O, [BestCandidate], [BestCandidate], [x(doeval, eager, [])], [true], [true]), 'mc__1_2_>'(N, O, F), G=ispeEnN(P, mc__1_3_BestCandidate(EvaluateCandidateFunction, _head, _tail, P), Q, Q=['BestCandidate', EvaluateCandidateFunction, _head, _tail]), H=ispeEnN(R, mc__1_3_BestCandidate(EvaluateCandidateFunction, BestCandidate, _tail, R), S, S=['BestCandidate', EvaluateCandidateFunction, BestCandidate, _tail]))),
     mc__1_3_If(B, C, D, T),
     as_p1_exec(T, A).
 
@@ -927,12 +928,13 @@ mc__1_1_ConfidenceRank([], 0).
 
 </span>
 <span class="ansi38-255165005"
-></span><span class="ansi38-173216230"
+>1 _27312 [[assign,_27354,[fcall('Derive',[3]),[_1918{vn = ...},1,_1890{vn = ...}]]],[assign,_1876{vn = ...},_27354],[prolog_if,[[assign,_28014,[fcall(superpose,[1]),[_1876{vn = ...}]]]],[[assign,_28536,_28014]],[[assign,_28536,'Empty']]],[transpiler_apply,mc__1_1_,_1862{vn = ...},[_1862{vn = ...},_1848{vn = ...}],_29066,[_1848{vn = ...}],[_1848{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_28580,list(['Sentence',_29066,_1834{vn = ...}])],[prolog_if,[[prolog_match,_28536,_28580]],[[prolog_if,[[assign,_29774,[fcall(==,[2]),[_1862{vn = ...},_1904{vn = ...}]]]],[[assign,_30382,_29774]],[[assign,_30382,'Empty']]],[prolog_if,[[prolog_match,_30382,'True']],[[transpiler_apply,mc__1_1_,_1848{vn = ...},[_1848{vn = ...},_1834{vn = ...}],_30486,[_1834{vn = ...}],[_1834{vn = ...}],[x(noeval,eager,[])],[[]],[[]]],[assign,_29764,_30486]],[[assign,_30834,'Empty'],[assign,_29764,_30834]]],[assign,_27312,_29764]],[[assign,_31164,'Empty'],[assign,_27312,_31164]]]]
+</span><span class="ansi38-173216230"
 >
 mc__1_3_Question(_kb, _term, _steps, A) :-
-    B=ispuU(C, (mc__1_3_Derive(_kb, 1, _steps, D), _x=D, (mc__1_1_superpose(_x, E)*->F=E;F='Empty'), transpiler_apply(mc__1_1_, T, [T, TV], G, [TV], [TV], [x(noeval, eager, [])], [true], [true]), H=['Sentence', G, Ev], (F=H*->('mc__1_2_=='(T, _term, I)*->J=I;J='Empty'), (J='True'*->transpiler_apply(mc__1_1_, TV, [TV, Ev], K, [Ev], [Ev], [x(noeval, eager, [])], [true], [true]), L=K;M='Empty', L=M), C=L;N='Empty', C=N))),
-    mc__1_1_collapse(B, O),
-    mc__1_3_BestCandidate('ConfidenceRank', [], O, A).
+    B=ispeEnNC(C, (D=E*->('mc__1_2_=='(T, _term, F)*->G=F;G='Empty'), (G='True'*->transpiler_apply(mc__1_1_, TV, [TV, Ev], H, [Ev], [Ev], [x(noeval, eager, [])], [true], [true]), I=H;J='Empty', I=J), C=I;K='Empty', C=K), C, (D=E*->('mc__1_2_=='(T, _term, F)*->G=F;G='Empty'), (G='True'*->L=[TV, Ev], I=L;M='Empty', I=M), C=I;N='Empty', C=N), (mc__1_3_Derive(_kb, 1, _steps, O), _x=O, (mc__1_1_superpose(_x, P)*->D=P;D='Empty'), transpiler_apply(mc__1_1_, T, [T, TV], Q, [TV], [TV], [x(noeval, eager, [])], [true], [true]), E=['Sentence', Q, Ev])),
+    mc__1_1_collapse(B, R),
+    mc__1_3_BestCandidate('ConfidenceRank', [], R, A).
 
 </span>
 <span class="ansi38-013099040"
@@ -951,7 +953,7 @@ mc__1_3_Question(_kb, _term, _steps, A) :-
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-05 11:24:01+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-13 00:10:40+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

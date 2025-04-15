@@ -3,21 +3,19 @@
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
+|   1|9   6|   7|    6% | nars interp                    | nars_interp |
+|   1|9   6|   7|    6% | nars interp nars main-branch   | nars_interp/nars/main-branch |
+|   1|9   6|   7|    6% | nars interp nars               | nars_interp/nars |
 |   7|    1|   8|   87% | direct comp types              | direct_comp/types |
-|   1|8   9|  10|    5% | nars interp                    | nars_interp |
-|   1|8   9|  10|    5% | nars interp nars main-branch   | nars_interp/nars/main-branch |
-|   1|8   9|  10|    5% | nars interp nars               | nars_interp/nars |
-|   6|1   5|  11|   50% | direct comp important          | direct_comp/important |
-|  22|2   3|  25|   81% |  compat anti-regression        | baseline_compat/anti-regression |
+|   7|21  4|  11|   21% | direct comp                    | direct_comp |
+|  19|3   3|  22|   76% |  compat anti-regression        | baseline_compat/anti-regression |
 |  17|18 14|  31|   34% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
-|  50|1   0|  50|   98% | direct comp More-important     | direct_comp/More-important |
-|  63|10  6|  69|   79% | direct comp                    | direct_comp |
-|  60|2  14|  74|   78% | quick quality issues           | quick_quality/issues |
-|  60|2  32|  92|   63% | quick quality                  | quick_quality |
-| 121|1  53| 174|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 166|21 70| 236|   64% |  compat                        | baseline_compat |
-| 290|41117| 407|   64% | tests output -compat           | tests_output/baseline-compat |
-| 290|41117| 407|   64% | tests                          | tests |
+|  57|3   9|  66|   82% | quick quality issues           | quick_quality/issues |
+|  57|3  27|  84|   65% | quick quality                  | quick_quality |
+| 119|2  53| 172|   68% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
+| 161|23 70| 231|   63% |  compat                        | baseline_compat |
+| 226|56107| 333|   58% | tests output -compat           | tests_output/baseline-compat |
+| 226|56107| 333|   58% | tests                          | tests |
 
 
 
@@ -32,7 +30,7 @@
 |     2 |     0 |    100%  | [mettalogTestCurried2.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/mettalogTestCurried2.metta.html) |
 |     0 |     3 |      0%  | [bchain.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/bchain.metta.html) |
 |     1 |     0 |    100%  | [tmpMatch1.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/tmpMatch1.metta.html) |
-|     3 |     0 |    100%  | [bc_comp.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/bc_comp.metta.html) |
+|    -1 |    -1 |      0%  | [bc_comp.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/bc_comp.metta.html) |
 |    -1 |    -1 |      0%  | [debug_mettalogTestCurried.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/debug_mettalogTestCurried.metta.html) |
 |    11 |     0 |    100%  | [test_if_closed.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/test_if_closed.metta.html) |
 |    -1 |    -1 |      0%  | [mettalogTestCurried.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/mettalogTestCurried.metta.html) |
@@ -40,7 +38,7 @@
 |     1 |     0 |    100%  | [comma_is_not_special.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/comma_is_not_special.metta.html) |
 |     1 |     0 |    100%  | [tmpMatch2.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/tmpMatch2.metta.html) |
 |       |       |          |                                                                                |
-|    22 |     5 |     81%  | Total                                                                          |
+|    19 |     6 |     76%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -70,9 +68,9 @@
 |     5 |     0 |    100%  | [b2_backchain.metta](https://logicmoo.org/public/metta/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta.html) |
 |     0 |     6 |      0%  | [d5_auto_types.metta](https://logicmoo.org/public/metta/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta.html) |
 |    11 |    16 |     40%  | [d2_higherfunc.metta](https://logicmoo.org/public/metta/tests/baseline_compat/hyperon-experimental_scripts/d2_higherfunc.metta.html) |
-|     2 |     0 |    100%  | [f1_moduleA.metta](https://logicmoo.org/public/metta/tests/baseline_compat/hyperon-experimental_scripts/f1_moduleA.metta.html) |
+|    -1 |    -1 |      0%  | [f1_moduleA.metta](https://logicmoo.org/public/metta/tests/baseline_compat/hyperon-experimental_scripts/f1_moduleA.metta.html) |
 |       |       |          |                                                                                |
-|   121 |    54 |     69%  | Total                                                                          |
+|   119 |    55 |     68%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -82,18 +80,18 @@
 |       |       |          | Dir: ./direct_comp/important                                                   |
 |       |       |          | Mod: direct comp important                                                     |
 |       |       |          |                                                                                |
-|     1 |     0 |    100%  | [task1_whole_atoms_kb.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_atoms_kb.metta.html) |
-|     3 |     0 |    100%  | [fish_riddle_1_no_states.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/fish_riddle_1_no_states.metta.html) |
-|     1 |     0 |    100%  | [puzzle_less_function_guessing.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/puzzle_less_function_guessing.metta.html) |
-|     0 |     1 |      0%  | [task1_whole_atoms_kb0.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_atoms_kb0.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_atoms_kb.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_atoms_kb.metta.html) |
+|     0 |     3 |      0%  | [fish_riddle_1_no_states.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/fish_riddle_1_no_states.metta.html) |
+|    -1 |    -1 |      0%  | [puzzle_less_function_guessing.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/puzzle_less_function_guessing.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_atoms_kb0.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_atoms_kb0.metta.html) |
 |    -1 |    -1 |      0%  | [bc_comp.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/bc_comp.metta.html) |
-|     0 |     1 |      0%  | [task1_whole_if.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_if.metta.html) |
-|     0 |     1 |      0%  | [task1_whole_bug_compiler.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_bug_compiler.metta.html) |
-|     1 |     0 |    100%  | [task1_whole_kb.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_kb.metta.html) |
-|     0 |     1 |      0%  | [task1_whole_kb_noprint.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_kb_noprint.metta.html) |
-|     0 |     1 |      0%  | [puzzle.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/puzzle.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_if.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_if.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_bug_compiler.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_bug_compiler.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_kb.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_kb.metta.html) |
+|    -1 |    -1 |      0%  | [task1_whole_kb_noprint.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/task1_whole_kb_noprint.metta.html) |
+|    -1 |    -1 |      0%  | [puzzle.metta](https://logicmoo.org/public/metta/tests/direct_comp/important/puzzle.metta.html) |
 |       |       |          |                                                                                |
-|     6 |     6 |     50%  | Total                                                                          |
+|     0 |    12 |      0%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -104,7 +102,7 @@
 |       |       |          | Mod: quick quality issues                                                      |
 |       |       |          |                                                                                |
 |     1 |     0 |    100%  | [roman_init_kb.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/roman_init_kb.metta.html) |
-|     3 |     5 |     37%  | [match_alpha_coroutining_test.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/match_alpha_coroutining_test.metta.html) |
+|    -1 |    -1 |      0%  | [match_alpha_coroutining_test.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/match_alpha_coroutining_test.metta.html) |
 |     1 |     0 |    100%  | [bug_252_var_in_first_place.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/bug_252_var_in_first_place.metta.html) |
 |    -1 |    -1 |      0%  | [python_quick.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/python_quick.metta.html) |
 |    15 |     0 |    100%  | [alpha_equals_tests.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/alpha_equals_tests.metta.html) |
@@ -114,7 +112,7 @@
 |    34 |     6 |     85%  | [unify_true_false.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/unify_true_false.metta.html) |
 |     1 |     2 |     33%  | [slow_map_atom_from_roman.metta](https://logicmoo.org/public/metta/tests/quick_quality/issues/slow_map_atom_from_roman.metta.html) |
 |       |       |          |                                                                                |
-|    60 |    16 |     78%  | Total                                                                          |
+|    57 |    12 |     82%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -129,13 +127,13 @@
 |    -1 |    -1 |      0%  | [tests1.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests1.metta.html) |
 |    -1 |    -1 |      0%  | [tests1_pre.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests1_pre.metta.html) |
 |    -1 |    -1 |      0%  | [tests3.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests3.metta.html) |
-|     0 |     3 |      0%  | [tests5.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests5.metta.html) |
+|    -1 |    -1 |      0%  | [tests5.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests5.metta.html) |
 |    -1 |    -1 |      0%  | [nalifier_Prev.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/nalifier_Prev.metta.html) |
 |    -1 |    -1 |      0%  | [prereqs.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/prereqs.metta.html) |
 |    -1 |    -1 |      0%  | [tests2.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests2.metta.html) |
 |     1 |     6 |     14%  | [tests0_Prev.metta](https://logicmoo.org/public/metta/tests/nars_interp/nars/main-branch/tests0_Prev.metta.html) |
 |       |       |          |                                                                                |
-|     1 |    17 |      5%  | Total                                                                          |
+|     1 |    15 |      6%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -193,21 +191,6 @@
 |  Pass |  Fail |  Percent | File/Module/Directory Information                                                                              |
 |-------|-------|----------|----------------------------------------------------------------------------------------------------|
 |       |       |          |                                                                                |
-|       |       |          | Dir: ./direct_comp/More-important                                              |
-|       |       |          | Mod: direct comp More-important                                                |
-|       |       |          |                                                                                |
-|    -1 |    -1 |      0%  | [inf-ctl-month-bc-xp.metta](https://logicmoo.org/public/metta/tests/direct_comp/More-important/inf-ctl-month-bc-xp.metta.html) |
-|    18 |     0 |    100%  | [inf-ctl-xp.metta](https://logicmoo.org/public/metta/tests/direct_comp/More-important/inf-ctl-xp.metta.html) |
-|    19 |     0 |    100%  | [inf-ctl-month-bc-cont-xp.metta](https://logicmoo.org/public/metta/tests/direct_comp/More-important/inf-ctl-month-bc-cont-xp.metta.html) |
-|    13 |     0 |    100%  | [inf-ctl-month-xp.metta](https://logicmoo.org/public/metta/tests/direct_comp/More-important/inf-ctl-month-xp.metta.html) |
-|       |       |          |                                                                                |
-|    50 |     1 |     98%  | Total                                                                          |
-|       |       |          |                                                                                |
-
-
-|  Pass |  Fail |  Percent | File/Module/Directory Information                                                                              |
-|-------|-------|----------|----------------------------------------------------------------------------------------------------|
-|       |       |          |                                                                                |
 |       |       |          | Dir: ./quick_quality/quick-sets-check                                          |
 |       |       |          | Mod: quick quality quick-sets-check                                            |
 |       |       |          |                                                                                |
@@ -232,39 +215,35 @@
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
+|   1|9   6|   7|    6% | nars interp                    | nars_interp |
+|   1|9   6|   7|    6% | nars interp nars main-branch   | nars_interp/nars/main-branch |
+|   1|9   6|   7|    6% | nars interp nars               | nars_interp/nars |
 |   7|    1|   8|   87% | direct comp types              | direct_comp/types |
-|   1|8   9|  10|    5% | nars interp                    | nars_interp |
-|   1|8   9|  10|    5% | nars interp nars main-branch   | nars_interp/nars/main-branch |
-|   1|8   9|  10|    5% | nars interp nars               | nars_interp/nars |
-|   6|1   5|  11|   50% | direct comp important          | direct_comp/important |
-|  22|2   3|  25|   81% |  compat anti-regression        | baseline_compat/anti-regression |
+|   7|21  4|  11|   21% | direct comp                    | direct_comp |
+|  19|3   3|  22|   76% |  compat anti-regression        | baseline_compat/anti-regression |
 |  17|18 14|  31|   34% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
-|  50|1   0|  50|   98% | direct comp More-important     | direct_comp/More-important |
-|  63|10  6|  69|   79% | direct comp                    | direct_comp |
-|  60|2  14|  74|   78% | quick quality issues           | quick_quality/issues |
-|  60|2  32|  92|   63% | quick quality                  | quick_quality |
-| 121|1  53| 174|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 166|21 70| 236|   64% |  compat                        | baseline_compat |
-| 290|41117| 407|   64% | tests output -compat           | tests_output/baseline-compat |
-| 290|41117| 407|   64% | tests                          | tests |
+|  57|3   9|  66|   82% | quick quality issues           | quick_quality/issues |
+|  57|3  27|  84|   65% | quick quality                  | quick_quality |
+| 119|2  53| 172|   68% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
+| 161|23 70| 231|   63% |  compat                        | baseline_compat |
+| 226|56107| 333|   58% | tests output -compat           | tests_output/baseline-compat |
+| 226|56107| 333|   58% | tests                          | tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
-|  60|2  14|  74|   78% | quick quality issues           | quick_quality/issues |
-|  60|2  32|  92|   63% | quick quality                  | quick_quality |
-|   1|8   9|  10|    5% | nars interp nars main-branch   | nars_interp/nars/main-branch |
-|   1|8   9|  10|    5% | nars interp nars               | nars_interp/nars |
-|   1|8   9|  10|    5% | nars interp                    | nars_interp |
+|  57|3   9|  66|   82% | quick quality issues           | quick_quality/issues |
+|  57|3  27|  84|   65% | quick quality                  | quick_quality |
+|   1|9   6|   7|    6% | nars interp nars main-branch   | nars_interp/nars/main-branch |
+|   1|9   6|   7|    6% | nars interp nars               | nars_interp/nars |
+|   1|9   6|   7|    6% | nars interp                    | nars_interp |
 |   7|    1|   8|   87% | direct comp types              | direct_comp/types |
-|  50|1   0|  50|   98% | direct comp More-important     | direct_comp/More-important |
-|   6|1   5|  11|   50% | direct comp important          | direct_comp/important |
-|  63|10  6|  69|   79% | direct comp                    | direct_comp |
+|   7|21  4|  11|   21% | direct comp                    | direct_comp |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
 |  17|18 14|  31|   34% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
-| 121|1  53| 174|   69% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-|  22|2   3|  25|   81% |  compat anti-regression        | baseline_compat/anti-regression |
-| 166|21 70| 236|   64% |  compat                        | baseline_compat |
-| 290|41117| 407|   64% | tests                          | tests |
-| 290|41117| 407|   64% | tests output -compat           | tests_output/baseline-compat |
+| 119|2  53| 172|   68% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
+|  19|3   3|  22|   76% |  compat anti-regression        | baseline_compat/anti-regression |
+| 161|23 70| 231|   63% |  compat                        | baseline_compat |
+| 226|56107| 333|   58% | tests                          | tests |
+| 226|56107| 333|   58% | tests output -compat           | tests_output/baseline-compat |
 [?7h

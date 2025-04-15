@@ -19,10 +19,16 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165005 { color: #FFA505; }
 .ansi38-173216230 { color: #ADD8E6; }
-.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165005 { color: #FFA505; }
 .ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
@@ -94,6 +100,8 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
@@ -110,7 +118,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-14 19:07:51+00:00 [COMMAND="timeout --preserve-status --foreground 46 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az2233-502.MeTTaLog  -- --python=enable -- --timeout=46 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/quick_quality/issues/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-15 09:34:33+00:00 [COMMAND="timeout --preserve-status --foreground 46 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1112-70.MeTTaLog  -- --python=enable -- --timeout=46 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/quick_quality/issues/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/quick_quality/issues/unify_true_false.metta]
 P;HTML|
@@ -219,9 +227,39 @@ Script started on 2025-04-14 19:07:51+00:00 [COMMAND="timeout --preserve-status 
 >
 mc__1_2_same(X, X, 'True').
 
+</span><span class="ansi38-173216230"
+>
+mc__1_2_same(X, X, 'True').
+
+</span><span class="ansi38-173216230"
+>
+mc__1_2_same(X, X, 'True').
+
 </span>
 <span class="ansi38-255165005"
 ></span><span class="ansi38-173216230"
+>
+mc__1_2_eq(X, Y, A) :-
+    mc__1_2_same(X, Y, B),
+    C=B,
+    (   'mc__1_2_=='(C, 'True', C),
+        is_True(C)
+    *-> A='True'
+    ;   A='False'
+    ).
+
+</span><span class="ansi38-173216230"
+>
+mc__1_2_eq(X, Y, A) :-
+    mc__1_2_same(X, Y, B),
+    C=B,
+    (   'mc__1_2_=='(C, 'True', C),
+        is_True(C)
+    *-> A='True'
+    ;   A='False'
+    ).
+
+</span><span class="ansi38-173216230"
 >
 mc__1_2_eq(X, Y, A) :-
     mc__1_2_same(X, Y, B),
@@ -241,11 +279,25 @@ mc__1_2_unif(X, Y, A) :-
     C=ispu('False'),
     mc__1_4_unify(X, Y, B, C, A).
 
+</span><span class="ansi38-173216230"
+>
+mc__1_2_unif(X, Y, A) :-
+    B=ispu('True'),
+    C=ispu('False'),
+    mc__1_4_unify(X, Y, B, C, A).
+
+</span><span class="ansi38-173216230"
+>
+mc__1_2_unif(X, Y, A) :-
+    B=ispu('True'),
+    C=ispu('False'),
+    mc__1_4_unify(X, Y, B, C, A).
+
 </span>
 <span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 1) ($52572 $52578 $52584)) (False))
+>!(assertEqualToResult (unif (+ 1 1) ($20302 $20308 $20314)) (False))
 
-</span>1 _53856 [[assign,_53994,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_49588{vn = ...},[_49588{vn = ...},_49372{vn = ...},_49110],_54370,[_49372{vn = ...},_49110],[_49372{vn = ...},_49110],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_53856,[fcall(unif,[2]),[_53994,_54370]]]]
+</span>1 _21584 [[assign,_21722,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_17256{vn = ...},[_17256{vn = ...},_17040{vn = ...},_16778],_22098,[_17040{vn = ...},_16778],[_17040{vn = ...},_16778],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_21584,[fcall(unif,[2]),[_21722,_22098]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], ('mc__1_2_+'(1, 1, D), transpiler_apply(mc__1_2_, G, [G, H, I], E, [H, I], [H, I], [x(noeval, eager, []), x(noeval, eager, [])], [true, true], [true, true]))), J=['False'], mc__1_2_assertEqualToResult(B, J, A))).
@@ -255,14 +307,14 @@ mc__1_2_unif(X, Y, A) :-
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000148 secs. (147.91 microseconds) 
+; took 0.000200 secs. (199.99 microseconds) 
 
-!(assertEqualToResult (unif (+ 1 1) ($9142 $9148 $9154)) (False))
+!(assertEqualToResult (unif (+ 1 1) ($9412 $9418 $9424)) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False) 
+      (False False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -270,7 +322,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unif (+ 1 1) 2) (True))
 
-</span>1 _20974 [[assign,_21112,[fcall(+,[2]),[1,1]]],[assign,_20974,[fcall(unif,[2]),[_21112,2]]]]
+</span>1 _21502 [[assign,_21640,[fcall(+,[2]),[1,1]]],[assign,_21502,[fcall(unif,[2]),[_21640,2]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, 2, C), E, E=[unif, D, 2], 'mc__1_2_+'(1, 1, D)), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -280,14 +332,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000089 secs. (88.69 microseconds) 
+; took 0.000145 secs. (144.98 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) 2) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -295,7 +347,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unif (+ 1 1) (+ 1 1)) (True))
 
-</span>1 _45232 [[assign,_45370,[fcall(+,[2]),[1,1]]],[assign,_45746,[fcall(+,[2]),[1,1]]],[assign,_45232,[fcall(unif,[2]),[_45370,_45746]]]]
+</span>1 _46698 [[assign,_46836,[fcall(+,[2]),[1,1]]],[assign,_47212,[fcall(+,[2]),[1,1]]],[assign,_46698,[fcall(unif,[2]),[_46836,_47212]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(1, 1, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -305,14 +357,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000075 secs. (74.99 microseconds) 
+; took 0.000121 secs. (120.88 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 1 1)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -320,7 +372,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unif (+ 1 1) (+ 0 2)) (True))
 
-</span>1 _7670 [[assign,_7808,[fcall(+,[2]),[1,1]]],[assign,_8184,[fcall(+,[2]),[0,2]]],[assign,_7670,[fcall(unif,[2]),[_7808,_8184]]]]
+</span>1 _10214 [[assign,_10352,[fcall(+,[2]),[1,1]]],[assign,_10728,[fcall(+,[2]),[0,2]]],[assign,_10214,[fcall(unif,[2]),[_10352,_10728]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(0, 2, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -330,22 +382,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000079 secs. (79.23 microseconds) 
+; took 0.000141 secs. (140.93 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 0 2)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 1) (+ $32530 $32536)) (False))
+>!(assertEqualToResult (unif (+ 1 1) (+ $36014 $36020)) (False))
 
-</span>1 _33870 [[assign,_34008,[fcall(+,[2]),[1,1]]],[assign,_34384,[fcall(+,[2]),[_30304{vn = ...},_30088{vn = ...}]]],[assign,_33870,[fcall(unif,[2]),[_34008,_34384]]]]
+</span>1 _37352 [[assign,_37490,[fcall(+,[2]),[1,1]]],[assign,_37866,[fcall(+,[2]),[_33786{vn = ...},_33570{vn = ...}]]],[assign,_37352,[fcall(unif,[2]),[_37490,_37866]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(_, _, E))), G=['False'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -355,22 +407,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000076 secs. (75.86 microseconds) 
+; took 0.000165 secs. (165.40 microseconds) 
 
-!(assertEqualToResult (unif (+ 1 1) (+ $8388 $8394)) (False))
+!(assertEqualToResult (unif (+ 1 1) (+ $8916 $8922)) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False) 
+      (False False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif $19118 $19118) (True))
+>!(assertEqualToResult (unif $19906 $19906) (True))
 
-</span>1 _20508 [[assign,_20508,[fcall(unif,[2]),[_17048{vn = ...},_17048{vn = ...}]]]]
+</span>1 _21294 [[assign,_21294,[fcall(unif,[2]),[_17834{vn = ...},_17834{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_unif(D, D, C), E, E=[unif, D, D]), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -380,22 +432,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (14.79 microseconds) 
+; took 0.000017 secs. (17.14 microseconds) 
 
-!(assertEqualToResult (unif $31248 $31248) (True))
+!(assertEqualToResult (unif $32452 $32452) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif $42464 $42470) (True))
+>!(assertEqualToResult (unif $43926 $43932) (True))
 
-</span>1 _43766 [[assign,_43766,[fcall(unif,[2]),[_40292{vn = ...},_40076{vn = ...}]]]]
+</span>1 _45226 [[assign,_45226,[fcall(unif,[2]),[_41752{vn = ...},_41536{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E]), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -405,22 +457,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000028 secs. (27.69 microseconds) 
+; took 0.000050 secs. (50.35 microseconds) 
 
-!(assertEqualToResult (unif $54642 $54648) (True))
+!(assertEqualToResult (unif $56520 $56526) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 1) $1664) (True))
+>!(assertEqualToResult (unif (+ 1 1) $5314) (True))
 
-</span>1 _3944 [[assign,_4082,[fcall(+,[2]),[1,1]]],[assign,_3944,[fcall(unif,[2]),[_4082,_900{vn = ...}]]]]
+</span>1 _6720 [[assign,_6858,[fcall(+,[2]),[1,1]]],[assign,_6720,[fcall(unif,[2]),[_6858,_3218{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], 'mc__1_2_+'(1, 1, D)), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -430,14 +482,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000101 secs. (100.55 microseconds) 
+; took 0.000138 secs. (137.59 microseconds) 
 
-!(assertEqualToResult (unif (+ 1 1) $16252) (True))
+!(assertEqualToResult (unif (+ 1 1) $19710) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -445,7 +497,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unif (+ 1 2 3) (+ 1 2 3)) (True))
 
-</span>1 _28374 [[assign,_28512,list([+,1,2,3])],[assign,_29270,list([+,1,2,3])],[assign,_28374,[fcall(unif,[2]),[_28512,_29270]]]]
+</span>1 _32088 [[assign,_32226,list([+,1,2,3])],[assign,_32984,list([+,1,2,3])],[assign,_32088,[fcall(unif,[2]),[_32226,_32984]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -455,22 +507,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000075 secs. (74.55 microseconds) 
+; took 0.000150 secs. (149.89 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 2 3) (+ 1 2 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 2 3) (+ 1 $52514 3)) (True))
+>!(assertEqualToResult (unif (+ 1 2 3) (+ 1 $57168 3)) (True))
 
-</span>1 _53948 [[assign,_54086,list([+,1,2,3])],[assign,_54844,list([+,1,_50372{vn = ...},3])],[assign,_53948,[fcall(unif,[2]),[_54086,_54844]]]]
+</span>1 _58600 [[assign,_58738,list([+,1,2,3])],[assign,_59496,list([+,1,_55024{vn = ...},3])],[assign,_58600,[fcall(unif,[2]),[_58738,_59496]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], (D=[+, 1, 2, 3], E=[+, 1, _, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -480,22 +532,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000090 secs. (90.15 microseconds) 
+; took 0.000127 secs. (127.09 microseconds) 
 
-!(assertEqualToResult (unif (+ 1 2 3) (+ 1 $4768 3)) (True))
+!(assertEqualToResult (unif (+ 1 2 3) (+ 1 $8874 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 2) (+ 1 $15726)) (False))
+>!(assertEqualToResult (unif (+ 1 2) (+ 1 $20090)) (False))
 
-</span>1 _17144 [[assign,_17282,[fcall(+,[2]),[1,2]]],[assign,_17658,[fcall(+,[2]),[1,_13596{vn = ...}]]],[assign,_17144,[fcall(unif,[2]),[_17282,_17658]]]]
+</span>1 _21506 [[assign,_21644,[fcall(+,[2]),[1,2]]],[assign,_22020,[fcall(+,[2]),[1,_17958{vn = ...}]]],[assign,_21506,[fcall(unif,[2]),[_21644,_22020]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_unif(D, E, C), F, F=[unif, D, E], ('mc__1_2_+'(1, 2, D), 'mc__1_2_+'(1, _, E))), G=['False'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -505,22 +557,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000098 secs. (97.93 microseconds) 
+; took 0.000122 secs. (121.91 microseconds) 
 
-!(assertEqualToResult (unif (+ 1 2) (+ 1 $30880)) (False))
+!(assertEqualToResult (unif (+ 1 2) (+ 1 $35924)) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False) 
+      (False False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same (+ 1 1) ($43086 $43092 $43098)) ((same 2 ($43086 $43092 $43146))))
+>!(assertEqualToResult (same (+ 1 1) ($48450 $48456 $48462)) ((same 2 ($48450 $48456 $48510))))
 
-</span>1 _44378 [[assign,_44516,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_40008{vn = ...},[_40008{vn = ...},_39792{vn = ...},_39494],_44892,[_39792{vn = ...},_39494],[_39792{vn = ...},_39494],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_44378,[fcall(same,[2]),[_44516,_44892]]]]
+</span>1 _49740 [[assign,_49878,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_45310{vn = ...},[_45310{vn = ...},_45094{vn = ...},_44796],_50254,[_45094{vn = ...},_44796],[_45094{vn = ...},_44796],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_49740,[fcall(same,[2]),[_49878,_50254]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], ('mc__1_2_+'(1, 1, D), transpiler_apply(mc__1_2_, G, [G, H, I], E, [H, I], [H, I], [x(noeval, eager, []), x(noeval, eager, [])], [true, true], [true, true]))), transpiler_apply(mc__1_2_, G, [G, H, J], K, [H, J], [H, J], [x(noeval, eager, []), x(noeval, eager, [])], [true, true], [true, true]), L=[same, 2, K], M=[L], mc__1_2_assertEqualToResult(B, M, A))).
@@ -530,25 +582,25 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (22.94 microseconds) 
+; took 0.000023 secs. (23.22 microseconds) 
 
-!(assertEqualToResult (same (+ 1 1) ($9232 $9238 $9244)) ((same 2 ($9232 $9238 $9292))))
+!(assertEqualToResult (same (+ 1 1) ($9490 $9496 $9502)) ((same 2 ($9490 $9496 $9550))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       ( (same 2 
-          ($10130 $10136 $10142)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(2,'[|]'('[|]'(_888{vn = ...},'[|]'(_874{vn = ...},'[|]'(_844,[]))),[]))),[]))
+          ($10402 $10408 $10414)))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(2,'[|]'('[|]'(_954{vn = ...},'[|]'(_940{vn = ...},'[|]'(_910,[]))),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $19728 [mc__1_2_same $19740 $19742 $19728] $19732 [ = $19732 (same $19740 $19742) ] [ , [mc__1_2_+ 1 1 $19740] [transpiler_apply mc__1_2_ $19788 ($19788 $19812 $19818) $19742 ($19812 $19818) ($19812 $19818) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] ((same 2 ($19788 $19812 $19890)))) ('
+>(Error (assertEqualToResult [ispeEnNC $20052 [mc__1_2_same $20064 $20066 $20052] $20056 [ = $20056 (same $20064 $20066) ] [ , [mc__1_2_+ 1 1 $20064] [transpiler_apply mc__1_2_ $20112 ($20112 $20136 $20142) $20066 ($20136 $20142) ($20136 $20142) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] ((same 2 ($20112 $20136 $20214)))) ('
 Got: ' () '
-Expected: ' ((same 2 ($19788 $19812 $19890)))))
+Expected: ' ((same 2 ($20112 $20136 $20214)))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (same (+ 1 1) 2) (True))
 
-</span>1 _23564 [[assign,_23702,[fcall(+,[2]),[1,1]]],[assign,_23564,[fcall(same,[2]),[_23702,2]]]]
+</span>1 _24050 [[assign,_24188,[fcall(+,[2]),[1,1]]],[assign,_24050,[fcall(same,[2]),[_24188,2]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, 2, C), E, E=[same, D, 2], 'mc__1_2_+'(1, 1, D)), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -558,7 +610,7 @@ Expected: ' ((same 2 ($19788 $19812 $19890)))))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (19.44 microseconds) 
+; took 0.000022 secs. (22.18 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) 2) (True))
 
@@ -573,7 +625,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (same (+ 1 1) (+ 1 1)) (True))
 
-</span>1 _47570 [[assign,_47708,[fcall(+,[2]),[1,1]]],[assign,_48084,[fcall(+,[2]),[1,1]]],[assign,_47570,[fcall(same,[2]),[_47708,_48084]]]]
+</span>1 _48692 [[assign,_48830,[fcall(+,[2]),[1,1]]],[assign,_49206,[fcall(+,[2]),[1,1]]],[assign,_48692,[fcall(same,[2]),[_48830,_49206]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(1, 1, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -583,7 +635,7 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.88 microseconds) 
+; took 0.000022 secs. (22.15 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 1 1)) (True))
 
@@ -598,7 +650,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (same (+ 1 1) (+ 0 2)) (True))
 
-</span>1 _9766 [[assign,_9904,[fcall(+,[2]),[1,1]]],[assign,_10280,[fcall(+,[2]),[0,2]]],[assign,_9766,[fcall(same,[2]),[_9904,_10280]]]]
+</span>1 _14676 [[assign,_14814,[fcall(+,[2]),[1,1]]],[assign,_15190,[fcall(+,[2]),[0,2]]],[assign,_14676,[fcall(same,[2]),[_14814,_15190]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(0, 2, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -608,7 +660,7 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.81 microseconds) 
+; took 0.000016 secs. (16.10 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 0 2)) (True))
 
@@ -623,7 +675,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
-</span>1 _35178 [[assign,_35316,list([+,1,2,3])],[assign,_36074,list([+,1,2,3])],[assign,_35178,[fcall(same,[2]),[_35316,_36074]]]]
+</span>1 _40724 [[assign,_40862,list([+,1,2,3])],[assign,_41620,list([+,1,2,3])],[assign,_40724,[fcall(same,[2]),[_40862,_41620]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -633,7 +685,7 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.64 microseconds) 
+; took 0.000023 secs. (23.03 microseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -646,9 +698,9 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same (+ 1 1) (+ $59450 $59456)) ((same 2 (+ $59450 $59456))))
+>!(assertEqualToResult (same (+ 1 1) (+ $2274 $2280)) ((same 2 (+ $2274 $2280))))
 
-</span>1 _60846 [[assign,_60984,[fcall(+,[2]),[1,1]]],[assign,_61360,[fcall(+,[2]),[_57188{vn = ...},_56972{vn = ...}]]],[assign,_60846,[fcall(same,[2]),[_60984,_61360]]]]
+</span>1 _4230 [[assign,_4368,[fcall(+,[2]),[1,1]]],[assign,_4744,[fcall(+,[2]),[_1030{vn = ...},_1016{vn = ...}]]],[assign,_4230,[fcall(same,[2]),[_4368,_4744]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(G, H, E))), 'mc__1_2_+'(G, H, I), J=[same, 2, I], K=[J], mc__1_2_assertEqualToResult(B, K, A))).
@@ -658,25 +710,25 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (22.84 microseconds) 
+; took 0.000022 secs. (22.20 microseconds) 
 
-!(assertEqualToResult (same (+ 1 1) (+ $15266 $15272)) ((same 2 (+ $15266 $15272))))
+!(assertEqualToResult (same (+ 1 1) (+ $20980 $20986)) ((same 2 (+ $20980 $20986))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       ( (same 2 
-          (+ $16222 $16228)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(2,'[|]'('[|]'(+,'[|]'(_872{vn = ...},'[|]'(_858{vn = ...},[]))),[]))),[]))
+          (+ $21950 $21956)))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(2,'[|]'('[|]'(+,'[|]'(_1030{vn = ...},'[|]'(_1016{vn = ...},[]))),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $24738 [mc__1_2_same $24750 $24752 $24738] $24742 [ = $24742 (same $24750 $24752) ] [ , [mc__1_2_+ 1 1 $24750] [mc__1_2_+ $24796 $24798 $24752] ]] ((same 2 (+ $24796 $24798)))) ('
+>(Error (assertEqualToResult [ispeEnNC $30518 [mc__1_2_same $30530 $30532 $30518] $30522 [ = $30522 (same $30530 $30532) ] [ , [mc__1_2_+ 1 1 $30530] [mc__1_2_+ $30576 $30578 $30532] ]] ((same 2 (+ $30576 $30578)))) ('
 Got: ' () '
-Expected: ' ((same 2 (+ $24796 $24798)))))
+Expected: ' ((same 2 (+ $30576 $30578)))))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same $27904 $27910) (True))
+>!(assertEqualToResult (same $33848 $33854) (True))
 
-</span>1 _29206 [[assign,_29206,[fcall(same,[2]),[_25732{vn = ...},_25516{vn = ...}]]]]
+</span>1 _35148 [[assign,_35148,[fcall(same,[2]),[_31674{vn = ...},_31458{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_same(D, E, C), F, F=[same, D, E]), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -686,9 +738,9 @@ Expected: ' ((same 2 (+ $24796 $24798)))))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (19.08 microseconds) 
+; took 0.000030 secs. (29.90 microseconds) 
 
-!(assertEqualToResult (same $40082 $40088) (True))
+!(assertEqualToResult (same $46436 $46442) (True))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -699,9 +751,9 @@ Expected: ' ((same 2 (+ $24796 $24798)))))
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same $50866 $50866) (True))
+>!(assertEqualToResult (same $57446 $57446) (True))
 
-</span>1 _52256 [[assign,_52256,[fcall(same,[2]),[_48796{vn = ...},_48796{vn = ...}]]]]
+</span>1 _58834 [[assign,_58834,[fcall(same,[2]),[_55374{vn = ...},_55374{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_same(D, D, C), E, E=[same, D, D]), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -711,9 +763,9 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000020 secs. (20.45 microseconds) 
+; took 0.000014 secs. (14.38 microseconds) 
 
-!(assertEqualToResult (same $62996 $62996) (True))
+!(assertEqualToResult (same $6388 $6388) (True))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -724,9 +776,9 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same (+ 1 1) $13224) (True))
+>!(assertEqualToResult (same (+ 1 1) $17560) (True))
 
-</span>1 _14632 [[assign,_14770,[fcall(+,[2]),[1,1]]],[assign,_14632,[fcall(same,[2]),[_14770,_11130{vn = ...}]]]]
+</span>1 _18966 [[assign,_19104,[fcall(+,[2]),[1,1]]],[assign,_18966,[fcall(same,[2]),[_19104,_15464{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], 'mc__1_2_+'(1, 1, D)), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -736,9 +788,9 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000027 secs. (26.56 microseconds) 
+; took 0.000026 secs. (25.93 microseconds) 
 
-!(assertEqualToResult (same (+ 1 1) $26688) (True))
+!(assertEqualToResult (same (+ 1 1) $31434) (True))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -751,7 +803,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
-</span>1 _38810 [[assign,_38948,list([+,1,2,3])],[assign,_39706,list([+,1,2,3])],[assign,_38810,[fcall(same,[2]),[_38948,_39706]]]]
+</span>1 _43780 [[assign,_43918,list([+,1,2,3])],[assign,_44676,list([+,1,2,3])],[assign,_43780,[fcall(same,[2]),[_43918,_44676]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -761,7 +813,7 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (22.58 microseconds) 
+; took 0.000016 secs. (15.52 microseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -774,9 +826,9 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same (+ 1 2 3) (+ 1 $62698 3)) (True))
+>!(assertEqualToResult (same (+ 1 2 3) (+ 1 $5914 3)) (True))
 
-</span>1 _1406 [[assign,_1506,list([+,1,2,3])],[assign,_1908,list([+,1,_838{vn = ...},3])],[assign,_1406,[fcall(same,[2]),[_1506,_1908]]]]
+</span>1 _7346 [[assign,_7484,list([+,1,2,3])],[assign,_8242,list([+,1,_3770{vn = ...},3])],[assign,_7346,[fcall(same,[2]),[_7484,_8242]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], (D=[+, 1, 2, 3], E=[+, 1, _, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -786,9 +838,9 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (18.60 microseconds) 
+; took 0.000027 secs. (27.06 microseconds) 
 
-!(assertEqualToResult (same (+ 1 2 3) (+ 1 $13836 3)) (True))
+!(assertEqualToResult (same (+ 1 2 3) (+ 1 $20864 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -799,9 +851,9 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (same (+ 1 2) (+ 1 $24902)) ((same 3 (+ 1 $24902))))
+>!(assertEqualToResult (same (+ 1 2) (+ 1 $32156)) ((same 3 (+ 1 $32156))))
 
-</span>1 _26376 [[assign,_26514,[fcall(+,[2]),[1,2]]],[assign,_26890,[fcall(+,[2]),[1,_22736{vn = ...}]]],[assign,_26376,[fcall(same,[2]),[_26514,_26890]]]]
+</span>1 _33628 [[assign,_33766,[fcall(+,[2]),[1,2]]],[assign,_34142,[fcall(+,[2]),[1,_29988{vn = ...}]]],[assign,_33628,[fcall(same,[2]),[_33766,_34142]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_same(D, E, C), F, F=[same, D, E], ('mc__1_2_+'(1, 2, D), 'mc__1_2_+'(1, G, E))), 'mc__1_2_+'(1, G, H), I=[same, 3, H], J=[I], mc__1_2_assertEqualToResult(B, J, A))).
@@ -811,25 +863,25 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.99 microseconds) 
+; took 0.000016 secs. (15.69 microseconds) 
 
-!(assertEqualToResult (same (+ 1 2) (+ 1 $8242)) ((same 3 (+ 1 $8242))))
+!(assertEqualToResult (same (+ 1 2) (+ 1 $8500)) ((same 3 (+ 1 $8500))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
       ( (same 3 
-          (+ 1 $9198)))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(3,'[|]'('[|]'(+,'[|]'(1,'[|]'(_854{vn = ...},[]))),[]))),[]))
+          (+ 1 $9470)))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(same,'[|]'(3,'[|]'('[|]'(+,'[|]'(1,'[|]'(_920{vn = ...},[]))),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $17550 [mc__1_2_same $17562 $17564 $17550] $17554 [ = $17554 (same $17562 $17564) ] [ , [mc__1_2_+ 1 2 $17562] [mc__1_2_+ 1 $17610 $17564] ]] ((same 3 (+ 1 $17610)))) ('
+>(Error (assertEqualToResult [ispeEnNC $17872 [mc__1_2_same $17884 $17886 $17872] $17876 [ = $17876 (same $17884 $17886) ] [ , [mc__1_2_+ 1 2 $17884] [mc__1_2_+ 1 $17932 $17886] ]] ((same 3 (+ 1 $17932)))) ('
 Got: ' () '
-Expected: ' ((same 3 (+ 1 $17610)))))
+Expected: ' ((same 3 (+ 1 $17932)))))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq (+ 1 1) ($21694 $21700 $21706)) (False))
+>!(assertEqualToResult (eq (+ 1 1) ($22240 $22246 $22252)) (False))
 
-</span>1 _22982 [[assign,_23120,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_18710{vn = ...},[_18710{vn = ...},_18494{vn = ...},_18232],_23496,[_18494{vn = ...},_18232],[_18494{vn = ...},_18232],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_22982,[fcall(eq,[2]),[_23120,_23496]]]]
+</span>1 _23526 [[assign,_23664,[fcall(+,[2]),[1,1]]],[transpiler_apply,mc__1_2_,_19194{vn = ...},[_19194{vn = ...},_18978{vn = ...},_18716],_24040,[_18978{vn = ...},_18716],[_18978{vn = ...},_18716],[x(noeval,eager,[]),x(noeval,eager,[])],[[],[]],[[],[]]],[assign,_23526,[fcall(eq,[2]),[_23664,_24040]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], ('mc__1_2_+'(1, 1, D), transpiler_apply(mc__1_2_, G, [G, H, I], E, [H, I], [H, I], [x(noeval, eager, []), x(noeval, eager, [])], [true, true], [true, true]))), J=['False'], mc__1_2_assertEqualToResult(B, J, A))).
@@ -839,9 +891,9 @@ Expected: ' ((same 3 (+ 1 $17610)))))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000017 secs. (16.79 microseconds) 
+; took 0.000018 secs. (18.22 microseconds) 
 
-!(assertEqualToResult (eq (+ 1 1) ($8588 $8594 $8600)) (False))
+!(assertEqualToResult (eq (+ 1 1) ($8846 $8852 $8858)) (False))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -850,13 +902,13 @@ Expected: ' ((same 3 (+ 1 $17610)))))
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('False',[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $18594 [mc__1_2_eq $18606 $18608 $18594] $18598 [ = $18598 (eq $18606 $18608) ] [ , [mc__1_2_+ 1 1 $18606] [transpiler_apply mc__1_2_ $18654 ($18654 $18678 $18684) $18608 ($18678 $18684) ($18678 $18684) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] (False)) ('
+>(Error (assertEqualToResult [ispeEnNC $18918 [mc__1_2_eq $18930 $18932 $18918] $18922 [ = $18922 (eq $18930 $18932) ] [ , [mc__1_2_+ 1 1 $18930] [transpiler_apply mc__1_2_ $18978 ($18978 $19002 $19008) $18932 ($19002 $19008) ($19002 $19008) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] (False)) ('
 Got: ' () '
 Expected: ' (False)))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eq (+ 1 1) 2) (True))
 
-</span>1 _22530 [[assign,_22668,[fcall(+,[2]),[1,1]]],[assign,_22530,[fcall(eq,[2]),[_22668,2]]]]
+</span>1 _23016 [[assign,_23154,[fcall(+,[2]),[1,1]]],[assign,_23016,[fcall(eq,[2]),[_23154,2]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, 2, C), E, E=[eq, D, 2], 'mc__1_2_+'(1, 1, D)), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -866,14 +918,14 @@ Expected: ' (False)))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000028 secs. (28.05 microseconds) 
+; took 0.000027 secs. (27.41 microseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) 2) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -881,7 +933,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eq (+ 1 1) (+ 1 1)) (True))
 
-</span>1 _46534 [[assign,_46672,[fcall(+,[2]),[1,1]]],[assign,_47048,[fcall(+,[2]),[1,1]]],[assign,_46534,[fcall(eq,[2]),[_46672,_47048]]]]
+</span>1 _47694 [[assign,_47832,[fcall(+,[2]),[1,1]]],[assign,_48208,[fcall(+,[2]),[1,1]]],[assign,_47694,[fcall(eq,[2]),[_47832,_48208]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(1, 1, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -891,14 +943,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.26</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (16.28 microseconds) 
+; took 0.000018 secs. (17.60 microseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 1 1)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -906,7 +958,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eq (+ 1 1) (+ 0 2)) (True))
 
-</span>1 _8854 [[assign,_8992,[fcall(+,[2]),[1,1]]],[assign,_9368,[fcall(+,[2]),[0,2]]],[assign,_8854,[fcall(eq,[2]),[_8992,_9368]]]]
+</span>1 _11194 [[assign,_11332,[fcall(+,[2]),[1,1]]],[assign,_11708,[fcall(+,[2]),[0,2]]],[assign,_11194,[fcall(eq,[2]),[_11332,_11708]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(0, 2, E))), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -916,14 +968,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.27</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (16.08 microseconds) 
+; took 0.000024 secs. (24.06 microseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 0 2)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -931,7 +983,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
-</span>1 _34262 [[assign,_34400,list([+,1,2,3])],[assign,_35158,list([+,1,2,3])],[assign,_34262,[fcall(eq,[2]),[_34400,_35158]]]]
+</span>1 _37276 [[assign,_37414,list([+,1,2,3])],[assign,_38172,list([+,1,2,3])],[assign,_37276,[fcall(eq,[2]),[_37414,_38172]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -941,22 +993,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.28</h3>
 ; 
 ; EVAL TEST
-; took 0.000023 secs. (23.24 microseconds) 
+; took 0.000017 secs. (17.29 microseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq (+ 1 1) (+ $58426 $58432)) (False))
+>!(assertEqualToResult (eq (+ 1 1) (+ $62116 $62122)) (False))
 
-</span>1 _59762 [[assign,_59900,[fcall(+,[2]),[1,1]]],[assign,_60276,[fcall(+,[2]),[_56200{vn = ...},_55984{vn = ...}]]],[assign,_59762,[fcall(eq,[2]),[_59900,_60276]]]]
+</span>1 _63450 [[assign,_63588,[fcall(+,[2]),[1,1]]],[assign,_63964,[fcall(+,[2]),[_59888{vn = ...},_59672{vn = ...}]]],[assign,_63450,[fcall(eq,[2]),[_63588,_63964]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(_, _, E))), G=['False'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -966,9 +1018,9 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.29</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.86 microseconds) 
+; took 0.000024 secs. (24.43 microseconds) 
 
-!(assertEqualToResult (eq (+ 1 1) (+ $10810 $10816)) (False))
+!(assertEqualToResult (eq (+ 1 1) (+ $14858 $14864)) (False))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -977,13 +1029,13 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('False',[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $19792 [mc__1_2_eq $19804 $19806 $19792] $19796 [ = $19796 (eq $19804 $19806) ] [ , [mc__1_2_+ 1 1 $19804] [mc__1_2_+ $19850 $19852 $19806] ]] (False)) ('
+>(Error (assertEqualToResult [ispeEnNC $23906 [mc__1_2_eq $23918 $23920 $23906] $23910 [ = $23910 (eq $23918 $23920) ] [ , [mc__1_2_+ 1 1 $23918] [mc__1_2_+ $23964 $23966 $23920] ]] (False)) ('
 Got: ' () '
 Expected: ' (False)))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq $23006 $23012) (True))
+>!(assertEqualToResult (eq $27284 $27290) (True))
 
-</span>1 _24308 [[assign,_24308,[fcall(eq,[2]),[_20834{vn = ...},_20618{vn = ...}]]]]
+</span>1 _28584 [[assign,_28584,[fcall(eq,[2]),[_25110{vn = ...},_24894{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E]), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -993,22 +1045,22 @@ Expected: ' (False)))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.30</h3>
 ; 
 ; EVAL TEST
-; took 0.000028 secs. (27.67 microseconds) 
+; took 0.000034 secs. (33.76 microseconds) 
 
-!(assertEqualToResult (eq $35182 $35188) (True))
+!(assertEqualToResult (eq $39876 $39882) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq $45966 $45966) (True))
+>!(assertEqualToResult (eq $50918 $50918) (True))
 
-</span>1 _47356 [[assign,_47356,[fcall(eq,[2]),[_43896{vn = ...},_43896{vn = ...}]]]]
+</span>1 _52306 [[assign,_52306,[fcall(eq,[2]),[_48846{vn = ...},_48846{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, mc__1_2_eq(D, D, C), E, E=[eq, D, D]), F=['True'], mc__1_2_assertEqualToResult(B, F, A))).
@@ -1018,22 +1070,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.31</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (15.43 microseconds) 
+; took 0.000024 secs. (23.82 microseconds) 
 
-!(assertEqualToResult (eq $58094 $58094) (True))
+!(assertEqualToResult (eq $63776 $63776) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq (+ 1 1) $6732) (True))
+>!(assertEqualToResult (eq (+ 1 1) $13522) (True))
 
-</span>1 _8140 [[assign,_8278,[fcall(+,[2]),[1,1]]],[assign,_8140,[fcall(eq,[2]),[_8278,_4638{vn = ...}]]]]
+</span>1 _14928 [[assign,_15066,[fcall(+,[2]),[1,1]]],[assign,_14928,[fcall(eq,[2]),[_15066,_11426{vn = ...}]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], 'mc__1_2_+'(1, 1, D)), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -1043,14 +1095,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.32</h3>
 ; 
 ; EVAL TEST
-; took 0.000019 secs. (18.90 microseconds) 
+; took 0.000033 secs. (32.51 microseconds) 
 
-!(assertEqualToResult (eq (+ 1 1) $20194) (True))
+!(assertEqualToResult (eq (+ 1 1) $27400) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -1058,7 +1110,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
-</span>1 _32314 [[assign,_32452,list([+,1,2,3])],[assign,_33210,list([+,1,2,3])],[assign,_32314,[fcall(eq,[2]),[_32452,_33210]]]]
+</span>1 _39776 [[assign,_39914,list([+,1,2,3])],[assign,_40672,list([+,1,2,3])],[assign,_39776,[fcall(eq,[2]),[_39914,_40672]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -1068,22 +1120,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.33</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.97 microseconds) 
+; took 0.000024 secs. (24.05 microseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq (+ 1 2 3) (+ 1 $56202 3)) (True))
+>!(assertEqualToResult (eq (+ 1 2 3) (+ 1 $1790 3)) (True))
 
-</span>1 _57636 [[assign,_57774,list([+,1,2,3])],[assign,_58532,list([+,1,_54060{vn = ...},3])],[assign,_57636,[fcall(eq,[2]),[_57774,_58532]]]]
+</span>1 _4114 [[assign,_4252,list([+,1,2,3])],[assign,_5010,list([+,1,_996{vn = ...},3])],[assign,_4114,[fcall(eq,[2]),[_4252,_5010]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], (D=[+, 1, 2, 3], E=[+, 1, _, 3])), G=['True'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -1093,22 +1145,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000026 secs. (26.15 microseconds) 
+; took 0.000030 secs. (30.45 microseconds) 
 
-!(assertEqualToResult (eq (+ 1 2 3) (+ 1 $6658 3)) (True))
+!(assertEqualToResult (eq (+ 1 2 3) (+ 1 $17638 3)) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
+      (True True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (eq (+ 1 2) (+ 1 $17616)) (False))
+>!(assertEqualToResult (eq (+ 1 2) (+ 1 $28854)) (False))
 
-</span>1 _19034 [[assign,_19172,[fcall(+,[2]),[1,2]]],[assign,_19548,[fcall(+,[2]),[1,_15486{vn = ...}]]],[assign,_19034,[fcall(eq,[2]),[_19172,_19548]]]]
+</span>1 _30270 [[assign,_30408,[fcall(+,[2]),[1,2]]],[assign,_30784,[fcall(+,[2]),[1,_26722{vn = ...}]]],[assign,_30270,[fcall(eq,[2]),[_30408,_30784]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_eq(D, E, C), F, F=[eq, D, E], ('mc__1_2_+'(1, 2, D), 'mc__1_2_+'(1, _, E))), G=['False'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -1118,9 +1170,9 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.64 microseconds) 
+; took 0.000016 secs. (15.85 microseconds) 
 
-!(assertEqualToResult (eq (+ 1 2) (+ 1 $32492)) (False))
+!(assertEqualToResult (eq (+ 1 2) (+ 1 $44140)) (False))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -1129,7 +1181,7 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('False',[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $41312 [mc__1_2_eq $41324 $41326 $41312] $41316 [ = $41316 (eq $41324 $41326) ] [ , [mc__1_2_+ 1 2 $41324] [mc__1_2_+ 1 $41372 $41326] ]] (False)) ('
+>(Error (assertEqualToResult [ispeEnNC $53024 [mc__1_2_eq $53036 $53038 $53024] $53028 [ = $53028 (eq $53036 $53038) ] [ , [mc__1_2_+ 1 2 $53036] [mc__1_2_+ 1 $53084 $53038] ]] (False)) ('
 Got: ' () '
 Expected: ' (False)))
 </span><span class="ansi38-255165005"
@@ -1140,11 +1192,25 @@ Expected: ' (False)))
     E=ispu('False'),
     mc__1_4_unify(X, Y, B, E, A).
 
+</span><span class="ansi38-173216230"
+>
+'mc__1_2_unify-atom'(X, Y, A) :-
+    B=ispuU(C, (D=[u, X, Y], C=[quote, D])),
+    E=ispu('False'),
+    mc__1_4_unify(X, Y, B, E, A).
+
+</span><span class="ansi38-173216230"
+>
+'mc__1_2_unify-atom'(X, Y, A) :-
+    B=ispuU(C, (D=[u, X, Y], C=[quote, D])),
+    E=ispu('False'),
+    mc__1_4_unify(X, Y, B, E, A).
+
 </span>
 <span class="ansi38-013099040"
 >!(assertEqualToResult (unify-atom (+ 1 1) 2) ((quote (u 2 2))))
 
-</span>1 _16190 [[assign,_16328,[fcall(+,[2]),[1,1]]],[assign,_16190,[fcall('unify-atom',[2]),[_16328,2]]]]
+</span>1 _15452 [[assign,_15590,[fcall(+,[2]),[1,1]]],[assign,_15452,[fcall('unify-atom',[2]),[_15590,2]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, 'mc__1_2_unify-atom'(D, 2, C), E, E=['unify-atom', D, 2], 'mc__1_2_+'(1, 1, D)), F=[u, 2, 2], G=[quote, F], H=[G], mc__1_2_assertEqualToResult(B, H, A))).
@@ -1154,14 +1220,14 @@ Expected: ' (False)))
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.36</h3>
 ; 
 ; EVAL TEST
-; took 0.000095 secs. (94.82 microseconds) 
+; took 0.000157 secs. (157.14 microseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) 2) ((quote (u 2 2))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (quote (u 2 2))) 
+      ( (quote (u 2 2)) (quote (u 2 2))) 
       ( (quote (u 2 2)))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -1169,7 +1235,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unify-atom (+ 1 1) (+ 1 1)) ((quote (u 2 2))))
 
-</span>1 _20854 [[assign,_20992,[fcall(+,[2]),[1,1]]],[assign,_21368,[fcall(+,[2]),[1,1]]],[assign,_20854,[fcall('unify-atom',[2]),[_20992,_21368]]]]
+</span>1 _43216 [[assign,_43354,[fcall(+,[2]),[1,1]]],[assign,_43730,[fcall(+,[2]),[1,1]]],[assign,_43216,[fcall('unify-atom',[2]),[_43354,_43730]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, 'mc__1_2_unify-atom'(D, E, C), F, F=['unify-atom', D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(1, 1, E))), G=[u, 2, 2], H=[quote, G], I=[H], mc__1_2_assertEqualToResult(B, I, A))).
@@ -1179,14 +1245,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.37</h3>
 ; 
 ; EVAL TEST
-; took 0.000102 secs. (101.71 microseconds) 
+; took 0.000159 secs. (159.09 microseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 1 1)) ((quote (u 2 2))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (quote (u 2 2))) 
+      ( (quote (u 2 2)) (quote (u 2 2))) 
       ( (quote (u 2 2)))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -1194,7 +1260,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unify-atom (+ 1 1) (+ 0 2)) ((quote (u 2 2))))
 
-</span>1 _20962 [[assign,_21100,[fcall(+,[2]),[1,1]]],[assign,_21476,[fcall(+,[2]),[0,2]]],[assign,_20962,[fcall('unify-atom',[2]),[_21100,_21476]]]]
+</span>1 _21898 [[assign,_22036,[fcall(+,[2]),[1,1]]],[assign,_22412,[fcall(+,[2]),[0,2]]],[assign,_21898,[fcall('unify-atom',[2]),[_22036,_22412]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, 'mc__1_2_unify-atom'(D, E, C), F, F=['unify-atom', D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(0, 2, E))), G=[u, 2, 2], H=[quote, G], I=[H], mc__1_2_assertEqualToResult(B, I, A))).
@@ -1204,22 +1270,22 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.38</h3>
 ; 
 ; EVAL TEST
-; took 0.000098 secs. (98.16 microseconds) 
+; took 0.000161 secs. (161.25 microseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 0 2)) ((quote (u 2 2))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (quote (u 2 2))) 
+      ( (quote (u 2 2)) (quote (u 2 2))) 
       ( (quote (u 2 2)))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (unify-atom (+ 1 1) (+ $20094 $20100)) (False))
+>!(assertEqualToResult (unify-atom (+ 1 1) (+ $20992 $20998)) (False))
 
-</span>1 _21434 [[assign,_21572,[fcall(+,[2]),[1,1]]],[assign,_21948,[fcall(+,[2]),[_17868{vn = ...},_17652{vn = ...}]]],[assign,_21434,[fcall('unify-atom',[2]),[_21572,_21948]]]]
+</span>1 _22330 [[assign,_22468,[fcall(+,[2]),[1,1]]],[assign,_22844,[fcall(+,[2]),[_18764{vn = ...},_18548{vn = ...}]]],[assign,_22330,[fcall('unify-atom',[2]),[_22468,_22844]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, 'mc__1_2_unify-atom'(D, E, C), F, F=['unify-atom', D, E], ('mc__1_2_+'(1, 1, D), 'mc__1_2_+'(_, _, E))), G=['False'], mc__1_2_assertEqualToResult(B, G, A))).
@@ -1229,14 +1295,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000090 secs. (90.00 microseconds) 
+; took 0.000144 secs. (143.70 microseconds) 
 
-!(assertEqualToResult (unify-atom (+ 1 1) (+ $8442 $8448)) (False))
+!(assertEqualToResult (unify-atom (+ 1 1) (+ $9048 $9054)) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False) 
+      (False False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -1244,7 +1310,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (unify-atom (+ 1 2 3) (+ 1 2 3)) ((quote (u (+ 1 2 3) (+ 1 2 3)))))
 
-</span>1 _20708 [[assign,_20846,list([+,1,2,3])],[assign,_21604,list([+,1,2,3])],[assign,_20708,[fcall('unify-atom',[2]),[_20846,_21604]]]]
+</span>1 _21572 [[assign,_21710,list([+,1,2,3])],[assign,_22468,list([+,1,2,3])],[assign,_21572,[fcall('unify-atom',[2]),[_21710,_22468]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, 'mc__1_2_unify-atom'(D, E, C), F, F=['unify-atom', D, E], (D=[+, 1, 2, 3], E=[+, 1, 2, 3])), G=[+, 1, 2, 3], H=[+, 1, 2, 3], I=[u, G, H], J=[quote, I], K=[J], mc__1_2_assertEqualToResult(B, K, A))).
@@ -1254,14 +1320,14 @@ Deterministic: <span class="ansi33"
 >;; ISSUES-COMP.UNIFY-TRUE-FALSE-COMP.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000089 secs. (88.78 microseconds) 
+; took 0.000152 secs. (152.11 microseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 2 3) (+ 1 2 3)) ((quote (u (+ 1 2 3) (+ 1 2 3)))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (quote (u (+ 1 2 3) (+ 1 2 3)))) 
+      ( (quote (u (+ 1 2 3) (+ 1 2 3))) (quote (u (+ 1 2 3) (+ 1 2 3)))) 
       ( (quote (u (+ 1 2 3) (+ 1 2 3))))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -1288,40 +1354,40 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error (assertEqualToResult [ispeEnNC $21250 [mc__1_2_same $21262 $21264 $21250] $21254 [ = $21254 (same $21262 $21264) ] [ , [mc__1_2_+ 1 1 $21262] [transpiler_apply mc__1_2_ $21310 ($21310 $21334 $21340) $21264 ($21334 $21340) ($21334 $21340) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] ((same 2 ($21310 $21334 $21412)))) ('
+[(Error (assertEqualToResult [ispeEnNC $21584 [mc__1_2_same $21596 $21598 $21584] $21588 [ = $21588 (same $21596 $21598) ] [ , [mc__1_2_+ 1 1 $21596] [transpiler_apply mc__1_2_ $21644 ($21644 $21668 $21674) $21598 ($21668 $21674) ($21668 $21674) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] ((same 2 ($21644 $21668 $21746)))) ('
 Got: ' () '
-Expected: ' ((same 2 ($21310 $21334 $21412)))))]
+Expected: ' ((same 2 ($21644 $21668 $21746)))))]
 [()]
 [()]
 [()]
 [()]
-[(Error (assertEqualToResult [ispeEnNC $26226 [mc__1_2_same $26238 $26240 $26226] $26230 [ = $26230 (same $26238 $26240) ] [ , [mc__1_2_+ 1 1 $26238] [mc__1_2_+ $26284 $26286 $26240] ]] ((same 2 (+ $26284 $26286)))) ('
+[(Error (assertEqualToResult [ispeEnNC $32016 [mc__1_2_same $32028 $32030 $32016] $32020 [ = $32020 (same $32028 $32030) ] [ , [mc__1_2_+ 1 1 $32028] [mc__1_2_+ $32074 $32076 $32030] ]] ((same 2 (+ $32074 $32076)))) ('
 Got: ' () '
-Expected: ' ((same 2 (+ $26284 $26286)))))]
+Expected: ' ((same 2 (+ $32074 $32076)))))]
 [()]
 [()]
 [()]
 [()]
 [()]
-[(Error (assertEqualToResult [ispeEnNC $19034 [mc__1_2_same $19046 $19048 $19034] $19038 [ = $19038 (same $19046 $19048) ] [ , [mc__1_2_+ 1 2 $19046] [mc__1_2_+ 1 $19094 $19048] ]] ((same 3 (+ 1 $19094)))) ('
+[(Error (assertEqualToResult [ispeEnNC $19366 [mc__1_2_same $19378 $19380 $19366] $19370 [ = $19370 (same $19378 $19380) ] [ , [mc__1_2_+ 1 2 $19378] [mc__1_2_+ 1 $19426 $19380] ]] ((same 3 (+ 1 $19426)))) ('
 Got: ' () '
-Expected: ' ((same 3 (+ 1 $19094)))))]
-[(Error (assertEqualToResult [ispeEnNC $20102 [mc__1_2_eq $20114 $20116 $20102] $20106 [ = $20106 (eq $20114 $20116) ] [ , [mc__1_2_+ 1 1 $20114] [transpiler_apply mc__1_2_ $20162 ($20162 $20186 $20192) $20116 ($20186 $20192) ($20186 $20192) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] (False)) ('
-Got: ' () '
-Expected: ' (False)))]
-[()]
-[()]
-[()]
-[()]
-[(Error (assertEqualToResult [ispeEnNC $21268 [mc__1_2_eq $21280 $21282 $21268] $21272 [ = $21272 (eq $21280 $21282) ] [ , [mc__1_2_+ 1 1 $21280] [mc__1_2_+ $21326 $21328 $21282] ]] (False)) ('
+Expected: ' ((same 3 (+ 1 $19426)))))]
+[(Error (assertEqualToResult [ispeEnNC $20436 [mc__1_2_eq $20448 $20450 $20436] $20440 [ = $20440 (eq $20448 $20450) ] [ , [mc__1_2_+ 1 1 $20448] [transpiler_apply mc__1_2_ $20496 ($20496 $20520 $20526) $20450 ($20520 $20526) ($20520 $20526) ([x noeval eager ()] [x noeval eager ()]) (true true) (true true)] ]] (False)) ('
 Got: ' () '
 Expected: ' (False)))]
 [()]
 [()]
 [()]
 [()]
+[(Error (assertEqualToResult [ispeEnNC $25392 [mc__1_2_eq $25404 $25406 $25392] $25396 [ = $25396 (eq $25404 $25406) ] [ , [mc__1_2_+ 1 1 $25404] [mc__1_2_+ $25450 $25452 $25406] ]] (False)) ('
+Got: ' () '
+Expected: ' (False)))]
 [()]
-[(Error (assertEqualToResult [ispeEnNC $42786 [mc__1_2_eq $42798 $42800 $42786] $42790 [ = $42790 (eq $42798 $42800) ] [ , [mc__1_2_+ 1 2 $42798] [mc__1_2_+ 1 $42846 $42800] ]] (False)) ('
+[()]
+[()]
+[()]
+[()]
+[(Error (assertEqualToResult [ispeEnNC $54508 [mc__1_2_eq $54520 $54522 $54508] $54512 [ = $54512 (eq $54520 $54522) ] [ , [mc__1_2_+ 1 2 $54520] [mc__1_2_+ 1 $54568 $54522] ]] (False)) ('
 Got: ' () '
 Expected: ' (False)))]
 [()]
@@ -1332,7 +1398,7 @@ Expected: ' (False)))]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-14 19:07:52+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-15 09:34:34+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

@@ -19,6 +19,8 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165005 { color: #FFA505; }
 .ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 </style>
@@ -26,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-14 18:35:01+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az2233-502.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-15 08:02:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1112-70.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta]
 P;HTML|
@@ -56,12 +58,46 @@ mc__1_2_wuzaL(_x, L, A) :-
                      [true],
                      [true]).
 
+</span><span class="ansi38-173216230"
+>
+mc__1_2_wuzaL(_x, L, A) :-
+    'mc__1_2_*'(2, _x, B),
+    _y=B,
+    mc__1_1_superpose(L, C),
+    _z=C,
+    transpiler_apply(mc__1_1_,
+                     _y,
+                     [_y, _z],
+                     A,
+                     [_z],
+                     [_z],
+                     [x(noeval, eager, [])],
+                     [true],
+                     [true]).
+
+</span><span class="ansi38-173216230"
+>
+mc__1_2_wuzaL(_x, L, A) :-
+    'mc__1_2_*'(2, _x, B),
+    _y=B,
+    mc__1_1_superpose(L, C),
+    _z=C,
+    transpiler_apply(mc__1_1_,
+                     _y,
+                     [_y, _z],
+                     A,
+                     [_z],
+                     [_z],
+                     [x(noeval, eager, [])],
+                     [true],
+                     [true]).
+
 </span>
 <span class="ansi38-013099040"
 >!(assertEqual (wuzaL 2 (3 4)) (superpose ((4 3) (4 4))))
 
-</span>1 _19444 [[assign,_19620,list([3,4])],[assign,_19444,[fcall(wuzaL,[2]),[2,_19620]]]]
-1 _20120 [[assign,_20292,list([4,3])],[assign,_20630,list([4,4])],[assign,_20238,list([_20292,_20630])],[assign,_20120,[fcall(superpose,[1]),[_20238]]]]
+</span>1 _9398 [[assign,_9574,list([3,4])],[assign,_9398,[fcall(wuzaL,[2]),[2,_9574]]]]
+1 _10074 [[assign,_10246,list([4,3])],[assign,_10584,list([4,4])],[assign,_10192,list([_10246,_10584])],[assign,_10074,[fcall(superpose,[1]),[_10192]]]]
 <span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_2_wuzaL(2, D, C), E, E=[wuzaL, 2, D], D=[3, 4]), F=ispeEnNC(G, mc__1_1_superpose(H, G), I, I=[superpose, H], (J=[4, 3], K=[4, 4], H=[J, K])), mc__1_2_assertEqual(B, F, A))).
@@ -71,14 +107,17 @@ mc__1_2_wuzaL(_x, L, A) :-
 >;; METTA-MORPH-TESTS-COMP.LET-SUPERPOSE-LIST2-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000031 secs. (31.33 microseconds) 
+; took 0.000042 secs. (42.21 microseconds) 
 
 !(assertEqual (wuzaL 2 (3 4)) (superpose ((4 3) (4 4))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (4 3) (4 4)) 
+      ( (4 3) 
+        (4 4) 
+        (4 3) 
+        (4 4)) 
       ( (4 3) (4 4))]]
 </span>
 Deterministic: <span class="ansi33"
@@ -98,7 +137,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-14 18:35:02+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-15 08:02:23+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

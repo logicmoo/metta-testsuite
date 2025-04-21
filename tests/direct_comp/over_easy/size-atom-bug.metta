@@ -1,9 +1,9 @@
 
 
 
-!(assertEqualToResult (size-atom ($x)) (1))
+!(assertEqualToResult (size-atomx ($x)) (1))
 
-!(assertEqualToResult (size-atom ()) (0))
+!(assertEqualToResult (size-atomx ()) (0))
 
 !(size-atom ())
 

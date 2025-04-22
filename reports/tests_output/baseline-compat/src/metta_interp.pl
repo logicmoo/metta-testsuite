@@ -2237,7 +2237,7 @@ show_options_values :-
 
 find_missing_cuts :-
     once(prolog_load_context(source, File);prolog_load_context(file, File)),!,
-    find_missing_cuts(File).
+    is_extreme_debug((debug_info(nondet_src,c(find_missing_cuts(File))))).
 
 find_missing_cuts(File) :-
     findall(Predicate, source_file(Predicate, File), Predicates),
@@ -3097,12 +3097,16 @@ skip_cmdarg('-l').
 skip_cmdarg('-g').
 skip_cmdarg('-x').
 
+:- dynamic(is_reseting_default_flags/0).
+reset_default_flags:- is_reseting_default_flags,!.
 reset_default_flags:-
+    asserta(is_reseting_default_flags),!,
     forall(option_value_def(A,B), set_option_value_interp(A,B)),
     metta_cmd_args(Rest),process_metta_cmd_arg_flags(Rest),
     current_prolog_flag(os_argv,[_|ArgV]),
     debug_info(os_argv,ArgV),
-    process_metta_cmd_arg_flags(ArgV).
+    process_metta_cmd_arg_flags(ArgV),
+    retractall(is_reseting_default_flags).
 
 
 process_metta_cmd_arg_flags(Rest):-
@@ -3892,9 +3896,6 @@ add_assertion_now(Self,Preds):-
 load_hook(Load,Hooked):-
    ignore(( \+ ((forall(load_hook0(Load,Hooked),true))))),!.
 
-metta_atom_asserted_hook(Self,Assertion):-
-  woc(load_hook(load, metta_atom_asserted(Self,Assertion))).
-
 
 %!  rtrace_on_error(:Goal) is det.
 %
@@ -4061,7 +4062,7 @@ load_hook0(Load, Assertion) :-
     % Pass the components to `load_hook1/5` for further processing.
     load_hook1(Load, Self, [Eq, H, B]).
 
-load_hook0(Load, Assertion) :-
+load_hook0(Load, Assertion) :- fail,
     % Extract components of the assertion using `assertion_hb/5`.
     once(assertion_fact(Assertion, Self, Fact)), !,
     % Pass the components to `load_hook1/5` for further processing.
@@ -4086,9 +4087,11 @@ load_hook0(Load, Assertion) :-
 % load_hook1(_Load, '&corelib', _Eq, _H, _B) :- !.
 load_hook1(Load, Self, Fact) :-
     % Skip processing if the `metta_interp` flag is not set to `ready`.
-    \+ current_prolog_flag(metta_interp, ready),
-    %debug_info(assert_hooks,load_hook_not_ready(Load, Self, Fact)), fail,
-    !, load_hook_compiler(Load, Self, Fact).
+    \+ is_metta_interp_ready,
+    debug_info(assert_hooks,load_hook_not_ready(Load, Self, Fact)),
+    %fail,
+    !,
+    woc(load_hook_compiler(Load, Self, Fact)).
 
 load_hook1(Load, Self, Fact) :-
     % Ensure the Metta compiler is ready for use.
@@ -4099,12 +4102,10 @@ load_hook1(Load, Self, Fact):-
     %debug_info(assert_hooks,not_use_metta_compiler(Load, Self, Fact)),
     woc(load_hook_compiler(Load, Self, Fact)).
 
-debug_info(_Topic,_Info):- !.
-debug_info(Topic,Info):- original_user_error(X),format(X,'~N ~w: ~q. ~n~n',[Topic,Info]).
-debug_info(Info):- compound(Info),compound_name_arguments(Info,Topic,Args),!,debug_info(Topic,Args).
-debug_info(Info):- debug_info(debug_info,Info).
+metta_atom_asserted_hook(Self,Assertion):-
+  nop(woc(load_hook(load, metta_atom_asserted(Self,Assertion)))).
 
-
+is_metta_interp_ready :- current_prolog_flag(metta_interp, ready).
 
 :- dynamic(did_load_hook_compiler/3).
 
@@ -4114,11 +4115,15 @@ load_hook_compiler(Load, Self, Assertion):- Assertion = [Eq, _, _],
     Eq == '=', !,
     % Convert functions to predicates.
     % debug_info(load_hook_compiler,(Load, Self, Assertion)),
+    ignore(catch(load_compiler(Load, Self, Assertion),_,true)),!.
+load_hook_compiler(Load, Self, Assertion):-
+  nop(debug_info(assert_hooks,skip_load_hook_compiler(Load, Self, Assertion))).
+
+load_compiler(Load, Self, Assertion):-
     woc(functs_to_preds(Assertion, Preds)), !,
     % Assert the converted predicates into the knowledge base.
     woc(assert_preds(Self, Load, Preds)), !.
-load_hook_compiler(Load, Self, Assertion):-
-  nop(debug_info(assert_hooks,skip_load_hook_compiler(Load, Self, Assertion))).
+
 % old compiler hook
 /*
 load_hook0(Load,Assertion):-
@@ -5228,6 +5233,12 @@ toplevel_interp_only_symbol('import!').
 toplevel_interp_only_symbol('extend-py!').
 toplevel_interp_only_symbol('include').
 toplevel_interp_only_symbol('include!').
+toplevel_interp_only_symbol('call-string').
+toplevel_interp_only_symbol('compiled-info').
+toplevel_interp_only_symbol('repl!').
+toplevel_interp_only_symbol('eval').
+toplevel_interp_only_symbol('pragma!').
+
 toplevel_interp_only_symbol(H):- symbol_concat('add-atom',_,H),!.
 
 %!  always_exec(+W) is nondet.
@@ -5888,7 +5899,15 @@ into_metta_callable(_Self,TermV,Term,X,NamedVarsList,Was):-
   X = RealRes)))),!.
 
 
-into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-!,
+into_metta_callable(Self,TermV, OUT,X,NamedVarsList,Was):-
+  toplevel_interp_only(TermV),
+  into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was),!,
+  OUT=locally(nb_setval('eval_in_only', interp),CALL).
+
+into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-
+  into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was),!.
+
+into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was):-!,
  default_depth(DEPTH),
  option_else('stack-max',StackMax,DEPTH),
  CALL = eval_H(StackMax,Self,Term,X),
@@ -7104,7 +7123,7 @@ qsave_program(Name) :-
 %   is allowed, it handles modifications to `system:notrace/1` to customize its behavior.
 %
 
-%nts1 :- !. % Disable redefinition by cutting execution.
+nts1 :- !. % Disable redefinition by cutting execution.
 %nts1 :- is_flag(notrace),!.
 nts1 :-
     % Redefine the system predicate `system:notrace/1` to customize its behavior.
@@ -7593,4 +7612,5 @@ complex_relationship3_ex(Likelihood1, Likelihood2, Likelihood3) :-
 
 
 :- thread_initialization(do_metta_setup).
+
 

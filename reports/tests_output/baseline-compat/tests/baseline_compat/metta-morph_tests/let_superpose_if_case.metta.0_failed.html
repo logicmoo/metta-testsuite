@@ -16,6 +16,7 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
@@ -25,7 +26,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-22 09:48:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-22 19:15:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1982-717.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta]
 P;HTML|
@@ -40,15 +41,20 @@ Script started on 2025-04-22 09:48:57+00:00 [COMMAND="timeout --preserve-status 
 ;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta]
 
 <span class="ansi38-013099040"
->!(let $13422 (superpose (3 4 5)) (If (> $13422 3) (case (1 $13422) (((1 3) (f 0)) ((1 4) (42 42)) ($13518 (1 1))))))
+>!(let $55654 (superpose (3 4 5)) (If (> $55654 3) (case (1 $55654) (((1 3) (f 0)) ((1 4) (42 42)) ($55750 (1 1))))))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[3, 4, 5], mc__1_1_superpose(B, C), D=C, 'mc__1_2_>'(D, 3, E), F=ispeEnNC(G, (H=I*->mc__1_1_f(0, J), G=J;K=[1, 4], (H=K*->L=[42, 42], M=L;(H=N*->O=[1, 1], P=O;Q='Empty', P=Q), M=P), G=M), G, (H=I*->R=[f, 0], G=R;K=[1, 4], (H=K*->S=[42, 42], M=S;(H=N*->T=[1, 1], P=T;U='Empty', P=U), M=P), G=M), ((V=[1, D]*->H=V;H='Empty'), I=[1, 3])), mc__1_2_If(E, F, A))).
 
-</span>;; no-results ;; 
-<span class="ansi38-013099040"
->!(assertEqualToResult (let $8136 (superpose (3 4 5)) (If (> $8136 3) (case (1 $8136) (((1 3) (f 0)) ((1 4) (42 42)) ($8232 (1 1)))))) ((42 42) (1 1)))
+</span>
+N(1): <span class="ansi33"
+>(42 42)
+</span>
+R(2): <span class="ansi33"
+>(1 1)
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (let $29748 (superpose (3 4 5)) (If (> $29748 3) (case (1 $29748) (((1 3) (f 0)) ((1 4) (42 42)) ($29844 (1 1)))))) ((42 42) (1 1)))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
@@ -59,39 +65,35 @@ Script started on 2025-04-22 09:48:57+00:00 [COMMAND="timeout --preserve-status 
 >;; METTA-MORPH-TESTS-COMP.LET-SUPERPOSE-IF-CASE-COMP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000034 secs. (33.98 microseconds) 
+; took 0.000058 secs. (58.31 microseconds) 
 
-!(assertEqualToResult (let $11344 (superpose (3 4 5)) (If (> $11344 3) (case (1 $11344) (((1 3) (f 0)) ((1 4) (42 42)) ($11440 (1 1)))))) ((42 42) (1 1)))
+!(assertEqualToResult (let $11708 (superpose (3 4 5)) (If (> $11708 3) (case (1 $11708) (((1 3) (f 0)) ((1 4) (42 42)) ($11804 (1 1)))))) ((42 42) (1 1)))
 
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (42 42) (1 1)) 
       ( (42 42) (1 1))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(42,'[|]'(42,[])),'[|]'('[|]'(1,'[|]'(1,[])),[])))
-
+</span>
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $27972 [mc__1_2_If $27984 $27986 $27972] $27976 [ = $27976 (If $27984 $27986) ] [ , [ = $28022 (3 4 5) ] [ , [mc__1_1_superpose $28022 $28036] [ , [ = $28046 $28036 ] [ , [mc__1_2_> $28046 3 $27984] [ = $27986 [ispeEnNC $28072 [ ; [ *-> [ = $28096 $28098 ] [ , [mc__1_1_f 0 $28110] [ = $28072 $28110 ] ] ] [ , [ = $28126 (1 4) ] [ , [ ; [ *-> [ = $28096 $28126 ] [ , [ = $28162 (42 42) ] [ = $28168 $28162 ] ] ] [ , [ ; [ *-> [ = $28096 $28194 ] [ , [ = $28204 (1 1) ] [ = $28210 $28204 ] ] ] [ , [ = $28222 Empt𝘺 ] [ = $28210 $28222 ] ] ] [ = $28168 $28210 ] ] ] [ = $28072 $28168 ] ] ] ] $28072 [ ; [ *-> [ = $28096 $28098 ] [ , [ = $28270 (f 0) ] [ = $28072 $28270 ] ] ] [ , [ = $28126 (1 4) ] [ , [ ; [ *-> [ = $28096 $28126 ] [ , [ = $28324 (42 42) ] [ = $28168 $28324 ] ] ] [ , [ ; [ *-> [ = $28096 $28194 ] [ , [ = $28366 (1 1) ] [ = $28210 $28366 ] ] ] [ , [ = $28384 Empt𝘺 ] [ = $28210 $28384 ] ] ] [ = $28168 $28210 ] ] ] [ = $28072 $28168 ] ] ] ] [ , [ ; [ *-> [ = $28426 (1 $28046) ] [ = $28096 $28426 ] ] [ = $28096 Empt𝘺 ] ] [ = $28098 (1 3) ] ]] ] ] ] ] ]] ((42 42) (1 1))) ('
-Got: ' () '
-Expected: ' ((42 42) (1 1))))
+>()
 </span>P;HTML|
 ;             [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 0
-</span><span class="ansi31"
->Failures: 1
+>Successes: 1
+</span><span class="ansi32"
+>Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[]
-[(Error (assertEqualToResult [ispeEnNC $30008 [mc__1_2_If $30020 $30022 $30008] $30012 [ = $30012 (If $30020 $30022) ] [ , [ = $30058 (3 4 5) ] [ , [mc__1_1_superpose $30058 $30072] [ , [ = $30082 $30072 ] [ , [mc__1_2_> $30082 3 $30020] [ = $30022 [ispeEnNC $30108 [ ; [ *-> [ = $30132 $30134 ] [ , [mc__1_1_f 0 $30146] [ = $30108 $30146 ] ] ] [ , [ = $30162 (1 4) ] [ , [ ; [ *-> [ = $30132 $30162 ] [ , [ = $30198 (42 42) ] [ = $30204 $30198 ] ] ] [ , [ ; [ *-> [ = $30132 $30230 ] [ , [ = $30240 (1 1) ] [ = $30246 $30240 ] ] ] [ , [ = $30258 Empt𝘺 ] [ = $30246 $30258 ] ] ] [ = $30204 $30246 ] ] ] [ = $30108 $30204 ] ] ] ] $30108 [ ; [ *-> [ = $30132 $30134 ] [ , [ = $30306 (f 0) ] [ = $30108 $30306 ] ] ] [ , [ = $30162 (1 4) ] [ , [ ; [ *-> [ = $30132 $30162 ] [ , [ = $30360 (42 42) ] [ = $30204 $30360 ] ] ] [ , [ ; [ *-> [ = $30132 $30230 ] [ , [ = $30402 (1 1) ] [ = $30246 $30402 ] ] ] [ , [ = $30420 Empt𝘺 ] [ = $30246 $30420 ] ] ] [ = $30204 $30246 ] ] ] [ = $30108 $30204 ] ] ] ] [ , [ ; [ *-> [ = $30462 (1 $30082) ] [ = $30132 $30462 ] ] [ = $30132 Empt𝘺 ] ] [ = $30134 (1 3) ] ]] ] ] ] ] ]] ((42 42) (1 1))) ('
-Got: ' () '
-Expected: ' ((42 42) (1 1))))]
+[(42 42), (1 1)]
+[()]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-22 09:48:57+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-22 19:15:58+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

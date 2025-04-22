@@ -15,6 +15,7 @@
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 </style>
@@ -22,7 +23,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-22 09:48:48+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/add_atom_match.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-22 19:15:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1982-717.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/add_atom_match.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/add_atom_match.metta]
 P;HTML|
@@ -41,7 +42,7 @@ Script started on 2025-04-22 09:48:48+00:00 [COMMAND="timeout --preserve-status 
 ;                    [load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/add_atom_match.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/add_atom_match.metta]
 
 <span class="ansi38-013099040"
->!(assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($13164 mortal) (mortal $13164)))) ((mortal man)))
+>!(assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($11650 mortal) (mortal $11650)))) ((mortal man)))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
@@ -50,9 +51,25 @@ Script started on 2025-04-22 09:48:48+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="METTA-MORPH-TESTS-COMP.ADD-ATOM-MATCH-COMP.01"
 >;; METTA-MORPH-TESTS-COMP.ADD-ATOM-MATCH-COMP.01</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $10368 ((mortal man))]]] [ = $10374 True ] ] [ = $10374 False ] ]] [error instantiation_error $10388] ]
-[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $2696]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/add_atom_match.metta] (assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($2754 mortal) (mortal $2754)))) ((mortal man)))]P;HTML|
+; 
+; EVAL TEST
+; took 0.000027 secs. (27.37 microseconds) 
+
+!(assertEqualToResult (sequential ((add-atom &self (man mortal)) (match &self ($8854 mortal) (mortal $8854)))) ((mortal man)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (add-atom &self 
+          (man mortal)) (match &self ($10006 mortal) [ispuU $10018 [ = $10018 (mortal $10006) ]])) 
+      ( (mortal man))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('add-atom','[|]'('&self','[|]'('[|]'(man,'[|]'(mortal,[])),[]))),'[|]'('[|]'(match,'[|]'('&self','[|]'('[|]'(_7644{vn = ...},'[|]'(mortal,[])),'[|]'(ispuU(_7670,=(_7670,'[|]'(mortal,'[|]'(_7644{vn = ...},[])))),[])))),[])),'[|]'('[|]'(mortal,'[|]'(man,[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error (assertEqualToResult [ispeEnNC $20308 [mc__1_1_sequential $20320 $20308] $20312 [ = $20312 (sequential $20320) ] [ , [ = $20350 (man mortal) ] [ , [ = $20362 (add-atom &self $20350) ] [ , [ = $20392 ($20398 mortal) ] [ , [ = $20410 [ispuU $20416 [ = $20416 (mortal $20398) ]] ] [ , [ = $20446 (match &self $20392 $20410) ] [ = $20320 ($20362 $20446) ] ] ] ] ] ]] ((mortal man))) ('
+Got: ' ((add-atom &self (man mortal)) (match &self ($20542 mortal) [ispuU $20554 [ = $20554 (mortal $20542) ]])) '
+Expected: ' ((mortal man))))
+</span>P;HTML|
 ;             [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/add_atom_match.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
@@ -63,11 +80,13 @@ Script started on 2025-04-22 09:48:48+00:00 [COMMAND="timeout --preserve-status 
 >Failures: 1
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[<span class="ansi1 ansi31"
->
-ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+[(Error (assertEqualToResult [ispeEnNC $21288 [mc__1_1_sequential $21300 $21288] $21292 [ = $21292 (sequential $21300) ] [ , [ = $21330 (man mortal) ] [ , [ = $21342 (add-atom &self $21330) ] [ , [ = $21372 ($21378 mortal) ] [ , [ = $21390 [ispuU $21396 [ = $21396 (mortal $21378) ]] ] [ , [ = $21426 (match &self $21372 $21390) ] [ = $21300 ($21342 $21426) ] ] ] ] ] ]] ((mortal man))) ('
+Got: ' ((add-atom &self (man mortal)) (match &self ($21522 mortal) [ispuU $21534 [ = $21534 (mortal $21522) ]])) '
+Expected: ' ((mortal man))))]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-22 09:48:49+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-22 19:15:50+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

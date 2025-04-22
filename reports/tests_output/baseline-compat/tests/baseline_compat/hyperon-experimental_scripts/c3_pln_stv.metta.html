@@ -16,6 +16,7 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
 .ansi38-013099040 { color: #0D6328; }
@@ -31,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-22 09:50:54+00:00 [COMMAND="timeout --preserve-status --foreground 42 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=42 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-22 19:17:19+00:00 [COMMAND="timeout --preserve-status --foreground 42 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1982-717.MeTTaLog  -- --python=enable -- --timeout=42 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta]
 P;HTML|
@@ -67,10 +68,21 @@ Script started on 2025-04-22 09:50:54+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.01</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $9628 $9630]]] [ = $9634 True ] ] [ = $9634 False ] ]] [error instantiation_error $9648] ]
-[error [error [existence_error procedure [ / mc__1_0_PA 1 ]] [context system:[ / <meta-call> 1 ] $2114]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta] (assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))]
-<span class="ansi38-013099040"
+; 
+; EVAL TEST
+; took 0.002 secs. (2.01 milliseconds) 
+
+!(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (stv 0.3 0.8)) 
+      ( (stv 0.3 0.8))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertEqual (TV (FA)) (stv 0.4 0.8))
 
 </span><span class="ansi38-017068017"
@@ -80,13 +92,24 @@ Script started on 2025-04-22 09:50:54+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.02</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $17916 $17918]]] [ = $17922 True ] ] [ = $17922 False ] ]] [error instantiation_error $17936] ]
-
-<span class="ansi38-013099040"
+; 
+; EVAL TEST
+; took 0.001 secs. (1.29 milliseconds) 
+
+!(assertEqual (TV (FA)) (stv 0.4 0.8))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (stv 0.4 0.8)) 
+      ( (stv 0.4 0.8))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
-</span>[error [error [existence_error procedure [ / mc__1_0_FA 1 ]] [context system:[ / <meta-call> 1 ] $2036]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta] (assertEqual (TV (FA)) (stv 0.4 0.8))]<span class="ansi38-017068017"
+</span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnNC(C, mc__1_1_TV(D, C), E, E=['TV', D], D=[croaks, 'Fritz']), F=ispuU(G, G=[stv, 0.95, 0.85]), mc__1_2_assertEqual(B, F, A))).
 
@@ -95,20 +118,18 @@ Script started on 2025-04-22 09:50:54+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000433 secs. (432.66 microseconds) 
+; took 0.000539 secs. (538.78 microseconds) 
 
 !(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (stv 0.95 0.85)) 
       ( (stv 0.95 0.85))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(stv,'[|]'(0.95,'[|]'(0.85,[]))),[]))
-
+</span>
 Deterministic: <span class="ansi33"
->(Error (assertEqual [ispeEnNC $39656 [mc__1_1_TV $39668 $39656] $39660 [ = $39660 (TV $39668) ] [ = $39668 (croaks Fritz) ]] [ispuU $39704 [ = $39704 (stv 0.95 0.85) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.95 0.85))))
+>()
 </span><span class="ansi38-013099040"
 >!(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
@@ -121,20 +142,18 @@ Expected: ' ((stv 0.95 0.85))))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000750 secs. (750.18 microseconds) 
+; took 0.004 secs. (4.27 milliseconds) 
 
 !(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (stv 0.783 0.68)) 
       ( (stv 0.783 0.68))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(stv,'[|]'(0.783,'[|]'(0.68,[]))),[]))
-
+</span>
 Deterministic: <span class="ansi33"
->(Error (assertEqual [ispeEnNC $63380 [mc__1_1_TV $63392 $63380] $63384 [ = $63384 (TV $4162) ] [ = $4162 (frog Fritz) ]] [ispuU $4198 [ = $4198 (stv 0.783 0.68) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.783 0.68))))
+>()
 </span><span class="ansi38-013099040"
 >!(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
@@ -147,44 +166,38 @@ Expected: ' ((stv 0.783 0.68))))
 >;; HYPERON-EXPERIMENTAL-SCRIPTS-COMP.C3-PLN-STV-COMP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000921 secs. (920.91 microseconds) 
+; took 0.009 secs. (8.69 milliseconds) 
 
 !(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
-<span class="ansi31"
->  [loonit_failureR 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () 
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (stv 0.7047 0.68)) 
       ( (stv 0.7047 0.68))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(stv,'[|]'(0.7047,'[|]'(0.68,[]))),[]))
-
+</span>
 Deterministic: <span class="ansi33"
->(Error (assertEqual [ispeEnNC $28668 [mc__1_1_TV $28680 $28668] $28672 [ = $28672 (TV $28680) ] [ = $28680 (green Fritz) ]] [ispuU $28716 [ = $28716 (stv 0.7047 0.68) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.7047 0.68))))
+>()
 </span>P;HTML|
 ;             [ = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 0
-</span><span class="ansi31"
->Failures: 5
+>Successes: 5
+</span><span class="ansi32"
+>Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[[[(Error (assertEqual [ispeEnNC $40622 [mc__1_1_TV $40634 $40622] $40626 [ = $40626 (TV $40634) ] [ = $40634 (croaks Fritz) ]] [ispuU $40670 [ = $40670 (stv 0.95 0.85) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.95 0.85))))]
-[(Error (assertEqual [ispeEnNC $5912 [mc__1_1_TV $5924 $5912] $5916 [ = $5916 (TV $5924) ] [ = $5924 (frog Fritz) ]] [ispuU $5960 [ = $5960 (stv 0.783 0.68) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.783 0.68))))]
-[(Error (assertEqual [ispeEnNC $29634 [mc__1_1_TV $29646 $29634] $29638 [ = $29638 (TV $29646) ] [ = $29646 (green Fritz) ]] [ispuU $29682 [ = $29682 (stv 0.7047 0.68) ]]) ('
-Got: ' () '
-Expected: ' ((stv 0.7047 0.68))))]
+[()]
+[()]
+[()]
+[()]
+[()]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-22 09:50:55+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-22 19:17:19+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

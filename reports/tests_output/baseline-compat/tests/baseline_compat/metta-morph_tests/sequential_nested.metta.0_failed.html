@@ -46,7 +46,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-22 09:49:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/sequential_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-22 19:16:08+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1982-717.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/sequential_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/sequential_nested.metta]
 P;HTML|
@@ -99,48 +99,81 @@ Deterministic: <span class="ansi33"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[B, C], mc__1_1_sequential(D, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $14732]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((increment) (increment)))]
-<span class="ansi38-013099040"
+</span>
+N(1): <span class="ansi33"
+>(increment)
+</span>
+R(2): <span class="ansi33"
+>(increment)
+</span><span class="ansi38-013099040"
 >!(sequential ((increment) (increment) (increment)))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[increment], E=[B, C, D], mc__1_1_sequential(E, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $1924]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((increment) (increment) (increment)))]
-<span class="ansi38-013099040"
+</span>
+N(1): <span class="ansi33"
+>(increment)
+</span>
+N(2): <span class="ansi33"
+>(increment)
+</span>
+R(3): <span class="ansi33"
+>(increment)
+</span><span class="ansi38-013099040"
 >!(sequential ((sequential ((increment) (increment) (increment)))))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[increment], E=[B, C, D], F=[sequential, E], G=[F], mc__1_1_sequential(G, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $2012]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((sequential ((increment) (increment) (increment)))))]
-<span class="ansi38-013099040"
+</span>
+Deterministic: <span class="ansi33"
+>(sequential ((increment) (increment) (increment)))
+</span><span class="ansi38-013099040"
 >!(sequential ((sequential ((increment) (increment) (increment))) (sequential ((increment) (increment) (increment)))))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[increment], E=[B, C, D], F=[sequential, E], G=[increment], H=[increment], I=[increment], J=[G, H, I], K=[sequential, J], L=[F, K], mc__1_1_sequential(L, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $2238]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((sequential ((increment) (increment) (increment))) (sequential ((increment) (increment) (increment)))))]
-<span class="ansi38-013099040"
+</span>
+N(1): <span class="ansi33"
+>(sequential ((increment) (increment) (increment)))
+</span>
+R(2): <span class="ansi33"
+>(sequential ((increment) (increment) (increment)))
+</span><span class="ansi38-013099040"
 >!(sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment)))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[increment], E=[B, C, D], F=[sequential, E], G=[increment], H=[increment], I=[increment], J=[F, G, H, I], mc__1_1_sequential(J, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $2156]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment)))]
-<span class="ansi38-013099040"
+</span>
+N(1): <span class="ansi33"
+>(sequential ((increment) (increment) (increment)))
+</span>
+N(2): <span class="ansi33"
+>(increment)
+</span>
+N(3): <span class="ansi33"
+>(increment)
+</span>
+R(4): <span class="ansi33"
+>(increment)
+</span><span class="ansi38-013099040"
 >!(do (sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment))))
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[increment], D=[increment], E=[B, C, D], F=[sequential, E], G=[increment], H=[increment], I=[increment], J=[F, G, H, I], K=[sequential, J], mc__1_1_do(K, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_do 2 ]] [context system:[ / <meta-call> 1 ] $2206]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (do (sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment))))]
-<span class="ansi38-013099040"
+</span>
+Deterministic: <span class="ansi33"
+>Empty
+</span><span class="ansi38-013099040"
 >!(get-state &var)
 
 </span><span class="ansi38-017068017"
@@ -157,15 +190,22 @@ Deterministic: <span class="ansi33"
 >:- do_metta_runtime(A,
                     (B=[increment], C=[B], mc__1_1_sequential(C, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $1828]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((increment)))]
-<span class="ansi38-013099040"
+</span>
+Deterministic: <span class="ansi33"
+>(increment)
+</span><span class="ansi38-013099040"
 >!(increment)
 
 </span><span class="ansi38-017068017"
 >:- do_metta_runtime(A, mc__1_0_increment(A)).
 
-</span>[error [error [existence_error procedure [ / mc__1_0_increment 1 ]] [context system:[ / <meta-call> 1 ] $11102]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (increment)]
-<span class="ansi38-013099040"
+</span>
+N(1): <span class="ansi33"
+>Empty
+</span>
+R(2): <span class="ansi33"
+>(get-state (new-state 1))
+</span><span class="ansi38-013099040"
 >!(get-state &var)
 
 </span><span class="ansi38-017068017"
@@ -182,8 +222,10 @@ Deterministic: <span class="ansi33"
 >:- do_metta_runtime(A,
                     (B=['new-state', 1], C=['new-state', 1], D=['get-state', C], E=[+, 1, D], F=['change-state!', B, E], G=[F], mc__1_1_sequential(G, A))).
 
-</span>[error [error [existence_error procedure [ / mc__1_1_sequential 2 ]] [context system:[ / <meta-call> 1 ] $2064]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/metta-morph_tests/sequential_nested.metta] (sequential ((change-state! &var (+ 1 (get-state &var)))))]
-<span class="ansi38-013099040"
+</span>
+Deterministic: <span class="ansi33"
+>(change-state! (new-state 1) (+ 1 (get-state (new-state 1))))
+</span><span class="ansi38-013099040"
 >!(get-state &var)
 
 </span><span class="ansi38-017068017"
@@ -198,13 +240,22 @@ Deterministic: <span class="ansi33"
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[[[[[[[(get-state (new-state 1))]
-[[[(get-state (new-state 1))]
-[[(get-state (new-state 1))]
+[(increment), (increment)]
+[(increment), (increment), (increment)]
+[(sequential ((increment) (increment) (increment)))]
+[(sequential ((increment) (increment) (increment))), (sequential ((increment) (increment) (increment)))]
+[(sequential ((increment) (increment) (increment))), (increment), (increment), (increment)]
+[Empty]
+[(get-state (new-state 1))]
+[(increment)]
+[Empty(get-state (new-state 1))]
+[(get-state (new-state 1))]
+[(change-state! (new-state 1) (+ 1 (get-state (new-state 1))))]
+[(get-state (new-state 1))]
 <span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-22 09:49:38+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-22 19:16:08+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

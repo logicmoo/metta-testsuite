@@ -28,6 +28,7 @@
 .ansi93 { color: #ffff00; }
 .ansi94 { color: #5c5cff; }
 .ansi95 { color: #ff00ff; }
+.ansi96 { color: #00ffff; }
 .ansi97 { color: #ffffff; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068017 { color: #114411; }
@@ -55,7 +56,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-04-22 09:55:23+00:00 [COMMAND="timeout --preserve-status --foreground 44 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=44 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/direct_comp/types/02-curried-plus_for_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-04-22 19:20:53+00:00 [COMMAND="timeout --preserve-status --foreground 44 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1982-717.MeTTaLog  -- --python=enable -- --timeout=44 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/direct_comp/types/02-curried-plus_for_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@
 ; user:[load_metta_file &self tests/direct_comp/types/02-curried-plus_for_types.metta]
 P;HTML|
@@ -103,13 +104,24 @@ Script started on 2025-04-22 09:55:23+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.01"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.01</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $21232 (6)]]] [ = $21238 True ] ] [ = $21238 False ] ]] [error instantiation_error $21252] ]
-
-<span class="ansi38-013099040"
+; 
+; EVAL TEST
+; took 0.000035 secs. (34.89 microseconds) 
+
+!(assertEqualToResult ((plus 4) 2) (6))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (6) 
+      (6)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult ((inc) 2) (3))
 
-</span>[error [error [existence_error procedure [ / mc__2_1_1_plus 3 ]] [context $bags:[ / findall_loop 4 ] $1976]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta] (assertEqualToResult ((plus 4) 2) (6))]<span class="ansi38-017068017"
+</span><span class="ansi38-017068017"
 >:- do_metta_runtime(A,
                     (B=ispeEnN(C, (mc__1_0_inc(D), apply_fn(D, [2, C])), E, E=[[inc], 2]), F=[3], mc__1_2_assertEqualToResult(B, F, A))).
 
@@ -117,8 +129,8 @@ Script started on 2025-04-22 09:55:23+00:00 [COMMAND="timeout --preserve-status 
 ;<h3 id="TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.02"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.02</h3>
 P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $27296 (3)]]] [ = $27302 True ] ] [ = $27302 False ] ]] [error instantiation_error $27316] ]
-[error [error [existence_error procedure [ / mc__1_0_inc 1 ]] [context system:[ / <meta-call> 1 ] $1970]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta] (assertEqualToResult ((inc) 2) (3))]
+;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $49770 (3)]]] [ = $49776 True ] ] [ = $49776 False ] ]] [error instantiation_error $49790] ]
+[error [error [existence_error procedure [ / apply_fn 2 ]] [context system:[ / <meta-call> 1 ] $21596]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta] (assertEqualToResult ((inc) 2) (3))]
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (plus 4)) ((-> Number Number)))
 
@@ -131,7 +143,7 @@ Script started on 2025-04-22 09:55:23+00:00 [COMMAND="timeout --preserve-status 
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000280 secs. (279.93 microseconds) 
+; took 0.000241 secs. (241.02 microseconds) 
 
 !(assertEqualToResult (get-type (plus 4)) ((-> Number Number)))
 
@@ -155,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000104 secs. (104.14 microseconds) 
+; took 0.000099 secs. (99.36 microseconds) 
 
 !(assertEqualToResult (get-type inc) ((-> (-> Number Number))))
 
@@ -179,7 +191,7 @@ Deterministic: <span class="ansi33"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000268 secs. (268.13 microseconds) 
+; took 0.000072 secs. (72.03 microseconds) 
 
 !(assertEqualToResult (get-type (inc)) ((-> Number Number)))
 
@@ -191,7 +203,7 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],[]),'[|]'('[|]'(->,'[|]'('Number','[|]'('Number',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error (assertEqualToResult [ispeEnNC $12054 [mc__1_1_get-type $12066 $12054] $12058 [ = $12058 (get-type $12066) ] [ = $12066 (inc) ]] ((-> Number Number))) ('
+>(Error (assertEqualToResult [ispeEnNC $33798 [mc__1_1_get-type $33810 $33798] $33802 [ = $33802 (get-type $33810) ] [ = $33810 (inc) ]] ((-> Number Number))) ('
 Got: ' (()) '
 Expected: ' ((-> Number Number))))
 </span><span class="ansi38-013099040"
@@ -214,10 +226,21 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.06"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.06</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $18296 (8)]]] [ = $18302 True ] ] [ = $18302 False ] ]] [error instantiation_error $18316] ]
-[error [error [existence_error procedure [ / mc__1_1_plus4 2 ]] [context $bags:[ / findall_loop 4 ] $1922]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta] (assertEqualToResult (plus4 4) (8))]
-<span class="ansi38-013099040"
+; 
+; EVAL TEST
+; took 0.000017 secs. (17.26 microseconds) 
+
+!(assertEqualToResult (plus4 4) (8))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (8) 
+      (8)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type plus4) ((-> Number Number)))
 
 </span><span class="ansi38-017068017"
@@ -229,7 +252,7 @@ Deterministic: <span class="ansi33"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000102 secs. (102.13 microseconds) 
+; took 0.000065 secs. (65.32 microseconds) 
 
 !(assertEqualToResult (get-type plus4) ((-> Number Number)))
 
@@ -250,7 +273,7 @@ Deterministic: <span class="ansi33"
 
 </span>
 N(1): <span class="ansi33"
->(H-E-was $40432)
+>(H-E-was $64072)
 </span>
 R(2): <span class="ansi33"
 >(H-E-was %Undefined%)
@@ -264,17 +287,28 @@ R(2): <span class="ansi33"
 </span>
 ;<h3 id="TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.08"
 >;; TYPES-COMP.02-CURRIED-PLUS-FOR-TYPES-COMP.08</h3>
-P;HTML|
-;                           [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $61444 (9)]]] [ = $61450 True ] ] [ = $61450 False ] ]] [error instantiation_error $61464] ]
-
-<span class="ansi38-013099040"
+; 
+; EVAL TEST
+; took 0.000017 secs. (16.57 microseconds) 
+
+!(assertEqualToResult ((plus 4) 5) (9))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (9) 
+      (9)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
 >!(assertEqualToResult ((plus-some 4) 6) (10))
 
 </span>
 TRACE_CALLED
-[error [error [existence_error procedure [ / mc__2_1_1_plus 3 ]] [context $bags:[ / findall_loop 4 ] $1948]] [file /home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta] (assertEqualToResult ((plus 4) 5) (9))]<span class="ansi1"
+<span class="ansi1"
 >  [96] </span><span class="ansi34"
->call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(...,8000,...,_978))|_954],_942))|_918],_906))|_882],P;HTML|<span class="pl-list"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(...,8000,...,_978))|_954],_942))|_918],_906))|_882],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -284,21 +318,21 @@ TRACE_CALLED
 >600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
 <span class="ansi1"
 >  [95] </span><span class="ansi34"
->call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(...,8000,...,_1128))|_1104],_1092))|_1068],P;HTML|<span class="pl-list"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(...,8000,...,_1128))|_1104],_1092))|_1068],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x561f9d696760),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,...,...)|_1218],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x55f12c634770),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,...,...)|_1210],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x561f9d696760),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_1268))|_1242],_1170))|_1144],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x55f12c634770),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_1260))|_1234],_1162))|_1136],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -308,21 +342,21 @@ TRACE_CALLED
 >600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
 <span class="ansi1"
 >  [94] </span><span class="ansi34"
->once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_1410],_1398))|_1374],P;HTML|<span class="pl-list"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_1402],_1390))|_1366],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x561f9d696760),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(...,8000,...,...)),frame(95,...,...)|_1494],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x55f12c634770),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(...,8000,...,...)),frame(95,...,...)|_1486],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(94,clause(<clause>(0x561f9cefdf10),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_1546)))|_1510],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(94,clause(<clause>(0x55f12be9bf10),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_1546)))|_1510],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -332,18 +366,18 @@ TRACE_CALLED
 >600</span></span>)</span></span>]</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:538
 <span class="ansi1"
 >  [93] </span><span class="ansi34"
->setup_call_cleanup(system:'$notrace'(12,0),system:once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x561f9d666570),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,...,...)|_1666],P;HTML|<span class="pl-list"
+>setup_call_cleanup(system:'$notrace'(12,0),system:once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(96,clause(<clause>(0x55f12c604580),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(96,...,...)|_1666],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x561f9d696760),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(95,clause(<clause>(0x55f12c634770),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->...</span></span>]</span>)),frame(94,clause(<clause>(0x561f9cefdf10),3),once(...)),frame(93,...,...)|_1764],P;HTML|<span class="pl-list"
+>...</span></span>]</span>)),frame(94,clause(<clause>(0x55f12be9bf10),3),once(...)),frame(93,...,...)|_1764],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -386,7 +420,7 @@ TRACE_CALLED
 >'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,1),load_answer_file(P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>),set_exec_num(P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,0))),load_metta_file_stream_fast(3622,read_file_sexpr,P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x561fa07b31a0)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x55f12f74f680)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
 <span class="ansi1"
 >  [75] </span><span class="ansi34"
@@ -397,7 +431,7 @@ TRACE_CALLED
 <span class="ansi1"
 >  [72] </span><span class="ansi34"
 >setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,read,<stream>(0x561fa07b31a0),P;HTML|<span class="pl-list"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,read,<stream>(0x55f12f74f680),P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -405,7 +439,7 @@ TRACE_CALLED
 >encoding</span>(<span class="pl-args"
 ><span class="pl-atom"
 >utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x561fa07b31a0))),user:close(<stream>(0x561fa07b31a0)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x55f12f74f680))),user:close(<stream>(0x55f12f74f680)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
 <span class="ansi1"
 >  [71] </span><span class="ansi34"
 >once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
@@ -415,7 +449,7 @@ TRACE_CALLED
 <span class="ansi1"
 >  [68] </span><span class="ansi34"
 >setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,read,<stream>(0x561fa07b31a0),P;HTML|<span class="pl-list"
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,read,<stream>(0x55f12f74f680),P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -423,7 +457,7 @@ TRACE_CALLED
 >encoding</span>(<span class="pl-args"
 ><span class="pl-atom"
 >utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x561fa07b31a0))),close(<stream>(0x561fa07b31a0)))),user:working_directory(_2612,'/home/runner/work/metta-testsuite/metta-testsuite/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+>'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'</span>,'&top',<stream>(0x55f12f74f680))),close(<stream>(0x55f12f74f680)))),user:working_directory(_2612,'/home/runner/work/metta-testsuite/metta-testsuite/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
 <span class="ansi1"
 >  [64] </span><span class="ansi34"
 >once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
@@ -538,427 +572,365 @@ TRACE_CALLED
 
 Note: some frames are missing due to last-call optimization.
 Re-run your program in debug mode (:- debug.) to get more detail.
-(0)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(0)$P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
 > '$c_call_prolog'. </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(1)$P;HTML|<span class="ansi32"
-></span><span class="ansi32"
-></span><span class="ansi32"
->[$toplevel]</span>P;HTML|<span class="ansi32"
-></span><span class="ansi32"
-></span><span class="ansi32"
+(1)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
 > '$toplevel'. </span>  %  toplevel.pl:861: 
-(2)$P;HTML|<span class="ansi32"
-></span><span class="ansi32"
-></span><span class="ansi32"
->[$toplevel]</span>P;HTML| '$runtoplevel'.   %  toplevel.pl:873: 
-(4)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi32"
-></span><span class="ansi32"
-></span><span class="ansi32"
+(2)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+>[$toplevel]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> '$runtoplevel'. </span>  %  toplevel.pl:873: 
+(4)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
 > do_loon. </span>  %  metta_interp.pl:6770: 
-(5)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(5)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 >[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
+></span><span class="ansi2 ansi36"
 > run_cmd_args. </span>  %  metta_interp.pl:2698: 
-(7)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+(7)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
 > do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2898: 
-(18)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(18)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 >[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi35"
-></span><span class="ansi2 ansi35"
-></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
 > cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:3073: 
-(19)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML| if_phase(execute,execute,'<garbage_collected>').   %  metta_interp.pl:3203: 
-(20)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML| cmdline_load_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta').   %  metta_interp.pl:3169: 
-(23)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),!,flush_output)))). </span>  %  init.pl:564: 
-(24)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(19)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi91"
+></span><span class="ansi91"
+></span><span class="ansi91"
+> if_phase(execute,execute,'<garbage_collected>'). </span>  %  metta_interp.pl:3203: 
+(20)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 >[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi91"
-></span><span class="ansi2 ansi91"
-></span><span class="ansi2 ansi91"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> cmdline_load_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta'). </span>  %  metta_interp.pl:3169: 
+(23)$P;HTML|[system]#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')),!,flush_output)))). </span>  %  init.pl:564: 
+(24)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(26)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+(26)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(27)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(27)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(30)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> catch(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S478,user:(always_rethrow(_S478)->throw(_S478);pp_m_m_red(red,user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')in _S478))). </span>  %  init.pl:564: 
-(36)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')]),user:call(load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')),user:(nb_current('$circular_goals',_S104),select(load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S104,_21118),nb_setval('$circular_goals',_21118))). </span>  %  init.pl:680: 
-(37)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi91"
-></span><span class="ansi91"
-></span><span class="ansi91"
+(30)$P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> catch(user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S028,user:(always_rethrow(_S028)->throw(_S028);pp_m_m_red(red,user:load_metta_file('&self','tests/direct_comp/types/02-curried-plus_for_types.metta')in _S028))). </span>  %  init.pl:564: 
+(36)$P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')]),user:call(load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')),user:(nb_current('$circular_goals',_S638),select(load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S638,_35652),nb_setval('$circular_goals',_35652))). </span>  %  init.pl:680: 
+(37)$P;HTML|[system]P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
 > call('<garbage_collected>'). </span>  %  init.pl:501: 
-(40)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+(40)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(41)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(41)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(43)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML| track_load_into_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','<garbage_collected>').   %  flybase_loader.pl:2046: 
-(45)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(43)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+> track_load_into_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(45)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(46)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(46)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(47)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi32"
-></span><span class="ansi32"
-></span><span class="ansi32"
+(47)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi92"
+></span><span class="ansi92"
+></span><span class="ansi92"
 > track_load_into_file0('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
-(49)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+(49)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(50)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(50)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(52)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(52)$P;HTML|[system]#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 > setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),user:include_metta('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
-(54)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+(54)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(55)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(55)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(59)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')]),user:call(include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')),user:(nb_current('$circular_goals',_S376),select(include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S376,_1390),nb_setval('$circular_goals',_1390))). </span>  %  init.pl:680: 
-(60)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi91"
-></span><span class="ansi91"
-></span><span class="ansi91"
+(59)$P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),load_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')]),user:call(include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta')),user:(nb_current('$circular_goals',_S390),select(include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'),_S390,_11404),nb_setval('$circular_goals',_11404))). </span>  %  init.pl:680: 
+(60)$P;HTML|[system]P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
 > call('<garbage_collected>'). </span>  %  init.pl:501: 
-(61)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi93"
-></span><span class="ansi93"
-></span><span class="ansi93"
+(61)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
 > include_metta1('&top','tests/direct_comp/types/02-curried-plus_for_types.metta'). </span>  %  metta_loader.pl:894: 
-(63)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
+(63)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(64)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(64)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(68)$P;HTML|<span class="ansi2"
+(68)$P;HTML|[system]#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types'),user:setup_call_cleanup(open('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',read,<stream>(0x55f12f74f680),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x55f12f74f680)),close(<stream>(0x55f12f74f680))),user:working_directory(_S328,'/home/runner/work/metta-testsuite/metta-testsuite/')). </span>  %  init.pl:680: 
+(70)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> setup_call_cleanup(user:working_directory('/home/runner/work/metta-testsuite/metta-testsuite/','/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types'),user:setup_call_cleanup(open('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',read,<stream>(0x561fa07b31a0),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x561fa07b31a0)),close(<stream>(0x561fa07b31a0))),user:working_directory(_S800,'/home/runner/work/metta-testsuite/metta-testsuite/')). </span>  %  init.pl:680: 
-(70)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(71)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(71)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(72)$P;HTML|<span class="ansi2"
+(72)$P;HTML|[system]#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> setup_call_cleanup(user:open('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',read,<stream>(0x55f12f74f680),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x55f12f74f680)),user:close(<stream>(0x55f12f74f680))). </span>  %  init.pl:680: 
+(74)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> setup_call_cleanup(user:open('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',read,<stream>(0x561fa07b31a0),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x561fa07b31a0)),user:close(<stream>(0x561fa07b31a0))). </span>  %  init.pl:680: 
-(74)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(75)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(75)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(78)$P;HTML|<span class="ansi2"
+(78)$P;HTML|[system]#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),user:((set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',1),load_answer_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',0)),load_metta_file_stream_fast(3622,read_file_sexpr,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x55f12f74f680))),user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta')). </span>  %  init.pl:680: 
+(80)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi2"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
 ></span><span class="ansi2 ansi94"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),user:((set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',1),load_answer_file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),set_exec_num('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta',0)),load_metta_file_stream_fast(3622,read_file_sexpr,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta','&top',<stream>(0x561fa07b31a0))),user:set_option_value(loading_file,'/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta')). </span>  %  init.pl:680: 
-(80)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi97"
-></span><span class="ansi1 ansi97 ansi40"
-></span><span class="ansi1 ansi97 ansi40"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1116: 
-(81)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
-></span><span class="ansi2 ansi93"
+(81)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
 (85)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
 > < * > </span>$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi36"
-></span><span class="ansi2 ansi36"
-></span><span class="ansi2 ansi36"
->[$apply]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> forall('<garbage_collected>',user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]]),_S186)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]])))))). </span>  %  apply.pl:51: 
-(86)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-> '<meta-call>'(user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]]),_S942)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]])))))). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[$apply]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> forall('<garbage_collected>',user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]]),_S782)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]])))))). </span>  %  apply.pl:51: 
+(86)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+> '<meta-call>'(user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]]),_S698)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-testsuite/metta-testsuite/tests/direct_comp/types/02-curried-plus_for_types.metta'),+,'&top',exec([assertEqualToResult,[['plus-some',4],6],[10]])))))). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(88)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi92"
-></span><span class="ansi92"
-></span><span class="ansi92"
+(88)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
 > trace_called. </span>  %  metta_debug.pl:797: 
-(89)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
-></span><span class="ansi2 ansi94"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
+(89)P;HTML|[system]P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
 > once(user:bt). </span>  %  init.pl:537: 
-(93)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[user]</span>P;HTML|<span class="ansi97"
-></span><span class="ansi97 ansi40"
-></span><span class="ansi97 ansi40"
+(93)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+></span><span class="ansi2 ansi35"
+>[user]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
 > bugger:dumpST_now(682,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
-[[[()]
 [()]
-[(Error (assertEqualToResult [ispeEnNC $13098 [mc__1_1_get-type $13110 $13098] $13102 [ = $13102 (get-type $13110) ] [ = $13110 (inc) ]] ((-> Number Number))) ('
+[[()]
+[()]
+[(Error (assertEqualToResult [ispeEnNC $34842 [mc__1_1_get-type $34854 $34842] $34846 [ = $34846 (get-type $34854) ] [ = $34854 (inc) ]] ((-> Number Number))) ('
 Got: ' (()) '
 Expected: ' ((-> Number Number))))]
 [(H-E-was ((+ 4) 3))]
-[[()]
-[(H-E-was $41428), (H-E-was %Undefined%)]
-[<span class="ansi1"
+[()]
+[()]
+[(H-E-was $2874), (H-E-was %Undefined%)]
+[()]
+<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 3
+>Successes: 6
 </span><span class="ansi31"
->Failures: 5
+>Failures: 2
 </span><span class="ansi1 ansi31"
 >ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
 </span>
-Script done on 2025-04-22 09:55:24+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-04-22 19:20:54+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

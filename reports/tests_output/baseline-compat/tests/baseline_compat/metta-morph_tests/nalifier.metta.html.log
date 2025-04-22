@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content">
+Script started on 2025-04-22 09:49:04+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace --compile=full tests/baseline_compat/metta-morph_tests/nalifier.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+ERROR: Received fatal signal 11 (segv)
+Time: Tue Apr 22 09:49:05 2025
+Inferences: 59020
+Thread: 1 (main)
+C-stack trace labeled "crash":
+  [0] PL_raise() at ??:? [0x7fa550fe2d65]
+  [1] Sdprintf() at ??:? [0x7fa550f88a72]
+  [2] __sigaction() at ??:? [0x7fa550c45330]
+  [3] getenv() at ??:? [0x7fa550c48806]
+  [4] SinitStreams() at ??:? [0x7fa550fbaebe]
+  [5] PL_get_atom_chars() at ??:? [0x7fa550fd5a2a]
+  [6] PL_malloc_atomic() at ??:? [0x7fa550f94d13]
+  [7] ??() at ??:0 [0x7fa550f0312d]
+  [8] PL_realloc() at ??:? [0x7fa550fdedbc]
+  [9] PL_malloc_atomic() at ??:? [0x7fa550f984e2]
+  [10] PL_unify_blob() at ??:? [0x7fa550fd22ab]
+  [11] PL_unify_blob() at ??:? [0x7fa550fd2138]
+  [12] swipl(+0x119d) [0x55cbab27d19d]
+  [13] __libc_init_first() at ??:? [0x7fa550c2a1ca]
+  [14] __libc_start_main() at ??:? [0x7fa550c2a28b]
+  [15] swipl(+0x10c5) [0x55cbab27d0c5]
+
+
+PROLOG STACK (without arguments):
+  [32] system:getenv/2 <foreign>
+  [31] file_search_path/2 [PC=23 in clause 54]
+  [30] system:$expand_file_search_path/4 [PC=16 in clause 1]
+  [29] system:catch/3 [PC=2 in clause 1]
+  [26] $bags:findall_loop/4 [PC=5 in clause 1]
+  [25] $bags:cleanup_bag/2 [PC=4 in clause 1]
+  [22] system:$chk_alias_file/6 [PC=21 in clause 1]
+  [20] system:$absolute_file_name/3 [PC=276 in clause 1]
+  [18] shlib:find_library/3 [PC=26 in clause 2]
+  [17] shlib:load_foreign_library/3 [PC=15 in clause 2]
+
+
+PROLOG STACK (with arguments; may crash if data is corrupted):
+
+ERROR: API error: invalid atom_t 121861 (no valid atom at this index)
+Recursive crash; omitting crash report
+
+[pid=16610] Action? timeout: the monitored command dumped core
+Aborted
+
+Script done on 2025-04-22 09:49:35+00:00 [COMMAND_EXIT_CODE="134"]
+
+</pre>
+</body>
+
+</html>
+\033[0;31mTest aborted by user (EXITCODE=134) Under 40 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test --abolish_trace --compile=full "tests/baseline_compat/metta-morph_tests/nalifier.metta" --halt=true\033[0m

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content">
+Script started on 2025-04-22 09:53:05+00:00 [COMMAND="timeout --preserve-status --foreground 121 swipl -x /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/Sav.fv-az1945-220.MeTTaLog  -- --python=enable -- --timeout=121 --output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat --html --test --abolish_trace tests/direct_comp/important/task1_whole_atoms_kb.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+ERROR: Received fatal signal 11 (segv)
+Time: Tue Apr 22 09:53:05 2025
+Inferences: 58802
+Thread: 1 (main)
+C-stack trace labeled "crash":
+  [0] PL_raise() at ??:? [0x7ff56f416d65]
+  [1] Sdprintf() at ??:? [0x7ff56f3bca72]
+  [2] __sigaction() at ??:? [0x7ff56f045330]
+  [3] getenv() at ??:? [0x7ff56f048806]
+  [4] CRYPTO_alloc_ex_data() at ??:? [0x7ff56e02224a]
+  [5] OPENSSL_LH_error() at ??:? [0x7ff56e01e45d]
+  [6] pthread_mutexattr_settype() at ??:? [0x7ff56f0a1ed3]
+  [7] CRYPTO_THREAD_run_once() at ??:? [0x7ff56e0306ad]
+  [8] OPENSSL_LH_error() at ??:? [0x7ff56e01e491]
+  [9] OPENSSL_LH_error() at ??:? [0x7ff56e01e63c]
+  [10] pthread_mutexattr_settype() at ??:? [0x7ff56f0a1ed3]
+  [11] CRYPTO_THREAD_run_once() at ??:? [0x7ff56e0306ad]
+  [12] OSSL_LIB_CTX_set0_default() at ??:? [0x7ff56e01e9df]
+  [13] OSSL_LIB_CTX_new_child() at ??:? [0x7ff56e01eebd]
+  [14] CRYPTO_free_ex_index() at ??:? [0x7ff56e0215bc]
+  [15] CRYPTO_get_ex_new_index() at ??:? [0x7ff56e021791]
+  [16] install_ssl4pl() at ??:? [0x7ff56e5ae8bf]
+  [17] PL_check_data() at ??:? [0x7ff56f37a30e]
+  [18] PL_malloc_atomic() at ??:? [0x7ff56f3c8d13]
+  [19] ??() at ??:0 [0x7ff56f33712d]
+  [20] PL_realloc() at ??:? [0x7ff56f412dbc]
+  [21] PL_malloc_atomic() at ??:? [0x7ff56f3cc4e2]
+  [22] PL_unify_blob() at ??:? [0x7ff56f4062ab]
+  [23] PL_unify_blob() at ??:? [0x7ff56f406138]
+  [24] swipl(+0x119d) [0x555a647db19d]
+  [25] __libc_init_first() at ??:? [0x7ff56f02a1ca]
+  [26] __libc_start_main() at ??:? [0x7ff56f02a28b]
+  [27] swipl(+0x10c5) [0x555a647db0c5]
+
+
+PROLOG STACK (without arguments):
+  [18] system:call_shared_object_function/2 <foreign>
+  [17] shlib:load_foreign_library/3 [PC=116 in clause 2]
+  [16] system:$c_call_prolog/0 [PC=0 in top query clause]
+  [15] system:with_mutex/2 <foreign>
+  [11] system:$run_init_goal/1 [PC=10 in clause 1]
+  [10] system:catch/3 [PC=2 in clause 1]
+  [9] system:catch_with_backtrace/3 [PC=6 in clause 1]
+  [8] system:$run_init_goal/2 [PC=22 in clause 1]
+  [7] system:$run_initialization_2/1 [PC=21 in clause 1]
+  [6] system:setup_call_cleanup/3 [PC=5 in clause 1]
+
+
+PROLOG STACK (with arguments; may crash if data is corrupted):
+
+ERROR: ./src/pl-thread.c:8441: stack_avail___LD: Assertion failed: avail > 0
+Recursive crash; omitting crash report
+timeout: the monitored command dumped core
+Aborted
+
+Script done on 2025-04-22 09:53:06+00:00 [COMMAND_EXIT_CODE="134"]
+
+</pre>
+</body>
+
+</html>
+\033[0;31mTest aborted by user (EXITCODE=134) Under 121 seconds: /home/runner/work/metta-testsuite/metta-testsuite/mettalog '--output=/home/runner/work/metta-testsuite/metta-testsuite/reports/tests_output/baseline-compat' --timeout=121 --html --repl=false  --test --abolish_trace "tests/direct_comp/important/task1_whole_atoms_kb.metta" --halt=true\033[0m

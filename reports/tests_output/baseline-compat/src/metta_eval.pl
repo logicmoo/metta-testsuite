@@ -1928,13 +1928,14 @@ eval_20(_Eq,_RetType,_Depth,_Self,['compiled-info',S],RetVal):- !, user_io('mc__
 % OLD
 %eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom',OneArg],_):- OneArg==[], !, fail. %H=[],T=[],!.
 eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom'|Args],[H,T]):- !,
-   arity_args(Args,[OneArg]), must_be(iz_conz,OneArg), must_unify(OneArg,[H|T]).
+   arity_args(Args,[OneArg]), should_be(iz_conz,OneArg), must_unify(OneArg,[H|T]).
 eval_20(_Eq,_RetType,_Depth,_Self,['cons-atom'|TwoArgs],[H|T]):-!,
-   arity_args(TwoArgs,[HH,TT]), must_be(iz_conz,TT),H=HH,T=TT,must_unify(TwoArgs,[H,T]).
+   arity_args(TwoArgs,[HH,TT]), should_be(is_list,TT),H=HH,T=TT,must_unify(TwoArgs,[H,T]).
 % NEW
-eval_20(_Eq,_RetType,_Depth,_Self,['decons',OneArg],[H,T]):- !, must_unify(OneArg,[H|T]).
-eval_20(_Eq,_RetType,_Depth,_Self,['cons'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
+%eval_20(_Eq,_RetType,_Depth,_Self,['decons',OneArg],[H,T]):- !, must_unify(OneArg,[H|T]).
+%eval_20(_Eq,_RetType,_Depth,_Self,['cons'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
 
+should_be(P1,Term):- call(P1,Term)-> true ; (debug_info(porting,hyperon_throws_error(should_be(P1,Term))),fail).
 
 %eval_20(Eq,RetType,Depth,Self,['get-doc'|Args],Res):- !,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-get-doc'|Args],Res)),!.
 %eval_20(Eq,RetType,Depth,Self,['help!'|Args],Res):-!,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-help!'|Args],Res)),!.
@@ -2073,8 +2074,8 @@ throw_metta_error(Term):- % (nb_current(previous_nths,NthL)->true;NthL=[]),notra
   check_trace(errors), throw_metta_return(Term).
 
 
-eval_20(Eq,RetType,_Dpth,_Slf,['car-atom',Atom],CAR_Y):- !, Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
-eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom',Atom],CDR_Y):- !, Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
+eval_20(Eq,RetType,_Dpth,_Slf,['car-atom',Atom],CAR_Y):- !, should_be(iz_conz,Atom), Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
+eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom',Atom],CDR_Y):- !, should_be(iz_conz,Atom), Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
 eval_20(Eq,RetType,_Dpth,_Slf,['car-atom-or-fail',Atom],CAR_Y):- !, Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
 eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom-or-fail',Atom],CDR_Y):- !, Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
 
@@ -3216,21 +3217,21 @@ eval_20(_Eq,RetType,_Dpth,_Slf,['====',X,Y],TF):- !,
 %eval_40(=,_RetType,_,_,['make-var'|Types],Var):- !, 'mx__1_0+_make-var'(Types,Var).
 %eval_40(=,_RetType,_,_,['bless-var',Var|Types],Var):- !, 'mx__1_1+_bless-var'(Var,Types,Var).
 
-transpiler_peek(Sym,Len,Type,Fn, N):-
-  %transpiler_predicate_store(_, Sym, [Len], _, _, _, _),
+transpiler_peek(Sym,Len,Type,Fn, Min):-
+  transpiler_predicate_nary_store(_Builtin, Sym, Min, _, _, _, _, _, _),
+  Len>=Min,between(0,Len,N),
   if_t(var(Type),member(Type,['mx','mi','mc'])),
-  between(0,Len,N),succ(N,N1),
   format(atom(Fn),'~w__1_~w+_~w',[Type,N,Sym]),
-  succ(N1,LenP1), current_predicate(Fn/LenP1),
-  \+ transpiler_predicate_store(_,Sym,[_],_,_,_,_),
+  succ(N,N1),succ(N1,LenP1), current_predicate(Fn/LenP1),
+  %\+ transpiler_predicate_store(_,Sym,[_],_,_,_,_),
   ignore(ok_call_predicate(Sym,Len,Type)).
 
 transpiler_peek(Sym,Len,Type,Fn,Len):-
-  %transpiler_predicate_store(_, Sym, [Len], _, _, _, _),
+  transpiler_predicate_store(_Builtin, Sym, [Len], _, _, _, _),
   if_t(var(Type),member(Type,['mx','mi','mc'])),
   format(atom(Fn),'~w__1_~w_~w',[Type,Len,Sym]),
   succ(Len,LenP1), current_predicate(Fn/LenP1),
-  \+ transpiler_predicate_store(_,Sym,[Len],_,_,_,_),
+  %\+ transpiler_predicate_store(_,Sym,[Len],_,_,_,_),
   ignore(ok_call_predicate(Sym,Len,Type)).
 
 ok_call_predicate(Sym,Len, _Type):-
@@ -3264,7 +3265,8 @@ with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,apply(Fn,PArgs)):- !, apply(F
 with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,Goal):-  Goal.
 
 :- dynamic memoized_result/3.
-memoize_tf(Goal) :-
+memoize_tf(Goal) :- call(Goal).
+memoize_tf_real(Goal) :-
     term_variables(Goal, Vars),
     copy_term(Goal, CopyGoal),numbervars(CopyGoal,0,_,[attvar(bind)]),
     (   memoized_result(CopyGoal, Vars, Result) ->

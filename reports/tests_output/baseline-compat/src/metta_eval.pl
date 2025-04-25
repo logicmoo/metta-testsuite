@@ -302,7 +302,7 @@ eval_01(Eq,RetType,Depth,Self,X,Y):-
 
    if_t((Depth<1, trace_on_overflow), debug(metta(e))),
 
-   trace_eval(eval_09(Eq,RetType),e,Depth2,Self,X,M),
+   trace_eval(eval_10(Eq,RetType),e,Depth2,Self,X,M),
 
    ((M=@=XX;M==X;M=@=X) -> Y=M ; eval_03(Eq,RetType,Depth2,Self,M,Y)).
 
@@ -440,8 +440,10 @@ hybrid_interp :- option_value(compile,true),!.
 
 
 eval_09(Eq,RetType,Depth,Self,X,Y):-
-  nb_current('eval_in_only', interp), !, woc(eval_10(Eq,RetType,Depth,Self,X,Y)).
-eval_09(Eq,RetType,Depth,Self,X,Y):- hybrid_interp, !, eval_use_right_thing(Eq,RetType,Depth,Self,X,Y).
+  nb_current('eval_in_only', interp), !, 
+  woc(eval_10(Eq,RetType,Depth,Self,X,Y)).
+eval_09(Eq,RetType,Depth,Self,X,Y):- hybrid_interp, !,
+    eval_use_right_thing(Eq,RetType,Depth,Self,X,Y).
 eval_09(Eq,RetType,Depth,Self,X,Y):- woc(eval_10(Eq,RetType,Depth,Self,X,Y)).
 
 %eval_09(Eq,RetType,Depth,Self,X,Y):- !, no_repeats(X+Y,eval_10(Eq,RetType,Depth,Self,X,Y)).
@@ -716,6 +718,10 @@ eval_20(Eq,RetType,_Dpth,_Slf,X,Y):- \+ is_list(X),!,do_expander(Eq,RetType,X,Y)
 eval_20(_,_,_,_,['echo',Value],Value):- !.
 %eval_20(=,Type,_,_,['coerce',Type,Value],Result):- !, coerce(Type,Value,Result).
 
+eval_40(=,_RetType,_,_,['make-var'|Types],Var):- !, 'mx__1_0+_make-var'(Types,Var).
+
+eval_40(=,_RetType,_,_,['bless-var',Var|Types],Var):- !, 'mx__1_1+_bless-var'(Var,Types,Var).
+
 % =================================================================
 % =================================================================
 % =================================================================
@@ -792,7 +798,6 @@ eval_20(Eq,RetType,Depth,Self,['capture',X],Res):- !,
 
 eval_20(Eq,RetType,Depth,Self,['eval',X],Res):- !,
    eval_args(Eq,RetType,Depth,Self,X, Res).
-
 
 eval_20(Eq,RetType,Depth,Self,['eval-for',Type,X],Res):- !,
     ignore(Type=RetType),
@@ -1119,11 +1124,12 @@ eval_20(Eq,RetType,Depth,Self,['println!'|Cond],Res):- !,
   maplist(println_impl,Out),
   make_nop(RetType,[],Res),check_returnval(Eq,RetType,Res).
 
-println_impl(X):- ttyflush,user_io((format("~N~@~N",[write_sln(X)]))),!,flush_output,ttyflush.
+println_impl(X):- ttyflush,
+   user_io((format("~N"),write_sln(X),format("~N"))),flush_output,ttyflush.
 %println_impl(X):- user_io((ansi_format(fg('#c7ea46'),"~N~@~N",[write_sln(X)]))),flush_output.
 %println_impl(X):- ((ansi_format(fg('#c7ea46'),"~N~@~N",[write_sln(X)]))),flush_output.
 
-princ_impl(X):- format("~@",[write_sln(X)]),!,flush_output.
+princ_impl(X):- user_io((write_sln(X))),flush_output,ttyflush.
 
 write_sln(X):- string(X), !, write(X),flush_output.
 write_sln(X):- write_src_woi(X),flush_output.
@@ -1340,8 +1346,9 @@ has_unicode(A):- atom_codes(A,Cs),member(N,Cs),N>127,!.
 
 set_last_error(_).
 
-'mi__1_2_=alpha'(X0,Y0,TF):- as_tf(equal_enough_for_test_renumbered(alpha_equ,X0,Y0),TF).
-'mi__1_2_=alpha-unify'(X0,Y0,TF):- as_tf(equal_enough_for_test_renumbered(alpha_equ,X0,Y0),TF),(TF=='True',blend_vars(X0,Y0)).
+'mx__1_2_=alpha'(X0,Y0,TF):- as_tf('=alpha'(X0,Y0),TF).
+
+'mx__1_2_=alpha-unify'(X0,Y0,TF):- as_tf('=alpha'(X0,Y0),TF),(TF=='True',blend_vars(X0,Y0)).
 /*
     % ============================
     %  Theoretical Equivalence & Unification (Check Possibility Only)
@@ -1359,9 +1366,15 @@ set_last_error(_).
 '=u='(X0,Y0) :- (X0 = Y0).
 '=will'(X0,Y0) :- \+ \+ (X0 = Y0).
 % alpha equivelant
-'=alpha'(X0,Y0) :- (X0 =@= Y0).
+'=alpha'(X0,Y0) :- equal_enough_for_test_renumbered(alpha_equ,X0,Y0).
 % like =alpha, however it actualyl also unifies (if they were alpha)
-'=alpha-unify'(X0,Y0) :- X0 =@= Y0, X0 = Y0.
+'=alpha-unify'(X0,Y0) :- '=alpha'(X0,Y0), blend_vars(X0,Y0).
+
+vv:attr_portray_hook(VV,Var):-
+ get_attrs(Var,AllAttrs),writeln(vv(VV,AllAttrs)),!.
+
+vn_attr_portray_hook(VN,_Var,AllAttrs):- att(vn,VN,[])==AllAttrs,!, format("$~w",[VN]),!.
+vn:attr_portray_hook(VN,Var):- get_attrs(Var,AllAttrs), vn_attr_portray_hook(VN,Var,AllAttrs),!.
 
 
 alpha_equ(X,Y):- X=@=Y->if_tracemsg(unknown,alpha_equ(X,Y));if_tracemsg(unknown,not_alpha_equ(X,Y)).
@@ -1921,19 +1934,18 @@ must_unify(A,A):-!.
 must_unify(A,B):- fail, throw('Error-last-form'(must_unify(A,B))). % @TODO
 
 
+
 arity_args(List,ArgList):- List=ArgList,!.
 arity_args(List,ArgList):- throw('Error-last-form'(arity_args(List,ArgList))).
 
 eval_20(_Eq,_RetType,_Depth,_Self,['compiled-info',S],RetVal):- !, user_io('mc__1_1_compiled-info'(S,RetVal)).
 % OLD
-%eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom',OneArg],_):- OneArg==[], !, fail. %H=[],T=[],!.
-eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom'|Args],[H,T]):- !,
-   arity_args(Args,[OneArg]), should_be(iz_conz,OneArg), must_unify(OneArg,[H|T]).
-eval_20(_Eq,_RetType,_Depth,_Self,['cons-atom'|TwoArgs],[H|T]):-!,
-   arity_args(TwoArgs,[HH,TT]), should_be(is_list,TT),H=HH,T=TT,must_unify(TwoArgs,[H,T]).
+eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom',OneArg],_):- OneArg==[], !, fail. %H=[],T=[],!.
+eval_20(_Eq,_RetType,_Depth,_Self,['decons-atom',OneArg],[H,T]):- !, must_unify(OneArg,[H|T]).
+eval_20(_Eq,_RetType,_Depth,_Self,['cons-atom'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
 % NEW
-%eval_20(_Eq,_RetType,_Depth,_Self,['decons',OneArg],[H,T]):- !, must_unify(OneArg,[H|T]).
-%eval_20(_Eq,_RetType,_Depth,_Self,['cons'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
+eval_20(_Eq,_RetType,_Depth,_Self,['decons',OneArg],[H,T]):- !, must_unify(OneArg,[H|T]).
+eval_20(_Eq,_RetType,_Depth,_Self,['cons'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
 
 should_be(P1,Term):- call(P1,Term)-> true ; (debug_info(porting,hyperon_throws_error(should_be(P1,Term))),fail).
 
@@ -2074,8 +2086,8 @@ throw_metta_error(Term):- % (nb_current(previous_nths,NthL)->true;NthL=[]),notra
   check_trace(errors), throw_metta_return(Term).
 
 
-eval_20(Eq,RetType,_Dpth,_Slf,['car-atom',Atom],CAR_Y):- !, should_be(iz_conz,Atom), Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
-eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom',Atom],CDR_Y):- !, should_be(iz_conz,Atom), Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
+eval_20(Eq,RetType,_Dpth,_Slf,['car-atom',Atom],CAR_Y):- !, Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
+eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom',Atom],CDR_Y):- !, Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
 eval_20(Eq,RetType,_Dpth,_Slf,['car-atom-or-fail',Atom],CAR_Y):- !, Atom=[CAR|_],!,do_expander(Eq,RetType,CAR,CAR_Y).
 eval_20(Eq,RetType,_Dpth,_Slf,['cdr-atom-or-fail',Atom],CDR_Y):- !, Atom=[_|CDR],!,do_expander(Eq,RetType,CDR,CDR_Y).
 
@@ -2938,10 +2950,10 @@ lazy_union(P2, E1^Call1, E2^Call2, E) :-
     ).
 
 
-%variant_by_type(X,Y):- var(X),!,X==Y.
-variant_by_type(X,Y):- var(X),!, matching_vn_relaxed(X,Y).
-%variant_by_type(X,Y):- X=@=Y.
-variant_by_type(X, Y) :-
+variant_by_type(X,Y):- var(X),!,X==Y.
+variant_by_type(X,Y):- X=@=Y.
+variant_by_type_2(X,Y):- var(X),!, matching_vn_relaxed(X,Y).
+variant_by_type_2(X, Y) :-
     copy_term(X+Y, X1+Y1, _Gs),
     X1 =@= Y1, X1 = Y1,
     term_variables(X, VX),
@@ -2951,8 +2963,8 @@ variant_by_type(X, Y) :-
 
 
 matching_vn_relaxed(V1, V2) :-
-  ( get_attr(V1, vn, VN1) ->
-     ( get_attr(V2, vn, VN2) -> (VN1 == VN2, V1 = V2) ; (V1=V2) )
+    ( get_attr(V1, vn, VN1) ->
+        ( get_attr(V2, vn, VN2) -> (VN1 == VN2, V1 = V2) ; (V1=V2) )
     ; V1 == V2 ).
 
 
@@ -2969,8 +2981,94 @@ eval_20(Eq,RetType,Depth,Self,['unique',Eval],RetVal):- !,
    no_repeat_variant_var(YY),
    eval_args(Eq,RetType,Depth,Self,Eval,RetVal),YY=Vars.
 
-eval_20(Eq,RetType,Depth,Self,['unique-by',P2,Eval],RetVal):- !,
-   no_repeats_var(call_as_p2(P2),YY),
+no_repeat_variant_var(Var):- no_repeats_var(Var).
+%no_repeat_variant_var(Var):- no_repeats_var(variant_by_type,Var).
+
+eval_30(_Eq,_RetType,_Depth,_Self,['unique-atom-by',P2,List],RetVal):- !,
+   unique_elements_by(P2,List,RetVal).
+
+unique_elements_by_xform(_, [], []).
+unique_elements_by_xform(P2, [H|T], R) :-
+    eval_as_f2(P2, H, Key),
+    include(different_key(P2, Key), T, NewT),
+    unique_elements_by_xform(P2, NewT, RT),
+    R = [H|RT].
+
+different_key(P2, Key, Elem) :-
+    call(P2, Elem, OtherKey),
+    Key \= OtherKey.
+
+/*
+[1] 3 ?- unique_elements_by(==,[1,2,3,4,1,2,2],X).
+X = [1, 2, 3, 4].
+
+[1] 4 ?- unique_elements_by(>,[1,2,3,4,1,2,2],X).
+X = [1, 2, 3, 4].
+
+[1] 5 ?- unique_elements_by(<,[1,2,3,4,1,2,2],X).
+X = [1, 1].
+
+[1] 6 ?- unique_elements_by(>,[4,2,3,4,1,2,2],X).
+X = [4, 4].
+
+[1] 7 ?- unique_elements_by(>,[3,2,3,4,1,2,2],X).
+X = [3, 3, 4].
+*/
+unique_elements_by(_, [], []).
+unique_elements_by(P2, [H|T], [H|R]) :-
+    exclude(call_as_p2(P2, H), T, Filtered),
+    unique_elements_by(P2, Filtered, R).
+
+unnegate_f2(P2,_):- \+ compound(P2),!,fail.
+unnegate_f2(not(P2),P2).
+unnegate_f2([Not,P2|Nil],P2):- !,Nil==[],Not=='not'.
+
+must_use_eval(_,2):- !.
+%must_use_eval(_,2):- fail.
+
+call_as_p2a(F2,A,B):- unnegate_f2(F2,P2),!, \+ call_as_p2(P2,A,B).
+call_as_p2a(P2,A,B):- current_predicate(P2/2),!,call(P2,A,B).
+call_as_p2a(P2,A,B):- current_predicate(P2/3),!,call(P2,A,B,RetVal),f2_success(RetVal,A,B).
+call_as_p2a(F,X,Y):- must_use_eval(F,2), !,
+   once(eval([F,X,Y],RetVal)),
+   f2_success(RetVal,X,Y).
+%call_as_p2(F2,A,B):- f2_to_p2(F2,P2),F2\==P2,!,call(P2,A,B).
+call_as_p2a(F2,A,B):- f2_to_p3(F2,P3),F2\==P3,!,call(P3,A,B,RetVal),f2_success(RetVal,A,B).
+call_as_p2a(F2,A,B):- eval_as_f2(F2,A,B,RetVal),f2_success(RetVal,A,B).
+
+f2_success(RetVal,A,B):- once(RetVal=='True';RetVal==A;RetVal==B).
+
+eval_as_f2(F2,A,B,RetVal):- current_predicate(F2/3),!,call(F2,A,B,RetVal),!.
+eval_as_f2(F2,A,B,RetVal):- f2_to_p3(F2,P3),!,call(P3,A,B,RetVal).
+eval_as_f2(F2,A,B,RetVal):- once(eval([F2,A,B],TF)),
+   (TF == 'True'-> RetVal=A ;
+    TF == 'False'-> fail ; RetVal = TF).
+
+f2_to_p2(F2,P2):-
+  transpiler_peek(F2,2,_,P2,_,exactArgs,Builtin),
+  interp_calls_module(Builtin).
+
+f2_to_p3(F2,P2):-
+  transpiler_peek(F2,2,_,P2,_,exactArgs,Builtin),
+  interp_calls_module(Builtin).
+
+
+impl_module(Sym,Builtin):-
+   transpiler_predicate_nary_store(Builtin, Sym, _, _, _, _, _, _, _).
+impl_module(Sym,Builtin):-
+   transpiler_predicate_store(Builtin,Sym,_,_,_,_,_).
+impl_module(Sym,Builtin):-
+   transpiler_clause_store(Sym,_,_,_,_,_,_,_,_),Builtin = atomspace.
+
+
+interp_calls_module(Builtin):- Builtin==code,!.
+interp_calls_module(Builtin):- Builtin==stdlib,!.
+interp_calls_module(Builtin):- Builtin==code_found,!.
+interp_calls_module(Builtin):- Builtin==builtin, \+ option_value(compiler,full).
+interp_calls_module(UserMod):- (UserMod==(user)), \+ option_value(compiler,false).
+
+eval_20(Eq,RetType,Depth,Self,['unique-by',F2,Eval],RetVal):- !,
+   no_repeats_var(call_as_p2(F2),YY),
    eval_args(Eq,RetType,Depth,Self,Eval,RetVal),YY=RetVal.
 
 
@@ -3212,52 +3310,49 @@ eval_20(_Eq,RetType,_Dpth,_Slf,['====',X,Y],TF):- !,
     suggest_type(RetType,'Bool'),
     as_tf(same_terms(X,Y),TF).
 
+same_terms(X,Y):- same_term(X,Y),!.
+same_terms(X,Y):- \+ compound(X), X==Y.
 % Main evaluation predicate with full caching
 
-%eval_40(=,_RetType,_,_,['make-var'|Types],Var):- !, 'mx__1_0+_make-var'(Types,Var).
-%eval_40(=,_RetType,_,_,['bless-var',Var|Types],Var):- !, 'mx__1_1+_bless-var'(Var,Types,Var).
-
-transpiler_peek(Sym,Len,Type,Fn, Min):-
-  transpiler_predicate_nary_store(_Builtin, Sym, Min, _, _, _, _, _, _),
-  Len>=Min,between(0,Len,N),
-  if_t(var(Type),member(Type,['mx','mi','mc'])),
-  format(atom(Fn),'~w__1_~w+_~w',[Type,N,Sym]),
-  succ(N,N1),succ(N1,LenP1), current_predicate(Fn/LenP1),
-  %\+ transpiler_predicate_store(_,Sym,[_],_,_,_,_),
-  ignore(ok_call_predicate(Sym,Len,Type)).
-
-transpiler_peek(Sym,Len,Type,Fn,Len):-
-  transpiler_predicate_store(_Builtin, Sym, [Len], _, _, _, _),
+transpiler_peek(Sym,Len,Type,Fn):-
+  transpiler_predicate_store(_, Sym, [Len], _, _, _, _),
   if_t(var(Type),member(Type,['mx','mi','mc'])),
   format(atom(Fn),'~w__1_~w_~w',[Type,Len,Sym]),
   succ(Len,LenP1), current_predicate(Fn/LenP1),
-  %\+ transpiler_predicate_store(_,Sym,[Len],_,_,_,_),
-  ignore(ok_call_predicate(Sym,Len,Type)).
+  nop(ok_call_predicate(Sym,Len)).
 
-ok_call_predicate(Sym,Len, _Type):-
-  \+ transpiler_predicate_store(_,Sym,[Len],_,_,_,_),
-  \+ transpiler_predicate_nary_store(_,Sym,[Len],_,_,_,_),
-  \+ transpiler_clause_store(Sym,[Len],_,_,_,_,_,_,_).
+
+
+ok_call_predicate(Sym,Min, _Type):-
+  \+ transpiler_predicate_store(_,Sym,[Min],_,_,_,_),
+  \+ transpiler_predicate_nary_store(_,Sym,Min,_,_,_,_,_,_),
+  \+ transpiler_clause_store(Sym,[Min],_,_,_,_,_,_,_).
+
 
 eval_20(Eq, RetType, Depth, Self, [Sym | Args], Res) :- symbol(Sym), is_list(Args),
     length(Args, Len),
-    memoize_tf(transpiler_peek(Sym,Len,'mi',Fn, N)),
-    length(Left,N), append(Left,Right,Args), append([Left,Right,[Res]], PArgs),!,
+    memoize_tf(transpiler_peek(Sym,Len,'mi',Fn)),
+    append(Args, [Res], PArgs),!,
     with_metta_ctx(Eq, RetType, Depth, Self, [Sym | Args], apply(Fn, PArgs)).
 
+jiggle_args(Args,Ret,LenIsMin,LenIsMin,exactArgs,PArgs):- !, append(Args, [Ret], PArgs).
+jiggle_args(Args,Ret,_,Min,AsList,PArgs):-
+  length(Left,Min), append(Left,Right,Args),
+  jiggle_append(Left,Right,Ret, AsList, PArgs).
+jiggle_append(Left,Right,Ret,restAsList, PArgs):- !, append(Left, [Right,Ret], PArgs),!.
+jiggle_append(Left,Right,Ret,exactArgs,PArgs):- append(Left, [Ret], PArgs), !, must_unify(Right,[]).
+
 eval_20(Eq, RetType, Depth, Self, [Sym | Args], Res) :- symbol(Sym), is_list(Args),
     length(Args, Len),
-    memoize_tf(transpiler_peek(Sym,Len,'mx',Fn, N)),
-    length(Left,N), append(Left,Right,Args), append([Left,Right,[Res]], PArgs),!,
+    memoize_tf(transpiler_peek(Sym,Len,'mx',Fn)),
+    append(Args, [Res], PArgs),!,
     with_metta_ctx(Eq, RetType, Depth, Self, [Sym | Args], apply(Fn, PArgs)).
 
 eval_40(Eq,RetType,Depth,Self,[Sym|Args],Res):- symbol(Sym), is_list(Args),
     length(Args,Len),
-    memoize_tf(transpiler_peek(Sym,Len,'mc',Fn, N)),
-    length(Left,N), append(Left,Right,Args), append([Left,Right,[Res]], PArgs),!,
+    memoize_tf(transpiler_peek(Sym,Len,'mc',Fn)),
+    append(Args,[Res],PArgs),!,
     with_metta_ctx(Eq,RetType,Depth,Self,[Sym|Args],apply(Fn,PArgs)).
-
-
 
 
 
@@ -3265,8 +3360,7 @@ with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,apply(Fn,PArgs)):- !, apply(F
 with_metta_ctx(_Eq,_RetType,_Depth,_Self,_MeTTaSrc,Goal):-  Goal.
 
 :- dynamic memoized_result/3.
-memoize_tf(Goal) :- call(Goal).
-memoize_tf_real(Goal) :-
+memoize_tf(Goal) :-
     term_variables(Goal, Vars),
     copy_term(Goal, CopyGoal),numbervars(CopyGoal,0,_,[attvar(bind)]),
     (   memoized_result(CopyGoal, Vars, Result) ->
@@ -4332,7 +4426,6 @@ end_of_file.
            maplist(eval_evals(Eq,Depth,Self),ParamTypes,Args,NewArgs),
            XX = [H|NewArgs],Y=XX.
         eval_evals(_Eq,_Depth,_Self,_RetType,X,X):-!.
-
 
 
 

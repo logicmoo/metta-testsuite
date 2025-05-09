@@ -146,9 +146,22 @@
 )
 
 !(removePrf ((: $a (A $v)) (: $a2 (A $v2))) (: a (A 1)))
+; [ (((: a (A 1))) ((: $a (A $v)))), (() ((: $a (A $v)) (: $a2 (A $v2)))),
+;   (((: a (A 1))) ((: $a2 (A $v2)))), (((: a (A 1)) (: a (A 1))) ())]
 
 ;!(assertAlphaEqual (removePrf ((: $a2 A) (: $b B)) (: $a A)) ((: $a2 A) ((: $b B))))
 
+
+!(assertEqualToResult (=alpha ($A b) ($B b)) (True))
+!(assertEqualToResult (=alpha ($A b) ($B $C)) (False))
+!(assertEqualToResult (=alpha ($B $D) ($B $C)) (True))
+!(assertEqualToResult (=alpha ($D $D) ($B $C)) (False))
+!(assertEqualToResult (=alpha ($D $D) ($B $B)) (True))
+!(assertEqualToResult (=alpha ($D $D) ($D $D)) (True))
+!(assertEqualToResult (=alpha ($D $D $E) ($D $D $F)) (True))
+
+
+!("           removeAlphaMagic                      ")
 
 (= (removeAlphaMagic $list $elem)
  (unify $elem (: $prf2 (Eval $type2 $tv2))
@@ -166,11 +179,33 @@
 ))
 
 
-!(removeAlphaMagic  ((: b (Eval (m a) tv2)) (: c (Eval c tv3)) (: d (Eval (m a) tv4))) (: a (Eval (m a) tv1))) 
+
+!(removeAlphaMagic  ((: b (Eval (m a) tv2)) (: c (Eval c tv3)) (: d (Eval (m a) tv4))) 
+                     (: a (Eval (m a) tv1)) )
 
 
-!(assertEqual (removeAlphaMagic  ((: b (Eval (m a) tv2)) (: c (Eval c tv3)) (: d (Eval (m a) tv4))) (: a (Eval (m a) tv1)))
-  (((: b (Eval (m a) tv2)) (: d (Eval (m a) tv4))) ((: c (Eval c tv3)))))
+!(assertEqual (removeAlphaMagic ((: b (Eval (m a) tv1))) (: a (Eval (m a) tv2))) (((: b (Eval (m a) tv1))) ()))
+
+!(assertEqual (removeAlphaMagic ((: b (Eval (m a) tv1))) (: a (Eval b tv2))) (() ((: b (Eval (m a) tv1)))))
+
+
+!(assertEqual (removeAlphaMagic  
+					((: b (Eval (m a) tv2)) (: c (Eval c tv3)) (: d (Eval (m a) tv4)))
+					 (: a (Eval (m a) tv1)))
+                   (((: b (Eval (m a) tv2)) (: d (Eval (m a) tv4))) ((: c (Eval c tv3)))))
+
+
+!(assertEqual (removeAlphaMagic  
+					((: a (Eval (m a) tv1)) (: c (Eval c tv2)) (: d (Eval (m a) tv4)))
+					 (: a (Eval (m a) tv1)))
+                   (((: a (Eval (m a) tv1)) (: d (Eval (m a) tv4))) ((: c (Eval c tv2)))))
+
+
+!(assertEqual (removeAlphaMagic  
+				    ((: b (Eval (m a) tv2)) (: c (Eval c tv3)) (: d (Eval (m a) tv4)))
+				     (: a (Eval (m a) tv1)))
+                   (((: b (Eval (m a) tv2)) (: d (Eval (m a) tv4))) ((: c (Eval c tv3))) ))
+
 
 ;Check if an element is in a list based on unification
 ;Return the unified element and the remaining list

@@ -2,7 +2,7 @@
 
 !(f1 (1 2 3))
 
-!(compiled-info cdr-atom)
+!(listing! cdr-atom)
 !(println! "!(cdr-atom (1 2 3))")
 
 !(call-string "listing('mc__1_1_car-atom').")

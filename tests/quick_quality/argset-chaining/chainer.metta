@@ -1,8 +1,8 @@
 !(import! &self utils)
 !(import! &self setspace)
 !(import! &self tvformulas)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;In this chainer our statements look like
 ;($pset ⊢ $cset)
 ;; $pset and $cset are sets of proofs of the form (: $term Type)
@@ -84,8 +84,8 @@
 ;Backward chainer for a set of conclusions
 (= (bcset $kb $depth_full ($pset ⊢ $cset))
  (if-decons-expr $cset $ccls $ctail
-  ;(let ($ppset ⊢ $pcset) (combine (tracem scol (collapse (capture (tracem sbcol (bcsingle $kb $depth_full ($pset ⊢ $ccls)))))))
-  (let ($ppset ⊢ $pcset) (bcsingle $kb $depth_full ($pset ⊢ $ccls))
+  (let ($ppset ⊢ $pcset) (combine (tracem scol (collapse (capture (tracem sbcol (bcsingle $kb $depth_full ($pset ⊢ $ccls)))))))
+  ;(let ($ppset ⊢ $pcset) (bcsingle $kb $depth_full ($pset ⊢ $ccls))
    (if (== $ctail ()) ;Don't recurse if there is nothing left to do
     ($ppset ⊢ $pcset)
     (let* 
@@ -120,7 +120,7 @@
     (unify $depth_full (S $depth)
       (let* (
          (($a ⊢ $b) (bcset $kb $depth ($pset ⊢ $ppset))) ;Proof the premises
-         ;(($npcset $_ppset ()) (tracem (o2 $b $ppset) (overlap2 $b $ppset)))
+         (($npcset $_ppset ()) (tracem (o2 $b $ppset) (overlap2 $b $ppset)))
          ($rc2 (cpu2 $lc_cset) (runcpu $lc_cset))
          )
          (normalize (unionStmt ($lc_pset ⊢ $lc_cset) ($a ⊢ $b)))
@@ -155,6 +155,8 @@
         $base
         ))
 
+
+
 !(assertEqual (merge (: p1 (Eval (m a) (stv 0.9 0.9))) ((: p2 (Eval (m a) (stv 0.9 0.9)))))
               (: (revision p1 p2) (Eval (m a) (stv 0.9 0.9473684210526316))))
 
@@ -175,6 +177,9 @@
  )
 )
 
+
+
+
 !(assertEqual (runreduction ((: p1 (Eval (m a) (stv 0.9 0.9))) (: p2 (Eval (m a) (stv 0.9 0.9))) (: p3 (Eval (m b) (stv 0.9 0.9)))))
               ((: (revision p1 p2) (Eval (m a) (stv 0.9 0.9473684210526316))) (: p3 (Eval (m b) (stv 0.9 0.9)))))
 
@@ -182,3 +187,7 @@
 ;                                      ((: (CPU + (2 2)) (CPU $v)) (: b (B $v))))))
 ;       )
 ;       ((runcpu $args) $args)))
+
+
+
+

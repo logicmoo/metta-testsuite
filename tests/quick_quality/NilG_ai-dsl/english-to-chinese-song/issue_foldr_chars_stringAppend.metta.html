@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-165005255 { color: #A505FF; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content">
+Script started on 2025-05-05 06:23:57-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html --compile=full tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta  " TERM="xterm" TTY="/dev/pts/2" COLUMNS="156" LINES="38"]
+
+; user:[load_metta_file &self tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta]
+;            [track_load_into_file /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta]
+;                    [load_answer_file /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta.answers /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta]
+;                    [load_answer_file /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta.answers /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta]
+<span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: foldr 
+        (-> 
+          (-> $a $b $b) $b $c $d)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (foldr $f $i $xs)  
+        (if 
+          (== $xs ()) $i 
+          (let* 
+            ( ($h (car-atom $xs)) 
+              ($t (cdr-atom $xs)) 
+              ($ft (foldr $f $i $t))) 
+            ($f $h $ft)))))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: append 
+        (-> $a $a $a)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (append $lhs $rhs)  
+        (foldr cons-atom $rhs $lhs)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: String.append 
+        (-> String String String)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.append $x $y)  
+        (charsToString (append (stringToChars $x) (stringToChars $y)))))
+</span><span class="ansi38-013099040">!(assertEqual (String.append "abc" "def") "abcdef")
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+                    (B=ispeEnN(C, 'mc__1_2_String.append'("abc", "def", C), D, D=['String.append', "abc", "def"]), E=ispu("abcdef"), mc__1_2_assertEqual(B, E, A))).
+
+</span>
+;<h3 id="ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.01">;; ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.01</h3>
+; 
+; EVAL TEST
+; took 0.000047 secs. (46.50 microseconds) 
+
+!(assertEqual [ispeEnN $194338 [mc__1_2_String.append "abc" "def" $194338] $194342 [ = $194342 (String.append "abc" "def") ]] [ispu "abcdef"])
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ("abcdef") 
+      ("abcdef")]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (String.append "\"" "\"") "\"\"")
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+                    (B=ispeEnN(C, 'mc__1_2_String.append'("\"", "\"", C), D, D=['String.append', "\"", "\""]), E=ispu("\"\""), mc__1_2_assertEqual(B, E, A))).
+
+</span>
+;<h3 id="ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.02">;; ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.02</h3>
+; 
+; EVAL TEST
+; took 0.000027 secs. (26.90 microseconds) 
+
+!(assertEqual [ispeEnN $217554 [mc__1_2_String.append "\"" "\"" $217554] $217558 [ = $217558 (String.append "\"" "\"") ]] [ispu "\"\""])
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ("\"\"") 
+      ("\"\"")]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (String.append "\"" (String.append "\"" "\"")) "\"\"\"")
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, 'mc__1_2_String.append'("\"", D, C), E, E=['String.append', "\"", D], 'mc__1_2_String.append'("\"", "\"", D)), F=ispu("\"\"\""), mc__1_2_assertEqual(B, F, A))).
+
+</span>
+;<h3 id="ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.03">;; ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.03</h3>
+; 
+; EVAL TEST
+; took 0.000030 secs. (30.40 microseconds) 
+
+!(assertEqual [ispeEnNC $242244 [mc__1_2_String.append "\"" $242258 $242244] $242248 [ = $242248 (String.append "\"" $242258) ] [mc__1_2_String.append "\"" "\"" $242258]] [ispu "\"\"\""])
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ("\"\"\"") 
+      ("\"\"\"")]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(assertEqual (String.append (String.append "abc" "def") (String.append "g" "hij")) "abcdefghij")
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, 'mc__1_2_String.append'(D, E, C), F, F=['String.append', D, E], ('mc__1_2_String.append'("abc", "def", D), 'mc__1_2_String.append'("g", "hij", E))), G=ispu("abcdefghij"), mc__1_2_assertEqual(B, G, A))).
+
+</span>
+;<h3 id="ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.04">;; ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.04</h3>
+; 
+; EVAL TEST
+; took 0.000068 secs. (67.70 microseconds) 
+
+!(assertEqual [ispeEnNC $268638 [mc__1_2_String.append $268650 $268652 $268638] $268642 [ = $268642 (String.append $268650 $268652) ] [ , [mc__1_2_String.append "abc" "def" $268650] [mc__1_2_String.append "g" "hij" $268652] ]] [ispu "abcdefghij"])
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ("abcdefghij") 
+      ("abcdefghij")]]
+</span>
+Deterministic: <span class="ansi33">()
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: String.append3 
+        (-> String String String String)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.append3 $x $y $z)  
+        (String.append $x 
+          (String.append $y $z))))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: String.append4 
+        (-> String String String String String)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.append4 $x $y $z $w)  
+        (String.append $x 
+          (String.append3 $y $z $w))))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: String.append5 
+        (-> String String String String String String)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.append5 $x $y $z $w $s)  
+        (String.append $x 
+          (String.append4 $y $z $w $s))))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (: String.join 
+        (-> String 
+          (List String) String)))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.join $separator Nil)  ""))
+</span><span class="ansi38-165005255">  ! (do-metta-load! &top load 
+      (= (String.join $separator (Cons $head $tail))  
+        (case $tail 
+          ( (Nil $head) ($else (String.append3 $head $separator (String.join $separator $tail)))))))
+</span><span class="ansi38-013099040">!(assertEqual (String.join ", " (Cons "x=42" (Cons "y=24" Nil))) "x=42, y=24")
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+                    (B=ispeEnNC(C, 'mc__1_2_String.join'(", ", D, C), E, E=['String.join', ", ", D], (F=['Cons', "y=24", 'Nil'], D=['Cons', "x=42", F])), G=ispu("x=42, y=24"), mc__1_2_assertEqual(B, G, A))).
+
+</span>
+;<h3 id="ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.05">;; ENGLISH-TO-CHINESE-SONG-COMP.ISSUE-FOLDR-CHARS-STRINGAPPEND-COMP.05</h3>
+; 
+; EVAL TEST
+; took 0.000050 secs. (49.90 microseconds) 
+
+!(assertEqual [ispeEnNC $359044 [mc__1_2_String.join ", " $359058 $359044] $359048 [ = $359048 (String.join ", " $359058) ] [ , [ = $359094 (Cons "y=24" Nil) ] [ = $359058 (Cons "x=42" $359094) ] ]] [ispu "x=42, y=24"])
+
+<span class="ansi36">  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ("x=42, y=24") 
+      ("x=42, y=24")]]
+</span>
+Deterministic: <span class="ansi33">()
+</span>;            [ = /home/deb12user/metta-wam/tests/quick_quality/NilG_ai-dsl/english-to-chinese-song/issue_foldr_chars_stringAppend.metta 0 ]
+<span class="ansi1">LoonIt Report
+</span>------------
+<span class="ansi32">Successes: 5
+</span><span class="ansi32">Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;">Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-05-05 06:23:58-07:00 [COMMAND_EXIT_CODE="1"]
+
+</pre>
+</body>
+
+</html>

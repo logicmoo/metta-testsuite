@@ -70,10 +70,14 @@
       (munion-atom $a $b)))
   ()))
 
-!(time (let* ( ($s1 (create-setspace))
-         ($s2 (insert-setspace $s1 ((: $a1 A)) (: $a1 A1)))
-         ($s3 (insert-setspace $s2 ((: $a2 A)) (: $a2 A2)))
-         ($s4 (insert-setspace $s3 ((: $t $T)) (: $t T)))
-         ($r (lookup-all-subsets $s4 ((: a B))))
-       )
-   ((sstostring $s4) $r)))
+
+!(time 
+ (let* ( ($s1 (create-setspace))
+		 ($s2 (insert-setspace $s1 ((: $a1 A)) (: $a1 A1)))
+		 ($s3 (insert-setspace $s2 ((: $a2 A)) (: $a2 A2)))
+		 ($s4 (insert-setspace $s3 ((: $t $T)) (: $t T)))
+		 ($rr (lookup-all-subsets $s4 ((: a B))))
+	   )
+   (  (sstostring $s4) $rr)))
+
+

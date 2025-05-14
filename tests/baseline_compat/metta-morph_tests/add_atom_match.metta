@@ -6,5 +6,5 @@
   (sequential
     ( (add-atom &self (man mortal))
       (match &self ($A mortal) (mortal $A))))
-  ((mortal man)))
+  (() (mortal man)))
 

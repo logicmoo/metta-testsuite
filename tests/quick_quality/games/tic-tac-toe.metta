@@ -232,6 +232,10 @@
 ;; Or, uncomment to run test cases:
 !(my-tests)
 
+;; True = swi-prolog, False = Use the same as H-E
+!(pragma! fast_random False)
+!(pragma! python_random True)
+
 !(set-random-seed &rng 0)
 !(random-int &rng 1 10)
 !(random-int &rng 1 10)

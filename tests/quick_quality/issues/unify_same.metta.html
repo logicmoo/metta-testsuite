@@ -30,25 +30,39 @@
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content">
-Script started on 2025-04-29 20:59:24-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta  " TERM="xterm" TTY="/dev/pts/4" COLUMNS="184" LINES="31"]
+Script started on 2025-05-11 01:12:09-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html tests/quick_quality/issues/unify_same.metta  " TERM="xterm" TTY="/dev/pts/5" COLUMNS="203" LINES="55"]
 
-; user:[load_metta_file &self /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta]
-;           [track_load_into_file /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta]
-;                    [load_answer_file /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta.answers /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta]
-;                   [load_answer_file /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta.answers /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta]
+; user:[load_metta_file &self tests/quick_quality/issues/unify_same.metta]
+;           [track_load_into_file /root/metta-wam/tests/quick_quality/issues/unify_same.metta]
+;                    [load_answer_file /root/metta-wam/tests/quick_quality/issues/unify_same.metta.answers /root/metta-wam/tests/quick_quality/issues/unify_same.metta]
+;                    [ = 1 "[()]" ]
+;                     [ = 2 "[()]" ]
+;                     [ = 3 "[()]" ]
+;                      [ = 4 "[()]" ]
+;                      [ = 5 "[()]" ]
+;                      [ = 6 "[()]" ]
+;                       [ = 7 "[()]" ]
+;                       [ = 8 "[(Error (assertEqualToResult (unify ($a $b) ($c $d) (y $a $b $c $d) (n $a $b $c $d)) ((y $a $b $a $b))) " ]
+;                        [ = 8 "Expected: [(y $a $b $a $b)]" ]
+;                        [ = 8 "Got: [(y $a $d $a $d)]" ]
+;                        [ = 9 "Missed results: (y $a $b $a $b)" ]
+;                         [ = 9 "Excessive results: (y $a $d $a $d))]" ]
+;                         [ = 9 "0.02user 0.00system 0:00.07elapsed 45%CPU (0avgtext+0avgdata 25724maxresident)k" ]
+;                          [ = 9 "0inputs+0outputs (0major+3069minor)pagefaults 0swaps" ]
+;                   [load_answer_file /root/metta-wam/tests/quick_quality/issues/unify_same.metta.answers /root/metta-wam/tests/quick_quality/issues/unify_same.metta]
 <span class="ansi38-013099040">!(assertEqualToResult (unify ($a $b) ($b $a) ($a $b) ()) (($a $a)))
 
 </span>
 ;<h3 id="ISSUES.UNIFY-SAME.01">;; ISSUES.UNIFY-SAME.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000215 secs. (215.20 microseconds) 
+; took 0.000154 secs. (154.10 microseconds) 
 
 !(assertEqualToResult (unify ($a $b) ($b $a) ($a $b) ()) (($a $a)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( ($b $b)) 
+      ( ($a $a)) 
       ( ($a $a))]]
 </span>
 Deterministic: <span class="ansi33">()
@@ -58,7 +72,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.02">;; ISSUES.UNIFY-SAME.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000251 secs. (251.00 microseconds) 
+; took 0.000112 secs. (112.30 microseconds) 
 
 !(assertEqualToResult (unify ($a 1) ($b $a) ($a $b) ()) ((1 1)))
 
@@ -74,7 +88,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.03">;; ISSUES.UNIFY-SAME.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000402 secs. (402.20 microseconds) 
+; took 0.000310 secs. (310.40 microseconds) 
 
 !(assertEqualToResult (unify $a ($b $a) ($a $b) ()) (()))
 
@@ -90,7 +104,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.04">;; ISSUES.UNIFY-SAME.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000181 secs. (180.90 microseconds) 
+; took 0.000115 secs. (115.40 microseconds) 
 
 !(assertEqualToResult (unify $a ($c $a) ($a $b $c) ()) (()))
 
@@ -106,7 +120,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.05">;; ISSUES.UNIFY-SAME.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000220 secs. (220.40 microseconds) 
+; took 0.000141 secs. (141.10 microseconds) 
 
 !(assertEqualToResult (unify $a ($c $a) ($a $b $c) ($a $b $c)) (($a $b $c)))
 
@@ -122,7 +136,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.06">;; ISSUES.UNIFY-SAME.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000915 secs. (915.40 microseconds) 
+; took 0.000701 secs. (701.30 microseconds) 
 
 !(assertEqualToResult (unify $a ($c $a) (y $a $b $c) (n $a $b $c)) ((n $a $b $c)))
 
@@ -138,7 +152,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.07">;; ISSUES.UNIFY-SAME.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000732 secs. (731.90 microseconds) 
+; took 0.000465 secs. (464.50 microseconds) 
 
 !(assertEqualToResult (unify $a ($c $a) (y $a $b $c $d) (n $a $b $c $d)) ((n $a $b $c $d)))
 
@@ -154,13 +168,13 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.08">;; ISSUES.UNIFY-SAME.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000799 secs. (799.00 microseconds) 
+; took 0.000425 secs. (424.70 microseconds) 
 
 !(assertEqualToResult (unify ($a $b) ($c $d) (y $a $b $c $d) (n $a $b $c $d)) ((y $a $b $a $b)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (y $c $d $c $d)) 
+      ( (y $a $b $a $b)) 
       ( (y $a $b $a $b))]]
 </span>
 Deterministic: <span class="ansi33">()
@@ -170,13 +184,13 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.09">;; ISSUES.UNIFY-SAME.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000676 secs. (676.40 microseconds) 
+; took 0.000415 secs. (415.10 microseconds) 
 
 !(assertEqualToResult (unify ($a $b) ($c 1) (y $a $b $c $d) (n $a $b $c $d)) ((y $a 1 $a $d)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (y $c 1 $c $d)) 
+      ( (y $a 1 $a $d)) 
       ( (y $a 1 $a $d))]]
 </span>
 Deterministic: <span class="ansi33">()
@@ -186,13 +200,13 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.10">;; ISSUES.UNIFY-SAME.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000653 secs. (652.60 microseconds) 
+; took 0.000412 secs. (411.60 microseconds) 
 
 !(assertEqualToResult (unify ($a $b) ($c $c) (y $a $b $c $d) (n $a $b $c $d)) ((y $b $b $b $d)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (y $c $c $c $d)) 
+      ( (y $a $a $a $d)) 
       ( (y $b $b $b $d))]]
 </span>
 Deterministic: <span class="ansi33">()
@@ -202,13 +216,13 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.11">;; ISSUES.UNIFY-SAME.11</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.00 milliseconds) 
+; took 0.002 secs. (1.59 milliseconds) 
 
 !(assertEqualToResult (unify ($a $b) ($c (+ 1 1)) (y $a $b $c $d) (n $a $b $c $d)) ((y $a 2 $a $d)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (y $c 2 $c $d)) 
+      ( (y $a 2 $a $d)) 
       ( (y $a 2 $a $d))]]
 </span>
 Deterministic: <span class="ansi33">()
@@ -218,7 +232,7 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.12">;; ISSUES.UNIFY-SAME.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
+; took 0.000531 secs. (530.80 microseconds) 
 
 !(assertEqualToResult (unify ($a (+ 0 2)) ($c (+ 1 1)) (y $a $b $c $d) (n $a $b $c $d)) ((n $a $b $c $d)))
 
@@ -234,17 +248,17 @@ Deterministic: <span class="ansi33">()
 ;<h3 id="ISSUES.UNIFY-SAME.13">;; ISSUES.UNIFY-SAME.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000709 secs. (708.50 microseconds) 
+; took 0.000393 secs. (392.60 microseconds) 
 
 !(assertEqualToResult (unify ($a (+ $b 1)) ($c (+ 1 1)) (y $a $b $c $d) (n $a $b $c $d)) ((y $a 1 $a $d)))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (y $c 1 $c $d)) 
+      ( (y $a 1 $a $d)) 
       ( (y $a 1 $a $d))]]
 </span>
 Deterministic: <span class="ansi33">()
-</span>;            [ = /home/deb12user/metta-wam/tests/quick_quality/issues/unify_same.metta 0 ]
+</span>;            [ = /root/metta-wam/tests/quick_quality/issues/unify_same.metta 0 ]
 <span class="ansi1">LoonIt Report
 </span>------------
 <span class="ansi32">Successes: 13
@@ -264,7 +278,7 @@ Deterministic: <span class="ansi33">()
 [()]
 [()]
 
-Script done on 2025-04-29 20:59:25-07:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-05-11 01:12:09-07:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

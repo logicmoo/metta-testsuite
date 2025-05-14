@@ -168,8 +168,8 @@
 
 ;; Concatenate two strings (implemented in my own branch)
 (: String.append (-> String String String))
-; (= (String.append $x $y) (call-fn! string_concat $x $y)) ; Only MeTTaLog
- (= (String.append $x $y) ((py-dot $x __add__ (-> String String String)) $y))
+(= (String.append $x $y) (call-fn! string_concat $x $y)) ; Only MeTTaLog
+;; (= (String.append $x $y) ((py-dot $x __add__ (-> String String String)) $y))
 ;; (= (String.append $x $y) (charsToString (append (stringToChars $x) (stringToChars $y))))
 
 ;; Test String.append
@@ -328,7 +328,7 @@
              DOT))
 
 ;; Test MkDOT
-!(tryit (assertEqual
+!(assertEqual
   (MkDOT Nil
          Nil
          (DOT.MkNode (DOT.MkSymbolIdentifier mix 0)
@@ -342,7 +342,7 @@
                      (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))
          (DOT.MkNode (DOT.MkSymbolIdentifier mix 0)
                      (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))
-         (Cons (DOT.MkRankdirAttribute DOT.Rankdir.BT) Nil))))
+         (Cons (DOT.MkRankdirAttribute DOT.Rankdir.BT) Nil)))
 
 ;; Return the default attributes of a DOT file
 (: globalAttributes (-> (List DOT.Attribute)))
@@ -460,7 +460,7 @@
 !(set-random-seed &rng 0)
 !(assertEqual
   (random-index)
-  731113)
+  823576)
 
 ;; Create edges between optionally provided entry and exit nodes and
 ;; internal entry and exit nodes
@@ -759,7 +759,7 @@
 
 ;; Test toDOT
 !(set-random-seed &rng 0)
-!(tryit (assertEqual
+!(assertEqual
   (toDOT mix)
   ;; ;; Using HE random generator
   ;; (MkDOT (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier mix 731113) (Cons (DOT.MkLabelAttribute "\"mix\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) Nil))) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier mix 731113) (Cons (DOT.MkLabelAttribute "\"mix\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) Nil) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier mix 731113) (Cons (DOT.MkLabelAttribute "\"mix\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) Nil) Nil)) (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkRankdirAttribute DOT.Rankdir.BT) Nil)))
@@ -772,7 +772,6 @@
   ;; (MkDOT (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier f 731113) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) Nil))) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier f 731113) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) (Cons (DOT.MkLabelAttribute "\"A\"") Nil)) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier f 731113) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkLabelAttribute "\"B\"") Nil)) Nil)) (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkRankdirAttribute DOT.Rankdir.BT) Nil)))
   ;; Using MeTTaLog random generator
   (MkDOT (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkNode (DOT.MkSymbolIdentifier f 823576) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) Nil))) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier f 823576) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) (Cons (DOT.MkLabelAttribute "\"A\"") Nil)) (Cons (DOT.MkEdge (DOT.MkNode (DOT.MkSymbolIdentifier f 823576) (Cons (DOT.MkLabelAttribute "\"f\"") (Cons (DOT.MkShapeAttribute DOT.Shape.Box) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkLabelAttribute "\"B\"") Nil)) Nil)) (DOT.MkNode (DOT.MkSymbolIdentifier __IN__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (DOT.MkNode (DOT.MkSymbolIdentifier __OUT__ 0) (Cons (DOT.MkLabelAttribute "\"\"") (Cons (DOT.MkShapeAttribute DOT.Shape.None) Nil))) (Cons (DOT.MkRankdirAttribute DOT.Rankdir.BT) Nil)))
-)
 ;; TODO: re-enable as needed  (don't forget to reset the random seed at every test)
 ;; !(toDOT (STTrans VA VIV))
 ;; !(toDOT (: (STTrans VA VIV) (<: (VocalsIn "English") Audio)))
@@ -1525,8 +1524,6 @@
                                      (: (add-type-annotation-holes $z) $b)
                                      (: (add-type-annotation-holes $w) $c)))
                      ($_ $_)))))))
-
-;; !(repl!)
 
 ;; Test add-type-annotation-holes
 !(assertAlphaEqual

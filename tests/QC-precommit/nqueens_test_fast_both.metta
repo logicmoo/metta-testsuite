@@ -1,0 +1,1 @@
+../direct_comp/nqueens/nqueens_test_fast_both.metta

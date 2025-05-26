@@ -1,8 +1,8 @@
-(: If (-> Bool Atom Atom Atom))
-(= (If $cond $then $else) (if $cond $then $else))
+(: If3 (-> Bool Atom Atom Atom))
+(= (If3 $cond $then $else) (if $cond $then $else))
 
 (= (facF $n)
-   (If (== $n 0)
+   (If3 (== $n 0)
        1
        (* $n (facF (- $n 1)))))
 
@@ -11,8 +11,35 @@
 	   1
 	   (* $n (facf (- $n 1)))))
 
-!(facf 10)
 
-!(facF 10)
+!(pragma! time trace)
 
+!(pragma! compile False)
+
+; compiler off system defined branching
+!(facf 10000)
+
+; compiler off user defined branching
+!(facF 10000)
+
+; compiler off system defined branching
+;!(facf 100000)
+
+; compiler off user defined branching
+;!(facF 100000)
+
+
+!(pragma! compile full)
+
+; compiler on system defined branching
+!(facf 10000)
+
+; compiler on user defined branching
+!(facF 10000)
+
+; compiler on system defined branching
+;!(facf 100000)
+
+; compiler on user defined branching
+;!(facF 100000)
 

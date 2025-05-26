@@ -1,0 +1,1 @@
+../direct_comp/important/puzzle.metta

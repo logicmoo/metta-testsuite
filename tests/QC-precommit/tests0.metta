@@ -1,0 +1,1 @@
+../baseline_compat/metta-morph_tests/tests0.metta

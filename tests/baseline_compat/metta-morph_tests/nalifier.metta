@@ -111,10 +111,12 @@
 ((((ExtSet sam) --> (IntSet small)) (1.0 0.9)) (13))
 ((((ExtSet sam) --> (IntSet quacks)) (1.0 0.9)) (14))
 
-!(let ($S $EV) (choiceQuery (((ExtSet sam) --> duck)
+!(assertEqualToResult 
+   (let ($S $EV) (choiceQuery (((ExtSet sam) --> duck)
                              ((ExtSet sam) --> swan)
                              ((ExtSet sam) --> dog)))
       $S)
 
-
+   ((((ExtSet sam) --> duck) (1.0 0.6183206106870229))))
+   
 ;  !(repl!)

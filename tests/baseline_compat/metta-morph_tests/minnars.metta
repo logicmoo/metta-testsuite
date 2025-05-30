@@ -96,10 +96,13 @@
 
 (flonum-print-precision 17)
 
-!(Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1))
+!(assertEqualToResult 
+ (Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1))
             (Sentence (((cat x sky) --> like) (1.0 0.9)) (2))
             (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3))
             (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))
            )
            ((ExtSet garfield) --> artist)
-           3)
+           3) 
+(((1.0 0.37946790052053214) (2 1 3 4))))
+

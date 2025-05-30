@@ -458,7 +458,8 @@
 
 
 ; no_results 
-  ! (assertEmpty (let $0 (TupleConcat (1) (3)) (if (StampDisjoint (1) (3)) (case (|- ((Inheritance (Concept Sam) (Concept Raven)) (stv 0.99 0.9)) ((Evaluation (Predicate flies) (List (Concept Penguin))) (stv 0.01 0.9))) ((($1 $2) (Sentence ($1 $2) $0)))) ())))
+  ! (assertEmpty 
+	    (let $0 (TupleConcat (1) (3)) (if (StampDisjoint (1) (3)) (case (|- ((Inheritance (Concept Sam) (Concept Raven)) (stv 0.99 0.9)) ((Evaluation (Predicate flies) (List (Concept Penguin))) (stv 0.01 0.9))) ((($1 $2) (Sentence ($1 $2) $0)))) ())))
 
 
 ; count 

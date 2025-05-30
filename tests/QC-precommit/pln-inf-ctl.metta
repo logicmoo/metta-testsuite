@@ -764,13 +764,18 @@
                      ($else (Error $stm "Not supported in PLN.reduce")))))
       ($else (Error (get-metatype $stm) "Not supported in PLN.reduce")))))
 
+
+!(set-debug! e True)
+
 ;; Test PLN.reduce
 !(assertEqual
   (PLN.reduce ⊤)
   ⊤)
+
 !(assertEqual
   (PLN.reduce (𝛩 [PC] z [𝜑]))
   (𝛩 [PC] z [𝜑]))
+
 !(assertEqual
   (PLN.reduce (∧ (𝛩 [PC] z [𝜑]) ⊤))
   (𝛩 [PC] z [𝜑]))
@@ -1457,12 +1462,14 @@
 (: bc.test.ax-3.p (-> Number Bool))
 (= (bc.test.ax-3.p $n) (set-rnd-seed-run0-not-empty $n bc.test.ax-3))
 ;; Set or look for a random seed
-!(bind! &bc.test.ax-3.seed
+
+!(with-debug e (bind! &bc.test.ax-3.seed
         (if &seed-search
             ;; Look for random seed
             (until bc.test.ax-3.p succ 0)
             ;; Use prederminted seed
-            1))
+            1)))
+
 !(println! ("Random seed for ax-3:" &bc.test.ax-3.seed))
 ;; Test
 !(assertEqual
@@ -1561,6 +1568,7 @@
 ;; Note that variables have been replaced by symbols to force them to
 ;; be different which considerably prunes the search space.
 (: bc.test.a1i.1 (-> $a))
+
 (= (bc.test.a1i.1)
    (bc &rnd-ctl
        (Cons (: a1i.1 𝜑) Nil)
@@ -1570,13 +1578,16 @@
 ;; Define predicate to check a random seed for that test
 (: bc.test.a1i.1.p (-> Number Bool))
 (= (bc.test.a1i.1.p $n) (set-rnd-seed-run0-not-empty $n bc.test.a1i.1))
+
 ;; Set or look for a random seed
-!(bind! &bc.test.a1i.1.seed
+!(with-debug e
+  (bind! &bc.test.a1i.1.seed
         (if &seed-search
             ;; Look for random seed
             (until bc.test.a1i.1.p succ 0)
             ;; Use prederminted seed
-            4))
+            4)))
+
 !(println! ("Random seed for mp2b:" &bc.test.a1i.1.seed))
 ;; Test
 !(assertEqual

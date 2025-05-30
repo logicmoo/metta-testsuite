@@ -765,9 +765,15 @@
       ($else (Error (get-metatype $stm) "Not supported in PLN.reduce")))))
 
 ;; Test PLN.reduce
-!(assertEqual
+
+!(set-debug! e True)
+
+
+!(with-debug e
+   (assertEqual
   (PLN.reduce ⊤)
-  ⊤)
+  ⊤))
+
 !(assertEqual
   (PLN.reduce (𝛩 [PC] z [𝜑]))
   (𝛩 [PC] z [𝜑]))
@@ -928,6 +934,7 @@
 (= (queryToPLN $thry $vars (: $prf $thrm))
    (let* (;; Convert theory into PLN term
           ($thrypln (theoryToPLN $thry))
+		  
           ;; Convert proof into PLN term, and accumulate new variables
           ((MkPair $nvars $prfpln) (proofToPLN $vars $prf))
           ;; Convert type into PLN term, and accumulate new variables

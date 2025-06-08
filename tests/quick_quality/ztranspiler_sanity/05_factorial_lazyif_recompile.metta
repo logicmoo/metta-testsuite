@@ -10,6 +10,6 @@
 (: If (-> Bool Atom Atom Atom))
 (= (If $cond $then $else) (if $cond $then $else))
 
-!(facF 5)
+!(assertEqualToResult (facF 5) (120))
 
 

@@ -1,6 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Backward chaining logic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;!(import! &self dv-pl)
+;; Predicate signatures for backward chaining logic
+(: cur= (-> Atom Atom)) ; Current goal
+(: retVal= (-> Atom Atom)) ; Return value
+(: goal= (-> Atom Atom)) ; Final goal
 
 ;; Interface for backward chaining (quotes the arguement)
 (: backward-chain (-> Atom Atom Atom Atom Atom))

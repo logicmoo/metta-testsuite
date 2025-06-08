@@ -261,7 +261,7 @@
 
 ;!(import! &self dv-pl)
 ;!(test_normal_queries)
-;!(test_normal_queries)
+;!(test_normal_queries &self)
 
 ((because $color house keeps $other the $nationality is the $type owner) :- 
   ((same $Houses

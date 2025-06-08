@@ -68,7 +68,7 @@
 
 ; mettalog  0m5.565s
 ; mettarust 0m8.076s
-;!(assertEqualToResult (nqueens 4) ((3 1 4 2) (2 4 1 3)))
+!(assertEqualToResult (nqueens 4) ((3 1 4 2) (2 4 1 3)))
 
 ; mettalog  0m5.953s
 ; mettarust 0m32.852s
@@ -76,7 +76,7 @@
 
 ; mettalog  0m7.043s
 ; mettarust 2m14.622s
-;!(assertEqualToResult (nqueens 6) ((5 3 1 6 4 2)  (4 1 5 2 6 3)  (3 6 2 5 1 4)  (2 4 6 1 3 5)))
+!(assertEqualToResult (nqueens 6) ((5 3 1 6 4 2)  (4 1 5 2 6 3)  (3 6 2 5 1 4)  (2 4 6 1 3 5)))
 
 ; mettalog   0m11.805s
 ; mettarust 11m26.192s

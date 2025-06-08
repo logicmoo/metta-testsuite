@@ -69,13 +69,19 @@
 ;!(pragma! e-args debug)
 
 ; Test
-!(bc (: CPU (lt 2 3)) &kb Z)
-!(bc (: CPU (lt 4 3)) &kb Z)
+!(assertEqualToResult 
+    (bc (: CPU (lt 2 3)) &kb Z) 
+       ((: CPU (lt 2 3))))
+
+!(assertEqualToResult 
+     (bc (: CPU (lt 4 3)) &kb Z)
+       ())
 
 ;!(pragma! eval debug)
 
 ;! ( rtrace! (bc (: $prf (less $x $y)) (S (S (S Z)))))
 
-!(bc (: $prf (less $x $y)) &kb (S (S (S Z))))
-
+!(assertEqualToResult 
+   (bc (: $prf (less $x $y)) &kb (S (S (S Z))))
+   ((: ((rule (rule1 axiom)) CPU) (less 2 3))))
 

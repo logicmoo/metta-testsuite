@@ -14,49 +14,15 @@
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-017068017 { color: #114411; }
+.ansi38-017068018 { color: #114412; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content">
-Script started on 2025-05-30 02:11:23-07:00 [COMMAND="swipl  /home/deb12user/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --html --compile=full tests/QC-precommit/task1_whole.metta  " TERM="xterm" TTY="/dev/pts/14" COLUMNS="203" LINES="55"]
-Extracted clause: interpret:[interpret,_352124,_352130,_352136]:-[function,[let,_352160,[get-metatype,_352124],[if,[metta-equal,_352130,Atom],[return,_352124],[if,[metta-equal,_352130,_352160],[return,_352124],[switch,[_352130,_352160],[[[_352130,Variable],[return,_352124]],[[_352130,Symbol],[let,_352406,[type-cast,_352124,_352130,_352136],[return,_352406]]],[[_352130,Grounded],[let,_352406,[type-cast,_352124,_352130,_352136],[return,_352406]]],[[_352130,Expression],[let,_352406,[check-alternatives,[interpret-expression,_352124,_352130,_352136]],[return,_352406]]]]]]]]]
-Extracted clause: interpret-expression:[interpret-expression,_378542,_378548,_378554]:-[function,[if,[decons-ht,_378542,_378596,_378602],[let,_378620,[get-type,_378596,_378554],[let,_378662,[is-function,_378620],[if,[metta-unify,_378662,True],[let,_378734,[interpret-func,_378542,_378620,_378548,_378554],[let,_378788,[metta-call,_378734,_378548,_378554],[return,_378788]]],[let,_378734,[interpret-tuple,_378542,_378554],[let,_378788,[metta-call,_378734,_378548,_378554],[return,_378788]]]]]],[let,_378788,[type-cast,_378542,_378548,_378554],[return,_378788]]]]
-Extracted clause: interpret-func:[interpret-func,_414722,_414728,_414734,_414740]:-[function,[if,[decons-ht,_414722,_414782,_414788],[let,_414806,[interpret,_414782,_414728,_414740],[return-on-error,_414806,[if,[decons-ht,_414728,_414890,_414896],[let,_414914,[interpret-args,_414722,_414788,_414896,_414734,_414740],[return-on-error,_414914,[let,_414992,[cons-atom,_414806,_414914],[return,_414992]]]],[return,[Error,_414728,Function type expected]]]]],[return,[Error,_414722,Non-empty expression atom is expected]]]]
-Extracted clause: interpret-args:[interpret-args,_436756,_436762,_436768,_436774,_436780]:-[function,[if,[metta-unify,_436762,[]],[if,[decons-ht,_436768,_436858,_436864],[let,_436882,[==,[],_436864],[if,_436882,[match-types,_436858,_436774,[return,[]],[return,[Error,_436756,BadType]]],[return,[Error,_436756,BadType]]]],[return,[Error,_436756,Too many arguments]]],[if,[decons-ht,_436762,_437120,_437126],[if,[decons-ht,_436768,_437162,_437168],[let,_437186,[interpret,_437120,_437162,_436780],[if,[metta-equal,_437186,_437120],[let,_437270,[interpret-args-tail,_436756,_437186,_437126,_437168,_436774,_436780],[return,_437270]],[return-on-error,_437186,[let,_437270,[interpret-args-tail,_436756,_437186,_437126,_437168,_436774,_436780],[return,_437270]]]]],[return,[Error,_436756,BadType]]],[return,[Error,[interpret-atom,_436756,_436762,_436768,_436780],Non-empty expression atom is expected]]]]]
-Extracted clause: interpret-expression:[interpret-expression,_462342,_462348,_462354]:-[function,[if,[decons-ht,_462342,_462396,_462402],[let,_462420,[get-type,_462396,_462354],[let,_462462,[is-function,_462420],[if,[metta-unify,_462462,True],[let,_462534,[interpret-func,_462342,_462420,_462348,_462354],[let,_462588,[metta-call,_462534,_462348,_462354],[return,_462588]]],[let,_462534,[interpret-tuple,_462342,_462354],[let,_462588,[metta-call,_462534,_462348,_462354],[return,_462588]]]]]],[let,_462588,[type-cast,_462342,_462348,_462354],[return,_462588]]]]
-Extracted clause: interpret-expression:[interpret-expression,_483650,_483656,_483662]:-[function,[if,[decons-ht,_483650,_483704,_483710],[let,_483728,[get-type,_483704,_483662],[let,_483770,[is-function,_483728],[if,[metta-unify,_483770,True],[let,_483842,[interpret-func,_483650,_483728,_483656,_483662],[let,_483896,[metta-call,_483842,_483656,_483662],[return,_483896]]],[let,_483842,[interpret-tuple,_483650,_483662],[let,_483896,[metta-call,_483842,_483656,_483662],[return,_483896]]]]]],[let,_483896,[type-cast,_483650,_483656,_483662],[return,_483896]]]]
-Extracted clause: get-doc:[get-doc,_799106]:-[let,_799118,[get-metatype,_799106],[case,_799118,[[Expression,[get-doc-atom,_799106]],[_799202,[get-doc-single-atom,_799106]]]]]
-Extracted clause: get-doc-single-atom:[get-doc-single-atom,_824358]:-[let,_824370,[mod-space!,top],[let,_824406,[get-type-space,_824370,_824358],[if,[is-function-type,_824406],[get-doc-function,_824358,_824406],[get-doc-atom,_824358]]]]
-Extracted clause: get-doc-function:[get-doc-function,_842836,_842842]:-[let,_842854,[mod-space!,top],[unify,_842854,[@doc,_842836,_842914,[@params,_842932],_842938],[let,_842956,[if,[==,_842842,%Undefined%],[undefined-doc-function-type,_842932],[cdr-atom,_842842]],[let,[_843052,_843058],[get-doc-params,_842932,_842938,_842956],[@doc-formal,[@item,_842836],[@kind,function],[@type,_842842],_842914,[@params,_843052],_843058]]],[@doc-formal,[@item,_842836],[@kind,function],[@type,_842842],[@desc,No documentation]]]]
-Extracted clause: get-doc-function:[get-doc-function,_872112,_872118]:-[let,_872130,[mod-space!,top],[unify,_872130,[@doc,_872112,_872190,[@params,_872208],_872214],[let,_872232,[if,[==,_872118,%Undefined%],[undefined-doc-function-type,_872208],[cdr-atom,_872118]],[let,[_872328,_872334],[get-doc-params,_872208,_872214,_872232],[@doc-formal,[@item,_872112],[@kind,function],[@type,_872118],_872190,[@params,_872328],_872334]]],[@doc-formal,[@item,_872112],[@kind,function],[@type,_872118],[@desc,No documentation]]]]
-Extracted clause: get-doc:[get-doc,_27834]:-[let,_27846,[get-metatype,_27834],[case,_27846,[[Expression,[get-doc-atom,_27834]],[_27930,[get-doc-single-atom,_27834]]]]]
-Extracted clause: get-doc-single-atom:[get-doc-single-atom,_57216]:-[let,_57228,[mod-space!,top],[let,_57264,[get-type-space,_57228,_57216],[if,[is-function-type,_57264],[get-doc-function,_57216,_57264],[get-doc-atom,_57216]]]]
-Extracted clause: help!:[help!,_119038]:-[case,[get-doc,_119038],[[[@doc-formal,[@item,_119104],[@kind,function],[@type,_119140],[@desc,_119158],[@params,_119176],[@return,[@type,_119206],[@desc,_119224]]],[let,[],[println!,[format-args,Function {}: {} {},[_119104,_119140,_119158]]],[let,[],[println!,[format-args,Parameters:,[]]],[let,[],[for-each-in-atom,_119176,help-param!],[let,[],[println!,[format-args,Return: (type {}) {},[_119206,_119224]]],[]]]]]],[[@doc-formal,[@item,_119104],[@kind,function],[@type,_119140],[@desc,_119158]],[let,[],[println!,[format-args,Function {} (type {}) {},[_119104,_119140,_119158]]],[]]],[[@doc-formal,[@item,_119104],[@kind,atom],[@type,_119140],[@desc,_119158]],[let,[],[println!,[format-args,Atom {}: {} {},[_119104,_119140,_119158]]],[]]],[_119860,[Error,_119860,Cannot match @doc-formal structure]]]]
-Extracted clause: for-each-in-atom:[for-each-in-atom,_139118,_139124]:-[if,[noreduce-eq,_139118,[]],[],[let,_139178,[car-atom,_139118],[let,_139214,[cdr-atom,_139118],[let,_139250,[_139124,_139178],[for-each-in-atom,_139214,_139124]]]]]
-Extracted clause: get-doc-single-atom:[get-doc-single-atom,_170688]:-[let,_170700,[mod-space!,top],[let,_170736,[get-type-space,_170700,_170688],[if,[is-function-type,_170736],[get-doc-function,_170688,_170736],[get-doc-atom,_170688]]]]
-Extracted clause: get-doc-atom:[get-doc-atom,_201656]:-[let,_201668,[mod-space!,top],[let,_201704,[get-type-space,_201668,_201656],[unify,_201668,[@doc,_201656,_201770],[@doc-formal,[@item,_201656],[@kind,atom],[@type,_201704],_201770],[unify,_201668,[@doc,_201656,_201884,[@params,_201902],_201908],[get-doc-function,_201656,%Undefined%],[@doc-formal,[@item,_201656],[@kind,atom],[@type,_201704],[@desc,No documentation]]]]]]
-Extracted clause: get-doc-single-atom:[get-doc-single-atom,_285918]:-[let,_285930,[mod-space!,top],[let,_285966,[get-type-space,_285930,_285918],[if,[is-function-type,_285966],[get-doc-function,_285918,_285966],[get-doc-atom,_285918]]]]
-Extracted clause: get-doc-function:[get-doc-function,_317338,_317344]:-[let,_317356,[mod-space!,top],[unify,_317356,[@doc,_317338,_317416,[@params,_317434],_317440],[let,_317458,[if,[==,_317344,%Undefined%],[undefined-doc-function-type,_317434],[cdr-atom,_317344]],[let,[_317554,_317560],[get-doc-params,_317434,_317440,_317458],[@doc-formal,[@item,_317338],[@kind,function],[@type,_317344],_317416,[@params,_317554],_317560]]],[@doc-formal,[@item,_317338],[@kind,function],[@type,_317344],[@desc,No documentation]]]]
-Extracted clause: get-doc-atom:[get-doc-atom,_417176]:-[let,_417188,[mod-space!,top],[let,_417224,[get-type-space,_417188,_417176],[unify,_417188,[@doc,_417176,_417290],[@doc-formal,[@item,_417176],[@kind,atom],[@type,_417224],_417290],[unify,_417188,[@doc,_417176,_417404,[@params,_417422],_417428],[get-doc-function,_417176,%Undefined%],[@doc-formal,[@item,_417176],[@kind,atom],[@type,_417224],[@desc,No documentation]]]]]]
-Extracted clause: help!:[help!]:-[let,_504060,[mod-space!,top],[unify,_504060,[@doc,_504114,[@desc,_504132]],[let,[],[println!,[format-args,{}
-	{},[_504114,_504132]]],Empty],Empty]]
-
-; user:[load_metta_file &self /home/deb12user/metta-wam/prolog/metta_lang/metta_interp.pl]
-
-; user:[load_metta_file &self tests/QC-precommit/task1_whole.metta]
-;             [track_load_into_file /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta]
-;                     [load_answer_file /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta.answers /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta]
-;                     [load_answer_file /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta.answers /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta]
-Extracted clause: action-applicable:[action-applicable,_288674,_288680,_288686]:-[match,&self,[:action,_288680,:parameters,_288728,:precondition,_288740,:effect,_288752],[unf,_288686,_288728,[formula-satisfaction,_288674,_288740],[Error,_288728,FailedUnification1]]]
-Extracted clause: actions-applicable:[actions-applicable,_324116]:-[match,&self,[:action,_324146,:parameters,_324158,:precondition,_324170,:effect,_324182],[let*,[[_324212,[args-combination,_324158]],[_324242,[unf,_324212,_324158,True,[Error,_324158,FailedUnification2]]]],[if,[formula-satisfaction,_324116,_324170],[_324146,_324158],[empty]]]]
-Extracted clause: action-applyEffect:[action-applyEffect,_373278,_373284]:-[match,&self,[:action,_373278,:parameters,_373326,:precondition,_373338,:effect,_373350],[unf,_373284,_373326,_373350,FailedUnification3]]
-Extracted clause: signed-fluents:[signed-fluents,_400030]:-[if,[==,_400030,[]],[[],[]],[let*,[[[_400114,_400120],[decons-atom,_400030]],[[_400156,_400162],[signed-fluents,_400120]],[[_400198,_400204],[unf,_400114,[Not,_400240],[True,_400240],[False,_400114]]]],[if,_400198,[_400156,[cons-atom,_400204,_400162]],[[cons-atom,_400204,_400156],_400162]]]]
-Extracted clause: retrace-steps:[retrace-steps,_462780]:-[if,[==,_462780,0],[],[let*,[[[_462852,_462858,_462864],[match,&self,[Succ,_462852,[_462858,_462864],_462780],[_462852,_462858,_462864]]],[_462960,[retrace-steps,_462852]]],[L-push-back,_462960,[_462858,_462864]]]]
-Extracted clause: state-visited?:[state-visited?,_550808]:-[if,[==,_550808,[]],[],[let*,[[[_550880,_550886],[decons-atom,_550808]],[_550916,[collapse,[match,&self,[State,_550964,_550880],_550964]]]],[if,[==,_550886,[]],_550916,[let,_551036,[state-visited?,_550886],[L-intersection,_550916,_551036]]]]]
+Script started on 2025-06-05 19:14:24-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html --compile=full tests/QC-precommit/task1_whole.metta  " TERM="xterm" TTY="/dev/pts/7" COLUMNS="140" LINES="22"]
 <span class="ansi38-013099040">!(assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
 
-</span><span class="ansi38-017068017">:- do_metta_runtime(A,
+</span><span class="ansi38-017068018">:- do_metta_runtime(A,
                     (B=ispeEnN(C, 'mi__1_1_planner-main'(100, C), D, D=['planner-main', 100]), E=[b], F=[pickup, E], G=[b, c], H=[stack, G], I=[a], J=[pickup, I], K=[a, b], L=[stack, K], M=[F, H, J, L], N=[M], mi__1_2_assertEqualToResult(B, N, A))).
 
 </span>
@@ -105,9 +71,9 @@ Extracted clause: state-visited?:[state-visited?,_550808]:-[if,[==,_550808,[]],[
 (Processing 19 ((on-table c) (on b c) (arm-empty) (clear a) (on a b)) ((13 (stack (a b)))))
 ; 
 ; EVAL TEST
-; took 0.196 secs. (195.74 milliseconds) 
+; took 4.07 seconds.
 
-!(assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
+!(assertEqualToResult [ispeEnN $15484970 [mi__1_1_planner-main 100 $15484970] $15484974 [ = $15484974 (planner-main 100) ]] (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
@@ -121,15 +87,13 @@ Extracted clause: state-visited?:[state-visited?,_550808]:-[if,[==,_550808,[]],[
           (stack (a b))))]]
 </span>
 Deterministic: <span class="ansi33">()
-</span>;             [ = /home/deb12user/metta-wam/tests/QC-precommit/task1_whole.metta 0 ]
-<span class="ansi1">LoonIt Report
+</span><span class="ansi1">LoonIt Report
 </span>------------
 <span class="ansi32">Successes: 1
 </span><span class="ansi32">Failures: 0
-</span><br/> <a href="#" onclick="window.history.back(); return false;">Return to summaries</a><br/>
-[()]
+</span>[()]
 
-Script done on 2025-05-30 02:11:38-07:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-06-05 19:14:48-07:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

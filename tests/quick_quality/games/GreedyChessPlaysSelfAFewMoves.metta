@@ -2769,16 +2769,16 @@
     (command-loop)))  ; Enter the recursive command-processing loop until quit command 'q'
 ;!(main_loop)
 
-!(assertEqual (chess) ())
-!(assertEqual (MoveTo ((1 2) (1 4))) ())
-!(assertEqual (G) ())
-!(assertEqual (MoveTo ((8 2) (8 4))) ())
-!(assertEqual (MoveTo ((3 2) (3 4))) ())
-!(assertEqual (MoveTo ((4 2) (4 4))) ())
+!(Rust-MeTTa-Maybe (assertEqual (chess) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((1 2) (1 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (G) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((8 2) (8 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((3 2) (3 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((4 2) (4 4))) ()))
 
-!(assertEqual (progn (G)) ())
-!(assertEqual (C) ())
-!(assertEqual (R) ())
-!(assertEqual (D) (()))
+!(Rust-MeTTa-Maybe (assertEqual (progn (G)) ()))
+!(Rust-MeTTa-Maybe (assertEqual (C) ()))
+!(Rust-MeTTa-Maybe (assertEqual (R) ()))
+!(Rust-MeTTa-Maybe (assertEqual (D) (())))
 
 !(assertEqual MadeItWOCrashing MadeItWOCrashing)

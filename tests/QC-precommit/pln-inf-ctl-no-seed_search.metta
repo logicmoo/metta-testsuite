@@ -14,6 +14,14 @@
 ;;
 ;; https://us.metamath.org/mpeuni/mmtheorems1.html
 
+;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;; ;;
+;; ;; Imports ;; ;;
+;; ;;;;;;;;;;;;; ;;
+;;;;;;;;;;;;;;;;;;;
+
+!(import! &self random)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;;;;;;; ;;
 ;; ;; Hyper Parameters ;; ;;
@@ -43,7 +51,9 @@
 ;; Warning: if the atom to be added is not in the space but matches
 ;; any atom in the space, it will not be added either.  Return the
 ;; added (or not added) atom.
-(: add-reduct-nodup (-> $a $b (->)))
+(: add-reduct-nodup (-> $a              ; Space
+                        $b              ; Atom
+                        (->)))
 (= (add-reduct-nodup $space $atom)
    (case (match $space $atom $atom)
      (($atom ())
@@ -195,8 +205,8 @@
 (= (maxWith $lt $x $y)
    (if ($lt $x $y) $y $x))
 
-;; Return a maximum element of a non empty list, given a certain less
-;; than predicate.
+;; Return a maximum element of a non empty list, given a less than
+;; predicate.
 (: List.maxElementWith (-> (-> $a $a Bool) (List $a) $a))
 (= (List.maxElementWith $lt (Cons $head $tail))
    (case $tail
@@ -709,6 +719,28 @@
 (: PLN.Judgement Type)
 (: ≞ (-> PLN.Statement PLN.TruthValue PLN.Judgement))
 
+;; Access truth value from judgement
+(: PLN.tv (-> PLN.Judgement PLN.TruthValue))
+(= (PLN.tv (≞ $stm $tv)) $tv)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Thompson Sampling ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Thompson sample from a simple truth value.  For now only confidence
+;; of 0 or 1 are supported.  This assumption allows us to operate
+;; Thompson sampling without requiring a Beta distribution.  Indeed if
+;; the confidence is 0 then it amounts to a uniform sampling, assuming
+;; a flat Bayesian prior that is.  And if the confidence is 1 then we
+;; just return the strength.
+(: thompson-sample (-> PLN.TruthValue Number))
+(= (thompson-sample (PLN.MkSTV $s 0))
+   ;; (trace! (👁 thompson-sample (PLN.MkSTV $s 0))
+   (random-float &rng 0 1));)
+(= (thompson-sample (PLN.MkSTV $s 1))
+   ;; (trace! (👁 thompson-sample (PLN.MkSTV $s 1))
+    $s);)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Reduce PLN statements ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -766,13 +798,12 @@
 
 ;; Test PLN.reduce
 
-!(set-debug! e True)
+; !(set-debug! e True)
 
 
-!(with-debug e
-   (assertEqual
+!(assertEqual
   (PLN.reduce ⊤)
-  ⊤))
+  ⊤)
 
 !(assertEqual
   (PLN.reduce (𝛩 [PC] z [𝜑]))
@@ -1433,6 +1464,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Test Random Control ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;; Define PLN space
 !(bind! &pln-space (new-space))

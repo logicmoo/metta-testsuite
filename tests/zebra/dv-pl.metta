@@ -260,7 +260,7 @@
 
 ;!(import! &self dv-pl)
 ; !(test_normal_queries)
-; !(test_normal_queries)
+!(test_normal_queries &self)
 
 
 

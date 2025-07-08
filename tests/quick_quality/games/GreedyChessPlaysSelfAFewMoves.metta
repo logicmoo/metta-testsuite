@@ -2770,15 +2770,17 @@
 ;!(main_loop)
 
 !(Rust-MeTTa-Maybe (assertEqual (chess) ()))
-!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((1 2) (1 4))) ()))
-!(Rust-MeTTa-Maybe (assertEqual (G) ()))
-!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((8 2) (8 4))) ()))
-!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((3 2) (3 4))) ()))
-!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((4 2) (4 4))) ()))
-
 !(Rust-MeTTa-Maybe (assertEqual (progn (G)) ()))
 !(Rust-MeTTa-Maybe (assertEqual (C) ()))
 !(Rust-MeTTa-Maybe (assertEqual (R) ()))
 !(Rust-MeTTa-Maybe (assertEqual (D) (())))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((1 2) (1 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (G) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((8 2) (8 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (G) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((3 2) (3 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (G) ()))
+!(Rust-MeTTa-Maybe (assertEqual (MoveTo ((4 2) (4 4))) ()))
+!(Rust-MeTTa-Maybe (assertEqual (G) ()))
 
 !(assertEqual MadeItWOCrashing MadeItWOCrashing)

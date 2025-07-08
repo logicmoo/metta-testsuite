@@ -509,3 +509,7 @@
 
 !(time (assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b))))))
 ;(B=ispeEnN(C, 'mc_1__planner-main'(100, C), D, D=['planner-main', 100]), mc_1__time(B, A)).
+
+;!(profile!  (planner-main 100))
+;!(repl!)
+

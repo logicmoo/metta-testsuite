@@ -15,11 +15,15 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-017068018 { color: #114412; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068018 { color: #114412; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content">
-Script started on 2025-06-05 19:14:24-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html --compile=full tests/QC-precommit/task1_whole.metta  " TERM="xterm" TTY="/dev/pts/7" COLUMNS="140" LINES="22"]
+Script started on 2025-06-10 23:45:53-07:00 [COMMAND="swipl -x /home/deb12user/metta-wam/prolog/metta_lang/Sav.HOSTAGE.MeTTaLog  -- --python=enable -- --html --compile=full tests/QC-precommit/task1_whole.metta  " TERM="xterm" TTY="/dev/pts/10" COLUMNS="168" LINES="47"]
 <span class="ansi38-013099040">!(assertEqualToResult (planner-main 100) (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
 
 </span><span class="ansi38-017068018">:- do_metta_runtime(A,
@@ -71,9 +75,9 @@ Script started on 2025-06-05 19:14:24-07:00 [COMMAND="swipl -x /home/deb12user/m
 (Processing 19 ((on-table c) (on b c) (arm-empty) (clear a) (on a b)) ((13 (stack (a b)))))
 ; 
 ; EVAL TEST
-; took 4.07 seconds.
+; took 1.530 secs. (1529.90 milliseconds) 
 
-!(assertEqualToResult [ispeEnN $15484970 [mi__1_1_planner-main 100 $15484970] $15484974 [ = $15484974 (planner-main 100) ]] (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
+!(assertEqualToResult [ispeEnN $15222520 [mi__1_1_planner-main 100 $15222520] $15222524 [ = $15222524 (planner-main 100) ]] (((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b)))))
 
 <span class="ansi36">  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
@@ -87,13 +91,49 @@ Script started on 2025-06-05 19:14:24-07:00 [COMMAND="swipl -x /home/deb12user/m
           (stack (a b))))]]
 </span>
 Deterministic: <span class="ansi33">()
+</span><span class="ansi38-013099040">!(profile! (planner-main 100))
+
+</span><span class="ansi38-017068018">:- do_metta_runtime(A,
+                    ('mi__1_1_planner-main'(100, B), A=['profile!', B])).
+
+</span>(Processing 0 ((on-table a) (on-table b) (clear a) (clear b) (arm-empty) (on-table c) (clear c)) ((-1 (None None))))
+(Processing 1 ((on-table b) (clear b) (on-table c) (clear c) (holding a)) ((0 (pickup (a)))))
+(Processing 2 ((on-table a) (clear a) (on-table c) (clear c) (holding b)) ((0 (pickup (b)))))
+(Processing 3 ((on-table a) (on-table b) (clear a) (clear b) (holding c)) ((0 (pickup (c)))))
+(Processing 4 ((on-table b) (on-table c) (clear c) (arm-empty) (clear a) (on a b)) ((1 (stack (a b)))))
+(Processing 5 ((on-table b) (clear b) (on-table c) (arm-empty) (clear a) (on a c)) ((1 (stack (a c)))))
+(Processing 6 ((on-table a) (on-table c) (clear c) (arm-empty) (clear b) (on b a)) ((2 (stack (b a)))))
+(Processing 7 ((on-table a) (clear a) (on-table c) (arm-empty) (clear b) (on b c)) ((2 (stack (b c)))))
+(Processing 8 ((on-table a) (on-table b) (clear b) (arm-empty) (clear c) (on c a)) ((3 (stack (c a)))))
+(Processing 9 ((on-table a) (on-table b) (clear a) (arm-empty) (clear c) (on c b)) ((3 (stack (c b)))))
+(Processing 10 ((on-table b) (clear a) (on a b) (holding c)) ((4 (pickup (c)))))
+(Processing 11 ((on-table c) (clear a) (on a c) (holding b)) ((5 (pickup (b)))))
+(Processing 12 ((on-table a) (clear b) (on b a) (holding c)) ((6 (pickup (c)))))
+(Processing 13 ((on-table c) (clear b) (on b c) (holding a)) ((7 (pickup (a)))))
+(Processing 14 ((on-table a) (clear c) (on c a) (holding b)) ((8 (pickup (b)))))
+(Processing 15 ((on-table b) (clear c) (on c b) (holding a)) ((9 (pickup (a)))))
+(Processing 16 ((on-table b) (on a b) (arm-empty) (clear c) (on c a)) ((10 (stack (c a)))))
+(Processing 17 ((on-table c) (on a c) (arm-empty) (clear b) (on b a)) ((11 (stack (b a)))))
+(Processing 18 ((on-table a) (on b a) (arm-empty) (clear c) (on c b)) ((12 (stack (c b)))))
+(Processing 19 ((on-table c) (on b c) (arm-empty) (clear a) (on a b)) ((13 (stack (a b)))))
+
+N(1): <span class="ansi33">(profile! ((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b))))
+</span><span class="ansi38-013099040">!(repl!)
+
+</span><span class="ansi38-017068017">:- do_metta_runtime(A, A=['repl!']).
+
+</span>[()]
+[(profile! ((pickup (b)) (stack (b c)) (pickup (a)) (stack (a b))))]
+[
+metta+>^D
+Deterministic: <span class="ansi33">$259957818
 </span><span class="ansi1">LoonIt Report
 </span>------------
 <span class="ansi32">Successes: 1
 </span><span class="ansi32">Failures: 0
-</span>[()]
+</span>$259957818]
 
-Script done on 2025-06-05 19:14:48-07:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-06-10 23:46:19-07:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

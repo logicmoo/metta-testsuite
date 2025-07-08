@@ -81,8 +81,8 @@
                     (stv $sBC $cBC))
    (stv (+ (/ (* (* $sAB $sCB) $sC)
               $sB)
-           (/ (* sC (* (- 1 sAB) (- 1 sCB)))
-              (- 1 sB)))
+           (/ (* $sC (* (- 1 $sAB) (- 1 $sCB)))
+              (- 1 $sB)))
         (Truth_w2c (min $cAB $cBc)))) ;confidence TODO check
 
 ;Modus Ponens: PLN book "5.7.1 Modus Ponens", page 111:

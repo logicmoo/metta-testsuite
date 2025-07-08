@@ -5,6 +5,8 @@
 (= (Truth_ModusPonens (stv $f1 $c1) (stv $f2 $c2)) 
    (stv (+ (* $f1 $f2) (* 0.02 (- 1 $f1)))
         (* $c1 $c2)))
+
+
 ;Modus Ponens
 (= (|- ($A $T1) 
        ((Implication $A $B) $T2))
@@ -65,4 +67,19 @@
 
           2)
 
+
+(= (Truth_ModusPonens_XXX (stv $f1 $c1) (stv $f2 $c2)) 
+   (stv (+ (* $f1 $f2) (* 0.02 (- 1 $f1)))
+		(* $c1 $c2)))
+
+(= (engine-quick-tests)
+    (let $E
+      (engine:create (superpose (1 2 3)))
+      (progn
+        (println! ("Result 1: " (engine:next $E)))
+        (println! ("Result 2: " (engine:next $E)))
+        (println! ("Result 3: " (engine:next $E)))
+        (println! ("Reified result 4: " (engine:next-reified $E)))
+        (engine:destroy $E)
+        (println! "Engine test complete."))))
 

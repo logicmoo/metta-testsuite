@@ -29,7 +29,7 @@
 	           True)))))
 
 ;; Default behavior: start game with empty board and 'X' playing first
-(= (play-now) (play-game (1 2 3 4 5 6 7 8 9) X))
+(= (play-now) (play-game ("board" 1 2 3 4 5 6 7 8 9) X))
 
 ;; ----------------------------------------
 ;; Main game loop
@@ -53,12 +53,12 @@
 ;; ----------------------------------------
 
 (= (display-board $Nine)
-  (println! (format-args "\n
-       {} | {} | {}
-      -----------
-       {} | {} | {}
-      -----------
-       {} | {} | {}
+  (println! (format-args "\n{}\n
+	   {} | {} | {}
+	  -----------
+	   {} | {} | {}
+	  -----------
+	   {} | {} | {}
 
 \n" $Nine)))
 
@@ -171,7 +171,7 @@
 (: nth_x (-> Expression Number Atom))
 (= (nth_x $list $index)
    (if (== () $list) (empty)
-  (if (== $index 1)
+  (if (== $index 0)
     (car-atom $list)
     (let* (($rest (cdr-atom $list))
            ($idx (- $index 1)))
@@ -180,7 +180,7 @@
 ;; Replace the Nth element in a list with a new value
 (: move (-> Expression Number Atom Expression))
 (= (move $list $index $replacement)
-  (if (== $index 1)
+  (if (== $index 0)
     (let $rest (cdr-atom $list) (cons-atom $replacement $rest))
     (let* (($head (car-atom $list))
            ($rest (cdr-atom $list))
@@ -201,21 +201,25 @@
 ;; Sanity tests (for development use only)
 ;; ----------------------------------------
 
+!(display-board ("board" X X X 4 5 6 O O O)) ;; Should show X win on top row
+!(set-random-seed &rng 0)
+!(random-atom ("board" 1 2 3 4 5 6 7 8 9))   ;; Random move demo
+!(random-int &rng 1 10)
 
 (= (my-tests)
- (,
-  (display-board (X X X 4 5 6 O O O)) ;; Should show X win on top row
+ (","
+  (display-board ("board" X X X 4 5 6 O O O)) ;; Should show X win on top row
   (set-random-seed &rng 0)
-  (random-atom (1 2 3 4 5 6 7 8 9))   ;; Random move demo
+  (random-atom ("board" 1 2 3 4 5 6 7 8 9))   ;; Random move demo
   (random-int &rng 1 10)
   (assertEqualToResult (random-atom (1)) (1)) ;; Edge case: only one option
   (assertEqualToResult (random-atom ()) ())   ;; Edge case: no options
-  (assertEqualToResult (winner (O O 3 4 5 6 X X X)) (X)) ;; X wins in bottom row
-  (assertEqualToResult (available-moves (O O 3 4 5 6 X X X)) ((3 4 5 6)))
-  (assertEqualToResult (move-choices (O O 3 4 5 6 X X X)) (6 5 4 3)) ;; Should list in reverse
-  (assertEqualToResult (winning-move (O O 3 4 5 6 7 8 9) O) (3))     ;; O can win
-  (assertEqualToResult (winning-move (O O 3 4 5 6 7 8 9) X) ())      ;; X cannot win
-  (assertEqualToResult (winning-move (O O 3 4 5 6 7 X X) X) (7))     ;; X can win with 7
+  (assertEqualToResult (winner ("board" O O 3 4 5 6 X X X)) (X)) ;; X wins in bottom row
+  (assertEqualToResult (available-moves ("board" O O 3 4 5 6 X X X)) ((3 4 5 6)))
+  (assertEqualToResult (move-choices ("board" O O 3 4 5 6 X X X)) (6 5 4 3)) ;; Should list in reverse
+  (assertEqualToResult (winning-move ("board" O O 3 4 5 6 7 8 9) O) (3))     ;; O can win
+  (assertEqualToResult (winning-move ("board" O O 3 4 5 6 7 8 9) X) ())      ;; X cannot win
+  (assertEqualToResult (winning-move ("board" O O 3 4 5 6 7 X X) X) (7))     ;; X can win with 7
 ))
 
 ;; ----------------------------------------
